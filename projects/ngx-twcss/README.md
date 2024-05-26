@@ -1,24 +1,10 @@
-# NgxTwcss
+<a href="https://github.com/William-Mba/ngx-twcss">
+<div align="center">
+    <h1>ngx-twcss</h1>
+</div>
+</a>
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+<p align="center">Free open-source components library crafted with <a href="https://angular.dev/">Angular</a> and <a href="https://tailwindcss.com/docs/installation">Tailwind CSS</a> to help you create beautiful and modern web UIs faster and easier.
+</p>
 
-## Code scaffolding
-
-Run `ng generate component component-name --project ngx-twcss` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-twcss`.
-> Note: Don't forget to add `--project ngx-twcss` or else it will be added to the default project in your `angular.json` file. 
-
-## Build
-
-Run `ng build ngx-twcss` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build ngx-twcss`, go to the dist folder `cd dist/ngx-twcss` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ngx-twcss` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Take advantages of ready-to-use components with default configuration or set your own configuration to create unique and consistent web UIs.
