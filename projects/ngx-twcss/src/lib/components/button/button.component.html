@@ -1,0 +1,13 @@
+<ng-container [ngSwitch]="variant">
+  <ng-container *ngSwitchCase="'primary'" [ngTemplateOutlet]="primary"></ng-container>
+</ng-container>
+
+<ng-template #primary>
+  <nxt-primary-button>
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </nxt-primary-button>
+</ng-template>
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
