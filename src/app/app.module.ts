@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from '../../projects/ngx-twcss/src/lib/components/button/button.component';
+import { PrimaryButtonComponent } from '../../projects/ngx-twcss/src/lib/components/buttons/primary-button/primary-button.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { ButtonComponent } from '../../projects/ngx-twcss/src/lib/components/but
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ButtonComponent
+    PrimaryButtonComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

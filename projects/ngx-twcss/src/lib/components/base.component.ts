@@ -7,8 +7,6 @@ export abstract class BaseComponent {
   protected style: string[] = [];
   protected className: string = '';
 
-  abstract setup(): void;
-
   hasClassName(className: string): boolean {
     return (this.className.search(className) === 0);
   }
