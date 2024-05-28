@@ -19,26 +19,26 @@ export interface SizeSettings {
 export const SizeSettings: SizeSettings = {
   sm: {
     padding: {
-      x: 'px-4',
-      y: 'py-1.5'
+      x: 'px-2',
+      y: 'py-1'
     },
     textSize: 'text-sm',
-    rounded: 'rounded-lg'
+    rounded: 'rounded-md'
   },
   md: {
+    padding: {
+      x: 'px-4',
+      y: 'py-2'
+    },
+    textSize: 'text-base',
+    rounded: 'rounded-md'
+  },
+  lg: {
     padding: {
       x: 'px-5',
       y: 'py-2.5'
     },
-    textSize: 'text-base',
-    rounded: 'rounded-full'
-  },
-  lg: {
-    padding: {
-      x: 'px-6',
-      y: 'py-3'
-    },
-    textSize: 'text-lg',
-    rounded: 'rounded-full'
+    textSize: 'text-xl',
+    rounded: 'rounded-md'
   }
 }

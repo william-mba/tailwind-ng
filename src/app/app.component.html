@@ -1,4 +1,20 @@
-<nxt-button>
-  Primary action
-</nxt-button>
+<div class="flex gap-4 p-4">
+  <nxt-primary-button>
+    Small text
+  </nxt-primary-button>
+  <nxt-primary-button size='md'>
+    Medium text
+  </nxt-primary-button>
+  <nxt-primary-button size='lg'>
+    Large text
+  </nxt-primary-button>
+
+</div>
+<div class="flex gap-2">
+  <!-- <button class="bg-blue-500 p-2 rounded-full text-white" (click)="changeSettings()">Change settings</button> -->
+  <button type="button" class="bg-blue-500 p-2 rounded-full text-white" (click)="one()">Theme 1</button>
+  <button type="button" class="bg-blue-500 p-2 rounded-full text-white" (click)="two()">Theme 2</button>
+  <button type="button" class="bg-blue-500 p-2 rounded-full text-white" (click)="three()">Theme 3</button>
+  <button type="button" class="bg-red-500 p-2 rounded-full text-white" (click)="reset()">Reset</button>
+</div>
 <router-outlet />
