@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ConfigsService } from 'ngx-twcss';
+import { ConfigsService, ToggleThemeUsingSelector } from 'ngx-twcss';
 import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryButtonConfig3 } from 'configs/ngx-twcss';
 
 @Component({
@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'Ngx-Twcss Playground';
   private settingsManager = inject(ConfigsService);
   theme!: number;
+  nextThemeMode: 'light' | 'dark' = 'dark';
 
   ngOnInit() {
     let lastTheme = localStorage.getItem('last-used-theme');
@@ -19,6 +20,11 @@ export class AppComponent {
       this.theme = parseInt(lastTheme);
       this.changeConfig();
     }
+  }
+
+  ToggleTheme() {
+    ToggleThemeUsingSelector();
+    this.nextThemeMode = this.nextThemeMode === 'light' ? 'dark' : 'light';
   }
 
   changeConfig() {

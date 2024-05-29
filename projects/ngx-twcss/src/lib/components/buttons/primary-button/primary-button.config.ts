@@ -1,11 +1,9 @@
 import { BaseButtonConfig } from "../button.config";
 
-export interface PrimaryButtonConfig extends BaseButtonConfig {
-  base?: BaseButtonConfig
-}
+export interface PrimaryButtonConfig extends BaseButtonConfig {}
 
-export const PrimaryButtonConfig: PrimaryButtonConfig = {
-  base: BaseButtonConfig,
+export const PrimaryButtonConfig: Partial<PrimaryButtonConfig> = {
+  ...BaseButtonConfig,
   theme: {
     textColor: 'text-white',
     bgColor: 'bg-indigo-600',

@@ -4,8 +4,12 @@ import { IsAcceptableClass } from "../common/helpers/type.helper";
 export abstract class BaseComponent {
 
   protected size!: SizeVariant;
-  protected style: string[] = [];
+  protected _style: string[] = [];
   protected className: string = '';
+
+  get style(): string {
+    return this._style.join(' ');
+  }
 
   hasClassName(className: string): boolean {
     return (this.className.search(className) === 0);
@@ -16,14 +20,14 @@ export abstract class BaseComponent {
       if (!IsAcceptableClass(c)) return
 
       if (!this.hasClassName(`/${c}/`)) {
-        this.style.push(c)
+        this._style.push(c)
       }
     })
   }
 
   removeClass(...args: string[]): void {
     args.forEach(classToRemove => {
-      this.style = this.style
+      this._style = this._style
         .filter((c) => c !== classToRemove)
     })
   }
