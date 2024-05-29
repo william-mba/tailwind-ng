@@ -1,6 +1,6 @@
 import { PaddingLeft, PaddingTop, PaddingRight, PaddingBottom, PaddingX, PaddingY } from "../types/spacing/padding";
 
-export interface PaddingSettings {
+export interface PaddingConfig {
   /**left */
   l?: PaddingLeft,
   /**top */
@@ -15,4 +15,4 @@ export interface PaddingSettings {
   y?: PaddingY
 }
 
-export const PaddingSettings: PaddingSettings = {}
+export const PaddingConfig: PaddingConfig = {}

@@ -1,24 +1,24 @@
+import { BaseConfig } from "../../common/configs/base.config"
 import { BorderWidth } from "../../common/types/borders/border-width"
 import { Gap } from "../../common/types/flex-n-grid/gap"
 import { UserSelect } from "../../common/types/interactivity/user-select"
 import { Overflow } from "../../common/types/layout/overflow"
 import { TextWrap } from "../../common/types/typography/text-wrap"
-import { BaseSettings } from "../../common/settings/base.settings"
 
-export interface BaseButtonSettings extends BaseSettings {
+export interface BaseButtonConfig extends BaseConfig {
   gap?: Gap,
   textWrap?: TextWrap,
   overflow?: Overflow,
   userSelect?: UserSelect
 }
 
-export interface SoftButtonSettings extends BaseButtonSettings { }
+export interface SoftButtonConfig extends BaseButtonConfig { }
 
-export interface SecondaryButtonSettings extends BaseButtonSettings {
+export interface SecondaryButtonConfig extends BaseButtonConfig {
   border?: BorderWidth
 }
 
-export const BaseButtonSettings: BaseButtonSettings = {
+export const BaseButtonConfig: BaseButtonConfig = {
   gap: 'gap-2',
   display: 'inline-flex',
   textWrap: 'text-nowrap',
@@ -29,7 +29,7 @@ export const BaseButtonSettings: BaseButtonSettings = {
   overflow: 'overflow-hidden'
 }
 
-export const SoftButtonSettings: SoftButtonSettings = {
+export const SoftButtonConfig: SoftButtonConfig = {
   theme: {
     bgColor: 'bg-indigo-50',
     textColor: 'text-indigo-600',
@@ -41,7 +41,7 @@ export const SoftButtonSettings: SoftButtonSettings = {
   }
 }
 
-export const SecondaryButtonSettings: SecondaryButtonSettings = {
+export const SecondaryButtonConfig: SecondaryButtonConfig = {
   border: 'border',
   theme: {
     light: {

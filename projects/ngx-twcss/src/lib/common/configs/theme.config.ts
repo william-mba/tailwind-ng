@@ -1,4 +1,4 @@
-import { ModifierSettings } from "./modifier.settings";
+import { ModifierConfig } from "./modifier.config";
 import { BackgroundColor } from "../types/backgrounds/background-color";
 import { BorderColor } from "../types/borders/border-color";
 import { BorderOpacity } from "../types/borders/border-opacity";
@@ -6,32 +6,30 @@ import { TextColor } from "../types/typography/text-color";
 import { PointerEvents } from "../types/interactivity/pointer-events";
 import { OpacityOnDisabled } from "../types/effects/opacity";
 
-/**Theme type @namespace settings */
-export interface ThemeSettings {
+export interface ThemeConfig {
   textColor?: TextColor,
   bgColor?: BackgroundColor,
-  bgGradient?: BackgroundGradientSettings,
+  bgGradient?: BackgroundGradientConfig,
   borderColor?: BorderColor,
   borderOpacity?: BorderOpacity,
-  modifier?: ModifierSettings
+  modifier?: ModifierConfig
 }
 
-/**BackgroundGradient type @namespace settings */
-export type BackgroundGradientSettings = {
+export type BackgroundGradientConfig = {
   direction: 'bg-gradient-to-r' | 'bg-gradient-to-l',
   from: string,
   to: string,
   modifier?: Record<string, object>
 }
 
-export type OnDisabledSettings = {
+export type OnDisabledConfig = {
   opacity?: OpacityOnDisabled,
   pointerEvents?: PointerEvents,
 }
 
-export const ThemeSettings: ThemeSettings = {}
-export const BackgroundGradientSettings: Partial<BackgroundGradientSettings> = {}
-export const OnDisabledSettings: OnDisabledSettings = {
+export const ThemeConfig: ThemeConfig = {}
+export const BackgroundGradientConfig: Partial<BackgroundGradientConfig> = {}
+export const OnDisabledConfig: OnDisabledConfig = {
   opacity: 'opacity-20',
   pointerEvents: 'pointer-events-none'
 }

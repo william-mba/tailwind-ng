@@ -1,22 +1,22 @@
 import { RoundedSize } from "../types/borders/border-radius";
 import { PaddingSize } from "../types/spacing/padding";
 import { FontSize } from "../types/typography/font-size";
-import { PaddingSettings } from "./padding.settings";
-import { RoundedSettings } from "./rounded.settings";
+import { PaddingConfig } from "./padding.config";
+import { RoundedConfig } from "./rounded.config";
 
-export interface ScaleSettings {
+export interface ScaleConfig {
   textSize?: FontSize,
-  padding?: PaddingSettings | PaddingSize,
-  rounded?: RoundedSettings | RoundedSize
+  padding?: PaddingConfig | PaddingSize,
+  rounded?: RoundedConfig | RoundedSize
 }
 
-export interface SizeSettings {
-  sm?: ScaleSettings,
-  md?: ScaleSettings,
-  lg?: ScaleSettings
+export interface SizeConfig {
+  sm?: ScaleConfig,
+  md?: ScaleConfig,
+  lg?: ScaleConfig
 }
 
-export const SizeSettings: SizeSettings = {
+export const SizeConfig: SizeConfig = {
   sm: {
     padding: {
       x: 'px-2',
