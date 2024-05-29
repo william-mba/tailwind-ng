@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PrimaryButtonComponent } from './primary-button.component';
-import { PrimaryButtonConfig } from './primary-button.config';
+import { SecondaryButtonComponent } from './secondary-button.component';
+import { SecondaryButtonConfig } from './secondary-button.config';
 import { toClassName } from '../../../common/helpers/object.helper';
 
-describe('PrimaryButtonComponent', () => {
-  let component: PrimaryButtonComponent;
-  let fixture: ComponentFixture<PrimaryButtonComponent>;
-  let config = toClassName(PrimaryButtonConfig);
+describe('SecondaryButtonComponent', () => {
+  let component: SecondaryButtonComponent;
+  let fixture: ComponentFixture<SecondaryButtonComponent>;
+  let config = toClassName(SecondaryButtonConfig);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PrimaryButtonComponent]
+      imports: [SecondaryButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PrimaryButtonComponent);
+    fixture = TestBed.createComponent(SecondaryButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
@@ -39,7 +39,6 @@ describe('PrimaryButtonComponent', () => {
     component.size = 'lg';
     expect(component.size).toBe('lg');
   });
-
 
   it('should set config', () => {
     expect(component.addClass).toHaveBeenCalled();

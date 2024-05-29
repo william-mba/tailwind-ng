@@ -11,14 +11,15 @@ import { ConfigsService } from '../../../common/configs/configs.service';
 })
 
 export class PrimaryButtonComponent extends BaseComponent implements OnInit {
+  protected config = inject(ConfigsService).primaryButtonConfig();
   @Input() override size: SizeVariant = 'sm';
-  @Input() config = inject(ConfigsService).primaryButtonConfig();
+  @Input() override className!: string;
 
   ngOnInit(): void {
     this.config.subscribe((s) => {
-      this.style = [];
+      this._style = [];
       this.addClass(toClassName([
-        this.className, s, SizeConfig[this.size]
+        s, SizeConfig[this.size], this.className
       ]));
     });
   }
