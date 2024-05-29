@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { SettingsManager } from 'ngx-twcss';
-import { CustomPrimaryButtonSettings, CustomPrimaryButtonSettings2, CustomPrimaryButtonSettings3 } from 'settings/ngx-twcss';
+import { ConfigsService } from 'ngx-twcss';
+import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryButtonConfig3 } from 'configs/ngx-twcss';
 
 @Component({
   selector: 'app-root',
@@ -10,29 +10,29 @@ import { CustomPrimaryButtonSettings, CustomPrimaryButtonSettings2, CustomPrimar
 
 export class AppComponent {
   title = 'Ngx-Twcss Playground';
-  private settingsManager = inject(SettingsManager);
+  private settingsManager = inject(ConfigsService);
   theme!: number;
 
   ngOnInit() {
     let lastTheme = localStorage.getItem('last-used-theme');
     if (lastTheme) {
       this.theme = parseInt(lastTheme);
-      this.changeSettings();
+      this.changeConfig();
     }
   }
 
-  changeSettings() {
+  changeConfig() {
     switch (this.theme) {
       case 1:
-        this.settingsManager.setPrimaryButtonSettings(CustomPrimaryButtonSettings);
+        this.settingsManager.setPrimaryButtonConfig(CustomPrimaryButtonConfig);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 2:
-        this.settingsManager.setPrimaryButtonSettings(CustomPrimaryButtonSettings2);
+        this.settingsManager.setPrimaryButtonConfig(CustomPrimaryButtonConfig2);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 3:
-        this.settingsManager.setPrimaryButtonSettings(CustomPrimaryButtonSettings3);
+        this.settingsManager.setPrimaryButtonConfig(CustomPrimaryButtonConfig3);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
     }
@@ -40,15 +40,15 @@ export class AppComponent {
 
   one() {
     this.theme = 1;
-    this.changeSettings();
+    this.changeConfig();
   }
   two() {
     this.theme = 2;
-    this.changeSettings();
+    this.changeConfig();
   }
   three() {
     this.theme = 3;
-    this.changeSettings();
+    this.changeConfig();
   }
 
   reset() {

@@ -1,6 +1,6 @@
 import { RoundedLeft, RoundedTop, RoundedRight, RoundedBottom } from "../types/borders/border-radius";
 
-export interface RoundedSettings {
+export interface RoundedConfig {
   /**left */
   l?: RoundedLeft,
   /**top */
@@ -11,4 +11,4 @@ export interface RoundedSettings {
   b?: RoundedBottom
 }
 
-export const RoundedSettings: RoundedSettings = {}
+export const RoundedConfig: RoundedConfig = {}
