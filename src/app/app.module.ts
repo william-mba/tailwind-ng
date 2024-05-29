@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PrimaryButtonComponent } from 'ngx-twcss';
+import { PrimaryButtonComponent, SecondaryButtonComponent } from 'ngx-twcss';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { PrimaryButtonComponent } from 'ngx-twcss';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PrimaryButtonComponent
+    PrimaryButtonComponent,
+    SecondaryButtonComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

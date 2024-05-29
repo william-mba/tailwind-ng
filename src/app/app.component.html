@@ -1,20 +1,164 @@
-<div class="flex gap-4 p-4">
-  <nxt-primary-button>
-    Small text
-  </nxt-primary-button>
-  <nxt-primary-button size='md'>
-    Medium text
-  </nxt-primary-button>
-  <nxt-primary-button size='lg'>
-    Large text
-  </nxt-primary-button>
+<div
+  class="container *:container mx-auto p-4 *:flex *:gap-4 *:p-6 *:m-6 *:mt-28 *:flex-col *:items-center *:sm:items-end *:sm:flex-row *:sm:justify-center *:border-spacing-1 *:border *:border-gray-300 *:dark:border-gray-700 *:mx-auto *:relative *:rounded-lg"
+>
+  <div>
+    <span class="fixed z-50 top-3 right-3 text-xs text-black dark:text-white border-gray-200 bg-slate-50 dark:bg-gray-800 dark:border-gray-700 p-2 py-1 border rounded-full hover:cursor-pointer" (click)="ToggleTheme()">View on {{ nextThemeMode }} mode</span>
+    <div
+      class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold"
+    >
+      Primary buttons
+    </div>
+    <nxt-primary-button> Button text </nxt-primary-button>
+    <nxt-primary-button size="md"> Button text </nxt-primary-button>
+    <nxt-primary-button size="lg"> Button text </nxt-primary-button>
+  </div>
+  <div>
+    <div
+      class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold"
+    >
+      Secondary buttons
+    </div>
+    <nxt-secondary-button> Button text </nxt-secondary-button>
+    <nxt-secondary-button size="md"> Button text </nxt-secondary-button>
+    <nxt-secondary-button size="lg"> Button text </nxt-secondary-button>
+  </div>
 
+  <div>
+    <div
+      class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold"
+    >
+      Buttons with leading icon
+    </div>
+    <nxt-primary-button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        class="size-4"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      Button text
+    </nxt-primary-button>
+    <nxt-primary-button size="md">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="size-5"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      Button text
+    </nxt-primary-button>
+    <nxt-primary-button size="lg">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-6"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      Button text
+    </nxt-primary-button>
+  </div>
+
+  <div>
+    <div
+      class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold"
+    >
+      Buttons with trailing icon
+    </div>
+    <nxt-primary-button>
+      Button text
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        class="size-4"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </nxt-primary-button>
+    <nxt-primary-button size="md">
+      Button text
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        class="size-5"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </nxt-primary-button>
+    <nxt-primary-button size="lg">
+      Button text
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-6"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </nxt-primary-button>
+  </div>
 </div>
+
 <div class="flex gap-2">
   <!-- <button class="bg-blue-500 p-2 rounded-full text-white" (click)="changeSettings()">Change settings</button> -->
-  <button type="button" class="bg-blue-500 p-2 rounded-full text-white" (click)="one()">Theme 1</button>
-  <button type="button" class="bg-blue-500 p-2 rounded-full text-white" (click)="two()">Theme 2</button>
-  <button type="button" class="bg-blue-500 p-2 rounded-full text-white" (click)="three()">Theme 3</button>
-  <button type="button" class="bg-red-500 p-2 rounded-full text-white" (click)="reset()">Reset</button>
+  <button
+    type="button"
+    class="bg-rose-500 p-2 rounded-full text-white"
+    (click)="one()"
+  >
+    Rose
+  </button>
+  <button
+    type="button"
+    class="bg-orange-600 p-2 rounded-full text-white"
+    (click)="two()"
+  >
+    Orange
+  </button>
+  <button
+    type="button"
+    class="bg-lime-600 p-2 rounded-full text-white"
+    (click)="three()"
+  >
+    Lime
+  </button>
+  <button
+    type="button"
+    class="bg-red-500 p-2 rounded-full text-white"
+    (click)="reset()"
+  >
+    Reset
+  </button>
 </div>
 <router-outlet />
