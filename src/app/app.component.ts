@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { SettingsManager } from '../../projects/ngx-twcss/src/public-api';
-import { CustomPrimaryButtonSettings, CustomPrimaryButtonSettings2, CustomPrimaryButtonSettings3 } from './custom-settings/custom-primary-button.settings';
+import { SettingsManager } from 'ngx-twcss';
+import { CustomPrimaryButtonSettings, CustomPrimaryButtonSettings2, CustomPrimaryButtonSettings3 } from 'settings/ngx-twcss';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styles: []
 })
+
 export class AppComponent {
   title = 'Ngx-Twcss Playground';
   private settingsManager = inject(SettingsManager);

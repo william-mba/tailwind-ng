@@ -1,8 +1,8 @@
-import { PrimaryButtonSettings } from "../../../projects/ngx-twcss/src/public-api";
+import { PrimaryButtonSettings } from "ngx-twcss"
 
 export const CustomPrimaryButtonSettings: PrimaryButtonSettings = {
   theme: {
-    bgColor: 'bg-green-600'
+    bgColor: 'bg-rose-500'
   }
 }
 
@@ -14,6 +14,6 @@ export const CustomPrimaryButtonSettings2: PrimaryButtonSettings = {
 
 export const CustomPrimaryButtonSettings3: PrimaryButtonSettings = {
   theme: {
-    bgColor: 'bg-pink-600'
+    bgColor: 'bg-lime-600'
   }
 }
