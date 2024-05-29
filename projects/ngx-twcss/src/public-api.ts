@@ -9,4 +9,5 @@ export * from './lib/common/settings/rounded.settings';
 export * from './lib/common/settings/settings-manager';
 export * from './lib/common/settings/size.settings';
 export * from './lib/common/settings/theme.settings';
+export * from './lib/components/buttons/primary-button/primary-button.component';
 export * from './lib/components/buttons/primary-button/primary-button.settings';

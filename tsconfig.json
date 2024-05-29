@@ -6,13 +6,16 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "forceConsistentCasingInFileNames":true,
+    "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "paths": {
       "ngx-twcss": [
-        "./dist/ngx-twcss"
+        "./projects/ngx-twcss/src/public-api.ts" //./dist/ngx-twcss/public-api.d.ts ./projects/ngx-twcss/src/public-api.ts
+      ],
+      "settings/ngx-twcss": [
+        "./src/app/settings/ngx-twcss/primary-button.settings.ts"
       ]
     },
     "esModuleInterop": true,
