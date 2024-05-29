@@ -5,9 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --project ngx-twcss",
-    "build-pg": "ng build",
+    "build-demo": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --project ngx-twcss --code-coverage",
+    "test-demo": "ng test",
     "publish": "cd dist/ngx-twcss && npm publish"
   },
   "private": true,
