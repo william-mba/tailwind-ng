@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
-import { PrimaryButtonKey, PrimaryButtonConfig } from './primary-button.config';
+import { PrimaryButtonConfigKey, PrimaryButtonConfig } from './primary-button.config';
 
 @Component({
   standalone: true,
@@ -14,6 +14,6 @@ export class PrimaryButtonComponent extends BaseComponent<PrimaryButtonConfig> {
   @Input() override style: string[] = [];
 
   ngOnInit(): void {
-    this.initConfig(PrimaryButtonKey, PrimaryButtonConfig);
+    this.initConfig(PrimaryButtonConfigKey, PrimaryButtonConfig);
   }
 }

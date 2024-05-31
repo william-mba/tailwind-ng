@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
-import { SecondaryButtonKey, SecondaryButtonConfig } from './secondary-button.config';
+import { SecondaryButtonConfigKey, SecondaryButtonConfig } from './secondary-button.config';
 
 @Component({
   selector: 'nxt-secondary-button',
@@ -13,6 +13,6 @@ export class SecondaryButtonComponent extends BaseComponent<SecondaryButtonConfi
   @Input() override style: string[] = [];
 
   ngOnInit(): void {
-    this.initConfig(SecondaryButtonKey, SecondaryButtonConfig);
+    this.initConfig(SecondaryButtonConfigKey, SecondaryButtonConfig);
   }
 }

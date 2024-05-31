@@ -1,6 +1,6 @@
-import { BaseButtonConfig } from "../button.config";
+import { BaseButtonConfig } from "../base-button.config";
 
-export const PrimaryButtonKey = 'PrimaryButton';
+export const PrimaryButtonConfigKey = 'PrimaryButtonConfigKey';
 
 export interface PrimaryButtonConfig extends Partial<BaseButtonConfig> { };
 

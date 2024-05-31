@@ -1,7 +1,7 @@
 import { BorderWidth } from "../../../common/types/borders/border-width";
-import { BaseButtonConfig } from "../button.config";
+import { BaseButtonConfig } from "../base-button.config";
 
-export const SecondaryButtonKey = 'SecondaryButton';
+export const SecondaryButtonConfigKey = 'SecondaryButtonConfigKey';
 
 export interface SecondaryButtonConfig extends Partial<BaseButtonConfig> {
   border: BorderWidth
