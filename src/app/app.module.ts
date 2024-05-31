@@ -14,7 +14,6 @@ import { PrimaryButtonComponent, SecondaryButtonComponent } from 'ngx-twcss';
     PrimaryButtonComponent,
     SecondaryButtonComponent
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

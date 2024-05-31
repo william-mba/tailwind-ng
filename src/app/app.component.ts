@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ConfigsService, ToggleThemeUsingSelector } from 'ngx-twcss';
+import { ConfigService, PrimaryButtonKey, PrimaryButtonConfig, ToggleTheme } from 'ngx-twcss';
 import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryButtonConfig3 } from 'configs/ngx-twcss';
 
 @Component({
@@ -10,7 +10,7 @@ import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryBut
 
 export class AppComponent {
   title = 'Ngx-Twcss Playground';
-  private settingsManager = inject(ConfigsService);
+  private btnSettings = inject(ConfigService<PrimaryButtonConfig>);
   theme!: number;
   nextThemeMode: 'light' | 'dark' = 'dark';
 
@@ -23,22 +23,22 @@ export class AppComponent {
   }
 
   ToggleTheme() {
-    ToggleThemeUsingSelector();
+    ToggleTheme();
     this.nextThemeMode = this.nextThemeMode === 'light' ? 'dark' : 'light';
   }
 
   changeConfig() {
     switch (this.theme) {
       case 1:
-        this.settingsManager.setPrimaryButtonConfig(CustomPrimaryButtonConfig);
+        this.btnSettings.set(PrimaryButtonKey, PrimaryButtonConfig, CustomPrimaryButtonConfig);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 2:
-        this.settingsManager.setPrimaryButtonConfig(CustomPrimaryButtonConfig2);
+        this.btnSettings.set(PrimaryButtonKey, PrimaryButtonConfig, CustomPrimaryButtonConfig2);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 3:
-        this.settingsManager.setPrimaryButtonConfig(CustomPrimaryButtonConfig3);
+        this.btnSettings.set(PrimaryButtonKey, PrimaryButtonConfig, CustomPrimaryButtonConfig3);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
     }
