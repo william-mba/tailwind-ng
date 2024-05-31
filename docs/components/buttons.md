@@ -2,15 +2,9 @@
 
 [Buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)<!-- {.external} --> help people initiate actions, from sending an email, to sharing a document, to liking a post.
 
-[@ngx-twcss](https://www.npmjs.com/package/ngx-twcss) provide three types of buttons: primary, secondary and soft.
-
 ## Types
 
-[@ngx-twcss](https://www.npmjs.com/package/ngx-twcss) provide three types of buttons:
-
-1. **Primary**
-2. **Secondary**
-3. **Soft**
+[@ngx-twcss](https://www.npmjs.com/package/ngx-twcss) provide three types of buttons: **Primary**, **Secondary** and **Soft**
 
 
 Light mode | Dark mode
@@ -59,7 +53,7 @@ Properties
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-size      | SizeVariant | `[size]`    | `'md'`  | The component size.
+size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of space separated Tailwind CSS classes that adds (specific) or overrides (related) the component style.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
@@ -69,7 +63,7 @@ Properties
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-size      | SizeVariant | `[size]`    | `'md'`  | The component size.
+size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of space separated Tailwind CSS classes that adds (specific) or overrides (related) the component style.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
@@ -80,7 +74,7 @@ Properties
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-size      | SizeVariant | `[size]`    | `'md'`  | The component size.
+size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of space separated Tailwind CSS classes that adds (specific) or overrides (related) the component style.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
