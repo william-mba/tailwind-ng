@@ -14,8 +14,8 @@
       "ngx-twcss": [
         "./projects/ngx-twcss/src/public-api.ts" //./dist/ngx-twcss/public-api.d.ts ./projects/ngx-twcss/src/public-api.ts
       ],
-      "configs/ngx-twcss": [
-        "./src/app/configs/ngx-twcss/primary-button.config.ts"
+      "customs/*": [
+        "./src/app/configs/ngx-twcss/*"
       ]
     },
     "esModuleInterop": true,

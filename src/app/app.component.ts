@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { ConfigService, PrimaryButtonKey, PrimaryButtonConfig, ToggleTheme } from 'ngx-twcss';
-import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryButtonConfig3 } from 'configs/ngx-twcss';
+import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryButtonConfig3 } from 'customs/primary-button.config';
+import { CustomSoftButtonConfig, CustomSoftButtonConfig2, CustomSoftButtonConfig3 } from 'customs/soft-button.config';
+import { ConfigService, PrimaryButtonConfigKey, PrimaryButtonConfig, ToggleTheme, SoftButtonConfig, SoftButtonConfigKey } from 'ngx-twcss';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,10 @@ import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryBut
 })
 
 export class AppComponent {
+  private primaryBtnConfig = inject(ConfigService<PrimaryButtonConfig>);
+  private softBtnConfig = inject(ConfigService<SoftButtonConfig>);
+  theme: number = 0;
   title = 'Ngx-Twcss Playground';
-  private btnSettings = inject(ConfigService<PrimaryButtonConfig>);
-  theme!: number;
   nextThemeMode: 'light' | 'dark' = 'dark';
 
   ngOnInit() {
@@ -30,15 +32,18 @@ export class AppComponent {
   changeConfig() {
     switch (this.theme) {
       case 1:
-        this.btnSettings.set(PrimaryButtonKey, PrimaryButtonConfig, CustomPrimaryButtonConfig);
+        this.primaryBtnConfig.set(PrimaryButtonConfigKey, PrimaryButtonConfig, CustomPrimaryButtonConfig);
+        this.softBtnConfig.set(SoftButtonConfigKey, SoftButtonConfig, CustomSoftButtonConfig);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 2:
-        this.btnSettings.set(PrimaryButtonKey, PrimaryButtonConfig, CustomPrimaryButtonConfig2);
+        this.primaryBtnConfig.set(PrimaryButtonConfigKey, PrimaryButtonConfig, CustomPrimaryButtonConfig2);
+        this.softBtnConfig.set(SoftButtonConfigKey, SoftButtonConfig, CustomSoftButtonConfig2);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 3:
-        this.btnSettings.set(PrimaryButtonKey, PrimaryButtonConfig, CustomPrimaryButtonConfig3);
+        this.primaryBtnConfig.set(PrimaryButtonConfigKey, PrimaryButtonConfig, CustomPrimaryButtonConfig3);
+        this.softBtnConfig.set(SoftButtonConfigKey, SoftButtonConfig, CustomSoftButtonConfig3);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
     }
