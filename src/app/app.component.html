@@ -2,15 +2,55 @@
   class="container *:container mx-auto p-4 *:flex *:gap-4 *:p-6 *:m-6 *:mt-28 *:flex-col *:items-center *:sm:items-end *:sm:flex-row *:sm:justify-center *:border-spacing-1 *:border *:border-gray-300 *:dark:border-gray-700 *:mx-auto *:relative *:rounded-lg"
 >
   <div>
-    <span class="fixed z-50 top-3 right-3 text-xs text-black dark:text-white border-gray-200 bg-slate-50 dark:bg-gray-800 dark:border-gray-700 p-2 py-1 border rounded-full hover:cursor-pointer" (click)="ToggleTheme()">View on {{ nextThemeMode }} mode</span>
+    <nxt-primary-button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="20px"
+        fill="currentColor"
+      >
+        <path
+          d="M144-192v-576l720 288-720 288Zm72-107 454-181-454-181v109l216 72-216 72v109Zm0 0v-362 362Z"
+        />
+      </svg>
+      Send
+    </nxt-primary-button>
+    <nxt-secondary-button>
+      Open
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="20px"
+        fill="currentColor"
+      >
+        <path
+          d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"
+        />
+      </svg>
+    </nxt-secondary-button>
+  </div>
+  <div>
+    <span
+      class="fixed z-50 top-3 right-3 text-xs text-black dark:text-white border-gray-200 bg-slate-50 dark:bg-gray-800 dark:border-gray-700 p-2 py-1 border rounded-full hover:cursor-pointer"
+      (click)="ToggleTheme()"
+      >View on {{ nextThemeMode }} mode</span
+    >
     <div
       class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold"
     >
       Primary buttons
     </div>
-    <nxt-primary-button> Button text </nxt-primary-button>
-    <nxt-primary-button size="md"> Button text </nxt-primary-button>
-    <nxt-primary-button size="lg"> Button text </nxt-primary-button>
+    <nxt-primary-button className="rounded-full" size="sm"
+      >Button text
+    </nxt-primary-button>
+    <nxt-primary-button className="rounded-full">
+      Button text
+    </nxt-primary-button>
+    <nxt-primary-button className="rounded-full" size="lg">
+      Button text
+    </nxt-primary-button>
   </div>
   <div>
     <div
@@ -18,8 +58,8 @@
     >
       Secondary buttons
     </div>
+    <nxt-secondary-button size="sm">Button text </nxt-secondary-button>
     <nxt-secondary-button> Button text </nxt-secondary-button>
-    <nxt-secondary-button size="md"> Button text </nxt-secondary-button>
     <nxt-secondary-button size="lg"> Button text </nxt-secondary-button>
   </div>
 
@@ -29,7 +69,7 @@
     >
       Buttons with leading icon
     </div>
-    <nxt-primary-button>
+    <nxt-primary-button size="sm">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
@@ -44,7 +84,7 @@
       </svg>
       Button text
     </nxt-primary-button>
-    <nxt-primary-button size="md">
+    <nxt-primary-button>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -82,7 +122,7 @@
     >
       Buttons with trailing icon
     </div>
-    <nxt-primary-button>
+    <nxt-primary-button size="sm">
       Button text
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +137,7 @@
         />
       </svg>
     </nxt-primary-button>
-    <nxt-primary-button size="md">
+    <nxt-primary-button>
       Button text
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +171,7 @@
 </div>
 
 <div class="flex gap-2">
-  <!-- <button class="bg-blue-500 p-2 rounded-full text-white" (click)="changeSettings()">Change settings</button> -->
+  <!-- <button class="bg-blue-500 p-2 rounded-full text-white" (click)="changeSettings()">Change settings</button size="sm">-->
   <button
     type="button"
     class="bg-rose-500 p-2 rounded-full text-white"
