@@ -17,3 +17,40 @@ Take advantages of ready-to-use components with default configuration or set you
 -   [Quick start](docs/quick-start.md)
 -   [Component docs](docs/components/)
 -   [Browser support and FAQ](docs/support.md) -->
+
+## Components
+
+<table style="border:1px solid;" >
+  <tr>
+    <td style="border:1px solid;" >Components</td>
+    <td style="border:1px solid;" >API</td>
+    <td style="border:1px solid;" >Release</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid;" >
+      <li>
+        <a href="https://github.com/William-Mba/ngx-twcss">..</a>
+      </li>
+      <li>
+        <a href="https://github.com/William-Mba/ngx-twcss">..</a>
+      </li>
+    </td>
+    <td style="border:1px solid;" >
+      <li>
+        <a href="https://github.com/William-Mba/ngx-twcss">..</a>
+      </li>
+      <li>
+        <a href="https://github.com/William-Mba/ngx-twcss">..</a>
+      </li>
+    </td>
+    <td style="border:1px solid;" >
+      <li>
+        <a href="https://github.com/William-Mba/ngx-twcss">..</a>
+      </li>
+      <li>
+        <a href="https://github.com/William-Mba/ngx-twcss">..</a>
+      </li>
+    </td>
+  </tr>
+</table>
+
