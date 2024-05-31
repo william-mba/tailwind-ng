@@ -1,20 +1,22 @@
 import { BorderWidth } from "../../../common/types/borders/border-width";
 import { BaseButtonConfig } from "../button.config";
 
-export interface SecondaryButtonConfig extends BaseButtonConfig {
+export const SecondaryButtonKey = 'SecondaryButton';
+
+export interface SecondaryButtonConfig extends Partial<BaseButtonConfig> {
   border: BorderWidth
 }
 
-export const SecondaryButtonConfig: Partial<SecondaryButtonConfig> = {
+export const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...BaseButtonConfig,
-  border: 'border-2',
+  border: 'border',
   theme: {
     light: {
       textColor: 'text-black',
-      bgColor: 'bg-white',
-      bgOpacity: 'bg-opacity-10',
+      bgColor: 'bg-black',
+      bgOpacity: 'bg-opacity-0',
       borderColor: 'border-black',
-      borderOpacity: 'border-opacity-10',
+      borderOpacity: 'border-opacity-15',
       modifier: {
         hover: {
           bgColor: 'hover:bg-gray-500',

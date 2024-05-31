@@ -19,7 +19,7 @@ export const SizeConfig: SizeConfig = {
       x: 'px-2',
       y: 'py-1'
     },
-    textSize: 'text-sm'
+    textSize: 'text-xs'
   },
   md: {
     padding: {
