@@ -24,6 +24,7 @@ Light mode | Dark mode
 ```
 
 ## Icons
+
 An icon may optionally be added to a button to help communicate the button's action and help draw attention.
 
 Light mode | Dark mode
