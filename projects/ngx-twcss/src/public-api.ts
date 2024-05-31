@@ -14,3 +14,5 @@ export * from './lib/components/buttons/primary-button/primary-button.component'
 export * from './lib/components/buttons/primary-button/primary-button.config';
 export * from './lib/components/buttons/secondary-button/secondary-button.component';
 export * from './lib/components/buttons/secondary-button/secondary-button.config';
+export * from './lib/components/buttons/soft-button/soft-button.component';
+export * from './lib/components/buttons/soft-button/soft-button.config';
