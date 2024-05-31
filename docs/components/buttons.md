@@ -6,9 +6,16 @@
 
 ## Types
 
-1. **Primary buttons**: recommended for top-level actions
-2. **Secondary buttons**: recommended for second-level actions
-3. **Soft**: recommended for optional/less important actions
+[@ngx-twcss](https://www.npmjs.com/package/ngx-twcss) provide three types of buttons:
+
+1. **Primary**
+2. **Secondary**
+3. **Soft**
+
+
+Light mode | Dark mode
+---------- | ---------
+!["Buttons on light mode"](images/buttons/buttons.png) | !["Buttons on dark mode"](images/buttons/buttons-dark.png)
 
 ## Usage
 
@@ -69,6 +76,7 @@ style     | string[]    | `[style]`   |  `[]`   | The component style.
 ### SoftButtonComponent `<nxt-soft-button>`
 
 Properties
+
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
@@ -147,14 +155,17 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
 Soft button
 
 ```ts
-export const PrimaryButtonConfig: PrimaryButtonConfig = {
+export interface SoftButtonConfig extends Partial<BaseButtonConfig> { };
+
+export const SoftButtonConfig: SoftButtonConfig = {
   ...BaseButtonConfig,
   theme: {
-    textColor: 'text-white',
+    textColor: 'text-indigo-600',
     bgColor: 'bg-indigo-600',
+    bgOpacity: 'bg-opacity-10',
     modifier: {
       hover: {
-        bgOpacity: 'hover:bg-opacity-90'
+        bgOpacity: 'hover:bg-opacity-20'
       }
     }
   }
