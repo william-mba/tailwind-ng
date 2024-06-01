@@ -43,6 +43,28 @@ Light mode | Dark mode
 </nxt-secondary-button>
 ```
 
+Light mode | Dark mode
+---------- | ---------
+!["Circular buttons"](images/buttons/circulars-buttons.png "Circular buttons") | !["Circular buttons on dark"](images/buttons/circulars-buttons-dark.png "Circular buttons on dark")
+
+```html
+<nxt-primary-button className="rounded-full px-2 py-2">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</nxt-primary-button>
+<nxt-secondary-button className="rounded-full px-2 py-2">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</nxt-secondary-button>
+<nxt-soft-button className="rounded-full px-2 py-2">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</nxt-soft-button>
+```
+
 Icons source: [Google Icons](https://fonts.google.com/icons)
 
 ## API
@@ -54,7 +76,7 @@ Properties
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
-className | string      | `className` |  `''`   | The list of space separated Tailwind CSS classes that adds (specific) or overrides (related) the component style.
+className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
 ### SecondaryButtonComponent `<nxt-secondary-button>`
@@ -64,7 +86,7 @@ Properties
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
-className | string      | `className` |  `''`   | The list of space separated Tailwind CSS classes that adds (specific) or overrides (related) the component style.
+className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
 ### SoftButtonComponent `<nxt-soft-button>`
@@ -75,7 +97,7 @@ Properties
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
-className | string      | `className` |  `''`   | The list of space separated Tailwind CSS classes that adds (specific) or overrides (related) the component style.
+className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
 ## Default configurations

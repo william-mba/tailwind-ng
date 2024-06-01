@@ -15,7 +15,7 @@
         "./projects/ngx-twcss/src/public-api.ts" //./dist/ngx-twcss/public-api.d.ts ./projects/ngx-twcss/src/public-api.ts
       ],
       "customs/*": [
-        "./src/app/configs/ngx-twcss/*"
+        "./src/assets/configs/ngx-twcss/*"
       ]
     },
     "esModuleInterop": true,

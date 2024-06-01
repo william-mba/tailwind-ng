@@ -49,15 +49,15 @@ export class AppComponent {
     }
   }
 
-  one() {
+  setRose() {
     this.theme = 1;
     this.changeConfig();
   }
-  two() {
+  setOrange() {
     this.theme = 2;
     this.changeConfig();
   }
-  three() {
+  setLime() {
     this.theme = 3;
     this.changeConfig();
   }
