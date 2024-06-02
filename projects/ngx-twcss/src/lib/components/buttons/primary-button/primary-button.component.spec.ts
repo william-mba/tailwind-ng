@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PrimaryButtonComponent } from './primary-button.component';
+import { PrimaryButton } from './primary-button.component';
 import { PrimaryButtonConfig } from './primary-button.config';
 import { toClassName } from '../../../common/helpers/object.helper';
 
-describe('PrimaryButtonComponent', () => {
-  let component: PrimaryButtonComponent;
-  let fixture: ComponentFixture<PrimaryButtonComponent>;
+describe('PrimaryButton', () => {
+  let component: PrimaryButton;
+  let fixture: ComponentFixture<PrimaryButton>;
   let config = toClassName(PrimaryButtonConfig);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PrimaryButtonComponent]
+      imports: [PrimaryButton]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(PrimaryButtonComponent);
+    fixture = TestBed.createComponent(PrimaryButton);
     component = fixture.componentInstance;
     fixture.detectChanges();
 

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SoftButtonComponent } from './soft-button.component';
+import { SoftButton } from './soft-button.component';
 
-describe('SoftButtonComponent', () => {
-  let component: SoftButtonComponent;
-  let fixture: ComponentFixture<SoftButtonComponent>;
+describe('SoftButton', () => {
+  let component: SoftButton;
+  let fixture: ComponentFixture<SoftButton>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SoftButtonComponent]
+      imports: [SoftButton]
     })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(SoftButtonComponent);
+      .compileComponents();
+
+    fixture = TestBed.createComponent(SoftButton);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
