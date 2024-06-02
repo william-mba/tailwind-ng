@@ -13,33 +13,27 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
   theme: {
     light: {
       textColor: 'text-black',
-      bgColor: 'bg-black',
-      bgOpacity: 'bg-opacity-0',
-      borderColor: 'border-black',
-      borderOpacity: 'border-opacity-15',
+      bgColor: 'bg-slate-50',
+      borderColor: 'border-slate-200',
       modifier: {
         hover: {
-          bgColor: 'hover:bg-gray-500',
-          bgOpacity: 'hover:bg-opacity-5'
+          bgColor: 'hover:bg-slate-100'
         },
         focus: {
-          borderOpacity: 'focus:border-opacity-30'
+          borderColor: 'focus:border-slate-400'
         }
       }
     },
     dark: {
       textColor: 'dark:text-white',
-      bgColor: 'dark:bg-white',
-      bgOpacity: 'dark:bg-opacity-10',
-      borderColor: 'dark:border-white',
-      borderOpacity: 'dark:border-opacity-10',
+      bgColor: 'dark:bg-slate-900',
+      borderColor: 'dark:border-slate-700',
       modifier: {
         hover: {
-          bgColor: 'dark:hover:bg-white',
-          bgOpacity: 'dark:hover:bg-opacity-20',
+          bgColor: 'dark:hover:bg-slate-800'
         },
         focus: {
-          borderOpacity: 'dark:focus:border-opacity-20'
+          borderColor: 'focus:border-slate-500'
         }
       }
     }
