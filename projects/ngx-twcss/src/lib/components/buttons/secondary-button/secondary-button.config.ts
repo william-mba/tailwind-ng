@@ -33,7 +33,7 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
           bgColor: 'dark:hover:bg-slate-800'
         },
         focus: {
-          borderColor: 'focus:border-slate-500'
+          borderColor: 'dark:focus:border-slate-500'
         }
       }
     }
