@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --project ngx-twcss",
+    "build-lib": "ng build --project ngx-twcss",
     "build-demo": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --project ngx-twcss --code-coverage",
+    "test-lib": "ng test --project ngx-twcss --code-coverage",
     "test-demo": "ng test",
     "publish": "cd dist/ngx-twcss && npm publish"
   },
@@ -29,6 +29,7 @@
     "@angular-devkit/build-angular": "^17.3.8",
     "@angular/cli": "^17.3.8",
     "@angular/compiler-cli": "^17.3.0",
+    "@tailwindcss/forms": "^0.5.7",
     "@types/jasmine": "~5.1.0",
     "autoprefixer": "^10.4.19",
     "jasmine-core": "~5.1.0",

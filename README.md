@@ -1,15 +1,10 @@
-<a href="https://github.com/William-Mba/ngx-twcss">
-<div align="center">
-    <h1>ngx-twcss</h1>
-</div>
-</a>
+# [Ngx-twcss]("https://github.com/William-Mba/ngx-twcss")
 
-<p align="center">Free open-source components library crafted with <a href="https://angular.dev/">Angular</a> and <a href="https://tailwindcss.com/docs/installation">Tailwind CSS</a> to help you create beautiful and modern web UIs faster and easier.
-</p>
+Ready-to-use [Tailwind CSS]("https://tailwindcss.com/docs/installation") components for [Angular]("https://angular.dev/") applications.
 
-Take advantages of ready-to-use components with default configuration or set your own configuration to create unique and consistent web UIs.
+With unparalleled support for customizations that help you create unique web UI faster and easier.
 
-### Resources
+## Resources
 
 - [Intro](docs/intro.md)
 - [Roadmap](docs/roadmap.md)
@@ -17,3 +12,100 @@ Take advantages of ready-to-use components with default configuration or set you
 <!-- TODO: complete docs
 -   [Quick start](docs/quick-start.md)
 -   [Browser support and FAQ](docs/support.md) -->
+
+
+## Getting started
+
+### Prerequisites
+
+[Install Tailwind CSS](https://tailwindcss.com/docs/guides/angular) in your Angular project.
+
+### Install ngx-twcss
+
+```ts
+npm install ngx-twcss
+```
+
+### Modify tailwind.config.js
+
+```js
+module.exports = {
+  ...
+  content: [
+    ...
+    // add the line bellow
+    "./node_modules/ngx-twcss/**/*.{html,ts}"
+  ]
+```
+
+### Will you use forms ?
+
+Install the forms plugin
+
+```ts
+npm install -D @tailwindcss/forms
+```
+
+Modify tailwind.config.js
+
+```js
+module.exports = {
+  ...
+  plugins: [
+    // add the line bellow
+    require('@tailwindcss/forms')
+  ]
+}
+```
+
+### Import ngx-twcss components
+
+A. Using standalone components?
+
+Import components in your *.component.ts file
+
+```ts
+@Component({
+  standalone: true,
+  imports: [
+    ...
+    PrimaryButton,
+    SecondaryButton,
+    ButtonGroup
+  ],
+  ...
+})
+export class ExampleComponent {
+  ...
+}
+```
+
+B. Not using standalone components?
+
+Import components in your *.module.ts file
+
+```ts
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    // Imports example
+    PrimaryButton,
+    SecondaryButton,
+    ButtonGroup
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+## Usage
+
+```html
+<nxt-secondary-button>Back</nxt-secondary-button>
+<nxt-primary-button>Complete</nxt-primary-button>
+```
+
+For more usage samples, see the [components docs](docs/components/).
