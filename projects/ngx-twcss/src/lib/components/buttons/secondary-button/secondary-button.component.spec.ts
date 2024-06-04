@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SecondaryButton } from './secondary-button.component';
 import { SecondaryButtonConfig } from './secondary-button.config';
-import { toClassName } from '../../../common/helpers/object.helper';
+import { toClassName } from '../../../core/helpers/object.helper';
 
 describe('SecondaryButtonComponent', () => {
   let component: SecondaryButton;

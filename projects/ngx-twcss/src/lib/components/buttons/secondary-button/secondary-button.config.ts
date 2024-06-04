@@ -1,4 +1,4 @@
-import { BorderWidth } from "../../../common/types/borders/border-width";
+import { BorderWidth } from "../../../core/types/borders/border-width";
 import { BaseButtonConfig } from "../base-button.config";
 
 export const SecondaryButtonConfigKey = 'SecondaryButtonConfigKey';

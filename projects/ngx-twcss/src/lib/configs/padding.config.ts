@@ -1,4 +1,4 @@
-import { PaddingLeft, PaddingTop, PaddingRight, PaddingBottom, PaddingX, PaddingY } from "../types/spacing/padding";
+import { PaddingLeft, PaddingTop, PaddingRight, PaddingBottom, PaddingX, PaddingY } from "../core/types/spacing/padding"
 
 export interface PaddingConfig {
   /**left */

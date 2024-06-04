@@ -1,8 +1,8 @@
 import { inject } from "@angular/core";
-import { IsAcceptableClass } from "../common/helpers/type.helper";
-import { toClassName } from "../common/helpers/object.helper";
-import { SizeConfig } from "../common/configs/size.config";
-import { ConfigService } from "../common/configs/configs.service";
+import { IsAcceptableClass } from "../core/helpers/type.helper";
+import { toClassName } from "../core/helpers/object.helper";
+import { ConfigService } from "../configs/config.service";
+import { SizeConfig } from "../configs/size.config";
 
 
 /**@package ngx-twcss */

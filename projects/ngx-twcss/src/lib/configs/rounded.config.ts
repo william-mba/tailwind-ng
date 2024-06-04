@@ -1,4 +1,4 @@
-import { RoundedLeft, RoundedTop, RoundedRight, RoundedBottom } from "../types/borders/border-radius";
+import { RoundedLeft, RoundedTop, RoundedRight, RoundedBottom } from "../core/types/borders/border-radius"
 
 export interface RoundedConfig {
   /**left */

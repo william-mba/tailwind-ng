@@ -1,11 +1,11 @@
+import { BackgroundColor } from "../core/types/backgrounds/background-color";
+import { BackgroundOpacity } from "../core/types/backgrounds/background-opacity";
+import { BorderColor } from "../core/types/borders/border-color";
+import { BorderOpacity } from "../core/types/borders/border-opacity";
+import { OpacityOnDisabled } from "../core/types/effects/opacity";
+import { PointerEvents } from "../core/types/interactivity/pointer-events";
+import { TextColor } from "../core/types/typography/text-color";
 import { ModifierConfig } from "./modifier.config";
-import { BackgroundColor } from "../types/backgrounds/background-color";
-import { BorderColor } from "../types/borders/border-color";
-import { BorderOpacity } from "../types/borders/border-opacity";
-import { TextColor } from "../types/typography/text-color";
-import { PointerEvents } from "../types/interactivity/pointer-events";
-import { OpacityOnDisabled } from "../types/effects/opacity";
-import { BackgroundOpacity } from "../types/backgrounds/background-opacity";
 
 export interface ThemeConfig {
   textColor: TextColor,

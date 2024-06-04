@@ -1,7 +1,7 @@
-import { BaseConfig } from "../../common/configs/base.config";
-import { Gap } from "../../common/types/flex-n-grid/gap";
-import { UserSelect } from "../../common/types/interactivity/user-select";
-import { TextWrap } from "../../common/types/typography/text-wrap";
+import { BaseConfig } from "../../configs/base.config";
+import { Gap } from "../../core/types/flex-n-grid/gap";
+import { UserSelect } from "../../core/types/interactivity/user-select";
+import { TextWrap } from "../../core/types/typography/text-wrap";
 
 export const DropdownConfigKey = 'DropdownConfigKey';
 

@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from "@angular/core";
-import { mergeObjects } from "../helpers/object.helper";
+import { mergeObjects } from '../core/helpers/object.helper';
 
 @Injectable({
   providedIn: 'root'

@@ -1,12 +1,12 @@
-import { RoundedSize } from "../types/borders/border-radius";
-import { AlignItem } from "../types/flex-n-grid/align-item";
-import { JustifyContent } from "../types/flex-n-grid/justify-content";
-import { Display } from "../types/layout/display";
-import { FontWeight } from "../types/typography/font-weight";
-import { Typography } from "../types/typography";
-import { RoundedConfig } from "./rounded.config";
-import { ThemeConfig } from "./theme.config";
-import { Layout } from "../types/layout";
+import { RoundedSize } from "../core/types/borders/border-radius"
+import { AlignItem } from "../core/types/flex-n-grid/align-item"
+import { JustifyContent } from "../core/types/flex-n-grid/justify-content"
+import { Layout } from "../core/types/layout"
+import { Display } from "../core/types/layout/display"
+import { Typography } from "../core/types/typography"
+import { FontWeight } from "../core/types/typography/font-weight"
+import { RoundedConfig } from "./rounded.config"
+import { ThemeConfig } from "./theme.config"
 
 export interface BaseConfig {
   /** Utilities for controlling the display box type of an element.

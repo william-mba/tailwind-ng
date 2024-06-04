@@ -1,5 +1,5 @@
-import { PaddingSize } from "../types/spacing/padding";
-import { FontSize } from "../types/typography/font-size";
+import { PaddingSize } from "../core/types/spacing/padding";
+import { FontSize } from "../core/types/typography/font-size";
 import { PaddingConfig } from "./padding.config";
 
 export interface ScaleConfig {
