@@ -61,9 +61,12 @@
       <!-- Dropdown container -->
       <nxt-secondary-button className="rounded-r-md group overflow-hidden- relative">
         <!-- Dropdown label -->
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960"><path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z"/></svg>
-          <!-- Dropdown -->
-        <div class="invisible group-focus:visible absolute right-0 mt-4 py-1 w-[200px] dark:border-slate-700 dark:bg-slate-900 bg-slate-50 rounded-md border *:block divide-y dark:divide-slate-800">
+        <div class="inline-flex gap-1.5">
+          Options
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960"><path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z"/></svg>
+        </div>
+        <!-- Dropdown -->
+        <div class="invisible z-10 group-focus:visible absolute top-8 right-0 mt-4 py-1 min-w-full dark:border-slate-700 dark:bg-slate-900 bg-slate-50 rounded-md border *:block divide-y dark:divide-slate-800">
           <!-- Dropdown item -->
           <nxt-secondary-button className="inline-flex- rounded- border- text-start w-full">
             Save as draft
@@ -71,6 +74,10 @@
           <!-- Dropdown item -->
           <nxt-secondary-button className="inline-flex- rounded- border- text-start w-full">
             Save and publish
+          </nxt-secondary-button>
+          <!-- Dropdown item -->
+          <nxt-secondary-button className="inline-flex- rounded- border- text-start w-full">
+            Remove everything
           </nxt-secondary-button>
         </div>
       </nxt-secondary-button>

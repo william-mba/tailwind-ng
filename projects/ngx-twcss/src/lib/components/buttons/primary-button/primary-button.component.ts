@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { PrimaryButtonConfigKey, PrimaryButtonConfig } from './primary-button.config';
 
-/**Primary button component */
+/**Primary button element */
 @Component({
   standalone: true,
   selector: 'nxt-primary-button',

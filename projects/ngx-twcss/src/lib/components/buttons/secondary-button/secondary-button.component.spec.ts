@@ -3,7 +3,7 @@ import { SecondaryButton } from './secondary-button.component';
 import { SecondaryButtonConfig } from './secondary-button.config';
 import { toClassName } from '../../../common/helpers/object.helper';
 
-describe('SecondaryButton', () => {
+describe('SecondaryButtonComponent', () => {
   let component: SecondaryButton;
   let fixture: ComponentFixture<SecondaryButton>;
   let config = toClassName(SecondaryButtonConfig);

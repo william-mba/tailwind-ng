@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { SecondaryButtonConfigKey, SecondaryButtonConfig } from './secondary-button.config';
 
-/**Secondary button component */
+/**Secondary button element */
 @Component({
   selector: 'nxt-secondary-button',
   standalone: true,

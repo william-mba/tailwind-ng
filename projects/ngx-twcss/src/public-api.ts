@@ -17,3 +17,5 @@ export * from './lib/components/buttons/secondary-button/secondary-button.config
 export * from './lib/components/buttons/soft-button/soft-button.component';
 export * from './lib/components/buttons/soft-button/soft-button.config';
 export * from './lib/components/button-group/button-group.directive';
+export * from './lib/components/dropdown/dropdown.component';
+export * from './lib/components/dropdown/dropdown.config';

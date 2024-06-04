@@ -12,7 +12,12 @@ export interface BaseButtonConfig extends Partial<BaseConfig> {
 }
 
 export const BaseButtonConfig: BaseButtonConfig = {
-  ...BaseConfig,
+  rounded: 'rounded-md',
+  display: 'inline-flex',
+  verticalAlign: 'items-center',
+  horizontalAlign: 'justify-center',
+  fontWeight: 'font-semibold',
+  // base button
   gap: 'gap-1.5',
   textWrap: 'text-nowrap',
   userSelect: 'select-none',

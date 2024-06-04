@@ -3,7 +3,7 @@ import { PrimaryButton } from './primary-button.component';
 import { PrimaryButtonConfig } from './primary-button.config';
 import { toClassName } from '../../../common/helpers/object.helper';
 
-describe('PrimaryButton', () => {
+describe('PrimaryButtonComponent', () => {
   let component: PrimaryButton;
   let fixture: ComponentFixture<PrimaryButton>;
   let config = toClassName(PrimaryButtonConfig);
