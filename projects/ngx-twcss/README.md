@@ -1,12 +1,15 @@
-<center>
+<a href="https://github.com/William-Mba/ngx-twcss">
+<div align="center">
+    <h1>Ngx-twcss</h1>
+</div>
+</a>
 
-# [Ngx-twcss]("https://github.com/William-Mba/ngx-twcss")
+<div align="center">
 
 The best way to quickly integrate [Tailwind CSS components]("https://tailwindui.com/") in [Angular]("https://angular.dev/").
-
+<br />
 Ready-to-use and customizable components for your next project.
-
-</center>
+</div>
 
 ## Getting started
 
