@@ -8,13 +8,10 @@ export const SoftButtonConfig: SoftButtonConfig = {
   ...BaseButtonConfig,
   theme: {
     textColor: 'text-indigo-600',
-    bgColor: 'bg-indigo-600',
     bgOpacity: 'bg-opacity-10',
-    modifier: {
-      hover: {
-        bgOpacity: 'hover:bg-opacity-20'
-      }
+    bgColor: 'bg-indigo-600',
+    hover: {
+      bgOpacity: 'hover:bg-opacity-20'
     }
   }
 }
-

@@ -3,12 +3,8 @@
  */
 
 export * from './lib/configs/base.config';
-export * from './lib/configs/modifier.config';
-export * from './lib/configs/padding.config';
-export * from './lib/configs/rounded.config';
 export * from './lib/configs/config.service';
 export * from './lib/configs/size.config';
-export * from './lib/configs/theme.config';
 export * from './lib/core/helpers/theme.helper';
 export * from './lib/components/buttons/primary-button/primary-button.component';
 export * from './lib/components/buttons/primary-button/primary-button.config';

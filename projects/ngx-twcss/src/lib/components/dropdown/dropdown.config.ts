@@ -1,7 +1,8 @@
 import { BaseConfig } from "../../configs/base.config";
-import { Gap } from "../../core/types/flex-n-grid/gap";
+import { Gap } from "../../core/types/flex-grid/gap";
 import { UserSelect } from "../../core/types/interactivity/user-select";
 import { TextWrap } from "../../core/types/typography/text-wrap";
+import { BaseButtonConfig } from "../buttons/base-button.config";
 
 export const DropdownConfigKey = 'DropdownConfigKey';
 
@@ -11,13 +12,12 @@ export const DropdownConfig: DropdownConfig = {
   theme: {
     textColor: 'text-white',
     bgColor: 'bg-indigo-600',
-    modifier: {
-      hover: {
-        bgOpacity: 'hover:bg-opacity-90'
-      }
+    hover: {
+      bgOpacity: 'hover:bg-opacity-90'
     }
   }
 }
+
 
 interface DropdownItemConfig extends Partial<BaseConfig> { };
 interface DropdownContainerConfig extends Partial<BaseConfig> { };
@@ -51,11 +51,7 @@ export interface DropdownBaseConfig extends Partial<BaseConfig> {
 };
 
 export const DropdownBaseConfig: DropdownBaseConfig = {
-  rounded: 'rounded-md',
-  display: 'inline-flex',
-  verticalAlign: 'items-center',
-  horizontalAlign: 'justify-center',
-  fontWeight: 'font-semibold',
+  ...BaseButtonConfig,
   // Dropdown base
   gap: 'gap-1.5',
   textWrap: 'text-nowrap',

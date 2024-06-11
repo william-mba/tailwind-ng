@@ -9,10 +9,8 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
   theme: {
     textColor: 'text-white',
     bgColor: 'bg-indigo-600',
-    modifier: {
-      hover: {
-        bgOpacity: 'hover:bg-opacity-90'
-      }
+    hover: {
+      bgOpacity: 'hover:bg-opacity-80'
     }
   }
 }

@@ -1,38 +1,25 @@
-import { PaddingSize } from "../core/types/spacing/padding";
-import { FontSize } from "../core/types/typography/font-size";
-import { PaddingConfig } from "./padding.config";
+import { Size } from "../core/types/size";
 
-export interface ScaleConfig {
-  textSize: FontSize,
-  padding: PaddingConfig | PaddingSize
-}
-
-export interface SizeConfig {
-  sm: ScaleConfig,
-  md: ScaleConfig,
-  lg: ScaleConfig
-}
-
-export const SizeConfig: SizeConfig = {
+export const SizeConfig: Size = {
   sm: {
+    fontSize: 'text-xs',
     padding: {
       x: 'px-2',
       y: 'py-1'
-    },
-    textSize: 'text-xs'
+    }
   },
   md: {
+    fontSize: 'text-base',
     padding: {
       x: 'px-4',
       y: 'py-2'
-    },
-    textSize: 'text-base'
+    }
   },
   lg: {
+    fontSize: 'text-xl',
     padding: {
       x: 'px-5',
       y: 'py-2.5'
-    },
-    textSize: 'text-xl'
+    }
   }
 }

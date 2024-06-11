@@ -1,3 +1,3 @@
 export type PointerEvents =
-    | 'pointer-events-none'
-    | 'pointer-events-auto'
+  | 'pointer-events-none'
+  | 'pointer-events-auto'
