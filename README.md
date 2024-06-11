@@ -2,11 +2,9 @@
 
 # [Ngx-twcss]("https://github.com/William-Mba/ngx-twcss")
 
-Expertly crafted [Tailwind CSS components]("https://tailwindui.com/") for [Angular]("https://angular.dev/").
+The best way to quickly integrate [Tailwind CSS components]("https://tailwindui.com/") in [Angular]("https://angular.dev/").
 
-Ready-to-use and customizable.
-
-The perfect starting point for your next project.
+Ready-to-use and customizable components for your next project.
 
 </center>
 
