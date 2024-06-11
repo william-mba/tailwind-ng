@@ -1,8 +1,12 @@
+<center>
+
 # [Ngx-twcss]("https://github.com/William-Mba/ngx-twcss")
 
-Ready-to-use [Tailwind CSS]("https://tailwindcss.com/docs/installation") components for [Angular]("https://angular.dev/") applications.
+The best [Tailwind CSS components]("https://tailwindui.com/") library for [Angular]("https://angular.dev/").
 
-With unparalleled support for customizations that help you create unique web UI faster and easier.
+Well-crafted, ready-to-use and customizable.
+
+</center>
 
 ## Resources
 
