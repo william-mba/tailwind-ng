@@ -10,7 +10,8 @@ export type BaseConfig = {
   theme?: Partial<Theme> | {
     light: Partial<Theme>,
     dark: Partial<Theme>,
-  }
+  },
+  extra?: Record<string, {}>
 }
 
 export const BaseConfig: BaseConfig = {
