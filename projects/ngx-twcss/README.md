@@ -5,10 +5,13 @@
 </a>
 
 <div align="center">
+The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS components</a> in <a href="https://angular.dev/">Angular</a>.
 
-The best way to quickly integrate [Tailwind CSS components]("https://tailwindui.com/") in [Angular]("https://angular.dev/").
 <br />
 Ready-to-use and customizable components for your next project.
+
+<br />
+
 </div>
 
 ## Getting started
