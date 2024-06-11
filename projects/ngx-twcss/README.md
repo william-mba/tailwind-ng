@@ -2,9 +2,11 @@
 
 # [Ngx-twcss]("https://github.com/William-Mba/ngx-twcss")
 
-The best [Tailwind CSS components]("https://tailwindui.com/") library for [Angular]("https://angular.dev/").
+Expertly crafted [Tailwind CSS components]("https://tailwindui.com/") for [Angular]("https://angular.dev/").
 
-Well-crafted, ready-to-use and customizable.
+Ready-to-use and customizable.
+
+The perfect starting point for your next project.
 
 </center>
 
