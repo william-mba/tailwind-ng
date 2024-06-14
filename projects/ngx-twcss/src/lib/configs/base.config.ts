@@ -11,7 +11,7 @@ export type BaseConfig = {
     light: Partial<Theme>,
     dark: Partial<Theme>,
   },
-  extra?: Record<string, {}>
+  extends?: Record<string, {}>
 }
 
 export const BaseConfig: BaseConfig = {
