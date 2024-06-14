@@ -24,12 +24,16 @@
     <nxt-button-group>
       <nxt-secondary-button className="rounded-l-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-          <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+          <path fill-rule="evenodd"
+            d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+            clip-rule="evenodd" />
         </svg>
       </nxt-secondary-button>
       <nxt-secondary-button className="rounded-r-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-          <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          <path fill-rule="evenodd"
+            d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+            clip-rule="evenodd" />
         </svg>
       </nxt-secondary-button>
     </nxt-button-group>
@@ -41,7 +45,9 @@
     </div>
     <nxt-button-group>
       <nxt-secondary-button className="rounded-l-md">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
+          <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
+        </svg>
         Bookmark
       </nxt-secondary-button>
       <nxt-secondary-button className="rounded-r-md">
@@ -54,35 +60,36 @@
     <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
       With dropdown
     </div>
-    <nxt-dropdown></nxt-dropdown>
-    
     <nxt-button-group>
       <nxt-secondary-button className="rounded-l-md">
         Save changes
       </nxt-secondary-button>
       <!-- Dropdown container -->
-      <nxt-secondary-button className="rounded-r-md group overflow-hidden- relative">
+      <nxt-dropdown-container className="rounded-r-md">
         <!-- Dropdown label -->
-        <div class="inline-flex gap-1.5">
+        <nxt-dropdown-label>
           Options
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960"><path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z"/></svg>
-        </div>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor"
+            viewBox="0 -960 960 960">
+            <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
+          </svg>
+        </nxt-dropdown-label>
         <!-- Dropdown -->
-        <div class="invisible z-10 group-focus:visible absolute top-8 right-0 mt-4 py-1 min-w-full dark:border-slate-700 dark:bg-slate-900 bg-slate-50 rounded-md border *:block divide-y dark:divide-slate-800">
+        <nxt-dropdown-content>
           <!-- Dropdown item -->
-          <nxt-secondary-button className="inline-flex- rounded- border- text-start w-full">
+          <nxt-dropdown-item>
             Save as draft
-          </nxt-secondary-button>
+          </nxt-dropdown-item>
           <!-- Dropdown item -->
-          <nxt-secondary-button className="inline-flex- rounded- border- text-start w-full">
+          <nxt-dropdown-item>
             Save and publish
-          </nxt-secondary-button>
+          </nxt-dropdown-item>
           <!-- Dropdown item -->
-          <nxt-secondary-button className="inline-flex- rounded- border- text-start w-full">
+          <nxt-dropdown-item>
             Remove everything
-          </nxt-secondary-button>
-        </div>
-      </nxt-secondary-button>
+          </nxt-dropdown-item>
+        </nxt-dropdown-content>
+      </nxt-dropdown-container>
     </nxt-button-group>
   </div>
 
@@ -92,11 +99,13 @@
     </div>
     <nxt-button-group>
       <nxt-secondary-button className="focus:border- dark:focus:border- rounded-l-md h-full">
-        <input type="checkbox" class="hover:cursor-pointer size-4 rounded-sm border-slate-300 dark:border-slate-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+        <input type="checkbox"
+          class="hover:cursor-pointer size-4 rounded-sm border-slate-300 dark:border-slate-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </nxt-secondary-button>
       <nxt-secondary-button className="rounded-r-md overflow-hidden- px- py- relative h-full">
         <label for="currency" class="sr-only">Currency</label>
-        <select id="currency" name="currency" class="h-10 w-[200px] rounded-r-md border-0 bg-slate-50 dark:bg-slate-800 py-0 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+        <select id="currency" name="currency"
+          class="h-10 w-[200px] rounded-r-md border-0 bg-slate-50 dark:bg-slate-800 py-0 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
           <option>Unread messages</option>
           <option>Sent messages</option>
           <option>All messages</option>

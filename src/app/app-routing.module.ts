@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/buttons',
+    redirectTo: '/button-group',
     pathMatch: 'full'
   }
 ];
