@@ -1,14 +1,14 @@
 import { BorderWidth } from "../../../core/types/borders/border-width";
-import { BaseButtonConfig } from "../base-button.config";
+import { ButtonBaseConfig } from "../button-base.config";
 
 export const SecondaryButtonConfigKey = 'SecondaryButtonConfigKey';
 
-export type SecondaryButtonConfig = Partial<BaseButtonConfig> & {
+export type SecondaryButtonConfig = Partial<ButtonBaseConfig> & {
   borderWidth: BorderWidth
 };
 
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
-  ...BaseButtonConfig,
+  ...ButtonBaseConfig,
   borderWidth: 'border',
   userSelect: "select-text",
   theme: {
