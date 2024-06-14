@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ButtonGroup, PrimaryButton, SecondaryButton, SoftButton } from 'ngx-twcss';
+import { ButtonGroup, DropdownContainer, DropdownContent, DropdownItem, DropdownLabel, PrimaryButton, SecondaryButton, SoftButton } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 
@@ -18,7 +18,8 @@ import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group
     PrimaryButton,
     SecondaryButton,
     SoftButton,
-    ButtonGroup
+    ButtonGroup,
+    DropdownLabel, DropdownContainer, DropdownContent, DropdownItem
   ],
   bootstrap: [AppComponent]
 })

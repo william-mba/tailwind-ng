@@ -5,9 +5,9 @@
 </a>
 
 <div align="center">
-The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS components</a> in <a href="https://angular.dev/">Angular</a>.
+Free and open-source <a href="https://tailwindui.com/">Tailwind CSS components</a> for your <a href="https://angular.dev/">Angular</a> application.
 <br/>
-Ready-to-use and easily customizable components for your next project.
+Ready-to-use and easily customizable.
 <br/>
 <br/>
 <br/>

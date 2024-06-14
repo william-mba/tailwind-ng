@@ -9,12 +9,9 @@ import { Top } from "./position/top"
 /**Utilities for controlling how an element is positioned in the DOM.
  * @see https://tailwindcss.com/docs/position
  */
-export type Position = {
-  static: 'static',
-  relative: 'relative',
-  absolute: Partial<PositionPlacement>,
-  fixed: Partial<PositionPlacement>,
-  sticky: Partial<PositionPlacement>
+export type Position = 'relative' | 'static' | {
+  type: 'absolute' | 'fixed' | 'sticky',
+  placement: Partial<PositionPlacement>
 }
 
 /**Utilities for controlling the placement of positioned elements.

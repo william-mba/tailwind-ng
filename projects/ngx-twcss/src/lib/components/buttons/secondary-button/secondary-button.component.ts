@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { SecondaryButtonConfigKey, SecondaryButtonConfig } from './secondary-button.config';
 
@@ -8,7 +8,7 @@ import { SecondaryButtonConfigKey, SecondaryButtonConfig } from './secondary-but
   standalone: true,
   templateUrl: './secondary-button.component.html'
 })
-export class SecondaryButton extends BaseComponent<SecondaryButtonConfig> {
+export class SecondaryButton extends BaseComponent<SecondaryButtonConfig> implements OnInit {
   @Input() override size: SizeVariant = 'md';
   @Input() override className: string = '';
   @Input() override style: string[] = [];

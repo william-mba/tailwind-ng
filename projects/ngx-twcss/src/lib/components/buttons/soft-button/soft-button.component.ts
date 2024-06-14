@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { SoftButtonConfig, SoftButtonConfigKey } from './soft-button.config';
 
@@ -8,7 +8,7 @@ import { SoftButtonConfig, SoftButtonConfigKey } from './soft-button.config';
   standalone: true,
   templateUrl: './soft-button.component.html',
 })
-export class SoftButton extends BaseComponent<SoftButtonConfig> {
+export class SoftButton extends BaseComponent<SoftButtonConfig> implements OnInit {
   @Input() override size: SizeVariant = 'md';
   @Input() override className: string = '';
   @Input() override style: string[] = [];

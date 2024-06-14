@@ -3,6 +3,7 @@ import { BackgroundGradient } from "./backgrounds/background-gradient"
 import { BackgroundOpacity } from "./backgrounds/background-opacity"
 import { BorderColor } from "./borders/border-color"
 import { BorderOpacity } from "./borders/border-opacity"
+import { DivideColor } from "./borders/divide-color"
 import { Focus } from "./modifiers/focus"
 import { Hover } from "./modifiers/hover"
 import { TextColor } from "./typography/text-color"
@@ -14,6 +15,7 @@ export type Theme = {
   bgGradient: BackgroundGradient,
   borderColor: BorderColor,
   borderOpacity: BorderOpacity,
+  divideColor: DivideColor,
   focus: Focus,
   hover: Hover
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { PrimaryButtonConfigKey, PrimaryButtonConfig } from './primary-button.config';
 
@@ -8,7 +8,7 @@ import { PrimaryButtonConfigKey, PrimaryButtonConfig } from './primary-button.co
   selector: 'nxt-primary-button',
   templateUrl: './primary-button.component.html'
 })
-export class PrimaryButton extends BaseComponent<PrimaryButtonConfig> {
+export class PrimaryButton extends BaseComponent<PrimaryButtonConfig> implements OnInit {
   @Input() override size: SizeVariant = 'md';
   @Input() override className: string = '';
   @Input() override style: string[] = [];

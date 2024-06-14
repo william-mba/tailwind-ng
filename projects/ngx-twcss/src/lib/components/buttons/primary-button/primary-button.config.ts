@@ -1,11 +1,11 @@
-import { BaseButtonConfig } from "../base-button.config";
+import { ButtonBaseConfig } from "../button-base.config";
 
 export const PrimaryButtonConfigKey = 'PrimaryButtonConfigKey';
 
-export interface PrimaryButtonConfig extends Partial<BaseButtonConfig> { };
+export type PrimaryButtonConfig = Partial<ButtonBaseConfig>;
 
 export const PrimaryButtonConfig: PrimaryButtonConfig = {
-  ...BaseButtonConfig,
+  ...ButtonBaseConfig,
   theme: {
     textColor: 'text-white',
     bgColor: 'bg-indigo-600',

@@ -42,6 +42,6 @@ describe('SecondaryButtonComponent', () => {
 
   it('should set config', () => {
     expect(component.addClass).toHaveBeenCalled();
-    expect(component.style).toContain(config);
+    expect(component.style.join(' ')).toContain(config);
   });
 });

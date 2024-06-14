@@ -1,11 +1,11 @@
-import { BaseButtonConfig } from "../base-button.config"
+import { ButtonBaseConfig } from "../button-base.config"
 
 export const SoftButtonConfigKey = 'SoftButtonConfigKey';
 
-export interface SoftButtonConfig extends Partial<BaseButtonConfig> { };
+export type SoftButtonConfig = Partial<ButtonBaseConfig>;
 
 export const SoftButtonConfig: SoftButtonConfig = {
-  ...BaseButtonConfig,
+  ...ButtonBaseConfig,
   theme: {
     textColor: 'text-indigo-600',
     bgOpacity: 'bg-opacity-10',
