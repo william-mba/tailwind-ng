@@ -13,10 +13,7 @@ export * from './lib/components/buttons/secondary-button/secondary-button.config
 export * from './lib/components/buttons/soft-button/soft-button.component';
 export * from './lib/components/buttons/soft-button/soft-button.config';
 export * from './lib/components/button-group/button-group.directive';
-export * from './lib/components/dropdown/dropdown-container/dropdown-container.component';
-export * from './lib/components/dropdown/dropdown-container/dropdown-container.config';
-export * from './lib/components/dropdown/dropdown-label/dropdown-label.directive';
-export * from './lib/components/dropdown/dropdown-content/dropdown-content.component';
+export * from './lib/components/dropdown/dropdown.component';
+export * from './lib/components/dropdown/dropdown.config';
 export * from './lib/components/dropdown/dropdown-content/dropdown-content.config';
-export * from './lib/components/dropdown/dropdown-item/dropdown-item.component';
 export * from './lib/components/dropdown/dropdown-item/dropdown-item.config';

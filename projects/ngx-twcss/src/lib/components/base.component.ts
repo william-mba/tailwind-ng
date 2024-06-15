@@ -11,9 +11,10 @@ export abstract class BaseComponent<ConfigType> {
   protected size!: SizeVariant;
   protected style: string[] = [];
   protected className: string = '';
+  protected config!: ConfigType;
 
-  initConfig(key: string, config: ConfigType): void {
-    this.configService.set(key, config)
+  initConfig(key: string, config?: ConfigType): void {
+    this.configService.set(key, config ?? this.config)
       .get(key).subscribe((cfg) => {
         this.style = [];
         this.addClass(toClassName([cfg, SizeConfig[this.size]]));
