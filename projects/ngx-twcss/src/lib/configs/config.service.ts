@@ -6,18 +6,18 @@ import { mergeObjects } from '../core/helpers/object.helper';
   providedIn: 'root'
 })
 export class ConfigService<T> {
-  private configs: Record<string, BehaviorSubject<Partial<T>>> = {};
+  private configs: Record<string, BehaviorSubject<T>> = {};
 
   get(key: string) {
     return this.configs[key].asObservable();
   }
 
-  set(key: string, target: Partial<T>, source: Partial<T> = {}): ConfigService<T> {
+  set(key: string, target: T, source: Partial<T> = {}): ConfigService<T> {
 
     if (!this.configs[key]?.value) {
-      this.configs[key] = new BehaviorSubject<Partial<T>>({});
+      this.configs[key] = new BehaviorSubject<T>({} as T);
     }
-    const config = mergeObjects(target, source);
+    const config = mergeObjects(target, source) as T;
     this.configs[key].next(config);
 
     return this;
