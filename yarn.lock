@@ -7018,7 +7018,7 @@ __metadata:
     karma-jasmine: "npm:~5.1.0"
     karma-jasmine-html-reporter: "npm:~2.1.0"
     ng-packagr: "npm:^17.3.0"
-    ngx-twcss: "npm:^0.0.13"
+    ngx-twcss: "npm:^0.0.14"
     postcss: "npm:^8.4.38"
     rxjs: "npm:~7.8.0"
     tailwindcss: "npm:^3.4.3"
@@ -7028,15 +7028,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"ngx-twcss@npm:^0.0.13":
-  version: 0.0.13
-  resolution: "ngx-twcss@npm:0.0.13"
+"ngx-twcss@npm:^0.0.14":
+  version: 0.0.14
+  resolution: "ngx-twcss@npm:0.0.14"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
     "@angular/common": ^17.3.0
     "@angular/core": ^17.3.0
-  checksum: 10c0/9a34649b123d5ad1a533193166cafad77bb79bbaf9ee7dfde131238ae6c393ad1b677fd35850e1132b4daf5e98d8ca6c32bb9ea7f7faeb47c05f39fab6ff827a
+  checksum: 10c0/057a4985aea834918806382ba18a1df865460e654317213ce6f45e024d15e91481ced29a0f8c34d9105b83ce4112df26290204373027b376bb15e30fa59d8e67
   languageName: node
   linkType: hard
 
