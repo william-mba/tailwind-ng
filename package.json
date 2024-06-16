@@ -9,7 +9,8 @@
     "watch": "ng build --watch --configuration development",
     "test-lib": "ng test --project ngx-twcss --code-coverage",
     "test-demo": "ng test",
-    "publish": "cd dist/ngx-twcss && npm publish"
+    "publish": "cd dist/ngx-twcss && npm publish",
+    "up-lib": "yarn build-lib && yarn && yarn start"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +22,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "ngx-twcss": "^0.0.14",
+    "ngx-twcss": "file:dist/ngx-twcss",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

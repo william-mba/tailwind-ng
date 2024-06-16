@@ -1,6 +1,15 @@
-<button type="button" [className]="style">
+<div [className]="style">
   <!-- label -->
-  <ng-content></ng-content>
-  <!-- content -->
-  <nxt-dropdown-content [config]="dropdownContentConfig" [childConfig]="dropdownItemConfig" [items]="items" />
-</button>
+  <label class="inline-flex gap-1.5 hover:cursor-pointer">
+    <ng-content></ng-content>
+  </label>
+  <ng-container *ngIf="items && items.length > 0 && isOpen">
+    <!-- content -->
+    <div [className]="contentStyle">
+      <!-- item -->
+      <div [className]="itemtStyle" *ngFor="let item of items">
+        {{ item }}
+      </div>
+    </div>
+  </ng-container>
+</div>

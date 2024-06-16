@@ -13,7 +13,7 @@ export abstract class BaseComponent<ConfigType> {
   protected className: string = '';
   protected config!: ConfigType;
 
-  initConfig(key: string, config?: ConfigType): void {
+  protected initConfig(key: string, config?: ConfigType): void {
     this.configService.set(key, config ?? this.config)
       .get(key).subscribe((cfg) => {
         this.style = [];

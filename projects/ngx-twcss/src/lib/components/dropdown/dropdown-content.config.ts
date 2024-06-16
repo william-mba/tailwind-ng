@@ -1,23 +1,16 @@
-import { DivideWidth } from "../../../core/types/borders/divide-width";
-import { Position } from "../../../core/types/layout/position";
-import { DropdownBaseConfig } from "../dropdown-base.config";
-
-/**Dropdown content config key
- * @package ngx-twcss
- */
-export const DropdownContentConfigKey = 'DropdownContentConfigKey';
+import { DivideWidth } from "../../core/types/borders/divide-width";
+import { Position } from "../../core/types/layout/position";
+import { DropdownBaseConfig } from "./dropdown-base.config";
 
 /**Dropdown content config
  * @package ngx-twcss
  */
 export type DropdownContentConfig = Partial<DropdownBaseConfig> & {
-  visibility: 'visible' | 'invisible',
   position: Position,
   divideWidth: DivideWidth
 }
 
 export const DropdownContentConfig: DropdownContentConfig = {
-  visibility: 'invisible',
   position: {
     type: 'absolute',
     placement: {
@@ -41,13 +34,9 @@ export const DropdownContentConfig: DropdownContentConfig = {
     }
   },
   extends: {
-    groupFocus: 'group-focus:visible',
+    zIndex: 'z-50',
     marginTop: 'mt-4',
     paddingY: 'py-1',
-    zIndex: 'z-10',
-    width: 'min-w-full',
-    children: {
-      display: '*:block'
-    }
+    width: 'min-w-full'
   }
 }

@@ -1,11 +1,6 @@
-import { Width } from "../../../core/types/sizing/width";
-import { TextAlign } from "../../../core/types/typography/text-align";
-import { DropdownBaseConfig } from "../dropdown-base.config";
-
-/**Dropdown item config key
- * @package ngx-twcss
- */
-export const DropdownItemConfigKey = 'DropdownItemConfigKey';
+import { Width } from "../../core/types/sizing/width";
+import { TextAlign } from "../../core/types/typography/text-align";
+import { DropdownBaseConfig } from "./dropdown-base.config";
 
 /**Dropdown item config
  * @package ngx-twcss
@@ -21,7 +16,7 @@ export const DropdownItemConfig: DropdownItemConfig = {
   borderRadius: 'rounded-none',
   borderWidth: 'border-0',
   display: {
-    type: 'inline-block'
+    type: 'block'
   },
   theme: {
     light: {

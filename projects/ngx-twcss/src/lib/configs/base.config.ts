@@ -11,6 +11,7 @@ export type BaseConfig = {
     light: Partial<Theme>,
     dark: Partial<Theme>,
   },
+  /**Free-form property object. */
   extends?: Record<string, {}>
 }
 

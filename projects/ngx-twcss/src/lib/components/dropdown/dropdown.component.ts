@@ -1,45 +1,43 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-import { DropdownContent } from './dropdown-content/dropdown-content.component';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../base.component';
-import { DropdownContainerConfig, DropdownContainerConfigKey, DropdownConfig } from './dropdown.config';
-import { ConfigService } from '../../configs/config.service';
-import { DropdownContentConfig, DropdownContentConfigKey } from './dropdown-content/dropdown-content.config';
-import { DropdownItemConfig, DropdownItemConfigKey } from './dropdown-item/dropdown-item.config';
+import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
+import { toClassName } from '../../core/helpers/object.helper';
+import { CommonModule } from '@angular/common';
+import { SizeConfig } from '../../configs/size.config';
 
 @Component({
   selector: 'nxt-dropdown',
   standalone: true,
-  imports: [DropdownContent],
+  imports: [CommonModule],
   templateUrl: './dropdown.component.html'
 })
-export class Dropdown extends BaseComponent<DropdownContainerConfig> implements OnInit {
+export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
+  protected contentStyle!: string;
+  protected itemtStyle!: string;
+
   @Input() override size: SizeVariant = 'md';
   @Input() override className!: string;
   @Input() override style!: string[];
+
+  @Input() isOpen: boolean = false;
   @Input() items!: any[];
 
-  private dropdownContentConfigService = inject(ConfigService<DropdownContentConfig>);
-  private dropdownItemConfigService = inject(ConfigService<DropdownItemConfig>);
-  protected dropdownContentConfig!: DropdownContentConfig;
-  protected dropdownItemConfig!: DropdownItemConfig;
-
   ngOnInit(): void {
-    this.initConfig(DropdownContainerConfigKey, DropdownConfig.container);
-    this.initDropdownContentConfig();
-    this.initDropdownItemConfig();
+    this.initConfig();
   }
 
-  private initDropdownItemConfig() {
-    this.dropdownItemConfigService.set(DropdownItemConfigKey, DropdownConfig.item)
-      .get(DropdownItemConfigKey).subscribe((cfg) => {
-        this.dropdownItemConfig = cfg;
+  override initConfig(): void {
+    this.configService.set(DropdownConfigKey, DropdownConfig)
+      .get(DropdownConfigKey).subscribe((cfg) => {
+        this.style = [];
+        this.addClass(toClassName([cfg.container, SizeConfig[this.size]]));
+        this.contentStyle = toClassName(cfg.content);
+        this.itemtStyle = toClassName([cfg.item, SizeConfig[this.size]]);
       });
   }
 
-  private initDropdownContentConfig() {
-    this.dropdownContentConfigService.set(DropdownContentConfigKey, DropdownConfig.content)
-      .get(DropdownContentConfigKey).subscribe((cfg) => {
-        this.dropdownContentConfig = cfg;
-      });
+  @HostListener('click', ['$event']) onClick(event: PointerEvent) {
+    event.stopPropagation();
+    this.isOpen = this.isOpen === false ? true : false;
   }
 }

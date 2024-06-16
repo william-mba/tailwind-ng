@@ -6,7 +6,7 @@ import { TextWrap } from "../../core/types/typography/text-wrap";
 export type DropdownBaseConfig = Partial<BaseConfig> & {
   textWrap: TextWrap,
   userSelect: UserSelect,
-  borderWidth: BorderWidth
+  borderWidth: BorderWidth,
 };
 
 export const DropdownBaseConfig: DropdownBaseConfig = {
