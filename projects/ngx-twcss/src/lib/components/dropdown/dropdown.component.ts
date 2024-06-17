@@ -1,9 +1,25 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Directive, ElementRef, HostListener, Input, OnInit, inject } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { toClassName } from '../../core/helpers/object.helper';
 import { CommonModule } from '@angular/common';
 import { SizeConfig } from '../../configs/size.config';
+import { ConfigService } from '../../configs/config.service';
+
+@Directive({
+  selector: '[dropdownItem]',
+  standalone: true
+})
+export class DropdownItem {
+  private configService = inject(ConfigService<DropdownConfig>);
+  @Input() size: SizeVariant = 'md';
+
+  constructor(el: ElementRef) {
+    this.configService.get(DropdownConfigKey).subscribe((cfg) => {
+      el.nativeElement.className = toClassName([cfg.item, SizeConfig[this.size]]);
+    });
+  }
+}
 
 @Component({
   selector: 'nxt-dropdown',
@@ -13,14 +29,12 @@ import { SizeConfig } from '../../configs/size.config';
 })
 export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   protected contentStyle!: string;
-  protected itemtStyle!: string;
 
   @Input() override size: SizeVariant = 'md';
   @Input() override className!: string;
   @Input() override style!: string[];
 
   @Input() isOpen: boolean = false;
-  @Input() items!: any[];
 
   ngOnInit(): void {
     this.initConfig();
@@ -32,7 +46,6 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
         this.style = [];
         this.addClass(toClassName([cfg.container, SizeConfig[this.size]]));
         this.contentStyle = toClassName(cfg.content);
-        this.itemtStyle = toClassName([cfg.item, SizeConfig[this.size]]);
       });
   }
 

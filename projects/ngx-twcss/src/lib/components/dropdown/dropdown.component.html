@@ -3,13 +3,10 @@
   <label class="inline-flex gap-1.5 hover:cursor-pointer">
     <ng-content></ng-content>
   </label>
-  <ng-container *ngIf="items && items.length > 0 && isOpen">
+  <ng-container *ngIf="isOpen">
     <!-- content -->
     <div [className]="contentStyle">
-      <!-- item -->
-      <div [className]="itemtStyle" *ngFor="let item of items">
-        {{ item }}
-      </div>
+      <ng-content select="[dropdownItem]"></ng-content>
     </div>
   </ng-container>
 </div>

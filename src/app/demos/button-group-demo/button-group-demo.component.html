@@ -60,7 +60,7 @@
     <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
       With dropdown
     </div>
-    <nxt-dropdown className="rounded-full px-1 py-1" [items]="dropdownItems">
+    <!-- <nxt-dropdown className="rounded-full px-1 py-1" [items]="dropdownItems">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960">
         <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
       </svg>
@@ -70,16 +70,20 @@
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 690 960">
         <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
       </svg>
-    </nxt-dropdown>
+    </nxt-dropdown> -->
     <nxt-button-group>
       <nxt-secondary-button className="rounded-l-md">
         Save changes
       </nxt-secondary-button>
-      <nxt-dropdown className="rounded-r-md" [items]="dropdownItems">
+      <nxt-dropdown className="rounded-r-md">
         Options
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960">
           <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
         </svg>
+        <!-- item -->
+        <div dropdownItem *ngFor="let item of dropdownItems">
+          {{ item }}
+        </div>
       </nxt-dropdown>
     </nxt-button-group>
   </div>
