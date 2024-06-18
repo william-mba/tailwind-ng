@@ -69,7 +69,7 @@ Icons source: [Google Icons](https://fonts.google.com/icons)
 
 ## API
 
-### PrimaryButtonComponent `<nxt-primary-button>`
+### PrimaryButton `<nxt-primary-button>`
 
 Properties
 
@@ -79,7 +79,7 @@ size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
-### SecondaryButtonComponent `<nxt-secondary-button>`
+### SecondaryButton `<nxt-secondary-button>`
 
 Properties
 
@@ -89,7 +89,7 @@ size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
 
-### SoftButtonComponent `<nxt-soft-button>`
+### SoftButton `<nxt-soft-button>`
 
 Properties
 
@@ -102,88 +102,114 @@ style     | string[]    | `[style]`   |  `[]`   | The component style.
 
 ## Default configurations
 
+<br/>
+
 Primary button
 
+---
+
 ```ts
-export interface PrimaryButtonConfig extends Partial<BaseButtonConfig> {};
+export const PrimaryButtonConfigKey = 'PrimaryButtonConfigKey';
+
+export type PrimaryButtonConfig = Partial<ButtonBaseConfig>;
 
 export const PrimaryButtonConfig: PrimaryButtonConfig = {
-  ...BaseButtonConfig,
+  ...ButtonBaseConfig,
   theme: {
     textColor: 'text-white',
     bgColor: 'bg-indigo-600',
-    modifier: {
-      hover: {
-        bgOpacity: 'hover:bg-opacity-90'
-      }
+    hover: {
+      bgOpacity: 'hover:bg-opacity-80'
     }
   }
 }
 ```
 
+<br/>
+
 Secondary button
 
+---
+
 ```ts
-export interface SecondaryButtonConfig extends Partial<BaseButtonConfig> {
-  border: BorderWidth
-}
+export const SecondaryButtonConfigKey = 'SecondaryButtonConfigKey';
+
+export type SecondaryButtonConfig = Partial<ButtonBaseConfig> & {
+  borderWidth: BorderWidth
+};
 
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
-  ...BaseButtonConfig,
-  border: 'border',
+  ...ButtonBaseConfig,
+  borderWidth: 'border',
+  userSelect: "select-text",
   theme: {
     light: {
       textColor: 'text-black',
-      bgColor: 'bg-black',
-      bgOpacity: 'bg-opacity-0',
-      borderColor: 'border-black',
-      borderOpacity: 'border-opacity-15',
-      modifier: {
-        hover: {
-          bgColor: 'hover:bg-gray-500',
-          bgOpacity: 'hover:bg-opacity-5'
-        },
-        focus: {
-          borderOpacity: 'focus:border-opacity-30'
-        }
+      bgColor: 'bg-slate-100',
+      borderColor: 'border-slate-200',
+      hover: {
+        bgColor: 'hover:bg-slate-200'
+      },
+      focus: {
+        borderColor: 'focus:border-slate-400'
       }
     },
     dark: {
       textColor: 'dark:text-white',
-      bgColor: 'dark:bg-white',
-      bgOpacity: 'dark:bg-opacity-10',
-      borderColor: 'dark:border-white',
-      borderOpacity: 'dark:border-opacity-10',
-      modifier: {
-        hover: {
-          bgColor: 'dark:hover:bg-white',
-          bgOpacity: 'dark:hover:bg-opacity-20',
-        },
-        focus: {
-          borderOpacity: 'dark:focus:border-opacity-20'
-        }
+      bgColor: 'dark:bg-slate-800',
+      borderColor: 'dark:border-slate-700',
+      hover: {
+        bgColor: 'dark:hover:bg-slate-700'
+      },
+      focus: {
+        borderColor: 'dark:focus:border-slate-500'
       }
     }
   }
 }
 ```
 
+<br/>
+
 Soft button
 
+---
+
 ```ts
-export interface SoftButtonConfig extends Partial<BaseButtonConfig> { };
+export const SoftButtonConfigKey = 'SoftButtonConfigKey';
+
+export type SoftButtonConfig = Partial<ButtonBaseConfig>;
 
 export const SoftButtonConfig: SoftButtonConfig = {
-  ...BaseButtonConfig,
+  ...ButtonBaseConfig,
   theme: {
     textColor: 'text-indigo-600',
-    bgColor: 'bg-indigo-600',
     bgOpacity: 'bg-opacity-10',
-    modifier: {
-      hover: {
-        bgOpacity: 'hover:bg-opacity-20'
-      }
+    bgColor: 'bg-indigo-600',
+    hover: {
+      bgOpacity: 'hover:bg-opacity-20'
     }
   }
+}
+```
+
+<br/>
+
+Button base
+
+---
+
+```ts
+export type ButtonBaseConfig = Partial<BaseConfig> & {
+  textWrap: TextWrap,
+  overflow: Overflow,
+  userSelect: UserSelect
+}
+
+export const ButtonBaseConfig: ButtonBaseConfig = {
+  ...BaseConfig,
+  textWrap: 'text-nowrap',
+  overflow: 'overflow-hidden',
+  userSelect: 'select-none'
 }
 ```

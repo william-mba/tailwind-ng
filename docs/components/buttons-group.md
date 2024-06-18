@@ -4,19 +4,15 @@
 
 Use our button group components to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
 
+## Usage
+
+<br/>
+
+Three options button group.
+
 Light | Dark
 ---------- | ---------
 !["Button group on light mode"](images/buttons-group/button-group.png) | !["Button group on dark mode"](images/buttons-group/button-group-dark.png)
-!["Icon group on light mode"](images/buttons-group/icon-group.png) | !["Icon group on light mode"](images/buttons-group/icon-group-dark.png)
-!["Button group with stats on light mode"](images/buttons-group/button-group-with-stats.png) | !["Button group with stats on light mode"](images/buttons-group/button-group-with-stats-dark.png)
-!["Button group with dropdown on light mode"](images/buttons-group/button-group-with-dropdown.png) | !["Button group with dropdown on light mode"](images/buttons-group/button-group-with-dropdown-dark.png)
-
-## Usage
-
-A buttons group of three options
-
-Light | Dark
----------- | ---------
 !["Button group on light mode"](images/buttons-group/button-group-usage.png) | !["Button group on dark mode"](images/buttons-group/button-group-usage-dark.png)
 
 Code:
@@ -35,12 +31,13 @@ Code:
 </nxt-button-group>
 ```
 
-## Icons
+<br/>
 
-Icon group usage.
+Button group with icons
 
 Light | Dark
 ---------- | ---------
+!["Icon group on light mode"](images/buttons-group/icon-group.png) | !["Icon group on light mode"](images/buttons-group/icon-group-dark.png)
 !["Icon group usage on light mode"](images/buttons-group/icon-group-usage.png) | !["Icon group usage on dark mode"](images/buttons-group/icon-group-usage-dark.png)
 
 Code:
@@ -64,10 +61,13 @@ Code:
 </nxt-button-group>
 ```
 
+<br/>
+
 Button group with stats usage
 
 Light | Dark
 ---------- | ---------
+!["Button group with stats on light mode"](images/buttons-group/button-group-with-stats.png) | !["Button group with stats on light mode"](images/buttons-group/button-group-with-stats-dark.png)
 !["Button group with stats usage on light mode"](images/buttons-group/button-group-with-stats-usage.png) | !["Button group with stats usage on dark mode"](images/buttons-group/button-group-with-stats-usage-dark.png)
 
 ```html
@@ -83,6 +83,8 @@ Light | Dark
   </nxt-secondary-button>
 </nxt-button-group>
 ```
+
+<br/>
 
 ## API
 

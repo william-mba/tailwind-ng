@@ -1,189 +1,259 @@
-# Buttons
+# Dropdowns
 
-[Buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)<!-- {.external} --> help people initiate actions, from sending an email, to sharing a document, to liking a post.
-
-## Types
-
-[@ngx-twcss](https://www.npmjs.com/package/ngx-twcss) provide three types of buttons: **Primary**, **Secondary** and **Soft**
-
-
-Light mode | Dark mode
----------- | ---------
-!["Buttons on light mode"](images/buttons/buttons.png) | !["Buttons on dark mode"](images/buttons/buttons-dark.png)
+Use our dropdown and popover components to create dropdown menus for action items and navigation, featuring section dividers, icons, and headers.
 
 ## Usage
 
-A secondary button with the text "Back" next to a primary button with the text "Complete"
+<br/>
 
-Light mode | Dark mode
+Dropdown with text and icon
+
+Light | Dark
 ---------- | ---------
-![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-usage-sample.png "Secondary and primary buttons.") | ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-usage-sample-dark.png "Secondary and primary buttons.")
+![""](images/dropdown/dropdown.png) | ![""](images/dropdown/dropdown-dark.png)
+![""](images/dropdown/dropdown-usage.png) | ![""](images/dropdown/dropdown-usage-dark.png)
+
+Code:
 
 ```html
-<nxt-secondary-button>Back</nxt-secondary-button>
-<nxt-primary-button>Complete</nxt-primary-button>
+<nxt-dropdown className="rounded-full">
+  Options
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960">
+    <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
+  </svg>
+  <nxt-dropdown-item *ngFor="let item of items">
+    {{ item }}
+  </nxt-dropdown-item>
+</nxt-dropdown>
 ```
 
-## Icons
+<br/>
 
-An icon may optionally be added to a button to help communicate the button's action and help draw attention.
+Dropdown with icon
 
-Light mode | Dark mode
+Light | Dark
 ---------- | ---------
-![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample.png "Secondary and primary buttons.") | ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample-dark.png "Secondary and primary buttons.")
+![""](images/dropdown/dropdown-with-icon.png) | ![""](images/dropdown/dropdown-with-icon-dark.png)
+![""](images/dropdown/dropdown-with-icon-usage.png) | ![""](images/dropdown/dropdown-with-icon-usage-dark.png)
+
+Code:
 
 ```html
-<nxt-primary-button>
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M144-192v-576l720 288-720 288Zm72-107 454-181-454-181v109l216 72-216 72v109Zm0 0v-362 362Z"/></svg>
-  Send
-</nxt-primary-button>
-<nxt-secondary-button>
-  Open
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"/></svg>
-</nxt-secondary-button>
+<nxt-dropdown className="rounded-full px-1 py-1">
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+    <path
+      d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z" />
+  </svg>
+  <nxt-dropdown-item *ngFor="let item of items">
+    {{ item }}
+  </nxt-dropdown-item>
+</nxt-dropdown>
 ```
-
-Light mode | Dark mode
----------- | ---------
-!["Circular buttons"](images/buttons/circulars-buttons.png "Circular buttons") | !["Circular buttons on dark"](images/buttons/circulars-buttons-dark.png "Circular buttons on dark")
-
-```html
-<nxt-primary-button className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</nxt-primary-button>
-<nxt-secondary-button className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</nxt-secondary-button>
-<nxt-soft-button className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</nxt-soft-button>
-```
-
-Icons source: [Google Icons](https://fonts.google.com/icons)
 
 ## API
 
-### PrimaryButtonComponent `<nxt-primary-button>`
+<br/>
 
-Properties
-
+### Dropdown `<nxt-dropdown>`
+---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-style     | string[]    | `[style]`   |  `[]`   | The component style.
+style     | string[]    | `[style]`   |  `[]`   | The dropdown container style.
+contentStyle     | string    | /   |  `''`   | The dropdown content style.
+isOpen | `boolean` | `[isOpen]` | `false` | The dropdown state
+---
 
-### SecondaryButtonComponent `<nxt-secondary-button>`
+<br/>
 
-Properties
+### DropdownItem `<nxt-dropdown-item>`
 
-Property  | Type        | Attribute   | Default | Description
-----------|-------------|-------------|---------|------------
-size      | SizeVariant | `size`    | `'md'`  | The component size.
-className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-style     | string[]    | `[style]`   |  `[]`   | The component style.
-
-### SoftButtonComponent `<nxt-soft-button>`
-
-Properties
-
+---
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
-className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-style     | string[]    | `[style]`   |  `[]`   | The component style.
+---
+
+<br/>
 
 ## Default configurations
 
-Primary button
+<br/>
+
+Dropdown config
+
+---
 
 ```ts
-export interface PrimaryButtonConfig extends Partial<BaseButtonConfig> {};
+export const DropdownConfigKey = 'DropdownConfigKey';
 
-export const PrimaryButtonConfig: PrimaryButtonConfig = {
-  ...BaseButtonConfig,
+export type DropdownConfig = {
+  container: Partial<DropdownContainerConfig>,
+  content: Partial<DropdownContentConfig>,
+  item: Partial<DropdownItemConfig>
+}
+
+export const DropdownConfig: DropdownConfig = {
+  container: DropdownContainerConfig,
+  content: DropdownContentConfig,
+  item: DropdownItemConfig
+}
+```
+
+<br/>
+
+Dropdown container config
+
+---
+
+```ts
+export type DropdownContainerConfig = Partial<DropdownBaseConfig> & {
+  position: Position
+};
+
+export const DropdownContainerConfig: DropdownContainerConfig = {
+  ...DropdownBaseConfig,
+  position: 'relative',
+  extends: {
+    cursor: 'hover:cursor-pointer'
+  }
+};
+```
+
+<br/>
+
+Dropdown content config
+
+---
+
+```ts
+export type DropdownContentConfig = Partial<DropdownBaseConfig> & {
+  position: Position,
+  divideWidth: DivideWidth
+}
+
+export const DropdownContentConfig: DropdownContentConfig = {
+  position: {
+    type: 'absolute',
+    placement: {
+      top: 'top-8',
+      right: 'right-0'
+    }
+  },
+  divideWidth: 'divide-y',
+  borderWidth: 'border',
+  borderRadius: 'rounded-md',
   theme: {
-    textColor: 'text-white',
-    bgColor: 'bg-indigo-600',
-    modifier: {
+    light: {
+      bgColor: 'bg-slate-50',
+      borderColor: 'border-slate-200',
+      divideColor: 'divide-slate-200'
+    },
+    dark: {
+      bgColor: 'dark:bg-slate-900',
+      borderColor: 'dark:border-slate-700',
+      divideColor: 'dark:divide-slate-700'
+    }
+  },
+  extends: {
+    zIndex: 'z-50',
+    marginTop: 'mt-4',
+    paddingY: 'py-1',
+    width: 'min-w-full'
+  }
+}
+```
+
+<br/>
+
+Dropdown item config
+
+---
+
+```ts
+export type DropdownItemConfig = Partial<DropdownBaseConfig> & {
+  textAlign: TextAlign,
+  width: Width
+}
+
+export const DropdownItemConfig: DropdownItemConfig = {
+  textAlign: 'text-start',
+  width: 'w-full',
+  borderRadius: 'rounded-none',
+  borderWidth: 'border-0',
+  display: {
+    type: 'block'
+  },
+  theme: {
+    light: {
+      bgColor: 'bg-slate-100',
+      borderColor: 'border-slate-200',
       hover: {
-        bgOpacity: 'hover:bg-opacity-90'
+        bgColor: 'hover:bg-slate-200'
+      }
+    },
+    dark: {
+      bgColor: 'dark:bg-slate-800',
+      borderColor: 'dark:border-slate-700',
+      hover: {
+        bgColor: 'dark:hover:bg-slate-700'
       }
     }
   }
 }
 ```
 
-Secondary button
+<br/>
+
+Dropdown base config
+
+---
 
 ```ts
-export interface SecondaryButtonConfig extends Partial<BaseButtonConfig> {
-  border: BorderWidth
-}
+export type DropdownBaseConfig = Partial<BaseConfig> & {
+  textWrap: TextWrap,
+  userSelect: UserSelect,
+  borderWidth: BorderWidth,
+};
 
-export const SecondaryButtonConfig: SecondaryButtonConfig = {
-  ...BaseButtonConfig,
-  border: 'border',
+export const DropdownBaseConfig: DropdownBaseConfig = {
+  textWrap: 'text-nowrap',
+  userSelect: 'select-none',
+  borderWidth: 'border',
+  display: {
+    type: 'inline-flex',
+    justifyContent: 'justify-center',
+    alignItem: 'items-center',
+    gap: 'gap-1.5'
+  },
+  borderRadius: 'rounded-md',
+  fontWeight: 'font-semibold',
   theme: {
     light: {
       textColor: 'text-black',
-      bgColor: 'bg-black',
-      bgOpacity: 'bg-opacity-0',
-      borderColor: 'border-black',
-      borderOpacity: 'border-opacity-15',
-      modifier: {
-        hover: {
-          bgColor: 'hover:bg-gray-500',
-          bgOpacity: 'hover:bg-opacity-5'
-        },
-        focus: {
-          borderOpacity: 'focus:border-opacity-30'
-        }
+      bgColor: 'bg-slate-100',
+      borderColor: 'border-slate-200',
+      hover: {
+        bgColor: 'hover:bg-slate-200'
+      },
+      focus: {
+        borderColor: 'focus:border-slate-400'
       }
     },
     dark: {
       textColor: 'dark:text-white',
-      bgColor: 'dark:bg-white',
-      bgOpacity: 'dark:bg-opacity-10',
-      borderColor: 'dark:border-white',
-      borderOpacity: 'dark:border-opacity-10',
-      modifier: {
-        hover: {
-          bgColor: 'dark:hover:bg-white',
-          bgOpacity: 'dark:hover:bg-opacity-20',
-        },
-        focus: {
-          borderOpacity: 'dark:focus:border-opacity-20'
-        }
-      }
-    }
-  }
-}
-```
-
-Soft button
-
-```ts
-export interface SoftButtonConfig extends Partial<BaseButtonConfig> { };
-
-export const SoftButtonConfig: SoftButtonConfig = {
-  ...BaseButtonConfig,
-  theme: {
-    textColor: 'text-indigo-600',
-    bgColor: 'bg-indigo-600',
-    bgOpacity: 'bg-opacity-10',
-    modifier: {
+      bgColor: 'dark:bg-slate-800',
+      borderColor: 'dark:border-slate-700',
       hover: {
-        bgOpacity: 'hover:bg-opacity-20'
+        bgColor: 'dark:hover:bg-slate-700'
+      },
+      focus: {
+        borderColor: 'dark:focus:border-slate-500'
       }
     }
   }
-}
+};
 ```
+

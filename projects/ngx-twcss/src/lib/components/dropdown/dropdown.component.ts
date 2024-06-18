@@ -78,6 +78,6 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
 
   @HostListener('click', ['$event']) onClick(event: PointerEvent) {
     event.stopPropagation();
-    this.isOpen = this.isOpen === false ? true : false;
+    this.isOpen = !this.isOpen;
   }
 }
