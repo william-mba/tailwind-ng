@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CustomDropdownConfig, CustomDropdownConfig2, CustomDropdownConfig3 } from 'customs/dropdown-content.config';
+import { CustomDropdownConfig, CustomDropdownConfig2, CustomDropdownConfig3 } from 'customs/dropdown.config';
 import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryButtonConfig3 } from 'customs/primary-button.config';
 import { CustomSoftButtonConfig, CustomSoftButtonConfig2, CustomSoftButtonConfig3 } from 'customs/soft-button.config';
 import { ConfigService, PrimaryButtonConfigKey, PrimaryButtonConfig, ToggleTheme, SoftButtonConfig, SoftButtonConfigKey, DropdownConfig, DropdownConfigKey } from 'ngx-twcss';
