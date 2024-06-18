@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ButtonGroup, Dropdown, DropdownItem, PrimaryButton, SecondaryButton, SoftButton } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,14 @@ import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     PrimaryButton,
     SecondaryButton,
     SoftButton,
     ButtonGroup,
     Dropdown,
-    DropdownItem
+    DropdownItem,
   ],
   bootstrap: [AppComponent]
 })

@@ -2,9 +2,10 @@ import { Component, Directive, ElementRef, HostListener, Input, OnInit, inject }
 import { BaseComponent, SizeVariant } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { toClassName } from '../../core/helpers/object.helper';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../configs/config.service';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Directive({
   selector: '[dropdownItem]',
@@ -24,8 +25,28 @@ export class DropdownItem {
 @Component({
   selector: 'nxt-dropdown',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './dropdown.component.html'
+  imports: [NgIf],
+  templateUrl: './dropdown.component.html',
+  animations: [
+    trigger('dropdownAnimation', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'scale(0.9)'
+        }),
+        animate('100ms ease-out', style({
+          opacity: 1,
+          transform: 'scale(1)'
+        }))
+      ]),
+      transition(':leave', [
+        animate('75ms ease-in', style({
+          opacity: 0,
+          transform: 'scale(0.9)'
+        }))
+      ])
+    ])
+  ]
 })
 export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   protected contentStyle!: string;
