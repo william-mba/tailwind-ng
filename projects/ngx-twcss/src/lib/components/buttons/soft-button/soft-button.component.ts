@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { SoftButtonConfig, SoftButtonConfigKey } from './soft-button.config';
 
-/**Soft button element */
+/**Soft button element
+ * @package ngx-twcss
+*/
 @Component({
   selector: 'nxt-soft-button',
   standalone: true,

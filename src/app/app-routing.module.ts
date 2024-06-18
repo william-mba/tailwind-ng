@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { AppComponent } from './app.component';
+import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.component';
 
 const routes: Routes = [
   {
@@ -14,12 +15,16 @@ const routes: Routes = [
     component: ButtonGroupDemoComponent
   },
   {
+    path: 'dropdown',
+    component: DropdownDemoComponent
+  },
+  {
     path: 'play',
     component: AppComponent
   },
   {
     path: '',
-    redirectTo: '/button-group',
+    redirectTo: '/dropdown',
     pathMatch: 'full'
   }
 ];

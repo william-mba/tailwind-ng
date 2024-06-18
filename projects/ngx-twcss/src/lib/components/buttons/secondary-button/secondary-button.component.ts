@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { SecondaryButtonConfigKey, SecondaryButtonConfig } from './secondary-button.config';
 
-/**Secondary button element */
+/**Secondary button element
+ * @package ngx-twcss
+*/
 @Component({
   selector: 'nxt-secondary-button',
   standalone: true,

@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../../base.component';
 import { PrimaryButtonConfigKey, PrimaryButtonConfig } from './primary-button.config';
 
-/**Primary button element */
+/**Primary button element
+ * @package ngx-twcss
+*/
 @Component({
   standalone: true,
   selector: 'nxt-primary-button',

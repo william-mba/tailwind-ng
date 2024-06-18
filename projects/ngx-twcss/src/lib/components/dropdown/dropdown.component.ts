@@ -7,8 +7,11 @@ import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../configs/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
 
+/**Dropdown item element
+ * @package ngx-twcss
+*/
 @Directive({
-  selector: '[dropdownItem]',
+  selector: 'nxt-dropdown-item',
   standalone: true
 })
 export class DropdownItem {
@@ -22,6 +25,9 @@ export class DropdownItem {
   }
 }
 
+/**Dropdown element
+ * @package ngx-twcss
+*/
 @Component({
   selector: 'nxt-dropdown',
   standalone: true,

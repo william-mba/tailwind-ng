@@ -13,8 +13,8 @@ One of our core goals is to provide Tailwind UI components for Angular.
 These are the items we are currently working on.
 
 * [Buttons](components/buttons.md)
-* Button Groups
-* Ripple effect
+* [Buttons Group](components/buttons-group.md)
+* [Dropdown](components/dropdown.md)
 
 ### 2. Release ngx-twcss 1.0
 

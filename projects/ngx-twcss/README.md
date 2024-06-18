@@ -5,7 +5,7 @@
 </a>
 
 <div align="center">
-Free and open-source <a href="https://tailwindui.com/">Tailwind CSS components</a> for your <a href="https://angular.dev/">Angular</a> application.
+Free open-source <a href="https://tailwindui.com/">Tailwind CSS components</a> for your <a href="https://angular.dev/">Angular</a> application.
 <br/>
 Ready-to-use and easily customizable.
 <br/>

@@ -1,6 +1,8 @@
 import { Directive } from '@angular/core';
 
-/**Button group element*/
+/**Button group element
+ * @package ngx-twcss
+*/
 @Directive({
   selector: 'nxt-button-group',
   standalone: true,

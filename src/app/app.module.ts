@@ -6,12 +6,14 @@ import { ButtonGroup, Dropdown, DropdownItem, PrimaryButton, SecondaryButton, So
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonsDemoComponent,
-    ButtonGroupDemoComponent
+    ButtonGroupDemoComponent,
+    DropdownDemoComponent
   ],
   imports: [
     BrowserModule,
