@@ -24,17 +24,17 @@ Ready-to-use and easily customizable.
 
 ## Getting started
 
-### Prerequisites
+### 0. Prerequisites
 
 [Install Tailwind CSS](https://tailwindcss.com/docs/guides/angular) in your Angular project.
 
-### Install ngx-twcss
+### 1. Install ngx-twcss
 
 ```ts
 npm install ngx-twcss
 ```
 
-### Modify tailwind.config.js
+### 2. Modify tailwind.config.js
 
 ```js
 module.exports = {
@@ -46,9 +46,39 @@ module.exports = {
   ]
 ```
 
-### Will you use forms ?
+### 3. Enable the animations module
 
-Install the forms plugin
+Import ``provideAnimations`` from ``@angular/platform-browser/animations`` and add it to the providers list in the ``bootstrapApplication`` function call.
+
+```ts
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideAnimations(),
+  ]
+});
+```
+
+For ``NgModule`` based applications import ``BrowserAnimationsModule``, which introduces the animation capabilities into your Angular root application module.
+
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule
+  ],
+  declarations: [ ],
+  bootstrap: [ ]
+})
+export class AppModule { }
+```
+
+### 4. Install forms plugin (if you will use forms elements)
+
+Install the forms plugin from npm
 
 ```ts
 npm install -D @tailwindcss/forms
@@ -66,17 +96,16 @@ module.exports = {
 }
 ```
 
-### Import ngx-twcss components
+### 5. Import Ngx-twcss components
 
-A. Using standalone components?
-
-Import components in your *.component.ts file
+For ``standalone`` components, import components in your *.component.ts file
 
 ```ts
 @Component({
   standalone: true,
   imports: [
     ...
+    // Some imported components
     PrimaryButton,
     SecondaryButton,
     ButtonGroup
@@ -88,28 +117,26 @@ export class ExampleComponent {
 }
 ```
 
-B. Not using standalone components?
+For ``NgModule`` based components, import components in your *.module.ts file
 
-Import components in your *.module.ts file
+  ```ts
+  @NgModule({
+    declarations: [
+      ...
+    ],
+    imports: [
+      ...
+      // Some imported components
+      PrimaryButton,
+      SecondaryButton,
+      ButtonGroup
+    ],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule { }
+  ```
 
-```ts
-@NgModule({
-  declarations: [
-    ...
-  ],
-  imports: [
-    ...
-    // Imports example
-    PrimaryButton,
-    SecondaryButton,
-    ButtonGroup
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-
-## Usage
+## Usage samples
 
 ```html
 <nxt-secondary-button>Back</nxt-secondary-button>
