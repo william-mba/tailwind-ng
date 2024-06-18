@@ -2,12 +2,14 @@
 
 [Buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)<!-- {.external} --> help people initiate actions, from sending an email, to sharing a document, to liking a post.
 
+<br/>
+
 ## Types
 
 [@ngx-twcss](https://www.npmjs.com/package/ngx-twcss) provide three types of buttons: **Primary**, **Secondary** and **Soft**
 
-
-Light mode | Dark mode
+---
+Light | Dark
 ---------- | ---------
 !["Buttons on light mode"](images/buttons/buttons.png) | !["Buttons on dark mode"](images/buttons/buttons-dark.png)
 
@@ -15,7 +17,8 @@ Light mode | Dark mode
 
 A secondary button with the text "Back" next to a primary button with the text "Complete"
 
-Light mode | Dark mode
+---
+Light | Dark
 ---------- | ---------
 ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-usage-sample.png "Secondary and primary buttons.") | ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-usage-sample-dark.png "Secondary and primary buttons.")
 
@@ -28,9 +31,12 @@ Light mode | Dark mode
 
 An icon may optionally be added to a button to help communicate the button's action and help draw attention.
 
-Light mode | Dark mode
+---
+Light | Dark
 ---------- | ---------
 ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample.png "Secondary and primary buttons.") | ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample-dark.png "Secondary and primary buttons.")
+
+Code:
 
 ```html
 <nxt-primary-button>
@@ -43,9 +49,12 @@ Light mode | Dark mode
 </nxt-secondary-button>
 ```
 
-Light mode | Dark mode
+---
+Light | Dark
 ---------- | ---------
 !["Circular buttons"](images/buttons/circulars-buttons.png "Circular buttons") | !["Circular buttons on dark"](images/buttons/circulars-buttons-dark.png "Circular buttons on dark")
+
+Code:
 
 ```html
 <nxt-primary-button className="rounded-full px-2 py-2">
@@ -65,46 +74,54 @@ Light mode | Dark mode
 </nxt-soft-button>
 ```
 
-Icons source: [Google Icons](https://fonts.google.com/icons)
+<br/>
 
 ## API
 
+<br/>
+
 ### PrimaryButton `<nxt-primary-button>`
 
-Properties
+---
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
+---
+
+<br/>
 
 ### SecondaryButton `<nxt-secondary-button>`
 
-Properties
+---
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
+---
+
+<br/>
 
 ### SoftButton `<nxt-soft-button>`
 
-Properties
-
+---
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 style     | string[]    | `[style]`   |  `[]`   | The component style.
+---
 
 ## Default configurations
 
 <br/>
 
-Primary button
+Primary button config
 
 ---
 
@@ -127,7 +144,7 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
 
 <br/>
 
-Secondary button
+Secondary button config
 
 ---
 
@@ -171,7 +188,7 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
 
 <br/>
 
-Soft button
+Soft button config
 
 ---
 
@@ -195,7 +212,7 @@ export const SoftButtonConfig: SoftButtonConfig = {
 
 <br/>
 
-Button base
+Button base config
 
 ---
 
@@ -213,3 +230,5 @@ export const ButtonBaseConfig: ButtonBaseConfig = {
   userSelect: 'select-none'
 }
 ```
+
+---

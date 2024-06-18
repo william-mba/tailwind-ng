@@ -8,6 +8,7 @@ Use our dropdown and popover components to create dropdown menus for action item
 
 Dropdown with text and icon
 
+---
 Light | Dark
 ---------- | ---------
 ![""](images/dropdown/dropdown.png) | ![""](images/dropdown/dropdown-dark.png)
@@ -31,6 +32,7 @@ Code:
 
 Dropdown with icon
 
+---
 Light | Dark
 ---------- | ---------
 ![""](images/dropdown/dropdown-with-icon.png) | ![""](images/dropdown/dropdown-with-icon-dark.png)
@@ -55,6 +57,7 @@ Code:
 <br/>
 
 ### Dropdown `<nxt-dropdown>`
+
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
@@ -63,18 +66,15 @@ className | string      | `className` |  `''`   | The list of classes to add or 
 style     | string[]    | `[style]`   |  `[]`   | The dropdown container style.
 contentStyle     | string    | /   |  `''`   | The dropdown content style.
 isOpen | `boolean` | `[isOpen]` | `false` | The dropdown state
----
 
 <br/>
 
 ### DropdownItem `<nxt-dropdown-item>`
 
 ---
-
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
----
 
 <br/>
 
@@ -256,4 +256,3 @@ export const DropdownBaseConfig: DropdownBaseConfig = {
   }
 };
 ```
-

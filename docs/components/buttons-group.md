@@ -4,12 +4,15 @@
 
 Use our button group components to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
 
+<br/>
+
 ## Usage
 
 <br/>
 
 Three options button group.
 
+---
 Light | Dark
 ---------- | ---------
 !["Button group on light mode"](images/buttons-group/button-group.png) | !["Button group on dark mode"](images/buttons-group/button-group-dark.png)
@@ -35,6 +38,7 @@ Code:
 
 Button group with icons
 
+---
 Light | Dark
 ---------- | ---------
 !["Icon group on light mode"](images/buttons-group/icon-group.png) | !["Icon group on light mode"](images/buttons-group/icon-group-dark.png)
@@ -65,10 +69,13 @@ Code:
 
 Button group with stats usage
 
+---
 Light | Dark
 ---------- | ---------
 !["Button group with stats on light mode"](images/buttons-group/button-group-with-stats.png) | !["Button group with stats on light mode"](images/buttons-group/button-group-with-stats-dark.png)
 !["Button group with stats usage on light mode"](images/buttons-group/button-group-with-stats-usage.png) | !["Button group with stats usage on dark mode"](images/buttons-group/button-group-with-stats-usage-dark.png)
+
+Code:
 
 ```html
 <nxt-button-group>
@@ -88,10 +95,13 @@ Light | Dark
 
 ## API
 
+<br/>
+
 ### ButtonGroup `<nxt-button-group>`
 
-Properties
+---
 
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 n/a | n/a      | `class` |  `'inline-flex'`   | Align items using the `inline-flex` Tailwind CSS utility class.
+---
