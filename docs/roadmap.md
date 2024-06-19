@@ -1,78 +1,66 @@
 # Roadmap
 
-This roadmap describes current, future, and past goals for ngx-twcss.
+This roadmap describes current, future, and past goals for Ngx-twcss.
 
 ## Current
 
-### 1. Build new components
-
-#### Planned for Q2 2024*
-
-One of our core goals is to provide Tailwind UI components for Angular.
-
 These are the items we are currently working on.
 
-* [Buttons](components/buttons.md)
-* [Buttons Group](components/buttons-group.md)
-* [Dropdown](components/dropdown.md)
+Application UI
 
-### 2. Release ngx-twcss 1.0
+- [ ] Elements
+  - [ ] Avatar
+  - [ ] Badge
 
-#### Planned for Q4 2024*
+---
 
 ## Future
 
-### Planned new components
-
 These are components we want to build next.
 
-* Checkbox
-* Chips
-* Dialog
-* Divider
-* Elevation
-* Focus ring
-* List
-* Menu
-* Progress indicators
-* Radio
-* Ripple
-* Select
-* Slider
-* Switch
-* Tabs
-* Text field
-* Autocomplete
-* Badge
-* Banner
-* Bottom app bar
-* Bottom sheet
-* Data table
-* Date picker
-* Navigation bar
-* Navigation rail
-* Search
-* Time picker
-* Top app bar
-* Tooltip
-* Card
-* Card preview
-* Navigation drawer
-* Snackbar
+### Application UI
 
-### Planned new features
+- [ ] Elements
+  - [ ] Avatar
+  - [ ] Badge
+- [ ] Forms
+  - [ ] Select Menu
+  - [ ] Radio Group
+  - [ ] Checkboxe
+  - [ ] Toggle
+  - [ ] Comboboxe
+  - [ ] Action Panel
+- [ ] List
+  - [ ] Stacked List
+  - [ ] Table
+  - [ ] Grid List
+  - [ ] Feed
 
-These are features we want to build next.
+### Marketing
 
-* Ripple effects
-* Docs and examples
+To plan
+
+### Ecommerce
+
+To plan
+
+---
 
 ## Past
 
-### Components
+These are ready-to-use components.
 
-Completed in Q2 2024
+### Application UI components
 
-Light mode | Dark mode
----------- | ---------
-!["Buttons on light mode"](components/images/buttons/buttons.png) | !["Buttons on dark mode"](components/images/buttons/buttons-dark.png)
+- [ ] Elements
+  - [x] [Button](components/buttons.md)
+  - [x] [Button Group](components/buttons-group.md)
+  - [x] [Dropdown](components/dropdown.md)
+
+### Marketing components
+
+Coming soon
+
+### Ecommerce components
+
+Coming soon
