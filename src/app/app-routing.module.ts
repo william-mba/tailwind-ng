@@ -4,19 +4,24 @@ import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.componen
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { AppComponent } from './app.component';
 import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.component';
+import { BadgeDemoComponent } from './demos/badge-demo/badge-demo.component';
 
 const routes: Routes = [
   {
-    path: 'buttons',
-    component: ButtonsDemoComponent
+    path: 'badge',
+    component: BadgeDemoComponent
+  },
+  {
+    path: 'dropdown',
+    component: DropdownDemoComponent
   },
   {
     path: 'button-group',
     component: ButtonGroupDemoComponent
   },
   {
-    path: 'dropdown',
-    component: DropdownDemoComponent
+    path: 'buttons',
+    component: ButtonsDemoComponent
   },
   {
     path: 'play',
@@ -24,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/dropdown',
+    redirectTo: '/badge',
     pathMatch: 'full'
   }
 ];

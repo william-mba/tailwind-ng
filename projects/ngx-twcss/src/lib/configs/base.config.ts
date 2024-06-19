@@ -7,10 +7,10 @@ export type BaseConfig = {
   display: Partial<Display>,
   borderRadius: BorderRadius,
   fontWeight: FontWeight,
-  theme?: Partial<Theme> | {
+  theme?: Partial<Theme> | Partial<{
     light: Partial<Theme>,
     dark: Partial<Theme>,
-  },
+  }>,
   /**Free-form property object. */
   extends?: Record<string, {}>
 }

@@ -15,3 +15,4 @@ export * from './lib/components/buttons/soft-button/soft-button.config';
 export * from './lib/components/button-group/button-group.directive';
 export * from './lib/components/dropdown/dropdown.component';
 export * from './lib/components/dropdown/dropdown.config';
+export * from './lib/components/badge/badge.component';
