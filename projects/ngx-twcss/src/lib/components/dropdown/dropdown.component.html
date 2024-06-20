@@ -5,7 +5,7 @@
   </label>
   <ng-container *ngIf="isOpen">
     <!-- content -->
-    <div @dropdownAnimation [className]="contentStyle">
+    <div @dropdownAnimation [className]="contentStyle + ' ' + position">
       <ng-content select="nxt-dropdown-item"></ng-content>
     </div>
   </ng-container>

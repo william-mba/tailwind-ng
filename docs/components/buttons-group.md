@@ -18,7 +18,7 @@ Light | Dark
 !["Button group on light mode"](images/buttons-group/button-group.png) | !["Button group on dark mode"](images/buttons-group/button-group-dark.png)
 !["Button group on light mode"](images/buttons-group/button-group-usage.png) | !["Button group on dark mode"](images/buttons-group/button-group-usage-dark.png)
 
-Code:
+>Code sample
 
 ```html
 <nxt-button-group>
@@ -44,7 +44,7 @@ Light | Dark
 !["Icon group on light mode"](images/buttons-group/icon-group.png) | !["Icon group on light mode"](images/buttons-group/icon-group-dark.png)
 !["Icon group usage on light mode"](images/buttons-group/icon-group-usage.png) | !["Icon group usage on dark mode"](images/buttons-group/icon-group-usage-dark.png)
 
-Code:
+>Code sample
 
 ```html
 <nxt-button-group>
@@ -75,7 +75,7 @@ Light | Dark
 !["Button group with stats on light mode"](images/buttons-group/button-group-with-stats.png) | !["Button group with stats on light mode"](images/buttons-group/button-group-with-stats-dark.png)
 !["Button group with stats usage on light mode"](images/buttons-group/button-group-with-stats-usage.png) | !["Button group with stats usage on dark mode"](images/buttons-group/button-group-with-stats-usage-dark.png)
 
-Code:
+>Code sample
 
 ```html
 <nxt-button-group>

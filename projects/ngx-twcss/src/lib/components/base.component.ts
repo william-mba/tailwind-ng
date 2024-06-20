@@ -4,7 +4,6 @@ import { toClassName } from "../core/helpers/object.helper";
 import { ConfigService } from "../configs/config.service";
 import { SizeConfig } from "../configs/size.config";
 
-
 /**@package ngx-twcss */
 export abstract class BaseComponent<ConfigType> {
   protected configService = inject(ConfigService<ConfigType>);
@@ -36,6 +35,7 @@ export abstract class BaseComponent<ConfigType> {
     this.addClassName();
   }
 
+  /**Override existing matching classes or add new ones in the component style*/
   private addClassName() {
     if (this.className.length > 2) {
       const styleToString = this.style.join(' ');

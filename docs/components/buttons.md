@@ -36,7 +36,7 @@ Light | Dark
 ---------- | ---------
 ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample.png "Secondary and primary buttons.") | ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample-dark.png "Secondary and primary buttons.")
 
-Code:
+>Code sample
 
 ```html
 <nxt-primary-button>
@@ -54,7 +54,7 @@ Light | Dark
 ---------- | ---------
 !["Circular buttons"](images/buttons/circulars-buttons.png "Circular buttons") | !["Circular buttons on dark"](images/buttons/circulars-buttons-dark.png "Circular buttons on dark")
 
-Code:
+>Code sample
 
 ```html
 <nxt-primary-button className="rounded-full px-2 py-2">
@@ -128,8 +128,6 @@ Primary button config
 ```ts
 export const PrimaryButtonConfigKey = 'PrimaryButtonConfigKey';
 
-export type PrimaryButtonConfig = Partial<ButtonBaseConfig>;
-
 export const PrimaryButtonConfig: PrimaryButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
@@ -150,10 +148,6 @@ Secondary button config
 
 ```ts
 export const SecondaryButtonConfigKey = 'SecondaryButtonConfigKey';
-
-export type SecondaryButtonConfig = Partial<ButtonBaseConfig> & {
-  borderWidth: BorderWidth
-};
 
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
@@ -195,8 +189,6 @@ Soft button config
 ```ts
 export const SoftButtonConfigKey = 'SoftButtonConfigKey';
 
-export type SoftButtonConfig = Partial<ButtonBaseConfig>;
-
 export const SoftButtonConfig: SoftButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
@@ -217,12 +209,6 @@ Button base config
 ---
 
 ```ts
-export type ButtonBaseConfig = Partial<BaseConfig> & {
-  textWrap: TextWrap,
-  overflow: Overflow,
-  userSelect: UserSelect
-}
-
 export const ButtonBaseConfig: ButtonBaseConfig = {
   ...BaseConfig,
   textWrap: 'text-nowrap',

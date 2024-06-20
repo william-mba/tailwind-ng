@@ -13,7 +13,6 @@ import { PrimaryButtonConfigKey, PrimaryButtonConfig } from './primary-button.co
 export class PrimaryButton extends BaseComponent<PrimaryButtonConfig> implements OnInit {
   @Input() override size: SizeVariant = 'md';
   @Input() override className: string = '';
-  @Input() override style: string[] = [];
 
   ngOnInit(): void {
     this.initConfig(PrimaryButtonConfigKey, PrimaryButtonConfig);

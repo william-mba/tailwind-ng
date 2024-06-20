@@ -59,9 +59,10 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
 
   @Input() override size: SizeVariant = 'md';
   @Input() override className!: string;
-  @Input() override style!: string[];
 
   @Input() isOpen: boolean = false;
+  /**Dropdown content position relative to the dropdown container*/
+  @Input() position: string = 'top-8 right-0';
 
   ngOnInit(): void {
     this.initConfig();

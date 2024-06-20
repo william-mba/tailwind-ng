@@ -13,7 +13,6 @@ import { SoftButtonConfig, SoftButtonConfigKey } from './soft-button.config';
 export class SoftButton extends BaseComponent<SoftButtonConfig> implements OnInit {
   @Input() override size: SizeVariant = 'md';
   @Input() override className: string = '';
-  @Input() override style: string[] = [];
 
   ngOnInit(): void {
     this.initConfig(SoftButtonConfigKey, SoftButtonConfig);

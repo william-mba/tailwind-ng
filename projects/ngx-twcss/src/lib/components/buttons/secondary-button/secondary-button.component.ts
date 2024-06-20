@@ -13,7 +13,6 @@ import { SecondaryButtonConfigKey, SecondaryButtonConfig } from './secondary-but
 export class SecondaryButton extends BaseComponent<SecondaryButtonConfig> implements OnInit {
   @Input() override size: SizeVariant = 'md';
   @Input() override className: string = '';
-  @Input() override style: string[] = [];
 
   ngOnInit(): void {
     this.initConfig(SecondaryButtonConfigKey, SecondaryButtonConfig);

@@ -14,7 +14,7 @@ Light | Dark
 ![""](images/dropdown/dropdown.png) | ![""](images/dropdown/dropdown-dark.png)
 ![""](images/dropdown/dropdown-usage.png) | ![""](images/dropdown/dropdown-usage-dark.png)
 
-Code:
+>Code sample
 
 ```html
 <nxt-dropdown className="rounded-full">
@@ -38,7 +38,7 @@ Light | Dark
 ![""](images/dropdown/dropdown-with-icon.png) | ![""](images/dropdown/dropdown-with-icon-dark.png)
 ![""](images/dropdown/dropdown-with-icon-usage.png) | ![""](images/dropdown/dropdown-with-icon-usage-dark.png)
 
-Code:
+>Code sample
 
 ```html
 <nxt-dropdown className="rounded-full px-1 py-1">
@@ -61,11 +61,11 @@ Code:
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-size      | SizeVariant | `size`    | `'md'`  | The component size.
-className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-style     | string[]    | `[style]`   |  `[]`   | The dropdown container style.
-contentStyle     | string    | /   |  `''`   | The dropdown content style.
-isOpen | `boolean` | `[isOpen]` | `false` | The dropdown state
+size      | ``SizeVariant`` | `size`    | `'md'`  | The component size.
+className | ``string``      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
+contentStyle     | ``string``    | n/a   |  `''`   | The dropdown content style.
+isOpen | `boolean` | `[isOpen]` | `false` | The dropdown state.
+position | `string` | `position` | `top-8 right-0` | The dropdown content position relative to the dropdown container.
 
 <br/>
 
@@ -89,12 +89,6 @@ Dropdown config
 ```ts
 export const DropdownConfigKey = 'DropdownConfigKey';
 
-export type DropdownConfig = {
-  container: Partial<DropdownContainerConfig>,
-  content: Partial<DropdownContentConfig>,
-  item: Partial<DropdownItemConfig>
-}
-
 export const DropdownConfig: DropdownConfig = {
   container: DropdownContainerConfig,
   content: DropdownContentConfig,
@@ -109,10 +103,6 @@ Dropdown container config
 ---
 
 ```ts
-export type DropdownContainerConfig = Partial<DropdownBaseConfig> & {
-  position: Position
-};
-
 export const DropdownContainerConfig: DropdownContainerConfig = {
   ...DropdownBaseConfig,
   position: 'relative',
@@ -129,20 +119,7 @@ Dropdown content config
 ---
 
 ```ts
-export type DropdownContentConfig = Partial<DropdownBaseConfig> & {
-  position: Position,
-  divideWidth: DivideWidth
-}
-
 export const DropdownContentConfig: DropdownContentConfig = {
-  position: {
-    type: 'absolute',
-    placement: {
-      top: 'top-8',
-      right: 'right-0'
-    }
-  },
-  divideWidth: 'divide-y',
   borderWidth: 'border',
   borderRadius: 'rounded-md',
   theme: {
@@ -162,7 +139,11 @@ export const DropdownContentConfig: DropdownContentConfig = {
     marginTop: 'mt-4',
     paddingY: 'py-1',
     width: 'min-w-full'
-  }
+  },
+  position: {
+    type: 'absolute'
+  },
+  divideWidth: 'divide-y'
 }
 ```
 
@@ -173,11 +154,6 @@ Dropdown item config
 ---
 
 ```ts
-export type DropdownItemConfig = Partial<DropdownBaseConfig> & {
-  textAlign: TextAlign,
-  width: Width
-}
-
 export const DropdownItemConfig: DropdownItemConfig = {
   textAlign: 'text-start',
   width: 'w-full',
@@ -212,12 +188,6 @@ Dropdown base config
 ---
 
 ```ts
-export type DropdownBaseConfig = Partial<BaseConfig> & {
-  textWrap: TextWrap,
-  userSelect: UserSelect,
-  borderWidth: BorderWidth,
-};
-
 export const DropdownBaseConfig: DropdownBaseConfig = {
   textWrap: 'text-nowrap',
   userSelect: 'select-none',
