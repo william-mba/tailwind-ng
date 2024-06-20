@@ -17,7 +17,7 @@ Ready-to-use and easily customizable.
 
 - [Roadmap](docs/roadmap.md)
 - [Components docs](docs/components/)
-- [Live demo](https://stackblitz.com/edit/stackblitz-starters-lrxhtf?file=demo%2Fsrc%2Fapp%2Fapp.component.ts) (please enter ``./start.sh`` in the shell to view the live demo)
+- [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss-demo)
 
 
 ## Quick start
