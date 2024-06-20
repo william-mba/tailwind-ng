@@ -13,7 +13,13 @@ Ready-to-use and easily customizable.
 <br/>
 </div>
 
-## Getting started
+## Resources
+
+- [Roadmap](https://github.com/William-Mba/ngx-twcss/blob/main/docs/roadmap.md)
+- [Components docs](https://github.com/William-Mba/ngx-twcss/tree/main/docs/components)
+- [Live demo](https://stackblitz.com/edit/stackblitz-starters-lrxhtf?file=demo%2Fsrc%2Fapp%2Fapp.component.ts) (please enter ``./start.sh`` in the shell to view the live demo)
+
+## Quick start
 
 ### 0. Prerequisites
 

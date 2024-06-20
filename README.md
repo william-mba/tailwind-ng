@@ -17,12 +17,10 @@ Ready-to-use and easily customizable.
 
 - [Roadmap](docs/roadmap.md)
 - [Components docs](docs/components/)
-<!-- TODO: complete docs
--   [Quick start](docs/quick-start.md)
--   [Browser support and FAQ](docs/support.md) -->
+- [Live demo](https://stackblitz.com/edit/stackblitz-starters-lrxhtf?file=demo%2Fsrc%2Fapp%2Fapp.component.ts) (please enter ``./start.sh`` in the shell to view the live demo)
 
 
-## Getting started
+## Quick start
 
 ### 0. Prerequisites
 
