@@ -34,9 +34,9 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-badge className="bg-gray-600 text-gray-600 ring-1 ring-gray-300">Badge</nxt-badge>
-<nxt-badge className="bg-red-600 text-red-700 ring-1 ring-red-300">Badge</nxt-badge>
-<nxt-badge className="bg-yellow-600 text-yellow-800 ring-1 ring-yellow-300">Badge</nxt-badge>
+<nxt-badge className="bg-blue-600 text-blue-700">Badge</nxt-badge>
+<nxt-badge className="bg-yellow-600 text-yellow-800">Badge</nxt-badge>
+<nxt-badge className="bg-red-600 text-red-700">Badge</nxt-badge>
 ...
 ```
 
@@ -108,6 +108,7 @@ Light | Dark
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
+padding | string      | `padding` |  `px-1.5 py-1`   | The padding size of the badge.
 
 <br/>
 
@@ -123,26 +124,15 @@ Dropdown config
 export const BadgeConfigKey = 'BadgeConfigKey';
 
 export const BadgeConfig: BadgeConfig = {
-  ...BaseConfig,
-  fontWeight: 'font-medium'
+  display: {
+    gap: 'gap-1',
+    type: 'inline-flex',
+    alignItem: 'items-center',
+    justifyContent: 'justify-center',
+  },
+  fontWeight: 'font-medium',
+  borderRadius: 'rounded-md'
 }
 ```
-
-<br/>
-
-Base config
 
 ---
-
-```ts
-export const BaseConfig: BaseConfig = {
-  display: {
-    type: 'inline-flex',
-    justifyContent: 'justify-center',
-    alignItem: 'items-center',
-    gap: 'gap-1.5',
-  },
-  borderRadius: 'rounded-lg',
-  fontWeight: 'font-semibold',
-}
-```

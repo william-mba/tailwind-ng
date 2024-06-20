@@ -11,15 +11,15 @@ export const SizeConfig: Size = {
   md: {
     fontSize: 'text-base',
     padding: {
-      x: 'px-4',
-      y: 'py-2'
+      x: 'px-3.5',
+      y: 'py-1.5'
     }
   },
   lg: {
     fontSize: 'text-xl',
     padding: {
-      x: 'px-5',
-      y: 'py-2.5'
+      x: 'px-4',
+      y: 'py-2'
     }
   }
 }

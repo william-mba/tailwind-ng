@@ -17,8 +17,14 @@ export const BadgeConfigKey = 'BadgeConfigKey';
 export type BadgeConfig = Partial<BaseConfig>;
 
 export const BadgeConfig: BadgeConfig = {
-  ...BaseConfig,
-  fontWeight: 'font-medium'
+  display: {
+    gap: 'gap-1',
+    type: 'inline-flex',
+    alignItem: 'items-center',
+    justifyContent: 'justify-center',
+  },
+  fontWeight: 'font-medium',
+  borderRadius: 'rounded-md'
 }
 /**Badge element
  * @package ngx-twcss
@@ -31,14 +37,14 @@ export const BadgeConfig: BadgeConfig = {
 export class Badge extends BaseComponent<BadgeConfig> implements OnInit {
   /* Used here instead of in the config to avoid
   the value to be override when coming from the className.*/
-  private readonly padding: string = 'px-2 py-1';
   private readonly fontSize: FontSize = 'text-xs';
   private readonly border: RingWidth = 'ring-inset';
   private readonly ringOpacity: RingOpacity = 'ring-opacity-30';
   private readonly bgOpacity: BackgroundOpacity = 'bg-opacity-5';
-  private baseStyle: string = 'dark:bg-opacity-5 dark:ring-opacity-10';
+  private baseStyle: string = 'dark:bg-opacity-5 dark:ring-opacity-20';
 
   @Input() override className!: string;
+  @Input() padding: string = 'px-1.5 py-1';
 
   ngOnInit(): void {
     this.baseStyle += ` ${this.padding} ${this.fontSize} ${this.border} ${this.ringOpacity} ${this.bgOpacity}`;
