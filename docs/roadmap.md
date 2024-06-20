@@ -6,11 +6,13 @@ This roadmap describes current, future, and past goals for Ngx-twcss.
 
 These are the items we are currently working on.
 
-Application UI
-
-- [ ] Elements
-  - [ ] Avatar
-  - [ ] Badge
+- [ ] <b>Application UI</b>
+  - [ ] Elements
+    - [ ] Avatar
+  - [ ] Forms
+    - [ ] Select Menu
+    - [ ] Radio Group
+    - [ ] Checkboxe
 
 ---
 
@@ -18,31 +20,27 @@ Application UI
 
 These are components we want to build next.
 
-### Application UI
+- [ ] <b>Application UI</b>
+  - [ ] Elements
+    - [ ] Avatar
+  - [ ] Forms
+    - [ ] Select Menu
+    - [ ] Radio Group
+    - [ ] Checkboxe
+    - [ ] Toggle
+    - [ ] Comboboxe
+    - [ ] Action Panel
+  - [ ] List
+    - [ ] Stacked List
+    - [ ] Table
+    - [ ] Grid List
+    - [ ] Feed
 
-- [ ] Elements
-  - [ ] Avatar
-  - [ ] Badge
-- [ ] Forms
-  - [ ] Select Menu
-  - [ ] Radio Group
-  - [ ] Checkboxe
-  - [ ] Toggle
-  - [ ] Comboboxe
-  - [ ] Action Panel
-- [ ] List
-  - [ ] Stacked List
-  - [ ] Table
-  - [ ] Grid List
-  - [ ] Feed
+- [ ] <b>Marketing</b>
+  - [ ] To plan
 
-### Marketing
-
-To plan
-
-### Ecommerce
-
-To plan
+- [ ] <b>Ecommerce</b>
+  - [ ] To plan
 
 ---
 
@@ -50,17 +48,16 @@ To plan
 
 These are ready-to-use components.
 
-### Application UI components
+- [ ] <b>Application UI</b>
+  - [ ] Elements
+    - [x] [Button](components/buttons.md)
+    - [x] [Button Group](components/buttons-group.md)
+    - [x] [Dropdown](components/dropdown.md)
+    - [x] [Badge](components/badge.md)
 
-- [ ] Elements
-  - [x] [Button](components/buttons.md)
-  - [x] [Button Group](components/buttons-group.md)
-  - [x] [Dropdown](components/dropdown.md)
+- [ ] <b>Marketing</b>
+  - [ ] Coming soon
 
-### Marketing components
 
-Coming soon
-
-### Ecommerce components
-
-Coming soon
+- [ ] <b>Ecommerce</b>
+  - [ ] Coming soon
