@@ -16,9 +16,9 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-badge className="bg-gray-600 text-gray-600 ring-gray-300">Badge</nxt-badge>
-<nxt-badge className="bg-red-600 text-red-700 ring-red-300">Badge</nxt-badge>
-<nxt-badge className="bg-yellow-600 text-yellow-800 ring-yellow-300">Badge</nxt-badge>
+<nxt-badge className="bg-gray-600 text-gray-600">Badge</nxt-badge>
+<nxt-badge className="bg-red-600 text-red-700">Badge</nxt-badge>
+<nxt-badge className="bg-yellow-600 text-yellow-800">Badge</nxt-badge>
 ...
 ```
 
@@ -34,9 +34,9 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-badge className="bg-blue-600 text-blue-700">Badge</nxt-badge>
-<nxt-badge className="bg-yellow-600 text-yellow-800">Badge</nxt-badge>
-<nxt-badge className="bg-red-600 text-red-700">Badge</nxt-badge>
+<nxt-badge className="... ring-1 ring-gray-300">Badge</nxt-badge>
+<nxt-badge className="... ring-1 ring-yellow-800">Badge</nxt-badge>
+<nxt-badge className="... ring-1 ring-red-700">Badge</nxt-badge>
 ...
 ```
 
@@ -55,7 +55,7 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-badge className="bg-gray-600 text-gray-600 ring-gray-300 rounded-full">
+<nxt-badge className="... rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="currentColor">
     <path
       d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
@@ -77,7 +77,7 @@ Light | Dark
 
 ```html
 <!--With action-->
-<nxt-badge className="bg-gray-600 text-gray-600 ring-gray-300 rounded-none">
+<nxt-badge className="... rounded-none">
   Badge
   <button class="hover:bg-gray-600 hover:bg-opacity-20 size-[16px]">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
@@ -87,7 +87,7 @@ Light | Dark
 </nxt-badge>
 ...
 <!--With action and border-->
-<nxt-badge className="bg-indigo-600 text-indigo-700 ring-indigo-300 ring-1 rounded-none">
+<nxt-badge className="... rounded-none">
   Badge
   <button class="hover:bg-indigo-600 hover:bg-opacity-20 size-[16px]">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
