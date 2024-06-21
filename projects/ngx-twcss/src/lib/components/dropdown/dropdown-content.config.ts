@@ -1,4 +1,3 @@
-import { DivideWidth } from "../../core/types/borders/divide-width";
 import { Position } from "../../core/types/layout/position";
 import { DropdownBaseConfig } from "./dropdown-base.config";
 
@@ -6,8 +5,7 @@ import { DropdownBaseConfig } from "./dropdown-base.config";
  * @package ngx-twcss
  */
 export type DropdownContentConfig = Partial<DropdownBaseConfig> & {
-  position: Partial<Position>,
-  divideWidth: DivideWidth
+  position: Partial<Position>
 }
 
 export const DropdownContentConfig: DropdownContentConfig = {
@@ -16,13 +14,11 @@ export const DropdownContentConfig: DropdownContentConfig = {
   theme: {
     light: {
       bgColor: 'bg-slate-50',
-      borderColor: 'border-slate-200',
-      divideColor: 'divide-slate-200'
+      borderColor: 'border-slate-200'
     },
     dark: {
       bgColor: 'dark:bg-slate-900',
-      borderColor: 'dark:border-slate-700',
-      divideColor: 'dark:divide-slate-700'
+      borderColor: 'dark:border-slate-700'
     }
   },
   extends: {
@@ -33,6 +29,5 @@ export const DropdownContentConfig: DropdownContentConfig = {
   },
   position: {
     type: 'absolute'
-  },
-  divideWidth: 'divide-y'
+  }
 }

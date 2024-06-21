@@ -57,12 +57,12 @@ export class DropdownItem {
 export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   protected contentStyle!: string;
 
-  @Input() override size: SizeVariant = 'md';
   @Input() override className!: string;
+  @Input() override size: SizeVariant = 'md';
 
   @Input() isOpen: boolean = false;
-  /**Dropdown content position relative to the dropdown container*/
-  @Input() position: string = 'top-8 right-0';
+  @Input() contentClassName: string = '';
+  @Input() contentPosition: string = 'top-8 right-0';
 
   ngOnInit(): void {
     this.initConfig();
@@ -71,9 +71,8 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   override initConfig(): void {
     this.configService.set(DropdownConfigKey, DropdownConfig)
       .get(DropdownConfigKey).subscribe((cfg) => {
-        this.style = [];
-        this.addClass(toClassName([cfg.container, SizeConfig[this.size]]));
-        this.contentStyle = toClassName(cfg.content);
+        this.style = this.addOrReplace(toClassName([cfg.container, SizeConfig[this.size]]), this.className);
+        this.contentStyle = this.addOrReplace(toClassName(cfg.content), this.contentClassName);
       });
   }
 

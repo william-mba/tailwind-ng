@@ -22,7 +22,7 @@ describe('PrimaryButtonComponent', () => {
     spyOn(component, 'ngOnInit');
 
     component.ngOnInit();
-    component.addClass(config);
+    component.updateStyle(config);
   });
 
   it('should be created', () => {
@@ -42,7 +42,7 @@ describe('PrimaryButtonComponent', () => {
 
 
   it('should set config', () => {
-    expect(component.addClass).toHaveBeenCalled();
+    expect(component.updateStyle).toHaveBeenCalled();
     expect(component.style.join(' ')).toContain(config);
   });
 });

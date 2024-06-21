@@ -61,11 +61,11 @@ Light | Dark
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-size      | ``SizeVariant`` | `size`    | `'md'`  | The component size.
-className | ``string``      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-contentStyle     | ``string``    | n/a   |  `''`   | The dropdown content style.
 isOpen | `boolean` | `[isOpen]` | `false` | The dropdown state.
-position | `string` | `position` | `top-8 right-0` | The dropdown content position relative to the dropdown container.
+size      | ``SizeVariant`` | `size`    | `'md'`  | The component size.
+className | ``string``      | `className` |  `''`   | The list of classes to add or override in the dropdown container style.
+contentClassName | ``string``      | `contentClassName` |  `''`   | The list of classes to add or override in the dropdown content style.
+contentPosition | `string` | `contentPosition` | `top-8 right-0` | The dropdown content position relative to the dropdown container.
 
 <br/>
 
@@ -125,13 +125,11 @@ export const DropdownContentConfig: DropdownContentConfig = {
   theme: {
     light: {
       bgColor: 'bg-slate-50',
-      borderColor: 'border-slate-200',
-      divideColor: 'divide-slate-200'
+      borderColor: 'border-slate-200'
     },
     dark: {
       bgColor: 'dark:bg-slate-900',
-      borderColor: 'dark:border-slate-700',
-      divideColor: 'dark:divide-slate-700'
+      borderColor: 'dark:border-slate-700'
     }
   },
   extends: {
@@ -142,8 +140,7 @@ export const DropdownContentConfig: DropdownContentConfig = {
   },
   position: {
     type: 'absolute'
-  },
-  divideWidth: 'divide-y'
+  }
 }
 ```
 

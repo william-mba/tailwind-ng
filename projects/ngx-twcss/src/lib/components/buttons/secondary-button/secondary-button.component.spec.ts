@@ -22,7 +22,7 @@ describe('SecondaryButtonComponent', () => {
     spyOn(component, 'ngOnInit');
 
     component.ngOnInit();
-    component.addClass(config);
+    component.updateStyle(config);
   });
 
   it('should be created', () => {
@@ -41,7 +41,7 @@ describe('SecondaryButtonComponent', () => {
   });
 
   it('should set config', () => {
-    expect(component.addClass).toHaveBeenCalled();
+    expect(component.updateStyle).toHaveBeenCalled();
     expect(component.style.join(' ')).toContain(config);
   });
 });

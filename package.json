@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test-lib": "ng test --project ngx-twcss --code-coverage",
     "test-demo": "ng test",
-    "publish": "cd dist/ngx-twcss && npm publish",
+    "publish": "yarn build-lib && cd dist/ngx-twcss && npm publish",
     "up-lib": "yarn build-lib && yarn && yarn start"
   },
   "private": true,
