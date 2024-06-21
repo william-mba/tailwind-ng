@@ -88,7 +88,6 @@ Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-style     | string[]    | `[style]`   |  `[]`   | The component style.
 ---
 
 <br/>
@@ -101,7 +100,6 @@ Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-style     | string[]    | `[style]`   |  `[]`   | The component style.
 ---
 
 <br/>
@@ -114,7 +112,6 @@ Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
-style     | string[]    | `[style]`   |  `[]`   | The component style.
 ---
 
 ## Default configurations
