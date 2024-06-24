@@ -10,7 +10,7 @@ Use ``tw-group`` to group buttons with other elements like dropdowns and checkbo
 
 <br/>
 
-Three options button group.
+### Three options button group
 
 ---
 Light | Dark
@@ -36,7 +36,7 @@ Light | Dark
 
 <br/>
 
-Button group with icons
+### With icons
 
 ---
 Light | Dark
@@ -67,13 +67,13 @@ Light | Dark
 
 <br/>
 
-Button group with stats usage
+### With stats
 
 ---
 Light | Dark
 ---------- | ---------
-!["Button group with stats on light mode"](images/buttons-group/button-group-with-stats.png) | !["Button group with stats on light mode"](images/buttons-group/button-group-with-stats-dark.png)
-!["Button group with stats usage on light mode"](images/buttons-group/button-group-with-stats-usage.png) | !["Button group with stats usage on dark mode"](images/buttons-group/button-group-with-stats-usage-dark.png)
+![""](images/buttons-group/button-group-with-stats.png) | ![""](images/buttons-group/button-group-with-stats-dark.png)
+![""](images/buttons-group/button-group-with-stats-usage.png) | ![""](images/buttons-group/button-group-with-stats-usage-dark.png)
 
 >Code sample
 
@@ -93,15 +93,30 @@ Light | Dark
 
 <br/>
 
-## API
-
-<br/>
-
-### ButtonGroup `<tw-group>`
+### With dropdown
 
 ---
+Light | Dark
+---------- | ---------
+![""](images/buttons-group/button-group-with-dropdown.png) | ![""](images/buttons-group/button-group-with-dropdown-dark.png)
+![""](images/buttons-group/button-group-with-dropdown-usage.png) | ![""](images/buttons-group/button-group-with-dropdown-usage-dark.png)
 
-Property  | Type        | Attribute   | Default | Description
-----------|-------------|-------------|---------|------------
-n/a | n/a      | `class` |  `'inline-flex'`   | Align items using the `inline-flex` Tailwind CSS utility class.
----
+>Code sample
+
+```html
+<tw-group>
+  <tw-secondary-button className="rounded-l-md">
+    Save changes
+  </tw-secondary-button>
+  <tw-dropdown className="rounded-r-md">
+    Options
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960">
+      <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
+    </svg>
+    <!-- item -->
+    <tw-dropdown-item *ngFor="let item of items">
+      {{ item }}
+    </tw-dropdown-item>
+  </tw-dropdown>
+</tw-group>
+```

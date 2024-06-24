@@ -8,6 +8,6 @@ export class ButtonGroupDemoComponent {
   items = [
     'Save as draft',
     'Save and publish',
-    'Remove everything'
+    'Cancel'
   ];
 }
