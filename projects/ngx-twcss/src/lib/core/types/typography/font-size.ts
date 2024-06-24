@@ -12,3 +12,8 @@ export type FontSize =
   | "text-7xl"
   | "text-8xl"
   | "text-9xl"
+  | "text-[6px]"
+  | "text-[7px]"
+  | "text-[8px]"
+  | "text-[9px]"
+

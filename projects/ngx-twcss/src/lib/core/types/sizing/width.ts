@@ -1,3 +1,5 @@
+import { MinWidth } from "./min-width";
+
 export type Width =
   | 'w-0'
   | 'w-px'
@@ -69,3 +71,4 @@ export type Width =
   | 'w-min'
   | 'w-max'
   | 'w-fit'
+  | MinWidth

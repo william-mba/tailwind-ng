@@ -1,13 +1,6 @@
 import { BaseConfig } from "../../configs/base.config";
-import { BorderWidth } from "../../core/types/borders/border-width";
-import { UserSelect } from "../../core/types/interactivity/user-select";
-import { TextWrap } from "../../core/types/typography/text-wrap";
 
-export type DropdownBaseConfig = Partial<BaseConfig> & {
-  textWrap: TextWrap,
-  userSelect: UserSelect,
-  borderWidth: BorderWidth,
-};
+export type DropdownBaseConfig = Partial<BaseConfig>;
 
 export const DropdownBaseConfig: DropdownBaseConfig = {
   textWrap: 'text-nowrap',
@@ -15,8 +8,8 @@ export const DropdownBaseConfig: DropdownBaseConfig = {
   borderWidth: 'border',
   display: {
     type: 'inline-flex',
-    justifyContent: 'justify-center',
     alignItem: 'items-center',
+    justifyContent: 'justify-center',
     gap: 'gap-1.5'
   },
   borderRadius: 'rounded-md',

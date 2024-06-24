@@ -1,23 +1,16 @@
-import { Width } from "../../core/types/sizing/width";
-import { TextAlign } from "../../core/types/typography/text-align";
 import { DropdownBaseConfig } from "./dropdown-base.config";
 
 /**Dropdown item config
  * @package ngx-twcss
  */
-export type DropdownItemConfig = Partial<DropdownBaseConfig> & {
-  textAlign: TextAlign,
-  width: Width
-}
+export type DropdownItemConfig = Partial<DropdownBaseConfig>
 
 export const DropdownItemConfig: DropdownItemConfig = {
   textAlign: 'text-start',
   width: 'w-full',
   borderRadius: 'rounded-none',
   borderWidth: 'border-0',
-  display: {
-    type: 'block'
-  },
+  display: 'block',
   theme: {
     light: {
       bgColor: 'bg-slate-100',

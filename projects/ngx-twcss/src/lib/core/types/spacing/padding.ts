@@ -10,6 +10,7 @@ export type Padding = PaddingSize | {
 
 export type PaddingRight =
   | 'pr-0'
+  | 'pr-0.5'
   | 'pr-1'
   | 'pr-1.5'
   | 'pr-2'
@@ -41,6 +42,7 @@ export type PaddingRight =
 
 export type PaddingLeft =
   | 'pl-0'
+  | 'pl-0.5'
   | 'pl-1'
   | 'pl-1.5'
   | 'pl-2'
@@ -72,6 +74,7 @@ export type PaddingLeft =
 
 export type PaddingTop =
   | 'pt-0'
+  | 'pt-0.5'
   | 'pt-1'
   | 'pt-1.5'
   | 'pt-2'
@@ -103,6 +106,7 @@ export type PaddingTop =
 
 export type PaddingBottom =
   | 'pb-0'
+  | 'pb-0.5'
   | 'pb-1'
   | 'pb-1.5'
   | 'pb-2'
@@ -134,6 +138,7 @@ export type PaddingBottom =
 
 export type PaddingX =
   | 'px-0'
+  | 'px-0.5'
   | 'px-1'
   | 'px-1.5'
   | 'px-2'
@@ -165,6 +170,7 @@ export type PaddingX =
 
 export type PaddingY =
   | 'py-0'
+  | 'py-0.5'
   | 'py-1'
   | 'py-1.5'
   | 'py-2'
@@ -196,6 +202,7 @@ export type PaddingY =
 
 export type PaddingSize =
   | 'p-0'
+  | 'p-0.5'
   | 'p-1'
   | 'p-1.5'
   | 'p-2'

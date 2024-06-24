@@ -1,4 +1,3 @@
-import { Position } from "../../core/types/layout/position";
 import { DropdownBaseConfig } from "./dropdown-base.config";
 import { DropdownContentConfig } from "./dropdown-content.config";
 import { DropdownItemConfig } from "./dropdown-item.config";
@@ -6,9 +5,7 @@ import { DropdownItemConfig } from "./dropdown-item.config";
 /**Dropdown container config
  * @package ngx-twcss
  */
-export type DropdownContainerConfig = Partial<DropdownBaseConfig> & {
-  position: Position
-};
+export type DropdownContainerConfig = Partial<DropdownBaseConfig>;
 
 export const DropdownContainerConfig: DropdownContainerConfig = {
   ...DropdownBaseConfig,

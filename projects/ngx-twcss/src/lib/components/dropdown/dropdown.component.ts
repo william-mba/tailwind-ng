@@ -1,7 +1,7 @@
 import { Component, Directive, ElementRef, HostListener, Input, OnInit, inject } from '@angular/core';
 import { BaseComponent, SizeVariant } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
-import { toClassName } from '../../core/helpers/object.helper';
+import { toClassName } from '../../core/helpers/config.helper';
 import { NgIf } from '@angular/common';
 import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../configs/config.service';
@@ -71,8 +71,8 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   override initConfig(): void {
     this.configService.set(DropdownConfigKey, DropdownConfig)
       .get(DropdownConfigKey).subscribe((cfg) => {
-        this.style = this.addOrReplace(toClassName([cfg.container, SizeConfig[this.size]]), this.className);
-        this.contentStyle = this.addOrReplace(toClassName(cfg.content), this.contentClassName);
+        this.style = this.resolveStyle(toClassName([cfg.container, SizeConfig[this.size]]), this.className);
+        this.contentStyle = this.resolveStyle(toClassName(cfg.content), this.contentClassName);
       });
   }
 

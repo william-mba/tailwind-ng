@@ -1,12 +1,9 @@
-import { Position } from "../../core/types/layout/position";
 import { DropdownBaseConfig } from "./dropdown-base.config";
 
 /**Dropdown content config
  * @package ngx-twcss
  */
-export type DropdownContentConfig = Partial<DropdownBaseConfig> & {
-  position: Partial<Position>
-}
+export type DropdownContentConfig = Partial<DropdownBaseConfig>
 
 export const DropdownContentConfig: DropdownContentConfig = {
   borderWidth: 'border',
@@ -27,7 +24,5 @@ export const DropdownContentConfig: DropdownContentConfig = {
     paddingY: 'py-1',
     width: 'min-w-full'
   },
-  position: {
-    type: 'absolute'
-  }
+  position: 'absolute'
 }

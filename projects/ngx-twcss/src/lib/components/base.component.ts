@@ -1,5 +1,5 @@
 import { inject } from "@angular/core";
-import { toClassName } from "../core/helpers/object.helper";
+import { resolveStyle, toClassName } from "../core/helpers/config.helper";
 import { ConfigService } from "../configs/config.service";
 import { SizeConfig } from "../configs/size.config";
 
@@ -14,35 +14,12 @@ export abstract class BaseComponent<ConfigType> {
   protected initConfig(key: string, config?: ConfigType): void {
     this.configService.set(key, config ?? this.config)
       .get(key).subscribe((cfg) => {
-        this.style = this.addOrReplace(toClassName([cfg, SizeConfig[this.size]]), this.className);
+        this.style = this.resolveStyle(toClassName([cfg, SizeConfig[this.size]]), this.className);
       });
   }
 
-  /**Add new Tailwind CSS utility classes or replace existing ones into style by a matching one in className
-   * @param style - The default style to update
-   * @param className - The classes to add or replace
-   * @returns The updated style
-  */
-  protected addOrReplace(style: string, className: string): string {
-    if (className.length >= 3) {
-      let newClassList = style.split(' ');
-      const incomingClassList = className.split(' ');
-      const existingClassList = style.split(' ').join(' ');
-
-      incomingClassList.forEach((name) => {
-
-        const searchTerm = name.substring(0, name.indexOf('-'));
-
-        if (existingClassList.includes(searchTerm)) {
-          const existingClass = newClassList.find(c => c.includes(searchTerm));
-
-          newClassList = newClassList.filter(c => c !== existingClass);
-        }
-      });
-      newClassList.push(className);
-      style = newClassList.join(' ');
-    }
-    return style;
+  protected resolveStyle(style: string, className: string): string {
+    return resolveStyle(style, className);
   }
 
   protected removeClass(...classList: string[]): void {

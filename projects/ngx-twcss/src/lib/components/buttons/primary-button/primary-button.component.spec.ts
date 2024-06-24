@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PrimaryButton } from './primary-button.component';
 import { PrimaryButtonConfig } from './primary-button.config';
-import { toClassName } from '../../../core/helpers/object.helper';
+import { toClassName } from '../../../core/helpers/config.helper';
 
 describe('PrimaryButtonComponent', () => {
   let component: PrimaryButton;

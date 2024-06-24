@@ -7,24 +7,7 @@ export type Display = {
   | "flex"
   | "grid"
   | "inline-flex"
-  | "inline-grid"
-  | "block"
-  | "inline-block"
-  | "inline"
-  | "table"
-  | "inline-table"
-  | "table-caption"
-  | "table-cell"
-  | "table-column"
-  | "table-column-group"
-  | "table-footer-group"
-  | "table-header-group"
-  | "table-row-group"
-  | "table-row"
-  | "flow-root"
-  | "contents"
-  | "list-item"
-  | "hidden",
+  | "inline-grid",
   /**Utilities for controlling gutters between grid and flexbox items.
    * @see https://tailwindcss.com/docs/gap
    */
@@ -38,3 +21,21 @@ export type Display = {
    */
   justifyContent: JustifyContent
 }
+  | "block"
+  | "table"
+  | "hidden"
+  | "inline"
+  | "inline-block"
+  | "inline-table"
+  | "table-cell"
+  | "table-column"
+  | "table-caption"
+  | "table-column-group"
+  | "table-footer-group"
+  | "table-header-group"
+  | "table-row-group"
+  | "table-row"
+  | "flow-root"
+  | "contents"
+  | "list-item"
+

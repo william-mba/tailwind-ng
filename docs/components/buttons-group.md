@@ -21,7 +21,7 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-button-group>
+<nxt-group>
   <nxt-secondary-button className="rounded-l-full">
     Years
   </nxt-secondary-button>
@@ -31,7 +31,7 @@ Light | Dark
   <nxt-secondary-button className="rounded-r-full">
     Days
   </nxt-secondary-button>
-</nxt-button-group>
+</nxt-group>
 ```
 
 <br/>
@@ -47,7 +47,7 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-button-group>
+<nxt-group>
   <nxt-secondary-button className="rounded-l-full">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
       <path fill-rule="evenodd"
@@ -62,7 +62,7 @@ Light | Dark
         clip-rule="evenodd" />
     </svg>
   </nxt-secondary-button>
-</nxt-button-group>
+</nxt-group>
 ```
 
 <br/>
@@ -78,7 +78,7 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-button-group>
+<nxt-group>
   <nxt-secondary-button className="rounded-l-md">
     <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
       <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
@@ -88,7 +88,7 @@ Light | Dark
   <nxt-secondary-button className="rounded-r-md">
     12k
   </nxt-secondary-button>
-</nxt-button-group>
+</nxt-group>
 ```
 
 <br/>
@@ -97,7 +97,7 @@ Light | Dark
 
 <br/>
 
-### ButtonGroup `<nxt-button-group>`
+### ButtonGroup `<nxt-group>`
 
 ---
 
