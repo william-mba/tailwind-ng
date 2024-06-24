@@ -13,17 +13,17 @@ export const DropdownItemConfig: DropdownItemConfig = {
   display: 'block',
   theme: {
     light: {
-      bgColor: 'bg-slate-100',
-      borderColor: 'border-slate-200',
+      bgColor: 'bg-neutral-100',
+      borderColor: 'border-neutral-200',
       hover: {
-        bgColor: 'hover:bg-slate-200'
+        bgColor: 'hover:bg-neutral-200'
       }
     },
     dark: {
-      bgColor: 'dark:bg-slate-800',
-      borderColor: 'dark:border-slate-700',
+      bgColor: 'dark:bg-neutral-800',
+      borderColor: 'dark:border-neutral-700',
       hover: {
-        bgColor: 'dark:hover:bg-slate-700'
+        bgColor: 'dark:hover:bg-neutral-700'
       }
     }
   }

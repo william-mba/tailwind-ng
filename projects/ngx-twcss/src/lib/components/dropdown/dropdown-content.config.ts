@@ -10,12 +10,12 @@ export const DropdownContentConfig: DropdownContentConfig = {
   borderRadius: 'rounded-md',
   theme: {
     light: {
-      bgColor: 'bg-slate-50',
-      borderColor: 'border-slate-200'
+      bgColor: 'bg-neutral-50',
+      borderColor: 'border-neutral-200'
     },
     dark: {
-      bgColor: 'dark:bg-slate-900',
-      borderColor: 'dark:border-slate-700'
+      bgColor: 'dark:bg-neutral-900',
+      borderColor: 'dark:border-neutral-700'
     }
   },
   extends: {

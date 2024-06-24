@@ -17,24 +17,24 @@ export const DropdownBaseConfig: DropdownBaseConfig = {
   theme: {
     light: {
       textColor: 'text-black',
-      bgColor: 'bg-slate-100',
-      borderColor: 'border-slate-200',
+      bgColor: 'bg-neutral-100',
+      borderColor: 'border-neutral-200',
       hover: {
-        bgColor: 'hover:bg-slate-200'
+        bgColor: 'hover:bg-neutral-200'
       },
       focus: {
-        borderColor: 'focus:border-slate-400'
+        borderColor: 'focus:border-neutral-400'
       }
     },
     dark: {
       textColor: 'dark:text-white',
-      bgColor: 'dark:bg-slate-800',
-      borderColor: 'dark:border-slate-700',
+      bgColor: 'dark:bg-neutral-800',
+      borderColor: 'dark:border-neutral-700',
       hover: {
-        bgColor: 'dark:hover:bg-slate-700'
+        bgColor: 'dark:hover:bg-neutral-700'
       },
       focus: {
-        borderColor: 'dark:focus:border-slate-500'
+        borderColor: 'dark:focus:border-neutral-500'
       }
     }
   }
