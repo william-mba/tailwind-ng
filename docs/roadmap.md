@@ -9,6 +9,7 @@ These are the items we are currently working on.
 - [ ] <b>Application UI</b>
   - [ ] Elements
     - [ ] Avatar
+    - [ ] Tooltip
   - [ ] Forms
     - [ ] Select Menu
     - [ ] Radio Group

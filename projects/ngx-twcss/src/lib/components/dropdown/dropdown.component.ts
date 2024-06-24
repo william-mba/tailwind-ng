@@ -7,7 +7,7 @@ import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../configs/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
 
-/**Dropdown item element
+/**Dropdown item component
  * @package ngx-twcss
 */
 @Directive({
@@ -25,7 +25,7 @@ export class DropdownItem {
   }
 }
 
-/**Dropdown element
+/**Dropdown component
  * @package ngx-twcss
 */
 @Component({

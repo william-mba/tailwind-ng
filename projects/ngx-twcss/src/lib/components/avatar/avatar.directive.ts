@@ -2,7 +2,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { BaseConfig } from '../../configs/base.config';
 import { toClassName, resolveStyle } from '../../core/helpers/config.helper';
 
-/**Avatar element. ['text-xl', 'rounded-full', 'relative', 'text-nowrap', ..]
+/**Avatar component. ['text-xl', 'rounded-full', 'relative', 'text-nowrap', ..]
   @package ngx-twcss
  */
 @Directive({
