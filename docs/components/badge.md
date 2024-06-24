@@ -75,6 +75,8 @@ Light | Dark
 ![""](images/badge/badge-with-action.png) | ![""](images/badge/badge-with-action-dark.png)
 ![""](images/badge/badge-with-action-and-border.png) | ![""](images/badge/badge-with-action-and-border-dark.png)
 
+>Code sample
+
 ```html
 <!--With action-->
 <nxt-badge className="... rounded-none">

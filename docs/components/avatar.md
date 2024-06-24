@@ -338,7 +338,7 @@ Light | Dark
 
 <br/>
 
-### Badge `<nxt-avatar>`
+### Avatar `<nxt-avatar>`
 
 ---
 Property  | Type        | Attribute   | Default | Description
