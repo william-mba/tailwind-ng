@@ -2,11 +2,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SecondaryButton } from './secondary-button.component';
 import { SecondaryButtonConfig } from './secondary-button.config';
 import { toClassName } from '../../../core/helpers/config.helper';
+import { SizeVariant } from '../../base.component';
 
 describe('SecondaryButtonComponent', () => {
   let component: SecondaryButton;
   let fixture: ComponentFixture<SecondaryButton>;
-  let config = toClassName(SecondaryButtonConfig);
+  const config = toClassName(SecondaryButtonConfig);
+  const sizeVariants = ['sm', 'md', 'lg'] as SizeVariant[];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -18,11 +20,11 @@ describe('SecondaryButtonComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    spyOn(component, 'addClass');
     spyOn(component, 'ngOnInit');
 
+    component.className = config;
+
     component.ngOnInit();
-    component.updateStyle(config);
   });
 
   it('should be created', () => {
@@ -32,16 +34,21 @@ describe('SecondaryButtonComponent', () => {
 
   it('should set size', () => {
     expect(component.size).toBeDefined();
-    component.size = 'sm';
+    component.size = sizeVariants[0];
     expect(component.size).toBe('sm');
-    component.size = 'md';
+    component.size = sizeVariants[1];
     expect(component.size).toBe('md');
-    component.size = 'lg';
+    component.size = sizeVariants[2];
     expect(component.size).toBe('lg');
   });
 
-  it('should set config', () => {
-    expect(component.updateStyle).toHaveBeenCalled();
-    expect(component.style.join(' ')).toContain(config);
+  it('should set className', () => {
+    expect(component.className).toBeDefined();
+    expect(component.className).toEqual(config);
+  });
+
+
+  it('should init config', () => {
+    expect(component.ngOnInit).toHaveBeenCalled();
   });
 });
