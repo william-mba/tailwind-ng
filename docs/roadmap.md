@@ -7,6 +7,10 @@ This roadmap describes current, future, and past goals for Ngx-twcss.
 These are the items we are currently working on.
 
 - [ ] <b>Application UI</b>
+  - [ ] Overlays
+    - [ ] Modal Dialog
+    - [ ] Notification
+    - [ ] Slide-over
   - [ ] Forms
     - [ ] Select Menu
     - [ ] Radio Group

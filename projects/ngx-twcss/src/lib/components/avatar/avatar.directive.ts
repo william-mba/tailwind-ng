@@ -2,7 +2,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { BaseConfig } from '../../configs/base.config';
 import { toClassName, resolveStyle } from '../../core/helpers/config.helper';
 
-/**Avatar component. ['text-xl', 'rounded-full', 'relative', 'text-nowrap', ..]
+/**Avatar component.
   @package ngx-twcss
  */
 @Directive({
@@ -30,13 +30,5 @@ export const AvatarConfig: AvatarConfig = {
     justifyContent: 'justify-center'
   },
   position: 'relative',
-  fontSize: 'text-xl',
-  textWrap: 'text-nowrap',
-  borderWidth: 'ring-2',
-  borderRadius: 'rounded-full',
-  theme: {
-    bgColor: 'bg-gray-500',
-    textColor: 'text-white',
-    borderColor: 'ring-white'
-  }
+  borderRadius: 'rounded-full'
 }

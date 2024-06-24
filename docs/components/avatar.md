@@ -16,24 +16,25 @@ Light | Dark
 >Code sample
 
 ```html
+...
 <tw-group class="-space-x-1">
   <tw-avatar>
-    <img alt="" class="size-9 rounded-full"
+    <img alt="" class="size-9 rounded-full ring-2 ring-white"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
 
   <tw-avatar>
-    <img alt="" class="size-9 rounded-full"
+    <img alt="" class="size-9 rounded-full ring-2 ring-white"
       src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
 
   <tw-avatar>
-    <img alt="" class="size-9 rounded-full"
+    <img alt="" class="size-9 rounded-full ring-2 ring-white"
       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   </tw-avatar>
 
   <tw-avatar>
-    <img alt="" class="size-9 rounded-full"
+    <img alt="" class="size-9 rounded-full ring-2 ring-white"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
 </tw-group>
@@ -114,17 +115,17 @@ Light | Dark
 >Code sample
 
 ```html
-<tw-avatar className="rounded-lg">
+<tw-avatar>
   <img alt="" class="size-6 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
 </tw-avatar>
 
-<tw-avatar className="rounded-lg">
+<tw-avatar>
   <img alt="" class="size-9 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
 </tw-avatar>
 
-<tw-avatar className="rounded-lg">
+<tw-avatar>
   <img alt="" class="size-11 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
 </tw-avatar>
@@ -141,19 +142,19 @@ Light | Dark
 >Code sample
 
 ```html
-<tw-avatar className="rounded-lg">
+<tw-avatar>
   <img alt="" class="size-6 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <tw-tooltip className="size-1.5 -top-0.5 bg-red-300" />
 </tw-avatar>
 
-<tw-avatar className="rounded-lg">
+<tw-avatar>
   <img alt="" class="size-9 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <tw-tooltip className="size-2.5 -top-1 -right-1 bg-yellow-300">1</tw-tooltip>
 </tw-avatar>
 
-<tw-avatar className="rounded-lg">
+<tw-avatar>
   <img alt="" class="size-11 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <tw-tooltip className="size-3 -top-1.5 -right-1.5 bg-blue-300">2</tw-tooltip>
@@ -171,7 +172,7 @@ Light | Dark
 >Code sample
 
 ```html
-<tw-avatar className="size-6 text-gray-400 ring- bg-">
+<tw-avatar className="size-6 text-gray-400">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
     <path fill-rule="evenodd"
       d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Zm-5-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 9c-1.825 0-3.422.977-4.295 2.437A5.49 5.49 0 0 0 8 13.5a5.49 5.49 0 0 0 4.294-2.063A4.997 4.997 0 0 0 8 9Z"
@@ -179,7 +180,7 @@ Light | Dark
   </svg>
 </tw-avatar>
 
-<tw-avatar className="size-9 text-gray-400 ring- bg-">
+<tw-avatar className="size-9 text-gray-400">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
     <path fill-rule="evenodd"
       d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Zm-5-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 9c-1.825 0-3.422.977-4.295 2.437A5.49 5.49 0 0 0 8 13.5a5.49 5.49 0 0 0 4.294-2.063A4.997 4.997 0 0 0 8 9Z"
@@ -187,7 +188,7 @@ Light | Dark
   </svg>
 </tw-avatar>
 
-<tw-avatar className="size-11 text-gray-400 ring- bg-">
+<tw-avatar className="size-11 text-gray-400">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
     <path fill-rule="evenodd"
       d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Zm-5-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 9c-1.825 0-3.422.977-4.295 2.437A5.49 5.49 0 0 0 8 13.5a5.49 5.49 0 0 0 4.294-2.063A4.997 4.997 0 0 0 8 9Z"
@@ -207,9 +208,9 @@ Light | Dark
 >Code sample
 
 ```html
-<tw-avatar className="size-6 text-xs text-white">TW</tw-avatar>
-<tw-avatar className="size-9 text-lg text-white">TW</tw-avatar>
-<tw-avatar className="size-11 text-xl text-white">TW</tw-avatar>
+<tw-avatar className="size-6 text-xs text-white bg-gray-500">TW</tw-avatar>
+<tw-avatar className="size-9 text-lg text-white bg-gray-500">TW</tw-avatar>
+<tw-avatar className="size-11 text-xl text-white bg-gray-500">TW</tw-avatar>
 ```
 
 <br/>
@@ -290,22 +291,22 @@ Light | Dark
 ```html
 ...
 <tw-group class="-space-x-1">
-  <tw-avatar className="z-[4] hover:z-10">
+  <tw-avatar className="z-[4] hover:z-10 ring-2 ring-white">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
 
-  <tw-avatar className="z-[3] hover:z-10">
+  <tw-avatar className="z-[3] hover:z-10 ring-2 ring-white">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
 
-  <tw-avatar className="z-[2] hover:z-10">
+  <tw-avatar className="z-[2] hover:z-10 ring-2 ring-white">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   </tw-avatar>
   
-  <tw-avatar className="z-[1] hover:z-10">
+  <tw-avatar className="z-[1] hover:z-10 ring-2 ring-white">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
@@ -366,15 +367,7 @@ export const AvatarConfig: AvatarConfig = {
     justifyContent: 'justify-center'
   },
   position: 'relative',
-  fontSize: 'text-xl',
-  textWrap: 'text-nowrap',
-  borderWidth: 'ring-2',
-  borderRadius: 'rounded-full',
-  theme: {
-    bgColor: 'bg-gray-500',
-    textColor: 'text-white',
-    borderColor: 'ring-white'
-  }
+  borderRadius: 'rounded-full'
 }
 ```
 
