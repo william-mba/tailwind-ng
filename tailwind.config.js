@@ -3,7 +3,6 @@ module.exports = {
   darkMode: 'selector',
   content: [
     "./src/**/*.{html,ts}",
-    // "./projects/ngx-twcss/**/*.{html,ts}",
     "./node_modules/ngx-twcss/**/*.{html,ts}"
   ],
   theme: {

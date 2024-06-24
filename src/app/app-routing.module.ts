@@ -5,8 +5,13 @@ import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group
 import { AppComponent } from './app.component';
 import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.component';
 import { BadgeDemoComponent } from './demos/badge-demo/badge-demo.component';
+import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
 
 const routes: Routes = [
+  {
+    path: 'avatar',
+    component: AvatarDemoComponent
+  },
   {
     path: 'badge',
     component: BadgeDemoComponent
@@ -29,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/badge',
+    redirectTo: '/avatar',
     pathMatch: 'full'
   }
 ];
