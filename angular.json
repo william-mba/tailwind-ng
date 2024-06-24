@@ -109,7 +109,7 @@
       "projectType": "library",
       "root": "projects/ngx-twcss",
       "sourceRoot": "projects/ngx-twcss/src",
-      "prefix": "nxt",
+      "prefix": "tw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

@@ -6,7 +6,7 @@ import { toClassName, resolveStyle } from '../../core/helpers/config.helper';
   @package ngx-twcss
  */
 @Directive({
-  selector: 'nxt-avatar',
+  selector: 'tw-avatar',
   standalone: true
 })
 export class Avatar implements OnInit {

@@ -2,7 +2,7 @@
 
 [Buttons group](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) help people select options, switch views, or sort elements.
 
-Use ``nxt-group`` to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
+Use ``tw-group`` to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
 
 <br/>
 
@@ -21,17 +21,17 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-group>
-  <nxt-secondary-button className="rounded-l-full">
+<tw-group>
+  <tw-secondary-button className="rounded-l-full">
     Years
-  </nxt-secondary-button>
-  <nxt-secondary-button className="rounded-none">
+  </tw-secondary-button>
+  <tw-secondary-button className="rounded-none">
     Months
-  </nxt-secondary-button>
-  <nxt-secondary-button className="rounded-r-full">
+  </tw-secondary-button>
+  <tw-secondary-button className="rounded-r-full">
     Days
-  </nxt-secondary-button>
-</nxt-group>
+  </tw-secondary-button>
+</tw-group>
 ```
 
 <br/>
@@ -47,22 +47,22 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-group>
-  <nxt-secondary-button className="rounded-l-full">
+<tw-group>
+  <tw-secondary-button className="rounded-l-full">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
       <path fill-rule="evenodd"
         d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
         clip-rule="evenodd" />
     </svg>
-  </nxt-secondary-button>
-  <nxt-secondary-button className="rounded-r-full">
+  </tw-secondary-button>
+  <tw-secondary-button className="rounded-r-full">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
       <path fill-rule="evenodd"
         d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
         clip-rule="evenodd" />
     </svg>
-  </nxt-secondary-button>
-</nxt-group>
+  </tw-secondary-button>
+</tw-group>
 ```
 
 <br/>
@@ -78,17 +78,17 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-group>
-  <nxt-secondary-button className="rounded-l-md">
+<tw-group>
+  <tw-secondary-button className="rounded-l-md">
     <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
       <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
     </svg>
     Bookmark
-  </nxt-secondary-button>
-  <nxt-secondary-button className="rounded-r-md">
+  </tw-secondary-button>
+  <tw-secondary-button className="rounded-r-md">
     12k
-  </nxt-secondary-button>
-</nxt-group>
+  </tw-secondary-button>
+</tw-group>
 ```
 
 <br/>
@@ -97,7 +97,7 @@ Light | Dark
 
 <br/>
 
-### ButtonGroup `<nxt-group>`
+### ButtonGroup `<tw-group>`
 
 ---
 

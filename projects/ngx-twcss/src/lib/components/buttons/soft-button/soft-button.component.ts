@@ -6,7 +6,7 @@ import { SoftButtonConfig, SoftButtonConfigKey } from './soft-button.config';
  * @package ngx-twcss
 */
 @Component({
-  selector: 'nxt-soft-button',
+  selector: 'tw-soft-button',
   standalone: true,
   templateUrl: './soft-button.component.html',
 })

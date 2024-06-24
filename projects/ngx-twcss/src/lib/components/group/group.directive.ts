@@ -4,7 +4,7 @@ import { Directive } from '@angular/core';
  * @package ngx-twcss
 */
 @Directive({
-  selector: 'nxt-group',
+  selector: 'tw-group',
   standalone: true,
   host: {
     class: 'inline-flex'

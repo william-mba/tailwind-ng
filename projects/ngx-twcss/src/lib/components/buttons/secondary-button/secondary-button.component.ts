@@ -6,7 +6,7 @@ import { SecondaryButtonConfigKey, SecondaryButtonConfig } from './secondary-but
  * @package ngx-twcss
 */
 @Component({
-  selector: 'nxt-secondary-button',
+  selector: 'tw-secondary-button',
   standalone: true,
   templateUrl: './secondary-button.component.html'
 })

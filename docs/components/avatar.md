@@ -16,27 +16,27 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-group class="-space-x-1">
-  <nxt-avatar>
+<tw-group class="-space-x-1">
+  <tw-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  </nxt-avatar>
+  </tw-avatar>
 
-  <nxt-avatar>
+  <tw-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  </nxt-avatar>
+  </tw-avatar>
 
-  <nxt-avatar>
+  <tw-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
-  </nxt-avatar>
+  </tw-avatar>
 
-  <nxt-avatar>
+  <tw-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  </nxt-avatar>
-</nxt-group>
+  </tw-avatar>
+</tw-group>
 ...
 ```
 
@@ -52,20 +52,20 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-6 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</nxt-avatar>
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-9 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</nxt-avatar>
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-11 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</nxt-avatar>
+</tw-avatar>
 ...
 ```
 
@@ -83,23 +83,23 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-6 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-1.5 bg-red-300" />
-</nxt-avatar>
+  <tw-tooltip className="size-1.5 bg-red-300" />
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-9 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-2.5 bg-yellow-300">1</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-2.5 bg-yellow-300">1</tw-tooltip>
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-11 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-3 bg-blue-300">2</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-3 bg-blue-300">2</tw-tooltip>
+</tw-avatar>
 ...
 ```
 
@@ -114,20 +114,20 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar className="rounded-lg">
+<tw-avatar className="rounded-lg">
   <img alt="" class="size-6 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</nxt-avatar>
+</tw-avatar>
 
-<nxt-avatar className="rounded-lg">
+<tw-avatar className="rounded-lg">
   <img alt="" class="size-9 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</nxt-avatar>
+</tw-avatar>
 
-<nxt-avatar className="rounded-lg">
+<tw-avatar className="rounded-lg">
   <img alt="" class="size-11 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</nxt-avatar>
+</tw-avatar>
 ```
 
 <br/>
@@ -141,23 +141,23 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar className="rounded-lg">
+<tw-avatar className="rounded-lg">
   <img alt="" class="size-6 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-1.5 -top-0.5 bg-red-300" />
-</nxt-avatar>
+  <tw-tooltip className="size-1.5 -top-0.5 bg-red-300" />
+</tw-avatar>
 
-<nxt-avatar className="rounded-lg">
+<tw-avatar className="rounded-lg">
   <img alt="" class="size-9 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-2.5 -top-1 -right-1 bg-yellow-300">1</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-2.5 -top-1 -right-1 bg-yellow-300">1</tw-tooltip>
+</tw-avatar>
 
-<nxt-avatar className="rounded-lg">
+<tw-avatar className="rounded-lg">
   <img alt="" class="size-11 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-3 -top-1.5 -right-1.5 bg-blue-300">2</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-3 -top-1.5 -right-1.5 bg-blue-300">2</tw-tooltip>
+</tw-avatar>
 ```
 
 <br/>
@@ -171,29 +171,29 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar className="size-6 text-gray-400 ring- bg-">
+<tw-avatar className="size-6 text-gray-400 ring- bg-">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
     <path fill-rule="evenodd"
       d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Zm-5-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 9c-1.825 0-3.422.977-4.295 2.437A5.49 5.49 0 0 0 8 13.5a5.49 5.49 0 0 0 4.294-2.063A4.997 4.997 0 0 0 8 9Z"
       clip-rule="evenodd" />
   </svg>
-</nxt-avatar>
+</tw-avatar>
 
-<nxt-avatar className="size-9 text-gray-400 ring- bg-">
+<tw-avatar className="size-9 text-gray-400 ring- bg-">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
     <path fill-rule="evenodd"
       d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Zm-5-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 9c-1.825 0-3.422.977-4.295 2.437A5.49 5.49 0 0 0 8 13.5a5.49 5.49 0 0 0 4.294-2.063A4.997 4.997 0 0 0 8 9Z"
       clip-rule="evenodd" />
   </svg>
-</nxt-avatar>
+</tw-avatar>
 
-<nxt-avatar className="size-11 text-gray-400 ring- bg-">
+<tw-avatar className="size-11 text-gray-400 ring- bg-">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
     <path fill-rule="evenodd"
       d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Zm-5-2a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM8 9c-1.825 0-3.422.977-4.295 2.437A5.49 5.49 0 0 0 8 13.5a5.49 5.49 0 0 0 4.294-2.063A4.997 4.997 0 0 0 8 9Z"
       clip-rule="evenodd" />
   </svg>
-</nxt-avatar>
+</tw-avatar>
 ```
 
 <br/>
@@ -207,9 +207,9 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar className="size-6 text-xs text-white">TW</nxt-avatar>
-<nxt-avatar className="size-9 text-lg text-white">TW</nxt-avatar>
-<nxt-avatar className="size-11 text-xl text-white">TW</nxt-avatar>
+<tw-avatar className="size-6 text-xs text-white">TW</tw-avatar>
+<tw-avatar className="size-9 text-lg text-white">TW</tw-avatar>
+<tw-avatar className="size-11 text-xl text-white">TW</tw-avatar>
 ```
 
 <br/>
@@ -224,23 +224,23 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-6 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-1.5 top- -bottom-0 bg-red-300" />
-</nxt-avatar>
+  <tw-tooltip className="size-1.5 top- -bottom-0 bg-red-300" />
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-9 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-2.5 top- -bottom-0 bg-yellow-300">1</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-2.5 top- -bottom-0 bg-yellow-300">1</tw-tooltip>
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-11 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-3 top- -bottom-0 bg-blue-300">2</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-3 top- -bottom-0 bg-blue-300">2</tw-tooltip>
+</tw-avatar>
 ```
 
 > `top-` is used here in `className` to remove the default value setted
@@ -257,23 +257,23 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-6 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-1.5 top- -bottom-0 bg-red-300" />
-</nxt-avatar>
+  <tw-tooltip className="size-1.5 top- -bottom-0 bg-red-300" />
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-9 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-2.5 top- -bottom-0 bg-yellow-300">1</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-2.5 top- -bottom-0 bg-yellow-300">1</tw-tooltip>
+</tw-avatar>
 
-<nxt-avatar>
+<tw-avatar>
   <img alt="" class="size-11 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <nxt-tooltip className="size-3 top- -bottom-0 bg-blue-300">2</nxt-tooltip>
-</nxt-avatar>
+  <tw-tooltip className="size-3 top- -bottom-0 bg-blue-300">2</tw-tooltip>
+</tw-avatar>
 ```
 
 <br/>
@@ -289,27 +289,27 @@ Light | Dark
 
 ```html
 ...
-<nxt-group class="-space-x-1">
-  <nxt-avatar className="z-[4] hover:z-10">
+<tw-group class="-space-x-1">
+  <tw-avatar className="z-[4] hover:z-10">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  </nxt-avatar>
+  </tw-avatar>
 
-  <nxt-avatar className="z-[3] hover:z-10">
+  <tw-avatar className="z-[3] hover:z-10">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  </nxt-avatar>
+  </tw-avatar>
 
-  <nxt-avatar className="z-[2] hover:z-10">
+  <tw-avatar className="z-[2] hover:z-10">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
-  </nxt-avatar>
+  </tw-avatar>
   
-  <nxt-avatar className="z-[1] hover:z-10">
+  <tw-avatar className="z-[1] hover:z-10">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  </nxt-avatar>
-</nxt-group>
+  </tw-avatar>
+</tw-group>
 ...
 ```
 
@@ -325,23 +325,23 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-group class="gap-x-2">
-  <nxt-avatar>
+<tw-group class="gap-x-2">
+  <tw-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  </nxt-avatar>
+  </tw-avatar>
   <span class="relative cursor-pointer text-nowrap group dark:text-white">
     <div class="absolute -top-1.5 text-md font-normal">Jane Smith</div>
     <a class="absolute bottom-0.5 text-xs opacity-70 group-hover:opacity-[1]">View profile</a>
   </span>
-</nxt-group>
+</tw-group>
 ```
 
 ## API
 
 <br/>
 
-### Avatar `<nxt-avatar>`
+### Avatar `<tw-avatar>`
 
 ---
 Property  | Type        | Attribute   | Default | Description

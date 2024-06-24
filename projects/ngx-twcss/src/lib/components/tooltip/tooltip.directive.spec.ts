@@ -3,7 +3,7 @@ import { Tooltip } from './tooltip.directive';
 
 describe('TooltipDirective', () => {
   it('should create an instance', () => {
-    const directive = new Tooltip(new ElementRef('nxt-tooltip'));
+    const directive = new Tooltip(new ElementRef('tw-tooltip'));
     expect(directive).toBeTruthy();
   });
 });

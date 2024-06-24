@@ -11,7 +11,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
  * @package ngx-twcss
 */
 @Directive({
-  selector: 'nxt-dropdown-item',
+  selector: 'tw-dropdown-item',
   standalone: true
 })
 export class DropdownItem {
@@ -29,7 +29,7 @@ export class DropdownItem {
  * @package ngx-twcss
 */
 @Component({
-  selector: 'nxt-dropdown',
+  selector: 'tw-dropdown',
   standalone: true,
   imports: [NgIf],
   templateUrl: './dropdown.component.html',

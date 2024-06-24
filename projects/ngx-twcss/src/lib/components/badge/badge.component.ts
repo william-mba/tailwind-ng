@@ -31,7 +31,7 @@ export const BadgeConfig: BadgeConfig = {
 */
 @Component({
   standalone: true,
-  selector: 'nxt-badge',
+  selector: 'tw-badge',
   templateUrl: './badge.component.html'
 })
 export class Badge extends BaseComponent<BadgeConfig> implements OnInit {

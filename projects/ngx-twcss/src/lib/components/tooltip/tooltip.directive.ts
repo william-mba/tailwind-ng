@@ -6,7 +6,7 @@ import { resolveStyle, toClassName } from '../../core/helpers/config.helper';
   @package ngx-twcss
  */
 @Directive({
-  selector: 'nxt-tooltip',
+  selector: 'tw-tooltip',
   standalone: true
 })
 export class Tooltip implements OnInit {

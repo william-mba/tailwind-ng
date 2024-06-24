@@ -7,7 +7,7 @@ import { PrimaryButtonConfigKey, PrimaryButtonConfig } from './primary-button.co
 */
 @Component({
   standalone: true,
-  selector: 'nxt-primary-button',
+  selector: 'tw-primary-button',
   templateUrl: './primary-button.component.html'
 })
 export class PrimaryButton extends BaseComponent<PrimaryButtonConfig> implements OnInit {
