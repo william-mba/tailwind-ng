@@ -1,6 +1,6 @@
 # Dropdowns
 
-Use our dropdown and popover components to create dropdown menus for action items and navigation, featuring section dividers, icons, and headers.
+Use dropdown and popover components to create dropdown menus for action items and navigation, featuring section dividers, icons, and headers.
 
 ## Usage
 

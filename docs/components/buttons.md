@@ -1,6 +1,6 @@
 # Buttons
 
-[Buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)<!-- {.external} --> help people initiate actions, from sending an email, to sharing a document, to liking a post.
+[Buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) help people initiate actions, from sending an email, to sharing a document, to liking a post.
 
 <br/>
 

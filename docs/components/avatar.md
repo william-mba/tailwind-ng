@@ -1,6 +1,6 @@
 # Avatars
 
-Use these Ngx-Twcss avatar components to display user profile pictures and company logos individually or grouped in stacks.
+Use these avatar components to display user profile pictures and company logos individually or grouped in stacks.
 
 ## Usage
 
@@ -21,14 +21,17 @@ Light | Dark
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </nxt-avatar>
+
   <nxt-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </nxt-avatar>
+
   <nxt-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   </nxt-avatar>
+
   <nxt-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
@@ -291,14 +294,17 @@ Light | Dark
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </nxt-avatar>
+
   <nxt-avatar className="z-[3] hover:z-10">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </nxt-avatar>
+
   <nxt-avatar className="z-[2] hover:z-10">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   </nxt-avatar>
+  
   <nxt-avatar className="z-[1] hover:z-10">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
