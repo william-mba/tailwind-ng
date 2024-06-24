@@ -53,10 +53,12 @@ Light | Dark
   <img alt="" class="size-6 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
 </nxt-avatar>
+
 <nxt-avatar>
   <img alt="" class="size-9 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
 </nxt-avatar>
+
 <nxt-avatar>
   <img alt="" class="size-11 rounded-full"
     src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
@@ -78,24 +80,23 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-group class="gap-9 items-end">
-  <nxt-avatar>
-    <img alt="" class="size-6 rounded-full"
-      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-    <nxt-tooltip className="size-1.5 bg-red-300" />
-  </nxt-avatar>
+<nxt-avatar>
+  <img alt="" class="size-6 rounded-full"
+    src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  <nxt-tooltip className="size-1.5 bg-red-300" />
+</nxt-avatar>
 
-  <nxt-avatar>
-    <img alt="" class="size-9 rounded-full"
-      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-    <nxt-tooltip className="size-2.5 bg-yellow-300">1</nxt-tooltip>
-  </nxt-avatar>
+<nxt-avatar>
+  <img alt="" class="size-9 rounded-full"
+    src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  <nxt-tooltip className="size-2.5 bg-yellow-300">1</nxt-tooltip>
+</nxt-avatar>
 
-  <nxt-avatar>
-    <img alt="" class="size-11 rounded-full"
-      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-    <nxt-tooltip className="size-3 bg-blue-300">2</nxt-tooltip>
-  </nxt-avatar>
+<nxt-avatar>
+  <img alt="" class="size-11 rounded-full"
+    src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  <nxt-tooltip className="size-3 bg-blue-300">2</nxt-tooltip>
+</nxt-avatar>
 ...
 ```
 
@@ -284,9 +285,7 @@ Light | Dark
 >Code sample
 
 ```html
-<nxt-group class="-space-x-1">...
-</nxt-group>
-
+...
 <nxt-group class="-space-x-1">
   <nxt-avatar className="z-[4] hover:z-10">
     <img alt="" class="size-9 rounded-full"
@@ -305,9 +304,7 @@ Light | Dark
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </nxt-avatar>
 </nxt-group>
-
-<nxt-group class="-space-x-1">...
-</nxt-group>
+...
 ```
 
 <br/>
