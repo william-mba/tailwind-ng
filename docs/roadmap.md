@@ -7,9 +7,6 @@ This roadmap describes current, future, and past goals for Ngx-twcss.
 These are the items we are currently working on.
 
 - [ ] <b>Application UI</b>
-  - [ ] Elements
-    - [ ] Avatar
-    - [ ] Tooltip
   - [ ] Forms
     - [ ] Select Menu
     - [ ] Radio Group
@@ -22,8 +19,6 @@ These are the items we are currently working on.
 These are components we want to build next.
 
 - [ ] <b>Application UI</b>
-  - [ ] Elements
-    - [ ] Avatar
   - [ ] Forms
     - [ ] Select Menu
     - [ ] Radio Group
@@ -55,10 +50,10 @@ These are ready-to-use components.
     - [x] [Button Group](components/buttons-group.md)
     - [x] [Dropdown](components/dropdown.md)
     - [x] [Badge](components/badge.md)
+    - [x] [Avatar](components/avatar.md)
 
 - [ ] <b>Marketing</b>
   - [ ] Coming soon
-
 
 - [ ] <b>Ecommerce</b>
   - [ ] Coming soon
