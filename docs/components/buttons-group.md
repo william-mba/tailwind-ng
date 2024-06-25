@@ -2,7 +2,7 @@
 
 [Buttons group](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) help people select options, switch views, or sort elements.
 
-Use ``tw-group`` to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
+Use the ``tw-group`` element to group buttons with other components like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
 
 <br/>
 
@@ -22,13 +22,13 @@ Light | Dark
 
 ```html
 <tw-group>
-  <tw-button className="rounded-l-full">
+  <tw-button variant="secondary" className="rounded-l-full">
     Years
   </tw-button>
-  <tw-button className="rounded-none">
+  <tw-button variant="secondary" className="rounded-none">
     Months
   </tw-button>
-  <tw-button className="rounded-r-full">
+  <tw-button variant="secondary" className="rounded-r-full">
     Days
   </tw-button>
 </tw-group>
@@ -41,8 +41,8 @@ Light | Dark
 ---
 Light | Dark
 ---------- | ---------
-!["Icon group on light mode"](images/buttons-group/icon-group.png) | !["Icon group on light mode"](images/buttons-group/icon-group-dark.png)
-!["Icon group usage on light mode"](images/buttons-group/icon-group-usage.png) | !["Icon group usage on dark mode"](images/buttons-group/icon-group-usage-dark.png)
+!["Icon group on light mode"](images/buttons-group/icon-group-1.png) | !["Icon group on light mode"](images/buttons-group/icon-group-dark-1.png)
+!["Icon group usage on light mode"](images/buttons-group/icon-group-usage-1.png) | !["Icon group usage on dark mode"](images/buttons-group/icon-group-usage-dark-1.png)
 
 >Code sample
 
