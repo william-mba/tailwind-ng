@@ -10,7 +10,7 @@
     "test-lib": "ng test --project ngx-twcss --code-coverage",
     "test-demo": "ng test",
     "publish": "yarn build-lib && cd dist/ngx-twcss && npm publish",
-    "up-lib": "yarn build-lib && yarn && yarn start",
+    "refresh": "yarn build-lib && yarn && yarn start",
     "ci": "yarn test-lib && yarn build-lib"
   },
   "private": true,

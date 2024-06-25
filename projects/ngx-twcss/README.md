@@ -137,7 +137,7 @@ For ``NgModule`` based components, import components in your *.module.ts file
 
 ```html
 <tw-secondary-button>Back</tw-secondary-button>
-<tw-primary-button>Complete</tw-primary-button>
+<tw-button>Complete</tw-button>
 ```
 
 For more usage samples, please visit the github repo.

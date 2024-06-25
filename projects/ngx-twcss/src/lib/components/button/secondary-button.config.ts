@@ -1,4 +1,4 @@
-import { ButtonBaseConfig } from "../button-base.config";
+import { ButtonBaseConfig } from "./button-base.config";
 
 export const SecondaryButtonConfigKey = 'SecondaryButtonConfigKey';
 

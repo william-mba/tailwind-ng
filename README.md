@@ -19,7 +19,6 @@ Build your next Angular application even faster and easier <br/>with beautifully
 - [Components docs](docs/components/)
 - [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss-demo)
 
-
 ## Quick start
 
 ### 0. Prerequisites
@@ -138,7 +137,7 @@ For ``NgModule`` based components, import components in your *.module.ts file
 
 ```html
 <tw-secondary-button>Back</tw-secondary-button>
-<tw-primary-button>Complete</tw-primary-button>
+<tw-button>Complete</tw-button>
 ```
 
 For more usage samples, see the [components docs](docs/components/).
