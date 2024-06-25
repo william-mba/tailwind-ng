@@ -4,15 +4,6 @@
 
 <br/>
 
-## Types
-
-[@ngx-twcss](https://www.npmjs.com/package/ngx-twcss) provide three types of buttons: **Primary**, **Secondary** and **Soft**
-
----
-Light | Dark
----------- | ---------
-!["Buttons on light mode"](images/buttons/buttons.png) | !["Buttons on dark mode"](images/buttons/buttons-dark.png)
-
 ## Usage
 
 A secondary button with the text "Back" next to a primary button with the text "Complete"
