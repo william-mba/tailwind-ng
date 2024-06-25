@@ -1,6 +1,6 @@
 {
   "name": "ngx-twcss",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -14,12 +14,10 @@
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
-  "description": "The best way to quickly integrate Tailwind CSS components in Angular.",
+  "description": "The best way to quickly integrate Tailwind CSS components with Angular.",
   "keywords": [
     "angular",
     "tailwind css",
-    "design system",
-    "components",
     "web components",
     "ngx-twcss"
   ],

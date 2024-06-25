@@ -15,8 +15,8 @@ Use ``tw-group`` to group buttons with other elements like dropdowns and checkbo
 ---
 Light | Dark
 ---------- | ---------
-!["Button group on light mode"](images/buttons-group/button-group.png) | !["Button group on dark mode"](images/buttons-group/button-group-dark.png)
-!["Button group on light mode"](images/buttons-group/button-group-usage.png) | !["Button group on dark mode"](images/buttons-group/button-group-usage-dark.png)
+![""](images/buttons-group/button-group.png) | ![""](images/buttons-group/button-group-dark.png)
+![""](images/buttons-group/button-group-usage.png) | ![""](images/buttons-group/button-group-usage-dark.png)
 
 >Code sample
 
