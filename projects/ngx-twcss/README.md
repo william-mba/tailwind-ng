@@ -17,7 +17,7 @@ To build great UI even faster.
 
 - [Roadmap](https://github.com/William-Mba/ngx-twcss/blob/main/docs/roadmap.md)
 - [Components docs](https://github.com/William-Mba/ngx-twcss/tree/main/docs/components)
-- [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss-demo)
+- [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss)
 
 ## Quick start
 
