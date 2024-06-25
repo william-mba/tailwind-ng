@@ -26,7 +26,7 @@ const routes: Routes = [
     component: DropdownDemoComponent
   },
   {
-    path: 'button-groups',
+    path: 'buttons-group',
     component: ButtonGroupDemoComponent
   },
   {

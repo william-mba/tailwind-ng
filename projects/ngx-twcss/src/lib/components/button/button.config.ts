@@ -1,4 +1,4 @@
-import { PrimaryButtonConfig } from "./button.config";
+import { PrimaryButtonConfig } from "./primary-button.config";
 import { SecondaryButtonConfig } from "./secondary-button.config";
 import { SoftButtonConfig } from "./soft-button.config";
 

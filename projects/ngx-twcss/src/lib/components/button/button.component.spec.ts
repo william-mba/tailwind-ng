@@ -37,18 +37,18 @@ describe('ButtonComponent', () => {
     spyOn(component, 'initConfig');
     component.initConfig();
     expect(component.initConfig).toHaveBeenCalled();
-    // default button type is primary so primary config should have been set
+    // Primary config should have been set as button is primary by default
     expect(component.style).toContain(primaryStyle);
   });
 
-  it('should set type', () => {
-    expect(component.type).toBeDefined()
-    component.type = 'primary';
-    expect(component.type).toBe('primary');
-    component.type = 'secondary';
-    expect(component.type).toBe('secondary');
-    component.type = 'soft';
-    expect(component.type).toBe('soft');
+  it('should set variant', () => {
+    expect(component.variant).toBeDefined()
+    component.variant = 'primary';
+    expect(component.variant).toBe('primary');
+    component.variant = 'secondary';
+    expect(component.variant).toBe('secondary');
+    component.variant = 'soft';
+    expect(component.variant).toBe('soft');
   });
 
   it('should set style', () => {

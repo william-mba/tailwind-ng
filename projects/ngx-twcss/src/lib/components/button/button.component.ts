@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PrimaryButtonConfigKey } from './button.config';
+import { PrimaryButtonConfigKey } from './primary-button.config';
 import { toClassName } from '../../core/helpers/config.helper';
 import { BaseComponent, SizeVariant } from '../base.component';
 import { ButtonConfig } from './button.config';
@@ -18,7 +18,7 @@ export class Button extends BaseComponent<ButtonConfig> implements OnInit {
   @Input() override style!: string;
   @Input() override className!: string;
   @Input() override size: SizeVariant = 'md';
-  @Input() type: ButtonType = 'primary';
+  @Input() variant: ButtonVariant = 'primary';
 
   ngOnInit(): void {
     if (!this.style) {
@@ -29,19 +29,19 @@ export class Button extends BaseComponent<ButtonConfig> implements OnInit {
   }
 
   override initConfig(): void {
-    if (this.type === 'primary') {
+    if (this.variant === 'primary') {
       this.configService.set(PrimaryButtonConfigKey, ButtonConfig)
         .get(PrimaryButtonConfigKey).subscribe((cfg) => {
           this.style = this.resolveStyle(toClassName([cfg.primary, SizeConfig[this.size]]), this.className);
         });
     }
-    if (this.type === 'secondary') {
+    if (this.variant === 'secondary') {
       this.configService.set(SecondaryButtonConfigKey, ButtonConfig)
         .get(PrimaryButtonConfigKey).subscribe((cfg) => {
           this.style = this.resolveStyle(toClassName([cfg.secondary, SizeConfig[this.size]]), this.className);
         });
     }
-    if (this.type === 'soft') {
+    if (this.variant === 'soft') {
       this.configService.set(SoftButtonConfigKey, ButtonConfig)
         .get(PrimaryButtonConfigKey).subscribe((cfg) => {
           this.style = this.resolveStyle(toClassName([cfg.soft, SizeConfig[this.size]]), this.className);
@@ -51,4 +51,4 @@ export class Button extends BaseComponent<ButtonConfig> implements OnInit {
 
 }
 
-export type ButtonType = | 'primary' | 'secondary' | 'soft'
+export type ButtonVariant = | 'primary' | 'secondary' | 'soft'

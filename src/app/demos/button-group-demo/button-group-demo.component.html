@@ -5,57 +5,57 @@
       Button group
     </div>
     <tw-group>
-      <tw-secondary-button className="rounded-l-full">
+      <tw-button className="rounded-l-full">
         Years
-      </tw-secondary-button>
-      <tw-secondary-button className="rounded-none">
+      </tw-button>
+      <tw-button className="rounded-none">
         Months
-      </tw-secondary-button>
-      <tw-secondary-button className="rounded-r-full">
+      </tw-button>
+      <tw-button className="rounded-r-full">
         Days
-      </tw-secondary-button>
+      </tw-button>
     </tw-group>
   </div>
-<!-- Icon group -->
+  <!-- Icon group -->
   <div>
     <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
-      Icon group
+      Icon group with border
     </div>
-    <tw-group>
-      <tw-secondary-button className="rounded-l-full">
+    <tw-group className="ring-4 rounded-full">
+      <tw-button className="rounded-l-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
           <path fill-rule="evenodd"
             d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
             clip-rule="evenodd" />
         </svg>
-      </tw-secondary-button>
-      <tw-secondary-button className="rounded-r-full">
+      </tw-button>
+      <tw-button className="rounded-r-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
           <path fill-rule="evenodd"
             d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
             clip-rule="evenodd" />
         </svg>
-      </tw-secondary-button>
+      </tw-button>
     </tw-group>
   </div>
-<!-- With stats -->
+  <!-- With stats -->
   <div>
     <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
       With stats
     </div>
     <tw-group>
-      <tw-secondary-button className="rounded-l-md">
+      <tw-button variant="secondary" className="rounded-l-md">
         <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
           <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
         </svg>
         Bookmark
-      </tw-secondary-button>
-      <tw-secondary-button className="rounded-r-md">
+      </tw-button>
+      <tw-button variant="secondary" className="rounded-r-md">
         12k
-      </tw-secondary-button>
+      </tw-button>
     </tw-group>
   </div>
-<!-- With dropdown -->
+  <!-- With dropdown -->
   <div>
     <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
       With dropdown
@@ -79,11 +79,11 @@
         {{ item }}
       </tw-dropdown-item>
     </tw-dropdown>
-    
+
     <tw-group>
-      <tw-secondary-button className="rounded-l-md">
+      <tw-button variant="secondary" className="rounded-l-md">
         Save changes
-      </tw-secondary-button>
+      </tw-button>
       <tw-dropdown className="rounded-r-md">
         Options
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960">
@@ -96,25 +96,25 @@
       </tw-dropdown>
     </tw-group>
   </div>
-<!-- With checkbox and dropdown -->
+  <!-- With checkbox and dropdown -->
   <div class="z-0">
     <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold z-0">
       With checkbox and dropdown
     </div>
-    <tw-group>
-      <tw-secondary-button className="focus:border- dark:focus:border- rounded-l-md h-full">
+    <tw-group className="flex">
+      <tw-button variant="secondary" className="focus:border- dark:focus:border- rounded-l-md h-full">
         <input type="checkbox"
           class="hover:cursor-pointer size-4 rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
-      </tw-secondary-button>
-      <tw-secondary-button className="rounded-r-md overflow-hidden- px- py- relative h-full">
+      </tw-button>
+      <tw-button variant="secondary" className="rounded-r-md overflow-hidden- px- py- relative h-full">
         <label for="currency" class="sr-only">Currency</label>
         <select id="currency" name="currency"
-          class="h-10 w-[200px] rounded-r-md border-0 bg-neutral-50 dark:bg-neutral-800 py-0 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+          class="h-10 w-[200px] rounded-r-md border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 py-0 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
           <option>Unread messages</option>
           <option>Sent messages</option>
           <option>All messages</option>
         </select>
-      </tw-secondary-button>
+      </tw-button>
     </tw-group>
   </div>
 </div>

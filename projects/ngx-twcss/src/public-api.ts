@@ -8,7 +8,7 @@ export * from './lib/configs/size.config';
 export * from './lib/core/helpers/theme.helper';
 export * from './lib/components/button/button.component';
 export * from './lib/components/button/button.config';
-export * from './lib/components/button/button.config';
+export * from './lib/components/button/primary-button.config';
 export * from './lib/components/button/secondary-button.config';
 export * from './lib/components/button/soft-button.config';
 export * from './lib/components/group/group.directive';
