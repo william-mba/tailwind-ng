@@ -6,6 +6,137 @@
 
 ## Usage
 
+<br/>
+
+### Primary buttons
+
+---
+Light | Dark
+---------- | ---------
+![""](images/buttons/primary-buttons.png) | ![""](images/buttons/primary-buttons-dark.png)
+
+>Code sample
+
+```html
+<tw-button size="sm">Button text</tw-button>
+<tw-button>Button text</tw-button>
+<tw-button size="lg">Button text</tw-button>
+```
+
+<br/>
+
+### Secondary buttons
+
+---
+Light | Dark
+---------- | ---------
+![""](images/buttons/secondary-buttons.png) | ![""](images/buttons/secondary-buttons-dark.png)
+
+>Code sample
+
+```html
+<tw-button variant="secondary" size="sm">Button text</tw-button>
+<tw-button variant="secondary">Button text</tw-button>
+<tw-button variant="secondary" size="lg">Button text</tw-button>
+```
+
+<br/>
+
+### Soft buttons
+
+---
+Light | Dark
+---------- | ---------
+![""](images/buttons/soft-buttons.png) | ![""](images/buttons/soft-buttons-dark.png)
+
+>Code sample
+
+```html
+<tw-button variant="soft" size="sm">Button text</tw-button>
+<tw-button variant="soft">Button text</tw-button>
+<tw-button variant="soft" size="lg">Button text</tw-button>
+```
+
+<br/>
+
+### Icon buttons
+
+---
+Light | Dark
+---------- | ---------
+![""](images/buttons/primary-button-icon.png) | ![""](images/buttons/primary-button-icon-dark.png)
+![""](images/buttons/secondary-button-icon.png) | ![""](images/buttons/secondary-button-icon-dark.png)
+![""](images/buttons/soft-button-icon.png) | ![""](images/buttons/soft-button-icon-dark.png)
+
+>Code sample
+
+```html
+<tw-button className="rounded-full px-2 py-2">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</tw-button>
+
+<tw-button variant="secondary" className="rounded-full px-2 py-2">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</tw-button>
+
+<tw-button variant="soft" className="rounded-full px-2 py-2">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</tw-button>
+```
+
+<br/>
+
+### Buttons with leading icon
+
+---
+Light | Dark
+---------- | ---------
+![""](images/buttons/buttons-with-leading-icon.png) | ![""](images/buttons/buttons-with-leading-icon-dark.png)
+
+>Code sample
+
+```html
+<tw-button>
+  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <path d="M120-160v-240l320-80-320-80v-240l760 320-760 320Z" />
+  </svg>
+  Send
+</tw-button>
+```
+
+<br/>
+
+### Buttons with trailing icon
+
+---
+Light | Dark
+---------- | ---------
+![""](images/buttons/buttons-with-trailing-icon.png) | ![""](images/buttons/buttons-with-trailing-icon-dark.png)
+
+>Code sample
+
+```html
+<tw-button>
+  Share
+  <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <path
+      d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z" />
+  </svg>
+</tw-button>
+```
+
+<br/>
+
+## Use cases
+
+<br/>
+
 A secondary button with the text "Back" next to a primary button with the text "Complete"
 
 ---
@@ -18,7 +149,9 @@ Light | Dark
 <tw-button>Complete</tw-button>
 ```
 
-## Icons
+---
+
+<br />
 
 An icon may optionally be added to a button to help communicate the button's action and help draw attention.
 
@@ -40,31 +173,6 @@ Light | Dark
 </tw-button>
 ```
 
----
-Light | Dark
----------- | ---------
-!["Circular buttons"](images/buttons/circulars-buttons.png "Circular buttons") | !["Circular buttons on dark"](images/buttons/circulars-buttons-dark.png "Circular buttons on dark")
-
->Code sample
-
-```html
-<tw-button className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</tw-button>
-<tw-button variant="secondary" className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</tw-button>
-<tw-button variant="soft" className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</tw-button>
-```
-
 <br/>
 
 ## API
@@ -80,6 +188,8 @@ Property  | Type        | Attribute   | Default | Description
 size      | SizeVariant | `size`    | `'md'`  | The component size.
 className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
 ---
+
+<br/>
 
 ## Default configurations
 
