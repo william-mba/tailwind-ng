@@ -8,6 +8,7 @@ import { Position } from "../core/types/layout/position"
 import { Height } from "../core/types/sizing/height"
 import { Size } from "../core/types/sizing/size"
 import { Width } from "../core/types/sizing/width"
+import { Margin } from "../core/types/spacing/margin"
 import { Padding } from "../core/types/spacing/padding"
 import { Theme } from "../core/types/theme"
 import { FontSize } from "../core/types/typography/font-size"
@@ -16,7 +17,7 @@ import { TextAlign } from "../core/types/typography/text-align"
 import { TextWrap } from "../core/types/typography/text-wrap"
 
 export type BaseConfig = {
-  display: Partial<Display>,
+  display: Display,
   position: Position,
   borderRadius: BorderRadius,
   borderWidth: BorderWidth | RingWidth,
@@ -24,7 +25,8 @@ export type BaseConfig = {
   fontSize: FontSize,
   theme: Partial<Theme> | Record<string, Partial<Theme>>,
   overflow: Overflow,
-  padding: Padding
+  padding: Padding,
+  margin: Margin,
   size: Size,
   width: Width,
   height: Height,

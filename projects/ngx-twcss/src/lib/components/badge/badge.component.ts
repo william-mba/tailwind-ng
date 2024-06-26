@@ -6,14 +6,10 @@ import { RingWidth } from '../../core/types/borders/ring-width';
 import { RingOpacity } from '../../core/types/borders/ring-opacity';
 import { FontSize } from '../../core/types/typography/font-size';
 
-/**Badge config key
- * @package ngx-twcss
-*/
+/**Badge config key*/
 export const BadgeConfigKey = 'BadgeConfigKey';
 
-/**Badge config
- * @package ngx-twcss
-*/
+/**Badge config*/
 export type BadgeConfig = Partial<BaseConfig>;
 
 export const BadgeConfig: BadgeConfig = {
@@ -26,9 +22,7 @@ export const BadgeConfig: BadgeConfig = {
   fontWeight: 'font-medium',
   borderRadius: 'rounded-md'
 }
-/**Badge component
- * @package ngx-twcss
-*/
+/**Badge component*/
 @Component({
   standalone: true,
   selector: 'tw-badge',

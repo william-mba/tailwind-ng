@@ -6,7 +6,7 @@ import { SizeConfig } from "../configs/size.config";
 /**@package ngx-twcss */
 export abstract class BaseComponent<ConfigType> {
   protected configService = inject(ConfigService<ConfigType>);
-  protected size!: SizeVariant;
+  protected size!: ComponentSize;
   protected style: string = '';
   protected className: string = '';
   protected config!: ConfigType;
@@ -31,4 +31,4 @@ export abstract class BaseComponent<ConfigType> {
   }
 }
 
-export type SizeVariant = 'sm' | 'md' | 'lg';
+export type ComponentSize = 'sm' | 'md' | 'lg';

@@ -1,12 +1,12 @@
 
-export type Margin = MarginSize | {
+export type Margin = Partial<{
   x: MarginX
   y: MarginY
   top: MarginTop
   right: MarginRight
   bottom: MarginBottom
   left: MarginLeft
-};
+}> | MarginSize | MarginX | MarginY;
 
 
 export type MarginRight =

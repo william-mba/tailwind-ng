@@ -7021,7 +7021,7 @@ __metadata:
     ngx-twcss: "file:dist/ngx-twcss"
     postcss: "npm:^8.4.38"
     rxjs: "npm:~7.8.0"
-    tailwindcss: "npm:^3.4.3"
+    tailwindcss: "npm:^3.4.4"
     tslib: "npm:^2.3.0"
     typescript: "npm:~5.4.2"
     zone.js: "npm:~0.14.3"
@@ -7029,14 +7029,14 @@ __metadata:
   linkType: soft
 
 "ngx-twcss@file:dist/ngx-twcss::locator=ngx-twcss-playground%40workspace%3A.":
-  version: 0.0.34
-  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=999fb0&locator=ngx-twcss-playground%40workspace%3A."
+  version: 0.0.37
+  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=cba8b9&locator=ngx-twcss-playground%40workspace%3A."
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
     "@angular/common": ^17.3.0
     "@angular/core": ^17.3.0
-  checksum: 10c0/f02097e146366bb8bdba945bbb8459a7056cd1205764ccdcd6b8eb2e74604d1d496d077256e87f29b0a4985ce452e9a2db13d7349b7e2b0f49258a9f3e41079e
+  checksum: 10c0/2fc8091f2e887e2a33d890131c6c19bd13b95c633abc0c42d564018a420fa56089c3529422772d7df79ee8f3126058a13ca3d051741710debce06470e5ab914f
   languageName: node
   linkType: hard
 
@@ -8957,9 +8957,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.4.3":
-  version: 3.4.3
-  resolution: "tailwindcss@npm:3.4.3"
+"tailwindcss@npm:^3.4.4":
+  version: 3.4.4
+  resolution: "tailwindcss@npm:3.4.4"
   dependencies:
     "@alloc/quick-lru": "npm:^5.2.0"
     arg: "npm:^5.0.2"
@@ -8986,7 +8986,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 10c0/11e5546494f2888f693ebaa271b218b3a8e52fe59d7b629e54f2dffd6eaafd5ded2e9f0c37ad04e6a866dffb2b116d91becebad77e1441beee8bf016bb2392f9
+  checksum: 10c0/e4f7e1a2e1897871a4744f421ccb5639e8d51012e3644b0c35cf723527fdc8f9cddd3fa3b0fc28c198b0ea6ce44ead21c89cfec549d80bad9b1f3dd9d8bf2d54
   languageName: node
   linkType: hard
 

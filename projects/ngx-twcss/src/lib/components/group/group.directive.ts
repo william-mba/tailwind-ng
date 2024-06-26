@@ -2,15 +2,13 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { toClassName, resolveStyle } from '../../core/helpers/config.helper';
 import { BaseConfig } from '../../configs/base.config';
 
-/**Group element
- * @package ngx-twcss
-*/
+/**Group element*/
 @Directive({
   selector: 'tw-group',
   standalone: true
 })
 export class Group implements OnInit {
-  @Input() className: string = '';
+  @Input() className!: string;
 
   constructor(private el: ElementRef) { }
 

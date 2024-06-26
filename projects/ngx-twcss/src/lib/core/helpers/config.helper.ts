@@ -50,6 +50,9 @@ export function resolveConfig<T extends Record<string, any>>(target: T, ...sourc
  * @returns The resolved style
 */
 export function resolveStyle(style: string, className: string): string {
+  if (!className) {
+    return style;
+  }
   if (className.trim().length >= 3) {
     let newStyle = style;
     let newClassName = className.trim();

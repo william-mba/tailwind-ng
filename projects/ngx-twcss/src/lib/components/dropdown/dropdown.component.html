@@ -3,10 +3,10 @@
   <label class="inline-flex gap-1.5 hover:cursor-pointer">
     <ng-content></ng-content>
   </label>
-  <ng-container *ngIf="isOpen">
-    <!-- content -->
-    <div @dropdownAnimation [className]="contentStyle + ' ' + contentPosition">
-      <ng-content select="tw-dropdown-item"></ng-content>
-    </div>
-  </ng-container>
+  @if (open) {
+  <!-- content -->
+  <div @dropdownAnimation [className]="contentStyle + ' ' + contentPosition">
+    <ng-content select="tw-dropdown-item"></ng-content>
+  </div>
+  }
 </div>

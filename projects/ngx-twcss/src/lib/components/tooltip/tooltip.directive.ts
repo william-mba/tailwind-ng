@@ -2,9 +2,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { BaseConfig } from '../../configs/base.config';
 import { resolveStyle, toClassName } from '../../core/helpers/config.helper';
 
-/**Tooltip element. ['size-3', 'p-0.5', 'text-[7px]', '-top-0', '-right-0.5', ..]
-  @package ngx-twcss
- */
+/**Tooltip element ['size-3', 'p-0.5', 'text-[7px]', '-top-0', '-right-0.5', ..] */
 @Directive({
   selector: 'tw-tooltip',
   standalone: true

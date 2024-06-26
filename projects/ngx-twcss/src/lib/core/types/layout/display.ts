@@ -2,7 +2,7 @@ import { AlignItem } from "../flex-grid/align-item"
 import { Gap } from "../flex-grid/gap"
 import { JustifyContent } from "../flex-grid/justify-content"
 
-export type Display = {
+export type Display = Partial<{
   type:
   | "flex"
   | "grid"
@@ -20,7 +20,7 @@ export type Display = {
    * @see https://tailwindcss.com/docs/justify-content
    */
   justifyContent: JustifyContent
-}
+}>
   | "block"
   | "table"
   | "hidden"

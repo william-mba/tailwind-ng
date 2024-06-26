@@ -61,7 +61,7 @@ Light | Dark
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-isOpen | `boolean` | `[isOpen]` | `false` | The dropdown state.
+open | `boolean` | `[open]` | `false` | The dropdown state.
 size      | ``SizeVariant`` | `size`    | `'md'`  | The component size.
 className | ``string``      | `className` |  `''`   | The list of classes to add or override in the dropdown container style.
 contentClassName | ``string``      | `contentClassName` |  `''`   | The list of classes to add or override in the dropdown content style.

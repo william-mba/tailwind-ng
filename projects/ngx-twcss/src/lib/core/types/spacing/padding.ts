@@ -1,12 +1,12 @@
 
-export type Padding = PaddingSize | {
+export type Padding = Partial<{
   x: PaddingX
   y: PaddingY
   top: PaddingTop
   right: PaddingRight
   bottom: PaddingBottom
   left: PaddingLeft
-};
+}> | PaddingSize | PaddingX | PaddingY;
 
 export type PaddingRight =
   | 'pr-0'

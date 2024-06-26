@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Button } from './button.component';
 import { ButtonConfig } from './button.config';
 import { resolveStyle, toClassName } from '../../core/helpers/config.helper';
-import { SizeVariant } from '../base.component';
+import { ComponentSize } from '../base.component';
 
 describe('ButtonComponent', () => {
   let component: Button;
@@ -11,7 +11,7 @@ describe('ButtonComponent', () => {
   const primaryStyle = toClassName(ButtonConfig.primary);
   const secondaryStyle = toClassName(ButtonConfig.secondary);
   const softStyle = toClassName(ButtonConfig.soft);
-  const sizeVariants = ['sm', 'md', 'lg'] as SizeVariant[];
+  const sizeVariants = ['sm', 'md', 'lg'] as ComponentSize[];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

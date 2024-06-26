@@ -2,15 +2,13 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { BaseConfig } from '../../configs/base.config';
 import { toClassName, resolveStyle } from '../../core/helpers/config.helper';
 
-/**Avatar component.
-  @package ngx-twcss
- */
+/**Avatar element*/
 @Directive({
   selector: 'tw-avatar',
   standalone: true
 })
 export class Avatar implements OnInit {
-  @Input() className: string = '';
+  @Input() className!: string;
 
   constructor(private el: ElementRef) { }
 

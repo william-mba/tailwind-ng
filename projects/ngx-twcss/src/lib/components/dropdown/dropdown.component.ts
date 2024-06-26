@@ -1,5 +1,5 @@
 import { Component, Directive, ElementRef, HostListener, Input, OnInit, inject } from '@angular/core';
-import { BaseComponent, SizeVariant } from '../base.component';
+import { BaseComponent, ComponentSize } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { toClassName } from '../../core/helpers/config.helper';
 import { NgIf } from '@angular/common';
@@ -7,16 +7,14 @@ import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../configs/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
 
-/**Dropdown item component
- * @package ngx-twcss
-*/
+/**Dropdown item component*/
 @Directive({
   selector: 'tw-dropdown-item',
   standalone: true
 })
 export class DropdownItem {
   private configService = inject(ConfigService<DropdownConfig>);
-  @Input() size: SizeVariant = 'md';
+  @Input() size: ComponentSize = 'md';
 
   constructor(el: ElementRef) {
     this.configService.get(DropdownConfigKey).subscribe((cfg) => {
@@ -25,9 +23,7 @@ export class DropdownItem {
   }
 }
 
-/**Dropdown component
- * @package ngx-twcss
-*/
+/**Dropdown component*/
 @Component({
   selector: 'tw-dropdown',
   standalone: true,
@@ -58,9 +54,9 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   protected contentStyle!: string;
 
   @Input() override className!: string;
-  @Input() override size: SizeVariant = 'md';
+  @Input() override size: ComponentSize = 'md';
 
-  @Input() isOpen: boolean = false;
+  @Input() open: boolean = false;
   @Input() contentClassName: string = '';
   @Input() contentPosition: string = 'top-8 right-0';
 
@@ -78,6 +74,6 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
 
   @HostListener('click', ['$event']) onClick(event: PointerEvent) {
     event.stopPropagation();
-    this.isOpen = !this.isOpen;
+    this.open = !this.open;
   }
 }
