@@ -17,27 +17,33 @@ export class Button extends BaseComponent<ButtonConfig> implements OnInit {
   @Input() variant: ButtonVariant = 'primary';
 
   ngOnInit(): void {
-    this.initConfig();
+    if (!this.style) {
+      this.initConfig();
+    }
   }
 
   override initConfig(): void {
     this.configService.set(ButtonConfigKey, ButtonConfig)
       .get(ButtonConfigKey).subscribe((cfg) => {
+        let style: string = '';
+
         if (this.variant === 'primary') {
-          this.style = this.resolveStyle(toClassName(cfg.primary), this.className);
+          style = toClassName(cfg.primary);
         }
 
         if (this.variant === 'secondary') {
-          this.style = this.resolveStyle(toClassName(cfg.secondary), this.className);
+          style = toClassName(cfg.secondary);
         }
 
         if (this.variant === 'soft') {
-          this.style = this.resolveStyle(toClassName(cfg.soft), this.className);
+          style = toClassName(cfg.soft);
         }
 
         if (this.size) {
-          this.style += ` ${toClassName(SizeConfig[this.size])}`;
+          style += ` ${toClassName(SizeConfig[this.size])}`;
         }
+
+        this.style = this.resolveStyle(style, this.className);
       });
   }
 }

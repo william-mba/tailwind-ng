@@ -14,11 +14,13 @@ export abstract class BaseComponent<ConfigType> {
   protected initConfig(key: string, config?: ConfigType): void {
     this.configService.set(key, config ?? this.config)
       .get(key).subscribe((cfg) => {
-        this.style = this.resolveStyle(toClassName([cfg]), this.className);
+        let style = toClassName([cfg]);
 
         if (this.size) {
-          this.style += ` ${toClassName(SizeConfig[this.size])}`;
+          style += ` ${toClassName(SizeConfig[this.size])}`;
         }
+
+        this.style = this.resolveStyle(style, this.className);
       });
   }
 
