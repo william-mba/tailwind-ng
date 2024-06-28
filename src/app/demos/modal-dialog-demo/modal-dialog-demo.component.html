@@ -1,29 +1,28 @@
-<tw-modal-dialog [open]="open" className="dark:bg-neutral-900">
-  <!-- Icon -->
-  <tw-modal-icon className="dark:bg-neutral-800">
-    <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-      aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-    </svg>
-  </tw-modal-icon>
-
-  <!-- Title -->
-  <tw-modal-title id="modal-title" className="dark:text-neutral-200">Deactivate account</tw-modal-title>
-
-  <!-- Message -->
-  <tw-modal-message className="dark:text-neutral-200">
-    Are you sure you want to deactivate your account? All of your data will
-    be permanently removed. This action cannot be undone.
-  </tw-modal-message>
-
-  <!-- Footer -->
-  <tw-modal-footer className="dark:bg-neutral-900">
-    <tw-button
-      className="w-full bg-red-600 text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Deactivate</tw-button>
-    <tw-button variant="secondary"
-      className="text-neutral-800 dark:text-neutral-200 mt-3 w-full sm:mt-0 sm:w-auto">Cancel</tw-button>
-  </tw-modal-footer>
-
+<tw-modal-dialog [open]="open">
+  <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+    <div class="sm:flex sm:items-start">
+      <div
+        class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+        <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+        </svg>
+      </div>
+      <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+        <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Deactivate account</h3>
+        <div class="mt-2">
+          <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be
+            permanently removed. This action cannot be undone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-gray-50 px-4 py-3 grid gap-3 sm:flex sm:justify-end sm:items-center sm:px-6">
+    <tw-button variant="secondary" className="w-full">Cancel</tw-button>
+    <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
+  </div>
 </tw-modal-dialog>
+
 <tw-button (click)="openClose()">Show modal</tw-button>
+<app-avatar-demo></app-avatar-demo>

@@ -1,32 +1,14 @@
 @if (open) {
-<!-- Container -->
-<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-  <!-- Backdrop -->
-  <tw-backdrop @backdropAnimation />
-  <!-- Dialog -->
+<div class="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+
+  <div @modalBackdropAnimation class="fixed inset-0 bg-gray-500 bg-opacity-80" aria-hidden="true"></div>
+
   <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <!-- Modal Dialog container -->
     <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-      <!-- Panel -->
-      <div @modalPanelAnimation
-        class="relative overflow-hidden rounded-lg text-left shadow-xl sm:my-8 sm:w-full sm:max-w-lg">
-        <!-- Body -->
-        <div [className]="className">
-          <div class="sm:flex sm:items-start">
-            <!-- Icon -->
-            <ng-content select="tw-modal-icon"></ng-content>
-            <!-- Content -->
-            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-              <!-- Title -->
-              <ng-content select="tw-modal-title"></ng-content>
-              <!-- Message -->
-              <div class="mt-2">
-                <ng-content select="tw-modal-message"></ng-content>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Footer -->
-        <ng-content select="tw-modal-footer"></ng-content>
+      <!-- Modal Dialog panel -->
+      <div @modalPanelAnimation [className]="style">
+        <ng-content></ng-content>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ModalDialog } from './modal-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ModalDialogComponent', () => {
   let component: ModalDialog;
@@ -7,7 +8,7 @@ describe('ModalDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalDialog]
+      imports: [ModalDialog, BrowserAnimationsModule]
     })
       .compileComponents();
 

@@ -1,0 +1,41 @@
+.size-6 {
+  width: 1.5rem /* 24px */;
+  height: 1.5rem /* 24px */;
+}
+
+.size-10 {
+  width: 2.5rem /* 40px */;
+  height: 2.5rem /* 40px */;
+}
+
+.size-12 {
+  width: 3rem /* 48px */;
+  height: 3rem /* 48px */;
+}
+
+@media (min-width: 640px) {
+  .sm\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .sm\:my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .sm\:w-full {
+    width: 100%;
+  }
+  .sm\:max-w-lg {
+    max-width: 32rem;
+  }
+  .sm\:items-center {
+    align-items: center;
+  }
+  .sm\:p-0 {
+    padding: 0px;
+  }
+  .sm\:size-10 {
+    width: 2.5rem /* 40px */;
+    height: 2.5rem /* 40px */;
+  }
+}

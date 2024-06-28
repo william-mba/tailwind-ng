@@ -5,7 +5,7 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './modal-dialog-demo.component.html'
 })
 export class ModalDialogDemoComponent {
-  open: boolean = false;
+  open: boolean = true;
 
   openClose() {
     this.open = !this.open;
