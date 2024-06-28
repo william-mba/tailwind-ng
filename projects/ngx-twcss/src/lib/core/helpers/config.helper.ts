@@ -62,7 +62,7 @@ export function resolveStyle(style: string, className: string): string {
       /* Extract the first part of the class name.
       If the class name is 'text-red-500', the term will be 'text'.
       If the class name is '-space-x-1', the term will be '-space'.
-      That term is used to remove the existing class that matches in style.
+      That term is used to remove the existing class that start with it in style.
 
       Search from index 1 to avoid the first '-' in class name that begin with it.
       e.g. '-m-2', '-p-3'
@@ -72,7 +72,7 @@ export function resolveStyle(style: string, className: string): string {
       if (newStyle.includes(term)) {
 
         const filteredStyle = newStyle.split(' ')
-          .filter(name => !name.includes(term));
+          .filter(name => !name.startsWith(term));
 
         newStyle = filteredStyle.join(' ');
       }
