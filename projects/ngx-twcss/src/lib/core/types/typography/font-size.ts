@@ -1,6 +1,7 @@
 export type FontSize =
   | "text-xs"
   | "text-sm"
+  | "sm:text-sm"
   | "text-base"
   | "text-lg"
   | "text-xl"

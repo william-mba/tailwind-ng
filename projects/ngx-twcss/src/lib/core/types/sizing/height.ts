@@ -18,6 +18,7 @@ export type Height =
   | 'h-8'
   | 'h-9'
   | 'h-10'
+  | 'sm:h-10'
   | 'h-11'
   | 'h-12'
   | 'h-14'

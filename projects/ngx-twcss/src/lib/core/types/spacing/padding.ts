@@ -114,6 +114,7 @@ export type PaddingBottom =
   | 'pb-3'
   | 'pb-3.5'
   | 'pb-4'
+  | 'sm:pb-4'
   | 'pb-5'
   | 'pb-6'
   | 'pb-7'
@@ -148,6 +149,7 @@ export type PaddingX =
   | 'px-4'
   | 'px-5'
   | 'px-6'
+  | 'sm:px-6'
   | 'px-7'
   | 'px-8'
   | 'px-9'
@@ -202,6 +204,7 @@ export type PaddingY =
 
 export type PaddingSize =
   | 'p-0'
+  | 'sm:p-0'
   | 'p-0.5'
   | 'p-1'
   | 'p-1.5'
@@ -212,6 +215,7 @@ export type PaddingSize =
   | 'p-4'
   | 'p-5'
   | 'p-6'
+  | 'sm:p-6'
   | 'p-7'
   | 'p-8'
   | 'p-9'

@@ -5,6 +5,8 @@ import { JustifyContent } from "../flex-grid/justify-content"
 export type Display = Partial<{
   type:
   | "flex"
+  | "sm:flex"
+  | "*:sm:flex"
   | "grid"
   | "inline-flex"
   | "inline-grid",

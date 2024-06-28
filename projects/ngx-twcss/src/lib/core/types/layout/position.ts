@@ -6,7 +6,11 @@ import { Left } from "./position/left"
 import { Right } from "./position/right"
 import { Top } from "./position/top"
 
-export type PositionType = 'relative' | 'absolute' | 'fixed' | 'sticky'
+export type PositionType =
+  | 'relative'
+  | 'absolute'
+  | 'fixed'
+  | 'sticky'
 
 /**Utilities for controlling how an element is positioned in the DOM.
  * @see https://tailwindcss.com/docs/position

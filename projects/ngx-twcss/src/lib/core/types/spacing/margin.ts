@@ -48,8 +48,10 @@ export type MarginLeft =
   | 'ml-2'
   | 'ml-2.5'
   | 'ml-3'
+  | 'sm:ml-3'
   | 'ml-3.5'
   | 'ml-4'
+  | 'sm:ml-4'
   | 'ml-5'
   | 'ml-6'
   | 'ml-7'
@@ -75,6 +77,7 @@ export type MarginLeft =
 
 export type MarginTop =
   | 'mt-0'
+  | 'sm:mt-0'
   | 'mt-1'
   | 'mt-1.5'
   | 'mt-2'
@@ -139,6 +142,7 @@ export type MarginBottom =
 
 export type MarginX =
   | 'mx-0'
+  | 'sm:mx-0'
   | 'mx-1'
   | 'mx-1.5'
   | 'mx-2'
@@ -182,6 +186,7 @@ export type MarginY =
   | 'my-6'
   | 'my-7'
   | 'my-8'
+  | 'sm:my-8'
   | 'my-9'
   | 'my-10'
   | 'my-11'

@@ -33,8 +33,8 @@ export type BaseConfig = {
   textWrap: TextWrap,
   userSelect: UserSelect,
   textAlign: TextAlign,
-  /**Free-form property object. */
-  extends: Record<string, {}>
+  /**A property to set class name that does not have a defined type. */
+  extend: Record<string, {}> | string
 }
 
 export const BaseConfig: Partial<BaseConfig> = {
