@@ -1,11 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PrimaryButtonConfigKey } from './primary-button.config';
 import { toClassName } from '../../core/helpers/config.helper';
 import { BaseComponent, ComponentSize } from '../base.component';
-import { ButtonConfig } from './button.config';
+import { ButtonConfig, ButtonConfigKey } from './button.config';
 import { SizeConfig } from '../../configs/size.config';
-import { SecondaryButtonConfigKey } from './secondary-button.config';
-import { SoftButtonConfigKey } from './soft-button.config';
 
 /**Button component*/
 @Component({
@@ -14,42 +11,35 @@ import { SoftButtonConfigKey } from './soft-button.config';
   templateUrl: './button.component.html'
 })
 export class Button extends BaseComponent<ButtonConfig> implements OnInit {
-  protected contentStyle!: string;
-
-  @Input() override style!: string;
   @Input() override className!: string;
+  @Input() override style!: string;
   @Input() override size: ComponentSize = 'md';
   @Input() variant: ButtonVariant = 'primary';
 
   ngOnInit(): void {
-    if (!this.style) {
-      this.initConfig();
-      return;
-    }
-    this.style = this.resolveStyle(this.style, this.className);
+    this.initConfig();
   }
 
   override initConfig(): void {
-    if (this.variant === 'primary') {
-      this.configService.set(PrimaryButtonConfigKey, ButtonConfig)
-        .get(PrimaryButtonConfigKey).subscribe((cfg) => {
-          this.style = this.resolveStyle(toClassName([cfg.primary, SizeConfig[this.size]]), this.className);
-        });
-    }
-    if (this.variant === 'secondary') {
-      this.configService.set(SecondaryButtonConfigKey, ButtonConfig)
-        .get(PrimaryButtonConfigKey).subscribe((cfg) => {
-          this.style = this.resolveStyle(toClassName([cfg.secondary, SizeConfig[this.size]]), this.className);
-        });
-    }
-    if (this.variant === 'soft') {
-      this.configService.set(SoftButtonConfigKey, ButtonConfig)
-        .get(PrimaryButtonConfigKey).subscribe((cfg) => {
-          this.style = this.resolveStyle(toClassName([cfg.soft, SizeConfig[this.size]]), this.className);
-        });
-    }
-  }
+    this.configService.set(ButtonConfigKey, ButtonConfig)
+      .get(ButtonConfigKey).subscribe((cfg) => {
+        if (this.variant === 'primary') {
+          this.style = this.resolveStyle(toClassName(cfg.primary), this.className);
+        }
 
+        if (this.variant === 'secondary') {
+          this.style = this.resolveStyle(toClassName(cfg.secondary), this.className);
+        }
+
+        if (this.variant === 'soft') {
+          this.style = this.resolveStyle(toClassName(cfg.soft), this.className);
+        }
+
+        if (this.size) {
+          this.style += ` ${toClassName(SizeConfig[this.size])}`;
+        }
+      });
+  }
 }
 
 export type ButtonVariant = | 'primary' | 'secondary' | 'soft'

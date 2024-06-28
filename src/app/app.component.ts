@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
+import { CustomButtonConfig, CustomButtonConfig2, CustomButtonConfig3 } from 'customs/button.config';
 import { CustomDropdownConfig, CustomDropdownConfig2, CustomDropdownConfig3 } from 'customs/dropdown.config';
-import { CustomPrimaryButtonConfig, CustomPrimaryButtonConfig2, CustomPrimaryButtonConfig3 } from 'customs/primary-button.config';
-import { CustomSoftButtonConfig, CustomSoftButtonConfig2, CustomSoftButtonConfig3 } from 'customs/soft-button.config';
-import { ConfigService, PrimaryButtonConfigKey, PrimaryButtonConfig, ToggleTheme, SoftButtonConfig, SoftButtonConfigKey, DropdownConfig, DropdownConfigKey } from 'ngx-twcss';
+import { ConfigService, ToggleTheme, DropdownConfig, DropdownConfigKey, ButtonConfig, ButtonConfigKey } from 'ngx-twcss';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +10,7 @@ import { ConfigService, PrimaryButtonConfigKey, PrimaryButtonConfig, ToggleTheme
 })
 
 export class AppComponent {
-  private primaryBtnConfig = inject(ConfigService<PrimaryButtonConfig>);
-  private softBtnConfig = inject(ConfigService<SoftButtonConfig>);
+  private buttonConfig = inject(ConfigService<ButtonConfig>);
   private dropdownConfig = inject(ConfigService<DropdownConfig>);
   theme: number = 0;
   title = 'Ngx-Twcss Playground';
@@ -34,20 +32,17 @@ export class AppComponent {
   changeConfig() {
     switch (this.theme) {
       case 1:
-        this.primaryBtnConfig.set(PrimaryButtonConfigKey, PrimaryButtonConfig, CustomPrimaryButtonConfig);
-        this.softBtnConfig.set(SoftButtonConfigKey, SoftButtonConfig, CustomSoftButtonConfig);
+        this.buttonConfig.set(ButtonConfigKey, ButtonConfig, CustomButtonConfig);
         this.dropdownConfig.set(DropdownConfigKey, DropdownConfig, CustomDropdownConfig);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 2:
-        this.primaryBtnConfig.set(PrimaryButtonConfigKey, PrimaryButtonConfig, CustomPrimaryButtonConfig2);
-        this.softBtnConfig.set(SoftButtonConfigKey, SoftButtonConfig, CustomSoftButtonConfig2);
+        this.buttonConfig.set(ButtonConfigKey, ButtonConfig, CustomButtonConfig2);
         this.dropdownConfig.set(DropdownConfigKey, DropdownConfig, CustomDropdownConfig2);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 3:
-        this.primaryBtnConfig.set(PrimaryButtonConfigKey, PrimaryButtonConfig, CustomPrimaryButtonConfig3);
-        this.softBtnConfig.set(SoftButtonConfigKey, SoftButtonConfig, CustomSoftButtonConfig3);
+        this.buttonConfig.set(ButtonConfigKey, ButtonConfig, CustomButtonConfig3);
         this.dropdownConfig.set(DropdownConfigKey, DropdownConfig, CustomDropdownConfig3);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;

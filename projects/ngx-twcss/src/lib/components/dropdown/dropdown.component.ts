@@ -2,7 +2,6 @@ import { Component, Directive, ElementRef, HostListener, Input, OnInit, inject }
 import { BaseComponent, ComponentSize } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { toClassName } from '../../core/helpers/config.helper';
-import { NgIf } from '@angular/common';
 import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../configs/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
@@ -27,7 +26,6 @@ export class DropdownItem {
 @Component({
   selector: 'tw-dropdown',
   standalone: true,
-  imports: [NgIf],
   templateUrl: './dropdown.component.html',
   animations: [
     trigger('dropdownAnimation', [

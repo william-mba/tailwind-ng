@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Badge, Group, DropdownModule, Button, Avatar, Tooltip, ModalDialogModule } from 'ngx-twcss';
+import { Badge, Group, DropdownModule, Button, Avatar, Tooltip, ModalDialog } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +31,7 @@ import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog
     Badge,
     Avatar,
     Tooltip,
-    ModalDialogModule
+    ModalDialog
   ],
   bootstrap: [AppComponent]
 })
