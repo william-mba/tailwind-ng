@@ -1,6 +1,8 @@
 import { BorderRadius } from "../core/types/borders/border-radius"
 import { BorderWidth } from "../core/types/borders/border-width"
 import { RingWidth } from "../core/types/borders/ring-width"
+import { BoxShadow } from "../core/types/effects/box-shadow"
+import { DropShadow } from "../core/types/filters/drop-shadow"
 import { UserSelect } from "../core/types/interactivity/user-select"
 import { Display } from "../core/types/layout/display"
 import { Overflow } from "../core/types/layout/overflow"
@@ -33,6 +35,7 @@ export type BaseConfig = {
   textWrap: TextWrap,
   userSelect: UserSelect,
   textAlign: TextAlign,
+  shadow: DropShadow | BoxShadow,
   /**A property to set class name that does not have a defined type. */
   extend: Record<string, {}> | string
 }

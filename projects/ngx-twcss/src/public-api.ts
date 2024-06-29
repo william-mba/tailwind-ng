@@ -15,3 +15,4 @@ export * from './lib/components/avatar/avatar.directive';
 export * from './lib/components/tooltip/tooltip.directive';
 export * from './lib/components/modal-dialog/modal-dialog.component';
 export * from './lib/components/modal-dialog/modal-dialog.config';
+export * from './lib/components/modal-dialog/modal-dialog.module';
