@@ -22,7 +22,6 @@ export class AppComponent {
       this.theme = parseInt(lastTheme);
       this.changeConfig();
     }
-    ToggleTheme();
   }
 
   ToggleTheme() {
