@@ -1,4 +1,5 @@
-<tw-modal-dialog [open]="open" (click)="toggleDialog()" className="divide-y divide-gray-200 dark:divide-neutral-900">
+<!-- Simple with gray footer -->
+<!-- <tw-modal-dialog [open]="open" (click)="toggleDialog()" className="divide-y divide-gray-200 dark:divide-neutral-900">
   <tw-dialog-panel>
     <tw-dialog-icon className="text-red-600">
       <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -7,8 +8,8 @@
           d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
       </svg>
     </tw-dialog-icon>
-    <tw-dialog-content className="dark:text-gray-200">
-      <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-200" id="modal-title">
+    <tw-dialog-content>
+      <h3 class="text-base font-semibold leading-6" id="modal-title">
         Deactivate account
       </h3>
       <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -17,8 +18,58 @@
       </p>
     </tw-dialog-content>
   </tw-dialog-panel>
-  <tw-dialog-actions className="bg-gray-50 dark:bg-neutral-900/50">
+  <tw-dialog-actions className="dark:bg-neutral-900/20">
     <tw-button variant="secondary" className="w-full">Cancel</tw-button>
     <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
+  </tw-dialog-actions>
+</tw-modal-dialog> -->
+
+<!-- Centered with single action -->
+<!-- <tw-modal-dialog [open]="open" (click)="toggleDialog()">
+  <tw-dialog-panel className="sm:-">
+    <tw-dialog-icon className="text-green-600 bg-green-600/15">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+        <path fill-rule="evenodd"
+          d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+          clip-rule="evenodd" />
+      </svg>
+    </tw-dialog-icon>
+    <tw-dialog-content className="sm:-">
+      <h3 class="text-base font-semibold leading-6" id="modal-title">
+        Payment successful
+      </h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
+      </p>
+    </tw-dialog-content>
+  </tw-dialog-panel>
+  <tw-dialog-actions className="sm:-">
+    <tw-button className="bg-indigo-700 w-full">Go back to dashboard</tw-button>
+  </tw-dialog-actions>
+</tw-modal-dialog> -->
+
+<!-- Centered with wide action -->
+<tw-modal-dialog [open]="open" (click)="toggleDialog()">
+  <tw-dialog-panel className="sm:-">
+    <tw-dialog-icon className="text-green-600 bg-green-600/15">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+        <path fill-rule="evenodd"
+          d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
+          clip-rule="evenodd" />
+      </svg>
+    </tw-dialog-icon>
+    <tw-dialog-content className="sm:-">
+      <h3 class="text-base font-semibold leading-6" id="modal-title">
+        Payment successful
+      </h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius aliquam laudantium explicabo pariatur iste dolorem animi
+        vitae error totam. At sapiente aliquam accusamus facere veritatis.
+      </p>
+    </tw-dialog-content>
+  </tw-dialog-panel>
+  <tw-dialog-actions className="sm:-">
+    <tw-button className="bg-indigo-700 w-full">Deactivate</tw-button>
+    <tw-button variant="secondary" className="w-full">Cancel</tw-button>
   </tw-dialog-actions>
 </tw-modal-dialog>
