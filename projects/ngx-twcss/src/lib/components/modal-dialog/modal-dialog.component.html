@@ -2,15 +2,9 @@
 <div @backdropAnimation *ngIf="open"
   class="flex fixed z-50 inset-0 items-end justify-center p-4 text-center sm:items-center sm:p-0 bg-black bg-opacity-35 w-screen overflow-y-auto">
   <!-- Dialog Container -->
-  <div @dialogAnimation aria-labelledby="modal-title" role="dialog" aria-modal="true"
-    class="relative overflow-hidden grid rounded-lg bg-white dark:bg-neutral-800 text-left shadow-xl sm:w-full sm:max-w-lg">
+  <div @dialogAnimation aria-labelledby="modal-title" role="dialog" aria-modal="true" [className]="style">
     <!-- Dialog Panel -->
-    <div class="grid gap-4 p-4 py-6 sm:p-6 sm:flex sm:items-start">
-      <!-- Icon -->
-      <ng-content select="tw-dialog-icon"></ng-content>
-      <!-- Content -->
-      <ng-content select="tw-dialog-content"></ng-content>
-    </div>
+    <ng-content select="tw-dialog-panel"></ng-content>
     <!-- Dialog Actions -->
     <ng-content select="tw-dialog-actions"></ng-content>
   </div>

@@ -1,8 +1,9 @@
-import { Component, Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, inject } from '@angular/core';
 import { trigger, style, animate, transition, query, animateChild, group } from '@angular/animations';
-import { resolveStyle, toClassName } from '../../core/helpers/config.helper';
-import { BaseConfig } from '../../configs/base.config';
+import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { NgIf } from '@angular/common';
+import { ModalDialogConfig, ModalDialogConfigKey } from './modal-dialog.config';
+import { ConfigService } from '../../core/services/config.service';
 
 /**Modal Dialog component */
 @Component({
@@ -54,28 +55,17 @@ import { NgIf } from '@angular/common';
   ]
 })
 export class ModalDialog implements OnInit {
-  private readonly config: Partial<BaseConfig> = {
-    position: 'relative',
-    borderRadius: 'rounded-lg',
-    overflow: 'overflow-hidden',
-    textAlign: 'text-left',
-    shadow: 'shadow-xl',
-    theme: {
-      bgColor: 'bg-white',
-      dark: {
-        bgColor: 'dark:bg-neutral-900'
-      }
-    }
-  }
-
+  private _config = inject(ConfigService<ModalDialogConfig>);
   protected style!: string;
-
   @Input() className!: string;
   @Input() open: boolean = true;
 
   ngOnInit(): void {
-    const base = toClassName(this.config);
-    this.style = resolveStyle(base, this.className);
+    this._config.set(ModalDialogConfigKey, ModalDialogConfig)
+      .get(ModalDialogConfigKey).subscribe((conf) => {
+        const base = toClassName(conf.container);
+        this.style = resolveClassName(base, this.className);
+      });
   }
 
   @HostListener('click', ['$event']) onClick(event: PointerEvent) {
@@ -86,93 +76,87 @@ export class ModalDialog implements OnInit {
 
 /**Dialog icon element */
 @Component({
-  selector: '[twDialogIcon], tw-dialog-icon',
+  selector: 'tw-dialog-icon',
   standalone: true,
   template: '<div [className]="style"><ng-content></ng-content></div>',
 })
 export class DialogIcon implements OnInit {
-  private readonly config: Partial<BaseConfig> = {
-    display: {
-      type: 'flex',
-      alignItem: 'items-center',
-      justifyContent: 'justify-center'
-    },
-    size: 'size-12',
-    margin: 'mx-auto',
-    borderRadius: 'rounded-full',
-    sm: {
-      shrink: 'shrink-0',
-      size: 'sm:size-10',
-    },
-    theme: {
-      bgColor: 'bg-red-100',
-      dark: {
-        bgColor: 'dark:bg-red-700',
-        bgOpacity: 'dark:bg-opacity-50'
-      }
-    }
-  }
-
-  @Input() className!: string;
+  private _config = inject(ConfigService<ModalDialogConfig>);
   protected style!: string;
 
+  @Input() className!: string;
+
   ngOnInit(): void {
-    const base = toClassName(this.config);
-    this.style = resolveStyle(base, this.className);
+    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
+      const base = toClassName(conf.icon);
+      this.style = resolveClassName(base, this.className);
+    });
+  }
+}
+
+/**Dialog panel element */
+@Component({
+  selector: 'tw-dialog-panel',
+  standalone: true,
+  template: `
+  <div [className]="style">
+    <!-- Icon -->
+    <ng-content select="tw-dialog-icon"></ng-content>
+    <!-- Content -->
+    <ng-content select="tw-dialog-content"></ng-content>
+  </div>`
+})
+export class DialogPanel implements OnInit {
+  private _config = inject(ConfigService<ModalDialogConfig>);
+  protected style!: string;
+
+  @Input() className!: string;
+
+  ngOnInit(): void {
+    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
+      const base = toClassName(conf.panel);
+      this.style = resolveClassName(base, this.className);
+    });
   }
 }
 
 /**Dialog content element */
 @Component({
-  selector: '[twDialogContent], tw-dialog-content',
+  selector: 'tw-dialog-content',
   standalone: true,
   template: '<div [className]="style"><ng-content></ng-content></div>'
 })
 export class DialogContent implements OnInit {
-  private readonly config: Partial<BaseConfig> = {
-    display: {
-      type: 'grid',
-      gap: 'gap-2',
-    },
-    textAlign: 'text-center',
-    sm: "sm:text-left"
-  }
-
-  @Input() className!: string;
+  private _config = inject(ConfigService<ModalDialogConfig>);
   protected style!: string;
 
+  @Input() className!: string;
+
   ngOnInit(): void {
-    const base = toClassName(this.config);
-    this.style = resolveStyle(base, this.className);
+    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
+      const base = toClassName(conf.content);
+      this.style = resolveClassName(base, this.className);
+    });
   }
 }
 
 /**Dialog actions element */
-@Directive({
-  selector: '[twDialogActions], tw-dialog-actions',
-  standalone: true
+@Component({
+  selector: 'tw-dialog-actions',
+  standalone: true,
+  template: '<div [className]="style"><ng-content></ng-content></div>'
 })
 export class DialogActions implements OnInit {
-  private readonly config: Partial<BaseConfig> = {
-    display: {
-      type: 'grid',
-      gap: 'gap-4',
-    },
-    padding: 'p-4',
-    sm: {
-      display: 'sm:flex',
-      justifyContent: 'sm:justify-end',
-    }
-  }
+  private _config = inject(ConfigService<ModalDialogConfig>);
+  protected style!: string;
 
   @Input() className!: string;
 
-  constructor(private el: ElementRef) { }
-
   ngOnInit(): void {
-    const base = toClassName(this.config);
-    const style = resolveStyle(base, this.className);
-    this.el.nativeElement.className = style;
+    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
+      const base = toClassName(conf.actions);
+      this.style = resolveClassName(base, this.className);
+    });
   }
 }
 
