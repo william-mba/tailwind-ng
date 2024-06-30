@@ -1,22 +1,24 @@
-<tw-modal-dialog [open]="open">
-  <tw-dialog-icon>
-    <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-      aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-    </svg>
-  </tw-dialog-icon>
-  <tw-dialog-content>
-    <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Deactivate account</h3>
-    <div class="mt-2">
-      <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will
-        be permanently removed. This action cannot be undone.</p>
-    </div>
-  </tw-dialog-content>
+<tw-modal-dialog [open]="open" (click)="toggleDialog()" className="divide-y divide-gray-200 dark:divide-neutral-900">
+  <tw-dialog-panel>
+    <tw-dialog-icon className="text-red-600">
+      <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+      </svg>
+    </tw-dialog-icon>
+    <tw-dialog-content className="dark:text-gray-200">
+      <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-gray-200" id="modal-title">
+        Deactivate account
+      </h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Are you sure you want to deactivate your account? All of your data will be permanently removed. This action
+        cannot be undone.
+      </p>
+    </tw-dialog-content>
+  </tw-dialog-panel>
   <tw-dialog-actions className="bg-gray-50 dark:bg-neutral-900/50">
     <tw-button variant="secondary" className="w-full">Cancel</tw-button>
     <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
   </tw-dialog-actions>
 </tw-modal-dialog>
-<tw-button (click)="openClose()">Show dialog</tw-button>
-<app-avatar-demo></app-avatar-demo>

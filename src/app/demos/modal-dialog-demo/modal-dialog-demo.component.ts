@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
+import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
 
 @Component({
   selector: 'app-modal-dialog-demo',
@@ -7,12 +8,10 @@ import { Component, HostListener } from '@angular/core';
 export class ModalDialogDemoComponent {
   open: boolean = true;
 
-  openClose() {
+  toggleDialog() {
     this.open = !this.open;
-  }
 
-  @HostListener('click', ['$event']) onClick(event: PointerEvent) {
-    event.stopPropagation();
-    this.open = true;
+    timer(1000).pipe(concatMap(() => scheduled([this.open], asyncScheduler)))
+      .subscribe(() => this.open = true)
   }
 }
