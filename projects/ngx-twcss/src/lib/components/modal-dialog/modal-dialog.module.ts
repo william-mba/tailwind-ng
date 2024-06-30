@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
-import { DialogBody, DialogContent, DialogFooter, DialogIcon, ModalDialog } from './modal-dialog.component';
+import { DialogContent, DialogActions, DialogIcon, ModalDialog } from './modal-dialog.component';
 
 @NgModule({
   imports: [
-    DialogBody,
     DialogIcon,
     DialogContent,
-    DialogFooter,
+    DialogActions,
     ModalDialog
   ],
   exports: [
-    DialogBody,
     DialogIcon,
     DialogContent,
-    DialogFooter,
+    DialogActions,
     ModalDialog
   ]
 })
