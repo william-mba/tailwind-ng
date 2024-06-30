@@ -53,9 +53,11 @@ export function resolveStyle(style: string, className: string): string {
   if (!className) {
     return style;
   }
-  if (className.trim().length >= 3) {
+
+  className = className.trim();
+  if (className.length >= 3) {
     let newStyle = style;
-    let newClassName = className.trim();
+    let newClassName = className;
 
     newClassName.split(' ').forEach((cls) => {
 
