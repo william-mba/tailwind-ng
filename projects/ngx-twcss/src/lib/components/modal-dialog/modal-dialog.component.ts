@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { trigger, style, animate, transition, query, animateChild, group } from '@angular/animations';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { NgIf } from '@angular/common';
@@ -66,11 +66,6 @@ export class ModalDialog implements OnInit {
         const base = toClassName(conf.container);
         this.style = resolveClassName(base, this.className);
       });
-  }
-
-  @HostListener('click', ['$event']) onClick(event: PointerEvent) {
-    event.stopPropagation();
-    this.open = !this.open;
   }
 }
 
