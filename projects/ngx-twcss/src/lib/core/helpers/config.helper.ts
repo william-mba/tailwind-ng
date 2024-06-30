@@ -49,7 +49,7 @@ export function resolveConfig<T extends Record<string, any>>(target: T, ...sourc
  * @param className - A list of space separated class names to add or replace in style
  * @returns The resolved style
 */
-export function resolveStyle(style: string, className: string): string {
+export function resolveClassName(style: string, className: string): string {
   if (!className) {
     return style;
   }
@@ -91,7 +91,7 @@ export function resolveStyle(style: string, className: string): string {
 
     newClassName = newClassName.trim().replace('  ', ' ');
     // Add a '+' to help identify the className final value when inspecting the DOM element.
-    style = `${newClassName } + ${newStyle}`;
+    style = `${newClassName} + ${newStyle}`;
   }
   return style;
 }

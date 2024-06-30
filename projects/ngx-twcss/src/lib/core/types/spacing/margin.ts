@@ -6,6 +6,7 @@ export type Margin = Partial<{
   right: MarginRight
   bottom: MarginBottom
   left: MarginLeft
+  size: MarginSize
 }> | MarginSize | MarginX | MarginY | MarginTop | MarginRight | MarginBottom | MarginLeft;
 
 

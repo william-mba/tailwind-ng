@@ -10,8 +10,10 @@ export type Scaling = {
   margin: Partial<Margin>
 }
 
-export type SizeVariant = {
+export type Sizing = {
   sm: Partial<Scaling>,
   md: Partial<Scaling>,
   lg: Partial<Scaling>
 }
+
+export type Size = 'sm' | 'md' | 'lg';

@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from "@angular/core";
-import { resolveConfig } from '../core/helpers/config.helper';
+import { resolveConfig } from '../helpers/config.helper';
 
 @Injectable({
   providedIn: 'root'

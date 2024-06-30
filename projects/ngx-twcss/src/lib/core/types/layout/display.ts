@@ -40,4 +40,9 @@ export type Display = Partial<{
   | "flow-root"
   | "contents"
   | "list-item"
+  | "flex"
+  | "sm:flex"
+  | "grid"
+  | "inline-flex"
+  | "inline-grid"
 
