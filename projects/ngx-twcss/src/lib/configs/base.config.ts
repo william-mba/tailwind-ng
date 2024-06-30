@@ -7,6 +7,7 @@ import { UserSelect } from "../core/types/interactivity/user-select"
 import { Display } from "../core/types/layout/display"
 import { Overflow } from "../core/types/layout/overflow"
 import { Position } from "../core/types/layout/position"
+import { ZIndex } from "../core/types/layout/z-index"
 import { Height } from "../core/types/sizing/height"
 import { Size } from "../core/types/sizing/size"
 import { Width } from "../core/types/sizing/width"
@@ -35,7 +36,10 @@ export type BaseConfig = {
   textWrap: TextWrap,
   userSelect: UserSelect,
   textAlign: TextAlign,
+  zIndex: ZIndex,
   shadow: DropShadow | BoxShadow,
+  /**A property to set class name starting with sm:* */
+  sm: Record<string, {}> | string
   /**A property to set class name that does not have a defined type. */
   extend: Record<string, {}> | string
 }

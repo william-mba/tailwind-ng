@@ -6,7 +6,7 @@ export type Padding = Partial<{
   right: PaddingRight
   bottom: PaddingBottom
   left: PaddingLeft
-}> | PaddingSize | PaddingX | PaddingY;
+}> | PaddingSize | PaddingX | PaddingY | PaddingTop | PaddingRight | PaddingBottom | PaddingLeft;
 
 export type PaddingRight =
   | 'pr-0'
