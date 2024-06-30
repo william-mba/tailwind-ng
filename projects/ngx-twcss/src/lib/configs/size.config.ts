@@ -1,6 +1,6 @@
-import { SizeVariant } from "../core/types/size";
+import { Sizing } from "../core/types/size";
 
-export const SizeConfig: SizeVariant = {
+export const SizeConfig: Sizing = {
   sm: {
     fontSize: 'text-xs',
     padding: {
