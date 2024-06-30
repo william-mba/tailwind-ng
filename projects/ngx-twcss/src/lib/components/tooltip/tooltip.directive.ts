@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { BaseConfig } from '../../configs/base.config';
-import { resolveStyle, toClassName } from '../../core/helpers/config.helper';
+import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 
 /**Tooltip element ['size-3', 'p-0.5', 'text-[7px]', '-top-0', '-right-0.5', ..] */
 @Directive({
@@ -13,8 +13,8 @@ export class Tooltip implements OnInit {
   constructor(private el: ElementRef) { }
 
   ngOnInit(): void {
-    const baseStyle = toClassName(TooltipConfig);
-    const style = resolveStyle(baseStyle, this.className);
+    const base = toClassName(TooltipConfig);
+    const style = resolveClassName(base, this.className);
     this.el.nativeElement.className = style;
   }
 }

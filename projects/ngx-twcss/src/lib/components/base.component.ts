@@ -1,18 +1,20 @@
 import { inject } from "@angular/core";
-import { resolveStyle, toClassName } from "../core/helpers/config.helper";
-import { ConfigService } from "../configs/config.service";
+import { resolveClassName, toClassName } from "../core/helpers/config.helper";
+import { ConfigService } from "../core/services/config.service";
 import { SizeConfig } from "../configs/size.config";
+import { Size } from "../core/types/size";
 
 /**@package ngx-twcss */
 export abstract class BaseComponent<ConfigType> {
-  protected configService = inject(ConfigService<ConfigType>);
-  protected size!: ComponentSize;
+  protected size!: Size;
   protected style: string = '';
   protected className: string = '';
-  protected config!: ConfigType;
+  protected configService = inject(ConfigService<ConfigType>);
 
-  protected initConfig(key: string, config?: ConfigType): void {
-    this.configService.set(key, config ?? this.config)
+  protected initConfig(key: string, config: ConfigType): void {
+    if (this.style.length > 3) return;
+
+    this.configService.set(key, config)
       .get(key).subscribe((cfg) => {
         let style = toClassName([cfg]);
 
@@ -20,21 +22,7 @@ export abstract class BaseComponent<ConfigType> {
           style += ` ${toClassName(SizeConfig[this.size])}`;
         }
 
-        this.style = this.resolveStyle(style, this.className);
+        this.style = resolveClassName(style, this.className);
       });
   }
-
-  protected resolveStyle(style: string, className: string): string {
-    return resolveStyle(style, className);
-  }
-
-  protected removeClass(...classList: string[]): void {
-    let filteredStyle = this.style.split(' ');
-    classList.forEach(classToRemove => {
-      filteredStyle = filteredStyle.filter((c) => c !== classToRemove);
-    })
-    this.style = filteredStyle.join(' ');
-  }
 }
-
-export type ComponentSize = 'sm' | 'md' | 'lg';

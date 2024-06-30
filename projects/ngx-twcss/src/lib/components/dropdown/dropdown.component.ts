@@ -1,10 +1,11 @@
 import { Component, Directive, ElementRef, HostListener, Input, OnInit, inject } from '@angular/core';
-import { BaseComponent, ComponentSize } from '../base.component';
+import { BaseComponent } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
-import { toClassName } from '../../core/helpers/config.helper';
+import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { SizeConfig } from '../../configs/size.config';
-import { ConfigService } from '../../configs/config.service';
+import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { Size } from '../../core/types/size';
 
 /**Dropdown item component*/
 @Directive({
@@ -13,7 +14,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class DropdownItem {
   private configService = inject(ConfigService<DropdownConfig>);
-  @Input() size: ComponentSize = 'md';
+  @Input() size: Size = 'md';
 
   constructor(el: ElementRef) {
     this.configService.get(DropdownConfigKey).subscribe((cfg) => {
@@ -52,7 +53,7 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   protected contentStyle!: string;
 
   @Input() override className!: string;
-  @Input() override size: ComponentSize = 'md';
+  @Input() override size: Size = 'md';
 
   @Input() open: boolean = false;
   @Input() contentClassName: string = '';
@@ -65,8 +66,8 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   override initConfig(): void {
     this.configService.set(DropdownConfigKey, DropdownConfig)
       .get(DropdownConfigKey).subscribe((cfg) => {
-        this.style = this.resolveStyle(toClassName([cfg.container, SizeConfig[this.size]]), this.className);
-        this.contentStyle = this.resolveStyle(toClassName(cfg.content), this.contentClassName);
+        this.style = resolveClassName(toClassName([cfg.container, SizeConfig[this.size]]), this.className);
+        this.contentStyle = resolveClassName(toClassName(cfg.content), this.contentClassName);
       });
   }
 

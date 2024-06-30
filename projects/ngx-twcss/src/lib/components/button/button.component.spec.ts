@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Button } from './button.component';
 import { ButtonConfig } from './button.config';
-import { resolveStyle, toClassName } from '../../core/helpers/config.helper';
+import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { ComponentSize } from '../base.component';
 
 describe('ButtonComponent', () => {
@@ -54,13 +54,13 @@ describe('ButtonComponent', () => {
   it('should set style', () => {
     expect(component.style).toBeDefined();
 
-    component.style = resolveStyle(primaryStyle, component.className);
+    component.style = resolveClassName(primaryStyle, component.className);
     expect(component.style).toEqual(primaryStyle);
 
-    component.style = resolveStyle(secondaryStyle, component.className);
+    component.style = resolveClassName(secondaryStyle, component.className);
     expect(component.style).toEqual(secondaryStyle);
 
-    component.style = resolveStyle(softStyle, component.className);
+    component.style = resolveClassName(softStyle, component.className);
     expect(component.style).toEqual(softStyle);
   });
 

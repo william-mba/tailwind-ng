@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { BaseConfig } from '../../configs/base.config';
-import { toClassName, resolveStyle } from '../../core/helpers/config.helper';
+import { toClassName, resolveClassName } from '../../core/helpers/config.helper';
 
 /**Avatar element*/
 @Directive({
@@ -14,7 +14,7 @@ export class Avatar implements OnInit {
 
   ngOnInit(): void {
     const baseStyle = toClassName(AvatarConfig);
-    const style = resolveStyle(baseStyle, this.className);
+    const style = resolveClassName(baseStyle, this.className);
     this.el.nativeElement.className = style;
   }
 }

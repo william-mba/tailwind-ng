@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { toClassName, resolveStyle } from '../../core/helpers/config.helper';
+import { toClassName, resolveClassName } from '../../core/helpers/config.helper';
 import { BaseConfig } from '../../configs/base.config';
 
 /**Group element*/
@@ -13,12 +13,13 @@ export class Group implements OnInit {
   constructor(private el: ElementRef) { }
 
   ngOnInit(): void {
-    const baseStyle = toClassName(GroupConfig);
-    const style = resolveStyle(baseStyle, this.className);
+    const base = toClassName(GroupConfig);
+    const style = resolveClassName(base, this.className);
     this.el.nativeElement.className = style;
   }
 }
 
+/**Group config*/
 export type GroupConfig = Partial<BaseConfig>;
 
 export const GroupConfig: GroupConfig = {

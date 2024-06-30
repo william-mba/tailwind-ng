@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { toClassName } from '../../core/helpers/config.helper';
-import { BaseComponent, ComponentSize } from '../base.component';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { ButtonConfig, ButtonConfigKey } from './button.config';
 import { SizeConfig } from '../../configs/size.config';
+import { ConfigService } from '../../core/services/config.service';
+import { Size } from '../../core/types/size';
 
 /**Button component*/
 @Component({
@@ -10,10 +11,12 @@ import { SizeConfig } from '../../configs/size.config';
   standalone: true,
   templateUrl: './button.component.html'
 })
-export class Button extends BaseComponent<ButtonConfig> implements OnInit {
-  @Input() override className!: string;
-  @Input() override style!: string;
-  @Input() override size: ComponentSize = 'md';
+export class Button implements OnInit {
+  private _config = inject(ConfigService<ButtonConfig>);
+
+  @Input() className!: string;
+  @Input() style!: string;
+  @Input() size: Size = 'md';
   @Input() variant: ButtonVariant = 'primary';
 
   ngOnInit(): void {
@@ -22,8 +25,8 @@ export class Button extends BaseComponent<ButtonConfig> implements OnInit {
     }
   }
 
-  override initConfig(): void {
-    this.configService.set(ButtonConfigKey, ButtonConfig)
+  initConfig(): void {
+    this._config.set(ButtonConfigKey, ButtonConfig)
       .get(ButtonConfigKey).subscribe((cfg) => {
         let style: string = '';
 
@@ -43,7 +46,7 @@ export class Button extends BaseComponent<ButtonConfig> implements OnInit {
           style += ` ${toClassName(SizeConfig[this.size])}`;
         }
 
-        this.style = this.resolveStyle(style, this.className);
+        this.style = resolveClassName(style, this.className);
       });
   }
 }
