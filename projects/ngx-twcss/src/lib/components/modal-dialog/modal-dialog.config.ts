@@ -53,11 +53,9 @@ export const DialogPanelConfig: DialogPanelConfig = {
     gap: 'gap-4'
   },
   padding: {
-    size: 'p-4',
-    y: 'py-6'
+    size: 'p-6'
   },
   sm: {
-    padding: 'sm:p-6',
     display: 'sm:flex',
     alignItems: 'sm:items-start'
   }
@@ -70,8 +68,14 @@ export const DialogContentConfig: DialogContentConfig = {
     type: 'grid',
     gap: 'gap-2',
   },
+  sm: "sm:text-left",
   textAlign: 'text-center',
-  sm: "sm:text-left"
+  theme: {
+    textColor: 'text-gray-900',
+    dark: {
+      textColor: 'dark:text-gray-100'
+    }
+  }
 }
 
 /**Dialog actions config */
@@ -81,7 +85,10 @@ export const DialogActionsConfig: DialogActionsConfig = {
     type: 'grid',
     gap: 'gap-4',
   },
-  padding: 'p-4',
+  padding: {
+    size: 'p-6',
+    y: 'py-4',
+  },
   sm: {
     display: 'sm:flex',
     justifyContent: 'sm:justify-end',
