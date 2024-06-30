@@ -55,15 +55,16 @@ export function resolveClassName(style: string, className: string): string {
   }
 
   className = className.trim();
+
   if (className.length >= 3) {
-    let newStyle = style;
+    let newStyle = style.trim();
     let newClassName = className;
 
     newClassName.split(' ').forEach((cls) => {
 
       /* Extract the first part of the class name.
-      If the class name is 'text-red-500', the term will be 'text'.
-      If the class name is '-space-x-1', the term will be '-space'.
+      If the class name is 'text-red-500', the term will be 'text-'.
+      If the class name is '-space-x-1', the term will be '-space-'.
       That term is used to remove the existing class that start with it in style.
 
       Search from index 1 to avoid the first '-' in class name that begin with it.
@@ -73,10 +74,12 @@ export function resolveClassName(style: string, className: string): string {
 
       if (newStyle.includes(term)) {
 
-        const filteredStyle = newStyle.split(' ')
-          .filter(name => !name.startsWith(term));
+        const classList = newStyle.split(' ');
+        const filteredStyle = classList.filter(name => !name.startsWith(term));
 
-        newStyle = filteredStyle.join(' ');
+        if (filteredStyle.length > 0) {
+          newStyle = filteredStyle.join(' ');
+        }
       }
 
       /* Remove class name if ending with '-' character.
@@ -89,7 +92,12 @@ export function resolveClassName(style: string, className: string): string {
       }
     });
 
-    newClassName = newClassName.trim().replace('  ', ' ');
+    newClassName = newClassName.trim().replace(/\s/g, ' ');
+
+    if (!(newClassName.length > 0)) {
+      style = newStyle;
+      return style;
+    }
     // Add a '+' to help identify the className final value when inspecting the DOM element.
     style = `${newClassName} + ${newStyle}`;
   }
