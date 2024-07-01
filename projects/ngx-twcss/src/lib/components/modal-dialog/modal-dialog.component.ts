@@ -93,13 +93,7 @@ export class DialogIcon implements OnInit {
 @Component({
   selector: 'tw-dialog-panel',
   standalone: true,
-  template: `
-  <div [className]="style">
-    <!-- Icon -->
-    <ng-content select="tw-dialog-icon"></ng-content>
-    <!-- Content -->
-    <ng-content select="tw-dialog-content"></ng-content>
-  </div>`
+  template: '<div [className]="style"><ng-content></ng-content></div>'
 })
 export class DialogPanel implements OnInit {
   private _config = inject(ConfigService<ModalDialogConfig>);
