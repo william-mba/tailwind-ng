@@ -126,7 +126,7 @@
     </tw-button>
   </tw-dialog-panel>
   <tw-dialog-actions>
-    <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
-    <tw-button variant="secondary" className="w-full">Cancel</tw-button>
+    <tw-button (click)="toggleDialog()" className="bg-red-600 w-full">Deactivate</tw-button>
+    <tw-button (click)="toggleDialog()" variant="secondary" className="w-full">Cancel</tw-button>
   </tw-dialog-actions>
 </tw-modal-dialog>
