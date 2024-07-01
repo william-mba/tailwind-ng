@@ -21,6 +21,23 @@ export const DialogContainerConfig: DialogContainerConfig = {
   }
 }
 
+/**Dialog panel config */
+export type DialogPanelConfig = Partial<BaseConfig>
+export const DialogPanelConfig: DialogPanelConfig = {
+  display: {
+    type: 'flex',
+    gap: 'gap-4',
+    flexDirection: 'flex-col',
+  },
+  padding: {
+    size: 'p-6'
+  },
+  sm: {
+    flexDirection: 'sm:flex-row',
+    alignItems: 'sm:items-start'
+  }
+}
+
 /**Dialog icon config */
 export type DialogIconConfig = Partial<BaseConfig>
 export const DialogIconConfig: DialogIconConfig = {
@@ -45,31 +62,16 @@ export const DialogIconConfig: DialogIconConfig = {
   }
 }
 
-/**Dialog panel config */
-export type DialogPanelConfig = Partial<BaseConfig>
-export const DialogPanelConfig: DialogPanelConfig = {
-  display: {
-    type: 'grid',
-    gap: 'gap-4'
-  },
-  padding: {
-    size: 'p-6'
-  },
-  sm: {
-    display: 'sm:flex',
-    alignItems: 'sm:items-start'
-  }
-}
-
 /**Dialog content config */
 export type DialogContentConfig = Partial<BaseConfig>
 export const DialogContentConfig: DialogContentConfig = {
   display: {
-    type: 'grid',
+    type: 'flex',
     gap: 'gap-2',
+    flexDirection: 'flex-col',
   },
-  sm: "sm:text-left",
   textAlign: 'text-center',
+  sm: "sm:text-left",
   theme: {
     textColor: 'text-gray-900',
     dark: {
@@ -82,16 +84,16 @@ export const DialogContentConfig: DialogContentConfig = {
 export type DialogActionsConfig = Partial<BaseConfig>
 export const DialogActionsConfig: DialogActionsConfig = {
   display: {
-    type: 'grid',
+    type: 'flex',
     gap: 'gap-4',
+    flexDirection: 'flex-col',
   },
   padding: {
     size: 'p-6',
     y: 'py-4',
   },
   sm: {
-    display: 'sm:flex',
-    justifyContent: 'sm:justify-end',
+    flexDirection: 'sm:flex-row-reverse'
   }
 }
 
