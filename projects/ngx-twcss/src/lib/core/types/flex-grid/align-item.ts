@@ -1,8 +1,12 @@
 export type AlignItem =
   | 'items-start'
-  | 'sm:items-start'
   | 'items-end'
   | 'items-center'
-  | 'sm:items-center'
   | 'items-baseline'
   | 'items-stretch'
+  | 'sm:items-start'
+  | 'sm:items-end'
+  | 'sm:items-center'
+  | 'sm:items-baseline'
+  | 'sm:items-stretch'
+
