@@ -1,5 +1,11 @@
 import { BaseConfig } from "../../configs/base.config";
 
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'soft'
+  | 'text'
+
 // Base config
 export type ButtonBaseConfig = Partial<BaseConfig>
 
@@ -10,7 +16,7 @@ export const ButtonBaseConfig: ButtonBaseConfig = {
   userSelect: 'select-none'
 }
 
-// Primary config
+// Primary button config
 export type PrimaryButtonConfig = Partial<ButtonBaseConfig>;
 
 export const PrimaryButtonConfig: PrimaryButtonConfig = {
@@ -24,7 +30,7 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
   }
 }
 
-// Secondary config
+// Secondary button config
 export type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
 
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
@@ -57,7 +63,7 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
   }
 }
 
-// Soft config
+// Soft button config
 export type SoftButtonConfig = Partial<ButtonBaseConfig>;
 
 export const SoftButtonConfig: SoftButtonConfig = {
@@ -73,6 +79,14 @@ export const SoftButtonConfig: SoftButtonConfig = {
 }
 
 
+// Text button config
+export type TextButtonConfig = Partial<ButtonBaseConfig>;
+
+export const TextButtonConfig: SoftButtonConfig = {
+  ...ButtonBaseConfig
+}
+
+
 /**Button config key
  * @package ngx-twcss
  */
@@ -84,11 +98,13 @@ export const ButtonConfigKey = 'ButtonConfigKey';
 export type ButtonConfig = {
   primary: Partial<PrimaryButtonConfig>,
   secondary: Partial<SecondaryButtonConfig>,
-  soft: Partial<SoftButtonConfig>
+  soft: Partial<SoftButtonConfig>,
+  text: Partial<TextButtonConfig>
 }
 
 export const ButtonConfig: ButtonConfig = {
   primary: PrimaryButtonConfig,
   secondary: SecondaryButtonConfig,
-  soft: SoftButtonConfig
+  soft: SoftButtonConfig,
+  text: TextButtonConfig
 }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
-import { ButtonConfig, ButtonConfigKey } from './button.config';
+import { ButtonConfig, ButtonConfigKey, ButtonVariant } from './button.config';
 import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../core/services/config.service';
 import { Size } from '../../core/types/size';
@@ -30,17 +30,7 @@ export class Button implements OnInit {
       .get(ButtonConfigKey).subscribe((cfg) => {
         let style: string = '';
 
-        if (this.variant === 'primary') {
-          style = toClassName(cfg.primary);
-        }
-
-        if (this.variant === 'secondary') {
-          style = toClassName(cfg.secondary);
-        }
-
-        if (this.variant === 'soft') {
-          style = toClassName(cfg.soft);
-        }
+        style = toClassName(cfg[this.variant]);
 
         if (this.size) {
           style += ` ${toClassName(SizeConfig[this.size])}`;
@@ -50,5 +40,3 @@ export class Button implements OnInit {
       });
   }
 }
-
-export type ButtonVariant = | 'primary' | 'secondary' | 'soft'
