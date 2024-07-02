@@ -1,8 +1,9 @@
-<!-- Scrim / Backdrop -->
-<div @backdropAnimation *ngIf="open"
-  class="grid place-content-end sm:place-content-center fixed z-50 inset-0 p-4 text-center bg-black bg-opacity-35 w-screen overflow-y-auto">
+<!-- Backdrop -->
+<div @backdropAnimation *ngIf="open" [className]="backdrop"></div>
+<!-- Scrim -->
+<div *ngIf="open" @dialogAnimation [className]="scrim">
   <!-- Dialog Container -->
-  <div @dialogAnimation aria-labelledby="modal-title" role="dialog" aria-modal="true" [className]="style">
+  <div aria-labelledby="modal-title" role="dialog" aria-modal="true" [className]="style">
     <!-- Dialog Panel -->
     <ng-content select="tw-dialog-panel"></ng-content>
     <!-- Dialog Actions -->

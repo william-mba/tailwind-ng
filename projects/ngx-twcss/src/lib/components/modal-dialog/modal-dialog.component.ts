@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { trigger, style, animate, transition, query, animateChild, group } from '@angular/animations';
+import { trigger, style, animate, transition } from '@angular/animations';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
-import { NgIf } from '@angular/common';
 import { ModalDialogConfig, ModalDialogConfigKey } from './modal-dialog.config';
 import { ConfigService } from '../../core/services/config.service';
+import { NgIf } from '@angular/common';
 
 /**Modal Dialog component */
 @Component({
@@ -17,7 +17,7 @@ import { ConfigService } from '../../core/services/config.service';
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'translateY(0px) scale(0.95)'
+          transform: 'scale(.9)'
         }),
         animate('300ms ease-out', style({
           opacity: 1,
@@ -27,7 +27,7 @@ import { ConfigService } from '../../core/services/config.service';
       transition(':leave', [
         animate('200ms ease-in', style({
           opacity: 0,
-          transform: 'translateY(0px) scale(0.95)'
+          transform: 'scale(.9)'
         }))
       ])
     ]),
@@ -36,20 +36,14 @@ import { ConfigService } from '../../core/services/config.service';
         style({
           opacity: 0
         }),
-        group([
-          animate('300ms ease-out', style({
-            opacity: 1
-          })),
-          query('@dialogAnimation', animateChild(), { optional: true })
-        ])
+        animate('300ms ease-out', style({
+          opacity: 1
+        }))
       ]),
       transition(':leave', [
-        group([
-          animate('200ms ease-in', style({
-            opacity: 0
-          })),
-          query('@dialogAnimation', animateChild(), { optional: true })
-        ])
+        animate('200ms ease-in', style({
+          opacity: 0
+        }))
       ])
     ])
   ]
@@ -58,13 +52,19 @@ export class ModalDialog implements OnInit {
   private _config = inject(ConfigService<ModalDialogConfig>);
   protected style!: string;
   @Input() className!: string;
+  @Input() scrim!: string;
+  @Input() backdrop!: string;
   @Input() open: boolean = true;
 
   ngOnInit(): void {
     this._config.set(ModalDialogConfigKey, ModalDialogConfig)
       .get(ModalDialogConfigKey).subscribe((conf) => {
-        const base = toClassName(conf.container);
+        let base = toClassName(conf.container);
         this.style = resolveClassName(base, this.className);
+        base = toClassName(conf.scrim);
+        this.scrim = resolveClassName(base, this.scrim);
+        base = toClassName(conf.backdrop);
+        this.backdrop = resolveClassName(base, this.backdrop);
       });
   }
 }

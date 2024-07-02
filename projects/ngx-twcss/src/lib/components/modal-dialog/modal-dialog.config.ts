@@ -1,5 +1,43 @@
 import { BaseConfig } from '../../configs/base.config';
 
+/**Scrim config */
+export type ScrimConfig = Partial<BaseConfig>;
+export const ScrimConfig: ScrimConfig = {
+  position: {
+    type: 'fixed',
+    inset: 'inset-0',
+  },
+  zIndex: 'z-50',
+  padding: 'p-4',
+  width: 'w-screen',
+  overflow: 'overflow-y-auto',
+  display: {
+    type: 'grid',
+    placeContent: 'place-content-end',
+  },
+  sm: {
+    placeContent: 'sm:place-content-center',
+  },
+};
+
+/**Backdrop config */
+export type BackdropConfig = Partial<BaseConfig>;
+export const BackdropConfig: BackdropConfig = {
+  position: {
+    type: 'fixed',
+    inset: 'inset-0',
+  },
+  zIndex: 'z-50',
+  filters: {
+    backdrop: 'backdrop-blur',
+  },
+  theme: {
+    bgColor: 'bg-black',
+    bgOpacity: 'bg-opacity-35',
+  }
+};
+
+
 /**Modal Dialog container config */
 export type DialogContainerConfig = Partial<BaseConfig>;
 export const DialogContainerConfig: DialogContainerConfig = {
@@ -105,12 +143,16 @@ export type ModalDialogConfig = {
   icon: Partial<DialogIconConfig>,
   panel: Partial<DialogPanelConfig>,
   content: Partial<DialogContentConfig>,
-  actions: Partial<DialogActionsConfig>
+  actions: Partial<DialogActionsConfig>,
+  scrim: Partial<ScrimConfig>,
+  backdrop: Partial<BackdropConfig>,
 }
 export const ModalDialogConfig: ModalDialogConfig = {
   container: DialogContainerConfig,
   icon: DialogIconConfig,
   panel: DialogPanelConfig,
   content: DialogContentConfig,
-  actions: DialogActionsConfig
+  actions: DialogActionsConfig,
+  scrim: ScrimConfig,
+  backdrop: BackdropConfig,
 }
