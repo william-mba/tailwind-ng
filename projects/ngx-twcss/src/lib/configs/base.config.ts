@@ -3,6 +3,7 @@ import { BorderWidth } from "../core/types/borders/border-width"
 import { RingWidth } from "../core/types/borders/ring-width"
 import { BoxShadow } from "../core/types/effects/box-shadow"
 import { DropShadow } from "../core/types/filters/drop-shadow"
+import { Filters } from "../core/types/filters/filters"
 import { UserSelect } from "../core/types/interactivity/user-select"
 import { Display } from "../core/types/layout/display"
 import { Overflow } from "../core/types/layout/overflow"
@@ -37,6 +38,7 @@ export type BaseConfig = {
   userSelect: UserSelect,
   textAlign: TextAlign,
   zIndex: ZIndex,
+  filters: Partial<Filters>,
   shadow: DropShadow | BoxShadow,
   /**A property to set class name starting with sm:* */
   sm: Record<string, {}> | string
