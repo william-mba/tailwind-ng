@@ -83,7 +83,21 @@ export const SoftButtonConfig: SoftButtonConfig = {
 export type TextButtonConfig = Partial<ButtonBaseConfig>;
 
 export const TextButtonConfig: SoftButtonConfig = {
-  ...ButtonBaseConfig
+  ...ButtonBaseConfig,
+  theme: {
+    light: {
+      textColor: 'text-gray-800',
+      hover: {
+        textColor: 'hover:text-gray-600'
+      }
+    },
+    dark: {
+      textColor: 'dark:text-gray-100',
+      hover: {
+        textColor: 'dark:hover:text-gray-300'
+      }
+    }
+  }
 }
 
 
