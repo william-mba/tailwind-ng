@@ -14,4 +14,8 @@ export class ModalDialogDemoComponent {
     timer(1000).pipe(concatMap(() => scheduled([this.open], asyncScheduler)))
       .subscribe(() => this.open = true)
   }
+
+  cancel() {
+    this.open = false;
+  }
 }

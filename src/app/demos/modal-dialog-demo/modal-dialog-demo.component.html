@@ -19,7 +19,7 @@
   </tw-dialog-panel>
   <tw-dialog-actions className="dark:bg-neutral-900/20">
     <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
-    <tw-button variant="secondary" className="w-full">Cancel</tw-button>
+    <tw-button (click)="cancel()" variant="secondary" className="w-full">Cancel</tw-button>
   </tw-dialog-actions>
 </tw-modal-dialog> -->
 
@@ -69,7 +69,7 @@
   </tw-dialog-panel>
   <tw-dialog-actions>
     <tw-button className="bg-indigo-700 w-full sm:w-56">Deactivate</tw-button>
-    <tw-button variant="secondary" className="w-full sm:w-56">Cancel</tw-button>
+    <tw-button (click)="cancel()" variant="secondary" className="w-full">Cancel</tw-button>
   </tw-dialog-actions>
 </tw-modal-dialog> -->
 
@@ -94,7 +94,7 @@
   </tw-dialog-panel>
   <tw-dialog-actions>
     <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
-    <tw-button variant="secondary" className="w-full">Cancel</tw-button>
+    <tw-button (click)="cancel()" variant="secondary" className="w-full">Cancel</tw-button>
   </tw-dialog-actions>
 </tw-modal-dialog> -->
 
@@ -127,6 +127,6 @@
   </tw-dialog-panel>
   <tw-dialog-actions>
     <tw-button (click)="toggleDialog()" className="bg-red-600 w-full">Deactivate</tw-button>
-    <tw-button (click)="toggleDialog()" variant="secondary" className="w-full">Cancel</tw-button>
+    <tw-button (click)="cancel()" variant="secondary" className="w-full">Cancel</tw-button>
   </tw-dialog-actions>
 </tw-modal-dialog>

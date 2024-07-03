@@ -1,18 +1,21 @@
-<span
-  class="fixed z-50 top-4 right-4 text-xs text-black dark:text-white border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 p-2 py-1 border rounded-full hover:cursor-pointer"
-  (click)="ToggleTheme()">View on {{ nextThemeMode }} mode</span>
-
-<div class="group fixed z-50 bottom-4 left-4">
-  <div class="flex flex-col gap-2">
-    <tw-button
-      className="rounded-full bg- dark:bg- bg-white dark:bg-gray-800 dark:border-gray-700 hidden group-hover:block"
-      size="sm" (click)="setOrange()"> Orange </tw-button>
-    <tw-button
-      className="rounded-full bg- dark:bg- bg-white dark:bg-gray-800 dark:border-gray-700 hidden group-hover:block"
-      size="sm" (click)="setRose()"> Rose </tw-button>
-    <tw-button
-      className="rounded-full bg- dark:bg- bg-white dark:bg-gray-800 dark:border-gray-700 hidden group-hover:block"
-      size="sm" (click)="setLime()"> Lime </tw-button>
+<app-menu></app-menu>
+<div class="group fixed z-10 bottom-4 right-4">
+  <div class="flex flex-col gap-2 place-items-end">
+    <tw-button variant="secondary"
+      className="rounded-full hidden group-hover:block"
+      size="sm" (click)="setOrange()">
+      Orange
+    </tw-button>
+    <tw-button variant="secondary"
+      className="rounded-full hidden group-hover:block"
+      size="sm" (click)="setRose()">
+      Rose
+    </tw-button>
+    <tw-button variant="secondary"
+      className="rounded-full hidden group-hover:block"
+      size="sm" (click)="setLime()">
+      Lime
+    </tw-button>
     <tw-button className="rounded-full px-2.5 py-2.5" size="lg" (click)="reset()">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
         <path
@@ -21,4 +24,6 @@
     </tw-button>
   </div>
 </div>
+
 <router-outlet />
+

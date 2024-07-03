@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.component';
 import { BadgeDemoComponent } from './demos/badge-demo/badge-demo.component';
 import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
-import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog
     DropdownDemoComponent,
     BadgeDemoComponent,
     AvatarDemoComponent,
-    ModalDialogDemoComponent
+    MenuComponent
   ],
   imports: [
     BrowserModule,
