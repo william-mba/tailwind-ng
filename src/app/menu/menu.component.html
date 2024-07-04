@@ -3,7 +3,7 @@
   <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
     <a href="https://github.com/William-Mba/ngx-twcss">
       <tw-button size="sm"
-        className="rounded-none relative overflow-visible sm:ml-3 shadow-md dark:shadow-black shadow-black/30">
+        className="rounded-none relative overflow-visible sm:ml-4 shadow-md dark:shadow-black shadow-black/30">
         NGX-TWCSS
         <tw-tooltip className="-right-0.5 -top-0.5 bg-green-500 size-1.5" />
       </tw-button>
@@ -42,7 +42,7 @@
     <div>
       <h2 class="font-bold">Getting started</h2>
       <ul
-        class="flex flex-col font-medium *:p-2 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
         <li>
           <a href="https://github.com/William-Mba/ngx-twcss">
             Installation
@@ -63,7 +63,7 @@
     <div>
       <h2 class="font-bold">Customization</h2>
       <ul
-        class="flex flex-col font-medium *:p-2 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
         <li>
           Theme
         </li>
@@ -75,28 +75,44 @@
     <div>
       <h2 class="font-bold">Components</h2>
       <ul
-        class="flex flex-col font-medium *:p-2 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        class="flex flex-col font-medium *:py-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
         <li routerLink="buttons">
-          Buttons
+          Button
         </li>
         <li routerLink="buttons-group">
           Buttons Group
         </li>
         <li routerLink="badges">
-          Badges
+          Badge
         </li>
         <li routerLink="dropdowns">
-          Dropdowns
+          Dropdown
         </li>
         <li routerLink="avatars">
           Avatar
         </li>
-        <li routerLink="modal-dialogs">
-          Modal Dialog
+        <li>
+          <details>
+            <summary class="list-none">Modal Dialog</summary>
+            <ul
+              class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-3 *:text-gray-700 hover:*:text-gray-950 dark:*:text-gray-400 dark:hover:*:text-gray-100">
+              <li routerLink="modal-dialogs/">
+                With gray footer
+              </li>
+              <li routerLink="dropdowns">
+                With single action
+              </li>
+              <li routerLink="avatars">
+                With wide buttons
+              </li>
+              <li routerLink="modal-dialogs">
+                With dismiss button
+              </li>
+            </ul>
+          </details>
         </li>
       </ul>
     </div>
-
     <tw-button variant="text" size="sm" className="absolute top-2 right-2 lg:hidden" (click)="openClose()">
       <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
         <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
