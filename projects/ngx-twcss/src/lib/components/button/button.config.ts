@@ -1,14 +1,14 @@
 import { BaseConfig } from "../../configs/base.config";
 
+/** Button variant */
 export type ButtonVariant =
   | 'primary'
   | 'secondary'
   | 'soft'
   | 'text'
 
-// Base config
+/** Base button config */
 export type ButtonBaseConfig = Partial<BaseConfig>
-
 export const ButtonBaseConfig: ButtonBaseConfig = {
   ...BaseConfig,
   textWrap: 'text-nowrap',
@@ -16,9 +16,8 @@ export const ButtonBaseConfig: ButtonBaseConfig = {
   userSelect: 'select-none'
 }
 
-// Primary button config
+/** Primary button config */
 export type PrimaryButtonConfig = Partial<ButtonBaseConfig>;
-
 export const PrimaryButtonConfig: PrimaryButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
@@ -30,9 +29,8 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
   }
 }
 
-// Secondary button config
+/** Secondary button config */
 export type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
-
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
   borderWidth: 'border',
@@ -63,9 +61,8 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
   }
 }
 
-// Soft button config
+/** Soft button config */
 export type SoftButtonConfig = Partial<ButtonBaseConfig>;
-
 export const SoftButtonConfig: SoftButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
@@ -79,9 +76,8 @@ export const SoftButtonConfig: SoftButtonConfig = {
 }
 
 
-// Text button config
+/** Text button config */
 export type TextButtonConfig = Partial<ButtonBaseConfig>;
-
 export const TextButtonConfig: SoftButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
@@ -101,14 +97,10 @@ export const TextButtonConfig: SoftButtonConfig = {
 }
 
 
-/**Button config key
- * @package ngx-twcss
- */
+/** Button config key */
 export const ButtonConfigKey = 'ButtonConfigKey';
 
-/**Button config
- * @package ngx-twcss
- */
+/** Button config */
 export type ButtonConfig = {
   primary: Partial<PrimaryButtonConfig>,
   secondary: Partial<SecondaryButtonConfig>,
