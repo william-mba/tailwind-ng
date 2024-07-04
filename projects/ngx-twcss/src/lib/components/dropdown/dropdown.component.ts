@@ -44,17 +44,17 @@ export class DropdownItem implements OnInit {
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'scale(0.9) translateY(-1rem)'
+          transform: 'scaleY(0.9) translateY(-1rem)'
         }),
         animate('100ms ease-out', style({
           opacity: 1,
-          transform: 'scale(1) translateY(0px)'
+          transform: 'scaleY(1) translateY(0px)'
         }))
       ]),
       transition(':leave', [
         animate('75ms ease-in', style({
           opacity: 0,
-          transform: 'scale(0.9) translateY(-1rem)'
+          transform: 'scaleY(0.9) translateY(-1rem)'
         }))
       ])
     ])
