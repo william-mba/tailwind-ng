@@ -1,63 +1,70 @@
-import { Component, Directive, ElementRef, HostListener, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { BaseComponent } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
-import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { Size } from '../../core/types/size';
+import { NgIf } from '@angular/common';
 
-/**Dropdown item component*/
-@Directive({
+/** Dropdown item component */
+@Component({
   selector: 'tw-dropdown-item',
-  standalone: true
+  standalone: true,
+  template: `<div [className]="style"><ng-content></ng-content></div>`
 })
-export class DropdownItem {
-  private configService = inject(ConfigService<DropdownConfig>);
-  @Input() size: Size = 'md';
+export class DropdownItem implements OnInit {
+  private _config = inject(ConfigService<DropdownConfig>);
+  protected style!: string;
 
-  constructor(el: ElementRef) {
-    this.configService.get(DropdownConfigKey).subscribe((cfg) => {
-      el.nativeElement.className = toClassName([cfg.item, SizeConfig[this.size]]);
+  @Input() className!: string;
+
+  ngOnInit(): void {
+    this._config.get(DropdownConfigKey).subscribe((conf) => {
+      const base = toClassName(conf.item);
+      this.style = resolveClassName(base, this.className);
     });
   }
 }
 
-/**Dropdown component*/
+/** Dropdown component */
 @Component({
   selector: 'tw-dropdown',
   standalone: true,
-  templateUrl: './dropdown.component.html',
+  imports: [NgIf],
+  host: {
+    class: 'relative'
+  },
+  template: `<ng-content></ng-content>
+    <div @dropdownAnimation *ngIf="open" [className]="style">
+      <ng-content select="tw-dropdown-item"></ng-content>
+    </div>`,
   animations: [
     trigger('dropdownAnimation', [
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'scale(0.9)'
+          transform: 'scale(0.9) translateY(-1rem)'
         }),
         animate('100ms ease-out', style({
           opacity: 1,
-          transform: 'scale(1)'
+          transform: 'scale(1) translateY(0px)'
         }))
       ]),
       transition(':leave', [
         animate('75ms ease-in', style({
           opacity: 0,
-          transform: 'scale(0.9)'
+          transform: 'scale(0.9) translateY(-1rem)'
         }))
       ])
     ])
   ]
 })
 export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
-  protected contentStyle!: string;
-
   @Input() override className!: string;
   @Input() override size: Size = 'md';
 
   @Input() open: boolean = false;
-  @Input() contentClassName: string = '';
-  @Input() contentPosition: string = 'top-8 right-0';
 
   ngOnInit(): void {
     this.initConfig();
@@ -66,13 +73,7 @@ export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
   override initConfig(): void {
     this.configService.set(DropdownConfigKey, DropdownConfig)
       .get(DropdownConfigKey).subscribe((cfg) => {
-        this.style = resolveClassName(toClassName([cfg.container, SizeConfig[this.size]]), this.className);
-        this.contentStyle = resolveClassName(toClassName(cfg.content), this.contentClassName);
+        this.style = resolveClassName(toClassName(cfg.container), this.className);
       });
-  }
-
-  @HostListener('click', ['$event']) onClick(event: PointerEvent) {
-    event.stopPropagation();
-    this.open = !this.open;
   }
 }

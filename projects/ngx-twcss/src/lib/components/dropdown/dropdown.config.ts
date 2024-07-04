@@ -41,13 +41,17 @@ export const DropdownBaseConfig: DropdownBaseConfig = {
   }
 };
 
-
-/**Dropdown content config
- * @package ngx-twcss
- */
-export type DropdownContentConfig = Partial<DropdownBaseConfig>
-
-export const DropdownContentConfig: DropdownContentConfig = {
+/** Dropdown container config */
+export type DropdownContainerConfig = Partial<DropdownBaseConfig>
+export const DropdownContainerConfig: DropdownContainerConfig = {
+  padding: 'py-1',
+  zIndex: 'z-50',
+  width: 'min-w-full',
+  position: {
+    type: 'absolute',
+    right: 'right-0',
+    top: 'top-12'
+  },
   borderWidth: 'border',
   borderRadius: 'rounded-md',
   theme: {
@@ -59,75 +63,27 @@ export const DropdownContentConfig: DropdownContentConfig = {
       bgColor: 'dark:bg-neutral-900',
       borderColor: 'dark:border-neutral-700'
     }
-  },
-  extend: {
-    zIndex: 'z-50',
-    marginTop: 'mt-4',
-    paddingY: 'py-1',
-    width: 'min-w-full'
-  },
-  position: 'absolute'
+  }
 }
 
-
-/**Dropdown item config
- * @package ngx-twcss
- */
+/** Dropdown item config */
 export type DropdownItemConfig = Partial<DropdownBaseConfig>
-
 export const DropdownItemConfig: DropdownItemConfig = {
   textAlign: 'text-start',
   width: 'w-full',
-  borderRadius: 'rounded-none',
-  borderWidth: 'border-0',
-  display: 'block',
-  theme: {
-    light: {
-      bgColor: 'bg-neutral-100',
-      borderColor: 'border-neutral-200',
-      hover: {
-        bgColor: 'hover:bg-neutral-200'
-      }
-    },
-    dark: {
-      bgColor: 'dark:bg-neutral-800',
-      borderColor: 'dark:border-neutral-700',
-      hover: {
-        bgColor: 'dark:hover:bg-neutral-700'
-      }
-    }
-  }
+  display: 'flex'
 }
 
-/**Dropdown container config
- * @package ngx-twcss
- */
-export type DropdownContainerConfig = Partial<DropdownBaseConfig>;
-
-export const DropdownContainerConfig: DropdownContainerConfig = {
-  ...DropdownBaseConfig,
-  position: 'relative',
-  extend: {
-    cursor: 'hover:cursor-pointer'
-  }
-};
-
-/**Dropdown config key
- * @package ngx-twcss
- */
+/** Dropdown config key */
 export const DropdownConfigKey = 'DropdownConfigKey';
 
-/**Dropdown config
- * @package ngx-twcss
- */
+/** Dropdown config */
 export type DropdownConfig = {
   container: Partial<DropdownContainerConfig>,
-  content: Partial<DropdownContentConfig>,
   item: Partial<DropdownItemConfig>
 }
 
 export const DropdownConfig: DropdownConfig = {
   container: DropdownContainerConfig,
-  content: DropdownContentConfig,
   item: DropdownItemConfig
 }

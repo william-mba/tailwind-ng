@@ -4,7 +4,7 @@ import { BaseConfig } from "../../configs/base.config";
 export type ButtonVariant =
   | 'primary'
   | 'secondary'
-  | 'soft'
+  | 'tonal'
   | 'text'
 
 /** Base button config */
@@ -61,9 +61,9 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
   }
 }
 
-/** Soft button config */
-export type SoftButtonConfig = Partial<ButtonBaseConfig>;
-export const SoftButtonConfig: SoftButtonConfig = {
+/** Tonal button config */
+export type TonalButtonConfig = Partial<ButtonBaseConfig>;
+export const TonalButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
     textColor: 'text-indigo-500',
@@ -78,19 +78,19 @@ export const SoftButtonConfig: SoftButtonConfig = {
 
 /** Text button config */
 export type TextButtonConfig = Partial<ButtonBaseConfig>;
-export const TextButtonConfig: SoftButtonConfig = {
+export const TextButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
     light: {
-      textColor: 'text-gray-800',
+      textColor: 'text-gray-700',
       hover: {
-        textColor: 'hover:text-gray-600'
+        textColor: 'hover:text-gray-950'
       }
     },
     dark: {
-      textColor: 'dark:text-gray-100',
+      textColor: 'dark:text-gray-300',
       hover: {
-        textColor: 'dark:hover:text-gray-300'
+        textColor: 'dark:hover:text-gray-50'
       }
     }
   }
@@ -104,13 +104,13 @@ export const ButtonConfigKey = 'ButtonConfigKey';
 export type ButtonConfig = {
   primary: Partial<PrimaryButtonConfig>,
   secondary: Partial<SecondaryButtonConfig>,
-  soft: Partial<SoftButtonConfig>,
+  tonal: Partial<TonalButtonConfig>,
   text: Partial<TextButtonConfig>
 }
 
 export const ButtonConfig: ButtonConfig = {
   primary: PrimaryButtonConfig,
   secondary: SecondaryButtonConfig,
-  soft: SoftButtonConfig,
+  tonal: TonalButtonConfig,
   text: TextButtonConfig
 }

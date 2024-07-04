@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Button } from './button.component';
 import { ButtonConfig } from './button.config';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
-import { ComponentSize } from '../base.component';
+import { Size } from '../../core/types/size';
 
 describe('ButtonComponent', () => {
   let component: Button;
   let fixture: ComponentFixture<Button>;
   const primaryStyle = toClassName(ButtonConfig.primary);
   const secondaryStyle = toClassName(ButtonConfig.secondary);
-  const softStyle = toClassName(ButtonConfig.soft);
-  const sizeVariants = ['sm', 'md', 'lg'] as ComponentSize[];
+  const tonalStyle = toClassName(ButtonConfig.tonal);
+  const sizeVariants = ['sm', 'md', 'lg'] as Size[];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -47,8 +46,10 @@ describe('ButtonComponent', () => {
     expect(component.variant).toBe('primary');
     component.variant = 'secondary';
     expect(component.variant).toBe('secondary');
-    component.variant = 'soft';
-    expect(component.variant).toBe('soft');
+    component.variant = 'tonal';
+    expect(component.variant).toBe('tonal');
+    component.variant = 'text';
+    expect(component.variant).toBe('text');
   });
 
   it('should set style', () => {
@@ -60,8 +61,8 @@ describe('ButtonComponent', () => {
     component.style = resolveClassName(secondaryStyle, component.className);
     expect(component.style).toEqual(secondaryStyle);
 
-    component.style = resolveClassName(softStyle, component.className);
-    expect(component.style).toEqual(softStyle);
+    component.style = resolveClassName(tonalStyle, component.className);
+    expect(component.style).toEqual(tonalStyle);
   });
 
   it('should set custom style', () => {
