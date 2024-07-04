@@ -4,22 +4,22 @@ export const SizeConfig: Sizing = {
   sm: {
     fontSize: 'text-xs',
     padding: {
-      x: 'px-2',
-      y: 'py-1'
+      x: 'px-2.5',
+      y: 'py-1.5'
     }
   },
   md: {
     fontSize: 'text-base',
     padding: {
-      x: 'px-3.5',
-      y: 'py-1.5'
+      x: 'px-5',
+      y: 'py-2'
     }
   },
   lg: {
     fontSize: 'text-xl',
     padding: {
-      x: 'px-4',
-      y: 'py-2'
+      x: 'px-6',
+      y: 'py-2.5'
     }
   }
 }

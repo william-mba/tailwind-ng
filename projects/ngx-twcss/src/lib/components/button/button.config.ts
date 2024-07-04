@@ -39,7 +39,7 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
   userSelect: "select-text",
   theme: {
     light: {
-      textColor: 'text-black',
+      textColor: 'text-gray-800',
       bgColor: 'bg-neutral-100',
       borderColor: 'border-neutral-200',
       hover: {
@@ -50,7 +50,7 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
       }
     },
     dark: {
-      textColor: 'dark:text-white',
+      textColor: 'dark:text-gray-300',
       bgColor: 'dark:bg-neutral-800',
       borderColor: 'dark:border-neutral-700',
       hover: {
@@ -69,7 +69,7 @@ export type SoftButtonConfig = Partial<ButtonBaseConfig>;
 export const SoftButtonConfig: SoftButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
-    textColor: 'text-indigo-600',
+    textColor: 'text-indigo-500',
     bgOpacity: 'bg-opacity-10',
     bgColor: 'bg-indigo-600',
     hover: {
