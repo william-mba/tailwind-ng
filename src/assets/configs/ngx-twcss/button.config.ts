@@ -6,10 +6,10 @@ export const CustomButtonConfig: Partial<ButtonConfig> = {
       bgColor: 'bg-rose-500'
     }
   },
-  soft: {
+  tonal: {
     theme: {
       bgColor: 'bg-rose-600',
-      textColor: 'text-rose-600',
+      textColor: 'text-rose-500',
     }
   }
 }
@@ -20,10 +20,10 @@ export const CustomButtonConfig2: Partial<ButtonConfig> = {
       bgColor: 'bg-orange-600'
     }
   },
-  soft: {
+  tonal: {
     theme: {
       bgColor: 'bg-orange-600',
-      textColor: 'text-orange-600',
+      textColor: 'text-orange-500',
     }
   }
 }
@@ -34,10 +34,10 @@ export const CustomButtonConfig3: Partial<ButtonConfig> = {
       bgColor: 'bg-lime-600'
     }
   },
-  soft: {
+  tonal: {
     theme: {
       bgColor: 'bg-lime-600',
-      textColor: 'text-lime-600',
+      textColor: 'text-lime-500',
     }
   }
 }

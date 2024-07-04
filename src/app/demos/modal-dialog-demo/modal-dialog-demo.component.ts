@@ -6,16 +6,28 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
   templateUrl: './modal-dialog-demo.component.html'
 })
 export class ModalDialogDemoComponent {
-  open: boolean = true;
 
-  toggleDialog() {
-    this.open = !this.open;
+  open(key: number) {
+    return this.dialogsStates[key];
+  };
 
-    timer(1000).pipe(concatMap(() => scheduled([this.open], asyncScheduler)))
-      .subscribe(() => this.open = true)
+  dialogsStates: Record<number, boolean> = {
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false
+  };
+
+  toggleDialog(key: number) {
+    this.dialogsStates[key] = !this.dialogsStates[key];
+
+    timer(1000).pipe(concatMap(() => {
+      return scheduled([this.dialogsStates[key]], asyncScheduler)
+    })).subscribe(() => this.dialogsStates[key] = true)
   }
 
-  cancel() {
-    this.open = false;
+  close(key: number) {
+    this.dialogsStates[key] = false;
   }
 }

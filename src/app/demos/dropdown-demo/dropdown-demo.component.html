@@ -1,35 +1,62 @@
 <div
-  class="container sm:w-[600px] lg:w-[800px] *:container mx-auto p-4 *:grid *:sm:flex *:gap-4 *:p-6 *:m-6 *:mt-28 *:justify-center *:border-spacing-1 *:border *:border-gray-300 *:dark:border-gray-700 *:mx-auto *:relative *:rounded-lg">
-
-  <div>
-    <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
-      Dropdowns
-    </div>
-    <tw-dropdown className="rounded-full px-1 py-1">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-        <path
-          d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z" />
-      </svg>
+  class="container sm:w-[600px] lg:w-[800px] *:container mx-auto p-6 *:grid *:sm:flex *:gap-4 *:border-gray-300 *:dark:border-gray-700">
+  <h1 class="text-3xl text-gray-700 dark:text-gray-200 border-none font-extrabold mt-16">
+    Dropdowns
+  </h1>
+  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-12">
+    Dropdown with label
+  </h1>
+  <div class="border justify-center m-6 p-6 mx-auto rounded-xl">
+    <tw-dropdown [open]="open(1)" (click)="toggle(1)">
+      <tw-button className="rounded-full">Save changes</tw-button>
       <tw-dropdown-item *ngFor="let item of items">
-        {{ item }}
-      </tw-dropdown-item>
-    </tw-dropdown>
-    <tw-dropdown className="rounded-full px-1 py-1" contentPosition="top-8">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
-      </svg>
-      <tw-dropdown-item *ngFor="let item of items">
-        {{ item }}
-      </tw-dropdown-item>
-    </tw-dropdown>
-    <tw-dropdown className="rounded-full">
-      Options
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
-      </svg>
-      <tw-dropdown-item *ngFor="let item of items">
-        {{ item }}
+        <tw-button variant="secondary" className="w-44 rounded-none border-none justify-start">{{ item }}</tw-button>
       </tw-dropdown-item>
     </tw-dropdown>
   </div>
+
+  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-12">
+    Dropdown with icon
+  </h1>
+  <div class="border justify-center m-6 p-6 mx-auto rounded-xl">
+    <tw-dropdown className="right- -right-16" [open]="open(2)" (click)="toggle(2)">
+      <tw-button className="rounded-full p-2">
+        <svg *ngIf="!open(2)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+          viewBox="0 -960 960 960">
+          <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
+        </svg>
+        <svg *ngIf="open(2)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
+          class="size-6">
+          <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+        </svg>
+      </tw-button>
+      <tw-dropdown-item *ngFor="let item of items">
+        <tw-button variant="secondary" className="w-44 rounded-none border-none justify-start">{{ item }}</tw-button>
+      </tw-dropdown-item>
+    </tw-dropdown>
+  </div>
+
+  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-12">
+    Dropdown with label and icon
+  </h1>
+  <div class="border justify-center m-6 p-6 mx-auto rounded-xl">
+    <tw-dropdown [open]="open(3)" (click)="toggle(3)">
+      <tw-button className="rounded-full">
+        Save changes
+        <svg *ngIf="!open(3)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+          viewBox="0 -960 960 960">
+          <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
+        </svg>
+        <svg *ngIf="open(3)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
+          class="size-6">
+          <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+        </svg>
+      </tw-button>
+      <tw-dropdown-item *ngFor="let item of items">
+        <tw-button variant="secondary" className="w-44 rounded-none border-none justify-start">{{ item }}</tw-button>
+      </tw-dropdown-item>
+    </tw-dropdown>
+  </div>
+
+  <div class="mb-32"></div>
 </div>

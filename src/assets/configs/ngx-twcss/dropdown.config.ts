@@ -1,7 +1,7 @@
 import { DropdownConfig } from "ngx-twcss";
 
 export const CustomDropdownConfig: Partial<DropdownConfig> = {
-  content: {
+  container: {
     theme: {
       light: {
         bgColor: 'bg-rose-50',
@@ -18,7 +18,7 @@ export const CustomDropdownConfig: Partial<DropdownConfig> = {
 }
 
 export const CustomDropdownConfig2: Partial<DropdownConfig> = {
-  content: {
+  container: {
     theme: {
       light: {
         bgColor: 'bg-orange-50',
@@ -35,7 +35,7 @@ export const CustomDropdownConfig2: Partial<DropdownConfig> = {
 }
 
 export const CustomDropdownConfig3: Partial<DropdownConfig> = {
-  content: {
+  container: {
     theme: {
       light: {
         bgColor: 'bg-lime-50',
