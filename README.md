@@ -7,7 +7,7 @@
 <div align="center">
 <a href="https://tailwindui.com/">Tailwind CSS components</a> library for <a href="https://angular.dev/">Angular</a>.
 <br/>
-To build great UI even faster.
+The best choice to build great UI even faster.
 <br/>
 <br/>
 <br/>
