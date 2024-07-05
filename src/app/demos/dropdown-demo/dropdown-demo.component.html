@@ -1,12 +1,16 @@
 <div
-  class="container sm:w-[600px] lg:w-[800px] *:container mx-auto p-6 *:grid *:sm:flex *:gap-4 *:border-gray-300 *:dark:border-gray-700">
-  <h1 class="text-3xl text-gray-700 dark:text-gray-200 border-none font-extrabold mt-16">
+  class="container sm:max-w-lg md:max-w-xl mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  <h1 class="text-3xl border-none font-extrabold my-8 mt-16">
     Dropdowns
   </h1>
-  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-12">
+  <p class="text-pretty">
+    Use these Tailwind CSS dropdown and popover components to create dropdown menus for action items and navigation,
+    featuring section dividers, icons, and headers.
+  </p>
+  <h2 class="text-lg font-semibold mt-12">
     With text
-  </h1>
-  <div class="border justify-center m-6 p-6 mx-auto rounded-xl">
+  </h2>
+  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
     <tw-dropdown [open]="open(1)" (click)="toggle(1)">
       <tw-button className="rounded-full">Save changes</tw-button>
       <tw-dropdown-item *ngFor="let item of items">
@@ -15,10 +19,10 @@
     </tw-dropdown>
   </div>
 
-  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-12">
+  <h2 class="text-lg font-semibold mt-20">
     With icon
-  </h1>
-  <div class="border justify-center m-6 p-6 mx-auto rounded-xl items-end">
+  </h2>
+  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
     <tw-dropdown [open]="open(6)" (click)="toggle(6)">
       <tw-button variant="secondary" className="p-2 rounded-full">
         <svg *ngIf="!open(6)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -36,10 +40,10 @@
     </tw-dropdown>
   </div>
 
-  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-12">
+  <h2 class="text-lg font-semibold mt-20">
     With text and icon
-  </h1>
-  <div class="grid grid-cols-1 sm:flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  </h2>
+  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         Save changes
@@ -63,5 +67,5 @@
     </tw-group>
   </div>
 
-  <div class="mb-32"></div>
+  <div class="mt-20"></div>
 </div>
