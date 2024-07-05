@@ -11,13 +11,7 @@ export class ModalDialogDemoComponent {
     return this.dialogsStates[key];
   };
 
-  dialogsStates: Record<number, boolean> = {
-    0: false,
-    1: false,
-    2: false,
-    3: false,
-    4: false
-  };
+  dialogsStates: Record<number, boolean> = {};
 
   toggleDialog(key: number) {
     this.dialogsStates[key] = !this.dialogsStates[key];

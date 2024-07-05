@@ -3,7 +3,7 @@
   <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
     <a href="https://github.com/William-Mba/ngx-twcss">
       <tw-button size="sm"
-        className="rounded-none relative overflow-visible sm:ml-4 shadow-md dark:shadow-black shadow-black/30">
+        className="rounded-none relative overflow-visible sm:ml-4 shadow-md shadow-black/30">
         NGX-TWCSS
         <tw-tooltip className="-right-0.5 -top-0.5 bg-green-500 size-1.5" />
       </tw-button>
@@ -26,7 +26,7 @@
             d="M426.666667 768a339.285333 339.285333.0 00208.938666-72.021333L823.168 883.541333l60.330667-60.330666L695.936 635.648A339.285333 339.285333.0 00768 426.666667C768 238.464 614.869333 85.333334 426.666667 85.333333S85.333334 238.464 85.333333 426.666667 238.464 768 426.666667 768zm0-597.333333c141.184.0 256 114.816 256 256s-114.816 256-256 256-256-114.816-256-256 114.816-256 256-256z" />
         </svg>
       </tw-button>
-      <tw-button variant='text' size="sm" className="lg:hidden" (click)="openClose()">
+      <tw-button variant='text' size="sm" className="2xl:hidden" (click)="openClose()">
         <svg class="size-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M1 1h15M1 7h15M1 13h15" />
@@ -38,7 +38,7 @@
 <ng-container *ngIf="open">
   <div class="fixed inset-0 backdrop-blur-md z-30 sm:hidden block"></div>
   <nav
-    class="fixed left-0 sm:top-16 p-4 sm:pl-28 z-30 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-sm flex flex-col gap-6 border-r border-t border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50 bg-opacity-60 backdrop-blur-3xl overflow-y-auto overscroll-y-none">
+    class="fixed left-0 overflow-y-auto overscroll-y-none bg-neutral-50 dark:bg-neutral-900 sm:top-16 p-4 sm:pl-28 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-sm flex flex-col gap-6 border-r border-t border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
     <div>
       <h2 class="font-bold">Getting started</h2>
       <ul
@@ -96,7 +96,7 @@
         </li>
       </ul>
     </div>
-    <tw-button variant="text" size="sm" className="absolute top-2 right-2 lg:hidden" (click)="openClose()">
+    <tw-button variant="text" size="sm" className="absolute top-2 right-2 2xl:hidden" (click)="openClose()">
       <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
         <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
       </svg>

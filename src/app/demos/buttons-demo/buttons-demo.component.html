@@ -1,13 +1,13 @@
 <div
-  class="container sm:w-[600px] lg:w-[800px] *:container mx-auto p-6 *:grid *:sm:flex *:gap-4 *:border-gray-300 *:dark:border-gray-700">
-  <h1 class="text-3xl text-gray-700 dark:text-gray-200 border-none font-extrabold my-8 mt-16">
+  class="container sm:w-[600px] lg:w-[800px] mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-gray-300 *:dark:border-gray-700">
+  <h1 class="text-3xl border-none font-extrabold my-8 mt-16">
     Buttons
   </h1>
   <p>Buttons help people initiate actions, from sending an email, to sharing a document, to liking a post.</p>
-  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-8">
+  <h2 class="text-lg border-none font-extrabold mt-8">
     Primary buttons
-  </h1>
-  <div class="border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  </h2>
+  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
     <tw-button size="sm">Button text
     </tw-button>
     <tw-button>
@@ -18,132 +18,108 @@
     </tw-button>
   </div>
 
-  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-8">
-    Secondary buttons
-  </h1>
-  <div class="border justify-center items-end m-6 p-6 mx-auto rounded-xl">
-    <tw-button variant="secondary" size="sm">Button text </tw-button>
-    <tw-button variant="secondary"> Button text </tw-button>
-    <tw-button variant="secondary" size="lg"> Button text </tw-button>
-  </div>
-
-  <h1 class="text-lg text-gray-700 dark:text-gray-200 border-none font-extrabold mt-8">
+  <h2 class="text-lg border-none font-extrabold mt-8">
     Tonal buttons
-  </h1>
-  <div class="border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  </h2>
+  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
     <tw-button variant="tonal" size="sm">Button text </tw-button>
     <tw-button variant="tonal"> Button text </tw-button>
     <tw-button variant="tonal" size="lg"> Button text </tw-button>
   </div>
 
-  <div>
-    <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
-      Buttons with leading icon
-    </div>
-    <tw-button size="sm">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-        <path fill-rule="evenodd"
-          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
-          clip-rule="evenodd" />
-      </svg>
-      Button text
-    </tw-button>
-    <tw-button>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-        <path fill-rule="evenodd"
-          d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-          clip-rule="evenodd" />
-      </svg>
-      Button text
-    </tw-button>
-    <tw-button size="lg">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-        <path fill-rule="evenodd"
-          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-          clip-rule="evenodd" />
-      </svg>
-      Button text
-    </tw-button>
+  <h2 class="text-lg border-none font-extrabold mt-8">
+    Secondary buttons
+  </h2>
+  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+    <tw-button variant="secondary" size="sm">Button text </tw-button>
+    <tw-button variant="secondary"> Button text </tw-button>
+    <tw-button variant="secondary" size="lg"> Button text </tw-button>
   </div>
 
-  <div>
-    <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
-      Buttons with trailing icon
-    </div>
-    <tw-button size="sm">
-      Button text
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
-        <path fill-rule="evenodd"
-          d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
-          clip-rule="evenodd" />
-      </svg>
-    </tw-button>
-    <tw-button>
-      Button text
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-        <path fill-rule="evenodd"
-          d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z"
-          clip-rule="evenodd" />
-      </svg>
-    </tw-button>
-    <tw-button size="lg">
-      Button text
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-        <path fill-rule="evenodd"
-          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-          clip-rule="evenodd" />
-      </svg>
-    </tw-button>
+
+  <h2 class="text-lg border-none font-extrabold mt-8">
+    Text buttons
+  </h2>
+  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl resize-x cursor-move">
+    <tw-button variant="text" size="sm">Button text </tw-button>
+    <tw-button variant="text"> Button text </tw-button>
+    <tw-button variant="text" size="lg"> Button text </tw-button>
   </div>
 
-  <div>
-    <div class="absolute -top-10 -left-0 text-black dark:text-white border-none p-0 font-semibold">
-      Circular buttons
+  <h2 class="text-lg border-none font-extrabold mt-8">
+    Icon buttons
+  </h2>
+  <div class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 mx-auto rounded-xl">
+    <!-- Primary -->
+    <div>
+      <tw-button size="sm" className="rounded-full px-1 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button className="rounded-full px-2 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button size="lg" className="rounded-full px-2.5 py-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+        </svg>
+      </tw-button>
     </div>
-    <tw-button size="sm" className="rounded-full px-1 py-1">
-      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
-        <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-      </svg>
-    </tw-button>
-    <tw-button className="rounded-full px-2 py-2">
-      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-        <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-      </svg>
-    </tw-button>
-    <tw-button size="lg" className="rounded-full px-2.5 py-2.5">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-        <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-      </svg>
-    </tw-button>
-    <tw-button variant="secondary" size="sm" className="rounded-full px-1 py-1">
-      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
-        <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-      </svg>
-    </tw-button>
-    <tw-button variant="secondary" className="rounded-full px-2 py-2">
-      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-        <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-      </svg>
-    </tw-button>
-    <tw-button variant="secondary" size="lg" className="rounded-full px-2.5 py-2.5">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-        <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-      </svg>
-    </tw-button>
-    <tw-button variant="tonal" size="sm" className="rounded-full px-1 py-1">
-      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
-        <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-      </svg>
-    </tw-button>
-    <tw-button variant="tonal" className="rounded-full px-2 py-2">
-      <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-        <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-      </svg>
-    </tw-button>
-    <tw-button variant="tonal" size="lg" className="rounded-full px-2.5 py-2.5">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
-        <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-      </svg>
-    </tw-button>
+    <!-- Tonal -->
+    <div>
+      <tw-button variant="tonal" size="sm" className="rounded-full px-1 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button variant="tonal" className="rounded-full px-2 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button variant="tonal" size="lg" className="rounded-full px-2.5 py-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+        </svg>
+      </tw-button>
+    </div>
+    <!-- Secondary -->
+    <div>
+      <tw-button variant="secondary" size="sm" className="rounded-full px-1 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button variant="secondary" className="rounded-full px-2 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button variant="secondary" size="lg" className="rounded-full px-2.5 py-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+        </svg>
+      </tw-button>
+    </div>
+    <!-- Text -->
+    <div>
+      <tw-button variant="text" size="sm" className="rounded-full px-1 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button variant="text" className="rounded-full px-2 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+        </svg>
+      </tw-button>
+      <tw-button variant="text" size="lg" className="rounded-full px-2.5 py-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+        </svg>
+      </tw-button>
+    </div>
   </div>
-</div>
