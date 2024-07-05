@@ -11,9 +11,10 @@ export type Scaling = {
 }
 
 export type Sizing = {
+  xs: Partial<Scaling>,
   sm: Partial<Scaling>,
   md: Partial<Scaling>,
   lg: Partial<Scaling>
 }
 
-export type Size = 'sm' | 'md' | 'lg';
+export type Size = keyof Sizing;
