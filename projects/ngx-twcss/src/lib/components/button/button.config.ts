@@ -36,20 +36,24 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
   borderWidth: 'border',
   theme: {
     light: {
-      textColor: 'text-gray-800',
+      bgColor: 'bg-black',
+      textColor: 'text-gray-700',
       borderColor: 'border-neutral-200',
+      bgOpacity: 'bg-opacity-0',
       hover: {
-        bgColor: 'hover:bg-neutral-200'
+        bgOpacity: 'hover:bg-opacity-10'
       },
       focus: {
         borderColor: 'focus:border-neutral-400'
       }
     },
     dark: {
+      bgColor: 'dark:bg-white',
       textColor: 'dark:text-gray-300',
       borderColor: 'dark:border-neutral-700',
+      bgOpacity: 'dark:bg-opacity-0',
       hover: {
-        bgColor: 'dark:hover:bg-neutral-700'
+        bgOpacity: 'dark:hover:bg-opacity-10'
       },
       focus: {
         borderColor: 'dark:focus:border-neutral-500'
@@ -63,11 +67,11 @@ export type TonalButtonConfig = Partial<ButtonBaseConfig>;
 export const TonalButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
-    textColor: 'text-indigo-500',
-    bgOpacity: 'bg-opacity-10',
+    textColor: 'text-indigo-600',
+    bgOpacity: 'bg-opacity-5',
     bgColor: 'bg-indigo-600',
     hover: {
-      bgOpacity: 'hover:bg-opacity-20'
+      bgOpacity: 'hover:bg-opacity-10'
     }
   }
 }
