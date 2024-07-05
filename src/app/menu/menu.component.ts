@@ -10,6 +10,14 @@ export class MenuComponent {
 
   screenWidth: number = window.innerWidth;
 
+  screens = {
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    xxl: 1536
+  }
+
   open: boolean = true;
 
   ToggleTheme() {
@@ -17,13 +25,15 @@ export class MenuComponent {
     this.dark = !this.dark;
   }
 
-  openClose() {
-    this.open = !this.open;
+  toggle() {
+    if (this.screenWidth <= this.screens.xxl) {
+      this.open = !this.open;
+    }
   }
 
   @HostListener('window:resize', ['$event']) onResize(event: any) {
     this.screenWidth = window.innerWidth;
-    if (this.screenWidth <= 750) {
+    if (this.screenWidth <= this.screens.md) {
       this.open = false;
     } else {
       this.open = true;
