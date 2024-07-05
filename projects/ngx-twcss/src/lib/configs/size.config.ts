@@ -1,6 +1,10 @@
 import { Sizing } from "../core/types/size";
 
 export const SizeConfig: Sizing = {
+  xs: {
+    fontSize: 'text-xs',
+    padding: 'p-0.5'
+  },
   sm: {
     fontSize: 'text-xs',
     padding: {
