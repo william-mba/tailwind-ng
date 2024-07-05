@@ -34,11 +34,9 @@ export type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
   borderWidth: 'border',
-  userSelect: "select-text",
   theme: {
     light: {
       textColor: 'text-gray-800',
-      bgColor: 'bg-neutral-100',
       borderColor: 'border-neutral-200',
       hover: {
         bgColor: 'hover:bg-neutral-200'
@@ -49,7 +47,6 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
     },
     dark: {
       textColor: 'dark:text-gray-300',
-      bgColor: 'dark:bg-neutral-800',
       borderColor: 'dark:border-neutral-700',
       hover: {
         bgColor: 'dark:hover:bg-neutral-700'

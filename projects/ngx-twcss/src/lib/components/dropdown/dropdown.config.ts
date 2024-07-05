@@ -45,7 +45,7 @@ export const DropdownBaseConfig: DropdownBaseConfig = {
 export type DropdownContainerConfig = Partial<DropdownBaseConfig>
 export const DropdownContainerConfig: DropdownContainerConfig = {
   padding: 'py-1',
-  zIndex: 'z-50',
+  zIndex: 'z-10',
   width: 'min-w-full',
   position: {
     type: 'absolute',

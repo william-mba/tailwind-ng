@@ -19,13 +19,16 @@ import { NgIf } from '@angular/common';
           opacity: 0,
           transform: 'scale(.9)'
         }),
-        animate('300ms ease-out', style({
+        animate('300ms cubic-bezier(.1, 1, .1, 1)', style({
           opacity: 1,
           transform: 'scale(1)'
         })),
       ]),
       transition(':leave', [
-        animate('200ms ease-in', style({
+        style({
+          transform: 'scale(1.05)'
+        }),
+        animate('100ms', style({
           opacity: 0,
           transform: 'scale(.9)'
         }))
@@ -73,7 +76,7 @@ export class ModalDialog implements OnInit {
 @Component({
   selector: 'tw-dialog-icon',
   standalone: true,
-  template: '<div [className]="style"><ng-content></ng-content></div>',
+  template: '<div [className]="style"><ng-content></ng-content></div>'
 })
 export class DialogIcon implements OnInit {
   private _config = inject(ConfigService<ModalDialogConfig>);
