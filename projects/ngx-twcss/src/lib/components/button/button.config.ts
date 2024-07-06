@@ -38,25 +38,27 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
     light: {
       bgColor: 'bg-black',
       textColor: 'text-gray-700',
-      borderColor: 'border-neutral-200',
+      borderColor: 'border-black',
       bgOpacity: 'bg-opacity-0',
+      borderOpacity: 'border-opacity-15',
       hover: {
-        bgOpacity: 'hover:bg-opacity-10'
+        bgOpacity: 'hover:bg-opacity-5'
       },
       focus: {
-        borderColor: 'focus:border-neutral-400'
+        borderOpacity: 'focus:border-opacity-30'
       }
     },
     dark: {
       bgColor: 'dark:bg-white',
       textColor: 'dark:text-gray-300',
-      borderColor: 'dark:border-neutral-700',
+      borderColor: 'dark:border-white',
       bgOpacity: 'dark:bg-opacity-0',
+      borderOpacity: 'dark:border-opacity-15',
       hover: {
-        bgOpacity: 'dark:hover:bg-opacity-10'
+        bgOpacity: 'dark:hover:bg-opacity-5'
       },
       focus: {
-        borderColor: 'dark:focus:border-neutral-500'
+        borderOpacity: 'dark:focus:border-opacity-30'
       }
     }
   }
