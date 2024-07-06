@@ -37,7 +37,7 @@ Light | Dark
 
 <br/>
 
-### FAB buttons
+### [FAB (Floating action button)](https://m3.material.io/components/floating-action-button/overview)
 
 Light | Dark
 ---------- | ---------
@@ -55,7 +55,7 @@ Light | Dark
 
 <br/>
 
-### Extended FAB
+### [Extended FAB (Extended floating action button)](https://m3.material.io/components/extended-fab/overview)
 
 Light | Dark
 ---------- | ---------
