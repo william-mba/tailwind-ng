@@ -124,7 +124,7 @@ Light | Dark
 
 Light | Dark
 ---------- | ---------
-![""](images/buttons/icon-buttons.png) | ![""](images/buttons/icon-buttons-dark.png)
+![""](images/buttons/rounded-icon-buttons.png) | ![""](images/buttons/rounded-icon-buttons-dark.png)
 
 >Code
 
@@ -142,7 +142,7 @@ Light | Dark
 
 Light | Dark
 ---------- | ---------
-![""](images/buttons/fab-buttons.png) | ![""](images/buttons/fab-buttons-dark.png)
+![""](images/buttons/rounded-fab-buttons.png) | ![""](images/buttons/rounded-fab-buttons-dark.png)
 
 >Code
 
@@ -160,7 +160,7 @@ Light | Dark
 
 Light | Dark
 ---------- | ---------
-![""](images/buttons/fab-buttons.png) | ![""](images/buttons/fab-buttons-dark.png)
+![""](images/buttons/rounded-extended-fab-buttons.png) | ![""](images/buttons/rounded-extented-fab-buttons-dark.png)
 
 >Code
 
