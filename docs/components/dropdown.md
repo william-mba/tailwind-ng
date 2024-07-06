@@ -14,7 +14,7 @@ Light | Dark
 ![""](images/dropdown/dropdown.png) | ![""](images/dropdown/dropdown-dark.png)
 ![""](images/dropdown/dropdown-usage.png) | ![""](images/dropdown/dropdown-usage-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-dropdown className="rounded-full">
@@ -38,7 +38,7 @@ Light | Dark
 ![""](images/dropdown/dropdown-with-icon.png) | ![""](images/dropdown/dropdown-with-icon-dark.png)
 ![""](images/dropdown/dropdown-with-icon-usage.png) | ![""](images/dropdown/dropdown-with-icon-usage-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-dropdown className="rounded-full px-1 py-1">
@@ -63,8 +63,8 @@ Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
 open | `boolean` | `[open]` | `false` | The dropdown state.
 size      | ``SizeVariant`` | `size`    | `'md'`  | The component size.
-className | ``string``      | `className` |  `''`   | The list of classes to add or override in the dropdown container style.
-contentClassName | ``string``      | `contentClassName` |  `''`   | The list of classes to add or override in the dropdown content style.
+className | ``string``      | `className` |  `''`   | The Tailwind CSS utility class names to add/replace/remove in the dropdown container style.
+contentClassName | ``string``      | `contentClassName` |  `''`   | The Tailwind CSS utility class names to add/replace/remove in the dropdown content style.
 contentPosition | `string` | `contentPosition` | `top-8 right-0` | The dropdown content position relative to the dropdown container.
 
 <br/>
@@ -78,7 +78,7 @@ size      | SizeVariant | `size`    | `'md'`  | The component size.
 
 <br/>
 
-## Default configurations
+## Configurations
 
 <br/>
 

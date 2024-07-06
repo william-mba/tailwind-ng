@@ -13,7 +13,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/badge/badge-flat.png) | ![""](images/badge/badge-flat-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-badge className="bg-gray-600 text-gray-600">Badge</tw-badge>
@@ -31,7 +31,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/badge/badge-with-border.png) | ![""](images/badge/badge-with-border-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-badge className="... ring-1 ring-gray-300">Badge</tw-badge>
@@ -52,7 +52,7 @@ Light | Dark
 ![""](images/badge/badge-rounded-with-leading-icon.png) | ![""](images/badge/badge-rounded-with-leading-icon-dark.png)
 ![""](images/badge/badge-rounded-with-leading-icon-and-border.png) | ![""](images/badge/badge-rounded-with-leading-icon-and-border-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-badge className="... rounded-full">
@@ -75,7 +75,7 @@ Light | Dark
 ![""](images/badge/badge-with-action.png) | ![""](images/badge/badge-with-action-dark.png)
 ![""](images/badge/badge-with-action-and-border.png) | ![""](images/badge/badge-with-action-and-border-dark.png)
 
->Code sample
+>Code
 
 ```html
 <!--With action-->
@@ -109,12 +109,12 @@ Light | Dark
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
+className | string      | `className` |  `''`   | Utility class names to add/replace/remove.
 padding | string      | `padding` |  `px-1.5 py-1`   | The padding size of the badge.
 
 <br/>
 
-## Default configurations
+## Configurations
 
 <br/>
 

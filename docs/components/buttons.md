@@ -1,90 +1,35 @@
 # Buttons
 
-[Buttons](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) help people initiate actions, from sending an email, to sharing a document, to liking a post.
+Use these Tailwind CSS button components to surface the different actions someone can perform in your interface.
 
 <br/>
 
-## Usage
-
-<br/>
-
-### Primary buttons
-
----
 Light | Dark
 ---------- | ---------
 ![""](images/buttons/primary-buttons.png) | ![""](images/buttons/primary-buttons-dark.png)
-
->Code sample
-
-```html
-<tw-button size="sm">Button text</tw-button>
-<tw-button>Button text</tw-button>
-<tw-button size="lg">Button text</tw-button>
-```
-
-<br/>
-
-### Secondary buttons
-
----
-Light | Dark
----------- | ---------
 ![""](images/buttons/secondary-buttons.png) | ![""](images/buttons/secondary-buttons-dark.png)
+![""](images/buttons/tonal-buttons.png) | ![""](images/buttons/tonal-buttons-dark.png)
+![""](images/buttons/text-buttons.png) | ![""](images/buttons/text-buttons-dark.png)
 
->Code sample
-
-```html
-<tw-button variant="secondary" size="sm">Button text</tw-button>
-<tw-button variant="secondary">Button text</tw-button>
-<tw-button variant="secondary" size="lg">Button text</tw-button>
-```
-
-<br/>
-
-### Soft buttons
-
----
-Light | Dark
----------- | ---------
-![""](images/buttons/soft-buttons.png) | ![""](images/buttons/soft-buttons-dark.png)
-
->Code sample
+>Code
 
 ```html
-<tw-button variant="soft" size="sm">Button text</tw-button>
-<tw-button variant="soft">Button text</tw-button>
-<tw-button variant="soft" size="lg">Button text</tw-button>
+<tw-button>Button text</tw-button>
 ```
 
 <br/>
 
 ### Icon buttons
 
----
 Light | Dark
 ---------- | ---------
-![""](images/buttons/primary-button-icon.png) | ![""](images/buttons/primary-button-icon-dark.png)
-![""](images/buttons/secondary-button-icon.png) | ![""](images/buttons/secondary-button-icon-dark.png)
-![""](images/buttons/soft-button-icon.png) | ![""](images/buttons/soft-button-icon-dark.png)
+![""](images/buttons/icon-buttons.png) | ![""](images/buttons/icon-buttons-dark.png)
 
->Code sample
+>Code
 
 ```html
-<tw-button className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</tw-button>
-
-<tw-button variant="secondary" className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
-    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-  </svg>
-</tw-button>
-
-<tw-button variant="soft" className="rounded-full px-2 py-2">
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+<tw-button tw-icon className="rounded-lg">
+  <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
   </svg>
 </tw-button>
@@ -92,14 +37,153 @@ Light | Dark
 
 <br/>
 
+### FAB buttons
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/fab-buttons.png) | ![""](images/buttons/fab-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button tw-fab className="rounded-lg">
+  <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</tw-button>
+```
+
+<br/>
+
+### Extended FAB
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/fab-buttons.png) | ![""](images/buttons/fab-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button tw-fab className="px-6 rounded-lg">
+  <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+  New task
+</tw-button>
+```
+
+<br/>
+
+## Rounded buttons
+
+<br/>
+
+### Primary buttons
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/rounded-primary-buttons.png) | ![""](images/buttons/rounded-primary-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button className="rounded-full"> Button text</tw-button>
+```
+
+<br/>
+
+### Secondary buttons
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/rounded-secondary-buttons.png) | ![""](images/buttons/rounded-secondary-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button className="rounded-full" variant="secondary">Button text</tw-button>
+```
+
+<br/>
+
+### Tonal buttons
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/rounded-tonal-buttons.png) | ![""](images/buttons/rounded-tonal-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button className="rounded-full" variant="tonal">Button text</tw-button>
+```
+
+<br/>
+
+### Icon buttons
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/icon-buttons.png) | ![""](images/buttons/icon-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button tw-icon>
+  <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</tw-button>
+```
+
+<br/>
+
+### FAB buttons
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/fab-buttons.png) | ![""](images/buttons/fab-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button tw-fab>
+  <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+</tw-button>
+```
+
+<br/>
+
+### Extended FAB
+
+Light | Dark
+---------- | ---------
+![""](images/buttons/fab-buttons.png) | ![""](images/buttons/fab-buttons-dark.png)
+
+>Code
+
+```html
+<tw-button tw-fab className="px-6">
+  <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+  </svg>
+  New task
+</tw-button>
+```
+
+<br/>
+
+## Usage sample
+
 ### Buttons with leading icon
 
----
 Light | Dark
 ---------- | ---------
 ![""](images/buttons/buttons-with-leading-icon.png) | ![""](images/buttons/buttons-with-leading-icon-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-button>
@@ -114,12 +198,11 @@ Light | Dark
 
 ### Buttons with trailing icon
 
----
 Light | Dark
 ---------- | ---------
 ![""](images/buttons/buttons-with-trailing-icon.png) | ![""](images/buttons/buttons-with-trailing-icon-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-button>
@@ -133,75 +216,55 @@ Light | Dark
 
 <br/>
 
-## Use cases
-
-<br/>
-
-A secondary button with the text "Back" next to a primary button with the text "Complete"
-
----
-Light | Dark
----------- | ---------
-![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-usage-sample.png "Secondary and primary buttons.") | ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-usage-sample-dark.png "Secondary and primary buttons.")
-
-```html
-<tw-button variant="secondary">Back</tw-button>
-<tw-button>Complete</tw-button>
-```
-
----
-
-<br />
-
-An icon may optionally be added to a button to help communicate the button's action and help draw attention.
-
----
-Light | Dark
----------- | ---------
-![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample.png "Secondary and primary buttons.") | ![A secondary button with the text "Back" next to a primary button with the text "Complete"](images/buttons/buttons-with-icon-usage-sample-dark.png "Secondary and primary buttons.")
-
->Code sample
-
-```html
-<tw-button>
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M144-192v-576l720 288-720 288Zm72-107 454-181-454-181v109l216 72-216 72v109Zm0 0v-362 362Z"/></svg>
-  Send
-</tw-button>
-<tw-button variant="secondary">
-  Open
-  <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h528v-264h72v264q0 29.7-21.15 50.85Q773.7-144 744-144H216Zm171-192-51-51 357-357H576v-72h240v240h-72v-117L387-336Z"/></svg>
-</tw-button>
-```
-
-<br/>
-
 ## API
 
 <br/>
 
 ### Button `<tw-button>`
 
+Property  | Type        | Default | Description
+----------|-------------|---------|------------
+size      | SizeVariant |`md`  | The component size.
+className | string      |  `''`   | Utility class names to add/replace/remove.
 ---
 
-Property  | Type        | Attribute   | Default | Description
-----------|-------------|-------------|---------|------------
-size      | SizeVariant | `size`    | `'md'`  | The component size.
-className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
+### Icon `[tw-icon]`
+
+Property  | Type        | Default | Description
+----------|-------------|---------|------------
+className | string      |  `''`   | Utility class names to add/replace/remove.
+---
+
+### FAB & Extented FAB `[tw-fab]`
+
+Property  | Type        | Default | Description
+----------|-------------|---------|------------
+className | string      |  `''`   | Utility class names to add/replace/remove.
 ---
 
 <br/>
 
-## Default configurations
+## Configuration
 
 <br/>
-
-Primary config
-
----
 
 ```ts
-export const PrimaryButtonConfigKey = 'PrimaryButtonConfigKey';
+/** Button variant */
+export type ButtonVariant =
+  | 'primary' // default variant
+  | 'secondary'
+  | 'tonal'
+  | 'text'
 
+/** Base button config */
+export const ButtonBaseConfig: ButtonBaseConfig = {
+  ...BaseConfig,
+  textWrap: 'text-nowrap',
+  overflow: 'overflow-hidden',
+  userSelect: 'select-none'
+}
+
+/** Primary button config */
 export const PrimaryButtonConfig: PrimaryButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
@@ -212,83 +275,90 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
     }
   }
 }
-```
 
-<br/>
-
-Secondary config
-
----
-
-```ts
-export const SecondaryButtonConfigKey = 'SecondaryButtonConfigKey';
-
+/** Secondary button config */
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
   borderWidth: 'border',
-  userSelect: "select-text",
   theme: {
     light: {
-      textColor: 'text-black',
-      bgColor: 'bg-neutral-100',
-      borderColor: 'border-neutral-200',
+      bgColor: 'bg-black',
+      textColor: 'text-gray-700',
+      borderColor: 'border-black',
+      bgOpacity: 'bg-opacity-0',
+      borderOpacity: 'border-opacity-15',
       hover: {
-        bgColor: 'hover:bg-neutral-200'
+        bgOpacity: 'hover:bg-opacity-5'
       },
       focus: {
-        borderColor: 'focus:border-neutral-400'
+        borderOpacity: 'focus:border-opacity-30'
       }
     },
     dark: {
-      textColor: 'dark:text-white',
-      bgColor: 'dark:bg-neutral-800',
-      borderColor: 'dark:border-neutral-700',
+      bgColor: 'dark:bg-white',
+      textColor: 'dark:text-gray-300',
+      borderColor: 'dark:border-white',
+      bgOpacity: 'dark:bg-opacity-0',
+      borderOpacity: 'dark:border-opacity-15',
       hover: {
-        bgColor: 'dark:hover:bg-neutral-700'
+        bgOpacity: 'dark:hover:bg-opacity-5'
       },
       focus: {
-        borderColor: 'dark:focus:border-neutral-500'
+        borderOpacity: 'dark:focus:border-opacity-30'
       }
     }
   }
 }
-```
 
-<br/>
-
-Soft config
-
----
-
-```ts
-export const SoftButtonConfigKey = 'SoftButtonConfigKey';
-
-export const SoftButtonConfig: SoftButtonConfig = {
+/** Tonal button config */
+export const TonalButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
     textColor: 'text-indigo-600',
-    bgOpacity: 'bg-opacity-10',
+    bgOpacity: 'bg-opacity-5',
     bgColor: 'bg-indigo-600',
     hover: {
-      bgOpacity: 'hover:bg-opacity-20'
+      bgOpacity: 'hover:bg-opacity-10'
     }
   }
 }
-```
 
-<br/>
 
-Base config
+/** Text button config */
+export const TextButtonConfig: TonalButtonConfig = {
+  ...ButtonBaseConfig,
+  theme: {
+    light: {
+      textColor: 'text-gray-700',
+      hover: {
+        textColor: 'hover:text-gray-950'
+      }
+    },
+    dark: {
+      textColor: 'dark:text-gray-300',
+      hover: {
+        textColor: 'dark:hover:text-gray-50'
+      }
+    }
+  }
+}
 
----
 
-```ts
-export const ButtonBaseConfig: ButtonBaseConfig = {
-  ...BaseConfig,
-  textWrap: 'text-nowrap',
-  overflow: 'overflow-hidden',
-  userSelect: 'select-none'
+/** Button config key */
+export const ButtonConfigKey = 'ButtonConfigKey';
+
+/** Button config */
+export type ButtonConfig = {
+  primary: Partial<PrimaryButtonConfig>,
+  secondary: Partial<SecondaryButtonConfig>,
+  tonal: Partial<TonalButtonConfig>,
+  text: Partial<TextButtonConfig>
+}
+
+export const ButtonConfig: ButtonConfig = {
+  primary: PrimaryButtonConfig,
+  secondary: SecondaryButtonConfig,
+  tonal: TonalButtonConfig,
+  text: TextButtonConfig
 }
 ```
-
----

@@ -18,7 +18,7 @@ Light | Dark
 ![""](images/buttons-group/button-group.png) | ![""](images/buttons-group/button-group-dark.png)
 ![""](images/buttons-group/button-group-usage.png) | ![""](images/buttons-group/button-group-usage-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-group>
@@ -44,7 +44,7 @@ Light | Dark
 !["Icon group on light mode"](images/buttons-group/icon-group-1.png) | !["Icon group on light mode"](images/buttons-group/icon-group-dark-1.png)
 !["Icon group usage on light mode"](images/buttons-group/icon-group-usage-1.png) | !["Icon group usage on dark mode"](images/buttons-group/icon-group-usage-dark-1.png)
 
->Code sample
+>Code
 
 ```html
 <tw-group className="ring-4 rounded-full">
@@ -75,7 +75,7 @@ Light | Dark
 ![""](images/buttons-group/button-group-with-stats.png) | ![""](images/buttons-group/button-group-with-stats-dark.png)
 ![""](images/buttons-group/button-group-with-stats-usage.png) | ![""](images/buttons-group/button-group-with-stats-usage-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-group>
@@ -101,7 +101,7 @@ Light | Dark
 ![""](images/buttons-group/button-group-with-dropdown.png) | ![""](images/buttons-group/button-group-with-dropdown-dark.png)
 ![""](images/buttons-group/button-group-with-dropdown-usage.png) | ![""](images/buttons-group/button-group-with-dropdown-usage-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-group>

@@ -13,7 +13,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/avatar/avatar-group-stacked-bottom-to-top.png) | ![""](images/avatar/avatar-group-stacked-bottom-to-top-dark.png)
 
->Code sample
+>Code
 
 ```html
 ...
@@ -50,7 +50,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/avatar/circular-avatars.png) | ![""](images/avatar/circular-avatars-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-avatar>
@@ -81,7 +81,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/avatar/circular-avatars-with-top-notification.png) | ![""](images/avatar/circular-avatars-with-top-notification-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-avatar>
@@ -112,7 +112,7 @@ Light | Dark
 Light | Dark
 ---------- | ---------
 ![""](images/avatar/rounded-avatars.png) | ![""](images/avatar/rounded-avatars-dark.png)
->Code sample
+>Code
 
 ```html
 <tw-avatar>
@@ -139,7 +139,7 @@ Light | Dark
 Light | Dark
 ---------- | ---------
 ![""](images/avatar/rounded-avatars-with-top-notification.png) | ![""](images/avatar/rounded-avatars-with-top-notification-dark.png)
->Code sample
+>Code
 
 ```html
 <tw-avatar>
@@ -169,7 +169,7 @@ Light | Dark
 Light | Dark
 ---------- | ---------
 ![""](images/avatar/circular-avatars-with-icon.png) | ![""](images/avatar/circular-avatars-with-icon-dark.png)
->Code sample
+>Code
 
 ```html
 <tw-avatar className="size-6 text-gray-400">
@@ -205,7 +205,7 @@ Light | Dark
 Light | Dark
 ---------- | ---------
 ![""](images/avatar/circular-avatars-with-initials.png) | ![""](images/avatar/circular-avatars-with-initials-dark.png)
->Code sample
+>Code
 
 ```html
 <tw-avatar className="size-6 text-xs text-white bg-gray-500">TW</tw-avatar>
@@ -222,7 +222,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/avatar/circular-avatars-with-bottom-notification.png) | ![""](images/avatar/circular-avatars-with-bottom-notification-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-avatar>
@@ -255,7 +255,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/avatar/rounded-avatars-with-bottom-notification.png) | ![""](images/avatar/rounded-avatars-with-bottom-notification-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-avatar>
@@ -286,7 +286,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/avatar/avatar-group-stacked-top-to-bottom.png) | ![""](images/avatar/avatar-group-stacked-top-to-bottom-dark.png)
 
->Code sample
+>Code
 
 ```html
 ...
@@ -323,7 +323,7 @@ Light | Dark
 ---------- | ---------
 ![""](images/avatar/avatar-with-text.png) | ![""](images/avatar/avatar-with-text-dark.png)
 
->Code sample
+>Code
 
 ```html
 <tw-group className="gap-x-2">
@@ -347,11 +347,11 @@ Light | Dark
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-className | string      | `className` |  `''`   | The list of classes to add or override in the component `style` property.
+className | string      | `className` |  `''`   | Utility class names to add/replace/remove.
 
 <br/>
 
-## Default configurations
+## Configurations
 
 <br/>
 
