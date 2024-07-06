@@ -15,6 +15,9 @@ Light | Dark
 
 ```html
 <tw-button>Button text</tw-button>
+<tw-button variant="secondary">Button text</tw-button>
+<tw-button variant="tonal">Button text</tw-button>
+<tw-button variant="text">Button text</tw-button>
 ```
 
 <br/>
