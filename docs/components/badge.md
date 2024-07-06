@@ -109,7 +109,7 @@ Light | Dark
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-className | string      | `className` |  `''`   | Utility class names to add/replace/remove.
+className | string      | `className` |  `''`   | The utilities class names to add/replace/remove.
 padding | string      | `padding` |  `px-1.5 py-1`   | The padding size of the badge.
 
 <br/>

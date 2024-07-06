@@ -347,7 +347,7 @@ Light | Dark
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-className | string      | `className` |  `''`   | Utility class names to add/replace/remove.
+className | string      | `className` |  `''`   | The utilities class names to add/replace/remove.
 
 <br/>
 

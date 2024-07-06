@@ -202,21 +202,21 @@ Light | Dark
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------
 size      | SizeVariant |`md`  | The component size.
-className | string      |  `''`   | Utility class names to add/replace/remove.
+className | string      |  `''`   | The utilities class names to add/replace/remove.
 ---
 
 ### Icon `[tw-icon]`
 
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------
-className | string      |  `''`   | Utility class names to add/replace/remove.
+className | string      |  `''`   | The utilities class names to add/replace/remove.
 ---
 
 ### FAB & Extented FAB `[tw-fab]`
 
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------
-className | string      |  `''`   | Utility class names to add/replace/remove.
+className | string      |  `''`   | The utilities class names to add/replace/remove.
 ---
 
 <br/>
