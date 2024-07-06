@@ -78,43 +78,17 @@ Light | Dark
 
 <br/>
 
-### Primary buttons
-
 Light | Dark
 ---------- | ---------
 ![""](images/buttons/rounded-primary-buttons.png) | ![""](images/buttons/rounded-primary-buttons-dark.png)
-
->Code
-
-```html
-<tw-button className="rounded-full"> Button text</tw-button>
-```
-
-<br/>
-
-### Secondary buttons
-
-Light | Dark
----------- | ---------
 ![""](images/buttons/rounded-secondary-buttons.png) | ![""](images/buttons/rounded-secondary-buttons-dark.png)
-
->Code
-
-```html
-<tw-button className="rounded-full" variant="secondary">Button text</tw-button>
-```
-
-<br/>
-
-### Tonal buttons
-
-Light | Dark
----------- | ---------
 ![""](images/buttons/rounded-tonal-buttons.png) | ![""](images/buttons/rounded-tonal-buttons-dark.png)
 
 >Code
 
 ```html
+<tw-button className="rounded-full"> Button text</tw-button>
+<tw-button className="rounded-full" variant="secondary">Button text</tw-button>
 <tw-button className="rounded-full" variant="tonal">Button text</tw-button>
 ```
 
