@@ -201,8 +201,10 @@ Light | Dark
 
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------
-size      | SizeVariant |`md`  | The component size.
+size      | SizeVariant |`md`  | The button size.
 className | string      |  `''`   | The utilities class names to add/replace/remove.
+style | string      |  `''`   | The button style. This property has precedence to all other properties.
+variant | ButtonVariant      |  `primary`   | The button variant.
 ---
 
 ### Icon `[tw-icon]`
@@ -228,7 +230,7 @@ className | string      |  `''`   | The utilities class names to add/replace/rem
 ```ts
 /** Button variant */
 export type ButtonVariant =
-  | 'primary' // default variant
+  | 'primary'
   | 'secondary'
   | 'tonal'
   | 'text'
@@ -300,7 +302,6 @@ export const TonalButtonConfig: TonalButtonConfig = {
   }
 }
 
-
 /** Text button config */
 export const TextButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
@@ -319,7 +320,6 @@ export const TextButtonConfig: TonalButtonConfig = {
     }
   }
 }
-
 
 /** Button config key */
 export const ButtonConfigKey = 'ButtonConfigKey';
