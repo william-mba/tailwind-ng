@@ -4,10 +4,6 @@ Use these Tailwind CSS button components to surface the different actions someon
 
 <br/>
 
-## Variants
-`primary`, ``secondary``, ``tonal``, ``text``
-<br/>
-
 Light | Dark
 ---------- | ---------
 ![""](images/buttons/primary-buttons.png) | ![""](images/buttons/primary-buttons-dark.png)
