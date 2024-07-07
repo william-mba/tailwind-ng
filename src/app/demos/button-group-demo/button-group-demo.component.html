@@ -11,27 +11,21 @@
   <h2 class="text-lg font-semibold mt-12">
     With three buttons
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md"> Years </tw-button>
       <tw-button variant="secondary" className="rounded-none"> Months </tw-button>
       <tw-button variant="secondary" className="rounded-r-md"> Days </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="WithThreeButtons" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="withThreeButtons"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     With two buttons
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
@@ -49,21 +43,13 @@
       </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="WithTwoButtons" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="withTwoButtons"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     With dropdown
   </h2>
   <div
-    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md">
         Save changes
@@ -86,20 +72,13 @@
       </tw-dropdown>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="WithDropdown" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="withDropdown"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     With stats
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md">
         <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
@@ -112,20 +91,13 @@
       </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="WithStats" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="withStats"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     With checkbox and select
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group className="items-stretch">
       <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md p-3">
         <input type="checkbox"
@@ -142,15 +114,7 @@
       </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="WithChecboxAndSelect" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="withChecboxAndSelect"></demo-code-snippet>
 
   <h2 class="text-2xl font-bold mt-20">
     Rounded buttons group
@@ -159,7 +123,8 @@
   <h2 class="text-lg font-semibold mt-12">
     Rounded with three buttons
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         Years
@@ -172,20 +137,13 @@
       </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="RoundedWithThreeButtons" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="roundedWithThreeButtons"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     Rounded with two buttons
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
@@ -203,21 +161,13 @@
       </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="RoundedWithTwoButtons" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="roundedWithTwoButtons"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     Rounded with dropdown
   </h2>
   <div
-    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         Save changes
@@ -240,21 +190,13 @@
       </tw-dropdown>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="RoundedWithDropdown" language="html">
-      </code>
-    </pre>
-  </details>
-
+  <demo-code-snippet [code]="roundedWithDropdown"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     Rounded with stats
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
@@ -267,20 +209,13 @@
       </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="RoundedWithStats" language="html">
-      </code>
-    </pre>
-  </details>
+  <demo-code-snippet [code]="roundedWithStats"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     Rounded with checkbox and select
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group className="items-stretch">
       <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full p-3">
         <input type="checkbox"
@@ -297,14 +232,6 @@
       </tw-button>
     </tw-group>
   </div>
-  <details>
-    <summary
-      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
-      <> Code
-    </summary>
-    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="RoundedWithChecboxAndSelect" language="html">
-        </code>
-      </pre>
-  </details>
+  <demo-code-snippet [code]="roundedWithChecboxAndSelect"></demo-code-snippet>
 
 </div>

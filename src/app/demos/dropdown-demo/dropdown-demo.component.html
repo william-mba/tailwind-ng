@@ -1,5 +1,5 @@
 <div
-  class="container sm:max-w-lg md:max-w-xl mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  class="container w-full sm:max-w-lg md:max-w-3xl mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
   <h1 class="text-3xl border-none font-extrabold my-8 mt-16">
     Dropdowns
   </h1>
@@ -10,7 +10,8 @@
   <h2 class="text-lg font-semibold mt-12">
     With text
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-dropdown [open]="open(1)" (click)="toggle(1)">
       <tw-button>Save changes</tw-button>
       <tw-dropdown-item *ngFor="let item of items">
@@ -22,7 +23,8 @@
   <h2 class="text-lg font-semibold mt-20">
     With icon
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-dropdown [open]="open(2)" (click)="toggle(2)">
       <tw-button variant="secondary" className="p-2">
         <svg *ngIf="!open(2)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -43,7 +45,8 @@
   <h2 class="text-lg font-semibold mt-20">
     With text and icon
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button className="rounded-l-md">
         Save changes
@@ -73,7 +76,8 @@
   <h2 class="text-lg font-semibold mt-12">
     Rounded with text
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-dropdown [open]="open(4)" (click)="toggle(4)" className="rounded-3xl p-1.5">
       <tw-button className="rounded-full">Save changes</tw-button>
       <tw-dropdown-item *ngFor="let item of items">
@@ -85,7 +89,8 @@
   <h2 class="text-lg font-semibold mt-20">
     Rounded with icon
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-dropdown [open]="open(5)" (click)="toggle(5)" className="rounded-3xl p-1.5">
       <tw-button variant="secondary" className="p-2 rounded-full">
         <svg *ngIf="!open(5)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -106,7 +111,8 @@
   <h2 class="text-lg font-semibold mt-20">
     Rounded with text and icon
   </h2>
-  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
+  <div
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
     <tw-group>
       <tw-button className="rounded-l-full">
         Save changes

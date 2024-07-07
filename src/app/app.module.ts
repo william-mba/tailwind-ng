@@ -17,6 +17,7 @@ import {
   HighlightAuto,
 } from 'ngx-highlightjs';
 import 'highlight.js/styles/github.min.css';
+import { CodeSnippetComponent } from './code-snippet/code-snippet.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import 'highlight.js/styles/github.min.css';
     DropdownDemoComponent,
     BadgeDemoComponent,
     AvatarDemoComponent,
-    MenuComponent
+    MenuComponent,
+    CodeSnippetComponent
   ],
   imports: [
     Highlight, HighlightAuto,
@@ -47,7 +49,7 @@ import 'highlight.js/styles/github.min.css';
   bootstrap: [AppComponent],
   providers: [
     provideHighlightOptions({
-      fullLibraryLoader: () => import('highlight.js')
+      fullLibraryLoader: () => import('highlight.js'),
     })
   ],
 })
