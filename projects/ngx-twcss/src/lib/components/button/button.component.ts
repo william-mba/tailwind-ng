@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Directive, Input, OnInit, inject } from '@angular/core';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { ButtonConfig, ButtonConfigKey, ButtonVariant } from './button.config';
 import { SizeConfig } from '../../configs/size.config';
 import { ConfigService } from '../../core/services/config.service';
 import { Size } from '../../core/types/size';
 
-/**Button component*/
+/** Button element */
 @Component({
   selector: 'tw-button',
   standalone: true,
@@ -38,5 +38,41 @@ export class Button implements OnInit {
 
         this.style = resolveClassName(style, this.className);
       });
+  }
+}
+
+/** Floating action button */
+@Directive({
+  selector: '[tw-fab]',
+  standalone: true,
+})
+export class FAB implements OnInit {
+  @Input() className!: string;
+
+  private readonly _default = 'rounded-full p-2 shadow-md';
+
+  constructor(public el: Button) { }
+
+  ngOnInit(): void {
+    this.el.className = resolveClassName(this._default, this.className);
+    this.el.initConfig();
+  }
+}
+
+/** Icon button */
+@Directive({
+  selector: '[tw-icon]',
+  standalone: true,
+})
+export class Icon implements OnInit {
+  @Input() className!: string;
+
+  private readonly _default = 'rounded-full p-2';
+
+  constructor(public el: Button) { }
+
+  ngOnInit(): void {
+    this.el.className = resolveClassName(this._default, this.className);
+    this.el.initConfig();
   }
 }

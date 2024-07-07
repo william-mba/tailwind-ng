@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CustomButtonConfig, CustomButtonConfig2, CustomButtonConfig3 } from 'customs/button.config';
 import { CustomDropdownConfig, CustomDropdownConfig2, CustomDropdownConfig3 } from 'customs/dropdown.config';
-import { ConfigService, DropdownConfig, DropdownConfigKey, ButtonConfig, ButtonConfigKey } from 'ngx-twcss';
+import { ConfigService, DropdownConfig, DropdownConfigKey, ButtonConfig, ButtonConfigKey, ToggleTheme } from 'ngx-twcss';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +22,7 @@ export class AppComponent {
       this.theme = parseInt(lastTheme);
       this.changeConfig();
     }
+    ToggleTheme();
   }
 
   changeConfig() {

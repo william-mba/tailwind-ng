@@ -4,7 +4,11 @@
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  width: 10px;
 }
 
 /* scrollbar track */
@@ -15,7 +19,8 @@
 /* scrollbar thumb */
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 5px;
+  border-radius: 10px;
+  width: 5px;
 }
 
 /* scrollbar thumb on hover */

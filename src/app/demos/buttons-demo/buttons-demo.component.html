@@ -15,11 +15,20 @@
     complete
     a flow, like Save, Join now, or Confirm.
   </p>
-  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
     <tw-button size="sm">Button text</tw-button>
     <tw-button> Button text </tw-button>
     <tw-button size="lg"> Button text </tw-button>
   </div>
+  <details>
+    <summary
+      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
+      <> Code
+    </summary>
+    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="primaryButton" language="html">
+      </code>
+    </pre>
+  </details>
 
   <h2 class="text-lg font-semibold mt-20">
     Secondary buttons
@@ -28,11 +37,21 @@
     Outlined buttons are medium-emphasis buttons. They contain actions that are important, but aren’t the primary action
     in an app.
   </p>
-  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
     <tw-button variant="secondary" size="sm">Button text </tw-button>
     <tw-button variant="secondary"> Button text </tw-button>
     <tw-button variant="secondary" size="lg"> Button text </tw-button>
   </div>
+  <details>
+    <summary
+      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
+      <> Code
+    </summary>
+    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="secondaryButton" language="html">
+      </code>
+    </pre>
+  </details>
+
 
   <h2 class="text-lg font-semibold mt-20">
     Tonal buttons
@@ -42,11 +61,20 @@
     where a lower-priority button requires slightly more emphasis than a secondary would give, such as "Next" in an
     onboarding flow.
   </p>
-  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
     <tw-button variant="tonal" size="sm">Button text </tw-button>
     <tw-button variant="tonal"> Button text </tw-button>
     <tw-button variant="tonal" size="lg"> Button text </tw-button>
   </div>
+  <details>
+    <summary
+      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
+      <> Code
+    </summary>
+    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="tonalButton" language="html">
+      </code>
+    </pre>
+  </details>
 
   <h2 class="text-lg font-semibold mt-20">
     Text buttons
@@ -54,11 +82,20 @@
   <p class="text-pretty">
     Text buttons are used for the lowest priority actions, especially when presenting multiple options.
   </p>
-  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl resize-x cursor-move">
+  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
     <tw-button variant="text" size="sm">Button text </tw-button>
     <tw-button variant="text"> Button text </tw-button>
     <tw-button variant="text" size="lg"> Button text </tw-button>
   </div>
+  <details>
+    <summary
+      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
+      <> Code
+    </summary>
+    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="textButton" language="html">
+      </code>
+    </pre>
+  </details>
 
   <h2 class="text-lg font-semibold mt-20">
     Icon buttons
@@ -66,7 +103,8 @@
   <p class="text-pretty">
     Icon buttons help people take minor actions with one tap
   </p>
-  <div class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 mx-auto rounded-xl">
+  <div
+    class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 py-10 mx-auto rounded-xl mb-0 rounded-b-none">
     <!-- Primary -->
     <div>
       <tw-button tw-icon className="p-1 rounded-lg">
@@ -140,6 +178,15 @@
       </tw-button>
     </div>
   </div>
+  <details>
+    <summary
+      class="border-l-8 border-r border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 list-none px-2 font-mono text-sm cursor-pointer">
+      <> Code
+    </summary>
+    <pre class="*:text-xs *:rounded-b-xl *:border"><code [highlight]="iconButton" language="html">
+        </code>
+      </pre>
+  </details>
 
   <h2 class="text-lg font-semibold mt-20">
     FAB
@@ -147,7 +194,8 @@
   <p class="text-pretty">
     Floating action buttons (FABs) help people take primary actions
   </p>
-  <div class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 mx-auto rounded-xl">
+  <div
+    class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 py-10 mx-auto rounded-xl mb-0 rounded-b-none">
     <!-- Primary -->
     <div>
       <tw-button tw-fab className="p-1 rounded-lg">
@@ -228,7 +276,8 @@
   <p class="text-pretty">
     Extended floating action buttons (extended FABs) help people take primary actions
   </p>
-  <div class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 mx-auto rounded-xl">
+  <div
+    class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 py-10 mx-auto rounded-xl mb-0 rounded-b-none">
     <!-- Primary -->
     <div>
       <tw-button tw-fab size="sm" className="p-1 px-3 rounded-lg">
@@ -327,7 +376,7 @@
     complete
     a flow, like Save, Join now, or Confirm.
   </p>
-  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
     <tw-button className="rounded-full" size="sm">Button text</tw-button>
     <tw-button className="rounded-full"> Button text</tw-button>
     <tw-button className="rounded-full" size="lg"> Button text</tw-button>
@@ -340,7 +389,7 @@
     Outlined buttons are medium-emphasis buttons. They contain actions that are important, but aren’t the primary action
     in an app.
   </p>
-  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
     <tw-button className="rounded-full" variant="secondary" size="sm">Button text </tw-button>
     <tw-button className="rounded-full" variant="secondary"> Button text </tw-button>
     <tw-button className="rounded-full" variant="secondary" size="lg"> Button text </tw-button>
@@ -354,7 +403,7 @@
     where a lower-priority button requires slightly more emphasis than a secondary would give, such as "Next" in an
     onboarding flow.
   </p>
-  <div class="flex border justify-center items-end m-6 p-6 mx-auto rounded-xl">
+  <div class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none">
     <tw-button className="rounded-full" variant="tonal" size="sm">Button text </tw-button>
     <tw-button className="rounded-full" variant="tonal"> Button text </tw-button>
     <tw-button className="rounded-full" variant="tonal" size="lg"> Button text </tw-button>
@@ -366,7 +415,8 @@
   <p class="text-pretty">
     Icon buttons help people take minor actions with one tap
   </p>
-  <div class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 mx-auto rounded-xl">
+  <div
+    class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 py-10 mx-auto rounded-xl mb-0 rounded-b-none">
     <!-- Primary -->
     <div>
       <tw-button tw-icon className="p-1">
@@ -447,7 +497,8 @@
   <p class="text-pretty">
     Floating action buttons (FABs) help people take primary actions
   </p>
-  <div class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 mx-auto rounded-xl">
+  <div
+    class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 py-10 mx-auto rounded-xl mb-0 rounded-b-none">
     <!-- Primary -->
     <div>
       <tw-button tw-fab className="p-1">
@@ -528,7 +579,8 @@
   <p class="text-pretty">
     Extended floating action buttons (extended FABs) help people take primary actions
   </p>
-  <div class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 mx-auto rounded-xl">
+  <div
+    class="grid border justify-center *:flex *:gap-4 *:items-end m-6 p-6 py-10 mx-auto rounded-xl mb-0 rounded-b-none">
     <!-- Primary -->
     <div>
       <tw-button tw-fab size="sm" className="p-1 px-3">

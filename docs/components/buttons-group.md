@@ -1,8 +1,6 @@
-# Buttons group
+# Button Groups
 
-[Buttons group](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) help people select options, switch views, or sort elements.
-
-Use the ``tw-group`` element to group buttons with other components like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
+Use these Tailwind CSS button group components to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
 
 <br/>
 
@@ -10,7 +8,7 @@ Use the ``tw-group`` element to group buttons with other components like dropdow
 
 <br/>
 
-### Three options button group
+### With three buttons
 
 ---
 Light | Dark

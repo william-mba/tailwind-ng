@@ -11,6 +11,13 @@ import { BadgeDemoComponent } from './demos/badge-demo/badge-demo.component';
 import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
 import { MenuComponent } from './menu/menu.component';
 
+import {
+  provideHighlightOptions,
+  Highlight,
+  HighlightAuto,
+} from 'ngx-highlightjs';
+import 'highlight.js/styles/github.min.css';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +29,7 @@ import { MenuComponent } from './menu/menu.component';
     MenuComponent
   ],
   imports: [
+    Highlight, HighlightAuto,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -36,6 +44,11 @@ import { MenuComponent } from './menu/menu.component';
     Tooltip,
     ModalDialogModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    provideHighlightOptions({
+      fullLibraryLoader: () => import('highlight.js')
+    })
+  ],
 })
 export class AppModule { }
