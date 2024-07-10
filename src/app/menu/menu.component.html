@@ -34,7 +34,7 @@
     </div>
   </div>
 </nav>
-<ng-container *ngIf="open">
+<ng-container *ngIf="open || isLargeScreen()">
   <nav
     class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-28 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-sm flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
     <div>

@@ -10,33 +10,22 @@ export class MenuComponent {
 
   screenWidth: number = window.innerWidth;
 
-  screens = {
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280,
-    xxl: 1536
-  }
-
-  open: boolean = true;
+  open: boolean = false;
 
   ToggleTheme() {
     ToggleTheme();
     this.dark = !this.dark;
   }
 
+  isLargeScreen() {
+    return this.screenWidth > 1536;
+  }
+
   toggle() {
-    if (this.screenWidth <= this.screens.xxl) {
-      this.open = !this.open;
-    }
+    this.open = !this.open;
   }
 
   @HostListener('window:resize', ['$event']) onResize(event: any) {
     this.screenWidth = window.innerWidth;
-    if (this.screenWidth <= this.screens.md) {
-      this.open = false;
-    } else {
-      this.open = true;
-    }
   }
 }
