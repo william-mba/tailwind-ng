@@ -12,7 +12,7 @@
     With three buttons
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md"> Years </tw-button>
       <tw-button variant="secondary" className="rounded-none"> Months </tw-button>
@@ -25,7 +25,7 @@
     With two buttons
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
@@ -49,7 +49,7 @@
     With dropdown
   </h2>
   <div
-    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md">
         Save changes
@@ -78,7 +78,7 @@
     With stats
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-md">
         <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
@@ -97,7 +97,7 @@
     With checkbox and select
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group className="items-stretch">
       <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md p-3">
         <input type="checkbox"
@@ -124,7 +124,7 @@
     Rounded with three buttons
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         Years
@@ -143,7 +143,7 @@
     Rounded with two buttons
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
@@ -167,12 +167,12 @@
     Rounded with dropdown
   </h2>
   <div
-    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         Save changes
       </tw-button>
-      <tw-dropdown [open]="open(4)" (click)="toggle(4)">
+      <tw-dropdown [open]="open(4)" (click)="toggle(4)" className="rounded-3xl p-1.5">
         <tw-button variant="secondary" className="rounded-r-full p-2 pr-3">
           <svg *ngIf="!open(4)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
             viewBox="0 -960 960 960">
@@ -184,7 +184,7 @@
           </svg>
         </tw-button>
         <tw-dropdown-item *ngFor="let item of items">
-          <tw-button variant="secondary" className="w-[11.5rem] rounded-none border-none justify-start">{{ item
+          <tw-button variant="secondary" className="w-[11.5rem] rounded-full border-none justify-start">{{ item
             }}</tw-button>
         </tw-dropdown-item>
       </tw-dropdown>
@@ -196,7 +196,7 @@
     Rounded with stats
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group>
       <tw-button variant="secondary" className="rounded-l-full">
         <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
@@ -215,7 +215,7 @@
     Rounded with checkbox and select
   </h2>
   <div
-    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-neutral-900">
+    class="flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-group className="items-stretch">
       <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full p-3">
         <input type="checkbox"
