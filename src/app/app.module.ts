@@ -17,6 +17,7 @@ import {
   HighlightAuto,
 } from 'ngx-highlightjs';
 import { CodeSnippetComponent } from './code-snippet/code-snippet.component';
+import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CodeSnippetComponent } from './code-snippet/code-snippet.component';
     DropdownDemoComponent,
     BadgeDemoComponent,
     AvatarDemoComponent,
+    ModalDialogDemoComponent,
     MenuComponent,
     CodeSnippetComponent
   ],

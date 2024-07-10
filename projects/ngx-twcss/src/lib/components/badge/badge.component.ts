@@ -18,6 +18,10 @@ export const BadgeConfig: BadgeConfig = {
     x: 'px-2',
     y: 'py-0.5'
   },
+  theme: {
+    bgColor: 'bg-indigo-600',
+    textColor: 'text-indigo-600'
+  },
   fontWeight: 'font-medium',
   borderRadius: 'rounded-full'
 }
