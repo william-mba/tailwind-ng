@@ -25,7 +25,7 @@ export class ModalDialogDemoComponent {
     this.dialogsStates[key] = false;
   }
 
-  simpleNotificationDialog = `<tw-modal-dialog [open]="open" (click)="close()">
+  simpleNotificationDialog = `<tw-modal-dialog [open]="open()" (click)="close()">
   <tw-dialog-panel>
     <tw-dialog-content>
       <h3 class="text-base font-semibold leading-6" id="modal-title">
@@ -41,7 +41,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-modal-dialog>`;
 
-  simpleDialogWithIcon = `<tw-modal-dialog [open]="open" (click)="close()">
+  simpleDialogWithIcon = `<tw-modal-dialog [open]="open()" (click)="close()">
   <tw-dialog-panel>
     <tw-dialog-icon className="text-red-600">
       <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -91,7 +91,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-modal-dialog>`;
 
-  centeredDialogWithSingleAction = `<tw-modal-dialog [open]="open" (click)="close()">
+  centeredDialogWithSingleAction = `<tw-modal-dialog [open]="open()" (click)="close()">
   <tw-dialog-panel className="sm:-">
     <tw-dialog-icon className="text-green-600 bg-green-600/15">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -141,7 +141,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-modal-dialog>`;
 
-  simpleDialogWithDismissButton = `<tw-modal-dialog [open]="open">
+  simpleDialogWithDismissButton = `<tw-modal-dialog [open]="open()">
   <tw-dialog-panel>
     <tw-dialog-icon className="text-red-600">
       <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
