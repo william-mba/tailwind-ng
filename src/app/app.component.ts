@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CustomButtonConfig, CustomButtonConfig2, CustomButtonConfig3 } from 'customs/button.config';
 import { CustomDropdownConfig, CustomDropdownConfig2, CustomDropdownConfig3 } from 'customs/dropdown.config';
 import { ConfigService, DropdownConfig, DropdownConfigKey, ButtonConfig, ButtonConfigKey, ToggleTheme } from 'ngx-twcss';
+import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
   theme: number = 0;
   title = 'Ngx-Twcss Playground';
   nextThemeMode: 'light' | 'dark' = 'dark';
+  open = false;
 
   ngOnInit() {
     let lastTheme = localStorage.getItem('last-used-theme');
@@ -23,6 +25,18 @@ export class AppComponent {
       this.changeConfig();
     }
     ToggleTheme();
+
+    timer(10000).pipe(concatMap(() => {
+      return scheduled([this.open], asyncScheduler)
+    })).subscribe(() => this.open = true)
+  }
+
+  close() {
+    this.open = false;
+  }
+
+  toggle() {
+    this.open = !this.open;
   }
 
   changeConfig() {
