@@ -141,3 +141,8 @@ For ``NgModule`` based components, import components in your *.module.ts file
 ```
 
 For more usage samples, see the [components docs](docs/components/).
+
+## Give a Star ⭐️
+
+If you found this library helpful or used it in your Projects, do give it a star. Thanks!
+Or, If you are feeling really generous, [Support the Project with a small contribution!](https://buymeacoffee.com/5fsgb9nx81)
