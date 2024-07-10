@@ -13,11 +13,8 @@ export const ScrimConfig: ScrimConfig = {
   overflow: 'overflow-y-auto',
   display: {
     type: 'grid',
-    placeContent: 'place-content-end',
-  },
-  sm: {
-    placeContent: 'sm:place-content-center',
-  },
+    placeContent: 'place-content-center'
+  }
 };
 
 /**Backdrop config */
