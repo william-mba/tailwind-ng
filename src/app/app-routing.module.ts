@@ -33,13 +33,13 @@ const routes: Routes = [
     component: ButtonsDemoComponent
   },
   {
-    path: 'play',
-    component: AppComponent
+    path: '',
+    redirectTo: 'modal-dialogs',
+    pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: '/modal-dialogs',
-    pathMatch: 'full'
+    path: '**',
+    redirectTo: 'buttons'
   }
 ];
 
