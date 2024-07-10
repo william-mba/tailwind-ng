@@ -16,7 +16,6 @@ import {
   Highlight,
   HighlightAuto,
 } from 'ngx-highlightjs';
-import 'highlight.js/styles/github.min.css';
 import { CodeSnippetComponent } from './code-snippet/code-snippet.component';
 
 @NgModule({
