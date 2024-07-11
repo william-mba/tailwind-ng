@@ -186,6 +186,7 @@ export type BackgroundColor =
   | 'bg-indigo-300'
   | 'bg-indigo-400'
   | 'bg-indigo-500'
+  | 'bg-indigo-500/10'
   | 'bg-indigo-600'
   | 'bg-indigo-700'
   | 'bg-indigo-800'
