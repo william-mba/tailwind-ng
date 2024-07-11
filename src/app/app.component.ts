@@ -26,9 +26,9 @@ export class AppComponent {
     }
     ToggleTheme();
 
-    timer(10000).pipe(concatMap(() => {
-      return scheduled([this.open], asyncScheduler)
-    })).subscribe(() => this.open = true)
+    // timer(10000).pipe(concatMap(() => {
+    //   return scheduled([this.open], asyncScheduler)
+    // })).subscribe(() => this.open = true)
   }
 
   close() {
