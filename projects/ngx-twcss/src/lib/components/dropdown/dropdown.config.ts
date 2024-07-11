@@ -69,9 +69,12 @@ export const DropdownContainerConfig: DropdownContainerConfig = {
 /** Dropdown item config */
 export type DropdownItemConfig = Partial<DropdownBaseConfig>
 export const DropdownItemConfig: DropdownItemConfig = {
+  display: 'grid',
   textAlign: 'text-start',
-  width: 'w-full',
-  display: 'flex'
+  extend: {
+    child: '*:justify-self-stretch',
+    childOfChild: '*:*:w-full'
+  }
 }
 
 /** Dropdown config key */

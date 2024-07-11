@@ -76,4 +76,5 @@ export type Width =
   | 'w-fit'
   | 'sm:w-[600px]'
   | 'lg:w-[800px]'
+  | '*:*:w-full'
   | MinWidth

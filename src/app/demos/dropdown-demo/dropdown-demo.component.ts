@@ -25,7 +25,7 @@ export class DropdownDemoComponent {
   withText = `<tw-dropdown [open]="open()" (click)="toggle()">
   <tw-button>Save changes</tw-button>
   <tw-dropdown-item *ngFor="let item of items">
-    <tw-button variant="secondary" className="w-44 rounded-none border-none justify-start">{{ item }}</tw-button>
+    <tw-button variant="secondary" className="rounded-none border-none justify-start">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
@@ -39,7 +39,7 @@ export class DropdownDemoComponent {
     </svg>
   </tw-button>
   <tw-dropdown-item *ngFor="let item of ['New project', 'New organisation', 'New team']">
-    <tw-button variant="secondary" className="w-44 rounded-none border-none justify-start">{{ item }}</tw-button>
+    <tw-button variant="secondary" className="rounded-none border-none justify-start">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
@@ -57,7 +57,7 @@ export class DropdownDemoComponent {
       </svg>
     </tw-button>
     <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="w-[11.5rem] rounded-none border-none justify-start">{{ item }}</tw-button>
+      <tw-button variant="secondary" className="rounded-none border-none justify-start">{{ item }}</tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
 </tw-group>`;
@@ -65,7 +65,7 @@ export class DropdownDemoComponent {
   roundedWithText = `<tw-dropdown [open]="open()" (click)="toggle()" className="rounded-3xl p-1.5">
   <tw-button className="rounded-full">Save changes</tw-button>
   <tw-dropdown-item *ngFor="let item of items">
-    <tw-button variant="secondary" className="w-44 border-none justify-start rounded-full">{{ item }}</tw-button>
+    <tw-button variant="secondary" className="border-none justify-start rounded-full">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
@@ -79,7 +79,7 @@ export class DropdownDemoComponent {
     </svg>
   </tw-button>
   <tw-dropdown-item *ngFor="let item of ['New project', 'New organisation', 'New team']">
-    <tw-button variant="secondary" className="w-44 rounded-full border-none justify-start">{{ item }}</tw-button>
+    <tw-button variant="secondary" className="rounded-full border-none justify-start">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
@@ -97,7 +97,7 @@ export class DropdownDemoComponent {
       </svg>
     </tw-button>
     <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="w-[11.5rem] border-none justify-start rounded-full">{{ item }}</tw-button>
+      <tw-button variant="secondary" className="border-none justify-start rounded-full">{{ item }}</tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
 </tw-group>`;

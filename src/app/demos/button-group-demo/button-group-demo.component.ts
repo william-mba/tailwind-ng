@@ -59,7 +59,7 @@ export class ButtonGroupDemoComponent {
       </svg>
     </tw-button>
     <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="w-[11.5rem] rounded-none border-none justify-start"> {{ item }} </tw-button>
+      <tw-button variant="secondary" className="rounded-none border-none justify-start"> {{ item }} </tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
 </tw-group>`;
@@ -124,7 +124,7 @@ export class ButtonGroupDemoComponent {
       </svg>
     </tw-button>
     <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="w-[11.5rem] rounded-none border-none justify-start"> {{ item }} </tw-button>
+      <tw-button variant="secondary" className="rounded-none border-none justify-start"> {{ item }} </tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
 </tw-group>`;
