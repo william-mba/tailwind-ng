@@ -1,6 +1,6 @@
 {
   "name": "ngx-twcss",
-  "version": "0.0.51",
+  "version": "0.0.53",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -14,7 +14,7 @@
     "tslib": "^2.3.0"
   },
   "sideEffects": false,
-  "description": "A components library to build great UI even faster.",
+  "description": "Tailwind CSS components for Angular.",
   "keywords": [
     "angular",
     "tailwind css",
