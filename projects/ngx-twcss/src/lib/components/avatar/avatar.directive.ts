@@ -4,7 +4,7 @@ import { toClassName, resolveClassName } from '../../core/helpers/config.helper'
 
 /**Avatar element*/
 @Directive({
-  selector: 'tw-avatar',
+  selector: 'tw-avatar, [tw-avatar]',
   standalone: true
 })
 export class Avatar implements OnInit {
