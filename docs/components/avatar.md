@@ -85,21 +85,18 @@ Light | Dark
 
 ```html
 <tw-avatar>
-  <img alt="" class="size-6 rounded-full"
-    src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-1.5 bg-red-300" />
+  <img alt="" class="size-6 rounded-full" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  <tw-badge className="absolute -top-0 -right-0 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
 </tw-avatar>
 
 <tw-avatar>
-  <img alt="" class="size-9 rounded-full"
-    src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-2.5 bg-yellow-300">1</tw-tooltip>
+  <img alt="" class="size-9 rounded-full" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  <tw-badge className="absolute -top-0 -right-0 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
 </tw-avatar>
 
 <tw-avatar>
-  <img alt="" class="size-11 rounded-full"
-    src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-3 bg-blue-300">2</tw-tooltip>
+  <img alt="" class="size-11 rounded-full" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  <tw-badge className="absolute -top-0 -right-0 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
 </tw-avatar>
 ...
 ```
@@ -145,19 +142,19 @@ Light | Dark
 <tw-avatar>
   <img alt="" class="size-6 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-1.5 -top-0.5 bg-red-300" />
+  <tw-badge className="absolute -top-0 -right-0.5 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
 </tw-avatar>
 
 <tw-avatar>
   <img alt="" class="size-9 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-2.5 -top-1 -right-1 bg-yellow-300">1</tw-tooltip>
+  <tw-badge className="absolute -top-0.5 -right-0.5 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
 </tw-avatar>
 
 <tw-avatar>
   <img alt="" class="size-11 rounded-lg"
     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-3 -top-1.5 -right-1.5 bg-blue-300">2</tw-tooltip>
+  <tw-badge className="absolute -top-0.5 -right-0.5 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
 </tw-avatar>
 ```
 
@@ -228,19 +225,19 @@ Light | Dark
 <tw-avatar>
   <img alt="" class="size-6 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-1.5 top- -bottom-0 bg-red-300" />
+  <tw-badge className="absolute -bottom-0 -right-0 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
 </tw-avatar>
 
 <tw-avatar>
   <img alt="" class="size-9 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-2.5 top- -bottom-0 bg-yellow-300">1</tw-tooltip>
+  <tw-badge className="absolute -bottom-0 -right-0 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
 </tw-avatar>
 
 <tw-avatar>
   <img alt="" class="size-11 rounded-full"
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-3 top- -bottom-0 bg-blue-300">2</tw-tooltip>
+  <tw-badge className="absolute -bottom-0 -right-0 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
 </tw-avatar>
 ```
 
@@ -259,21 +256,18 @@ Light | Dark
 
 ```html
 <tw-avatar>
-  <img alt="" class="size-6 rounded-full"
-    src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-1.5 top- -bottom-0 bg-red-300" />
+  <img alt="" class="size-6 rounded-lg" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+  <tw-badge className="absolute -bottom-0.5 -right-0.5 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
 </tw-avatar>
 
 <tw-avatar>
-  <img alt="" class="size-9 rounded-full"
-    src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-2.5 top- -bottom-0 bg-yellow-300">1</tw-tooltip>
+  <img alt="" class="size-9 rounded-lg" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+  <tw-badge className="absolute -bottom-0.5 -right-0.5 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
 </tw-avatar>
 
 <tw-avatar>
-  <img alt="" class="size-11 rounded-full"
-    src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-  <tw-tooltip className="size-3 top- -bottom-0 bg-blue-300">2</tw-tooltip>
+  <img alt="" class="size-11 rounded-lg" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+  <tw-badge className="absolute -bottom-0.5 -right-1 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
 </tw-avatar>
 ```
 
