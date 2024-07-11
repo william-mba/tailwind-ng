@@ -25,7 +25,7 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
 export class CodeSnippetComponent {
   @Input() code!: string;
   protected text = 'Copy';
-  protected label = '</> Code';
+  protected label = '<> Code';
 
   copy() {
     if (!this.code || this.text === 'Copied!') return;
