@@ -6,6 +6,7 @@ import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.compo
 import { BadgeDemoComponent } from './demos/badge-demo/badge-demo.component';
 import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
 import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
+import { RoadmapComponent } from './roadmap/roadmap.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
     component: DropdownDemoComponent
   },
   {
-    path: 'buttons-group',
+    path: 'button-groups',
     component: ButtonGroupDemoComponent
   },
   {
@@ -33,13 +34,17 @@ const routes: Routes = [
     component: ButtonsDemoComponent
   },
   {
+    path: 'roadmap',
+    component: RoadmapComponent
+  },
+  {
     path: '',
-    redirectTo: 'modal-dialogs',
+    redirectTo: 'roadmap',
     pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'buttons'
+    redirectTo: 'roadmap'
   }
 ];
 
