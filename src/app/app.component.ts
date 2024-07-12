@@ -24,7 +24,7 @@ export class AppComponent {
       this.theme = parseInt(lastTheme);
       this.changeConfig();
     }
-    ToggleTheme();
+    // ToggleTheme();
 
     // timer(10000).pipe(concatMap(() => {
     //   return scheduled([this.open], asyncScheduler)

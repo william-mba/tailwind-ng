@@ -18,6 +18,7 @@ import {
 } from 'ngx-highlightjs';
 import { CodeSnippetComponent } from './code-snippet/code-snippet.component';
 import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
+import { RoadmapComponent } from './roadmap/roadmap.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog
     AvatarDemoComponent,
     ModalDialogDemoComponent,
     MenuComponent,
-    CodeSnippetComponent
+    CodeSnippetComponent,
+    RoadmapComponent
   ],
   imports: [
     Highlight, HighlightAuto,
