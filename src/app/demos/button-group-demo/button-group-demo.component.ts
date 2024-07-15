@@ -26,133 +26,126 @@ export class ButtonGroupDemoComponent {
     this.states[key] = !this.states[key];
   }
 
-  withThreeButtons = `<tw-group>
-  <tw-button variant="secondary" className="rounded-l-md"> Years </tw-button>
-  <tw-button variant="secondary" className="rounded-none"> Months </tw-button>
-  <tw-button variant="secondary" className="rounded-r-md"> Days </tw-button>
-</tw-group>`;
+  simpleButtonGroups = `<tw-button-group>
+  <tw-button variant="secondary" className="rounded-l-md">Option</tw-button>
+  <tw-button variant="secondary" className="rounded-r-md">Option</tw-button>
+</tw-button-group>
+<tw-button-group>
+  <tw-button variant="secondary" className="rounded-l-md">Option</tw-button>
+  <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+  <tw-button variant="secondary" className="rounded-r-md">Option</tw-button>
+</tw-button-group>
+<!-- ... -->`;
 
-  withTwoButtons = `<tw-group>
+  withTwoButtons = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-md">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
     </svg>
   </tw-button>
   <tw-button variant="secondary" className="rounded-r-md">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
     </svg>
   </tw-button>
-</tw-group>`;
+</tw-button-group>`;
 
-  withDropdown = `<tw-group>
+  withDropdown = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-md">
     Save changes
   </tw-button>
-  <tw-dropdown [open]="open(4)" (click)="toggle(4)">
-    <tw-button variant="secondary" className="rounded-r-md p-2 pr-3">
-      <svg *ngIf="!open(4)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="M480-360 280-560h400L480-360Z" />
-      </svg>
-      <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" class="size-6">
-        <path d="m280-400 200-200 200 200H280Z" />
-      </svg>
+  <tw-dropdown [open]="open()" (click)="toggle()">
+    <tw-button variant="secondary" className="rounded-r-md">
+      <!-- svg -->
     </tw-button>
-    <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="rounded-none border-none justify-start"> {{ item }} </tw-button>
+    <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+      <tw-button variant="secondary" className="rounded- ring- shadow- justify-start">{{ item }}</tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
-</tw-group>`;
+</tw-button-group>`;
 
-  withStats = `<tw-group>
+  withStats = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-md">
-    <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
       <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
     </svg>
     Bookmark
   </tw-button>
-  <tw-button variant="secondary" className="rounded-r-md"> 12k </tw-button>
-</tw-group>`;
+  <tw-button variant="secondary" className="rounded-r-md">12k</tw-button>
+</tw-button-group>`;
 
-  withChecboxAndSelect = `<tw-group className="items-stretch">
-  <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md p-3">
-    <input type="checkbox"
-      class="hover:cursor-pointer size-4 rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+  withChecboxAndSelect = `<tw-button-group>
+  <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md">
+    <input type="checkbox" class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
   </tw-button>
-  <tw-button variant="text" className="p-0 rounded-r-md h-full">
+  <tw-button variant="text" className="*:size-auto p-0">
     <label for="currency" class="sr-only">Currency</label>
-    <select id="currency" name="currency"
-      class="h-full min-w-full rounded-r-md border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 py-1 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+    <select id="currency" name="currency" class="rounded-r-md border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
       <option>Unread messages</option>
       <option>Sent messages</option>
       <option>All messages</option>
     </select>
   </tw-button>
-</tw-group>`;
+</tw-button-group>`;
 
+  simpleRoundedButtonGroups = `<tw-button-group>
+  <tw-button variant="secondary" className="rounded-l-full">Option</tw-button>
+  <tw-button variant="secondary" className="rounded-r-full">Option</tw-button>
+</tw-button-group>
+<tw-button-group>
+  <tw-button variant="secondary" className="rounded-l-full">Option</tw-button>
+  <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+  <tw-button variant="secondary" className="rounded-r-full">Option</tw-button>
+</tw-button-group>
+<!-- ... -->`;
 
-  roundedWithThreeButtons = `<tw-group>
-  <tw-button variant="secondary" className="rounded-l-full"> Years </tw-button>
-  <tw-button variant="secondary" className="rounded-none"> Months </tw-button>
-  <tw-button variant="secondary" className="rounded-r-full"> Days </tw-button>
-</tw-group>`;
-
-  roundedWithTwoButtons = `<tw-group>
+  roundedWithTwoButtons = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-full">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
     </svg>
   </tw-button>
   <tw-button variant="secondary" className="rounded-r-full">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
     </svg>
   </tw-button>
-</tw-group>`;
+</tw-button-group>`;
 
-  roundedWithDropdown = `<tw-group>
-  <tw-button variant="secondary" className="rounded-l-full">
-    Save changes
-  </tw-button>
-  <tw-dropdown [open]="open(4)" (click)="toggle(4)">
-    <tw-button variant="secondary" className="rounded-r-full p-2 pr-3">
-      <svg *ngIf="!open(4)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="M480-360 280-560h400L480-360Z" />
-      </svg>
-      <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" class="size-6">
-        <path d="m280-400 200-200 200 200H280Z" />
-      </svg>
+  roundedWithDropdown = `<tw-button-group>
+  <tw-button variant="secondary" className="rounded-l-full">Save changes</tw-button>
+  <tw-dropdown [open]="open()" (click)="toggle()" className="rounded-3xl p-1.5">
+    <tw-button variant="secondary" className="rounded-r-full">
+      <!-- ... -->
     </tw-button>
-    <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="rounded-none border-none justify-start"> {{ item }} </tw-button>
+    <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+      <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
-</tw-group>`;
+</tw-button-group>`;
 
-  roundedWithStats = `<tw-group>
+  roundedWithStats = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-full">
-    <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
       <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
     </svg>
     Bookmark
   </tw-button>
   <tw-button variant="secondary" className="rounded-r-full"> 12k </tw-button>
-</tw-group>`;
+</tw-button-group>`;
 
-  roundedWithChecboxAndSelect = `<tw-group className="items-stretch">
-  <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full p-3">
-    <input type="checkbox"
-      class="hover:cursor-pointer size-4 rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+  roundedWithChecboxAndSelect = `<tw-button-group>
+  <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full">
+    <input type="checkbox" class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
   </tw-button>
-  <tw-button variant="text" className="p-0 rounded-r-md h-full">
+  <tw-button variant="text" className="*:size-auto p-0">
     <label for="currency" class="sr-only">Currency</label>
-    <select id="currency" name="currency"
-      class="h-full min-w-full rounded-r-md border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 py-1 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+    <select id="currency" name="currency" class="rounded-r-full border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
       <option>Unread messages</option>
       <option>Sent messages</option>
       <option>All messages</option>
     </select>
   </tw-button>
-</tw-group>`;
+</tw-button-group>`;
 
 }

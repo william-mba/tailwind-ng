@@ -24,82 +24,58 @@ export class DropdownDemoComponent {
 
   withText = `<tw-dropdown [open]="open()" (click)="toggle()">
   <tw-button>Save changes</tw-button>
-  <tw-dropdown-item *ngFor="let item of items">
-    <tw-button variant="secondary" className="rounded-none border-none justify-start">{{ item }}</tw-button>
+  <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+    <tw-button variant="secondary" className="rounded-none shadow- ring- justify-start">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
   withIcon = `<tw-dropdown [open]="open()" (click)="toggle()">
-  <tw-button variant="secondary" className="p-2">
-    <svg *ngIf="!open()" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-      <path d="M480-360 280-560h400L480-360Z" />
-    </svg>
-    <svg *ngIf="open()" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor" class="size-6">
-      <path d="m280-400 200-200 200 200H280Z" />
-    </svg>
+  <tw-button tw-icon size="lg" variant="secondary">
+    <!-- icon -->
   </tw-button>
   <tw-dropdown-item *ngFor="let item of ['New project', 'New organisation', 'New team']">
-    <tw-button variant="secondary" className="rounded-none border-none justify-start">{{ item }}</tw-button>
+    <tw-button variant="secondary" className="rounded-none shadow- ring- justify-start">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
-  withTextAndIcon = `<tw-group>
-  <tw-button className="rounded-l-md">
-    Save changes
-  </tw-button>
+  withTextAndIcon = `<tw-button-group>
+  <tw-button className="rounded-l-md">Save changes</tw-button>
   <tw-dropdown [open]="open()" (click)="toggle()">
-    <tw-button className="rounded-r-md p-2 pr-3">
-      <svg *ngIf="!open()" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="M480-360 280-560h400L480-360Z" />
-      </svg>
-      <svg *ngIf="open()" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="m280-400 200-200 200 200H280Z" />
-      </svg>
+    <tw-button tw-icon className="rounded-r-md">
+      <!-- icon -->
     </tw-button>
-    <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="rounded-none border-none justify-start">{{ item }}</tw-button>
+    <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+      <tw-button variant="secondary" className="rounded-none shadow- ring- justify-start">{{ item }}</tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
-</tw-group>`;
+</tw-button-group>`;
 
   roundedWithText = `<tw-dropdown [open]="open()" (click)="toggle()" className="rounded-3xl p-1.5">
   <tw-button className="rounded-full">Save changes</tw-button>
-  <tw-dropdown-item *ngFor="let item of items">
+  <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
     <tw-button variant="secondary" className="border-none justify-start rounded-full">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
-  roundedWithIcon = `<tw-dropdown [open]="open()" (click)="toggle()" className="rounded-3xl p-1.5">
-  <tw-button variant="secondary" className="p-2 rounded-full">
-    <svg *ngIf="!open()" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-      <path d="M480-360 280-560h400L480-360Z" />
-    </svg>
-    <svg *ngIf="open()" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-      <path d="m280-400 200-200 200 200H280Z" />
-    </svg>
+  roundedWithIcon = `<tw-dropdown [open]="open(5)" (click)="toggle(5)" className="rounded-3xl p-1.5">
+  <tw-button tw-icon variant="secondary" className="rounded-full">
+    <!-- icon -->
   </tw-button>
   <tw-dropdown-item *ngFor="let item of ['New project', 'New organisation', 'New team']">
-    <tw-button variant="secondary" className="rounded-full border-none justify-start">{{ item }}</tw-button>
+    <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
   </tw-dropdown-item>
 </tw-dropdown>`;
 
-  roundedWithTextAndIcon = `<tw-group>
-  <tw-button className="rounded-l-full">
-    Save changes
-  </tw-button>
-  <tw-dropdown [open]="open()" (click)="toggle()" className="rounded-3xl p-1.5">
-    <tw-button className="rounded-r-full p-2 pr-3">
-      <svg *ngIf="!open()" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="M480-360 280-560h400L480-360Z" />
-      </svg>
-      <svg *ngIf="open()" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-        <path d="m280-400 200-200 200 200H280Z" />
-      </svg>
+  roundedWithTextAndIcon = `<tw-button-group>
+  <tw-button className="rounded-l-full">Save changes</tw-button>
+  <tw-dropdown [open]="open(6)" (click)="toggle(6)" className="rounded-3xl p-1.5">
+    <tw-button tw-icon className="rounded-r-full">
+      <!-- icon -->
     </tw-button>
-    <tw-dropdown-item *ngFor="let item of items">
-      <tw-button variant="secondary" className="border-none justify-start rounded-full">{{ item }}</tw-button>
+    <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+      <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
     </tw-dropdown-item>
   </tw-dropdown>
-</tw-group>`;
+</tw-button-group>`;
 
 }

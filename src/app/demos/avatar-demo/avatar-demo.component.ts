@@ -6,26 +6,26 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class AvatarDemoComponent {
-  avatarGroupStackedBottomToTop = `<tw-group className="-space-x-1">
+  avatarGroupStackedBottomToTop = `<div class="flex -space-x-1">
   <img tw-avatar className="size-6 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="size-6 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="size-6 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   <img tw-avatar className="size-6 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</tw-group>
+</div>
 
-<tw-group className="-space-x-1">
+<div class="flex -space-x-1">
     <img tw-avatar className="size-9 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
     <img tw-avatar className="size-9 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
     <img tw-avatar className="size-9 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
     <img tw-avatar className="size-9 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</tw-group>
+</div>
 
-<tw-group className="-space-x-1">
+<div class="flex -space-x-1">
   <img tw-avatar className="size-11 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="size-11 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="size-11 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   <img tw-avatar className="size-11 ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</tw-group>`;
+</div>`;
 
   circularAvatars = `<img tw-avatar className="size-6" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
 <img tw-avatar className="size-9" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
@@ -185,34 +185,34 @@ export class AvatarDemoComponent {
   <tw-badge className="absolute -bottom-1 -right-1 p-0 size-3.5 rounded-full ring-2 ring-white bg-gray-300" />
 </tw-avatar>`;
 
-  avatarGroupStackedTopToBottom = `<tw-group className="-space-x-1">
+  avatarGroupStackedTopToBottom = `<div class="flex -space-x-1">
   <img tw-avatar className="z-[4] hover:z-10 ring-2 ring-white size-6" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="z-[3] hover:z-10 ring-2 ring-white size-6" alt="" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="z-[2] hover:z-10 ring-2 ring-white size-6" alt="" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   <img tw-avatar className="z-[1] hover:z-10 ring-2 ring-white size-6" alt="" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</tw-group>
+</div>
 
-<tw-group className="-space-x-1">
+<div class="flex -space-x-1">
   <img tw-avatar className="z-[4] hover:z-10 ring-2 ring-white size-9" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="z-[3] hover:z-10 ring-2 ring-white size-9" alt="" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="z-[2] hover:z-10 ring-2 ring-white size-9" alt="" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   <img tw-avatar className="z-[1] hover:z-10 ring-2 ring-white size-9" alt="" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</tw-group>
+</div>
 
-<tw-group className="-space-x-1">
+<div class="flex -space-x-1">
   <img tw-avatar className="z-[4] hover:z-10 ring-2 ring-white size-11" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="z-[3] hover:z-10 ring-2 ring-white size-11" alt="" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar className="z-[2] hover:z-10 ring-2 ring-white size-11" alt="" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
   <img tw-avatar className="z-[1] hover:z-10 ring-2 ring-white size-11" alt="" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
-</tw-group>`;
+</div>`;
 
-  avatarWithText = `<tw-group className="gap-x-2">
+  avatarWithText = `<div className="gap-x-2">
   <img tw-avatar className="size-9" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <span class="relative cursor-pointer text-nowrap group dark:text-white">
     <div class="text-base leading-none">Jane Smith</div>
     <a class="text-xs opacity-70 group-hover:opacity-[1]">View profile</a>
   </span>
-</tw-group>`;
+</div>`;
 
 
 }

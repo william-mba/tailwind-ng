@@ -1,47 +1,62 @@
 <div
-  class="container w-full sm:max-w-xl md:max-w-2xl mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-700 dark:text-gray-200 *:border-black/[.10] *:dark:border-white/[.10]">
   <h1 class="text-3xl border-none font-extrabold my-8 mt-16">
     Button Groups
   </h1>
-  <p class="text-pretty">
-    Use these Tailwind CSS button group components to group buttons with other elements like
+  <p>
+    Use these Tailwind CSS button group components for Angular to group buttons with other elements like
     dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
   </p>
+  <p class="mt-3">Buttons group help people select options, switch views, or sort elements.</p>
 
   <h2 class="text-lg font-semibold mt-12">
-    With three buttons
+    Simple button groups
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
-      <tw-button variant="secondary" className="rounded-l-md"> Years </tw-button>
-      <tw-button variant="secondary" className="rounded-none"> Months </tw-button>
-      <tw-button variant="secondary" className="rounded-r-md"> Days </tw-button>
-    </tw-group>
+    class="grid gap-9 border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
+      <tw-button variant="secondary" className="rounded-l-md">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-r-md">Option</tw-button>
+    </tw-button-group>
+    <tw-button-group>
+      <tw-button variant="secondary" className="rounded-l-md">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-r-md">Option</tw-button>
+    </tw-button-group>
+    <tw-button-group>
+      <tw-button variant="secondary" className="rounded-l-md">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-r-md">Option</tw-button>
+    </tw-button-group>
   </div>
-  <demo-code-snippet [code]="withThreeButtons"></demo-code-snippet>
+  <demo-code-snippet [code]="simpleButtonGroups"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <h2 class="text-2xl font-bold mt-20">
+    Usage samples
+  </h2>
+
+  <h2 class="text-lg font-semibold mt-12">
     With two buttons
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
       <tw-button variant="secondary" className="rounded-l-md">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
       <tw-button variant="secondary" className="rounded-r-md">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
-    </tw-group>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="withTwoButtons"></demo-code-snippet>
 
@@ -49,28 +64,25 @@
     With dropdown
   </h2>
   <div
-    class="grid grid-cols-1 sm:grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
+    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
       <tw-button variant="secondary" className="rounded-l-md">
         Save changes
       </tw-button>
       <tw-dropdown [open]="open(4)" (click)="toggle(4)">
-        <tw-button variant="secondary" className="rounded-r-md p-2 pr-3">
-          <svg *ngIf="!open(4)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            viewBox="0 -960 960 960">
+        <tw-button variant="secondary" className="rounded-r-md">
+          <svg *ngIf="!open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
-          <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
-            class="size-6">
+          <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown-item *ngFor="let item of items">
-          <tw-button variant="secondary" className="rounded-none border-none justify-start">{{ item
-            }}</tw-button>
+        <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+          <tw-button variant="secondary" className="rounded- ring- shadow- justify-start">{{ item }}</tw-button>
         </tw-dropdown-item>
       </tw-dropdown>
-    </tw-group>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="withDropdown"></demo-code-snippet>
 
@@ -78,18 +90,16 @@
     With stats
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
       <tw-button variant="secondary" className="rounded-l-md">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
           <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
         </svg>
         Bookmark
       </tw-button>
-      <tw-button variant="secondary" className="rounded-r-md">
-        12k
-      </tw-button>
-    </tw-group>
+      <tw-button variant="secondary" className="rounded-r-md">12k</tw-button>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="withStats"></demo-code-snippet>
 
@@ -97,69 +107,73 @@
     With checkbox and select
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group className="items-stretch">
-      <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md p-3">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
+      <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md">
         <input type="checkbox"
-          class="hover:cursor-pointer size-4 rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+          class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
-      <tw-button variant="text" className="p-0 rounded-r-md h-full">
+      <tw-button variant="text" className="*:size-auto p-0">
         <label for="currency" class="sr-only">Currency</label>
         <select id="currency" name="currency"
-          class="h-full min-w-full rounded-r-md border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 py-1 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+          class="rounded-r-md border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
           <option>Unread messages</option>
           <option>Sent messages</option>
           <option>All messages</option>
         </select>
       </tw-button>
-    </tw-group>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="withChecboxAndSelect"></demo-code-snippet>
 
   <h2 class="text-2xl font-bold mt-20">
-    Rounded buttons group
+    Rounded button groups
   </h2>
 
   <h2 class="text-lg font-semibold mt-12">
-    Rounded with three buttons
+    Rounded simple button groups
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
-      <tw-button variant="secondary" className="rounded-l-full">
-        Years
-      </tw-button>
-      <tw-button variant="secondary" className="rounded-none">
-        Months
-      </tw-button>
-      <tw-button variant="secondary" className="rounded-r-full">
-        Days
-      </tw-button>
-    </tw-group>
+    class="grid gap-9 border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
+      <tw-button variant="secondary" className="rounded-l-full">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-r-full">Option</tw-button>
+    </tw-button-group>
+    <tw-button-group>
+      <tw-button variant="secondary" className="rounded-l-full">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-r-full">Option</tw-button>
+    </tw-button-group>
+    <tw-button-group>
+      <tw-button variant="secondary" className="rounded-l-full">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-none">Option</tw-button>
+      <tw-button variant="secondary" className="rounded-r-full">Option</tw-button>
+    </tw-button-group>
   </div>
-  <demo-code-snippet [code]="roundedWithThreeButtons"></demo-code-snippet>
+  <demo-code-snippet [code]="simpleRoundedButtonGroups"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     Rounded with two buttons
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
       <tw-button variant="secondary" className="rounded-l-full">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
       <tw-button variant="secondary" className="rounded-r-full">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
-    </tw-group>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="roundedWithTwoButtons"></demo-code-snippet>
 
@@ -167,28 +181,27 @@
     Rounded with dropdown
   </h2>
   <div
-    class="grid grid-cols-1 sm:grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
+    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
       <tw-button variant="secondary" className="rounded-l-full">
         Save changes
       </tw-button>
       <tw-dropdown [open]="open(4)" (click)="toggle(4)" className="rounded-3xl p-1.5">
-        <tw-button variant="secondary" className="rounded-r-full p-2 pr-3">
-          <svg *ngIf="!open(4)" class="size-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            viewBox="0 -960 960 960">
+        <tw-button variant="secondary" className="rounded-r-full">
+          <svg *ngIf="!open(4)" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
-          <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
-            class="size-6">
+          <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown-item *ngFor="let item of items">
-          <tw-button variant="secondary" className="rounded-full border-none justify-start">{{ item
-            }}</tw-button>
+        <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+          <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">
+            {{ item }}
+          </tw-button>
         </tw-dropdown-item>
       </tw-dropdown>
-    </tw-group>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="roundedWithDropdown"></demo-code-snippet>
 
@@ -196,18 +209,16 @@
     Rounded with stats
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group>
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
       <tw-button variant="secondary" className="rounded-l-full">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill="#777" viewBox="0 -960 960 960">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
           <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z" />
         </svg>
         Bookmark
       </tw-button>
-      <tw-button variant="secondary" className="rounded-r-full">
-        12k
-      </tw-button>
-    </tw-group>
+      <tw-button variant="secondary" className="rounded-r-full"> 12k </tw-button>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="roundedWithStats"></demo-code-snippet>
 
@@ -215,22 +226,22 @@
     Rounded with checkbox and select
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-group className="items-stretch">
-      <tw-button variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full p-3">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button-group>
+      <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full">
         <input type="checkbox"
-          class="hover:cursor-pointer size-4 rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+          class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
-      <tw-button variant="text" className="p-0 rounded-r-md h-full">
+      <tw-button variant="text" className="*:size-auto p-0">
         <label for="currency" class="sr-only">Currency</label>
         <select id="currency" name="currency"
-          class="h-full min-w-full rounded-r-full border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 py-1 pl-2 pr-7 dark:text-gray-50 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+          class="rounded-r-full border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
           <option>Unread messages</option>
           <option>Sent messages</option>
           <option>All messages</option>
         </select>
       </tw-button>
-    </tw-group>
+    </tw-button-group>
   </div>
   <demo-code-snippet [code]="roundedWithChecboxAndSelect"></demo-code-snippet>
 

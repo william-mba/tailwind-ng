@@ -1,12 +1,11 @@
 <div
-  class="container w-full sm:max-w-xl md:max-w-2xl mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
   <h1 class="text-3xl border-none font-extrabold my-8 mt-16">
     Buttons
   </h1>
-  <p class="text-pretty">
-    Use these Tailwind CSS button components to surface the different actions someone can perform in your interface.
+  <p>
+    Use these Tailwind CSS button components for Angular to surface the different actions someone can perform in your interface.
   </p>
-
   <h2 class="text-lg font-semibold mt-12">
     Primary buttons
   </h2>
@@ -17,9 +16,11 @@
   </p>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button size="xs">Button text</tw-button>
     <tw-button size="sm">Button text</tw-button>
-    <tw-button> Button text </tw-button>
-    <tw-button size="lg"> Button text </tw-button>
+    <tw-button size="md">Button text</tw-button>
+    <tw-button size="lg">Button text</tw-button>
+    <tw-button size="xl">Button text</tw-button>
   </div>
   <demo-code-snippet [code]="primaryButton"></demo-code-snippet>
 
@@ -32,9 +33,11 @@
   </p>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button variant="secondary" size="sm">Button text </tw-button>
-    <tw-button variant="secondary"> Button text </tw-button>
-    <tw-button variant="secondary" size="lg"> Button text </tw-button>
+    <tw-button size="xs" variant="secondary">Button text</tw-button>
+    <tw-button size="sm" variant="secondary">Button text</tw-button>
+    <tw-button size="md" variant="secondary">Button text</tw-button>
+    <tw-button size="lg" variant="secondary">Button text</tw-button>
+    <tw-button size="xl" variant="secondary">Button text</tw-button>
   </div>
   <demo-code-snippet [code]="secondaryButton"></demo-code-snippet>
 
@@ -49,9 +52,11 @@
   </p>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button variant="tonal" size="sm">Button text </tw-button>
-    <tw-button variant="tonal"> Button text </tw-button>
-    <tw-button variant="tonal" size="lg"> Button text </tw-button>
+    <tw-button size="xs" variant="tonal">Button text</tw-button>
+    <tw-button size="sm" variant="tonal">Button text</tw-button>
+    <tw-button size="md" variant="tonal">Button text</tw-button>
+    <tw-button size="lg" variant="tonal">Button text</tw-button>
+    <tw-button size="xl" variant="tonal">Button text</tw-button>
   </div>
   <demo-code-snippet [code]="tonalButton"></demo-code-snippet>
 
@@ -63,9 +68,11 @@
   </p>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button variant="text" size="sm">Button text </tw-button>
-    <tw-button variant="text"> Button text </tw-button>
-    <tw-button variant="text" size="lg"> Button text </tw-button>
+    <tw-button size="xs" variant="text">Button text</tw-button>
+    <tw-button size="sm" variant="text">Button text</tw-button>
+    <tw-button size="md" variant="text">Button text</tw-button>
+    <tw-button size="lg" variant="text">Button text</tw-button>
+    <tw-button size="xl" variant="text">Button text</tw-button>
   </div>
   <demo-code-snippet [code]="textButton"></demo-code-snippet>
 
@@ -77,75 +84,87 @@
   </p>
   <div
     class="grid border justify-stretch *:flex *:gap-4 *:items-end *:justify-center m-6 p-6 py-10 mx-auto *:*:mx-auto rounded-xl mb-0 rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <!-- Primary -->
+    <!-- Text -->
     <div>
-      <tw-button tw-icon className="p-1 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="xs" variant="text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon className="rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="sm" variant="text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon className="p-3 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="md" variant="text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="lg" variant="text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="xl" variant="text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
     </div>
     <!-- Secondary -->
     <div>
-      <tw-button tw-icon variant="secondary" className="p-1 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="xs" variant="secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="secondary" className="rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="sm" variant="secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="secondary" className="p-3 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="md" variant="secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="lg" variant="secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="xl" variant="secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
     </div>
     <!-- Tonal -->
     <div>
-      <tw-button tw-icon variant="tonal" className="p-1 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="xs" variant="tonal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="tonal" className="rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="sm" variant="tonal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="tonal" className="p-3 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="md" variant="tonal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-    </div>
-    <!-- Text -->
-    <div>
-      <tw-button tw-icon variant="text" className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="lg" variant="tonal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="text" className="p-1">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-icon variant="text" className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="xl" variant="tonal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
     </div>
@@ -159,79 +178,32 @@
     Floating action buttons (FABs) help people take primary actions
   </p>
   <div
-    class="grid border justify-stretch *:flex *:gap-4 *:items-end *:justify-center m-6 p-6 py-10 mx-auto *:*:mx-auto rounded-xl mb-0 rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <!-- Primary -->
-    <div>
-      <tw-button tw-fab className="p-1 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab className="rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab className="p-3 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
-    <!-- Secondary -->
-    <div>
-      <tw-button tw-fab variant="secondary" className="p-1 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="secondary" className="rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="secondary" className="p-3 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
-    <!-- Tonal -->
-    <div>
-      <tw-button tw-fab variant="tonal" className="p-1 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="tonal" className="rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="tonal" className="p-3 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
-    <!-- Text -->
-    <div>
-      <tw-button tw-fab variant="text" className="p-1 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="text" className="rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="text" className="p-3 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
+    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button tw-icon size="xs" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="sm" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="md" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="lg" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="xl" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
   </div>
   <demo-code-snippet [code]="fab"></demo-code-snippet>
 
@@ -242,91 +214,37 @@
     Extended floating action buttons (extended FABs) help people take primary actions
   </p>
   <div
-    class="grid border justify-stretch *:grid sm:*:flex *:gap-4 sm:*:items-end m-6 p-6 py-10 mx-auto *:*:mx-auto rounded-xl mb-0 rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <!-- Primary -->
-    <div>
-      <tw-button tw-fab size="sm" className="p-1 px-3 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab className="px-6 rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" className="p-3 px-8 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
-    <!-- Secondary -->
-    <div>
-      <tw-button tw-fab size="sm" variant="secondary" className="p-1 px-3 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab variant="secondary" className="px-6 rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" variant="secondary" className="p-3 px-8 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
-    <!-- Tonal -->
-    <div>
-      <tw-button tw-fab size="sm" variant="tonal" className="p-1 px-3 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab variant="tonal" className="px-6 rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" variant="tonal" className="p-3 px-8 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
-    <!-- Text -->
-    <div>
-      <tw-button tw-fab size="sm" variant="text" className="p-1 px-3 rounded-lg">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab variant="text" className="px-6 rounded-lg">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" variant="text" className="p-3 px-8 rounded-lg">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
+    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button tw-icon size="xs" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="sm" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="md" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="lg" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="xl" [fab]="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
   </div>
   <demo-code-snippet [code]="extentedFab"></demo-code-snippet>
 
@@ -344,9 +262,11 @@
   </p>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button className="rounded-full" size="sm">Button text</tw-button>
-    <tw-button className="rounded-full"> Button text</tw-button>
-    <tw-button className="rounded-full" size="lg"> Button text</tw-button>
+    <tw-button size="xs" className="rounded-full">Button text</tw-button>
+    <tw-button size="sm" className="rounded-full">Button text</tw-button>
+    <tw-button size="md" className="rounded-full">Button text</tw-button>
+    <tw-button size="lg" className="rounded-full">Button text</tw-button>
+    <tw-button size="xl" className="rounded-full">Button text</tw-button>
   </div>
   <demo-code-snippet [code]="roundedPrimaryButton"></demo-code-snippet>
 
@@ -359,9 +279,11 @@
   </p>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button className="rounded-full" variant="secondary" size="sm">Button text </tw-button>
-    <tw-button className="rounded-full" variant="secondary"> Button text </tw-button>
-    <tw-button className="rounded-full" variant="secondary" size="lg"> Button text </tw-button>
+    <tw-button size="xs" variant="secondary" className="rounded-full">Button text</tw-button>
+    <tw-button size="sm" variant="secondary" className="rounded-full">Button text</tw-button>
+    <tw-button size="md" variant="secondary" className="rounded-full">Button text</tw-button>
+    <tw-button size="lg" variant="secondary" className="rounded-full">Button text</tw-button>
+    <tw-button size="xl" variant="secondary" className="rounded-full">Button text</tw-button>
   </div>
   <demo-code-snippet [code]="roundedSecondaryButton"></demo-code-snippet>
 
@@ -375,11 +297,29 @@
   </p>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button className="rounded-full" variant="tonal" size="sm">Button text </tw-button>
-    <tw-button className="rounded-full" variant="tonal"> Button text </tw-button>
-    <tw-button className="rounded-full" variant="tonal" size="lg"> Button text </tw-button>
+    <tw-button size="xs" variant="tonal" className="rounded-full">Button text</tw-button>
+    <tw-button size="sm" variant="tonal" className="rounded-full">Button text</tw-button>
+    <tw-button size="md" variant="tonal" className="rounded-full">Button text</tw-button>
+    <tw-button size="lg" variant="tonal" className="rounded-full">Button text</tw-button>
+    <tw-button size="xl" variant="tonal" className="rounded-full">Button text</tw-button>
   </div>
   <demo-code-snippet [code]="roundedTonalButton"></demo-code-snippet>
+
+  <h2 class="text-lg font-semibold mt-20">
+    Rounded Text buttons
+  </h2>
+  <p class="text-pretty">
+    Text buttons are used for the lowest priority actions, especially when presenting multiple options.
+  </p>
+  <div
+    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button size="xs" variant="text" className="rounded-full">Button text</tw-button>
+    <tw-button size="sm" variant="text" className="rounded-full">Button text</tw-button>
+    <tw-button size="md" variant="text" className="rounded-full">Button text</tw-button>
+    <tw-button size="lg" variant="text" className="rounded-full">Button text</tw-button>
+    <tw-button size="xl" variant="text" className="rounded-full">Button text</tw-button>
+  </div>
+  <demo-code-snippet [code]="roundedTextButton"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
     Rounded icon buttons
@@ -389,75 +329,87 @@
   </p>
   <div
     class="grid border justify-stretch *:flex *:gap-4 *:items-end *:justify-center m-6 p-6 py-10 mx-auto *:*:mx-auto rounded-xl mb-0 rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <!-- Primary -->
+    <!-- Text -->
     <div>
-      <tw-button tw-icon className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="xs" variant="text" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon>
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="sm" variant="text" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="md" variant="text" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="lg" variant="text" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="xl" variant="text" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
     </div>
     <!-- Secondary -->
     <div>
-      <tw-button tw-icon variant="secondary" className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="xs" variant="secondary" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="secondary">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="sm" variant="secondary" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="secondary" className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="md" variant="secondary" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="lg" variant="secondary" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+        </svg>
+      </tw-button>
+      <tw-button tw-icon size="xl" variant="secondary" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
     </div>
     <!-- Tonal -->
     <div>
-      <tw-button tw-icon variant="tonal" className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="xs" variant="tonal" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="tonal">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="sm" variant="tonal" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="tonal" className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="md" variant="tonal" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-    </div>
-    <!-- Text -->
-    <div>
-      <tw-button tw-icon variant="text" className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
+      <tw-button tw-icon size="lg" variant="tonal" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
-      <tw-button tw-icon variant="text">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-icon variant="text" className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+      <tw-button tw-icon size="xl" variant="tonal" className="rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
         </svg>
       </tw-button>
     </div>
@@ -471,173 +423,72 @@
     Floating action buttons (FABs) help people take primary actions
   </p>
   <div
-    class="grid border justify-stretch *:flex *:gap-4 *:items-end *:justify-center m-6 p-6 py-10 mx-auto *:*:mx-auto rounded-xl mb-0 rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <!-- Primary -->
-    <div>
-      <tw-button tw-fab className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab>
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
-    <!-- Secondary -->
-    <div>
-      <tw-button tw-fab variant="secondary" className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="secondary">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="secondary" className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
-    <!-- Tonal -->
-    <div>
-      <tw-button tw-fab variant="tonal" className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="tonal">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="tonal" className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
-    <!-- Text -->
-    <div>
-      <tw-button tw-fab variant="text" className="p-1">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="text">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-      </tw-button>
-      <tw-button tw-fab variant="text" className="p-3">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-      </tw-button>
-    </div>
+    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button tw-icon size="xs" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="sm" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="md" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="lg" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
+    <tw-button tw-icon size="xl" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+    </tw-button>
   </div>
   <demo-code-snippet [code]="roundedFab"></demo-code-snippet>
 
   <h2 class="text-lg font-semibold mt-20">
-    Extended FAB
+    Rounded extended FAB
   </h2>
   <p class="text-pretty">
     Extended floating action buttons (extended FABs) help people take primary actions
   </p>
   <div
-    class="grid border justify-stretch *:grid sm:*:flex *:gap-4 sm:*:items-end m-6 p-6 py-10 mx-auto *:*:mx-auto rounded-xl mb-0 rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <!-- Primary -->
-    <div>
-      <tw-button tw-fab size="sm" className="p-1 px-3">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab className="px-6">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" className="p-3 px-8">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
-    <!-- Secondary -->
-    <div>
-      <tw-button tw-fab size="sm" variant="secondary" className="p-1 px-3">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab variant="secondary" className="px-6">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" variant="secondary" className="p-3 px-8">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
-    <!-- Tonal -->
-    <div>
-      <tw-button tw-fab size="sm" variant="tonal" className="p-1 px-3">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab variant="tonal" className="px-6">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" variant="tonal" className="p-3 px-8">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
-    <!-- Text -->
-    <div>
-      <tw-button tw-fab size="sm" variant="text" className="p-1 px-3">
-        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab variant="text" className="px-6">
-        <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
-        </svg>
-        New task
-      </tw-button>
-      <tw-button tw-fab size="lg" variant="text" className="p-3 px-8">
-        <svg class="size-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
-        </svg>
-        New task
-      </tw-button>
-    </div>
+    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    <tw-button tw-icon size="xs" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="sm" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="md" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="lg" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
+    <tw-button tw-icon size="xl" [fab]="true" className="rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
+      </svg>
+      Button text
+    </tw-button>
   </div>
   <demo-code-snippet [code]="roundedExtendedFab"></demo-code-snippet>
