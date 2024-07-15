@@ -1,3 +1,3 @@
 import { Focus } from "./focus";
 
-export type Hover = & Focus
+export type Hover = Focus

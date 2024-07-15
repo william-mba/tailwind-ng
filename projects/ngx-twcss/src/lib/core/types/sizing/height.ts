@@ -75,3 +75,6 @@ export type Height =
   | 'h-fit'
   | MinHeight
   | MaxHeight
+  | '*:h-full'
+  | '*:*:h-full'
+  | '*:*:min-h-full'

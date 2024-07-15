@@ -4,6 +4,7 @@ export type AlignItem =
   | 'items-center'
   | 'items-baseline'
   | 'items-stretch'
+  | '*:items-stretch'
   | 'sm:items-start'
   | 'sm:items-end'
   | 'sm:items-center'

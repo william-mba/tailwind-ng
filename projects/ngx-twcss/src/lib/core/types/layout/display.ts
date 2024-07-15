@@ -1,4 +1,6 @@
+import { AlignContent } from "../flex-grid/align-content"
 import { AlignItem } from "../flex-grid/align-item"
+import { AlignSelf } from "../flex-grid/align-selft"
 import { FlexDirection } from "../flex-grid/flex-direction"
 import { FlexGrow } from "../flex-grid/flex-grow"
 import { FlexShrink } from "../flex-grid/flex-shrink"
@@ -67,6 +69,16 @@ export type Display = Partial<{
    * @see https://tailwindcss.com/docs/place-items
    */
   placeItems: PlaceItems,
+
+  /**Utilities for controlling how an individual flex or grid item is positioned along its container's cross axis.
+   * @see https://tailwindcss.com/docs/align-self
+   */
+  alignSelf: AlignSelf,
+
+  /**Utilities for controlling how rows are positioned in multi-row flex and grid containers.
+   * @see https://tailwindcss.com/docs/align-content
+   */
+  alignContent: AlignContent,
 }>
   | "block"
   | "table"

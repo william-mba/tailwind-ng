@@ -6,6 +6,7 @@ import { BorderOpacity } from "./borders/border-opacity"
 import { DivideColor } from "./borders/divide-color"
 import { RingColor } from "./borders/ring-color"
 import { RingOpacity } from "./borders/ring-opacity"
+import { BoxShadowColor } from "./effects/box-shadow-color"
 import { Focus } from "./modifiers/focus"
 import { Hover } from "./modifiers/hover"
 import { TextColor } from "./typography/text-color"
@@ -18,6 +19,7 @@ export type Theme = {
   borderColor: BorderColor | RingColor,
   borderOpacity: BorderOpacity | RingOpacity,
   divideColor: DivideColor,
+  shadowColor: BoxShadowColor,
   focus: Focus,
   hover: Hover
 }

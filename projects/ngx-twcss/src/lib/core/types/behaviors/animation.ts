@@ -14,8 +14,3 @@ export type Animation =
   | 'focus:animate-ping'
   | 'focus:animate-pulse'
   | 'focus:animate-bounce'
-  | 'active:animate-none'
-  | 'active:animate-spin'
-  | 'active:animate-ping'
-  | 'active:animate-pulse'
-  | 'active:animate-bounce'

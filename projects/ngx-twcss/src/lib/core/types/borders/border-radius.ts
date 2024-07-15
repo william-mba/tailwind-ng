@@ -1,4 +1,10 @@
-export type BorderRadius =
+export type BorderRadius = {
+  t: RadiusTop,
+  r: RadiusRight,
+  b: RadiusBottom,
+  l: RadiusLeft,
+  size: RadiusSize
+}
   | RadiusSize
   | RadiusTop
   | RadiusRight
@@ -7,6 +13,7 @@ export type BorderRadius =
 
 export type RadiusSize =
   | 'rounded-none'
+  | 'rounded'
   | 'rounded-sm'
   | 'rounded-md'
   | 'rounded-lg'
