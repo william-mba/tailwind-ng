@@ -1,10 +1,8 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { BaseComponent } from '../base.component';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { Size } from '../../core/types/size';
 import { NgIf } from '@angular/common';
 
 /** Dropdown item component */
@@ -33,7 +31,7 @@ export class DropdownItem implements OnInit {
   standalone: true,
   imports: [NgIf],
   host: {
-    class: 'relative'
+    class: 'relative *:*:h-full'
   },
   template: `<ng-content></ng-content>
     <div @dropdownAnimation *ngIf="open" [className]="style">
@@ -60,20 +58,18 @@ export class DropdownItem implements OnInit {
     ])
   ]
 })
-export class Dropdown extends BaseComponent<DropdownConfig> implements OnInit {
-  @Input() override className!: string;
-  @Input() override size: Size = 'md';
+export class Dropdown implements OnInit {
+  private _config = inject(ConfigService<DropdownConfig>);
+  protected style!: string;
 
+  @Input() className!: string;
   @Input() open: boolean = false;
 
   ngOnInit(): void {
-    this.initConfig();
-  }
-
-  override initConfig(): void {
-    this.configService.set(DropdownConfigKey, DropdownConfig)
-      .get(DropdownConfigKey).subscribe((cfg) => {
-        this.style = resolveClassName(toClassName(cfg.container), this.className);
-      });
+    this._config.set(DropdownConfigKey, DropdownConfig)
+    this._config.get(DropdownConfigKey).subscribe((conf) => {
+      const base = toClassName(conf.container);
+      this.style = resolveClassName(base, this.className);
+    });
   }
 }

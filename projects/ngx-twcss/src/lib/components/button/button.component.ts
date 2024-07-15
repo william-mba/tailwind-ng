@@ -1,61 +1,38 @@
 import { Component, Directive, Input, OnInit, inject } from '@angular/core';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
-import { ButtonConfig, ButtonConfigKey, ButtonVariant } from './button.config';
-import { SizeConfig } from '../../configs/size.config';
+import { ButtonConfig, ButtonConfigKey, ButtonSize, ButtonVariant, IconSize, IconSizeConfig } from './button.config';
 import { ConfigService } from '../../core/services/config.service';
-import { Size } from '../../core/types/size';
 
 /** Button element */
 @Component({
   selector: 'tw-button',
   standalone: true,
-  templateUrl: './button.component.html'
+  template: '<button type="button" [className]="style"><ng-content></ng-content></button>'
 })
 export class Button implements OnInit {
   private _config = inject(ConfigService<ButtonConfig>);
 
-  @Input() className!: string;
   @Input() style!: string;
-  @Input() size: Size = 'md';
+  @Input() className!: string;
+  @Input() size: ButtonSize = 'md';
   @Input() variant: ButtonVariant = 'primary';
+  @Input() fab: boolean = false;
 
   ngOnInit(): void {
-    if (!this.style) {
-      this.initConfig();
-    }
+    this.initConfig();
   }
 
   initConfig(): void {
+    if (this.style) return;
+
+    if (this.fab === true) {
+      this.className = resolveClassName('shadow-md shadow-black/30', this.className);
+    }
     this._config.set(ButtonConfigKey, ButtonConfig)
       .get(ButtonConfigKey).subscribe((cfg) => {
-        let style: string = '';
-
-        style = toClassName(cfg[this.variant]);
-
-        if (this.size) {
-          style += ` ${toClassName(SizeConfig[this.size])}`;
-        }
-
+        let style = toClassName({ variant: cfg[this.variant], size: cfg.size[this.size] });
         this.style = resolveClassName(style, this.className);
       });
-  }
-}
-
-/** Floating action button */
-@Directive({
-  selector: '[tw-fab]',
-  standalone: true,
-})
-export class FAB implements OnInit {
-  @Input() className!: string;
-
-  private readonly _default = 'rounded-full p-2 shadow-md';
-
-  constructor(public el: Button) { }
-
-  ngOnInit(): void {
-    this.el.className = resolveClassName(this._default, this.className);
-    this.el.initConfig();
   }
 }
 
@@ -65,14 +42,13 @@ export class FAB implements OnInit {
   standalone: true,
 })
 export class Icon implements OnInit {
-  @Input() className!: string;
-
-  private readonly _default = 'rounded-full p-2';
+  @Input() size: IconSize = 'md';
 
   constructor(public el: Button) { }
 
   ngOnInit(): void {
-    this.el.className = resolveClassName(this._default, this.className);
+    let base = toClassName(IconSizeConfig[this.size]!);
+    this.el.className = resolveClassName(base, this.el.className);
     this.el.initConfig();
   }
 }

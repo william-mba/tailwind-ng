@@ -1,7 +1,7 @@
-import { BaseConfig } from "../../configs/base.config";
+import { Config } from "../../core/types/config";
 
 // Base config
-export type DropdownBaseConfig = Partial<BaseConfig>;
+export type DropdownBaseConfig = Partial<Config>;
 
 export const DropdownBaseConfig: DropdownBaseConfig = {
   textWrap: 'text-nowrap',

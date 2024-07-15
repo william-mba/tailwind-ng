@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { BaseConfig } from '../../configs/base.config';
+import { Config } from '../../core/types/config';
 import { toClassName, resolveClassName } from '../../core/helpers/config.helper';
 
 /**Avatar element*/
@@ -19,7 +19,7 @@ export class Avatar implements OnInit {
   }
 }
 
-export type AvatarConfig = Partial<BaseConfig>;
+export type AvatarConfig = Partial<Config>;
 
 export const AvatarConfig: AvatarConfig = {
   display: {

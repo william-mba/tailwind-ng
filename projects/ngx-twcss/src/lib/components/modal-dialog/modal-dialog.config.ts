@@ -1,7 +1,7 @@
-import { BaseConfig } from '../../configs/base.config';
+import { Config } from '../../core/types/config';
 
 /**Scrim config */
-export type ScrimConfig = Partial<BaseConfig>;
+export type ScrimConfig = Partial<Config>;
 export const ScrimConfig: ScrimConfig = {
   position: {
     type: 'fixed',
@@ -18,7 +18,7 @@ export const ScrimConfig: ScrimConfig = {
 };
 
 /**Backdrop config */
-export type BackdropConfig = Partial<BaseConfig>;
+export type BackdropConfig = Partial<Config>;
 export const BackdropConfig: BackdropConfig = {
   position: {
     type: 'fixed',
@@ -36,7 +36,7 @@ export const BackdropConfig: BackdropConfig = {
 
 
 /**Modal Dialog container config */
-export type DialogContainerConfig = Partial<BaseConfig>;
+export type DialogContainerConfig = Partial<Config>;
 export const DialogContainerConfig: DialogContainerConfig = {
   display: 'grid',
   position: 'relative',
@@ -57,7 +57,7 @@ export const DialogContainerConfig: DialogContainerConfig = {
 }
 
 /**Dialog panel config */
-export type DialogPanelConfig = Partial<BaseConfig>
+export type DialogPanelConfig = Partial<Config>
 export const DialogPanelConfig: DialogPanelConfig = {
   display: {
     type: 'flex',
@@ -74,7 +74,7 @@ export const DialogPanelConfig: DialogPanelConfig = {
 }
 
 /**Dialog icon config */
-export type DialogIconConfig = Partial<BaseConfig>
+export type DialogIconConfig = Partial<Config>
 export const DialogIconConfig: DialogIconConfig = {
   display: {
     type: 'flex',
@@ -98,7 +98,7 @@ export const DialogIconConfig: DialogIconConfig = {
 }
 
 /**Dialog content config */
-export type DialogContentConfig = Partial<BaseConfig>
+export type DialogContentConfig = Partial<Config>
 export const DialogContentConfig: DialogContentConfig = {
   display: {
     type: 'flex',
@@ -116,7 +116,7 @@ export const DialogContentConfig: DialogContentConfig = {
 }
 
 /**Dialog actions config */
-export type DialogActionsConfig = Partial<BaseConfig>
+export type DialogActionsConfig = Partial<Config>
 export const DialogActionsConfig: DialogActionsConfig = {
   display: {
     type: 'flex',

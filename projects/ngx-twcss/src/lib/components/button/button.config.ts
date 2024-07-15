@@ -1,4 +1,5 @@
-import { BaseConfig } from "../../configs/base.config";
+import { Config } from "../../core/types/config";
+import { Size } from "../../core/types/size";
 
 /** Button variant */
 export type ButtonVariant =
@@ -7,12 +8,108 @@ export type ButtonVariant =
   | 'tonal'
   | 'text'
 
+/** Button size config */
+export type ButtonSizeConfig = Partial<Size>;
+export type ButtonSize = keyof ButtonSizeConfig;
+export const ButtonSizeConfig: ButtonSizeConfig = {
+  xs: {
+    padding: {
+      x: 'px-2',
+      y: 'py-1'
+    },
+    gap: 'gap-0.5',
+    fontSize: 'text-[9px]',
+    borderRadius: 'rounded',
+    fontWeight: 'font-semibold',
+    extend: {
+      iconSize: '*:size-3'
+    }
+  },
+  sm: {
+    padding: {
+      x: 'px-3',
+      y: 'py-1.5'
+    },
+    gap: 'gap-0.5',
+    fontSize: 'text-xs',
+    borderRadius: 'rounded-md',
+    fontWeight: 'font-semibold',
+    extend: {
+      iconSize: '*:size-3.5'
+    }
+  },
+  md: {
+    padding: {
+      x: 'px-4',
+      y: 'py-2'
+    },
+    gap: 'gap-1',
+    fontSize: 'text-sm',
+    borderRadius: 'rounded-md',
+    fontWeight: 'font-semibold',
+    extend: {
+      iconSize: '*:size-4'
+    }
+  },
+  lg: {
+    padding: {
+      x: 'px-5',
+      y: 'py-2.5'
+    },
+    gap: 'gap-1',
+    fontSize: 'text-base',
+    borderRadius: 'rounded-md',
+    fontWeight: 'font-semibold',
+    extend: {
+      iconSize: '*:size-5'
+    }
+  },
+  xl: {
+    padding: {
+      x: 'px-7',
+      y: 'py-3.5'
+    },
+    gap: 'gap-1.5',
+    fontSize: 'text-base',
+    borderRadius: 'rounded-md',
+    fontWeight: 'font-semibold',
+    extend: {
+      iconSize: '*:size-5'
+    }
+  }
+}
+
+/** Icon size config */
+export type IconSizeConfig = Partial<Size>;
+export type IconSize = keyof IconSizeConfig;
+export const IconSizeConfig: IconSizeConfig = {
+  xs: {
+    padding: 'p-1'
+  },
+  sm: {
+    padding: 'p-1.5'
+  },
+  md: {
+    padding: 'p-2'
+  },
+  lg: {
+    padding: 'p-2.5'
+  },
+  xl: {
+    padding: 'p-3.5'
+  }
+}
+
 /** Base button config */
-export type ButtonBaseConfig = Partial<BaseConfig>
+export type ButtonBaseConfig = Partial<Config>
 export const ButtonBaseConfig: ButtonBaseConfig = {
-  ...BaseConfig,
+  display: {
+    type: 'inline-flex',
+    alignItem: 'items-center',
+    justifyContent: 'justify-center'
+  },
+  shadow: 'shadow-sm',
   textWrap: 'text-nowrap',
-  overflow: 'overflow-hidden',
   userSelect: 'select-none'
 }
 
@@ -24,7 +121,15 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
     textColor: 'text-white',
     bgColor: 'bg-indigo-600',
     hover: {
-      bgOpacity: 'hover:bg-opacity-80'
+      bgOpacity: 'hover:bg-opacity-90'
+    }
+  },
+  extend: {
+    focusVisible: {
+      outline: 'focus-visible:outline',
+      outlineWidth: 'focus-visible:outline-2',
+      outlineOffset: 'focus-visible:outline-offset-2',
+      outlineColor: 'focus-visible:outline-indigo-600'
     }
   }
 }
@@ -33,32 +138,33 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
 export type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
 export const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
-  borderWidth: 'border',
+  borderWidth: 'ring-1',
+  extend: 'ring-inset',
   theme: {
     light: {
       bgColor: 'bg-black',
-      textColor: 'text-gray-700',
-      borderColor: 'border-black',
       bgOpacity: 'bg-opacity-0',
-      borderOpacity: 'border-opacity-15',
+      textColor: 'text-gray-900',
+      borderColor: 'ring-black',
+      borderOpacity: 'ring-opacity-10',
       hover: {
         bgOpacity: 'hover:bg-opacity-5'
       },
       focus: {
-        borderOpacity: 'focus:border-opacity-30'
+        borderOpacity: 'focus:ring-opacity-20'
       }
     },
     dark: {
       bgColor: 'dark:bg-white',
-      textColor: 'dark:text-gray-300',
-      borderColor: 'dark:border-white',
       bgOpacity: 'dark:bg-opacity-0',
-      borderOpacity: 'dark:border-opacity-15',
+      textColor: 'dark:text-gray-100',
+      borderColor: 'dark:ring-white',
+      borderOpacity: 'dark:ring-opacity-10',
       hover: {
         bgOpacity: 'dark:hover:bg-opacity-5'
       },
       focus: {
-        borderOpacity: 'dark:focus:border-opacity-30'
+        borderOpacity: 'dark:focus:ring-opacity-20'
       }
     }
   }
@@ -69,11 +175,11 @@ export type TonalButtonConfig = Partial<ButtonBaseConfig>;
 export const TonalButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
-    textColor: 'text-indigo-600',
-    bgOpacity: 'bg-opacity-5',
+    textColor: 'text-indigo-500',
+    bgOpacity: 'bg-opacity-10',
     bgColor: 'bg-indigo-600',
     hover: {
-      bgOpacity: 'hover:bg-opacity-10'
+      bgOpacity: 'hover:bg-opacity-15'
     }
   }
 }
@@ -99,7 +205,6 @@ export const TextButtonConfig: TonalButtonConfig = {
   }
 }
 
-
 /** Button config key */
 export const ButtonConfigKey = 'ButtonConfigKey';
 
@@ -109,11 +214,13 @@ export type ButtonConfig = {
   secondary: Partial<SecondaryButtonConfig>,
   tonal: Partial<TonalButtonConfig>,
   text: Partial<TextButtonConfig>
+  size: Partial<ButtonSizeConfig>
 }
 
 export const ButtonConfig: ButtonConfig = {
   primary: PrimaryButtonConfig,
   secondary: SecondaryButtonConfig,
   tonal: TonalButtonConfig,
-  text: TextButtonConfig
+  text: TextButtonConfig,
+  size: ButtonSizeConfig
 }
