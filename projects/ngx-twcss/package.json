@@ -1,6 +1,6 @@
 {
   "name": "ngx-twcss",
-  "version": "0.0.56",
+  "version": "0.0.57",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -18,8 +18,7 @@
   "keywords": [
     "angular",
     "tailwind css",
-    "web components",
-    "ngx-twcss"
+    "web components"
   ],
   "repository": {
     "type": "git",

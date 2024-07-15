@@ -1,5 +1,5 @@
 <div
-  class="container w-full sm:max-w-xl md:max-w-2xl mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
 
   <h1 class="text-3xl border-none font-extrabold my-8 mt-16">
     Modal Dialogs
@@ -12,7 +12,7 @@
     Simple notification dialog
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(6)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(6)" (click)="close(6)">
       <tw-dialog-panel>
@@ -36,7 +36,7 @@
     Simple dialog with icon
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(0)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(0)" (click)="close(0)">
       <tw-dialog-panel>
@@ -69,7 +69,7 @@
     Simple dialog with gray footer
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(1)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(1)" className="divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
@@ -102,7 +102,7 @@
     Centered dialog with single action
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(2)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(2)" (click)="close(2)">
       <tw-dialog-panel className="sm:-">
@@ -134,7 +134,7 @@
     Centered dialog with wide buttons
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(3)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(3)" (click)="close(3)">
       <tw-dialog-panel className="sm:-">
@@ -168,15 +168,13 @@
     Simple dialog with dismiss button
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(4)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(4)">
       <tw-dialog-panel>
         <tw-dialog-icon className="text-red-600">
-          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
           </svg>
         </tw-dialog-icon>
         <tw-dialog-content>
@@ -188,14 +186,13 @@
             cannot be undone.
           </p>
         </tw-dialog-content>
-        <tw-button variant="text" (click)="toggleDialog(4)" className="hidden sm:block absolute top-2 right-0">
-          <svg class="size-6 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd" />
-          </svg>
-        </tw-button>
+        <div class="relative">
+          <tw-button tw-icon variant="text" (click)="toggleDialog(5)" className="hidden sm:flex absolute -top-2 -right-2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </tw-button>
+        </div>
       </tw-dialog-panel>
       <tw-dialog-actions>
         <tw-button (click)="toggleDialog(4)" className="bg-red-600 w-full">Deactivate</tw-button>
@@ -209,10 +206,20 @@
     Dialog with header, scrollable content and actions
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(5)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(5)">
       <tw-dialog-panel className="pb-0 sm:- gap-0">
+        <div class="relative">
+          <tw-button tw-icon variant="text" (click)="toggleDialog(5)"
+            className="hidden sm:flex absolute -top-0 -right-2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd" />
+            </svg>
+          </tw-button>
+        </div>
         <tw-dialog-content className="pb-0 h-96">
           <h1 class="text-2xl border-none pb-3" id="modal-title">
             Install Angular
@@ -298,14 +305,6 @@
             </p>
           </div>
         </tw-dialog-content>
-        <tw-button variant="text" (click)="toggleDialog(5)" className="hidden sm:block absolute top-2 right-0">
-          <svg class="size-6 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-              clip-rule="evenodd" />
-          </svg>
-        </tw-button>
       </tw-dialog-panel>
       <tw-dialog-actions>
         <tw-button (click)="toggleDialog(5)" className="w-full">Install</tw-button>
@@ -322,7 +321,7 @@
     Rounded simple notification dialog
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(7)" className="rounded-full">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(7)" (click)="close(7)" className="rounded-3xl">
       <tw-dialog-panel>
@@ -346,7 +345,7 @@
     Rounded simple dialog with icon
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(8)" className="rounded-full">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(8)" (click)="close(8)" className="rounded-3xl">
       <tw-dialog-panel>
@@ -379,7 +378,7 @@
     Rounded simple dialog with gray footer
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(9)" className="rounded-full">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(9)" className="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
@@ -412,7 +411,7 @@
     Rounded centered dialog with single action
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(10)" className="rounded-full">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(10)" (click)="close(10)" className="rounded-3xl">
       <tw-dialog-panel className="sm:-">
@@ -444,7 +443,7 @@
     Rounded centered dialog with wide buttons
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(11)" className="rounded-full">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(11)" (click)="close(11)" className="rounded-3xl">
       <tw-dialog-panel className="sm:-">
@@ -478,7 +477,7 @@
     Rounded simple dialog with dismiss button
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(12)" className="rounded-full">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(12)" className="rounded-3xl">
       <tw-dialog-panel>
@@ -499,8 +498,8 @@
           </p>
         </tw-dialog-content>
         <tw-button variant="text" (click)="toggleDialog(12)" className="hidden sm:block absolute top-2 right-0">
-          <svg class="size-6 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <svg class="text-gray-500 hover:text-gray-600 dark:hover:text-gray-400" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd"
               d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
               clip-rule="evenodd" />
@@ -519,7 +518,7 @@
     Rounded dialog with header, scrollable content and actions
   </h2>
   <div
-    class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(13)" className="rounded-full">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(13)" className="rounded-3xl">
       <tw-dialog-panel className="pb-0 sm:- gap-0">
@@ -609,8 +608,8 @@
           </div>
         </tw-dialog-content>
         <tw-button variant="text" (click)="toggleDialog(13)" className="hidden sm:block absolute top-2 right-0">
-          <svg class="size-6 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400"
-            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <svg class="text-gray-500 hover:text-gray-600 dark:hover:text-gray-400" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd"
               d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
               clip-rule="evenodd" />

@@ -90,7 +90,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-button className="rounded-full"> Button text</tw-button>
+<tw-button className="rounded-full">Button text</tw-button>
 <tw-button className="rounded-full" variant="secondary">Button text</tw-button>
 <tw-button className="rounded-full" variant="tonal">Button text</tw-button>
 ```

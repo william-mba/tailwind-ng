@@ -2,30 +2,30 @@
   class="fixed start-0 top-0 z-30 h-16 flex w-full justify-center border-b border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 bg-opacity-60 backdrop-blur-3xl">
   <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
     <a href="https://github.com/William-Mba/ngx-twcss">
-      <tw-button size="sm" className="rounded-none relative overflow-visible sm:ml-4 shadow-md shadow-black/30">
+      <tw-button size="md" className="rounded-none relative overflow-visible shadow-md shadow-black/30">
         NGX-TWCSS
       </tw-button>
     </a>
     <div class="flex items-center space-x-3 md:order-2 rtl:space-x-reverse">
-      <tw-button variant='text' size="sm" (click)="ToggleTheme()">
-        <svg class="size-5" fill="currentcolor" *ngIf="dark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <tw-button variant='text' size="md" (click)="ToggleTheme()">
+        <svg fill="currentcolor" *ngIf="dark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001.0 1010.586 10.586z" />
         </svg>
-        <svg class="size-5" fill="currentcolor" *ngIf="!dark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="currentcolor" *ngIf="!dark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M10 2a1 1 0 011 1v1A1 1 0 119 4V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707A1 1 0 1113.536 5.05l.707-.707a1 1 0 011.414.0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707A1 1 0 004.343 5.757l.707.707zm1.414 8.486-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
             fill-rule="evenodd" clip-rule="evenodd" />
         </svg>
       </tw-button>
-      <tw-button variant='text' size="sm">
-        <svg class="size-5" fill="currentcolor" t="1702210633165" viewBox="0 0 1024 1024"
+      <tw-button variant='text' size="md">
+        <svg fill="currentcolor" t="1702210633165" viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg">
           <path
             d="M426.666667 768a339.285333 339.285333.0 00208.938666-72.021333L823.168 883.541333l60.330667-60.330666L695.936 635.648A339.285333 339.285333.0 00768 426.666667C768 238.464 614.869333 85.333334 426.666667 85.333333S85.333334 238.464 85.333333 426.666667 238.464 768 426.666667 768zm0-597.333333c141.184.0 256 114.816 256 256s-114.816 256-256 256-256-114.816-256-256 114.816-256 256-256z" />
         </svg>
       </tw-button>
-      <tw-button variant='text' size="sm" className="2xl:hidden" (click)="toggle()">
-        <svg class="size-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+      <tw-button variant='text' size="md" className="2xl:hidden" (click)="toggle()">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M1 1h15M1 7h15M1 13h15" />
         </svg>
@@ -35,11 +35,23 @@
 </nav>
 <ng-container *ngIf="open || isLargeScreen()">
   <nav
-    class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-28 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-sm flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
+    class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-24 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-xs flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
     <div>
+      <div class="relative">
+        <tw-button variant="text" size="sm" className="absolute top-0 right-0 2xl:hidden" (click)="toggle()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+          </svg>
+        </tw-button>
+      </div>
       <h2 class="font-bold">Getting started</h2>
       <ul
         class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        <li>
+          <a routerLink="/lab" (click)="toggle()">
+            Lab
+          </a>
+        </li>
         <li>
           <a href="https://github.com/William-Mba/ngx-twcss" (click)="toggle()">
             Installation
@@ -93,10 +105,6 @@
         </li>
       </ul>
     </div>
-    <tw-button variant="text" size="sm" className="absolute top-2 right-2 2xl:hidden" (click)="toggle()">
-      <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-      </svg>
-    </tw-button>
+
   </nav>
 </ng-container>

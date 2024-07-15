@@ -17,7 +17,7 @@ Light | Dark
 
 ```html
 ...
-<tw-group className="-space-x-1">
+<div class="flex -space-x-1">
   <tw-avatar>
     <img alt="" class="size-9 rounded-full ring-2 ring-white"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
@@ -37,7 +37,7 @@ Light | Dark
     <img alt="" class="size-9 rounded-full ring-2 ring-white"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
-</tw-group>
+</div>
 ...
 ```
 
@@ -284,7 +284,7 @@ Light | Dark
 
 ```html
 ...
-<tw-group className="-space-x-1">
+<div class="flex -space-x-1">
   <tw-avatar className="z-[4] hover:z-10 ring-2 ring-white">
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
@@ -304,7 +304,7 @@ Light | Dark
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   </tw-avatar>
-</tw-group>
+</div>
 ...
 ```
 
@@ -320,7 +320,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-group className="gap-x-2">
+<div className="gap-x-2">
   <tw-avatar>
     <img alt="" class="size-9 rounded-full"
       src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
@@ -329,7 +329,7 @@ Light | Dark
     <div class="absolute -top-1.5 text-md font-normal">Jane Smith</div>
     <a class="absolute bottom-0.5 text-xs opacity-70 group-hover:opacity-[1]">View profile</a>
   </span>
-</tw-group>
+</div>
 ```
 
 ## API

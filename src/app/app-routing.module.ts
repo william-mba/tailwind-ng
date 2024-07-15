@@ -7,6 +7,7 @@ import { BadgeDemoComponent } from './demos/badge-demo/badge-demo.component';
 import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
 import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
+import { LabComponent } from './demos/lab/lab.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'roadmap',
     component: RoadmapComponent
+  },
+  {
+    path: 'lab',
+    component: LabComponent
   },
   {
     path: '',

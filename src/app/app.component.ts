@@ -24,6 +24,8 @@ export class AppComponent {
       this.theme = parseInt(lastTheme);
       this.changeConfig();
     }
+    console.log(ButtonConfig);
+
     // ToggleTheme();
 
     // timer(10000).pipe(concatMap(() => {

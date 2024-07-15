@@ -7,7 +7,7 @@ export * from './lib/core/helpers/theme.helper';
 export * from './lib/core/helpers/config.helper';
 export * from './lib/components/button/button.component';
 export * from './lib/components/button/button.config';
-export * from './lib/components/group/group.directive';
+export * from './lib/components/button-group/button-group.directive';
 export * from './lib/components/dropdown/dropdown.component';
 export * from './lib/components/dropdown/dropdown.config';
 export * from './lib/components/dropdown/dropdown.module';
