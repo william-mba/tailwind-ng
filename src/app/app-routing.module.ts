@@ -11,39 +11,39 @@ import { LabComponent } from './demos/lab/lab.component';
 
 const routes: Routes = [
   {
-    path: 'modal-dialogs',
+    path: '/modal-dialogs',
     component: ModalDialogDemoComponent
   },
   {
-    path: 'avatars',
+    path: '/avatars',
     component: AvatarDemoComponent
   },
   {
-    path: 'badges',
+    path: '/badges',
     component: BadgeDemoComponent
   },
   {
-    path: 'dropdowns',
+    path: '/dropdowns',
     component: DropdownDemoComponent
   },
   {
-    path: 'button-groups',
+    path: '/button-groups',
     component: ButtonGroupDemoComponent
   },
   {
-    path: 'buttons',
+    path: '/buttons',
     component: ButtonsDemoComponent
   },
   {
-    path: 'roadmap',
+    path: '/roadmap',
     component: RoadmapComponent
   },
   {
-    path: 'lab',
+    path: '/lab',
     component: LabComponent
   },
   {
-    path: '',
+    path: '/',
     redirectTo: 'roadmap',
     pathMatch: 'full'
   },
