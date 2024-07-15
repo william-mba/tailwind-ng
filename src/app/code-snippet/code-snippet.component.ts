@@ -5,13 +5,12 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
   selector: 'demo-code-snippet',
   template: `
   <details>
-    <summary
-      class="border-x border-b border-neutral-300 dark:border-neutral-700 list-none px-2 font-mono text-sm cursor-pointer">
+    <summary class="border-x border-b border-neutral-300 dark:border-neutral-700 list-none px-2 font-mono text-sm cursor-pointer">
       {{ label }}
     </summary>
     <div class="relative">
       <tw-button size="sm" variant="text" className="absolute -right-2 -top-6 font-mono" (click)="copy()">
-        {{ text }}
+        {{ displayText }}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
           <path d="M379.78-233.78q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15v-466.44q0-44.3 30.85-75.15 30.85-30.85 75.15-30.85h346.44q44.3 0 75.15 30.85 30.85 30.85 30.85 75.15v466.44q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H379.78Zm-186 186q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15v-572.44h106v572.44h452.44v106H193.78Z"/>
         </svg>
@@ -22,19 +21,25 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
   </details>`
 })
 export class CodeSnippetComponent {
-  @Input() code!: string;
-  protected text = 'Copy';
+  private text = {
+    copy: 'Copy',
+    copied: 'Copied!'
+  };
+  protected displayText = this.text.copy;
   protected label = '<> Code';
 
+  @Input() code!: string;
+
+
   copy() {
-    if (!this.code || this.text === 'Copied!') return;
+    if (!this.code || this.displayText === this.text.copied) return;
 
     navigator.clipboard.writeText(this.code);
 
-    this.text = 'Copied!';
+    this.displayText = this.text.copied;
 
     timer(5000).pipe(concatMap(() => {
-      return scheduled(this.text, asyncScheduler)
-    })).subscribe(() => this.text = 'Copy');
+      return scheduled(this.displayText, asyncScheduler)
+    })).subscribe(() => this.displayText = this.text.copy);
   }
 }
