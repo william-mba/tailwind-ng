@@ -1,26 +1,26 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Directive, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { NgIf } from '@angular/common';
 
-/** Dropdown item component */
-@Component({
-  selector: 'tw-dropdown-item',
-  standalone: true,
-  template: `<div [className]="style"><ng-content></ng-content></div>`
+/** Dropdown content component */
+@Directive({
+  selector: 'tw-dropdown-content',
+  standalone: true
 })
-export class DropdownItem implements OnInit {
+export class DropdownContent implements OnInit {
   private _config = inject(ConfigService<DropdownConfig>);
-  protected style!: string;
 
   @Input() className!: string;
 
+  constructor(public el: ElementRef) { }
+
   ngOnInit(): void {
     this._config.get(DropdownConfigKey).subscribe((conf) => {
-      const base = toClassName(conf.item);
-      this.style = resolveClassName(base, this.className);
+      const style = resolveClassName(toClassName(conf.content), this.className);
+      this.el.nativeElement.className = style;
     });
   }
 }
@@ -31,11 +31,11 @@ export class DropdownItem implements OnInit {
   standalone: true,
   imports: [NgIf],
   host: {
-    class: 'relative *:*:h-full'
+    class: 'relative flex items-stretch'
   },
   template: `<ng-content></ng-content>
     <div @dropdownAnimation *ngIf="open" [className]="style">
-      <ng-content select="tw-dropdown-item"></ng-content>
+      <ng-content select="tw-dropdown-content"></ng-content>
     </div>`,
   animations: [
     trigger('dropdownAnimation', [

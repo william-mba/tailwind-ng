@@ -56,19 +56,19 @@ export const DropdownContainerConfig: DropdownContainerConfig = {
   borderRadius: 'rounded-md',
   theme: {
     light: {
-      bgColor: 'bg-neutral-50',
+      bgColor: 'bg-white',
       borderColor: 'border-neutral-200'
     },
     dark: {
-      bgColor: 'dark:bg-neutral-900',
+      bgColor: 'dark:bg-neutral-800',
       borderColor: 'dark:border-neutral-700'
     }
   }
 }
 
-/** Dropdown item config */
-export type DropdownItemConfig = Partial<DropdownBaseConfig>
-export const DropdownItemConfig: DropdownItemConfig = {
+/** Dropdown content config */
+export type DropdownContentConfig = Partial<DropdownBaseConfig>
+export const DropdownContentConfig: DropdownContentConfig = {
   display: 'grid',
   textAlign: 'text-start',
   extend: {
@@ -83,10 +83,10 @@ export const DropdownConfigKey = 'DropdownConfigKey';
 /** Dropdown config */
 export type DropdownConfig = {
   container: Partial<DropdownContainerConfig>,
-  item: Partial<DropdownItemConfig>
+  content: Partial<DropdownContentConfig>
 }
 
 export const DropdownConfig: DropdownConfig = {
   container: DropdownContainerConfig,
-  item: DropdownItemConfig
+  content: DropdownContentConfig
 }
