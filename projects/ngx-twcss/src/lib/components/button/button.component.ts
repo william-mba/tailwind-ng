@@ -14,9 +14,9 @@ export class Button implements OnInit {
 
   @Input() style!: string;
   @Input() className!: string;
+  @Input() fab: boolean = false;
   @Input() size: ButtonSize = 'md';
   @Input() variant: ButtonVariant = 'primary';
-  @Input() fab: boolean = false;
 
   ngOnInit(): void {
     this.initConfig();
@@ -26,7 +26,7 @@ export class Button implements OnInit {
     if (this.style) return;
 
     if (this.fab === true) {
-      this.className = resolveClassName('shadow-md shadow-black/30', this.className);
+      this.className = resolveClassName('shadow-lg shadow-black/30', this.className);
     }
     this._config.set(ButtonConfigKey, ButtonConfig)
       .get(ButtonConfigKey).subscribe((cfg) => {
