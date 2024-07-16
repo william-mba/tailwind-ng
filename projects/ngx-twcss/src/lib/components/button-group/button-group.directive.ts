@@ -4,7 +4,7 @@ import { resolveClassName } from '../../core/helpers/config.helper';
 /** Button group */
 @Directive({
   selector: 'tw-button-group, [tw-button-group]',
-  standalone: true,
+  standalone: true
 })
 export class ButtonGroup implements OnInit {
   @Input() className!: string;
