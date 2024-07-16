@@ -112,9 +112,9 @@ Light | Dark
       <path d="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z" />
     </svg>
     <!-- item -->
-    <tw-dropdown-item *ngFor="let item of items">
+    <tw-dropdown-content *ngFor="let item of items">
       {{ item }}
-    </tw-dropdown-item>
+    </tw-dropdown-content>
   </tw-dropdown>
 </div>
 ```

@@ -7,16 +7,67 @@
     Use these Tailwind CSS dropdown and popover components to create dropdown menus for action items and navigation,
     featuring section dividers, icons, and headers.
   </p>
+
   <h2 class="text-lg font-semibold mt-12">
+    Simple
+  </h2>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
+    <tw-dropdown [open]="open(0)" (click)="toggle(0)" className="min-w-52 shadow-lg">
+      <tw-button variant="secondary">
+        Options
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </tw-button>
+      <tw-dropdown-content className="*:justify-start *:rounded-none *:shadow-none">
+        <tw-button variant="text"
+          className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+          *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
+          {{ item }}
+        </tw-button>
+      </tw-dropdown-content>
+    </tw-dropdown>
+  </div>
+  <demo-code-snippet [code]="simple"></demo-code-snippet>
+
+  <h2 class="text-lg font-semibold mt-12">
+    With dividers
+  </h2>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-96">
+    <tw-dropdown [open]="open(1)" (click)="toggle(1)" className="min-w-52 shadow-lg">
+      <tw-button variant="secondary">
+        Options
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </tw-button>
+      <tw-dropdown-content className="divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
+        <tw-button variant="text"
+          className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+          *ngFor="let item of ['Edit', 'Duplicate', 'Archive', 'Move', 'Share', 'Add to favorites', 'Delete']">
+          {{ item }}
+        </tw-button>
+      </tw-dropdown-content>
+    </tw-dropdown>
+  </div>
+  <demo-code-snippet [code]="simple"></demo-code-snippet>
+
+  <h2 class="text-lg font-semibold mt-20">
     With text
   </h2>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <tw-dropdown [open]="open(1)" (click)="toggle(1)">
       <tw-button>Save changes</tw-button>
-      <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+      <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
         <tw-button variant="secondary" className="rounded-none shadow- ring- justify-start">{{ item }}</tw-button>
-      </tw-dropdown-item>
+      </tw-dropdown-content>
     </tw-dropdown>
   </div>
   <demo-code-snippet [code]="withText"></demo-code-snippet>
@@ -25,21 +76,19 @@
     With icon
   </h2>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <tw-dropdown [open]="open(2)" (click)="toggle(2)">
       <tw-button tw-icon size="lg" variant="secondary">
-        <svg *ngIf="!open(2)" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-          viewBox="0 -960 960 960">
+        <svg *ngIf="!open(2)" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
           <path d="M480-360 280-560h400L480-360Z" />
         </svg>
-        <svg *ngIf="open(2)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
-         >
+        <svg *ngIf="open(2)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
           <path d="m280-400 200-200 200 200H280Z" />
         </svg>
       </tw-button>
-      <tw-dropdown-item *ngFor="let item of ['New project', 'New organisation', 'New team']">
+      <tw-dropdown-content *ngFor="let item of ['New project', 'New organisation', 'New team']">
         <tw-button variant="secondary" className="rounded-none shadow- ring- justify-start">{{ item }}</tw-button>
-      </tw-dropdown-item>
+      </tw-dropdown-content>
     </tw-dropdown>
   </div>
   <demo-code-snippet [code]="withIcon"></demo-code-snippet>
@@ -48,23 +97,21 @@
     With text and icon
   </h2>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <tw-button-group>
       <tw-button className="rounded-l-md">Save changes</tw-button>
       <tw-dropdown [open]="open(3)" (click)="toggle(3)">
         <tw-button tw-icon className="rounded-r-md">
-          <svg *ngIf="!open(3)" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            viewBox="0 -960 960 960">
+          <svg *ngIf="!open(3)" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
-          <svg *ngIf="open(3)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
-           >
+          <svg *ngIf="open(3)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+        <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
           <tw-button variant="secondary" className="rounded-none shadow- ring- justify-start">{{ item }}</tw-button>
-        </tw-dropdown-item>
+        </tw-dropdown-content>
       </tw-dropdown>
     </tw-button-group>
   </div>
@@ -77,12 +124,12 @@
     Rounded with text
   </h2>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <tw-dropdown [open]="open(4)" (click)="toggle(4)" className="rounded-3xl p-1.5">
       <tw-button className="rounded-full">Save changes</tw-button>
-      <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+      <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
         <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
-      </tw-dropdown-item>
+      </tw-dropdown-content>
     </tw-dropdown>
   </div>
   <demo-code-snippet [code]="roundedWithText"></demo-code-snippet>
@@ -91,21 +138,19 @@
     Rounded with icon
   </h2>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <tw-dropdown [open]="open(5)" (click)="toggle(5)" className="rounded-3xl p-1.5">
       <tw-button tw-icon variant="secondary" className="rounded-full">
-        <svg *ngIf="!open(5)" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-          viewBox="0 -960 960 960">
+        <svg *ngIf="!open(5)" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
           <path d="M480-360 280-560h400L480-360Z" />
         </svg>
-        <svg *ngIf="open(5)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
-         >
+        <svg *ngIf="open(5)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
           <path d="m280-400 200-200 200 200H280Z" />
         </svg>
       </tw-button>
-      <tw-dropdown-item *ngFor="let item of ['New project', 'New organisation', 'New team']">
+      <tw-dropdown-content *ngFor="let item of ['New project', 'New organisation', 'New team']">
         <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
-      </tw-dropdown-item>
+      </tw-dropdown-content>
     </tw-dropdown>
   </div>
   <demo-code-snippet [code]="roundedWithIcon"></demo-code-snippet>
@@ -114,23 +159,21 @@
     Rounded with text and icon
   </h2>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <tw-button-group>
       <tw-button className="rounded-l-full">Save changes</tw-button>
       <tw-dropdown [open]="open(6)" (click)="toggle(6)" className="rounded-3xl p-1.5">
         <tw-button tw-icon className="rounded-r-full">
-          <svg *ngIf="!open(6)" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            viewBox="0 -960 960 960">
+          <svg *ngIf="!open(6)" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
-          <svg *ngIf="open(6)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"
-           >
+          <svg *ngIf="open(6)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+        <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
           <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
-        </tw-dropdown-item>
+        </tw-dropdown-content>
       </tw-dropdown>
     </tw-button-group>
   </div>

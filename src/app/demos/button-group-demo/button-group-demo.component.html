@@ -78,9 +78,9 @@
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+        <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
           <tw-button variant="secondary" className="rounded- ring- shadow- justify-start">{{ item }}</tw-button>
-        </tw-dropdown-item>
+        </tw-dropdown-content>
       </tw-dropdown>
     </tw-button-group>
   </div>
@@ -195,11 +195,11 @@
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+        <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
           <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">
             {{ item }}
           </tw-button>
-        </tw-dropdown-item>
+        </tw-dropdown-content>
       </tw-dropdown>
     </tw-button-group>
   </div>

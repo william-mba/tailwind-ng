@@ -58,9 +58,9 @@ export class ButtonGroupDemoComponent {
     <tw-button variant="secondary" className="rounded-r-md">
       <!-- svg -->
     </tw-button>
-    <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+    <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
       <tw-button variant="secondary" className="rounded- ring- shadow- justify-start">{{ item }}</tw-button>
-    </tw-dropdown-item>
+    </tw-dropdown-content>
   </tw-dropdown>
 </tw-button-group>`;
 
@@ -118,9 +118,9 @@ export class ButtonGroupDemoComponent {
     <tw-button variant="secondary" className="rounded-r-full">
       <!-- ... -->
     </tw-button>
-    <tw-dropdown-item *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+    <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
       <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
-    </tw-dropdown-item>
+    </tw-dropdown-content>
   </tw-dropdown>
 </tw-button-group>`;
 
