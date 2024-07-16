@@ -1,29 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Button } from './button.component';
-import { ButtonConfig } from './button.config';
+import { Button } from './button';
+import { ButtonConfig, ButtonSize } from './button.config';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
-import { Size } from '../../core/types/size';
+import { ElementRef } from '@angular/core';
 
-describe('ButtonComponent', () => {
-  let component: Button;
-  let fixture: ComponentFixture<Button>;
+describe('Button', () => {
+  const component = new Button(new ElementRef('tw-button'));
   const primaryStyle = toClassName(ButtonConfig.primary);
   const secondaryStyle = toClassName(ButtonConfig.secondary);
   const tonalStyle = toClassName(ButtonConfig.tonal);
-  const sizeVariants = ['sm', 'md', 'lg'] as Size[];
+  const sizeVariants = ['sm', 'md', 'lg'] as ButtonSize[];
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Button]
-    })
-      .compileComponents();
-
-    fixture = TestBed.createComponent(Button);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-
     spyOn(component, 'ngOnInit');
-
     component.ngOnInit();
   });
 

@@ -1,13 +1,12 @@
-import { Component, Directive, Input, OnInit, inject } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, inject } from '@angular/core';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { ButtonConfig, ButtonConfigKey, ButtonSize, ButtonVariant, IconSize, IconSizeConfig } from './button.config';
 import { ConfigService } from '../../core/services/config.service';
 
 /** Button element */
-@Component({
+@Directive({
   selector: 'tw-button',
-  standalone: true,
-  template: '<button type="button" [className]="style"><ng-content></ng-content></button>'
+  standalone: true
 })
 export class Button implements OnInit {
   private _config = inject(ConfigService<ButtonConfig>);
@@ -18,12 +17,17 @@ export class Button implements OnInit {
   @Input() size: ButtonSize = 'md';
   @Input() variant: ButtonVariant = 'primary';
 
+  constructor(public el: ElementRef) { }
+
   ngOnInit(): void {
     this.initConfig();
   }
 
   initConfig(): void {
-    if (this.style) return;
+    if (this.style) {
+      this.el.nativeElement.className = this.style;
+      return;
+    }
 
     if (this.fab === true) {
       this.className = resolveClassName('shadow-lg shadow-black/30', this.className);
@@ -31,7 +35,7 @@ export class Button implements OnInit {
     this._config.set(ButtonConfigKey, ButtonConfig)
       .get(ButtonConfigKey).subscribe((cfg) => {
         let style = toClassName({ variant: cfg[this.variant], size: cfg.size[this.size] });
-        this.style = resolveClassName(style, this.className);
+        this.el.nativeElement.className = resolveClassName(style, this.className);
       });
   }
 }

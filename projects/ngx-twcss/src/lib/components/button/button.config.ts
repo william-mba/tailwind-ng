@@ -110,7 +110,8 @@ export const ButtonBaseConfig: ButtonBaseConfig = {
   },
   shadow: 'shadow-sm',
   textWrap: 'text-nowrap',
-  userSelect: 'select-none'
+  userSelect: 'select-none',
+  cursor: 'cursor-pointer'
 }
 
 /** Primary button config */
@@ -122,14 +123,6 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
     bgColor: 'bg-indigo-600',
     hover: {
       bgOpacity: 'hover:bg-opacity-90'
-    }
-  },
-  extend: {
-    focusVisible: {
-      outline: 'focus-visible:outline',
-      outlineWidth: 'focus-visible:outline-2',
-      outlineOffset: 'focus-visible:outline-offset-2',
-      outlineColor: 'focus-visible:outline-indigo-600'
     }
   }
 }
@@ -184,22 +177,23 @@ export const TonalButtonConfig: TonalButtonConfig = {
   }
 }
 
-
 /** Text button config */
 export type TextButtonConfig = Partial<ButtonBaseConfig>;
 export const TextButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
     light: {
-      textColor: 'text-gray-700',
+      textColor: 'text-black',
+      textOpacity: 'text-opacity-70',
       hover: {
-        textColor: 'hover:text-gray-950'
+        textOpacity: 'hover:text-opacity-100'
       }
     },
     dark: {
-      textColor: 'dark:text-gray-300',
+      textColor: 'dark:text-white',
+      textOpacity: 'dark:text-opacity-70',
       hover: {
-        textColor: 'dark:hover:text-gray-50'
+        textOpacity: 'dark:hover:text-opacity-100'
       }
     }
   }
