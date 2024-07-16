@@ -12,7 +12,7 @@ export class ButtonGroup implements OnInit {
   constructor(public el: ElementRef) { }
 
   ngOnInit(): void {
-    let base = 'flex items-stretch *:*:min-h-full';
+    let base = 'flex items-stretch';
     this.el.nativeElement.className = resolveClassName(base, this.className);
   }
 }
