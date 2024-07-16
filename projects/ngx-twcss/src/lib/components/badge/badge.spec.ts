@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
-import { Badge } from './badge.directive';
+import { Badge } from './badge';
 
-describe('BadgeDirective', () => {
+describe('Badge', () => {
   it('should create an instance', () => {
     const directive = new Badge(new ElementRef('tw-badge'));
     expect(directive).toBeTruthy();
