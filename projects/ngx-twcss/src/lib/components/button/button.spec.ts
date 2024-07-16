@@ -43,28 +43,28 @@ describe('Button', () => {
     expect(component.variant).toBe('text');
   });
 
-  it('should set style', () => {
-    expect(component.style).toBeUndefined();
+  it('should set config', () => {
+    expect(component.config).toBeUndefined();
 
-    component.style = resolveClassName(primaryStyle, component.className);
-    expect(component.style).toEqual(primaryStyle);
+    component.config = resolveClassName(primaryStyle, component.className);
+    expect(component.config).toEqual(primaryStyle);
 
-    component.style = resolveClassName(secondaryStyle, component.className);
-    expect(component.style).toEqual(secondaryStyle);
+    component.config = resolveClassName(secondaryStyle, component.className);
+    expect(component.config).toEqual(secondaryStyle);
 
-    component.style = resolveClassName(tonalStyle, component.className);
-    expect(component.style).toEqual(tonalStyle);
+    component.config = resolveClassName(tonalStyle, component.className);
+    expect(component.config).toEqual(tonalStyle);
   });
 
   it('should set custom style', () => {
     let classToAdd = 'text-red-500 bg-blue-500';
-    component.style = resolveClassName(primaryStyle, classToAdd);
+    component.config = resolveClassName(primaryStyle, classToAdd);
 
-    expect(component.style).toContain(classToAdd);
+    expect(component.config).toContain(classToAdd);
 
     let classToRemove = 'text- bg-';
-    component.style = resolveClassName(primaryStyle, classToRemove);
-    expect(component.style).not.toContain(classToAdd);
+    component.config = resolveClassName(primaryStyle, classToRemove);
+    expect(component.config).not.toContain(classToAdd);
   });
 
   it('should set size', () => {

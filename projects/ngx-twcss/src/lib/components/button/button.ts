@@ -11,7 +11,7 @@ import { ConfigService } from '../../core/services/config.service';
 export class Button implements OnInit {
   private _config = inject(ConfigService<ButtonConfig>);
 
-  @Input() style!: string;
+  @Input() config!: string;
   @Input() className!: string;
   @Input() fab: boolean = false;
   @Input() size: ButtonSize = 'md';
@@ -24,8 +24,8 @@ export class Button implements OnInit {
   }
 
   initConfig(): void {
-    if (this.style) {
-      this.el.nativeElement.className = this.style;
+    if (this.config) {
+      this.setConfig();
       return;
     }
 
@@ -34,9 +34,13 @@ export class Button implements OnInit {
     }
     this._config.set(ButtonConfigKey, ButtonConfig)
       .get(ButtonConfigKey).subscribe((cfg) => {
-        let style = toClassName({ variant: cfg[this.variant], size: cfg.size[this.size] });
-        this.el.nativeElement.className = resolveClassName(style, this.className);
+        this.config = toClassName({ variant: cfg[this.variant], size: cfg.size[this.size] });
+        this.setConfig();
       });
+  }
+
+  private setConfig() {
+    this.el.nativeElement.className = resolveClassName(this.config, this.className);
   }
 }
 
