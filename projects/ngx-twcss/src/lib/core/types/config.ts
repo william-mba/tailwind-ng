@@ -4,6 +4,7 @@ import { RingWidth } from "./borders/ring-width"
 import { BoxShadow } from "./effects/box-shadow"
 import { DropShadow } from "./filters/drop-shadow"
 import { Filters } from "./filters/filters"
+import { Cursor } from "./interactivity/cursor"
 import { UserSelect } from "./interactivity/user-select"
 import { Display } from "./layout/display"
 import { Overflow } from "./layout/overflow"
@@ -39,6 +40,7 @@ export type Config = {
   userSelect: UserSelect,
   textAlign: TextAlign,
   zIndex: ZIndex,
+  cursor: Cursor,
   lineHeight: LineHeight,
   filters: Partial<Filters>,
   shadow: DropShadow | BoxShadow,

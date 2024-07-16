@@ -10,9 +10,11 @@ import { BoxShadowColor } from "./effects/box-shadow-color"
 import { Focus } from "./modifiers/focus"
 import { Hover } from "./modifiers/hover"
 import { TextColor } from "./typography/text-color"
+import { TextOpacity } from "./typography/text-opacity"
 
 export type Theme = {
   textColor: TextColor,
+  textOpacity: TextOpacity,
   bgColor: BackgroundColor,
   bgOpacity: BackgroundOpacity,
   bgGradient: BackgroundGradient,
