@@ -26,7 +26,7 @@ export class CodeSnippetComponent {
     copied: 'Copied!'
   };
   protected displayText = this.text.copy;
-  protected label = '<> Code';
+  protected label = '<> Code sample';
 
   @Input() code!: string;
 
