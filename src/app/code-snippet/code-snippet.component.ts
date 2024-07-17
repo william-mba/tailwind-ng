@@ -22,8 +22,8 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
 })
 export class CodeSnippetComponent {
   private text = {
-    copy: 'Copy',
-    copied: 'Copied!'
+    copy: '',
+    copied: 'copied!'
   };
   protected displayText = this.text.copy;
   protected label = '<> Code sample';
