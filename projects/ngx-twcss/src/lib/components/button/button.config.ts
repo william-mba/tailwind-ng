@@ -181,6 +181,7 @@ export const TonalButtonConfig: TonalButtonConfig = {
 export type TextButtonConfig = Partial<ButtonBaseConfig>;
 export const TextButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
+  shadow: 'shadow-none',
   theme: {
     light: {
       textColor: 'text-black',
