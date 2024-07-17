@@ -47,6 +47,7 @@ export const DropdownContainerConfig: DropdownContainerConfig = {
   padding: 'py-1',
   zIndex: 'z-10',
   width: 'min-w-full',
+  overflow: 'overflow-hidden',
   position: {
     type: 'absolute',
     right: 'right-0',
@@ -70,11 +71,7 @@ export const DropdownContainerConfig: DropdownContainerConfig = {
 export type DropdownContentConfig = Partial<DropdownBaseConfig>
 export const DropdownContentConfig: DropdownContentConfig = {
   display: 'grid',
-  textAlign: 'text-start',
-  extend: {
-    child: '*:justify-self-stretch',
-    childOfChild: '*:*:w-full'
-  }
+  textAlign: 'text-start'
 }
 
 /** Dropdown config key */
