@@ -31,10 +31,10 @@ export class DropdownContent implements OnInit {
   standalone: true,
   imports: [NgIf],
   host: {
-    class: 'relative flex items-stretch'
+    class: 'relative inline-flex'
   },
   template: `<ng-content></ng-content>
-    <div @dropdownAnimation *ngIf="open" [className]="style">
+    <div @dropdownAnimation *ngIf="open" [className]="config">
       <ng-content select="tw-dropdown-content"></ng-content>
     </div>`,
   animations: [
@@ -59,17 +59,16 @@ export class DropdownContent implements OnInit {
   ]
 })
 export class Dropdown implements OnInit {
-  private _config = inject(ConfigService<DropdownConfig>);
-  protected style!: string;
+  private _configService = inject(ConfigService<DropdownConfig>);
+  protected config!: string;
 
   @Input() className!: string;
   @Input() open: boolean = false;
 
   ngOnInit(): void {
-    this._config.set(DropdownConfigKey, DropdownConfig)
-    this._config.get(DropdownConfigKey).subscribe((conf) => {
-      const base = toClassName(conf.container);
-      this.style = resolveClassName(base, this.className);
+    this._configService.set(DropdownConfigKey, DropdownConfig)
+    this._configService.get(DropdownConfigKey).subscribe((conf) => {
+      this.config = resolveClassName(toClassName(conf.container), this.className);
     });
   }
 }
