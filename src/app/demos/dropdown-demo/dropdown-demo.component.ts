@@ -69,7 +69,6 @@ export class DropdownDemoComponent {
   </tw-dropdown-content>
 </tw-dropdown>`;
 
-
   roundedSimple = `<tw-dropdown [open]="open" (click)="toggle()" className="rounded-3xl ...">
   <tw-button variant="secondary" className="rounded-3xl">
     Options
@@ -77,7 +76,7 @@ export class DropdownDemoComponent {
       <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
     </svg>
   </tw-button>
-  <tw-dropdown-content className="*:justify-start *:rounded-none *:shadow-none">
+  <tw-dropdown-content className="*:justify-start *:shadow-none *:rounded-full p-2 py-1">
     <tw-button variant="text" className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
       Account settings
     </tw-button>
@@ -89,7 +88,7 @@ export class DropdownDemoComponent {
   <tw-button variant="secondary" className="rounded-3xl">
     <!-- ... -->
   </tw-button>
-  <tw-dropdown-content className="... divide-y divide-black/5 dark:divide-white/5">
+  <tw-dropdown-content className="divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
     <tw-button variant="text" className="...">
       Edit
     </tw-button>
@@ -119,7 +118,7 @@ export class DropdownDemoComponent {
       <path fill-rule="evenodd"  d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
     </svg>
   </tw-button>
-  <tw-dropdown-content className="...">
+  <tw-dropdown-content className="*:justify-start *:shadow-none *:rounded-full p-2 py-1">
     <!-- ... -->
   </tw-dropdown-content>
 </tw-dropdown>`;
