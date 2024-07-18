@@ -28,7 +28,7 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button className="w-full">OK</tw-button>
+        <tw-button>OK</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -60,8 +60,8 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
-        <tw-button variant="secondary" className="w-full">Cancel</tw-button>
+        <tw-button className="bg-red-600">Deactivate</tw-button>
+        <tw-button variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -93,8 +93,8 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions className="bg-neutral-100 dark:bg-neutral-900/20">
-        <tw-button className="bg-red-600 w-full">Deactivate</tw-button>
-        <tw-button (click)="close(1)" variant="secondary" className="w-full">Cancel</tw-button>
+        <tw-button className="bg-red-600">Deactivate</tw-button>
+        <tw-button (click)="close(1)" variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -126,7 +126,7 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions className="sm:-">
-        <tw-button className="bg-indigo-700 w-full">Go back to dashboard</tw-button>
+        <tw-button className="bg-indigo-700">Go back to dashboard</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -159,8 +159,8 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button className="bg-indigo-700 w-full sm:w-56">Deactivate</tw-button>
-        <tw-button variant="secondary" className="w-full sm:w-56">Cancel</tw-button>
+        <tw-button className="bg-indigo-700 w-full">Deactivate</tw-button>
+        <tw-button variant="secondary" className="w-full">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -190,20 +190,18 @@
             cannot be undone.
           </p>
         </tw-dialog-content>
-        <div class="relative">
-          <tw-button tw-icon variant="text" (click)="toggleDialog(5)"
-            className="hidden sm:flex absolute -top-2 -right-2.5">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path fill-rule="evenodd"
-                d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-                clip-rule="evenodd" />
-            </svg>
-          </tw-button>
-        </div>
+        <tw-button tw-icon variant="text" size="lg" (click)="toggleDialog(4)"
+          className="absolute top-3 right-3 hidden sm:flex">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd" />
+          </svg>
+        </tw-button>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button (click)="toggleDialog(4)" className="bg-red-600 w-full">Deactivate</tw-button>
-        <tw-button (click)="close(4)" variant="secondary" className="w-full">Cancel</tw-button>
+        <tw-button (click)="toggleDialog(4)" className="bg-red-600">Deactivate</tw-button>
+        <tw-button (click)="close(4)" variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -217,16 +215,6 @@
     <tw-button variant="secondary" (click)="toggleDialog(5)">Open dialog</tw-button>
     <tw-modal-dialog [open]="open(5)">
       <tw-dialog-panel className="pb-0 sm:- gap-0">
-        <div class="relative">
-          <tw-button tw-icon variant="text" (click)="toggleDialog(5)"
-            className="hidden sm:flex absolute -top-0 -right-2.5">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path fill-rule="evenodd"
-                d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-                clip-rule="evenodd" />
-            </svg>
-          </tw-button>
-        </div>
         <tw-dialog-content className="pb-0 h-96">
           <h1 class="text-2xl border-none pb-3" id="modal-title">
             Install Angular
@@ -312,10 +300,18 @@
             </p>
           </div>
         </tw-dialog-content>
+        <tw-button tw-icon size="lg" variant="text" (click)="toggleDialog(5)"
+          className="hidden sm:flex absolute top-3 right-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd" />
+          </svg>
+        </tw-button>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button (click)="toggleDialog(5)" className="w-full">Install</tw-button>
-        <tw-button (click)="close(5)" variant="secondary" className="w-full border-none">Cancel</tw-button>
+        <tw-button (click)="toggleDialog(5)">Install</tw-button>
+        <tw-button (click)="close(5)" variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -342,7 +338,7 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button className="w-full rounded-3xl">OK</tw-button>
+        <tw-button className="rounded-3xl">OK</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -374,8 +370,8 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button className="bg-red-600 w-full rounded-full">Deactivate</tw-button>
-        <tw-button variant="secondary" className="w-full rounded-full">Cancel</tw-button>
+        <tw-button className="bg-red-600 rounded-full">Deactivate</tw-button>
+        <tw-button variant="secondary" className="rounded-full">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -407,8 +403,8 @@
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions className="bg-neutral-100 dark:bg-neutral-900/20">
-        <tw-button className="rounded-3xl bg-red-600 w-full">Deactivate</tw-button>
-        <tw-button (click)="close(9)" variant="secondary" className="rounded-3xl w-full">Cancel</tw-button>
+        <tw-button className="rounded-full bg-red-600">Deactivate</tw-button>
+        <tw-button (click)="close(9)" variant="secondary" className="rounded-full">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -433,14 +429,14 @@
           <h3 class="text-base font-semibold leading-6" id="modal-title">
             Payment successful
           </h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur amet labore.
+          <p class="text-sm text-gray-500 dark:text-gray-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </tw-dialog-content>
       </tw-dialog-panel>
-      <tw-dialog-actions className="rounded-3xl sm:-">
-        <tw-button className="rounded-3xl bg-indigo-700 w-full">Go back to dashboard</tw-button>
+      <tw-dialog-actions>
+        <tw-button className="rounded-full w-full bg-indigo-700">Go back to dashboard</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -467,14 +463,13 @@
           </h3>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius aliquam laudantium explicabo pariatur iste
-            dolorem animi
-            vitae error totam. At sapiente aliquam accusamus facere veritatis.
+            dolorem animi vitae error totam. At sapiente aliquam accusamus facere veritatis.
           </p>
         </tw-dialog-content>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button className="rounded-3xl bg-indigo-700 w-full sm:w-56">Deactivate</tw-button>
-        <tw-button variant="secondary" className="rounded-3xl w-full sm:w-56">Cancel</tw-button>
+        <tw-button className="rounded-full w-full bg-indigo-700">Deactivate</tw-button>
+        <tw-button variant="secondary" className="rounded-full w-full">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -504,7 +499,8 @@
             cannot be undone.
           </p>
         </tw-dialog-content>
-        <tw-button variant="text" (click)="toggleDialog(12)" className="hidden sm:block absolute top-2 right-0">
+        <tw-button tw-icon variant="text" size="lg" className="hidden sm:block absolute top-3 right-3"
+          (click)="toggleDialog(12)">
           <svg class="text-gray-500 hover:text-gray-600 dark:hover:text-gray-400" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd"
@@ -514,8 +510,8 @@
         </tw-button>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button (click)="toggleDialog(12)" className="rounded-3xl bg-red-600 w-full">Deactivate</tw-button>
-        <tw-button (click)="close(12)" variant="secondary" className="rounded-3xl w-full">Cancel</tw-button>
+        <tw-button (click)="toggleDialog(12)" className="rounded-full bg-red-600">Deactivate</tw-button>
+        <tw-button (click)="close(12)" variant="secondary" className="rounded-full">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
@@ -614,9 +610,8 @@
             </p>
           </div>
         </tw-dialog-content>
-        <tw-button variant="text" (click)="toggleDialog(13)" className="hidden sm:block absolute top-2 right-0">
-          <svg class="text-gray-500 hover:text-gray-600 dark:hover:text-gray-400" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24" fill="currentColor">
+        <tw-button tw-icon variant="text" size="lg" (click)="toggleDialog(13)" className="hidden sm:block absolute top-3 right-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd"
               d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
               clip-rule="evenodd" />
@@ -624,8 +619,8 @@
         </tw-button>
       </tw-dialog-panel>
       <tw-dialog-actions>
-        <tw-button (click)="toggleDialog(13)" className="w-full rounded-3xl">Install</tw-button>
-        <tw-button (click)="close(13)" variant="secondary" className="w-full rounded-3xl border-none">Cancel</tw-button>
+        <tw-button (click)="toggleDialog(13)" className="rounded-full">Install</tw-button>
+        <tw-button (click)="close(13)" variant="secondary" className="rounded-full border-none">Cancel</tw-button>
       </tw-dialog-actions>
     </tw-modal-dialog>
   </div>
