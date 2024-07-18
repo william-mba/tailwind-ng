@@ -7,7 +7,7 @@ import { NgIf } from '@angular/common';
 
 /**Modal Dialog component */
 @Component({
-  selector: 'tw-modal-dialog',
+  selector: 'tw-dialog',
   imports: [NgIf],
   standalone: true,
   styleUrls: ['./modal-dialog.component.css'],
@@ -51,9 +51,9 @@ import { NgIf } from '@angular/common';
     ])
   ]
 })
-export class ModalDialog implements OnInit {
+export class DialogContainer implements OnInit {
   private _config = inject(ConfigService<ModalDialogConfig>);
-  protected style!: string;
+  protected config!: string;
   @Input() className!: string;
   @Input() scrim!: string;
   @Input() backdrop!: string;
@@ -63,7 +63,7 @@ export class ModalDialog implements OnInit {
     this._config.set(ModalDialogConfigKey, ModalDialogConfig)
       .get(ModalDialogConfigKey).subscribe((conf) => {
         let base = toClassName(conf.container);
-        this.style = resolveClassName(base, this.className);
+        this.config = resolveClassName(base, this.className);
         base = toClassName(conf.scrim);
         this.scrim = resolveClassName(base, this.scrim);
         base = toClassName(conf.backdrop);

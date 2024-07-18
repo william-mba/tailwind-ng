@@ -3,7 +3,7 @@
 <!-- Scrim -->
 <div *ngIf="open" @dialogAnimation [className]="scrim">
   <!-- Dialog Container -->
-  <div aria-labelledby="modal-title" role="dialog" aria-modal="true" [className]="style">
+  <div aria-labelledby="modal-title" role="dialog" aria-modal="true" [className]="config">
     <!-- Dialog Panel -->
     <ng-content select="tw-dialog-panel"></ng-content>
     <!-- Dialog Actions -->
