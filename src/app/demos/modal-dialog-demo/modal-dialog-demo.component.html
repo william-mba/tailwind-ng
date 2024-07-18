@@ -16,7 +16,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(6)">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(6)" (click)="close(6)">
+    <tw-dialog [open]="open(6)" (click)="close(6)">
       <tw-dialog-panel>
         <tw-dialog-content>
           <h3 class="text-base font-semibold leading-6" id="modal-title">
@@ -30,7 +30,7 @@
       <tw-dialog-actions>
         <tw-button>OK</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="simpleNotificationDialog"></demo-code-snippet>
 
@@ -40,7 +40,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(0)">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(0)" (click)="close(0)">
+    <tw-dialog [open]="open(0)" (click)="close(0)">
       <tw-dialog-panel>
         <tw-dialog-icon className="text-red-600">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -63,7 +63,7 @@
         <tw-button className="bg-red-600">Deactivate</tw-button>
         <tw-button variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="simpleDialogWithIcon"></demo-code-snippet>
 
@@ -73,7 +73,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(1)">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(1)" className="divide-y divide-gray-200 dark:divide-neutral-900">
+    <tw-dialog [open]="open(1)" className="divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
         <tw-dialog-icon className="text-red-600">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -96,7 +96,7 @@
         <tw-button className="bg-red-600">Deactivate</tw-button>
         <tw-button (click)="close(1)" variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="simpleDialogWithGrayFooter"></demo-code-snippet>
 
@@ -106,7 +106,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(2)">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(2)" (click)="close(2)">
+    <tw-dialog [open]="open(2)" (click)="close(2)">
       <tw-dialog-panel className="sm:-">
         <tw-dialog-icon className="text-green-600 bg-green-600/15">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -128,7 +128,7 @@
       <tw-dialog-actions>
         <tw-button className="w-full">Go back to dashboard</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="centeredDialogWithSingleAction"></demo-code-snippet>
 
@@ -138,7 +138,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(3)">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(3)" (click)="close(3)">
+    <tw-dialog [open]="open(3)" (click)="close(3)">
       <tw-dialog-panel className="sm:-">
         <tw-dialog-icon className="text-green-600 bg-green-600/15">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -162,7 +162,7 @@
         <tw-button className="w-full">Deactivate</tw-button>
         <tw-button variant="secondary" className="w-full">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="centeredDialogWithWideButton"></demo-code-snippet>
 
@@ -172,7 +172,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(4)">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(4)">
+    <tw-dialog [open]="open(4)">
       <tw-dialog-panel>
         <tw-dialog-icon className="text-red-600">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -203,7 +203,7 @@
         <tw-button (click)="toggleDialog(4)" className="bg-red-600">Deactivate</tw-button>
         <tw-button (click)="close(4)" variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="simpleDialogWithDismissButton"></demo-code-snippet>
 
@@ -213,7 +213,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(5)">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(5)">
+    <tw-dialog [open]="open(5)">
       <tw-dialog-panel className="pb-0 sm:- gap-0">
         <tw-dialog-content className="pb-0 h-96">
           <h1 class="text-2xl border-none pb-3" id="modal-title">
@@ -313,7 +313,7 @@
         <tw-button (click)="toggleDialog(5)">Install</tw-button>
         <tw-button (click)="close(5)" variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="dialogScrollable"></demo-code-snippet>
 
@@ -326,7 +326,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(7)" className="rounded-full">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(7)" (click)="close(7)" className="rounded-3xl">
+    <tw-dialog [open]="open(7)" (click)="close(7)" className="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-content>
           <h3 class="text-base font-semibold leading-6" id="modal-title">
@@ -340,7 +340,7 @@
       <tw-dialog-actions>
         <tw-button className="rounded-3xl">OK</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedSimpleNotificationDialog"></demo-code-snippet>
 
@@ -350,7 +350,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(8)" className="rounded-full">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(8)" (click)="close(8)" className="rounded-3xl">
+    <tw-dialog [open]="open(8)" (click)="close(8)" className="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-icon className="text-red-600">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -373,7 +373,7 @@
         <tw-button className="bg-red-600 rounded-full">Deactivate</tw-button>
         <tw-button variant="secondary" className="rounded-full">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithIcon"></demo-code-snippet>
 
@@ -383,7 +383,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(9)" className="rounded-full">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(9)" className="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
+    <tw-dialog [open]="open(9)" className="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
         <tw-dialog-icon className="text-red-600">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -406,7 +406,7 @@
         <tw-button className="rounded-full bg-red-600">Deactivate</tw-button>
         <tw-button (click)="close(9)" variant="secondary" className="rounded-full">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithGrayFooter"></demo-code-snippet>
 
@@ -416,7 +416,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(10)" className="rounded-full">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(10)" (click)="close(10)" className="rounded-3xl">
+    <tw-dialog [open]="open(10)" (click)="close(10)" className="rounded-3xl">
       <tw-dialog-panel className="sm:-">
         <tw-dialog-icon className="text-green-600 bg-green-600/15">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -438,7 +438,7 @@
       <tw-dialog-actions>
         <tw-button className="rounded-full w-full">Go back to dashboard</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedCenteredDialogWithSingleAction"></demo-code-snippet>
 
@@ -448,7 +448,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(11)" className="rounded-full">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(11)" (click)="close(11)" className="rounded-3xl">
+    <tw-dialog [open]="open(11)" (click)="close(11)" className="rounded-3xl">
       <tw-dialog-panel className="sm:-">
         <tw-dialog-icon className="text-green-600 bg-green-600/15">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -471,7 +471,7 @@
         <tw-button className="rounded-full w-full">Deactivate</tw-button>
         <tw-button variant="secondary" className="rounded-full w-full">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedCenteredDialogWithWideButton"></demo-code-snippet>
 
@@ -481,7 +481,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(12)" className="rounded-full">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(12)" className="rounded-3xl">
+    <tw-dialog [open]="open(12)" className="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-icon className="text-red-600">
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -513,7 +513,7 @@
         <tw-button (click)="toggleDialog(12)" className="rounded-full bg-red-600">Deactivate</tw-button>
         <tw-button (click)="close(12)" variant="secondary" className="rounded-full">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithDismissButton"></demo-code-snippet>
 
@@ -523,7 +523,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(13)" className="rounded-full">Open dialog</tw-button>
-    <tw-modal-dialog [open]="open(13)" className="rounded-3xl">
+    <tw-dialog [open]="open(13)" className="rounded-3xl">
       <tw-dialog-panel className="pb-0 sm:- gap-0">
         <tw-dialog-content className="pb-0 h-96">
           <h1 class="text-2xl border-none pb-3" id="modal-title">
@@ -610,7 +610,8 @@
             </p>
           </div>
         </tw-dialog-content>
-        <tw-button tw-icon variant="text" size="lg" (click)="toggleDialog(13)" className="hidden sm:block absolute top-3 right-3">
+        <tw-button tw-icon variant="text" size="lg" (click)="toggleDialog(13)"
+          className="hidden sm:block absolute top-3 right-3">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd"
               d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
@@ -622,7 +623,7 @@
         <tw-button (click)="toggleDialog(13)" className="rounded-full">Install</tw-button>
         <tw-button (click)="close(13)" variant="secondary" className="rounded-full border-none">Cancel</tw-button>
       </tw-dialog-actions>
-    </tw-modal-dialog>
+    </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedDialogScrollable"></demo-code-snippet>
 </div>
