@@ -58,7 +58,7 @@ export class DropdownContent implements OnInit {
     ])
   ]
 })
-export class Dropdown implements OnInit {
+export class DropdownContainer implements OnInit {
   private _configService = inject(ConfigService<DropdownConfig>);
   protected config!: string;
 

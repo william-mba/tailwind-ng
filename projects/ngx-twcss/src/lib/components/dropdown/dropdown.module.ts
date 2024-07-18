@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Dropdown, DropdownContent } from './dropdown.component';
+import { DropdownContainer, DropdownContent } from './dropdown.component';
 
 @NgModule({
   imports: [
-    Dropdown,
+    DropdownContainer,
     DropdownContent
   ],
   exports: [
-    Dropdown,
+    DropdownContainer,
     DropdownContent
   ]
 })
-export class DropdownModule { }
+export class Dropdown { }
