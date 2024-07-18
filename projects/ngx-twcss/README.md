@@ -100,10 +100,14 @@ For ``standalone`` components, import components in your *.component.ts file
   standalone: true,
   imports: [
     ...
-    // Some imported components
-    PrimaryButton,
-    SecondaryButton,
-    ButtonGroup
+    // Some components
+    Button,
+    Icon,
+    ButtonGroup,
+    Dropdown,
+    Badge,
+    Avatar,
+    ModalDialog
   ],
   ...
 })
@@ -121,10 +125,14 @@ For ``NgModule`` based components, import components in your *.module.ts file
     ],
     imports: [
       ...
-      // Some imported components
-      PrimaryButton,
-      SecondaryButton,
-      ButtonGroup
+      // Some components
+      Button,
+      Icon,
+      ButtonGroup,
+      Dropdown,
+      Badge,
+      Avatar,
+      ModalDialog
     ],
     bootstrap: [AppComponent]
   })
