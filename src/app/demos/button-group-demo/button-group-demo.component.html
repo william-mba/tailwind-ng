@@ -69,18 +69,22 @@
       <tw-button variant="secondary" className="rounded-l-md">
         Save changes
       </tw-button>
-      <div class="*:h-full">
-        <tw-button variant="secondary" className="rounded-r-md" (click)="toggle(4)">
-          <svg *ngIf="!open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+      <div>
+        <tw-button variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown(0)">
+          <svg *ngIf="!open(0)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
-          <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+          <svg *ngIf="open(0)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown [open]="open(4)">
+        <tw-dropdown [open]="open(0)" (click)="toggleDropdown(0)"
+          className="shadow-lg *:justify-start *:rounded-none *:shadow-none">
           <ng-container *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
-            <tw-button variant="secondary" className="rounded- ring- shadow- justify-start" (click)="toggle(4)">{{ item }}</tw-button>
+            <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+              variant="text">
+              {{ item }}
+            </tw-button>
           </ng-container>
         </tw-dropdown>
       </div>
@@ -188,8 +192,8 @@
       <tw-button variant="secondary" className="rounded-l-full">
         Save changes
       </tw-button>
-      <div class="*:h-full">
-        <tw-button variant="secondary" className="rounded-r-full" (click)="toggle(4)">
+      <div>
+        <tw-button variant="secondary" className="rounded-r-full h-full" (click)="toggleDropdown(4)">
           <svg *ngIf="!open(4)" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
@@ -197,9 +201,11 @@
             <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
-        <tw-dropdown [open]="open(4)" className="rounded-3xl p-1.5">
+        <tw-dropdown [open]="open(4)" (click)="toggleDropdown(4)"
+          className="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
           <ng-container *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
-            <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full" (click)="toggle(4)">
+            <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+              variant="text">
               {{ item }}
             </tw-button>
           </ng-container>

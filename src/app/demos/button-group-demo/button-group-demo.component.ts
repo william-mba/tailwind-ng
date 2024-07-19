@@ -6,23 +6,13 @@ import { Component } from '@angular/core';
 })
 export class ButtonGroupDemoComponent {
 
-  items = [
-    'Save as draft',
-    'Save and publish',
-    'Save and close'
-  ];
-
-  states: Record<number, boolean> = {
-    1: false,
-    2: false,
-    3: false
-  }
+  states: Record<number, boolean> = { }
 
   open(key: number) {
     return this.states[key];
   }
 
-  toggle(key: number) {
+  toggleDropdown(key: number) {
     this.states[key] = !this.states[key];
   }
 
@@ -54,14 +44,24 @@ export class ButtonGroupDemoComponent {
   <tw-button variant="secondary" className="rounded-l-md">
     Save changes
   </tw-button>
-  <tw-dropdown [open]="open()" (click)="toggle()">
-    <tw-button variant="secondary" className="rounded-r-md">
-      <!-- svg -->
+  <div>
+    <tw-button variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown()">
+      <svg *ngIf="!open" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="M480-360 280-560h400L480-360Z" />
+      </svg>
+      <svg *ngIf="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="m280-400 200-200 200 200H280Z" />
+      </svg>
     </tw-button>
-    <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
-      <tw-button variant="secondary" className="rounded- ring- shadow- justify-start">{{ item }}</tw-button>
-    </tw-dropdown-content>
-  </tw-dropdown>
+    <tw-dropdown [open]="open" (click)="toggleDropdown()" className="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+      <ng-container *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+        <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+          variant="text">
+          {{ item }}
+        </tw-button>
+      </ng-container>
+    </tw-dropdown>
+  </div>
 </tw-button-group>`;
 
   withStats = `<tw-button-group>
@@ -114,14 +114,23 @@ export class ButtonGroupDemoComponent {
 
   roundedWithDropdown = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-full">Save changes</tw-button>
-  <tw-dropdown [open]="open()" (click)="toggle()" className="rounded-3xl p-1.5">
-    <tw-button variant="secondary" className="rounded-r-full">
-      <!-- ... -->
+  <div>
+    <tw-button variant="secondary" className="rounded-r-full h-full" (click)="toggleDropdown()">
+      <svg *ngIf="!open" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
+        <path d="M480-360 280-560h400L480-360Z" />
+      </svg>
+      <svg *ngIf="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <path d="m280-400 200-200 200 200H280Z" />
+      </svg>
     </tw-button>
-    <tw-dropdown-content *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
-      <tw-button variant="secondary" className="shadow- ring- justify-start rounded-full">{{ item }}</tw-button>
-    </tw-dropdown-content>
-  </tw-dropdown>
+    <tw-dropdown [open]="open" (click)="toggleDropdown()" className="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
+      <ng-container *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
+        <tw-button variant="text" className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+          {{ item }}
+        </tw-button>
+      </ng-container>
+    </tw-dropdown>
+  </div>
 </tw-button-group>`;
 
   roundedWithStats = `<tw-button-group>

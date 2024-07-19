@@ -12,7 +12,7 @@ export class DropdownDemoComponent {
     return this.states[key];
   }
 
-  toggle(key: number) {
+  toggleDropdown(key: number) {
     this.states[key] = !this.states[key];
   }
   simple = `<tw-dropdown [open]="open" (click)="toggle()" className="shadow-lg">

@@ -16,7 +16,7 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <div>
-      <tw-button variant="secondary" (click)="toggle(0)">
+      <tw-button variant="secondary" (click)="toggleDropdown(0)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -24,7 +24,7 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(0)" (click)="toggle(0)"
+      <tw-dropdown [open]="open(0)" (click)="toggleDropdown(0)"
         className="shadow-lg *:justify-start *:rounded-none *:shadow-none">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
           <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
@@ -43,7 +43,7 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[450px]">
     <div>
-      <tw-button variant="secondary" (click)="toggle(1)">
+      <tw-button variant="secondary" (click)="toggleDropdown(1)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -51,7 +51,7 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(1)" (click)="toggle(1)"
+      <tw-dropdown [open]="open(1)" (click)="toggleDropdown(1)"
         className="shadow-lg divide-y divide-black/5 dark:divide-white/5">
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
@@ -100,7 +100,7 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[450px]">
     <div>
-      <tw-button variant="secondary" (click)="toggle(2)">
+      <tw-button variant="secondary" (click)="toggleDropdown(2)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -108,7 +108,7 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(2)" (click)="toggle(2)"
+      <tw-dropdown [open]="open(2)" (click)="toggleDropdown(2)"
         className="shadow-lg divide-y divide-black/5 dark:divide-white/5">
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
@@ -196,14 +196,14 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <div>
-      <tw-button tw-icon variant="text" (click)="toggle(3)">
+      <tw-button tw-icon variant="text" (click)="toggleDropdown(3)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
           <path fill-rule="evenodd"
             d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(3)" (click)="toggle(3)"
+      <tw-dropdown [open]="open(3)" (click)="toggleDropdown(3)"
         className="shadow-lg *:justify-start *:rounded-none *:shadow-none">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
           <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
@@ -225,7 +225,7 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <div>
-      <tw-button variant="secondary" className="rounded-3xl" (click)="toggle(4)">
+      <tw-button variant="secondary" className="rounded-3xl" (click)="toggleDropdown(4)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -233,7 +233,7 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(4)" (click)="toggle(4)"
+      <tw-dropdown [open]="open(4)" (click)="toggleDropdown(4)"
         className="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
           <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
@@ -252,7 +252,7 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[450px]">
     <div>
-      <tw-button variant="secondary" className="rounded-3xl" (click)="toggle(5)">
+      <tw-button variant="secondary" className="rounded-3xl" (click)="toggleDropdown(5)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -260,7 +260,7 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(5)" (click)="toggle(5)"
+      <tw-dropdown [open]="open(5)" (click)="toggleDropdown(5)"
         className="rounded-3xl shadow-lg divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
         <div class="flex flex-col p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
@@ -309,7 +309,7 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[450px]">
     <div>
-      <tw-button variant="secondary" className="rounded-3xl" (click)="toggle(6)">
+      <tw-button variant="secondary" className="rounded-3xl" (click)="toggleDropdown(6)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -317,7 +317,7 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(6)" (click)="toggle(6)"
+      <tw-dropdown [open]="open(6)" (click)="toggleDropdown(6)"
         className="rounded-3xl shadow-lg *:justify-start divide-y divide-black/5 dark:divide-white/5 *:rounded-none *:shadow-none">
         <div class="flex flex-col p-2 *:p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
@@ -405,14 +405,14 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-72">
     <div>
-      <tw-button tw-icon variant="text" className="rounded-3xl" (click)="toggle(7)">
+      <tw-button tw-icon variant="text" className="rounded-3xl" (click)="toggleDropdown(7)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
           <path fill-rule="evenodd"
             d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(7)" (click)="toggle(7)"
+      <tw-dropdown [open]="open(7)" (click)="toggleDropdown(7)"
         className="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
           <tw-button variant="text"
