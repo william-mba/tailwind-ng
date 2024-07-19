@@ -10,7 +10,6 @@ export * from './lib/components/button/button.config';
 export * from './lib/components/button-group/button-group';
 export * from './lib/components/dropdown/dropdown.component';
 export * from './lib/components/dropdown/dropdown.config';
-export * from './lib/components/dropdown/dropdown.module';
 export * from './lib/components/badge/badge';
 export * from './lib/components/avatar/avatar';
 export * from './lib/components/modal-dialog/modal-dialog.component';

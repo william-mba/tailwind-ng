@@ -1,29 +1,9 @@
-import { Component, Directive, ElementRef, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
 import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
 import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { NgIf } from '@angular/common';
-
-/** Dropdown content component */
-@Directive({
-  selector: 'tw-dropdown-content',
-  standalone: true
-})
-export class DropdownContent implements OnInit {
-  private _config = inject(ConfigService<DropdownConfig>);
-
-  @Input() className!: string;
-
-  constructor(public el: ElementRef) { }
-
-  ngOnInit(): void {
-    this._config.get(DropdownConfigKey).subscribe((conf) => {
-      const style = resolveClassName(toClassName(conf.content), this.className);
-      this.el.nativeElement.className = style;
-    });
-  }
-}
 
 /** Dropdown component */
 @Component({
@@ -31,12 +11,9 @@ export class DropdownContent implements OnInit {
   standalone: true,
   imports: [NgIf],
   host: {
-    class: 'relative inline-flex'
+    class: 'relative'
   },
-  template: `<ng-content></ng-content>
-    <div @dropdownAnimation *ngIf="open" [className]="config">
-      <ng-content select="tw-dropdown-content"></ng-content>
-    </div>`,
+  template: `<div @dropdownAnimation *ngIf="open" [className]="config"><ng-content></ng-content></div>`,
   animations: [
     trigger('dropdownAnimation', [
       transition(':enter', [
@@ -58,7 +35,7 @@ export class DropdownContent implements OnInit {
     ])
   ]
 })
-export class DropdownContainer implements OnInit {
+export class Dropdown implements OnInit {
   private _configService = inject(ConfigService<DropdownConfig>);
   protected config!: string;
 
@@ -67,8 +44,8 @@ export class DropdownContainer implements OnInit {
 
   ngOnInit(): void {
     this._configService.set(DropdownConfigKey, DropdownConfig)
-    this._configService.get(DropdownConfigKey).subscribe((conf) => {
-      this.config = resolveClassName(toClassName(conf.container), this.className);
-    });
+      .get(DropdownConfigKey).subscribe((conf) => {
+        this.config = resolveClassName(toClassName(conf), this.className);
+      });
   }
 }
