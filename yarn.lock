@@ -7079,14 +7079,14 @@ __metadata:
   linkType: soft
 
 "ngx-twcss@file:dist/ngx-twcss::locator=ngx-twcss-playground%40workspace%3A.":
-  version: 0.0.64
-  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=39cf7a&locator=ngx-twcss-playground%40workspace%3A."
+  version: 0.0.65
+  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=471df7&locator=ngx-twcss-playground%40workspace%3A."
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
     "@angular/common": ^17.3.0
     "@angular/core": ^17.3.0
-  checksum: 10c0/119549ca10b7565df5813ac8d44e6d94fdb195be12e9d5b124f737b98a7f822337ded696baa38b4042fed3704c5df30c499a76e0b22d2f22813f3792cba8c596
+  checksum: 10c0/b46d227a91e99dbbb087fbe338b8f27722d1b3de7af41b8672800171aa1b845eafac928492b64b106b8c1fb8d9beed1d480094746e33db00444a8955a8c6f11c
   languageName: node
   linkType: hard
 
