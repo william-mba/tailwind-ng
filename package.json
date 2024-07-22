@@ -8,7 +8,7 @@
     "build:demo": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --project ngx-twcss --code-coverage",
-    "test:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage",
+    "test:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage  --browsers=ChromeHeadless",
     "test:demo": "ng test",
     "publish": "yarn build && cd dist/ngx-twcss && npm publish",
     "tw": "yarn build-lib && yarn && yarn start"
@@ -25,7 +25,7 @@
     "@angular/router": "^17.3.0",
     "highlight.js": "^11.10.0",
     "ngx-highlightjs": "^12.0.0",
-    "ngx-twcss": "file:dist/ngx-twcss",
+    "ngx-twcss": "^0.0.x",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
