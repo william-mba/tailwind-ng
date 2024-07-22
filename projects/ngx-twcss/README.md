@@ -16,6 +16,8 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 - [Roadmap](https://github.com/William-Mba/ngx-twcss/blob/main/docs/roadmap.md)
 - [Components docs](https://github.com/William-Mba/ngx-twcss/tree/main/docs/components)
 - [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss)
+---
+[![Build Status](https://dev.azure.com/ecologiciel/Ngx-twcss/_apis/build/status%2Fngx-twcss-ci?branchName=main)](https://dev.azure.com/ecologiciel/Ngx-twcss/_build/latest?definitionId=1&branchName=main)
 
 ## Quick start
 
