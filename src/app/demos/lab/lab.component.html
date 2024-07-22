@@ -1,71 +1,404 @@
 <div
   class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-700 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
-  <h2 class="text-lg font-semibold mt-12">
-    With three buttons
-  </h2>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button [style]="'inline-flex items-stretch *:self-stretch'">
-      <tw-button variant="secondary" className="rounded-l-md"> Years </tw-button>
-      <tw-button variant="secondary" className="rounded-none"> Months </tw-button>
-      <tw-button variant="secondary" className="rounded-r-md"> Days </tw-button>
-    </tw-button>
-  </div>
+    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
 
-  <h2 class="text-lg font-semibold mt-20">
-    With dropdown
-  </h2>
-  <div
-    class="grid grid-cols-1 sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <div>
-      <tw-button variant="secondary" className="rounded-l-md">
-        Save changes
+    <div class="relative mt-20">
+      <input
+        class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm leading-6"
+        role="combobox" type="text" aria-expanded="true" aria-autocomplete="list" value=""
+        aria-labelledby="effortlessui-label-:r2:" data-open="" aria-controls="effortlessui-combobox-options-:r5:">
+      <tw-button variant="secondary" className="absolute inset-y-0 right-0 rounded-r-md">
+        Options
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+            clip-rule="evenodd"></path>
+        </svg>
       </tw-button>
-      <tw-dropdown [open]="true">
-        <tw-button tw-icon variant="secondary" className="rounded-r-md h-full">
-          <svg *ngIf="!true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-            <path d="M480-360 280-560h400L480-360Z" />
-          </svg>
-          <svg *ngIf="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-            <path d="m280-400 200-200 200 200H280Z" />
-          </svg>
-        </tw-button>
-        <tw-dropdown-content *ngFor="let item of [ 'Item A', 'Item B', 'Item C']">
-          <tw-button variant="secondary" className="rounded- border- shadow- justify-start">
-            {{ item }}
-          </tw-button>
-        </tw-dropdown-content>
+      <tw-dropdown [open]="true" className="shadow-lg h-64 overflow-auto *:justify-start *:rounded-none *:shadow-none">
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra0:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Leslie Alexander</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd">
+              </path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra1:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Michael Foster</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra2:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Dries Vincent</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra3:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Lindsay Walton</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra4:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Courtney Henry</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra5:" role="option" tabindex="-1" aria-selected="true"
+          data-effortlessui-state="selected" data-selected="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Tom Cook</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra6:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Whitney Francis</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra7:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Leonard Krasner</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra8:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Floyd Miles</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra9:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Emily Selman</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:raa:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Kristin Watson</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:rab:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Emma Dorsey</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
       </tw-dropdown>
-    </div>
-    <div>
-      <tw-button variant="secondary" className="rounded-l-md">
-        Save changes
-      </tw-button>
-      <tw-dropdown [open]="true">
-        <tw-button tw-icon variant="secondary" className="rounded-r-md h-full">
-          <svg *ngIf="!true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
-            <path d="M480-360 280-560h400L480-360Z" />
-          </svg>
-          <svg *ngIf="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-            <path d="m280-400 200-200 200 200H280Z" />
-          </svg>
-        </tw-button>
-        <tw-dropdown-content *ngFor="let item of [ 'Item A', 'Item B', 'Item C']">
-          <tw-button variant="secondary" className="rounded- border- shadow- justify-start">
-            {{ item }}
-          </tw-button>
-        </tw-dropdown-content>
-      </tw-dropdown>
-    </div>
-  </div>
 
-
-  <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button [style]="'inline-flex items-stretch *:self-stretch'">
-      <tw-button variant="secondary" className="rounded-l-md"> Years </tw-button>
-      <tw-button variant="secondary" className="rounded-none"> Months </tw-button>
-      <tw-button variant="secondary" className="rounded-r-md"> Days </tw-button>
-    </tw-button>
+      <!-- <button class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none"
+        id="effortlessui-combobox-button-:r4:" type="button" tabindex="-1" aria-haspopup="listbox" aria-expanded="true"
+        data-effortlessui-state="open active"
+        aria-labelledby="effortlessui-label-:r2: effortlessui-combobox-button-:r4:" data-active="" data-open=""
+        aria-controls="effortlessui-combobox-options-:r5:">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+          class="size-5 text-gray-400">
+          <path fill-rule="evenodd"
+            d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <div
+        class="absolute h-64 z-10 mt-1 max-w-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+        aria-labelledby="effortlessui-label-:r2: effortlessui-combobox-button-:r4:" role="listbox"
+        id="effortlessui-combobox-options-:r5:" data-effortlessui-state="open" data-open=""
+        style="--input-width: 319.9896545410156px; --button-width: 35.97623825073242px;">
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra0:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Leslie Alexander</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd">
+              </path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra1:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Michael Foster</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra2:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Dries Vincent</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra3:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Lindsay Walton</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra4:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Courtney Henry</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra5:" role="option" tabindex="-1" aria-selected="true"
+          data-effortlessui-state="selected" data-selected="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Tom Cook</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra6:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Whitney Francis</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra7:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Leonard Krasner</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra8:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Floyd Miles</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:ra9:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Emily Selman</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:raa:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Kristin Watson</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+        <div
+          class="visible relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+          id="effortlessui-combobox-option-:rab:" role="option" tabindex="-1" aria-selected="false"
+          data-effortlessui-state="">
+          <span class="block text-ellipsis data-[selected]:font-semibold">Emma Dorsey</span>
+          <span
+            class="absolute inset-y-0 right-0 hidden items-center pr-4 text-indigo-600 data-[selected]:flex data-[focus]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+              class="size-5">
+              <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </div>
+      </div> -->
+    </div>
   </div>
 </div>
