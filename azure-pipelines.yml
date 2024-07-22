@@ -1,6 +1,8 @@
 trigger:
 - main
 
+name: Continuous Integration
+
 pool:
   name: Continuous Integration
   demands:
