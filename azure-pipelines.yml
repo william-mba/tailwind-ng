@@ -7,9 +7,9 @@ pool:
     - Agent.OS -equals Linux
 
 stages:
-  - stage: Build-Test-Publish
+  - stage: CI
     jobs:
-      - job: Build-Test-Publish
+      - job: Build_Test_Publish
         steps:
           - bash: |
               yarn install
