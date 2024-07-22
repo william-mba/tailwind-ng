@@ -15,8 +15,8 @@ stages:
               sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
               yarn install
             displayName: "Setup"
-            # env:
-            #   YARN_ENABLE_IMMUTABLE_INSTALLS: false
+            env:
+              YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
           - script: |
               yarn build
