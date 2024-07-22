@@ -8,10 +8,14 @@ pool:
 
 steps:
 - script: |
-    npm install -g @angular/cli@17
-    yarn
+    yarn build-lib
+    yarn build-demo
+  displayName: 'Build'
+
+- script: |
     yarn test-lib
-  displayName: 'Run tests'
+    yarn test-demo
+  displayName: 'Test'
 
 - script: |
     yarn publish
