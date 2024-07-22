@@ -20,8 +20,8 @@ steps:
   displayName: 'Build'
 
 - script: |
-    yarn test-lib --watch=false --no-progress --browsers=ChromeHeadless
-    yarn test-demo --watch=false --no-progress --browsers=ChromeHeadless
+    yarn test-lib --watch=false --no-progress --browsers=Chrome
+    yarn test-demo --watch=false --no-progress --browsers=Chrome
   displayName: 'Test'
 
 - script: |
