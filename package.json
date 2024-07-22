@@ -8,7 +8,9 @@
     "build-demo": "ng build",
     "watch": "ng build --watch --configuration development",
     "test-lib": "ng test --project ngx-twcss --code-coverage",
+    "test-lib:ci": "ng test --project ngx-twcss --code-coverage --watch=false --no-progress --browsers=Chrome",
     "test-demo": "ng test",
+    "test-demo:ci": "ng test --code-coverage --watch=false --no-progress --browsers=Chrome",
     "publish": "yarn build-lib && cd dist/ngx-twcss && npm publish",
     "tw": "yarn build-lib && yarn && yarn start",
     "ci": "yarn test-lib && yarn build-lib"
