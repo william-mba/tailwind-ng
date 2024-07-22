@@ -6,6 +6,10 @@
 /out-tsc
 /bazel-out
 
+# Test results
+coverage
+junit
+
 # Node
 /node_modules
 npm-debug.log

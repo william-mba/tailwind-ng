@@ -4,16 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build-lib": "ng build --project ngx-twcss",
-    "build-demo": "ng build",
+    "build": "ng build --project ngx-twcss",
+    "build:demo": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test-lib": "ng test --project ngx-twcss --code-coverage",
-    "test-lib:ci": "ng test --project ngx-twcss --code-coverage --watch=false --no-progress --browsers=Chrome",
-    "test-demo": "ng test",
-    "test-demo:ci": "ng test --code-coverage --watch=false --no-progress --browsers=Chrome",
-    "publish": "yarn build-lib && cd dist/ngx-twcss && npm publish",
-    "tw": "yarn build-lib && yarn && yarn start",
-    "ci": "yarn test-lib && yarn build-lib"
+    "test": "ng test --project ngx-twcss --code-coverage",
+    "test:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage",
+    "test:demo": "ng test",
+    "publish": "yarn build && cd dist/ngx-twcss && npm publish",
+    "tw": "yarn build-lib && yarn && yarn start"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +36,7 @@
     "@angular/compiler-cli": "^17.3.0",
     "@tailwindcss/forms": "^0.5.7",
     "@types/jasmine": "~5.1.0",
+    "@types/karma-junit-reporter": "^2",
     "autoprefixer": "^10.4.19",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
@@ -45,8 +44,10 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "karma-junit-reporter": "^2.0.1",
     "ng-packagr": "^17.3.0",
     "postcss": "^8.4.38",
+    "puppeteer": "^22.13.1",
     "tailwindcss": "^3.4.4",
     "typescript": "~5.4.2"
   },
