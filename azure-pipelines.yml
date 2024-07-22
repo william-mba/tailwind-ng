@@ -16,14 +16,25 @@ steps:
 
 - script: |
     yarn build-lib
-    yarn build-demo
-  displayName: 'Build'
+  displayName: '[Lib] Build'
 
 - script: |
-    yarn test-lib --watch=false --no-progress --browsers=Chrome
-    yarn test-demo --watch=false --no-progress --browsers=Chrome
-  displayName: 'Test'
+    yarn test-lib:ci
+  displayName: '[Lib] Test'
+
+- script: |
+    yarn build-demo
+  displayName: '[Demo] Build'
+
+- script: |
+    yarn test-demo:ci
+  displayName: '[Demo] Test'
 
 - script: |
     yarn publish
-  displayName: 'Publish'
+  displayName: '[Lib] Publish'
+
+# - script: |
+#     yarn test-lib:ci
+#     yarn test-demo:ci
+#   displayName: '[Demo] Publish'
