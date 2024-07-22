@@ -7,6 +7,11 @@ pool:
   - Agent.OS -equals Linux
 
 steps:
+- bash: |
+    sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
+    yarn
+  displayName: 'Setup'
+
 - script: |
     yarn build-lib
     yarn build-demo
