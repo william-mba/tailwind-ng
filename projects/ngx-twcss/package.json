@@ -1,6 +1,6 @@
 {
   "name": "ngx-twcss",
-  "version": "0.0.66",
+  "version": "0.0.0-placeholder",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -28,5 +28,5 @@
   "bugs": {
     "url": "https://github.com/William-Mba/ngx-twcss/issues"
   },
-  "homepage": "https://github.com/William-Mba/ngx-twcss?tab=readme-ov-file"
+  "homepage": "https://ngx-twcss.williammba.com"
 }
