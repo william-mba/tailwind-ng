@@ -14,7 +14,7 @@ variables:
   - name: Release
     value: $(MajorMinor).$(Patch)
 
-name: $(Build.DefinitionName)_${{variables.Release}}
+name: $(Build.DefinitionName)-${{variables.Release}}
 
 stages:
   - stage: Release
