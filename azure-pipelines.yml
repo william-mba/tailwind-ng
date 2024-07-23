@@ -21,8 +21,8 @@ stages:
         steps:
           - bash: |
               sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
-              sed 's/0.0.66/$(Release)/g' -i projects/ngx-twcss/package.json
-              echo "Release $(cat projects/ngx-twcss/package.json | grep version)"
+              sed 's/0.0.0-placeholder/$(Release)/g' -i projects/ngx-twcss/package.json
+              echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
               yarn
             displayName: "Setup"
             env:
@@ -33,6 +33,7 @@ stages:
             displayName: "Build"
 
           - script: |
+              Xvfb -ac :0 -screen 0 1280x1024x16 & export DISPLAY=:0
               yarn test:ci
             displayName: "Test"
 
