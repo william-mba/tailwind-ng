@@ -37,8 +37,8 @@ stages:
               yarn test:ci
             displayName: "Test"
 
-          - script: |
-              yarn publish
-            displayName: "Publish"
-            env:
-              NPM_TOKEN: $(authToken)
+          - task: Npm@1
+            inputs:
+              command: 'publish'
+              workingDir: 'dist/ngx-twcss'
+              publishEndpoint: 'ngx-twcss-rw'
