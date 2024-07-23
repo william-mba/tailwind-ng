@@ -43,4 +43,19 @@ stages:
               npm config set //registry.npmjs.org/:_authToken=$(authToken)
               cd dist/ngx-twcss
               npm publish
-            displayName: "Publish"
+            displayName: "Publish package"
+            
+          - task: PublishTestResults@2
+            displayName: 'Publish test results'
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/TESTS-*.xml'
+              searchFolder: '$(Build.SourcesDirectory)'
+              mergeTestResults: true
+              testRunTitle: 'Test-results-$(Build.DefinitionName)-$(Release)'
+
+          - task: PublishCodeCoverageResults@2
+            displayName: 'Publish code coverage'
+            inputs:
+              summaryFileLocation: '$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml'
+              pathToSources: '$(Build.SourcesDirectory)/coverage/ngx-twcss'
