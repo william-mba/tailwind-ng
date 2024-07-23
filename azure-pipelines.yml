@@ -15,7 +15,7 @@ variables:
     value: $(MajorMinor).$(Patch)
 
 stages:
-  - stage: CI
+  - stage: Release
     jobs:
       - job: Build_Test_Publish
         steps:
