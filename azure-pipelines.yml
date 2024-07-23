@@ -6,12 +6,22 @@ pool:
   demands:
     - Agent.OS -equals Linux
 
+variables:
+  - name: MajorMinor
+    value: "0.0"
+  - name: Patch
+    value: $[counter(variables.MajorMinor, 67)]
+  - name: Release
+    value: $(MajorMinor).$(Patch)
+
 stages:
   - stage: CI
     jobs:
       - job: Build_Test_Publish
         steps:
           - bash: |
+              sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
+              sed 's/0.0.66/$(Release)/g' -i projects/ngx-twcss/package.json
               yarn install
             displayName: "Setup"
             env:
@@ -28,3 +38,5 @@ stages:
           - script: |
               yarn publish
             displayName: "Publish"
+            env:
+              NPM_TOKEN: $(authToken)
