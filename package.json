@@ -8,7 +8,7 @@
     "build:demo": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --project ngx-twcss --code-coverage",
-    "test:ci": "ng test --project ngx-twcss --watch=false --no-progress --code-coverage  --browsers=ChromeHeadless",
+    "test:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage",
     "test:demo": "ng test",
     "publish": "yarn build && cd dist/ngx-twcss && npm publish",
     "tw": "yarn build-lib && yarn && yarn start"
