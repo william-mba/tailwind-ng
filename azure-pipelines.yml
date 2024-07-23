@@ -33,7 +33,7 @@ stages:
             displayName: "Build"
 
           - script: |
-              Xvfb -ac :0 -screen 0 1280x1024x16 & export DISPLAY=:0
+              Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
               yarn test:ci
             displayName: "Test"
 
