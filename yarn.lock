@@ -7343,9 +7343,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-twcss-playground@workspace:.":
+"ngx-twcss-demo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "ngx-twcss-playground@workspace:."
+  resolution: "ngx-twcss-demo@workspace:."
   dependencies:
     "@angular-devkit/build-angular": "npm:^17.3.8"
     "@angular/animations": "npm:^17.3.0"
