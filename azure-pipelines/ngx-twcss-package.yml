@@ -6,7 +6,7 @@ trigger:
       - feat/*
       - fix/*
   paths:
-    inlude:
+    include:
       - projects/ngx-twcss/src/*
       - azure-pipelines/*packages.yml
 
