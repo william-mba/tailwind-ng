@@ -80,7 +80,7 @@ stages:
 
             - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
                 - script: |
-                    release=$(Release)-next.$(git rev-parse --short HEAD)
+                    release=$(Release)-next.$(Build.SourceVersion)
                     sed 's/0.0.0-placeholder/$release/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
@@ -89,7 +89,7 @@ stages:
 
             - ${{ else }}:
                 - script: |
-                    release=$(Release)-insiders.$(git rev-parse --short HEAD)
+                    release=$(Release)-insiders.$(Build.SourceVersion)
                     sed 's/0.0.0-placeholder/$release/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
