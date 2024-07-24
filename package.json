@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --project ngx-twcss",
-    "build:demo": "ng build",
+    "build:package": "ng build --project ngx-twcss --configuration production",
+    "build:demo": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --project ngx-twcss --code-coverage",
-    "test:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage",
+    "test:package": "ng test --project ngx-twcss --code-coverage",
+    "test:package:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage",
     "test:demo": "ng test",
     "publish": "yarn build && cd dist/ngx-twcss && npm publish",
     "tw": "yarn build-lib && yarn && yarn start"

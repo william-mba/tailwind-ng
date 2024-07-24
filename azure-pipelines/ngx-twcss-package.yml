@@ -32,19 +32,19 @@ stages:
         steps:
           - bash: |
               sed '/file\:dist\/ngx-twcss/d' -i package.json
-              yarn
+              yarn install --immutable --immutable-cache
             displayName: "Setup"
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
           - bash: |
-              yarn build
+              yarn build:package
               echo $(Build.SourceVersion) > dist/ngx-twcss/source_version.txt
             displayName: "Build"
 
           - bash: |
               Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
-              yarn test:ci
+              yarn test:package:ci
             displayName: "Test"
 
           - publish: $(Build.SourcesDirectory)/dist/ngx-twcss
