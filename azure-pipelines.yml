@@ -31,6 +31,7 @@ stages:
                 yarn | "$(Agent.OS)"
                 yarn
               path: $(Pipeline.Workspace)/s/.yarn
+              cacheHitVar: CACHE_RESTORED
             displayName: Cache Yarn packages
 
           - task: Cache@2
@@ -44,8 +45,14 @@ stages:
 
           - bash: |
               sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
-              yarn
             displayName: "Setup"
+            env:
+              YARN_ENABLE_IMMUTABLE_INSTALLS: false
+
+          - bash: |
+              yarn
+            displayName: "Install dependencies"
+            condition: ne(variables.CACHE_RESTORED, 'true')
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
