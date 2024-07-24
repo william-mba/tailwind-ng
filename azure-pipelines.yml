@@ -71,7 +71,7 @@ stages:
                   echo "Release$(cat package.json | grep version)"
                   npm config set //registry.npmjs.org/:_authToken=$(authToken)
                   npm publish
-                displayName: "Release $(Release)"
+                displayName: "Release v$(Release)-latest"
                 workingDirectory: $(Pipeline.Workspace)/drop
 
           - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
@@ -81,7 +81,7 @@ stages:
                   echo "Release$(cat package.json | grep version)"
                   npm config set //registry.npmjs.org/:_authToken=$(authToken)
                   npm publish --tag next
-                displayName: "Release $(Release)"
+                displayName: "Release v$(Release)-next"
                 workingDirectory: $(Pipeline.Workspace)/drop
 
           - ${{ else }}:
@@ -91,5 +91,5 @@ stages:
                   echo "Release$(cat package.json | grep version)"
                   npm config set //registry.npmjs.org/:_authToken=$(authToken)
                   npm publish --tag insiders
-                displayName: "Release $(Release)"
+                displayName: "Release v$(Release)-insiders"
                 workingDirectory: $(Pipeline.Workspace)/drop
