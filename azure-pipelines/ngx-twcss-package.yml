@@ -14,6 +14,7 @@ pool:
   name: Continuous Integration
   demands:
     - Agent.OS -equals Linux
+    - PROJECT -equals ngx-twcss-package
 
 variables:
   - name: MajorMinor
@@ -31,7 +32,6 @@ stages:
       - job: Build_Test_Publish
         steps:
           - bash: |
-              sed '/file\:dist\/ngx-twcss/d' -i package.json
               yarn
             displayName: "Setup"
             env:
@@ -39,7 +39,6 @@ stages:
 
           - bash: |
               yarn build:package
-              echo $(Build.SourceVersion) > dist/ngx-twcss/source_version.txt
             displayName: "Build"
 
           - bash: |
@@ -49,7 +48,7 @@ stages:
 
           - publish: $(Build.SourcesDirectory)/dist/ngx-twcss
             artifact: drop
-            displayName: "Publish build artifact"
+            displayName: "Publish artifact"
 
           - task: PublishTestResults@2
             displayName: "Publish test results"
@@ -58,7 +57,7 @@ stages:
               testResultsFiles: "**/TESTS-*.xml"
               searchFolder: "$(Build.SourcesDirectory)"
               mergeTestResults: true
-              testRunTitle: "Test-results-$(Build.DefinitionName)-$(Release)"
+              testRunTitle: "Test-results-$(Build.DefinitionName)-v$(Release)"
 
           - task: PublishCodeCoverageResults@2
             displayName: "Publish code coverage"
@@ -75,31 +74,31 @@ stages:
             - checkout: none
             - download: current
               artifact: drop
-              displayName: Download build artifact
+              displayName: Download artifact
 
             - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
                 - bash: |
                     sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish
-                    npm publish --tag $(cat source_version.txt | cut -c1-7)
-                  displayName: "Release v$(Release)-latest"
+                    npm publish --tag $(cat $(Build.SourceVersion) | cut -c1-7)
+                  displayName: "Release v$(Release)"
                   workingDirectory: $(Pipeline.Workspace)/drop
 
             - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
                 - bash: |
-                    release_version="$(Release)-next.$(cat source_version.txt | cut -c1-7)"
+                    release_version="$(Release)-next.$(cat $(Build.SourceVersion) | cut -c1-7)"
                     sed "s/0.0.0-placeholder/$release_version/g" -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
-                  displayName: "Release v$(Release)-next"
+                  displayName: "Release next"
                   workingDirectory: $(Pipeline.Workspace)/drop
 
             - ${{ else }}:
                 - bash: |
-                    release_version="$(Release)-insiders.$(cat source_version.txt | cut -c1-7)"
+                    release_version="$(Release)-insiders.$(cat $(Build.SourceVersion) | cut -c1-7)"
                     sed "s/0.0.0-placeholder/$release_version/g" -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
-                  displayName: "Release v$(Release)-insiders"
+                  displayName: "Release insiders"
                   workingDirectory: $(Pipeline.Workspace)/drop
