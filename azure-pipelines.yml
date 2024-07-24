@@ -65,6 +65,7 @@ stages:
       jobs:
         - job: Release
           steps:
+            - checkout: none
             - download: current
               artifact: drop
               displayName: Download artifact
