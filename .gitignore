@@ -18,6 +18,7 @@ yarn-error.log
 .angular
 .vscode
 .yarn
+.yarnrc.yml
 .hintrc
 
 # IDEs and editors
