@@ -1,5 +1,8 @@
 trigger:
   - main
+  - next
+  - feat/*
+  - fix/*
 
 pool:
   name: Continuous Integration
@@ -56,40 +59,41 @@ stages:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
 
-  - stage: CD
-    dependsOn: CI
-    jobs:
-      - job: Release
-        steps:
-          - download: current
-            artifact: drop
-            displayName: Download artifact
+  - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), or(contains(variables['Build.SourceBranchName'], 'feat/'), contains(variables['Build.SourceBranchName'], 'fix/'))) }}:
+    - stage: CD
+      dependsOn: CI
+      jobs:
+        - job: Release
+          steps:
+            - download: current
+              artifact: drop
+              displayName: Download artifact
 
-          - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-              - script: |
-                  sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
-                  echo "Release$(cat package.json | grep version)"
-                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                  npm publish
-                displayName: "Release v$(Release)-latest"
-                workingDirectory: $(Pipeline.Workspace)/drop
+            - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+                - script: |
+                    sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
+                    echo "Release$(cat package.json | grep version)"
+                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                    npm publish
+                  displayName: "Release v$(Release)-latest"
+                  workingDirectory: $(Pipeline.Workspace)/drop
 
-          - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-              - script: |
-                  release_version=$(Release)-next.$(git rev-parse --short HEAD)
-                  sed 's/0.0.0-placeholder/$release_version/g' -i package.json
-                  echo "Release$(cat package.json | grep version)"
-                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                  npm publish --tag next
-                displayName: "Release v$(Release)-next"
-                workingDirectory: $(Pipeline.Workspace)/drop
+            - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
+                - script: |
+                    release_version=$(Release)-next.$(git rev-parse --short HEAD)
+                    sed 's/0.0.0-placeholder/$release_version/g' -i package.json
+                    echo "Release$(cat package.json | grep version)"
+                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                    npm publish --tag next
+                  displayName: "Release v$(Release)-next"
+                  workingDirectory: $(Pipeline.Workspace)/drop
 
-          - ${{ else }}:
-              - script: |
-                  release_version=$(Release)-insiders.$(git rev-parse --short HEAD)
-                  sed 's/0.0.0-placeholder/$release_version/g' -i package.json
-                  echo "Release$(cat package.json | grep version)"
-                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                  npm publish --tag insiders
-                displayName: "Release v$(Release)-insiders"
-                workingDirectory: $(Pipeline.Workspace)/drop
+            - ${{ else }}:
+                - script: |
+                    release_version=$(Release)-insiders.$(git rev-parse --short HEAD)
+                    sed 's/0.0.0-placeholder/$release_version/g' -i package.json
+                    echo "Release$(cat package.json | grep version)"
+                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                    npm publish --tag insiders
+                  displayName: "Release v$(Release)-insiders"
+                  workingDirectory: $(Pipeline.Workspace)/drop
