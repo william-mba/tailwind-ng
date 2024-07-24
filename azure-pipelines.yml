@@ -42,7 +42,7 @@ stages:
 
           - publish: $(Build.SourcesDirectory)/dist/ngx-twcss
             artifact: drop
-            displayName: "Publish artifact"
+            displayName: "Publish build artifact"
 
           - task: PublishTestResults@2
             displayName: "Publish test results"
@@ -68,7 +68,7 @@ stages:
             - checkout: none
             - download: current
               artifact: drop
-              displayName: Download artifact
+              displayName: Download build artifact
 
             - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
                 - script: |
