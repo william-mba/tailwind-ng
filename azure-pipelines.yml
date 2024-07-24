@@ -28,14 +28,20 @@ stages:
             inputs:
               key: 'yarn | "$(Agent.OS)" | yarn.lock'
               path: '$(Build.SourcesDirectory)/.yarn'
-              cacheHitVar: 'CACHE_RESTORED'
+              cacheHitVar: 'PACKAGES_RESTORED'
+            displayName: Cache Yarn packages
+          - task: Cache@2
+            inputs:
+              key: '/home/agent/.cache/puppeteer/chrome/linux-126.0.6478.182 | /home/agent/.cache/puppeteer/chrome-headless-shell/linux-126.0.6478.182'
+              path: '/home/agent/.cache/puppeteer'
+              cacheHitVar: 'CHROME_RESTORED'
             displayName: Cache Yarn packages
 
           - bash: |
               sed '/file\:dist\/ngx-twcss/d' -i package.json
               yarn
             displayName: "Setup"
-            condition: ne(variables.CACHE_RESTORED, 'true')
+            condition: and(ne(variables.PACKAGES_RESTORED, 'true'),ne(variables.CHROME_RESTORED, 'true'))
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
