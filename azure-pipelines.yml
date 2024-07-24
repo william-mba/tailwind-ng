@@ -24,7 +24,6 @@ stages:
     jobs:
       - job: Build_Test_Publish
         steps:
-        steps:
           - task: Cache@2
             inputs:
               key: 'yarn | "$(Agent.OS)" | yarn.lock'
