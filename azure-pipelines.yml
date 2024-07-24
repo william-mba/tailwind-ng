@@ -81,7 +81,7 @@ stages:
             - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
                 - script: |
                     release=$(Release)-next.$(Build.SourceVersion)
-                    sed 's/0.0.0-placeholder/$release/g' -i package.json
+                    sed 's/0.0.0-placeholder/$(release)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
                   displayName: "Release v$(Release)-next"
@@ -90,7 +90,7 @@ stages:
             - ${{ else }}:
                 - script: |
                     release=$(Release)-insiders.$(Build.SourceVersion)
-                    sed 's/0.0.0-placeholder/$release/g' -i package.json
+                    sed 's/0.0.0-placeholder/$(release)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
                   displayName: "Release v$(Release)-insiders"
