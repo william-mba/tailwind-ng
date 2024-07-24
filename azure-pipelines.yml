@@ -29,27 +29,15 @@ stages:
               key: 'yarn | "$(Agent.OS)" | yarn.lock'
               restoreKeys: |
                 yarn | "$(Agent.OS)"
+                yarn
               path: $(Pipeline.Workspace)/s/.yarn
               cacheHitVar: CACHE_RESTORED
             displayName: Cache Yarn packages
 
-          - task: Cache@2
-            inputs:
-              key: 'puppeteer | "$(Agent.OS)"'
-              restoreKeys: |
-                puppeteer | "$(Agent.OS)"
-              path: /home/agent/.cache/puppeteer
-            displayName: Cache Chrome bin
-
           - bash: |
               sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
-            displayName: "Setup"
-            env:
-              YARN_ENABLE_IMMUTABLE_INSTALLS: false
-
-          - bash: |
               yarn
-            displayName: "Install dependencies"
+            displayName: "Setup"
             condition: ne(variables.CACHE_RESTORED, 'true')
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
