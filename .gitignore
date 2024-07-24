@@ -19,7 +19,6 @@ yarn-error.log
 .vscode
 .yarn
 .hintrc
-.yarnrc.yml
 
 # IDEs and editors
 .idea/
