@@ -90,7 +90,7 @@ stages:
                 - bash: |
                     release_version="$(Release)-next.$(cat source_version.txt | cut -c1-7)"
                     echo $release_version
-                    sed -e 's/0.0.0-placeholder/$release_version/g' -i package.json
+                    sed "s/0.0.0-placeholder/$release_version/g" -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
                   displayName: "Release v$(Release)-next"
@@ -100,7 +100,7 @@ stages:
                 - bash: |
                     release_version="$(Release)-insiders.$(cat source_version.txt | cut -c1-7)"
                     echo $release_version
-                    sed -e 's/0.0.0-placeholder/$release_version/g' -i package.json
+                    sed "s/0.0.0-placeholder/$release_version/g" -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
                   displayName: "Release v$(Release)-insiders"
