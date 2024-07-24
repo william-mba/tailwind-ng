@@ -72,7 +72,6 @@ stages:
             - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
                 - script: |
                     sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
-                    echo "Release$(cat package.json | grep version)"
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish
                   displayName: "Release v$(Release)-latest"
@@ -80,9 +79,8 @@ stages:
 
             - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
                 - script: |
-                    release_version=$(Release)-next.$(git rev-parse --short HEAD)
-                    sed 's/0.0.0-placeholder/$release_version/g' -i package.json
-                    echo "Release$(cat package.json | grep version)"
+                    release=$(Release)-next.$(git rev-parse --short HEAD)
+                    sed 's/0.0.0-placeholder/$release/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
                   displayName: "Release v$(Release)-next"
@@ -90,9 +88,8 @@ stages:
 
             - ${{ else }}:
                 - script: |
-                    release_version=$(Release)-insiders.$(git rev-parse --short HEAD)
-                    sed 's/0.0.0-placeholder/$release_version/g' -i package.json
-                    echo "Release$(cat package.json | grep version)"
+                    release=$(Release)-insiders.$(git rev-parse --short HEAD)
+                    sed 's/0.0.0-placeholder/$release/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
                   displayName: "Release v$(Release)-insiders"
