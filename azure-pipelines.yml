@@ -29,7 +29,6 @@ stages:
               key: 'yarn | "$(Agent.OS)" | yarn.lock'
               restoreKeys: |
                 yarn | "$(Agent.OS)"
-                yarn
               path: $(Pipeline.Workspace)/s/.yarn
               cacheHitVar: CACHE_RESTORED
             displayName: Cache Yarn packages
@@ -39,7 +38,6 @@ stages:
               key: 'puppeteer | "$(Agent.OS)"'
               restoreKeys: |
                 puppeteer | "$(Agent.OS)"
-                yarn
               path: /home/agent/.cache/puppeteer
             displayName: Cache Chrome bin
 
@@ -105,7 +103,8 @@ stages:
 
             - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
                 - script: |
-                    release_version='$(Release)-next.$(Build.SourceVersion)'
+                    source_version=$(Build.SourceVersion)
+                    release_version='$(Release)-next.$(echo $source_version | cut -c1-7)'
                     sed 's/0.0.0-placeholder/$(release_version)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
@@ -114,7 +113,8 @@ stages:
 
             - ${{ else }}:
                 - script: |
-                    release_version='$(Release)-insiders.$(Build.SourceVersion)'
+                    source_version=$(Build.SourceVersion)
+                    release_version='$(Release)-next.$(echo $source_version | cut -c1-7)'
                     sed 's/0.0.0-placeholder/$(release_version)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
