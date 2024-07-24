@@ -17,14 +17,12 @@ variables:
 name: $(Build.DefinitionName)-${{variables.Release}}
 
 stages:
-  - stage: Release
+  - stage: CI
     jobs:
       - job: Build_Test_Publish
         steps:
           - bash: |
               sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
-              sed 's/0.0.0-placeholder/$(Release)/g' -i projects/ngx-twcss/package.json
-              echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
               yarn
             displayName: "Setup"
             env:
@@ -39,23 +37,59 @@ stages:
               yarn test:ci
             displayName: "Test"
 
-          - script: |
-              npm config set //registry.npmjs.org/:_authToken=$(authToken)
-              cd dist/ngx-twcss
-              npm publish
-            displayName: "Publish package"
-            
+          - publish: $(Build.SourcesDirectory)/dist/ngx-twcss
+            artifact: drop
+            displayName: "Publish artifact"
+
           - task: PublishTestResults@2
-            displayName: 'Publish test results'
+            displayName: "Publish test results"
             inputs:
-              testResultsFormat: 'JUnit'
-              testResultsFiles: '**/TESTS-*.xml'
-              searchFolder: '$(Build.SourcesDirectory)'
+              testResultsFormat: "JUnit"
+              testResultsFiles: "**/TESTS-*.xml"
+              searchFolder: "$(Build.SourcesDirectory)"
               mergeTestResults: true
-              testRunTitle: 'Test-results-$(Build.DefinitionName)-$(Release)'
+              testRunTitle: "Test-results-$(Build.DefinitionName)-$(Release)"
 
           - task: PublishCodeCoverageResults@2
-            displayName: 'Publish code coverage'
+            displayName: "Publish code coverage"
             inputs:
-              summaryFileLocation: '$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml'
-              pathToSources: '$(Build.SourcesDirectory)/coverage/ngx-twcss'
+              summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
+              pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
+
+  - stage: CD
+    dependsOn: CI
+    jobs:
+      - job: Release
+        steps:
+          - download: current
+            artifact: drop
+            displayName: Download artifact
+
+          - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+              - script: |
+                  sed 's/0.0.0-placeholder/$(Release)/g' -i $(Pipeline.Workspace)/drop/package.json
+                  echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
+                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                  cd dist/ngx-twcss
+                  npm publish
+                displayName: "Release $(Release)"
+
+          - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
+              - script: |
+                  release_version=$(Release)-next.$(git rev-parse --short HEAD)
+                  sed 's/0.0.0-placeholder/$release_version/g' -i $(Pipeline.Workspace)/drop/package.json
+                  echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
+                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                  cd dist/ngx-twcss
+                  npm publish --tag next
+                displayName: "Release $(Release)"
+
+          - ${{ else }}:
+              - script: |
+                  release_version=$(Release)-insiders.$(git rev-parse --short HEAD)
+                  sed 's/0.0.0-placeholder/$release_version/g' -i $(Pipeline.Workspace)/drop/package.json
+                  echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
+                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                  cd dist/ngx-twcss
+                  npm publish --tag insiders
+                displayName: "Release $(Release)"
