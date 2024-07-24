@@ -7372,7 +7372,6 @@ __metadata:
     karma-junit-reporter: "npm:^2.0.1"
     ng-packagr: "npm:^17.3.0"
     ngx-highlightjs: "npm:^12.0.0"
-    ngx-twcss: "file:dist/ngx-twcss"
     postcss: "npm:^8.4.38"
     puppeteer: "npm:^22.13.1"
     rxjs: "npm:~7.8.0"
@@ -7382,18 +7381,6 @@ __metadata:
     zone.js: "npm:~0.14.3"
   languageName: unknown
   linkType: soft
-
-"ngx-twcss@file:dist/ngx-twcss::locator=ngx-twcss-playground%40workspace%3A.":
-  version: 0.0.66
-  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=ba2b47&locator=ngx-twcss-playground%40workspace%3A."
-  dependencies:
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/common": ^17.3.0
-    "@angular/core": ^17.3.0
-  checksum: 10c0/5bdb3ae4d7ea4a594bc707782d1566f5116f5d8d212af3e46633c34c32b682c91fcbbfcfe0ef963ea8e03340aa9fdd5d40be5ba3a50386a0eb4342ce448d8b23
-  languageName: node
-  linkType: hard
 
 "nice-napi@npm:^1.0.2":
   version: 1.0.2
