@@ -82,14 +82,15 @@ stages:
                     sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish
-                    npm publish --tag v$(Release).$(cat source_version.txt)
+                    npm publish --tag v$(Release).$(cat source_version.txt | cut -c1-7)
                   displayName: "Release v$(Release)-latest"
                   workingDirectory: $(Pipeline.Workspace)/drop
 
             - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
                 - bash: |
-                    release_version="$(Release)-next.$(cat source_version.txt)"
+                    release_version="$(Release)-next.$(cat source_version.txt | cut -c1-7)"
                     echo "##vso[task.setvariable variable=ReleaseVersion]$release_version"
+                    echo $(ReleaseVersion)
                     sed -e 's/0.0.0-placeholder/$(ReleaseVersion)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
@@ -98,8 +99,9 @@ stages:
 
             - ${{ else }}:
                 - bash: |
-                    release_version="$(Release)-insiders.$(cat source_version.txt)"
+                    release_version="$(Release)-insiders.$(cat source_version.txt | cut -c1-7)"
                     echo "##vso[task.setvariable variable=ReleaseVersion]$release_version"
+                    echo $(ReleaseVersion)
                     sed -e 's/0.0.0-placeholder/$(ReleaseVersion)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
