@@ -26,21 +26,21 @@ stages:
         steps:
           - task: Cache@2
             inputs:
-              key: 'yarn | "$(Agent.OS)" | yarn.lock'
+              key: 'yarn | yarn.lock'
               path: '$(Build.SourcesDirectory)/.yarn'
               cacheHitVar: 'YARN_RESTORED'
             displayName: Cache yarn
 
           - task: Cache@2
             inputs:
-              key: 'yarn | "$(Agent.OS)" | node_modules'
+              key: 'yarn | yarn.lock | node_modules'
               path: '$(Build.SourcesDirectory)/node_modules'
               cacheHitVar: 'PACKAGES_RESTORED'
             displayName: Cache node modules
 
           - task: Cache@2
             inputs:
-              key: 'puppeteer | "$(Agent.OS)" | yarn.lock'
+              key: 'yarn | yarn.lock | puppeteer'
               path: '/home/agent/.cache/puppeteer'
               cacheHitVar: 'CHROME_RESTORED'
             displayName: Cache puppeteer
