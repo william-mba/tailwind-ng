@@ -24,18 +24,10 @@ stages:
     jobs:
       - job: Build_Test_Publish
         steps:
-          - task: Cache@2
-            inputs:
-              key: 'yarn | yarn.lock | $(Agent.OS)'
-              path: '$(Build.SourcesDirectory)/.yarn'
-              cacheHitVar: 'YARN_RESTORED'
-            displayName: Cache yarn packages
-
           - bash: |
               sed '/file\:dist\/ngx-twcss/d' -i package.json
               yarn
             displayName: "Setup"
-            condition: ne(variables.YARN_RESTORED, 'true')
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
