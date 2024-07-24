@@ -21,7 +21,7 @@ stages:
           - bash: |
               latest_release=$(npm show ngx-twcss version)
               sed "s/file\:dist\/ngx-twcss/$latest_release/g" -i package.json
-              yarn install
+              yarn
             displayName: "Setup"
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
