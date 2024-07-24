@@ -27,15 +27,12 @@ stages:
           - task: Cache@2
             inputs:
               key: 'yarn | "$(Agent.OS)" | yarn.lock'
-              restoreKeys: |
-                yarn | "$(Agent.OS)"
-                yarn
-              path: $(Pipeline.Workspace)/s/.yarn
-              cacheHitVar: CACHE_RESTORED
+              path: '$(Build.SourcesDirectory)/.yarn'
+              cacheHitVar: 'CACHE_RESTORED'
             displayName: Cache Yarn packages
 
           - bash: |
-              sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
+              sed '/file\:dist\/ngx-twcss/d' -i package.json
               yarn
             displayName: "Setup"
             condition: ne(variables.CACHE_RESTORED, 'true')
