@@ -12,8 +12,6 @@ pool:
   demands:
     - Agent.OS -equals Linux
 
-name: $(Build.DefinitionName)-$(Build.BuildNumber)
-
 stages:
   - stage: CI
     jobs:
