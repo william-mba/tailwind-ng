@@ -1,8 +1,14 @@
 trigger:
-  - main
-  - next
-  - feat/*
-  - fix/*
+  branches:
+    include:
+      - main
+      - next
+      - feat/*
+      - fix/*
+  paths:
+    inlude:
+      - projects/ngx-twcss/src/*
+      - azure-pipelines/*packages.yml
 
 pool:
   name: Continuous Integration
@@ -17,7 +23,7 @@ variables:
   - name: Release
     value: $(MajorMinor).$(Patch)
 
-name: $(Build.DefinitionName)-${{variables.Release}}
+name: $(Build.DefinitionName)-v${{variables.Release}}
 
 stages:
   - stage: CI
@@ -58,6 +64,22 @@ stages:
             inputs:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
+
+      - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+          - job: Build_Docs
+            dependsOn: []
+            steps:
+              - bash: |
+                  latest_release=$(npm show ngx-twcss version)
+                  sed 's/file\:dist\/ngx-twcss/$latest_release/g' -i package.json
+                  yarn
+                displayName: "Setup"
+                env:
+                  YARN_ENABLE_IMMUTABLE_INSTALLS: false
+
+              - script: |
+                  yarn build:docs
+                displayName: "Build"
 
   - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), or(contains(variables['Build.SourceBranch'], 'feat/'), contains(variables['Build.SourceBranch'], 'fix/'))) }}:
     - stage: CD

@@ -1,0 +1,58 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    inlude:
+      - src/*
+      - azure-pipelines/*demo.yml
+
+pool:
+  name: Continuous Integration
+  demands:
+    - Agent.OS -equals Linux
+
+name: $(Build.DefinitionName)-$(Build.BuildNumber)
+
+stages:
+  - stage: CI
+    jobs:
+      - job: Build
+        dependsOn: []
+        steps:
+          - bash: |
+              latest_release=$(npm show ngx-twcss version)
+              sed 's/file\:dist\/ngx-twcss/$latest_release/g' -i package.json
+              yarn
+            displayName: "Setup"
+            env:
+              YARN_ENABLE_IMMUTABLE_INSTALLS: false
+
+          - script: |
+              yarn build:demo
+            displayName: "Build"
+
+          - publish: $(Build.SourcesDirectory)/dist/ngx-twcss-demo
+            artifact: drop
+            displayName: "Publish build artifact"
+
+  - stage: CD
+    dependsOn: CI
+    jobs:
+      - job: Release
+        steps:
+          - checkout: none
+
+          - download: current
+            artifact: drop
+            displayName: Download build artifact
+
+          - script: |
+              # Remove the previous latest release
+              rm -rf /azp/www/ngx-twcss/blue/*
+              # Copy the current latest release to the blue directory
+              cp -r /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
+              # Copy the new release to the green directory
+              cp -rf . /azp/www/ngx-twcss/green
+            displayName: "Update demo website"
+            workingDirectory: $(Pipeline.Workspace)/drop
