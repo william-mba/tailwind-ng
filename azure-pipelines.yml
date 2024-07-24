@@ -24,6 +24,25 @@ stages:
     jobs:
       - job: Build_Test_Publish
         steps:
+        steps:
+          - task: Cache@2
+            inputs:
+              key: 'yarn | "$(Agent.OS)" | yarn.lock'
+              restoreKeys: |
+                yarn | "$(Agent.OS)"
+                yarn
+              path: $(Pipeline.Workspace)/s/.yarn
+            displayName: Cache Yarn packages
+
+          - task: Cache@2
+            inputs:
+              key: 'puppeteer | "$(Agent.OS)"'
+              restoreKeys: |
+                puppeteer | "$(Agent.OS)"
+                yarn
+              path: /home/agent/.cache/puppeteer
+            displayName: Cache Chrome bin
+
           - bash: |
               sed 's/file\:dist\/ngx-twcss/0.0.x/g' -i package.json
               yarn
@@ -80,8 +99,8 @@ stages:
 
             - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
                 - script: |
-                    release=$(Release)-next.$(Build.SourceVersion)
-                    sed 's/0.0.0-placeholder/$(release)/g' -i package.json
+                    release_version='$(Release)-next.$(Build.SourceVersion)'
+                    sed 's/0.0.0-placeholder/$(release_version)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag next
                   displayName: "Release v$(Release)-next"
@@ -89,8 +108,8 @@ stages:
 
             - ${{ else }}:
                 - script: |
-                    release=$(Release)-insiders.$(Build.SourceVersion)
-                    sed 's/0.0.0-placeholder/$(release)/g' -i package.json
+                    release_version='$(Release)-insiders.$(Build.SourceVersion)'
+                    sed 's/0.0.0-placeholder/$(release_version)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish --tag insiders
                   displayName: "Release v$(Release)-insiders"
