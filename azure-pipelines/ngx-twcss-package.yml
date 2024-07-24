@@ -32,7 +32,7 @@ stages:
         steps:
           - bash: |
               sed '/file\:dist\/ngx-twcss/d' -i package.json
-              yarn install --immutable --immutable-cache
+              yarn install
             displayName: "Setup"
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
