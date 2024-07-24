@@ -67,29 +67,29 @@ stages:
 
           - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
               - script: |
-                  sed 's/0.0.0-placeholder/$(Release)/g' -i $(Pipeline.Workspace)/drop/package.json
-                  echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
+                  sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
+                  echo "Release$(cat package.json | grep version)"
                   npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                  cd dist/ngx-twcss
                   npm publish
                 displayName: "Release $(Release)"
+                workingDirectory: $(Pipeline.Workspace)/drop
 
           - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
               - script: |
                   release_version=$(Release)-next.$(git rev-parse --short HEAD)
-                  sed 's/0.0.0-placeholder/$release_version/g' -i $(Pipeline.Workspace)/drop/package.json
-                  echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
+                  sed 's/0.0.0-placeholder/$release_version/g' -i package.json
+                  echo "Release$(cat package.json | grep version)"
                   npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                  cd dist/ngx-twcss
                   npm publish --tag next
                 displayName: "Release $(Release)"
+                workingDirectory: $(Pipeline.Workspace)/drop
 
           - ${{ else }}:
               - script: |
                   release_version=$(Release)-insiders.$(git rev-parse --short HEAD)
-                  sed 's/0.0.0-placeholder/$release_version/g' -i $(Pipeline.Workspace)/drop/package.json
-                  echo "Release$(cat projects/ngx-twcss/package.json | grep version)"
+                  sed 's/0.0.0-placeholder/$release_version/g' -i package.json
+                  echo "Release$(cat package.json | grep version)"
                   npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                  cd dist/ngx-twcss
                   npm publish --tag insiders
                 displayName: "Release $(Release)"
+                workingDirectory: $(Pipeline.Workspace)/drop
