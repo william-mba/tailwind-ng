@@ -14,7 +14,7 @@ pool:
   name: Continuous Integration
   demands:
     - Agent.OS -equals Linux
-    - PROJECT -equals ngx-twcss-package
+    - AZP_RUNS -equals ngx-twcss-package
 
 variables:
   - name: MajorMinor
