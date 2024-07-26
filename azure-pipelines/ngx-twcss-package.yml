@@ -50,8 +50,6 @@ stages:
               if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
               npm install
             displayName: "Setup"
-            env:
-              YARN_ENABLE_IMMUTABLE_INSTALLS: false
             condition: and(ne(variables.CHROME_RESTORED, 'true'), ne(variables.YARN_RESTORED, 'true'), ne(variables.NODE_MODULE_RESTORED, 'true'))
 
           - bash: |
