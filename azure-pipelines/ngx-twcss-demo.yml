@@ -17,14 +17,12 @@ pool:
     - Agent.OS -equals Linux
 
 variables:
-  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-    - name: ReleaseTag
+  - name: ReleaseTag
+    ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
       value: latest
-  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next-release') }}:
-    - name: ReleaseTag
+    ${{ elseif eq(variables['Build.SourceBranchName'], 'next-release') }}:
       value: next
-  - ${{ else }}:
-    - name: ReleaseTag
+    ${{ else }}:
       value: insiders
 
 stages:
