@@ -54,9 +54,8 @@ stages:
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
-              if [ -f yarn.lock ]; then rm yarn.lock; fi
+              if [ -f yarn.lock ]; echo "Removing yarn.lock"; then rm yarn.lock; fi
               touch yarn.lock
-              yarn set version latest
               yarn
             displayName: "Setup"
             env:
