@@ -15,11 +15,10 @@ junit
 npm-debug.log
 yarn-error.log
 
-.angular
 .vscode
-.yarn
 .hintrc
-.yarnrc.yml
+.yarn
+yarn.lock
 
 # IDEs and editors
 .idea/
