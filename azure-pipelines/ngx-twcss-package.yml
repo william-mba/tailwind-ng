@@ -40,13 +40,6 @@ stages:
 
           - task: Cache@2
             inputs:
-              key: 'yarn | chrome | $(Agent.OS) | $(AZP_RUNS)'
-              path: '$(Build.SourcesDirectory)/.yarn'
-              cacheHitVar: 'YARN_RESTORED'
-            displayName: "Cache yarn"
-
-          - task: Cache@2
-            inputs:
               key: 'node_modules | $(Agent.OS) | $(AZP_RUNS)'
               path: '$(Build.SourcesDirectory)/node_modules'
               cacheHitVar: 'NODE_MODULE_RESTORED'
@@ -54,21 +47,20 @@ stages:
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
-              if [ -f yarn.lock ]; echo "Removing yarn.lock"; then rm yarn.lock; fi
-              touch yarn.lock
-              yarn
+              if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
+              npm install
             displayName: "Setup"
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
             condition: and(ne(variables.CHROME_RESTORED, 'true'), ne(variables.YARN_RESTORED, 'true'), ne(variables.NODE_MODULE_RESTORED, 'true'))
 
           - bash: |
-              yarn build:package
+              npm run build:package
             displayName: "Build"
 
           - bash: |
               Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
-              yarn test:package:ci
+              npm run test:package:ci
             displayName: "Test"
 
           - publish: $(Build.SourcesDirectory)/dist/ngx-twcss

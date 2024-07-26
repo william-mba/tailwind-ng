@@ -37,13 +37,6 @@ stages:
 
           - task: Cache@2
             inputs:
-              key: 'yarn | chrome | $(Agent.OS) | $(AZP_RUNS)'
-              path: '$(Build.SourcesDirectory)/.yarn'
-              cacheHitVar: 'YARN_RESTORED'
-            displayName: "Cache yarn"
-
-          - task: Cache@2
-            inputs:
               key: 'node_modules | $(Agent.OS) | $(AZP_RUNS)'
               path: '$(Build.SourcesDirectory)/node_modules'
               cacheHitVar: 'NODE_MODULE_RESTORED'
@@ -51,15 +44,14 @@ stages:
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
-              yarn add ngx-twcss@${{ parameters.ReleaseTag }}
-              if [ -f yarn.lock ]; echo "Removing yarn.lock"; then rm yarn.lock; fi
-              touch yarn.lock
-              yarn
+              npm install ngx-twcss@${{ parameters.ReleaseTag }}
+              if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
+              npm install
             displayName: "Setup"
             condition: and(ne(variables.CHROME_RESTORED, 'true'), ne(variables.YARN_RESTORED, 'true'), ne(variables.NODE_MODULE_RESTORED, 'true'))
 
           - script: |
-              yarn build:demo
+              npm run build:demo
             displayName: "Build"
 
           - publish: $(Build.SourcesDirectory)/dist/ngx-twcss-demo
