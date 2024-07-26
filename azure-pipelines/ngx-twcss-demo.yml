@@ -52,7 +52,9 @@ stages:
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
               yarn add ngx-twcss@${{ parameters.ReleaseTag }}
-              yarn install
+              if [ -f yarn.lock ]; then rm yarn.lock; fi
+              touch yarn.lock
+              yarn
             displayName: "Setup"
             condition: and(ne(variables.CHROME_RESTORED, 'true'), ne(variables.YARN_RESTORED, 'true'), ne(variables.NODE_MODULE_RESTORED, 'true'))
 

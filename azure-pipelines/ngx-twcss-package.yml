@@ -54,7 +54,9 @@ stages:
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
-              yarn install
+              if [ -f yarn.lock ]; then rm yarn.lock; fi
+              touch yarn.lock
+              yarn
             displayName: "Setup"
             env:
               YARN_ENABLE_IMMUTABLE_INSTALLS: false
