@@ -26,8 +26,8 @@ stages:
 
           - bash: >
               sed "/file\:dist\/ngx-twcss/d" -i package.json;
-              branch=${{ variables['Buid.SourceBranchName'] }};
-              echo $branch;
+              branch="$(Buid.SourceBranchName)";
+              echo "Branch name: $branch";
               if [[ $branch == "master" ]]; then
                 echo "Using ngx-twcss@latest";
                 npm install ngx-twcss@latest;
