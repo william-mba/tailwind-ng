@@ -31,6 +31,10 @@ stages:
     jobs:
       - job: Build_Test_Publish
         steps:
+          - checkout: self
+            persistCredentials: true
+            clean: false
+
           - task: Cache@2
             inputs:
               key: 'puppeteer | $(Agent.OS) | $(AZP_RUNS)'

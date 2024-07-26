@@ -28,6 +28,10 @@ stages:
     jobs:
       - job: Build
         steps:
+          - checkout: self
+            clean: false
+            persistCredentials: true
+
           - task: Cache@2
             inputs:
               key: 'node_modules | $(Agent.OS) | $(AZP_RUNS)'
