@@ -1,11 +1,11 @@
 trigger:
   branches:
     include:
-      - master
-      - next*
-      - dev*
       - feat/*
       - fix/*
+      - master
+      - develop
+      - next-release
   paths:
     include:
       - src/*
@@ -77,5 +77,5 @@ stages:
                 cp -rfp /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
                 # Copy the new release to the green directory
                 cp -rfp ./* /azp/www/ngx-twcss/green
-              displayName: "Release demo@${{ parameters.ReleaseTag }}"
+              displayName: "Release demo@$(ReleaseTag)"
               workingDirectory: $(Pipeline.Workspace)/drop

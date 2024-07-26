@@ -1,11 +1,11 @@
 trigger:
   branches:
     include:
-      - master
-      - next*
-      - dev*
       - feat/*
       - fix/*
+      - master
+      - develop
+      - next-release
   paths:
     include:
       - projects/ngx-twcss/src/*
@@ -23,10 +23,11 @@ variables:
     value: $[counter(variables.MajorMinor, 67)]
   - name: Release
     value: $(MajorMinor).$(Patch)
-  - name: ReleaseTag
-    ${{ if eq(variables['Build.SourceBranchName'], 'next-release') }}:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'next-release') }}:
+    - name: ReleaseTag
       value: next
-    ${{ else }}:
+  - ${{ else }}:
+    - name: ReleaseTag
       value: insiders
 
 name: $(Build.DefinitionName)-v${{variables.Release}}
@@ -78,30 +79,29 @@ stages:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
 
-  - ${{ if in(variables['Build.SourceBranchName'], 'master', 'next-release', 'develop') }}:
-    - stage: CD
-      dependsOn: CI
-      jobs:
-        - job: Release
-          steps:
-            - checkout: none
-            - download: current
-              artifact: drop
-              displayName: Download artifact
+  - stage: CD
+    dependsOn: CI
+    jobs:
+      - job: Release
+        steps:
+          - checkout: none
+          - download: current
+            artifact: drop
+            displayName: Download artifact
 
-            - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-                - bash: |
-                    sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
-                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                    npm publish
-                    npm publish --tag $(echo $(Build.SourceVersion) | cut -c1-7)
-                  displayName: "Release v$(Release)"
-                  workingDirectory: $(Pipeline.Workspace)/drop
-            - ${{ else }}:
-                - bash: |
-                    release_version="$(Release)-$(ReleaseTag).$(echo $(Build.SourceVersion) | cut -c1-7)"
-                    sed "s/0.0.0-placeholder/$release_version/g" -i package.json
-                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                    npm publish --tag $(ReleaseTag)
-                  displayName: "Release v$(Release)-$(ReleaseTag)"
-                  workingDirectory: $(Pipeline.Workspace)/drop
+          - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+              - bash: |
+                  sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
+                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                  npm publish
+                  npm publish --tag $(echo $(Build.SourceVersion) | cut -c1-7)
+                displayName: "Release v$(Release)"
+                workingDirectory: $(Pipeline.Workspace)/drop
+          - ${{ else }}:
+              - bash: |
+                  release_version="$(Release)-$(ReleaseTag).$(echo $(Build.SourceVersion) | cut -c1-7)"
+                  sed "s/0.0.0-placeholder/$release_version/g" -i package.json
+                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                  npm publish --tag $(ReleaseTag)
+                displayName: "Release v$(Release)-$(ReleaseTag)"
+                workingDirectory: $(Pipeline.Workspace)/drop
