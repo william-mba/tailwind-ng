@@ -26,12 +26,16 @@ stages:
 
           - bash: >
               sed "/file\:dist\/ngx-twcss/d" -i package.json;
-              branch=$(Buid.SourceBranchName);
+              branch=${{ variables['Buid.SourceBranchName'] }};
+              echo $branch;
               if [[ $branch == "master" ]]; then
+                echo "Installing latest";
                 npm install ngx-twcss@latest;
               elif [[ $branch == "next-release" ]]; then
-                npm install ngx-twcss@next-release;
+                echo "Installing next";
+                npm install ngx-twcss@next;
               else
+                echo "Installing insiders";
                 npm install ngx-twcss@insiders;
               fi;
 
