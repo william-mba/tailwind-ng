@@ -34,19 +34,11 @@ stages:
             persistCredentials: true
             clean: false
 
-          - task: Cache@2
-            inputs:
-              key: 'node_modules | $(Agent.OS) | $(AZP_RUNS)'
-              path: '$(Build.SourcesDirectory)/node_modules'
-              cacheHitVar: 'NODE_MODULE_RESTORED'
-            displayName: "Cache node_modules"
-
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
               if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
               npm install
             displayName: "Setup"
-            condition: ne(variables.NODE_MODULE_RESTORED, 'true')
 
           - bash: |
               npm run build:package
