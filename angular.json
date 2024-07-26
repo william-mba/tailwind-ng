@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-twcss-playground": {
+    "ngx-twcss-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -27,7 +27,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ngx-twcss-playground",
+            "outputPath": "dist/ngx-twcss-demo",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ngx-twcss-playground:build:production"
+              "buildTarget": "ngx-twcss-demo:build:production"
             },
             "development": {
-              "buildTarget": "ngx-twcss-playground:build:development"
+              "buildTarget": "ngx-twcss-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ngx-twcss-playground:build"
+            "buildTarget": "ngx-twcss-demo:build"
           }
         },
         "test": {
