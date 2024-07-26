@@ -38,7 +38,6 @@ stages:
             inputs:
               key: 'puppeteer | $(Agent.OS) | $(AZP_RUNS)'
               path: '$(HOME)/.cache/puppeteer'
-              cacheHitVar: 'CHROME_RESTORED'
             displayName: "Cache puppeteer"
 
           - task: Cache@2
@@ -53,7 +52,7 @@ stages:
               if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
               npm install
             displayName: "Setup"
-            condition: and(ne(variables.CHROME_RESTORED, 'true'), ne(variables.NODE_MODULE_RESTORED, 'true'))
+            condition: ne(variables.NODE_MODULE_RESTORED, 'true')
 
           - bash: |
               npm run build:package
