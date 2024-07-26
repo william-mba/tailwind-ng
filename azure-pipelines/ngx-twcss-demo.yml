@@ -24,23 +24,21 @@ stages:
             clean: false
             persistCredentials: true
 
-          - bash: |
-              sed "/file\:dist\/ngx-twcss/d" -i package.json
+          - bash: >
+              sed "/file\:dist\/ngx-twcss/d" -i package.json;
+              branch=$(Buid.SourceBranchName);
+              if [[ $branch == "master" ]]; then
+                npm install ngx-twcss@latest;
+              elif [[ $branch == "next-release" ]]; then
+                npm install ngx-twcss@next-release;
+              else
+                npm install ngx-twcss@insiders;
+              fi;
 
-              branch=$(Buid.SourceBranchName)
-
-              if [ $branch == "master" ]; then \
-                npm install ngx-twcss@latest; \
-              elif [ $branch == "next-release" ]; then \
-                npm install ngx-twcss@next-release; \
-              else \
-                npm install ngx-twcss@insiders; \
-              fi
-
-              if [ -f package-lock.json ]; then \
-                echo "Removing package-lock.json"; \
-                rm package-lock.json; \
-              fi
+              if [ -f package-lock.json ]; then
+                echo "Removing package-lock.json";
+                rm package-lock.json;
+              fi;
               npm install
             displayName: "Setup"
 
