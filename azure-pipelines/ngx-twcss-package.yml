@@ -87,7 +87,7 @@ stages:
                     sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish
-                    npm publish --tag $(cat $(Build.SourceVersion) | cut -c1-7)
+                    npm publish --tag $(echo $(Build.SourceVersion) | cut -c1-7)
                   displayName: "Release v$(Release)"
                   workingDirectory: $(Pipeline.Workspace)/drop
 
