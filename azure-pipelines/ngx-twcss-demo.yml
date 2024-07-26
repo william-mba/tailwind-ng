@@ -29,13 +29,13 @@ stages:
               branch=${{ variables['Buid.SourceBranchName'] }};
               echo $branch;
               if [[ $branch == "master" ]]; then
-                echo "Installing latest";
+                echo "Using ngx-twcss@latest";
                 npm install ngx-twcss@latest;
               elif [[ $branch == "next-release" ]]; then
-                echo "Installing next";
+                echo "Using ngx-twcss@next";
                 npm install ngx-twcss@next;
               else
-                echo "Installing insiders";
+                echo "Using ngx-twcss@insiders";
                 npm install ngx-twcss@insiders;
               fi;
 
