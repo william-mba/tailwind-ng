@@ -78,7 +78,7 @@ stages:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
 
-  - ${{ if in(variables['Build.SourceBranchName'], 'master', 'next-release') }}:
+  - ${{ if in(variables['Build.SourceBranchName'], 'master', 'next-release', 'develop') }}:
     - stage: CD
       dependsOn: CI
       jobs:
