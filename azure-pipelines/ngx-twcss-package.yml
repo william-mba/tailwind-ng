@@ -44,6 +44,7 @@ stages:
             displayName: "Build"
 
           - bash: |
+              npx puppeteer browsers install chrome
               Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
               npm run test:package:ci
             displayName: "Test"
