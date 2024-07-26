@@ -35,6 +35,8 @@ stages:
               sed "/file\:dist\/ngx-twcss/d" -i package.json
               yarn install
             displayName: "Setup"
+            env:
+              YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
           - bash: |
               yarn build:package
@@ -64,40 +66,40 @@ stages:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
 
-  - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), or(contains(variables['Build.SourceBranch'], 'feat/'), contains(variables['Build.SourceBranch'], 'fix/'))) }}:
-    - stage: CD
-      dependsOn: CI
-      jobs:
-        - job: Release
-          steps:
-            - checkout: none
-            - download: current
-              artifact: drop
-              displayName: Download artifact
+  - ? ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), or(contains(variables['Build.SourceBranch'], 'feat/'), contains(variables['Build.SourceBranch'], 'fix/'))) }}
+    : - stage: CD
+        dependsOn: CI
+        jobs:
+          - job: Release
+            steps:
+              - checkout: none
+              - download: current
+                artifact: drop
+                displayName: Download artifact
 
-            - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-                - bash: |
-                    sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
-                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                    npm publish
-                    npm publish --tag $(cat $(Build.SourceVersion) | cut -c1-7)
-                  displayName: "Release v$(Release)"
-                  workingDirectory: $(Pipeline.Workspace)/drop
+              - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+                  - bash: |
+                      sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
+                      npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                      npm publish
+                      npm publish --tag $(cat $(Build.SourceVersion) | cut -c1-7)
+                    displayName: "Release v$(Release)"
+                    workingDirectory: $(Pipeline.Workspace)/drop
 
-            - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-                - bash: |
-                    release_version="$(Release)-next.$(cat $(Build.SourceVersion) | cut -c1-7)"
-                    sed "s/0.0.0-placeholder/$release_version/g" -i package.json
-                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                    npm publish --tag next
-                  displayName: "Release next"
-                  workingDirectory: $(Pipeline.Workspace)/drop
+              - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
+                  - bash: |
+                      release_version="$(Release)-next.$(cat $(Build.SourceVersion) | cut -c1-7)"
+                      sed "s/0.0.0-placeholder/$release_version/g" -i package.json
+                      npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                      npm publish --tag next
+                    displayName: "Release next"
+                    workingDirectory: $(Pipeline.Workspace)/drop
 
-            - ${{ else }}:
-                - bash: |
-                    release_version="$(Release)-insiders.$(cat $(Build.SourceVersion) | cut -c1-7)"
-                    sed "s/0.0.0-placeholder/$release_version/g" -i package.json
-                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                    npm publish --tag insiders
-                  displayName: "Release insiders"
-                  workingDirectory: $(Pipeline.Workspace)/drop
+              - ${{ else }}:
+                  - bash: |
+                      release_version="$(Release)-insiders.$(cat $(Build.SourceVersion) | cut -c1-7)"
+                      sed "s/0.0.0-placeholder/$release_version/g" -i package.json
+                      npm config set //registry.npmjs.org/:_authToken=$(authToken)
+                      npm publish --tag insiders
+                    displayName: "Release insiders"
+                    workingDirectory: $(Pipeline.Workspace)/drop
