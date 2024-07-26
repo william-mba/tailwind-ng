@@ -1,7 +1,9 @@
 trigger:
   branches:
     include:
-      - main
+      - master
+      - next*
+      - dev*
   paths:
     include:
       - src/*
@@ -12,16 +14,6 @@ pool:
   demands:
     - Agent.OS -equals Linux
     - AZP_RUNS -equals ngx-twcss-demo
-
-parameters:
-  - name: ReleaseTag
-    type: string
-    default: "latest"
-    values:
-      - "latest"
-      - "next"
-      - "insiders"
-    displayName: "Release Tag"
 
 stages:
   - stage: CI
@@ -34,8 +26,21 @@ stages:
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
-              npm install ngx-twcss@${{ parameters.ReleaseTag }}
-              if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
+
+              branch=$(Buid.SourceBranchName)
+
+              if [ $branch == "master" ]; then \
+                npm install ngx-twcss@latest; \
+              elif [ $branch == "next-release" ]; then \
+                npm install ngx-twcss@next-release; \
+              else \
+                npm install ngx-twcss@insiders; \
+              fi
+
+              if [ -f package-lock.json ]; then \
+                echo "Removing package-lock.json"; \
+                rm package-lock.json; \
+              fi
               npm install
             displayName: "Setup"
 
@@ -47,7 +52,7 @@ stages:
             artifact: drop
             displayName: "Publish artifact"
 
-  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
     - stage: CD
       dependsOn: CI
       jobs:
