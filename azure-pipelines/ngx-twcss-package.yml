@@ -12,7 +12,7 @@ trigger:
       - azure-pipelines/*packages.yml
 
 pool:
-  name: 'Ngx-twcss'
+  name: Ngx-twcss
   demands:
     - Agent.OS -equals Linux
 
