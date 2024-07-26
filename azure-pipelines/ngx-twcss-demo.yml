@@ -4,16 +4,17 @@ trigger:
       - master
       - next*
       - dev*
+      - feat/*
+      - fix/*
   paths:
     include:
       - src/*
       - azure-pipelines/*demo.yml
 
 pool:
-  name: Continuous Integration
+  name: Ngx-twcss
   demands:
     - Agent.OS -equals Linux
-    - AZP_RUNS -equals ngx-twcss-demo
 
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
@@ -57,6 +58,11 @@ stages:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
     - stage: CD
       dependsOn: CI
+      pool:
+        name: Ngx-twcss
+        demands:
+          - Agent.OS -equals Linux
+          - AZP_RUNS -equals ngx-twcss-demo
       jobs:
         - job: Release
           steps:
