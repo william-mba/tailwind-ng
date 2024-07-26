@@ -3,7 +3,7 @@ trigger:
     include:
       - main
       - next
-      - develop
+      - insiders
   paths:
     include:
       - projects/ngx-twcss/src/*
@@ -68,7 +68,7 @@ stages:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
 
-  - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), or(contains(variables['Build.SourceBranch'], 'feat/'), contains(variables['Build.SourceBranch'], 'fix/'))) }}:
+  - ${{ if or(eq(variables['Build.SourceBranchName'], 'main'), or(contains(variables['Build.SourceBranch'], 'next'), contains(variables['Build.SourceBranch'], 'insiders'))) }}:
     - stage: CD
       dependsOn: CI
       jobs:
