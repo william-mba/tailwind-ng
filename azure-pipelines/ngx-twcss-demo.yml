@@ -47,23 +47,24 @@ stages:
             artifact: drop
             displayName: "Publish artifact"
 
-  - stage: CD
-    dependsOn: CI
-    jobs:
-      - job: Release
-        steps:
-          - checkout: none
+  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+    - stage: CD
+      dependsOn: CI
+      jobs:
+        - job: Release
+          steps:
+            - checkout: none
 
-          - download: current
-            artifact: drop
-            displayName: Download build artifact
+            - download: current
+              artifact: drop
+              displayName: Download build artifact
 
-          - script: |
-              # Remove the previous latest release
-              rm -rf /azp/www/ngx-twcss/blue/*
-              # Copy the current latest release to the blue directory
-              cp -r /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
-              # Copy the new release to the green directory
-              cp -rf . /azp/www/ngx-twcss/green
-            displayName: "Release demo@${{ parameters.ReleaseTag }}"
-            workingDirectory: $(Pipeline.Workspace)/drop
+            - script: |
+                # Remove the previous latest release
+                rm -rf /azp/www/ngx-twcss/blue/*
+                # Copy the current latest release to the blue directory
+                cp -r /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
+                # Copy the new release to the green directory
+                cp -rf . /azp/www/ngx-twcss/green
+              displayName: "Release demo@${{ parameters.ReleaseTag }}"
+              workingDirectory: $(Pipeline.Workspace)/drop
