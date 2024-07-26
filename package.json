@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:package": "ng build --project ngx-twcss --configuration production",
-    "build:demo": "ng build --configuration production",
+    "build:package": "ng build --project ngx-twcss",
+    "build:demo": "ng build",
     "watch": "ng build --watch --configuration development",
     "test:package": "ng test --project ngx-twcss --code-coverage",
     "test:package:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage",
