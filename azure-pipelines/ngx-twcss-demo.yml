@@ -13,16 +13,26 @@ pool:
     - Agent.OS -equals Linux
     - AZP_RUNS -equals ngx-twcss-demo
 
+parameters:
+  - name: ReleaseTag
+    type: string
+    default: "latest"
+    values:
+      - "latest"
+      - "next"
+      - "insiders"
+    displayName: "Release Tag"
+
 stages:
   - stage: CI
     jobs:
       - job: Build
         steps:
           - bash: |
+              sed "/file\:dist\/ngx-twcss/d" -i package.json
+              yarn add ngx-twcss@${{ parameters.ReleaseTag }}
               yarn
             displayName: "Setup"
-            env:
-              YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
           - script: |
               yarn build:demo
