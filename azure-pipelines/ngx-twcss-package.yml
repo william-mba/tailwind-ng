@@ -1,16 +1,18 @@
 trigger:
   branches:
     include:
-      - main
-      - next
-      - insiders
+      - master
+      - next*
+      - dev*
+      - feat/*
+      - fix/*
   paths:
     include:
       - projects/ngx-twcss/src/*
       - azure-pipelines/*packages.yml
 
 pool:
-  name: Continuous Integration
+  name: Ngx-twcss
   demands:
     - Agent.OS -equals Linux
 
@@ -21,6 +23,11 @@ variables:
     value: $[counter(variables.MajorMinor, 67)]
   - name: Release
     value: $(MajorMinor).$(Patch)
+  - name: ReleaseTag
+    ${{ if eq(variables['Build.SourceBranchName'], 'next-release') }}:
+      value: next
+    ${{ else }}:
+      value: insiders
 
 name: $(Build.DefinitionName)-v${{variables.Release}}
 
@@ -35,7 +42,10 @@ stages:
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
-              if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
+              if [ -f package-lock.json ]; then \
+                echo "Removing package-lock.json"; \
+                rm package-lock.json; \
+              fi
               npm install
             displayName: "Setup"
 
@@ -68,7 +78,7 @@ stages:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
 
-  - ${{ if or(eq(variables['Build.SourceBranchName'], 'main'), or(contains(variables['Build.SourceBranch'], 'next'), contains(variables['Build.SourceBranch'], 'insiders'))) }}:
+  - ${{ if in(variables['Build.SourceBranchName'], 'master', 'next-release', 'develop') }}:
     - stage: CD
       dependsOn: CI
       jobs:
@@ -79,29 +89,19 @@ stages:
               artifact: drop
               displayName: Download artifact
 
-            - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+            - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
                 - bash: |
                     sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
                     npm publish
-                    npm publish --tag $(cat $(Build.SourceVersion) | cut -c1-7)
+                    npm publish --tag $(echo $(Build.SourceVersion) | cut -c1-7)
                   displayName: "Release v$(Release)"
                   workingDirectory: $(Pipeline.Workspace)/drop
-
-            - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-                - bash: |
-                    release_version="$(Release)-next.$(echo $(Build.SourceVersion) | cut -c1-7)"
-                    sed "s/0.0.0-placeholder/$release_version/g" -i package.json
-                    npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                    npm publish --tag next
-                  displayName: "Release next"
-                  workingDirectory: $(Pipeline.Workspace)/drop
-
             - ${{ else }}:
                 - bash: |
-                    release_version="$(Release)-insiders.$(echo $(Build.SourceVersion) | cut -c1-7)"
+                    release_version="$(Release)-$(ReleaseTag).$(echo $(Build.SourceVersion) | cut -c1-7)"
                     sed "s/0.0.0-placeholder/$release_version/g" -i package.json
                     npm config set //registry.npmjs.org/:_authToken=$(authToken)
-                    npm publish --tag insiders
-                  displayName: "Release insiders"
+                    npm publish --tag $(ReleaseTag)
+                  displayName: "Release v$(Release)-$(ReleaseTag)"
                   workingDirectory: $(Pipeline.Workspace)/drop

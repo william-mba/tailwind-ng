@@ -1,27 +1,31 @@
 trigger:
   branches:
     include:
-      - main
+      - master
+      - next*
+      - dev*
+      - feat/*
+      - fix/*
   paths:
     include:
       - src/*
       - azure-pipelines/*demo.yml
 
 pool:
-  name: Continuous Integration
+  name: Ngx-twcss
   demands:
     - Agent.OS -equals Linux
-    - AZP_RUNS -equals ngx-twcss-demo
 
-parameters:
-  - name: ReleaseTag
-    type: string
-    default: "latest"
-    values:
-      - "latest"
-      - "next"
-      - "insiders"
-    displayName: "Release Tag"
+variables:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    - name: ReleaseTag
+      value: latest
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next-release') }}:
+    - name: ReleaseTag
+      value: next
+  - ${{ else }}:
+    - name: ReleaseTag
+      value: insiders
 
 stages:
   - stage: CI
@@ -34,8 +38,12 @@ stages:
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
-              npm install ngx-twcss@${{ parameters.ReleaseTag }}
-              if [ -f package-lock.json ]; echo "Removing package-lock.json"; then rm package-lock.json; fi
+
+              echo "Using ngx-twcss@$(ReleaseTag)"
+              npm install ngx-twcss@$(ReleaseTag)
+
+              if [ -f package-lock.json ]; then echo "Removing package-lock.json"; rm package-lock.json; fi
+
               npm install
             displayName: "Setup"
 
@@ -47,9 +55,14 @@ stages:
             artifact: drop
             displayName: "Publish artifact"
 
-  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
     - stage: CD
       dependsOn: CI
+      pool:
+        name: Ngx-twcss
+        demands:
+          - Agent.OS -equals Linux
+          - AZP_RUNS -equals ngx-twcss-demo
       jobs:
         - job: Release
           steps:
