@@ -28,11 +28,33 @@ stages:
     jobs:
       - job: Build
         steps:
+          - task: Cache@2
+            inputs:
+              key: 'puppeteer | $(Agent.OS) | $(AZP_RUNS)'
+              path: '$(HOME)/.cache/puppeteer'
+              cacheHitVar: 'CHROME_RESTORED'
+            displayName: "Cache puppeteer"
+
+          - task: Cache@2
+            inputs:
+              key: 'yarn | chrome | $(Agent.OS) | $(AZP_RUNS)'
+              path: '$(Build.SourcesDirectory)/.yarn'
+              cacheHitVar: 'YARN_RESTORED'
+            displayName: "Cache yarn"
+
+          - task: Cache@2
+            inputs:
+              key: 'node_modules | $(Agent.OS) | $(AZP_RUNS)'
+              path: '$(Build.SourcesDirectory)/node_modules'
+              cacheHitVar: 'NODE_MODULE_RESTORED'
+            displayName: "Cache node_modules"
+
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
               yarn add ngx-twcss@${{ parameters.ReleaseTag }}
-              yarn
+              yarn install
             displayName: "Setup"
+            condition: and(ne(variables.CHROME_RESTORED, 'true'), ne(variables.YARN_RESTORED, 'true'), ne(variables.NODE_MODULE_RESTORED, 'true'))
 
           - script: |
               yarn build:demo
