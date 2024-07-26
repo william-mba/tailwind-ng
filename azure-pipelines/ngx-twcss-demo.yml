@@ -60,11 +60,9 @@ stages:
               displayName: Download build artifact
 
             - script: |
-                # Remove the previous latest release
-                rm -rf /azp/www/ngx-twcss/blue/*
-                # Copy the current latest release to the blue directory
-                cp -r /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
+                # Swap blue/green
+                cp -rfp /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
                 # Copy the new release to the green directory
-                cp -rf . /azp/www/ngx-twcss/green
+                cp -rfp ./* /azp/www/ngx-twcss/green
               displayName: "Release demo@${{ parameters.ReleaseTag }}"
               workingDirectory: $(Pipeline.Workspace)/drop
