@@ -36,12 +36,6 @@ stages:
 
           - task: Cache@2
             inputs:
-              key: 'puppeteer | $(Agent.OS) | $(AZP_RUNS)'
-              path: '$(HOME)/.cache/puppeteer'
-            displayName: "Cache puppeteer"
-
-          - task: Cache@2
-            inputs:
               key: 'node_modules | $(Agent.OS) | $(AZP_RUNS)'
               path: '$(Build.SourcesDirectory)/node_modules'
               cacheHitVar: 'NODE_MODULE_RESTORED'
