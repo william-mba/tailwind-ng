@@ -15,6 +15,17 @@ pool:
     - Agent.OS -equals Linux
     - AZP_RUNS -equals ngx-twcss-demo
 
+variables:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    - name: ReleaseTag
+      value: latest
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next-release') }}:
+    - name: ReleaseTag
+      value: next
+  - ${{ else }}:
+    - name: ReleaseTag
+      value: insiders
+
 stages:
   - stage: CI
     jobs:
@@ -24,25 +35,14 @@ stages:
             clean: false
             persistCredentials: true
 
-          - bash: >
-              sed "/file\:dist\/ngx-twcss/d" -i package.json;
-              branch="$(Buid.SourceBranchName)";
-              echo "Branch name: $branch";
-              if [[ $branch == "master" ]]; then
-                echo "Using ngx-twcss@latest";
-                npm install ngx-twcss@latest;
-              elif [[ $branch == "next-release" ]]; then
-                echo "Using ngx-twcss@next";
-                npm install ngx-twcss@next;
-              else
-                echo "Using ngx-twcss@insiders";
-                npm install ngx-twcss@insiders;
-              fi;
+          - bash: |
+              sed "/file\:dist\/ngx-twcss/d" -i package.json
 
-              if [ -f package-lock.json ]; then
-                echo "Removing package-lock.json";
-                rm package-lock.json;
-              fi;
+              echo "Using ngx-twcss@$(ReleaseTag)"
+              npm install ngx-twcss@$(ReleaseTag)
+
+              if [ -f package-lock.json ]; then echo "Removing package-lock.json"; rm package-lock.json; fi
+
               npm install
             displayName: "Setup"
 
