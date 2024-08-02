@@ -8,6 +8,14 @@ pool:
   demands:
     - Agent.OS -equals Linux
 
+parameters:
+  - name: startVersion
+    type: number
+    default: 1
+  - name: endVersion
+    type: number
+    default: 90
+
 variables:
   - name: MajorMinor
     value: "0.0"
@@ -31,6 +39,15 @@ stages:
           - checkout: self
             persistCredentials: true
             clean: false
+
+          - bash: >
+              for i in {${{ parameters.startVersion }}..${{ parameters.endVersion }}}
+              do
+                npm unpublish ngx-twcss@0.0.$i
+              done
+            displayName: "Remove old versions"
+            env:
+              NODE_AUTH_TOKEN: $(authToken)
 
           - bash: |
               sed "/file\:dist\/ngx-twcss/d" -i package.json
@@ -82,7 +99,6 @@ stages:
 
           - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
               - bash: |
-                  sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
                   npm publish
                 displayName: "Release v$(Release)"
                 env:
