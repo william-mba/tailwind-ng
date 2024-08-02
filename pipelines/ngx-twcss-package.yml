@@ -36,7 +36,7 @@ stages:
     jobs:
       - job: Build_Test_Publish
         steps:
-          - checkout: self
+          - checkout: none
             persistCredentials: true
             clean: false
 
