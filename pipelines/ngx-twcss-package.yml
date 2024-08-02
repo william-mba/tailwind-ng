@@ -9,12 +9,12 @@ pool:
     - Agent.OS -equals Linux
 
 variables:
-  - name: MajorMinorVersion
+  - name: MajorMinor
     value: "0.0"
   - name: Patch
-    value: $[counter(variables.MajorMinorVersion, 0)]
+    value: $[counter(variables.MajorMinor, 0)]
   - name: Release
-    value: $(MajorMinorVersion).$(Patch)
+    value: $(MajorMinor).$(Patch)
   - name: ReleaseTag
     ${{ if contains(variables['Build.SourceBranch'], 'main') }}:
       value: latest
