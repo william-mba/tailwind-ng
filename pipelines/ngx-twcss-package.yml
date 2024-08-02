@@ -8,13 +8,6 @@ pool:
   demands:
     - Agent.OS -equals Linux
 
-parameters:
-  - name: startVersion
-    type: number
-    default: 1
-  - name: endVersion
-    type: number
-    default: 90
 
 variables:
   - name: MajorMinor
@@ -41,7 +34,7 @@ stages:
             clean: false
 
           - bash: >
-              for i in {${{ parameters.startVersion }}..${{ parameters.endVersion }}}
+              for i in {1..90}
               do
                 npm unpublish ngx-twcss@0.0.$i
               done
