@@ -16,7 +16,6 @@ parameters:
     values:
       - next
       - latest
-      - insiders
 
 stages:
   - stage: CI
