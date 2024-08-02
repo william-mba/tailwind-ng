@@ -1,15 +1,7 @@
 trigger:
-  branches:
-    include:
-      - feat/*
-      - fix/*
-      - master
-      - develop
-      - next-release
   paths:
     include:
       - projects/ngx-twcss/src/*
-      - azure-pipelines/*packages.yml
 
 pool:
   name: Ngx-twcss
@@ -24,7 +16,7 @@ variables:
   - name: Release
     value: $(MajorMinor).$(Patch)
   - name: ReleaseTag
-    ${{ if eq(variables['Build.SourceBranchName'], 'next-release') }}:
+    ${{ if contains(variables['Build.SourceBranch'], 'release/') }}:
       value: next
     ${{ else }}:
       value: insiders
@@ -88,18 +80,20 @@ stages:
             artifact: drop
             displayName: Download artifact
 
-          - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+          - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
               - bash: |
                   sed 's/0.0.0-placeholder/$(Release)/g' -i package.json
-                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
                   npm publish
                 displayName: "Release v$(Release)"
+                env:
+                  NODE_AUTH_TOKEN: $(authToken)
                 workingDirectory: $(Pipeline.Workspace)/drop
           - ${{ else }}:
               - bash: |
                   release_version="$(Release)-$(ReleaseTag).$(echo $(Build.SourceVersion) | cut -c1-7)"
                   sed "s/0.0.0-placeholder/$release_version/g" -i package.json
-                  npm config set //registry.npmjs.org/:_authToken=$(authToken)
                   npm publish --tag $(ReleaseTag)
                 displayName: "Release v$(Release)-$(ReleaseTag)"
+                env:
+                  NODE_AUTH_TOKEN: $(authToken)
                 workingDirectory: $(Pipeline.Workspace)/drop
