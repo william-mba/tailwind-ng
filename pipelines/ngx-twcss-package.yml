@@ -33,10 +33,10 @@ stages:
             persistCredentials: true
             clean: false
 
-          - bash: >
-              for i in {1..90}
-              do
-                npm unpublish ngx-twcss@0.0.$i
+          - bash: |
+              for i in {1..90}; do \
+                echo "Removing ngx-twcss@0.0.$i"; \
+                npm unpublish ngx-twcss@0.0.$i; \
               done
             displayName: "Remove old versions"
             env:
