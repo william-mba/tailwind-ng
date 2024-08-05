@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
 })
 export class ButtonGroupDemoComponent {
 
+  checkBoxId01 = crypto.randomUUID();
+  checkBoxId02 = crypto.randomUUID();
+
   states: Record<number, boolean> = { }
 
   open(key: number) {
@@ -45,12 +48,9 @@ export class ButtonGroupDemoComponent {
     Save changes
   </tw-button>
   <div>
-    <tw-button variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown()">
-      <svg *ngIf="!open" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+    <tw-button tw-icon variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
         <path d="M480-360 280-560h400L480-360Z" />
-      </svg>
-      <svg *ngIf="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path d="m280-400 200-200 200 200H280Z" />
       </svg>
     </tw-button>
     <tw-dropdown [open]="open" (click)="toggleDropdown()" className="shadow-lg *:justify-start *:rounded-none *:shadow-none">
@@ -75,8 +75,9 @@ export class ButtonGroupDemoComponent {
 </tw-button-group>`;
 
   withChecboxAndSelect = `<tw-button-group>
-  <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md">
-    <input type="checkbox" class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+  <tw-button tw-icon variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-md p-2.5">
+    <label for="checkbox" class="absolute inset-0 p-[18px]"></label>
+    <input type="checkbox" id="checkbox" class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
   </tw-button>
   <tw-button variant="text" className="*:size-auto p-0">
     <label for="currency" class="sr-only">Currency</label>
@@ -115,12 +116,9 @@ export class ButtonGroupDemoComponent {
   roundedWithDropdown = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-full">Save changes</tw-button>
   <div>
-    <tw-button variant="secondary" className="rounded-r-full h-full" (click)="toggleDropdown()">
-      <svg *ngIf="!open" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
+    <tw-button variant="secondary" className="rounded-r-full h-full pl-3" (click)="toggleDropdown()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
         <path d="M480-360 280-560h400L480-360Z" />
-      </svg>
-      <svg *ngIf="open" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path d="m280-400 200-200 200 200H280Z" />
       </svg>
     </tw-button>
     <tw-dropdown [open]="open" (click)="toggleDropdown()" className="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
@@ -144,12 +142,13 @@ export class ButtonGroupDemoComponent {
 </tw-button-group>`;
 
   roundedWithChecboxAndSelect = `<tw-button-group>
-  <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full">
-    <input type="checkbox" class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+  <tw-button tw-icon variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-3xl p-2.5">
+    <label for="checkbox" class="absolute inset-0 p-[18px]"></label>
+    <input type="checkbox" id="checkbox" class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
   </tw-button>
   <tw-button variant="text" className="*:size-auto p-0">
     <label for="currency" class="sr-only">Currency</label>
-    <select id="currency" name="currency" class="rounded-r-full border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+    <select id="currency" name="currency" class="rounded-r-3xl border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
       <option>Unread messages</option>
       <option>Sent messages</option>
       <option>All messages</option>
