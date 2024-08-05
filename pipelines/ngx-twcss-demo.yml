@@ -1,4 +1,8 @@
 trigger:
+  branches:
+    include:
+      - main
+      - next
   paths:
     include:
       - src/*
@@ -45,7 +49,7 @@ stages:
             artifact: drop
             displayName: "Publish artifact"
 
-  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
     - stage: CD
       dependsOn: CI
       pool:

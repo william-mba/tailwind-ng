@@ -1,4 +1,10 @@
 trigger:
+  branches:
+    include:
+      - main
+      - next
+      - feat/*
+      - fix/*
   paths:
     include:
       - projects/ngx-twcss/src/*
@@ -16,10 +22,12 @@ variables:
   - name: Release
     value: $(MajorMinor).$(Patch)
   - name: ReleaseTag
-    ${{ if contains(variables['Build.SourceBranch'], 'main') }}:
+    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
       value: latest
-    ${{ else }}:
+    ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
       value: next
+    ${{ else }}:
+      value: nightly
 
 name: $(Build.DefinitionName)-v${{variables.Release}}
 
@@ -28,7 +36,7 @@ stages:
     jobs:
       - job: Build_Test_Publish
         steps:
-          - checkout: none
+          - checkout: self
             persistCredentials: true
             clean: false
 
@@ -72,7 +80,7 @@ stages:
               summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
               pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
 
-  - ${{ if or(eq(variables['Build.SourceBranchName'], 'main'), contains(variables['Build.SourceBranch'], 'next')) }}:
+  - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), contains(variables['Build.SourceBranch'], 'release/')) }}:
     - stage: CD
       dependsOn: CI
       jobs:
@@ -82,8 +90,7 @@ stages:
             - download: current
               artifact: drop
               displayName: Download artifact
-            - bash: |
-                npm publish --tag $(ReleaseTag)
+            - bash: npm publish --tag $(ReleaseTag)
               env:
                 NODE_AUTH_TOKEN: $(authToken)
               displayName: "Release v$(Release)"
