@@ -15,3 +15,4 @@ export * from './lib/components/avatar/avatar';
 export * from './lib/components/modal-dialog/modal-dialog.component';
 export * from './lib/components/modal-dialog/modal-dialog.config';
 export * from './lib/components/modal-dialog/modal-dialog.module';
+export * from './lib/components/comboboxe/comboboxe.component';
