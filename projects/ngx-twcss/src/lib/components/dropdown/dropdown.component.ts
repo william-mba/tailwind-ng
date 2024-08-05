@@ -19,17 +19,17 @@ import { NgIf } from '@angular/common';
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'scaleY(0.9) translateY(-1rem)'
+          transform: 'scale(.95)'
         }),
         animate('100ms ease-out', style({
           opacity: 1,
-          transform: 'scaleY(1) translateY(0px)'
+          transform: 'scale(1)'
         }))
       ]),
       transition(':leave', [
         animate('75ms ease-in', style({
           opacity: 0,
-          transform: 'scaleY(0.9) translateY(-1rem)'
+          transform: 'scale(.95)'
         }))
       ])
     ])

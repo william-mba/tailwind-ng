@@ -1,13 +1,36 @@
 <nav
   class="fixed start-0 top-0 z-30 h-16 flex w-full justify-center border-b border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 bg-opacity-60 backdrop-blur-3xl">
   <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
-    <a href="https://github.com/William-Mba/ngx-twcss">
-      <tw-button size="md" className="rounded-none relative overflow-visible shadow-md shadow-black/30">
-        NGX-TWCSS
+    <a href="https://www.npmjs.com/package/ngx-twcss">
+      <tw-button>
+        Get ngx-twcss
       </tw-button>
     </a>
     <div class="flex items-center space-x-3 md:order-2 rtl:space-x-reverse">
-      <tw-button variant='text' size="md" (click)="ToggleTheme()">
+      <!-- Search button -->
+      <!-- <tw-button variant='text' size="md">
+        <svg fill="currentcolor" t="1702210633165" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M426.666667 768a339.285333 339.285333.0 00208.938666-72.021333L823.168 883.541333l60.330667-60.330666L695.936 635.648A339.285333 339.285333.0 00768 426.666667C768 238.464 614.869333 85.333334 426.666667 85.333333S85.333334 238.464 85.333333 426.666667 238.464 768 426.666667 768zm0-597.333333c141.184.0 256 114.816 256 256s-114.816 256-256 256-256-114.816-256-256 114.816-256 256-256z" />
+        </svg>
+      </tw-button> -->
+      <!-- GitHub Icon -->
+      <a href="https://github.com/William-Mba/ngx-twcss">
+        <tw-button tw-icon variant="secondary">
+          <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentcolor" class="text-yellow-500">
+            <path
+              d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z">
+            </path>
+          </svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentcolor">
+            <path
+              d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z">
+            </path>
+          </svg>
+        </tw-button>
+      </a>
+      <!-- Theme toggle icon -->
+      <tw-button tw-icon variant='secondary' (click)="ToggleTheme()">
         <svg fill="currentcolor" *ngIf="dark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001.0 1010.586 10.586z" />
         </svg>
@@ -17,14 +40,8 @@
             fill-rule="evenodd" clip-rule="evenodd" />
         </svg>
       </tw-button>
-      <tw-button variant='text' size="md">
-        <svg fill="currentcolor" t="1702210633165" viewBox="0 0 1024 1024"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M426.666667 768a339.285333 339.285333.0 00208.938666-72.021333L823.168 883.541333l60.330667-60.330666L695.936 635.648A339.285333 339.285333.0 00768 426.666667C768 238.464 614.869333 85.333334 426.666667 85.333333S85.333334 238.464 85.333333 426.666667 238.464 768 426.666667 768zm0-597.333333c141.184.0 256 114.816 256 256s-114.816 256-256 256-256-114.816-256-256 114.816-256 256-256z" />
-        </svg>
-      </tw-button>
-      <tw-button variant='text' size="md" className="2xl:hidden" (click)="toggle()">
+      <!-- Burger button -->
+      <tw-button tw-icon variant='secondary' className="2xl:hidden" (click)="toggle()">
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
           <path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M1 1h15M1 7h15M1 13h15" />
@@ -40,7 +57,8 @@
       <div class="relative">
         <tw-button variant="text" size="sm" className="absolute top-0 right-0 2xl:hidden" (click)="toggle()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
         </tw-button>
       </div>
@@ -94,12 +112,13 @@
         </li>
         <li routerLink="avatars" (click)="toggle()">
           Avatar
-        </li>
-        <li routerLink="modal-dialogs" (click)="toggle()">
+        </li><li routerLink="modal-dialogs" (click)="toggle()">
           Modal Dialog
+        </li>
+        <li routerLink="comboboxes" (click)="toggle()">
+          Comboboxe
         </li>
       </ul>
     </div>
-
   </nav>
 </ng-container>

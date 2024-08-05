@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Icon } from 'ngx-twcss';
+import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Icon, Comboboxe } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +20,8 @@ import { CodeSnippetComponent } from './code-snippet/code-snippet.component';
 import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { LabComponent } from './demos/lab/lab.component';
+import { FormsModule } from '@angular/forms';
+import { ComboboxeDemoComponent } from './demos/comboboxe-demo/comboboxe-demo.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,16 @@ import { LabComponent } from './demos/lab/lab.component';
     MenuComponent,
     CodeSnippetComponent,
     RoadmapComponent,
-    LabComponent
+    LabComponent,
+    ComboboxeDemoComponent
   ],
   imports: [
-    Highlight, HighlightAuto,
+    Highlight,
+    HighlightAuto,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     Button,
     Icon,
     ButtonGroup,
@@ -47,7 +52,8 @@ import { LabComponent } from './demos/lab/lab.component';
     Badge,
     BadgeAction,
     Avatar,
-    ModalDialog
+    ModalDialog,
+    Comboboxe
   ],
   bootstrap: [AppComponent],
   providers: [
