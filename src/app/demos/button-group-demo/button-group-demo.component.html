@@ -112,8 +112,8 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button-group>
-      <tw-button variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-md p-2.5">
-        <label for={{checkBoxId01}} class="absolute inset-0 p-[18px]"></label>
+      <tw-button variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-md h-auto">
+        <label for={{checkBoxId01}} class="absolute inset-0 min-h-full min-w-full"></label>
         <input type="checkbox" id={{checkBoxId01}}
           class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
@@ -232,9 +232,9 @@
   </h2>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-button-group>
-      <tw-button variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-3xl p-2.5">
-        <label for={{checkBoxId02}} class="absolute inset-0 p-[18px]"></label>
+    <div tw-button-group>
+      <tw-button variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-3xl h-auto">
+        <label for={{checkBoxId02}} class="absolute inset-0 min-h-full min-w-full"></label>
         <input type="checkbox" id={{checkBoxId02}}
           class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
@@ -247,7 +247,7 @@
           <option>All messages</option>
         </select>
       </tw-button>
-    </tw-button-group>
+    </div>
   </div>
   <demo-code-snippet [code]="roundedWithChecboxAndSelect"></demo-code-snippet>
 
