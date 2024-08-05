@@ -6,7 +6,7 @@
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-corner {
@@ -22,7 +22,7 @@
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 10px;
-  width: 5px;
+  width: 3px;
 }
 
 /* scrollbar thumb on hover */
