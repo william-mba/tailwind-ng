@@ -19,16 +19,13 @@ import { NgIf } from '@angular/common';
           opacity: 0,
           transform: 'scale(.9)'
         }),
-        animate('300ms cubic-bezier(.1, 1, .1, 1)', style({
+        animate('300ms ease-out', style({
           opacity: 1,
           transform: 'scale(1)'
         })),
       ]),
       transition(':leave', [
-        style({
-          transform: 'scale(1.05)'
-        }),
-        animate('100ms', style({
+        animate('100ms ease-in', style({
           opacity: 0,
           transform: 'scale(.9)'
         }))
