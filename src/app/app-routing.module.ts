@@ -8,8 +8,13 @@ import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
 import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { LabComponent } from './demos/lab/lab.component';
+import { ComboboxeDemoComponent } from './demos/comboboxe-demo/comboboxe-demo.component';
 
 const routes: Routes = [
+  {
+    path: 'comboboxes',
+    component: ComboboxeDemoComponent
+  },
   {
     path: 'modal-dialogs',
     component: ModalDialogDemoComponent
