@@ -16,7 +16,7 @@ pool:
 
 variables:
   - name: MajorMinor
-    value: "0.0"
+    value: "0.1"
   - name: Patch
     value: $[counter(variables.MajorMinor, 0)]
   - name: Release
