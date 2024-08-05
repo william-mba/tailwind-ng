@@ -17,8 +17,6 @@ yarn-error.log
 
 .vscode
 .hintrc
-.yarn
-yarn.lock
 
 # IDEs and editors
 .idea/
