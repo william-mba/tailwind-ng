@@ -1,0 +1,33 @@
+@if (label.trim()) {
+<label [for]="id" class="absolute -top-7 inset-x-0 font-medium">{{label}}</label>
+}
+<input #textInput [id]="id"
+  class="w-80 rounded-md border-0 bg-neutral-50 dark:bg-neutral-800 py-1.5 pl-3 pr-10 shadow-sm ring ring-inset ring-neutral-300 dark:ring-neutral-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 leading-6"
+  type="text" [(ngModel)]="inputValue" (ngModelChange)="filterItems(inputValue)">
+<tw-button tw-icon variant="text" className="absolute inset-y-0 right-0 rounded-r-md first:opacity-5">
+  <!-- Hide reset icon button if there are more than 3 items -->
+  @if (items.length <= 3) {
+  <svg (click)="resetList()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+    aria-hidden="true">
+    <path
+      d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
+  </svg>
+  }
+  <svg (click)="toggle()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+    <path fill-rule="evenodd"
+      d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
+      clip-rule="evenodd"></path>
+  </svg>
+</tw-button>
+<tw-dropdown [open]="open" className="max-h-64 w-80 overflow-auto shadow-lg">
+  @if (items.length > 0) {
+  @for (item of items; track item) {
+  <tw-comboboxe-item [value]="item" (onSelect)="selectValue($event)" [selected]="isSelected(item)" [iconPosition]="iconPosition" />
+  }
+  }
+  @else {
+  <div class="h-fit px-4 py-2 text-sm">
+    No item matching.
+  </div>
+  }
+</tw-dropdown>
