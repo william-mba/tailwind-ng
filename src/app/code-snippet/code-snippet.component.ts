@@ -22,11 +22,11 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
 })
 export class CodeSnippetComponent {
   private text = {
-    copy: '',
-    copied: 'copied!'
+    copy: 'Copy',
+    copied: 'Copied!'
   };
   protected displayText = this.text.copy;
-  protected label = '<> Code sample';
+  protected label = '</> Code';
 
   @Input() code!: string;
 
