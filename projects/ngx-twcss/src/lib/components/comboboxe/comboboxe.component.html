@@ -2,9 +2,9 @@
 <label [for]="id" class="absolute -top-7 inset-x-0 font-medium">{{label}}</label>
 }
 <input #textInput [id]="id"
-  class="w-80 rounded-md border-0 bg-neutral-50 dark:bg-neutral-800 py-1.5 pl-3 pr-10 shadow-sm ring ring-inset ring-neutral-300 dark:ring-neutral-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 leading-6"
+  class="w-64 rounded-md border-0 bg-neutral-50 dark:bg-neutral-800 py-1.5 pl-3 pr-10 shadow-sm ring ring-inset ring-neutral-300 dark:ring-neutral-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 leading-6"
   type="text" [(ngModel)]="inputValue" (ngModelChange)="filterItems(inputValue)">
-<tw-button tw-icon variant="text" className="absolute inset-y-0 right-0 rounded-r-md first:opacity-5">
+<tw-button tw-icon variant="text" className="absolute inset-y-0 right-0 rounded-r-md">
   <!-- Hide reset icon button if there are more than 3 items -->
   @if (items.length <= 3) {
   <svg (click)="resetList()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
@@ -19,7 +19,7 @@
       clip-rule="evenodd"></path>
   </svg>
 </tw-button>
-<tw-dropdown [open]="open" className="max-h-64 w-80 overflow-auto shadow-lg">
+<tw-dropdown [open]="open" className="max-h-64 w-64 overflow-auto shadow-lg">
   @if (items.length > 0) {
   @for (item of items; track item) {
   <tw-comboboxe-item [value]="item" (onSelect)="selectValue($event)" [selected]="isSelected(item)" [iconPosition]="iconPosition" />

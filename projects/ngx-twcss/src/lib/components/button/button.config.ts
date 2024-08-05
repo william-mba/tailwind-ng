@@ -108,6 +108,7 @@ export const ButtonBaseConfig: ButtonBaseConfig = {
     alignItem: 'items-center',
     justifyContent: 'justify-center'
   },
+  height: 'h-fit',
   shadow: 'shadow-sm',
   textWrap: 'text-nowrap',
   userSelect: 'select-none',

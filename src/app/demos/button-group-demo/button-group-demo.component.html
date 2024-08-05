@@ -70,12 +70,9 @@
         Save changes
       </tw-button>
       <div>
-        <tw-button variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown(0)">
-          <svg *ngIf="!open(0)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+        <tw-button tw-icon variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown(0)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
             <path d="M480-360 280-560h400L480-360Z" />
-          </svg>
-          <svg *ngIf="open(0)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-            <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
         <tw-dropdown [open]="open(0)" (click)="toggleDropdown(0)"
@@ -115,8 +112,9 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button-group>
-      <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-md">
-        <input type="checkbox"
+      <tw-button tw-icon variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-md p-2.5">
+        <label for={{checkBoxId01}} class="absolute inset-0 p-[18px]"></label>
+        <input type="checkbox" id={{checkBoxId01}}
           class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
       <tw-button variant="text" className="*:size-auto p-0">
@@ -193,12 +191,9 @@
         Save changes
       </tw-button>
       <div>
-        <tw-button variant="secondary" className="rounded-r-full h-full" (click)="toggleDropdown(4)">
-          <svg *ngIf="!open(4)" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
+        <tw-button variant="secondary" className="rounded-r-full h-full pl-3" (click)="toggleDropdown(4)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 -960 960 960">
             <path d="M480-360 280-560h400L480-360Z" />
-          </svg>
-          <svg *ngIf="open(4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-            <path d="m280-400 200-200 200 200H280Z" />
           </svg>
         </tw-button>
         <tw-dropdown [open]="open(4)" (click)="toggleDropdown(4)"
@@ -238,14 +233,15 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button-group>
-      <tw-button tw-icon variant="text" className="border border-neutral-300 dark:border-neutral-600 rounded-l-full">
-        <input type="checkbox"
+      <tw-button tw-icon variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-3xl p-2.5">
+        <label for={{checkBoxId02}} class="absolute inset-0 p-[18px]"></label>
+        <input type="checkbox" id={{checkBoxId02}}
           class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
       <tw-button variant="text" className="*:size-auto p-0">
         <label for="currency" class="sr-only">Currency</label>
         <select id="currency" name="currency"
-          class="rounded-r-full border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+          class="rounded-r-3xl border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
           <option>Unread messages</option>
           <option>Sent messages</option>
           <option>All messages</option>
