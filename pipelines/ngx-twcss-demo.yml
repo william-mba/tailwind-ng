@@ -70,6 +70,6 @@ stages:
                 # Swap blue/green
                 cp -rfp /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
                 # Copy the new release to the green directory
-                cp -rfp ./* /azp/www/ngx-twcss/green
+                cp -rfp ./browser/* /azp/www/ngx-twcss/green
               displayName: "Release ${{ parameters.ReleaseTag }} demo"
               workingDirectory: $(Pipeline.Workspace)/drop
