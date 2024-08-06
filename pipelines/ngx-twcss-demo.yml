@@ -12,6 +12,12 @@ pool:
   demands:
     - Agent.OS -equals Linux
 
+resources:
+  repositories:
+    - repository: template
+      name: DevOps/Template
+      type: git
+
 parameters:
   - name: ReleaseTag
     displayName: "Release tag"
@@ -24,55 +30,14 @@ parameters:
 stages:
   - stage: CI
     jobs:
-      - job: Build
-        steps:
-          - checkout: self
-            clean: false
-            persistCredentials: true
+      - template: ngx-twcss-demo/job.build.yml@template
 
-          - bash: |
-              sed "/file\:dist\/ngx-twcss/d" -i package.json
-
-              echo "Using ngx-twcss@${{ parameters.ReleaseTag }}"
-              npm install ngx-twcss@${{ parameters.ReleaseTag }}
-
-              if [ -f package-lock.json ]; then echo "Removing package-lock.json"; rm package-lock.json; fi
-
-              npm install
-            displayName: "Setup"
-
-          - script: |
-              npm run build:demo
-            displayName: "Build"
-
-          - publish: $(Build.SourcesDirectory)/dist/ngx-twcss-demo
-            artifact: drop
-            displayName: "Publish artifact"
-
-  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-    - stage: CD
-      dependsOn: CI
-      pool:
-        name: Ngx-twcss
-        demands:
-          - Agent.OS -equals Linux
-          - AZP_RUNS -equals ngx-twcss-demo
-      jobs:
-        - job: Release
-          steps:
-            - checkout: none
-
-            - download: current
-              artifact: drop
-              displayName: Download build artifact
-
-            - script: |
-                # Swap blue/green
-                rm -rf /azp/www/ngx-twcss/blue/*
-                cp -rf /azp/www/ngx-twcss/green/* /azp/www/ngx-twcss/blue
-                # Copy the new release to the green directory
-                rm -rf /azp/www/ngx-twcss/green/*
-                cp -rf ./drop/browser/* /azp/www/ngx-twcss/green
-                rm -rf ./drop
-              displayName: "Release ${{ parameters.ReleaseTag }} demo"
-              workingDirectory: $(Pipeline.Workspace)
+  - stage: CD
+    dependsOn: CI
+    pool:
+      name: Ngx-twcss
+      demands:
+        - Agent.OS -equals Linux
+        - AZP_RUNS -equals ngx-twcss-demo
+    jobs:
+      - template: ngx-twcss-demo/job.release.yml@template

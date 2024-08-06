@@ -3,8 +3,9 @@ trigger:
     include:
       - main
       - next
-      - feat/*
       - fix/*
+      - feat/*
+      - release/*
   paths:
     include:
       - projects/ngx-twcss/src/*
@@ -13,6 +14,12 @@ pool:
   name: Ngx-twcss
   demands:
     - Agent.OS -equals Linux
+
+resources:
+  repositories:
+    - repository: template
+      name: DevOps/Template
+      type: git
 
 variables:
   - name: MajorMinor
@@ -34,64 +41,10 @@ name: $(Build.DefinitionName)-v${{variables.Release}}
 stages:
   - stage: CI
     jobs:
-      - job: Build_Test_Publish
-        steps:
-          - checkout: self
-            persistCredentials: true
-            clean: false
-
-          - bash: |
-              sed "/file\:dist\/ngx-twcss/d" -i package.json
-              if [ -f package-lock.json ]; then \
-                echo "Removing package-lock.json"; \
-                rm package-lock.json; \
-              fi
-              npm install
-            displayName: "Setup"
-
-          - bash: |
-              sed "s/0.0.0/$(Release)/g" -i package.json
-              sed "s/0.0.0-placeholder/$(Release)/g" -i projects/ngx-twcss/package.json
-              npm run build:package
-            displayName: "Build"
-
-          - bash: |
-              npx puppeteer browsers install chrome
-              Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
-              npm run test:package:ci
-            displayName: "Test"
-
-          - publish: $(Build.SourcesDirectory)/dist/ngx-twcss
-            artifact: drop
-            displayName: "Publish artifact"
-
-          - task: PublishTestResults@2
-            displayName: "Publish test results"
-            inputs:
-              testResultsFormat: "JUnit"
-              testResultsFiles: "**/TESTS-*.xml"
-              searchFolder: "$(Build.SourcesDirectory)"
-              mergeTestResults: true
-              testRunTitle: "Test-results-$(Build.DefinitionName)-v$(Release)"
-
-          - task: PublishCodeCoverageResults@2
-            displayName: "Publish code coverage"
-            inputs:
-              summaryFileLocation: "$(Build.SourcesDirectory)/coverage/ngx-twcss/cobertura.xml"
-              pathToSources: "$(Build.SourcesDirectory)/coverage/ngx-twcss"
+    - template: ngx-twcss/job.build-test-publish.yml@template
 
   - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), contains(variables['Build.SourceBranch'], 'release/')) }}:
     - stage: CD
       dependsOn: CI
       jobs:
-        - job: Release
-          steps:
-            - checkout: none
-            - download: current
-              artifact: drop
-              displayName: Download artifact
-            - bash: npm publish --tag $(ReleaseTag)
-              env:
-                NODE_AUTH_TOKEN: $(authToken)
-              displayName: "Release v$(Release)"
-              workingDirectory: $(Pipeline.Workspace)/drop
+      - template: ngx-twcss/job.release.yml@template
