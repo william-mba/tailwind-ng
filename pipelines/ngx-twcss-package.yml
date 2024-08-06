@@ -3,8 +3,9 @@ trigger:
     include:
       - main
       - next
-      - feat/*
       - fix/*
+      - feat/*
+      - release/*
   paths:
     include:
       - projects/ngx-twcss/src/*
