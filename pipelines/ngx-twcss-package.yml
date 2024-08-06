@@ -16,8 +16,8 @@ pool:
 
 resources:
   repositories:
-    - repository: templates
-      name: DevOps/Templates
+    - repository: template
+      name: DevOps/Template
       type: git
 
 variables:
@@ -40,10 +40,10 @@ name: $(Build.DefinitionName)-v${{variables.Release}}
 stages:
   - stage: CI
     jobs:
-    - template: ngx-twcss/job.build-test-publish.yml@templates
+    - template: ngx-twcss/job.build-test-publish.yml@template
 
   - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), contains(variables['Build.SourceBranch'], 'release/')) }}:
     - stage: CD
       dependsOn: CI
       jobs:
-      - template: ngx-twcss/job.release.yml@templates
+      - template: ngx-twcss/job.release.yml@template

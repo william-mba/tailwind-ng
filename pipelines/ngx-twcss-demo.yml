@@ -12,6 +12,12 @@ pool:
   demands:
     - Agent.OS -equals Linux
 
+resources:
+  repositories:
+    - repository: template
+      name: DevOps/Template
+      type: git
+
 parameters:
   - name: ReleaseTag
     displayName: "Release tag"
@@ -24,7 +30,7 @@ parameters:
 stages:
   - stage: CI
     jobs:
-      - template: ngx-twcss-demo/job.build.yml@templates
+      - template: ngx-twcss-demo/job.build.yml@template
 
   - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
     - stage: CD
@@ -35,4 +41,4 @@ stages:
           - Agent.OS -equals Linux
           - AZP_RUNS -equals ngx-twcss-demo
       jobs:
-        - template: ngx-twcss-demo/job.release.yml@templates
+        - template: ngx-twcss-demo/job.release.yml@template
