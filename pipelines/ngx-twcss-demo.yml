@@ -32,13 +32,12 @@ stages:
     jobs:
       - template: ngx-twcss-demo/job.build.yml@template
 
-  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-    - stage: CD
-      dependsOn: CI
-      pool:
-        name: Ngx-twcss
-        demands:
-          - Agent.OS -equals Linux
-          - AZP_RUNS -equals ngx-twcss-demo
-      jobs:
-        - template: ngx-twcss-demo/job.release.yml@template
+  - stage: CD
+    dependsOn: CI
+    pool:
+      name: Ngx-twcss
+      demands:
+        - Agent.OS -equals Linux
+        - AZP_RUNS -equals ngx-twcss-demo
+    jobs:
+      - template: ngx-twcss-demo/job.release.yml@template
