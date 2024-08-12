@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Component, Directive, Input, OnInit } from '@angular/core';
 import { Config } from "../../core/types/config";
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 
@@ -22,12 +22,13 @@ export const BadgeConfig: BadgeConfig = {
 }
 
 /**Badge component*/
-@Directive({
+@Component({
   standalone: true,
   selector: 'tw-badge, [tw-badge]',
   host: {
     '[class]': 'config'
-  }
+  },
+  template: '<ng-content></ng-content>'
 })
 export class Badge implements OnInit {
   @Input() config!: string;
@@ -35,7 +36,11 @@ export class Badge implements OnInit {
 
   ngOnInit(): void {
     if (this.config) return;
-    this.config = mergeClassNames(toClassNames(BadgeConfig), this.class);
+    this.setConfig();
+  }
+
+  public setConfig(config: Partial<BadgeConfig> = BadgeConfig): void {
+    this.config = mergeClassNames(toClassNames(config), this.class);
   }
 }
 

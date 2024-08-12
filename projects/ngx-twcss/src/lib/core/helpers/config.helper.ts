@@ -63,10 +63,11 @@ export function mergeClassNames(target: string, source: string, strategy: 'first
   if (!target && !source) return '';
 
   const minimumClassNameLength = 3;
-  const classNameFinalValueIdentifier = ' + ';
+
+  const divider = '+' // the divider that separate custom style from default style
 
   if (source.length >= minimumClassNameLength) {
-    target = target.replace(classNameFinalValueIdentifier, ' ');
+    target = target.replace(` ${divider} `, ' ');
 
     source.split(' ')
       .forEach((name) => {
@@ -90,8 +91,7 @@ export function mergeClassNames(target: string, source: string, strategy: 'first
             .join(' ');
         }
       });
-    // Add a separator to help identify custom style from default when needed.
-    target = `${source}${classNameFinalValueIdentifier}${target}`;
+    target = `${source} ${divider} ${target}`;
   }
   return target;
 }

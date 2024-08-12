@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { DropdownConfigKey } from './dropdown.config';
+import { DropdownConfig, DropdownConfigKey } from './dropdown.config';
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
@@ -35,7 +35,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ]
 })
 export class Dropdown implements OnInit {
-  private config$ = inject(ConfigService).get(DropdownConfigKey);
+  private config$ = inject(ConfigService).get<DropdownConfig>(DropdownConfigKey);
   private _class!: string;
 
   @Input() class!: string;
@@ -45,7 +45,11 @@ export class Dropdown implements OnInit {
     if (this.config) return;
     this._class = this.class;
     this.config$.subscribe((conf) => {
-      this.config = mergeClassNames(toClassNames(conf), this._class);
+      this.setConfig(conf);
     });
+  }
+
+  setConfig(config: Partial<DropdownConfig> = DropdownConfig): void {
+    this.config = mergeClassNames(toClassNames(config), this._class);
   }
 }

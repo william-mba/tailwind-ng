@@ -17,7 +17,11 @@ export class Avatar implements OnInit {
 
   ngOnInit(): void {
     if (this.config) return;
-    this.config = mergeClassNames(toClassNames(AvatarConfig), this.class);
+    this.setConfig();
+  }
+
+  public setConfig(config: Partial<AvatarConfig> = AvatarConfig): void {
+    this.config = mergeClassNames(toClassNames(config), this.class);
   }
 }
 

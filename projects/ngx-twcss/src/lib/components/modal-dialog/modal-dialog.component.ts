@@ -73,11 +73,15 @@ export class DialogContainer implements OnInit {
     if (this.config) return;
     this._class = this.class;
 
-    this.config$.subscribe((conf) => {
-      this.config = mergeClassNames(toClassNames(conf.container), this._class);
-      this.scrim = mergeClassNames(toClassNames(conf.scrim), this.scrim);
-      this.backdrop = mergeClassNames(toClassNames(conf.backdrop), this.backdrop);
+    this.config$.subscribe((value) => {
+      this.setConfig(value);
     });
+  }
+
+  setConfig(config: Partial<ModalDialogConfig> = ModalDialogConfig): void {
+    this.config = mergeClassNames(toClassNames(config.container!), this._class);
+    this.scrim = mergeClassNames(toClassNames(config.scrim!), this.scrim);
+    this.backdrop = mergeClassNames(toClassNames(config.backdrop!), this.backdrop);
   }
 }
 
