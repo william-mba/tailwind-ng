@@ -2,6 +2,7 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ButtonConfig, ButtonConfigKey, ButtonSize, ButtonVariant, IconSizeConfig } from './button.config';
 import { ConfigService } from '../../core/services/config.service';
+import { Observable } from 'rxjs';
 
 /** Button element */
 @Component({
@@ -13,7 +14,7 @@ import { ConfigService } from '../../core/services/config.service';
   }
 })
 export class Button implements OnInit {
-  private config$ = inject(ConfigService).get<ButtonConfig>(ButtonConfigKey);
+  private config$: Observable<ButtonConfig> = inject(ConfigService).get(ButtonConfigKey);
   private _class!: string;
 
   @Input() config!: string;

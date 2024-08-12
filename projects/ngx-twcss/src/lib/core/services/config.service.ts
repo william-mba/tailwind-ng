@@ -16,13 +16,13 @@ export class ConfigService {
    * Get config
    */
   get<T extends Record<string, any>>(key: string): Observable<T> {
-    return this.configStore[key].asObservable() as Observable<T>;
+    return this.configStore[key]?.asObservable() as Observable<T>;
   }
 
   /**
    * Set config
    */
-  private set<T>(key: string, target: T, source: Partial<T> = {}): ConfigService {
+  private set<T extends Record<string, any>>(key: string, target: T, source: Partial<T> = {}): ConfigService {
     if (!isObject(this.configStore[key])) {
       this.configStore[key] = new BehaviorSubject<T>(target);
     }
@@ -36,7 +36,7 @@ export class ConfigService {
   /**
    * Set all config
    */
-  setAll() {
+  setAll(): void {
     this.setButton()
       .setDropdown()
       .setModalDialog();
@@ -45,7 +45,7 @@ export class ConfigService {
   /**
    * Set button config
    */
-  setButton(config: Partial<ButtonConfig> = {}) {
+  setButton(config: Partial<ButtonConfig> = {}): ConfigService {
     this.set(ButtonConfigKey, ButtonConfig, config);
     return this;
   }
@@ -53,7 +53,7 @@ export class ConfigService {
   /**
    * Set modal dialog config
    */
-  setModalDialog(config: Partial<ModalDialog> = {}) {
+  setModalDialog(config: Partial<ModalDialog> = {}): ConfigService {
     this.set(ModalDialogConfigKey, ModalDialogConfig, config);
     return this;
   }
@@ -61,7 +61,7 @@ export class ConfigService {
   /**
    * Set dropdown config
    */
-  setDropdown(config: Partial<DropdownConfig> = {}) {
+  setDropdown(config: Partial<DropdownConfig> = {}): ConfigService {
     this.set(DropdownConfigKey, DropdownConfig, config);
     return this;
   }

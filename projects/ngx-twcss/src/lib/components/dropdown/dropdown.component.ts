@@ -3,6 +3,7 @@ import { DropdownConfig, DropdownConfigKey } from './dropdown.config';
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { Observable } from 'rxjs';
 
 /** Dropdown component */
 @Component({
@@ -35,7 +36,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ]
 })
 export class Dropdown implements OnInit {
-  private config$ = inject(ConfigService).get<DropdownConfig>(DropdownConfigKey);
+  private config$: Observable<DropdownConfig> = inject(ConfigService).get(DropdownConfigKey);
   private _class!: string;
 
   @Input() class!: string;

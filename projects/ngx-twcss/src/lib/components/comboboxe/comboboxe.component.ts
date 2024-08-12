@@ -31,8 +31,8 @@ export class ComboboxeItem implements OnInit {
 
   @Input() value!: string;
   @Input() iconPosition!: 'left' | 'right';
-  @Input() selected = false;
-  @Output() select = new EventEmitter<string>();
+  @Input() selected: boolean = false;
+  @Output() select: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.setStateClasses();
@@ -57,7 +57,7 @@ export class ComboboxeItem implements OnInit {
   imports: [Dropdown, Button, FormsModule, ComboboxeItem, NgFor, NgIf],
   host: {
     class: 'relative h-max',
-    '(click)': 'onClick($event.target)'
+    '(click)': 'onClick()'
   },
   templateUrl: './comboboxe.component.html'
 })
@@ -66,6 +66,7 @@ export class Comboboxe implements OnInit {
   @Input() sort: boolean = false;
   @Input() items: string[] = [];
   @Input() label: string = '';
+  @Input() itemMinLength: number = 2;
   @Input() iconPosition: 'left' | 'right' = 'right';
   @Output() itemSelected: EventEmitter<string> = new EventEmitter<string>();
 
@@ -81,13 +82,9 @@ export class Comboboxe implements OnInit {
   @ViewChild('textInput', { static: true, read: ElementRef }) input!: ElementRef<HTMLInputElement>;
   @ViewChildren(ComboboxeItem, { read: ElementRef }) comboboxItems!: ElementRef<HTMLElement>[];
 
-  onClick(element: HTMLElement) {
-    // Set the focus to input if an item is clicked
-    if (element.textContent === this.inputValue) {
-      this.input.nativeElement.focus();
-    };
-    // Scroll to the selected item if the dropdown is open
+  onClick(): void {
     if (this.open) {
+      this.input.nativeElement.focus();
       this.scrollToSelectedItem();
     }
   }
@@ -105,25 +102,35 @@ export class Comboboxe implements OnInit {
     return this.open && (this.items.length > 0);
   }
 
-  private scrollToSelectedItem() {
+  canDisplayResetIcon(): boolean {
+    return (this.items.length <= 3) && this.open;
+  }
+
+  private scrollToSelectedItem(): void {
+    // if the input value is less than the minimum word length, do nothing
+    if (this.inputValueIsTooShort()) return;
+
     const item = this.comboboxItems.find((item) => this.isSelected(item.nativeElement.textContent || ''));
+
     if (!item) return;
 
     item.nativeElement.scrollIntoView({ behavior: "instant", block: "nearest" });
   }
 
-  isSelected = (item: string) => this.inputValue.trim() === item.trim();
+  isSelected = (item: string): boolean => this.inputValue.trim() === item.trim();
 
-  selectValue(value: string) {
+  inputValueIsTooShort = (): boolean => this.itemMinLength > this.inputValue.trim().length;
+
+  selectValue(value: string): void {
     this.open = false;
     this.inputValue = value;
     this.itemSelected.emit(value);
   }
 
-  filterItems(inputValue: string) {
+  filterItems(inputValue: string): void {
     this.open = true;
 
-    if (!inputValue.trim()) {
+    if (this.inputValueIsTooShort()) {
       this.resetList();
       return;
     }
