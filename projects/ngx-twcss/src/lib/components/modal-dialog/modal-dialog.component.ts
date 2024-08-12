@@ -4,6 +4,7 @@ import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper'
 import { ModalDialogConfig, ModalDialogConfigKey } from './modal-dialog.config';
 import { ConfigService } from '../../core/services/config.service';
 import { NgIf } from '@angular/common';
+import { Observable } from 'rxjs';
 
 /**Modal Dialog component */
 @Component({
@@ -61,7 +62,7 @@ import { NgIf } from '@angular/common';
   ]
 })
 export class DialogContainer implements OnInit {
-  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private config$: Observable<ModalDialogConfig> = inject(ConfigService).get(ModalDialogConfigKey);
   private _class!: string;
   @Input() config!: string;
   @Input() class!: string;
@@ -95,7 +96,7 @@ export class DialogContainer implements OnInit {
   template: '<ng-content></ng-content>'
 })
 export class DialogIcon implements OnInit {
-  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private config$: Observable<ModalDialogConfig> = inject(ConfigService).get(ModalDialogConfigKey);
   private _class!: string;
   @Input() config!: string;
   @Input() class!: string;
@@ -119,7 +120,7 @@ export class DialogIcon implements OnInit {
   template: '<ng-content></ng-content>'
 })
 export class DialogPanel implements OnInit {
-  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private config$: Observable<ModalDialogConfig> = inject(ConfigService).get(ModalDialogConfigKey);
   private _class!: string;
   @Input() config!: string;
   @Input() class!: string;
@@ -143,7 +144,7 @@ export class DialogPanel implements OnInit {
   template: '<ng-content></ng-content>'
 })
 export class DialogContent implements OnInit {
-  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private config$: Observable<ModalDialogConfig> = inject(ConfigService).get(ModalDialogConfigKey);
   private _class!: string;
   @Input() config!: string;
   @Input() class!: string;
@@ -167,7 +168,7 @@ export class DialogContent implements OnInit {
   template: '<ng-content></ng-content>'
 })
 export class DialogActions implements OnInit {
-  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private config$: Observable<ModalDialogConfig> = inject(ConfigService).get(ModalDialogConfigKey);
   private _class!: string;
   @Input() config!: string;
   @Input() class!: string;

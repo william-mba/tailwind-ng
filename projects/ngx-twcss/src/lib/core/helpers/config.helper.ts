@@ -15,35 +15,37 @@ export function toClassNames(obj: Record<string, any>): string {
   }).join(' ');
 }
 
-/**
- * Returns true if item is an object. Otherwise false.
- * @param item
- * @returns {boolean}
+/** Check if a value is an object
+ * @param value The value to check
+ * @returns True if the value is an object otherwise false
  */
-export function isObject(item: any): boolean {
-  return (item && typeof item === "object" && !Array.isArray(item));
+export function isObject(value: any): boolean {
+  return ((Object.keys(value || {}).length > 0) && !Array.isArray(value) && (typeof value === "object"));
 }
 
-/** Merge configs from sources to target
- * @param target
- * @param ...sources
+/** Merge configs from source to target
+ * @param target - The target config to update
+ * @param source - The source config to merge
+ * @returns The merged config
  */
-export function mergeConfigs<T extends Record<string, any>>(target: T, ...sources: T[]): T {
-  if (!sources.length) return target;
-  const source = sources.shift();
+export function mergeConfigs<T extends Record<string, any>>(target: T, source: Partial<T> = {}): T {
 
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, { [key]: {} });
+        if (!target[key]) {
+          Object.assign(target, { [key]: {} });
+        }
         mergeConfigs(target[key], source[key]);
       } else {
         Object.assign(target, { [key]: source[key] });
       }
     }
   }
-
-  return mergeConfigs(target, ...sources);
+  if (isObject(target)) {
+    return target;
+  }
+  return {} as T;
 }
 
 /** Merge class names from source to target
@@ -101,12 +103,12 @@ export function mergeClassNames(target: string, source: string, strategy: 'first
  * @param word The word to get the prefix from
  * @param separator The separator to use
  * @param strategy The strategy to use to get the prefix
- * @returns The extracted prefix
+ * @returns prefix of the word
  * @example
  * getPrefix('text-red-500', '-') => 'text'
  * getPrefix('text-red-500', '-', true) => 'text-red'
  */
-export const getPrefix = (word: string, separator: string = '-', strategy: 'first' | 'last' = 'first') => {
+export const getPrefix = (word: string, separator: string = '-', strategy: 'first' | 'last' = 'first'): string => {
   if (strategy === 'first') {
     return word.substring(0, word.indexOf(separator, 1));
   }
