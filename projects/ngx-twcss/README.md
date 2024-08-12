@@ -18,6 +18,10 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 - [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss)
 ---
 
+## Give a Star ⭐️
+
+Thanks to star this library to help increase it reach if you find it helpful or use it in your project.
+
 ## Quick start
 
 ### 0. Prerequisites
@@ -149,7 +153,3 @@ For ``NgModule`` based components, import components in your *.module.ts file
 
 For more usage samples, please visit the github repo.
 
-## Give a Star ⭐️
-
-If you found this library helpful or used it in your Projects, do give it a star. Thanks!
-Or, If you are feeling really generous, [Support the Project with a small contribution!](https://buymeacoffee.com/5fsgb9nx81)

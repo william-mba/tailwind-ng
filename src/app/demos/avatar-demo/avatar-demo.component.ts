@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-avatar-demo',
-  templateUrl: './avatar-demo.component.html',
-  styles: ``
+  templateUrl: './avatar-demo.component.html'
 })
 export class AvatarDemoComponent {
   avatarGroupStackedBottomToTop = `<div class="flex -space-x-1">

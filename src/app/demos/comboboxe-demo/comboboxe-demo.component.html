@@ -14,7 +14,7 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-comboboxe [items]="items" (onSelect)="selectValue($event)" label="Assigned to" />
+    <tw-comboboxe [items]="items" (itemSelected)="selectValue($event)" label="Assigned to" />
   </div>
   <demo-code-snippet [code]="simple"></demo-code-snippet>
 
@@ -23,7 +23,7 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-comboboxe [items]="items" (onSelect)="selectValue($event)" label="Assigned to" iconPosition="left" />
+    <tw-comboboxe [items]="items" (itemSelected)="selectValue($event)" label="Assigned to" iconPosition="left" />
   </div>
   <demo-code-snippet [code]="withCheckOnLeft"></demo-code-snippet>
 </div>

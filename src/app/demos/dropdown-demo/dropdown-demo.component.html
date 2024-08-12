@@ -15,7 +15,7 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
+    <div class="relative">
       <tw-button variant="secondary" (click)="toggleDropdown(0)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -24,10 +24,10 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(0)" (click)="toggleDropdown(0)"
-        className="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+      <tw-dropdown *ngIf="open(0)" (click)="toggleDropdown(0)"
+        class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-          <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+          <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
             variant="text">
             {{ item }}
           </tw-button>
@@ -42,7 +42,7 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
+    <div class="relative">
       <tw-button variant="secondary" (click)="toggleDropdown(1)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -51,41 +51,41 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(1)" (click)="toggleDropdown(1)"
-        className="shadow-lg divide-y divide-black/5 dark:divide-white/5">
+      <tw-dropdown *ngIf="open(1)" (click)="toggleDropdown(1)"
+        class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Edit
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Duplicate
           </tw-button>
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Archive
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Move
           </tw-button>
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Share
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Add to favorites
           </tw-button>
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Delete
           </tw-button>
         </div>
@@ -99,7 +99,7 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
+    <div class="relative">
       <tw-button variant="secondary" (click)="toggleDropdown(2)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -108,11 +108,11 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(2)" (click)="toggleDropdown(2)"
-        className="shadow-lg divide-y divide-black/5 dark:divide-white/5">
+      <tw-dropdown *ngIf="open(2)" (click)="toggleDropdown(2)"
+        class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
@@ -122,7 +122,7 @@
             Edit
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M7.5 3.375c0-1.036.84-1.875 1.875-1.875h.375a3.75 3.75 0 0 1 3.75 3.75v1.875C13.5 8.161 14.34 9 15.375 9h1.875A3.75 3.75 0 0 1 21 12.75v3.375C21 17.16 20.16 18 19.125 18h-9.75A1.875 1.875 0 0 1 7.5 16.125V3.375Z" />
@@ -134,7 +134,7 @@
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
@@ -145,7 +145,7 @@
             Archive
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
@@ -156,7 +156,7 @@
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M15.75 4.5a3 3 0 1 1 .825 2.066l-8.421 4.679a3.002 3.002 0 0 1 0 1.51l8.421 4.679a3 3 0 1 1-.729 1.31l-8.421-4.678a3 3 0 1 1 0-4.132l8.421-4.679a3 3 0 0 1-.096-.755Z"
@@ -165,7 +165,7 @@
             Share
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
@@ -176,7 +176,7 @@
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z"
@@ -195,18 +195,18 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
-      <tw-button tw-icon variant="text" (click)="toggleDropdown(3)">
+    <div class="relative">
+      <tw-button [icon]="true" variant="text" (click)="toggleDropdown(3)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
           <path fill-rule="evenodd"
             d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(3)" (click)="toggleDropdown(3)"
-        className="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+      <tw-dropdown *ngIf="open(3)" (click)="toggleDropdown(3)"
+        class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-          <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+          <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
             variant="text">
             {{ item }}
           </tw-button>
@@ -224,8 +224,8 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
-      <tw-button variant="secondary" className="rounded-3xl" (click)="toggleDropdown(4)">
+    <div class="relative">
+      <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(4)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -233,10 +233,10 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(4)" (click)="toggleDropdown(4)"
-        className="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
+      <tw-dropdown *ngIf="open(4)" (click)="toggleDropdown(4)"
+        class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-          <tw-button className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
+          <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
             variant="text">
             {{ item }}
           </tw-button>
@@ -251,8 +251,8 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
-      <tw-button variant="secondary" className="rounded-3xl" (click)="toggleDropdown(5)">
+    <div class="relative">
+      <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(5)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -260,41 +260,41 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(5)" (click)="toggleDropdown(5)"
-        className="rounded-3xl shadow-lg divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
+      <tw-dropdown *ngIf="open(5)" (click)="toggleDropdown(5)"
+        class="rounded-3xl shadow-lg divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
         <div class="flex flex-col p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Edit
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Duplicate
           </tw-button>
         </div>
         <div class="flex flex-col p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Archive
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Move
           </tw-button>
         </div>
         <div class="flex flex-col p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Share
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Add to favorites
           </tw-button>
         </div>
         <div class="flex flex-col p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             Delete
           </tw-button>
         </div>
@@ -308,8 +308,8 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
-      <tw-button variant="secondary" className="rounded-3xl" (click)="toggleDropdown(6)">
+    <div class="relative">
+      <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(6)">
         Options
         <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd"
@@ -317,11 +317,11 @@
             clip-rule="evenodd"></path>
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(6)" (click)="toggleDropdown(6)"
-        className="rounded-3xl shadow-lg *:justify-start divide-y divide-black/5 dark:divide-white/5 *:rounded-none *:shadow-none">
+      <tw-dropdown *ngIf="open(6)" (click)="toggleDropdown(6)"
+        class="rounded-3xl shadow-lg *:justify-start divide-y divide-black/5 dark:divide-white/5 *:rounded-none *:shadow-none">
         <div class="flex flex-col p-2 *:p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
@@ -331,7 +331,7 @@
             Edit
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M7.5 3.375c0-1.036.84-1.875 1.875-1.875h.375a3.75 3.75 0 0 1 3.75 3.75v1.875C13.5 8.161 14.34 9 15.375 9h1.875A3.75 3.75 0 0 1 21 12.75v3.375C21 17.16 20.16 18 19.125 18h-9.75A1.875 1.875 0 0 1 7.5 16.125V3.375Z" />
@@ -343,7 +343,7 @@
         </div>
         <div class="flex flex-col p-2 *:p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
@@ -354,7 +354,7 @@
             Archive
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
@@ -365,7 +365,7 @@
         </div>
         <div class="flex flex-col p-2 *:p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M15.75 4.5a3 3 0 1 1 .825 2.066l-8.421 4.679a3.002 3.002 0 0 1 0 1.51l8.421 4.679a3 3 0 1 1-.729 1.31l-8.421-4.678a3 3 0 1 1 0-4.132l8.421-4.679a3 3 0 0 1-.096-.755Z"
@@ -374,7 +374,7 @@
             Share
           </tw-button>
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
@@ -385,7 +385,7 @@
         </div>
         <div class="flex flex-col p-2 *:p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                 d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z"
@@ -404,19 +404,19 @@
   </h2>
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <div>
-      <tw-button tw-icon variant="text" className="rounded-3xl" (click)="toggleDropdown(7)">
+    <div class="relative">
+      <tw-button [icon]="true" variant="text" class="rounded-3xl" (click)="toggleDropdown(7)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
           <path fill-rule="evenodd"
             d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z"
             clip-rule="evenodd" />
         </svg>
       </tw-button>
-      <tw-dropdown [open]="open(7)" (click)="toggleDropdown(7)"
-        className="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
+      <tw-dropdown *ngIf="open(7)" (click)="toggleDropdown(7)"
+        class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
         <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
           <tw-button variant="text"
-            className="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
+            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
             {{ item }}
           </tw-button>
         </ng-container>

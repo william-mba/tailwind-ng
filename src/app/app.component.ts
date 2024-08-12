@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CustomButtonConfig, CustomButtonConfig2, CustomButtonConfig3 } from 'customs/button.config';
 import { CustomDropdownConfig, CustomDropdownConfig2, CustomDropdownConfig3 } from 'customs/dropdown.config';
-import { ConfigService, DropdownConfig, DropdownConfigKey, ButtonConfig, ButtonConfigKey, ToggleTheme } from 'ngx-twcss';
+import { ConfigService } from 'ngx-twcss';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,14 @@ import { ConfigService, DropdownConfig, DropdownConfigKey, ButtonConfig, ButtonC
 })
 
 export class AppComponent {
-  private buttonConfig = inject(ConfigService<ButtonConfig>);
-  private dropdownConfig = inject(ConfigService<DropdownConfig>);
+  private configService = inject(ConfigService);
   theme: number = 0;
   title = 'Ngx-Twcss Playground';
   nextThemeMode: 'light' | 'dark' = 'dark';
+
+  constructor() {
+    this.configService.setAll();
+  }
 
   ngOnInit() {
     let lastTheme = localStorage.getItem('last-used-theme');
@@ -27,18 +30,18 @@ export class AppComponent {
   changeConfig() {
     switch (this.theme) {
       case 1:
-        this.buttonConfig.set(ButtonConfigKey, ButtonConfig, CustomButtonConfig);
-        this.dropdownConfig.set(DropdownConfigKey, DropdownConfig, CustomDropdownConfig);
+        this.configService.setButton(CustomButtonConfig)
+          .setDropdown(CustomDropdownConfig);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 2:
-        this.buttonConfig.set(ButtonConfigKey, ButtonConfig, CustomButtonConfig2);
-        this.dropdownConfig.set(DropdownConfigKey, DropdownConfig, CustomDropdownConfig2);
+        this.configService.setButton(CustomButtonConfig2)
+          .setDropdown(CustomDropdownConfig2);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
       case 3:
-        this.buttonConfig.set(ButtonConfigKey, ButtonConfig, CustomButtonConfig3);
-        this.dropdownConfig.set(DropdownConfigKey, DropdownConfig, CustomDropdownConfig3);
+        this.configService.setButton(CustomButtonConfig3)
+          .setDropdown(CustomDropdownConfig3);
         localStorage.setItem('last-used-theme', `${this.theme}`);
         break;
     }

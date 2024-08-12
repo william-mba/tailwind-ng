@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown-demo',
-  templateUrl: './dropdown-demo.component.html',
-  styles: ``
+  templateUrl: './dropdown-demo.component.html'
 })
 export class DropdownDemoComponent {
   states: Record<number, boolean> = {};
@@ -136,7 +135,7 @@ export class DropdownDemoComponent {
 </div>`;
 
   withMinimalMenuIcon = `<div>
-  <tw-button tw-icon variant="text" (click)="toggleDropdown()">
+  <tw-button [icon]="true" variant="text" (click)="toggleDropdown()">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
       <path fill-rule="evenodd" d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
     </svg>
@@ -271,7 +270,7 @@ export class DropdownDemoComponent {
 </div>`;
 
   roundedWithMinimalMenuIcon = `<div>
-  <tw-button tw-icon variant="text" className="rounded-3xl" (click)="toggleDropdown()">
+  <tw-button [icon]="true" variant="text" className="rounded-3xl" (click)="toggleDropdown()">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
       <path fill-rule="evenodd" d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
     </svg>

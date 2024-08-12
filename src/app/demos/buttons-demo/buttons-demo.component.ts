@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-buttons-demo',
-  templateUrl: './buttons-demo.component.html',
-  styles: ``
+  templateUrl: './buttons-demo.component.html'
 })
 export class ButtonsDemoComponent {
   copy(text: string) {
@@ -34,57 +33,57 @@ export class ButtonsDemoComponent {
 <tw-button size="lg" variant="text">Button text</tw-button>
 <tw-button size="xl" variant="text">Button text</tw-button>`;
 
-  iconButton = `<tw-button tw-icon size="xs" variant="text">
+  iconButton = `<tw-button [icon]="true" size="xs" variant="text">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="md" variant="secondary">
+<tw-button [icon]="true" size="md" variant="secondary">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="xl" variant="tonal">
+<tw-button [icon]="true" size="xl" variant="tonal">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>`;
 
-  fab: string = `<tw-button tw-icon size="xs" [fab]="true">
+  fab: string = `<tw-button [icon]="true" size="xs" [fab]="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="md" [fab]="true">
+<tw-button [icon]="true" size="md" [fab]="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="xl" [fab]="true">
+<tw-button [icon]="true" size="xl" [fab]="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>`;
 
-  extentedFab = `<tw-button tw-icon size="xs" [fab]="true">
+  extentedFab = `<tw-button [icon]="true" size="xs" [fab]="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
   Button text
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="md" [fab]="true">
+<tw-button [icon]="true" size="md" [fab]="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
   Button text
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="xl" [fab]="true">
+<tw-button [icon]="true" size="xl" [fab]="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
@@ -115,57 +114,57 @@ export class ButtonsDemoComponent {
 <tw-button size="lg" variant="text" className="rounded-full">Button text</tw-button>
 <tw-button size="xl" variant="text" className="rounded-full">Button text</tw-button>`;
 
-  roundedIconButton = `<tw-button tw-icon size="xs" variant="text" className="rounded-full">
+  roundedIconButton = `<tw-button [icon]="true" size="xs" variant="text" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="md" variant="secondary" className="rounded-full">
+<tw-button [icon]="true" size="md" variant="secondary" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="xl" variant="tonal" className="rounded-full">
+<tw-button [icon]="true" size="xl" variant="tonal" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>`;
 
-  roundedFab = `<tw-button tw-icon size="xs" [fab]="true" className="rounded-full">
+  roundedFab = `<tw-button [icon]="true" size="xs" [fab]="true" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="md" [fab]="true" className="rounded-full">
+<tw-button [icon]="true" size="md" [fab]="true" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="xl" [fab]="true" className="rounded-full">
+<tw-button [icon]="true" size="xl" [fab]="true" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
 </tw-button>`;
 
-  roundedExtendedFab = `<tw-button tw-icon size="xs" [fab]="true" className="rounded-full">
+  roundedExtendedFab = `<tw-button [icon]="true" size="xs" [fab]="true" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
   Button text
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="md" [fab]="true" className="rounded-full">
+<tw-button [icon]="true" size="md" [fab]="true" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>
   Button text
 </tw-button>
 <!-- ... -->
-<tw-button tw-icon size="xl" [fab]="true" className="rounded-full">
+<tw-button [icon]="true" size="xl" [fab]="true" className="rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
   </svg>

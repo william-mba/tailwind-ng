@@ -15,7 +15,7 @@ export const DropdownConfig: DropdownConfig = {
   position: {
     type: 'absolute',
     right: 'right-0',
-    top: 'top-10'
+    top: 'top-12'
   },
   borderWidth: 'border',
   borderRadius: 'rounded-md',

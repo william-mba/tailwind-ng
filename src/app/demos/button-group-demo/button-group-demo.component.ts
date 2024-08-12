@@ -9,7 +9,7 @@ export class ButtonGroupDemoComponent {
   checkBoxId01 = crypto.randomUUID();
   checkBoxId02 = crypto.randomUUID();
 
-  states: Record<number, boolean> = { }
+  states: Record<number, boolean> = {}
 
   open(key: number) {
     return this.states[key];
@@ -48,7 +48,7 @@ export class ButtonGroupDemoComponent {
     Save changes
   </tw-button>
   <div>
-    <tw-button tw-icon variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown()">
+    <tw-button [icon]="true" variant="secondary" className="rounded-r-md h-full" (click)="toggleDropdown()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
         <path d="M480-360 280-560h400L480-360Z" />
       </svg>
@@ -75,7 +75,7 @@ export class ButtonGroupDemoComponent {
 </tw-button-group>`;
 
   withChecboxAndSelect = `<tw-button-group>
-  <tw-button tw-icon variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-md p-2.5">
+  <tw-button [icon]="true" variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-md p-2.5">
     <label for="checkbox" class="absolute inset-0 p-[18px]"></label>
     <input type="checkbox" id="checkbox" class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
   </tw-button>
@@ -142,7 +142,7 @@ export class ButtonGroupDemoComponent {
 </tw-button-group>`;
 
   roundedWithChecboxAndSelect = `<tw-button-group>
-  <tw-button tw-icon variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-3xl p-2.5">
+  <tw-button [icon]="true" variant="text" className="relative border border-neutral-300 dark:border-neutral-600 rounded-l-3xl p-2.5">
     <label for="checkbox" class="absolute inset-0 p-[18px]"></label>
     <input type="checkbox" id="checkbox" class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
   </tw-button>

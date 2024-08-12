@@ -1,6 +1,6 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import { Config } from "../../core/types/config";
-import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
+import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 
 /**Badge config key*/
 export const BadgeConfigKey = 'BadgeConfigKey';
@@ -24,33 +24,34 @@ export const BadgeConfig: BadgeConfig = {
 /**Badge component*/
 @Directive({
   standalone: true,
-  selector: 'tw-badge, [tw-badge]'
+  selector: 'tw-badge, [tw-badge]',
+  host: {
+    '[class]': 'config'
+  }
 })
 export class Badge implements OnInit {
-
-  @Input() className!: string;
-
-  constructor(private el: ElementRef) { }
+  @Input() config!: string;
+  @Input() class!: string;
 
   ngOnInit(): void {
-    const base = toClassName(BadgeConfig);
-    const style = resolveClassName(base, this.className);
-    this.el.nativeElement.className = style;
+    if (this.config) return;
+    this.config = mergeClassNames(toClassNames(BadgeConfig), this.class);
   }
 }
 
 @Directive({
   standalone: true,
-  selector: 'tw-badge-action, [tw-badge-action]'
+  selector: 'tw-badge-action, [tw-badge-action]',
+  host: {
+    '[class]': 'config'
+  }
 })
 export class BadgeAction implements OnInit {
-  @Input() className!: string;
-
-  constructor(private el: ElementRef) { }
+  @Input() config!: string;
+  @Input() class!: string;
 
   ngOnInit(): void {
-    const base = "hover:bg-inherit hover:bg-opacity-20 size-3";
-    const style = resolveClassName(base, this.className);
-    this.el.nativeElement.className = style;
+    if (this.config) return;
+    this.config = mergeClassNames("hover:bg-inherit hover:bg-opacity-20 size-3", this.class);
   }
 }

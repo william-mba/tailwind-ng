@@ -1,11 +1,14 @@
-/**Convert an object to a string assignable to a className*/
-export function toClassName(obj: Record<string, any>): string {
+/** Convert an object to a string of class names
+ * @param obj - The object to convert to class names
+ * @returns The class names
+ */
+export function toClassNames(obj: Record<string, any>): string {
   return Object.values(obj).map(value => {
     if (typeof value === "undefined") {
       return;
     }
-    if (typeof value === "object") {
-      value = toClassName(value);
+    if (isObject(value)) {
+      value = toClassNames(value);
     }
     return value
 
@@ -21,12 +24,11 @@ export function isObject(item: any): boolean {
   return (item && typeof item === "object" && !Array.isArray(item));
 }
 
-/**
- * Merge config from sources to target
+/** Merge configs from sources to target
  * @param target
  * @param ...sources
  */
-export function resolveConfig<T extends Record<string, any>>(target: T, ...sources: T[]): T {
+export function mergeConfigs<T extends Record<string, any>>(target: T, ...sources: T[]): T {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -34,72 +36,79 @@ export function resolveConfig<T extends Record<string, any>>(target: T, ...sourc
     for (const key in source) {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
-        resolveConfig(target[key], source[key]);
+        mergeConfigs(target[key], source[key]);
       } else {
         Object.assign(target, { [key]: source[key] });
       }
     }
   }
 
-  return resolveConfig(target, ...sources);
+  return mergeConfigs(target, ...sources);
 }
 
-/** Add or replace existing class name in style with matching one in className
- * @param style - The target style to update
- * @param className - A list of space separated class names to add or replace in style
+/** Merge class names from source to target
+ * @param target - The target style to update
+ * @param source - A list of space separated class names to add or replace in style
+ * @param strategy - The strategy to use to resolve the class name
+ * @example
+ * mergeClassNames('text-red-500', 'text-blue-500') => 'text-blue-500'
+ * mergeClassNames('text-opacity-10 text-lg', 'text-opacity-30', true) => 'text-opacity-30 text-lg'
  * @returns The resolved style
 */
-export function resolveClassName(style: string, className: string): string {
-  if (!className) {
-    return style;
-  }
+export function mergeClassNames(target: string, source: string, strategy: 'first' | 'last' = 'first'): string {
+  if (!source || (target === source)) return target;
 
-  className = className.trim();
+  if (!target && source) return source;
 
-  if (className.length >= 3) {
-    let newStyle = style.trim();
-    let newClassName = className;
+  if (!target && !source) return '';
 
-    newClassName.split(' ').forEach((cls) => {
+  const minimumClassNameLength = 3;
+  const classNameFinalValueIdentifier = ' + ';
 
-      /* Extract the first part of the class name.
-      If the class name is 'text-red-500', the term will be 'text-'.
-      If the class name is '-space-x-1', the term will be '-space-'.
-      That term is used to remove the existing class that start with it in style.
+  if (source.length >= minimumClassNameLength) {
+    target = target.replace(classNameFinalValueIdentifier, ' ');
 
-      Search from index 1 to avoid the first '-' in class name that begin with it.
-      e.g. '-m-2', '-p-3'
-      */
-      let term = cls.substring(0, cls.indexOf('-', 1));
+    source.split(' ')
+      .forEach((name) => {
+        if (!name || name.length < minimumClassNameLength) return;
 
-      if (newStyle.includes(term)) {
+        const classPrefix = getPrefix(name, '-', strategy);
 
-        const classList = newStyle.split(' ');
-        const filteredStyle = classList.filter(name => !name.startsWith(term));
-
-        if (filteredStyle.length > 0) {
-          newStyle = filteredStyle.join(' ');
+        if (classPrefix.length > 0) {
+          target = target.split(' ')
+            .filter(name => !name.startsWith(classPrefix))
+            .join(' ');
         }
-      }
 
-      /* Remove class name if ending with '-' character.
-      Such class are only used to remove existing classes in style
-      and should not be added to the new style.
-      e.g. 'text-', '-p-', 'bg-', 'border-', 'rounded-'
-      */
-      if (cls.charAt(cls.length - 1) === '-') {
-        newClassName = newClassName.replace(cls, '');
-      }
-    });
-
-    newClassName = newClassName.trim().replace(/\s/g, ' ');
-
-    if (!(newClassName.length > 0)) {
-      style = newStyle;
-      return style;
-    }
-    // Add a '+' to help identify the className final value when inspecting the DOM element.
-    style = `${newClassName} + ${newStyle}`;
+        /* Remove class name if ending with '-' character.
+        Such class are only used to remove existing classes in style
+        and should not be added to the new style.
+        e.g. 'text-', '-p-', 'bg-', 'border-', 'rounded-'
+        */
+        if (name.charAt(name.length - 1) === '-') {
+          source = source.split(name)
+            .join(' ');
+        }
+      });
+    // Add a separator to help identify custom style from default when needed.
+    target = `${source}${classNameFinalValueIdentifier}${target}`;
   }
-  return style;
+  return target;
+}
+
+/**
+ * Get the preffix of a word
+ * @param word The word to get the prefix from
+ * @param separator The separator to use
+ * @param strategy The strategy to use to get the prefix
+ * @returns The extracted prefix
+ * @example
+ * getPrefix('text-red-500', '-') => 'text'
+ * getPrefix('text-red-500', '-', true) => 'text-red'
+ */
+export const getPrefix = (word: string, separator: string = '-', strategy: 'first' | 'last' = 'first') => {
+  if (strategy === 'first') {
+    return word.substring(0, word.indexOf(separator, 1));
+  }
+  return word.substring(0, word.lastIndexOf(separator));
 }

@@ -1,63 +1,63 @@
-import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewChildren } from '@angular/core';
 import { Dropdown } from '../dropdown/dropdown.component';
-import { Button, Icon } from '../button/button';
+import { Button } from '../button/button';
 import { FormsModule } from '@angular/forms';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'tw-comboboxe-item',
   standalone: true,
   host: {
-    class: 'flex items-center hover:text-white hover:bg-blue-600 h-fit px-4 py-2 gap-1 hover:font-extrabold cursor-pointer'
+    '(click)': 'select.emit(value)',
+    '[class]': 'stateClasses',
+    class: 'flex items-center hover:text-white hover:bg-blue-600 h-fit px-4 py-2 gap-1 hover:font-extrabold cursor-pointer relative'
   },
   template: `
-  @if(selected && iconPosition === 'left') {
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="size-5">
+  @if(canDisplayOn('left')) {
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="size-5 h-full absolute inset-y-0 left-3">
       <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
     </svg>
   }
   <span>{{ value }}</span>
-  @if(selected && iconPosition === 'right') {
+  @if(canDisplayOn('right')) {
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="size-5">
       <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
     </svg>
   }
-  `
+  `,
 })
 export class ComboboxeItem implements OnInit {
+  protected stateClasses!: Record<string, boolean>;
+
   @Input() value!: string;
   @Input() iconPosition!: 'left' | 'right';
-  @Output() onSelect = new EventEmitter<string>();
-
-  // @HostBinding('class.text-white')
-  // @HostBinding('class.bg-blue-600')
-  @HostBinding('class.font-semibold')
   @Input() selected = false;
-
-  @HostBinding('class.justify-between') get justifyBetween() {
-    return this.iconPosition === 'right';
-  }
-
-  @HostBinding('class.pl-10') get paddingLeft() {
-    return !this.justifyBetween && !this.selected;
-  }
+  @Output() select = new EventEmitter<string>();
 
   ngOnInit(): void {
-    if (this.selected) {
-      this.onSelect.emit(this.value);
+    this.setStateClasses();
+  }
+
+  setStateClasses(): void {
+    this.stateClasses = {
+      'justify-between': this.iconPosition === 'right',
+      'pl-10': this.iconPosition === 'left',
+      'font-semibold': this.selected
     }
   }
 
-  @HostListener('click') onClick() {
-    this.onSelect.emit(this.value);
+  canDisplayOn(side: 'left' | 'right'): boolean {
+    return this.iconPosition === side && this.selected;
   }
 }
 
 @Component({
   selector: 'tw-comboboxe',
   standalone: true,
-  imports: [Dropdown, Button, Icon, FormsModule, ComboboxeItem],
+  imports: [Dropdown, Button, FormsModule, ComboboxeItem, NgFor, NgIf],
   host: {
-    class: 'relative h-max'
+    class: 'relative h-max',
+    '(click)': 'onClick($event.target)'
   },
   templateUrl: './comboboxe.component.html'
 })
@@ -67,38 +67,43 @@ export class Comboboxe implements OnInit {
   @Input() items: string[] = [];
   @Input() label: string = '';
   @Input() iconPosition: 'left' | 'right' = 'right';
-  @Output() onSelect: EventEmitter<string> = new EventEmitter<string>();
+  @Output() itemSelected: EventEmitter<string> = new EventEmitter<string>();
 
   private _items!: string[];
   protected inputValue!: string;
   protected id: string = crypto.randomUUID();
-
-  @ViewChild('textInput', { static: true, read: ElementRef }) input!: ElementRef<HTMLInputElement>;
-  @ViewChildren(ComboboxeItem, { read: ElementRef }) comboboxItems!: ElementRef<HTMLElement>[];
-
-  @HostListener('click', ['$event.target']) onClick(element: HTMLElement) {
-    // Set the focus to input if an item is clicked
-    if (element.textContent === this.inputValue) {
-      this.input.nativeElement.focus();
-    };
-
-    // Scroll to the selected item if the dropdown is open
-    if (this.open) {
-      this.scrollToSelectedItem();
-    }
-  }
 
   ngOnInit(): void {
     this._items = this.sort ? this.items.sort() : this.items;
     this.inputValue = this._items[0];
   }
 
-  toggle = () => this.open = !this.open;
+  @ViewChild('textInput', { static: true, read: ElementRef }) input!: ElementRef<HTMLInputElement>;
+  @ViewChildren(ComboboxeItem, { read: ElementRef }) comboboxItems!: ElementRef<HTMLElement>[];
 
-  resetList() {
+  onClick(element: HTMLElement) {
+    // Set the focus to input if an item is clicked
+    if (element.textContent === this.inputValue) {
+      this.input.nativeElement.focus();
+    };
+    // Scroll to the selected item if the dropdown is open
+    if (this.open) {
+      this.scrollToSelectedItem();
+    }
+  }
+
+  toggle(): void {
+    this.open = !this.open;
+  }
+
+  resetList(): void {
     this.items = this._items;
     this.scrollToSelectedItem();
   };
+
+  canOpenDropdown(): boolean {
+    return this.open && (this.items.length > 0);
+  }
 
   private scrollToSelectedItem() {
     const item = this.comboboxItems.find((item) => this.isSelected(item.nativeElement.textContent || ''));
@@ -112,13 +117,16 @@ export class Comboboxe implements OnInit {
   selectValue(value: string) {
     this.open = false;
     this.inputValue = value;
-    this.onSelect.emit(value);
+    this.itemSelected.emit(value);
   }
 
   filterItems(inputValue: string) {
     this.open = true;
 
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim()) {
+      this.resetList();
+      return;
+    }
 
     const searchTerm = inputValue.toLocaleLowerCase().trim();
     this.items = this._items.filter((item) => item.toLocaleLowerCase().includes(searchTerm));

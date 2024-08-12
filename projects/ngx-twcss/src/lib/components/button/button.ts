@@ -1,62 +1,51 @@
-import { Directive, ElementRef, Input, OnInit, inject } from '@angular/core';
-import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
-import { ButtonConfig, ButtonConfigKey, ButtonSize, ButtonVariant, IconSize, IconSizeConfig } from './button.config';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
+import { ButtonConfig, ButtonConfigKey, ButtonSize, ButtonVariant, IconSizeConfig } from './button.config';
 import { ConfigService } from '../../core/services/config.service';
 
 /** Button element */
-@Directive({
+@Component({
   selector: 'tw-button',
-  standalone: true
+  standalone: true,
+  template: `<ng-content></ng-content>`,
+  host: {
+    '[class]': 'config'
+  }
 })
 export class Button implements OnInit {
-  private _config = inject(ConfigService<ButtonConfig>);
+  private config$ = inject(ConfigService).get<ButtonConfig>(ButtonConfigKey);
+  private _class!: string;
 
   @Input() config!: string;
-  @Input() className!: string;
+  @Input() class!: string;
   @Input() fab: boolean = false;
+  @Input() icon: boolean = false;
   @Input() size: ButtonSize = 'md';
   @Input() variant: ButtonVariant = 'primary';
-
-  constructor(public el: ElementRef) { }
+  @Input() classMatch: 'first' | 'last' = 'first';
 
   ngOnInit(): void {
     this.initConfig();
   }
 
   initConfig(): void {
-    if (this.config) {
-      this.setConfig();
-      return;
-    }
+    if (this.config) return;
 
-    if (this.fab === true) {
-      this.className = resolveClassName('shadow-lg shadow-black/30', this.className);
+    if (this.fab) {
+      this.class = mergeClassNames('shadow-lg shadow-black/30', this.class);
     }
-    this._config.set(ButtonConfigKey, ButtonConfig)
-      .get(ButtonConfigKey).subscribe((cfg) => {
-        this.config = toClassName({ variant: cfg[this.variant], size: cfg.size[this.size] });
-        this.setConfig();
-      });
+    this._class = this.class;
+
+    this.config$.subscribe((cfg) => {
+      this.setConfig(toClassNames({ ...cfg[this.variant], ...cfg.size[this.size] }));
+    });
   }
 
-  private setConfig() {
-    this.el.nativeElement.className = resolveClassName(this.config, this.className);
+  private setConfig(value: string): void {
+    if (this.icon) {
+      this._class = mergeClassNames(this._class, toClassNames({ ...IconSizeConfig[this.size] }));
+    }
+    this.config = mergeClassNames(value, this._class, this.classMatch);
   }
 }
 
-/** Icon button */
-@Directive({
-  selector: '[tw-icon]',
-  standalone: true,
-})
-export class Icon implements OnInit {
-  @Input() size: IconSize = 'md';
-
-  constructor(public el: Button) { }
-
-  ngOnInit(): void {
-    let base = toClassName(IconSizeConfig[this.size]!);
-    this.el.className = resolveClassName(base, this.el.className);
-    this.el.initConfig();
-  }
-}

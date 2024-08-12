@@ -1,21 +1,20 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { DropdownConfigKey, DropdownConfig } from './dropdown.config';
-import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
+import { DropdownConfigKey } from './dropdown.config';
+import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ConfigService } from '../../core/services/config.service';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { NgIf } from '@angular/common';
 
 /** Dropdown component */
 @Component({
   selector: 'tw-dropdown',
   standalone: true,
-  imports: [NgIf],
   host: {
-    class: 'relative'
+    '[@openClose]': '',
+    '[class]': 'config'
   },
-  template: `<div @dropdownAnimation *ngIf="open" [className]="config"><ng-content></ng-content></div>`,
+  template: `<ng-content></ng-content>`,
   animations: [
-    trigger('dropdownAnimation', [
+    trigger('openClose', [
       transition(':enter', [
         style({
           opacity: 0,
@@ -36,16 +35,17 @@ import { NgIf } from '@angular/common';
   ]
 })
 export class Dropdown implements OnInit {
-  private _configService = inject(ConfigService<DropdownConfig>);
-  protected config!: string;
+  private config$ = inject(ConfigService).get(DropdownConfigKey);
+  private _class!: string;
 
-  @Input() className!: string;
-  @Input() open: boolean = false;
+  @Input() class!: string;
+  @Input() config!: string;
 
   ngOnInit(): void {
-    this._configService.set(DropdownConfigKey, DropdownConfig)
-      .get(DropdownConfigKey).subscribe((conf) => {
-        this.config = resolveClassName(toClassName(conf), this.className);
-      });
+    if (this.config) return;
+    this._class = this.class;
+    this.config$.subscribe((conf) => {
+      this.config = mergeClassNames(toClassNames(conf), this._class);
+    });
   }
 }

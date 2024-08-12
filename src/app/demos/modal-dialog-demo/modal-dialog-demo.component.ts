@@ -150,7 +150,7 @@ export class ModalDialogDemoComponent {
       </p>
     </tw-dialog-content>
     <!-- Dismiss button -->
-    <tw-button tw-icon variant="text" size="lg" className="hidden sm:flex absolute top-3 right-3" (click)="...()">
+    <tw-button [icon]="true" variant="text" size="lg" className="hidden sm:flex absolute top-3 right-3" (click)="...()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
       </svg>
@@ -184,7 +184,7 @@ export class ModalDialogDemoComponent {
       </div>
     </tw-dialog-content>
     <!-- Dismiss button -->
-    <tw-button tw-icon size="lg" variant="text" className="hidden sm:flex absolute top-3 right-3" (click)="close()">
+    <tw-button [icon]="true" size="lg" variant="text" className="hidden sm:flex absolute top-3 right-3" (click)="close()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
       </svg>
@@ -304,7 +304,7 @@ export class ModalDialogDemoComponent {
         Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
       </p>
     </tw-dialog-content>
-    <tw-button tw-icon variant="text" size="lg" className="hidden sm:block absolute top-3 right-3" (click)="...">
+    <tw-button [icon]="true" variant="text" size="lg" className="hidden sm:block absolute top-3 right-3" (click)="...">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
       </svg>
@@ -335,7 +335,7 @@ export class ModalDialogDemoComponent {
         <!-- ... -->
       </div>
     </tw-dialog-content>
-    <tw-button tw-icon variant="text" size="lg" className="hidden sm:block absolute top-3 right-3" (click)="...">
+    <tw-button [icon]="true" variant="text" size="lg" className="hidden sm:block absolute top-3 right-3" (click)="...">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
         <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
       </svg>

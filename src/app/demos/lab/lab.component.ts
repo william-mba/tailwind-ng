@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { Comboboxe } from 'ngx-twcss';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'demo-lab',

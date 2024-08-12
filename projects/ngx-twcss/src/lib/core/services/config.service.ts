@@ -1,25 +1,68 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
-import { resolveConfig } from '../helpers/config.helper';
+import { isObject, mergeConfigs } from '../helpers/config.helper';
+import { ButtonConfig, ButtonConfigKey } from '../../components/button/button.config';
+import { ModalDialogConfig, ModalDialogConfigKey } from '../../components/modal-dialog/modal-dialog.config';
+import { DropdownConfig, DropdownConfigKey } from '../../components/dropdown/dropdown.config';
+import { ModalDialog } from '../../components/modal-dialog/modal-dialog.module';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ConfigService<T> {
-  private configs: Record<string, BehaviorSubject<T>> = {};
+export class ConfigService {
+  private configStore: Record<string, BehaviorSubject<any>> = {};
 
-  get(key: string) {
-    return this.configs[key].asObservable();
+  /**
+   * Get config
+   */
+  get<T extends Record<string, any>>(key: string): Observable<T> {
+    return this.configStore[key].asObservable() as Observable<T>;
   }
 
-  set(key: string, target: T, source: Partial<T> = {}): ConfigService<T> {
-
-    if (!this.configs[key]?.value) {
-      this.configs[key] = new BehaviorSubject<T>({} as T);
+  /**
+   * Set config
+   */
+  private set<T>(key: string, target: T, source: Partial<T> = {}): ConfigService {
+    if (!isObject(this.configStore[key])) {
+      this.configStore[key] = new BehaviorSubject<T>(target);
     }
-    const config = resolveConfig(target, source) as T;
-    this.configs[key].next(config);
+    else {
+      const config = mergeConfigs(target, source);
+      this.configStore[key].next(config);
+    }
+    return this;
+  }
 
+  /**
+   * Set all config
+   */
+  setAll() {
+    this.setButton()
+      .setDropdown()
+      .setModalDialog();
+  }
+
+  /**
+   * Set button config
+   */
+  setButton(config: Partial<ButtonConfig> = {}) {
+    this.set(ButtonConfigKey, ButtonConfig, config);
+    return this;
+  }
+
+  /**
+   * Set modal dialog config
+   */
+  setModalDialog(config: Partial<ModalDialog> = {}) {
+    this.set(ModalDialogConfigKey, ModalDialogConfig, config);
+    return this;
+  }
+
+  /**
+   * Set dropdown config
+   */
+  setDropdown(config: Partial<DropdownConfig> = {}) {
+    this.set(DropdownConfigKey, DropdownConfig, config);
     return this;
   }
 }

@@ -1,14 +1,14 @@
 import { Button } from './button';
 import { ButtonConfig, ButtonSize } from './button.config';
-import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
+import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ElementRef, inject } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 describe('Button', () => {
   let component: Button;
-  const primaryStyle = toClassName(ButtonConfig.primary);
-  const secondaryStyle = toClassName(ButtonConfig.secondary);
-  const tonalStyle = toClassName(ButtonConfig.tonal);
+  const primaryStyle = toClassNames(ButtonConfig.primary);
+  const secondaryStyle = toClassNames(ButtonConfig.secondary);
+  const tonalStyle = toClassNames(ButtonConfig.tonal);
   const sizeVariants = ['sm', 'md', 'lg'] as ButtonSize[];
 
   beforeEach(async () => {
@@ -46,24 +46,24 @@ describe('Button', () => {
   it('should set config', () => {
     expect(component.config).toBeUndefined();
 
-    component.config = resolveClassName(primaryStyle, component.className);
+    component.config = mergeClassNames(primaryStyle, component.class);
     expect(component.config).toEqual(primaryStyle);
 
-    component.config = resolveClassName(secondaryStyle, component.className);
+    component.config = mergeClassNames(secondaryStyle, component.class);
     expect(component.config).toEqual(secondaryStyle);
 
-    component.config = resolveClassName(tonalStyle, component.className);
+    component.config = mergeClassNames(tonalStyle, component.class);
     expect(component.config).toEqual(tonalStyle);
   });
 
   it('should set custom style', () => {
     let classToAdd = 'text-red-500 bg-blue-500';
-    component.config = resolveClassName(primaryStyle, classToAdd);
+    component.config = mergeClassNames(primaryStyle, classToAdd);
 
     expect(component.config).toContain(classToAdd);
 
     let classToRemove = 'text- bg-';
-    component.config = resolveClassName(primaryStyle, classToRemove);
+    component.config = mergeClassNames(primaryStyle, classToRemove);
     expect(component.config).not.toContain(classToAdd);
   });
 

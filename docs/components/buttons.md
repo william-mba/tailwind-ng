@@ -31,7 +31,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-button tw-icon className="rounded-lg">
+<tw-button [icon]="true" className="rounded-lg">
   <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
   </svg>
@@ -106,7 +106,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-button tw-icon>
+<tw-button [icon]="true">
   <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
   </svg>
@@ -207,7 +207,7 @@ style | string      |  `''`   | The button style. This property has precedence t
 variant | ButtonVariant      |  `primary`   | The button variant.
 ---
 
-### Icon `[tw-icon]`
+### Icon `[[icon]="true"]`
 
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { resolveClassName, toClassName } from '../../core/helpers/config.helper';
+import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ModalDialogConfig, ModalDialogConfigKey } from './modal-dialog.config';
 import { ConfigService } from '../../core/services/config.service';
 import { NgIf } from '@angular/common';
@@ -11,7 +11,19 @@ import { NgIf } from '@angular/common';
   imports: [NgIf],
   standalone: true,
   styleUrls: ['./modal-dialog.component.css'],
-  templateUrl: './modal-dialog.component.html',
+  template: `
+  <!-- Backdrop -->
+  <div @backdropAnimation *ngIf="open" [className]="backdrop"></div>
+  <!-- Scrim -->
+  <div *ngIf="open" @dialogAnimation [className]="scrim">
+    <!-- Dialog Container -->
+    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" [className]="config">
+      <!-- Dialog Panel -->
+      <ng-content select="tw-dialog-panel"></ng-content>
+      <!-- Dialog Actions -->
+      <ng-content select="tw-dialog-actions"></ng-content>
+    </div>
+  </div>`,
   animations: [
     trigger('dialogAnimation', [
       transition(':enter', [
@@ -19,7 +31,7 @@ import { NgIf } from '@angular/common';
           opacity: 0,
           transform: 'scale(.9)'
         }),
-        animate('300ms ease-out', style({
+        animate('100ms ease-out', style({
           opacity: 1,
           transform: 'scale(1)'
         })),
@@ -49,23 +61,23 @@ import { NgIf } from '@angular/common';
   ]
 })
 export class DialogContainer implements OnInit {
-  private _config = inject(ConfigService<ModalDialogConfig>);
-  protected config!: string;
-  @Input() className!: string;
+  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private _class!: string;
+  @Input() config!: string;
+  @Input() class!: string;
   @Input() scrim!: string;
   @Input() backdrop!: string;
   @Input() open: boolean = true;
 
   ngOnInit(): void {
-    this._config.set(ModalDialogConfigKey, ModalDialogConfig)
-      .get(ModalDialogConfigKey).subscribe((conf) => {
-        let base = toClassName(conf.container);
-        this.config = resolveClassName(base, this.className);
-        base = toClassName(conf.scrim);
-        this.scrim = resolveClassName(base, this.scrim);
-        base = toClassName(conf.backdrop);
-        this.backdrop = resolveClassName(base, this.backdrop);
-      });
+    if (this.config) return;
+    this._class = this.class;
+
+    this.config$.subscribe((conf) => {
+      this.config = mergeClassNames(toClassNames(conf.container), this._class);
+      this.scrim = mergeClassNames(toClassNames(conf.scrim), this.scrim);
+      this.backdrop = mergeClassNames(toClassNames(conf.backdrop), this.backdrop);
+    });
   }
 }
 
@@ -73,18 +85,22 @@ export class DialogContainer implements OnInit {
 @Component({
   selector: 'tw-dialog-icon',
   standalone: true,
-  template: '<div [className]="style"><ng-content></ng-content></div>'
+  host: {
+    '[class]': 'config'
+  },
+  template: '<ng-content></ng-content>'
 })
 export class DialogIcon implements OnInit {
-  private _config = inject(ConfigService<ModalDialogConfig>);
-  protected style!: string;
-
-  @Input() className!: string;
+  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private _class!: string;
+  @Input() config!: string;
+  @Input() class!: string;
 
   ngOnInit(): void {
-    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
-      const base = toClassName(conf.icon);
-      this.style = resolveClassName(base, this.className);
+    if (this.config) return;
+    this._class = this.class;
+    this.config$.subscribe((conf) => {
+      this.config = mergeClassNames(toClassNames(conf.icon), this._class);
     });
   }
 }
@@ -93,18 +109,22 @@ export class DialogIcon implements OnInit {
 @Component({
   selector: 'tw-dialog-panel',
   standalone: true,
-  template: '<div [className]="style"><ng-content></ng-content></div>'
+  host: {
+    '[class]': 'config'
+  },
+  template: '<ng-content></ng-content>'
 })
 export class DialogPanel implements OnInit {
-  private _config = inject(ConfigService<ModalDialogConfig>);
-  protected style!: string;
-
-  @Input() className!: string;
+  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private _class!: string;
+  @Input() config!: string;
+  @Input() class!: string;
 
   ngOnInit(): void {
-    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
-      const base = toClassName(conf.panel);
-      this.style = resolveClassName(base, this.className);
+    if (this.config) return;
+    this._class = this.class;
+    this.config$.subscribe((conf) => {
+      this.config = mergeClassNames(toClassNames(conf.panel), this._class);
     });
   }
 }
@@ -113,38 +133,46 @@ export class DialogPanel implements OnInit {
 @Component({
   selector: 'tw-dialog-content',
   standalone: true,
-  template: '<div [className]="style"><ng-content></ng-content></div>'
+  host: {
+    '[class]': 'config'
+  },
+  template: '<ng-content></ng-content>'
 })
 export class DialogContent implements OnInit {
-  private _config = inject(ConfigService<ModalDialogConfig>);
-  protected style!: string;
-
-  @Input() className!: string;
+  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private _class!: string;
+  @Input() config!: string;
+  @Input() class!: string;
 
   ngOnInit(): void {
-    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
-      const base = toClassName(conf.content);
-      this.style = resolveClassName(base, this.className);
+    if (this.config) return;
+    this._class = this.class;
+    this.config$.subscribe((conf) => {
+      this.config = mergeClassNames(toClassNames(conf.content), this._class);
     });
   }
 }
 
 /**Dialog actions element */
 @Component({
-  selector: 'tw-dialog-actions',
+  selector: 'tw-dialog-actions, [tw-dialog-actions]',
   standalone: true,
-  template: '<div [className]="style"><ng-content></ng-content></div>'
+  host: {
+    '[class]': 'config'
+  },
+  template: '<ng-content></ng-content>'
 })
 export class DialogActions implements OnInit {
-  private _config = inject(ConfigService<ModalDialogConfig>);
-  protected style!: string;
-
-  @Input() className!: string;
+  private config$ = inject(ConfigService).get<ModalDialogConfig>(ModalDialogConfigKey);
+  private _class!: string;
+  @Input() config!: string;
+  @Input() class!: string;
 
   ngOnInit(): void {
-    this._config.get(ModalDialogConfigKey).subscribe((conf) => {
-      const base = toClassName(conf.actions);
-      this.style = resolveClassName(base, this.className);
+    if (this.config) return;
+    this._class = this.class;
+    this.config$.subscribe((conf) => {
+      this.config = mergeClassNames(toClassNames(conf.actions), this._class);
     });
   }
 }

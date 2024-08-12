@@ -1,21 +1,23 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Config } from '../../core/types/config';
-import { toClassName, resolveClassName } from '../../core/helpers/config.helper';
+import { toClassNames, mergeClassNames } from '../../core/helpers/config.helper';
 
 /**Avatar element*/
-@Directive({
+@Component({
   selector: 'tw-avatar, [tw-avatar]',
-  standalone: true
+  standalone: true,
+  template: `<ng-content></ng-content>`,
+  host: {
+    '[class]': 'config'
+  }
 })
 export class Avatar implements OnInit {
-  @Input() className!: string;
-
-  constructor(private el: ElementRef) { }
+  @Input() config!: string;
+  @Input() class!: string;
 
   ngOnInit(): void {
-    const baseStyle = toClassName(AvatarConfig);
-    const style = resolveClassName(baseStyle, this.className);
-    this.el.nativeElement.className = style;
+    if (this.config) return;
+    this.config = mergeClassNames(toClassNames(AvatarConfig), this.class);
   }
 }
 
