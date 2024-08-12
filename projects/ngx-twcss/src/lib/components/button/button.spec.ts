@@ -1,28 +1,33 @@
 import { Button } from './button';
 import { ButtonConfig, ButtonSize } from './button.config';
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
-import { ElementRef, inject } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ConfigService } from '../../core/services/config.service';
 
-describe('Button', () => {
+describe('Button Component', () => {
   let component: Button;
+  let fixture: ComponentFixture<Button>;
+  let configService: ConfigService;
   const primaryStyle = toClassNames(ButtonConfig.primary);
   const secondaryStyle = toClassNames(ButtonConfig.secondary);
   const tonalStyle = toClassNames(ButtonConfig.tonal);
   const sizeVariants = ['sm', 'md', 'lg'] as ButtonSize[];
 
   beforeEach(async () => {
-    TestBed.runInInjectionContext(() => {
-      component = new Button(new ElementRef('tw-button'));
-    });
+    await TestBed.configureTestingModule({
+      imports: [Button]
+    }).compileComponents();
 
-    spyOn(component, 'ngOnInit');
-    component.ngOnInit();
+    configService = TestBed.inject(ConfigService);
+    configService.setButton();
+
+    fixture = TestBed.createComponent(Button);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    expect(component.ngOnInit).toHaveBeenCalled();
   });
 
   it('should init config', () => {
@@ -44,8 +49,6 @@ describe('Button', () => {
   });
 
   it('should set config', () => {
-    expect(component.config).toBeUndefined();
-
     component.config = mergeClassNames(primaryStyle, component.class);
     expect(component.config).toEqual(primaryStyle);
 
