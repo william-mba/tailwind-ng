@@ -20,7 +20,15 @@ export function toClassNames(obj: Record<string, any>): string {
  * @returns True if the value is an object otherwise false
  */
 export function isObject(value: any): boolean {
-  return ((Object.keys(value || {}).length > 0) && !Array.isArray(value) && (typeof value === "object"));
+  return (value && !Array.isArray(value) && (typeof value === "object"));
+}
+
+/** Check if a value is an empty object
+ * @param value The value to check
+ * @returns True if the value is an empty object otherwise false
+ */
+export function isEmptyObject(value: any): boolean {
+  return ((Object.keys(value || {}).length === 0) && isObject(value));
 }
 
 /** Merge configs from source to target
@@ -29,7 +37,6 @@ export function isObject(value: any): boolean {
  * @returns The merged config
  */
 export function mergeConfigs<T extends Record<string, any>>(target: T, source: Partial<T> = {}): T {
-
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
@@ -42,10 +49,7 @@ export function mergeConfigs<T extends Record<string, any>>(target: T, source: P
       }
     }
   }
-  if (isObject(target)) {
-    return target;
-  }
-  return {} as T;
+  return target;
 }
 
 /** Merge class names from source to target

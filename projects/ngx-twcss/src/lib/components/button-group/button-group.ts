@@ -11,6 +11,9 @@ export const ButtonGroupConfig: ButtonGroupConfig = {
   display: {
     type: 'flex',
     alignItem: 'items-stretch'
+  },
+  filters: {
+    backdrop: 'backdrop-blur'
   }
 }
 

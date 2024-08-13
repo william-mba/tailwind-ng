@@ -175,6 +175,9 @@ export const TonalButtonConfig: TonalButtonConfig = {
     hover: {
       bgOpacity: 'hover:bg-opacity-15'
     }
+  },
+  filters: {
+    backdrop: 'backdrop-blur'
   }
 }
 
