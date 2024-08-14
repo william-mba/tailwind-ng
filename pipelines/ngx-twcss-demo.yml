@@ -3,6 +3,7 @@ trigger:
     include:
       - main
       - next
+      - release/*
   paths:
     include:
       - src/*
@@ -24,9 +25,11 @@ variables:
     ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
       value: latest
     ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      value: next
+      value: alpha
+    ${{ elseif contains(variables['Build.SourceBranch'], 'release') }}:
+      value: beta
     ${{ else }}:
-      value: nightly
+      value: insiders
 
 stages:
   - stage: CI
