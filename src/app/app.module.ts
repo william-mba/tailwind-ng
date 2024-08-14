@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Comboboxe } from 'ngx-twcss';
+import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Comboboxe, Icon } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,7 +52,8 @@ import { ComboboxeDemoComponent } from './demos/comboboxe-demo/comboboxe-demo.co
     BadgeAction,
     Avatar,
     ModalDialog,
-    Comboboxe
+    Comboboxe,
+    Icon
   ],
   bootstrap: [AppComponent],
   providers: [
