@@ -30,9 +30,9 @@ variables:
     ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
       value: latest
     ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      value: beta
-    ${{ else }}:
       value: alpha
+    ${{ else }}:
+      value: beta
 
 name: $(Build.DefinitionName)-v${{variables.Release}}
 
