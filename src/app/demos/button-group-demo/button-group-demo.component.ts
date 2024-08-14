@@ -20,26 +20,17 @@ export class ButtonGroupDemoComponent {
   }
 
   simpleButtonGroups = `<tw-button-group>
-  <tw-button variant="secondary" className="rounded-l-md">Option</tw-button>
-  <tw-button variant="secondary" className="rounded-r-md">Option</tw-button>
-</tw-button-group>
-<tw-button-group>
-  <tw-button variant="secondary" className="rounded-l-md">Option</tw-button>
-  <tw-button variant="secondary" className="rounded-none">Option</tw-button>
-  <tw-button variant="secondary" className="rounded-r-md">Option</tw-button>
-</tw-button-group>
-<!-- ... -->`;
+  <tw-button variant="secondary" class="rounded-l-md">Days</tw-button>
+  <tw-button variant="secondary" class="rounded-none">Months</tw-button>
+  <tw-button variant="secondary" class="rounded-r-md">Years</tw-button>
+</tw-button-group>`;
 
-  withTwoButtons = `<tw-button-group>
-  <tw-button variant="secondary" className="rounded-l-md">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
-    </svg>
+  withTwoButtons = `<tw-button-group class="border border-inherit p-1.5 rounded-xl">
+  <tw-button [icon]="true" size="sm" variant="secondary" class="rounded-l-md">
+    <tw-icon source="heroicons" name="chevron-left" />
   </tw-button>
-  <tw-button variant="secondary" className="rounded-r-md">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-    </svg>
+  <tw-button [icon]="true" size="sm" variant="secondary" class="rounded-r-md">
+    <tw-icon source="heroicons" name="chevron-right" />
   </tw-button>
 </tw-button-group>`;
 
@@ -90,15 +81,10 @@ export class ButtonGroupDemoComponent {
 </tw-button-group>`;
 
   simpleRoundedButtonGroups = `<tw-button-group>
-  <tw-button variant="secondary" className="rounded-l-full">Option</tw-button>
-  <tw-button variant="secondary" className="rounded-r-full">Option</tw-button>
-</tw-button-group>
-<tw-button-group>
-  <tw-button variant="secondary" className="rounded-l-full">Option</tw-button>
-  <tw-button variant="secondary" className="rounded-none">Option</tw-button>
-  <tw-button variant="secondary" className="rounded-r-full">Option</tw-button>
-</tw-button-group>
-<!-- ... -->`;
+  <tw-button variant="secondary" class="rounded-l-full">Days</tw-button>
+  <tw-button variant="secondary" class="rounded-none">Months</tw-button>
+  <tw-button variant="secondary" class="rounded-r-full">Years</tw-button>
+</tw-button-group>`;
 
   roundedWithTwoButtons = `<tw-button-group>
   <tw-button variant="secondary" className="rounded-l-full">

@@ -16,36 +16,19 @@
       </tw-button> -->
       <!-- GitHub Icon -->
       <a href="https://github.com/William-Mba/ngx-twcss">
-        <tw-button [icon]="true" variant="secondary">
-          <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentcolor" class="text-yellow-500">
-            <path
-              d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z">
-            </path>
-          </svg>
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentcolor">
-            <path
-              d="M12.5.75C6.146.75 1 5.896 1 12.25c0 5.089 3.292 9.387 7.863 10.91.575.101.79-.244.79-.546 0-.273-.014-1.178-.014-2.142-2.889.532-3.636-.704-3.866-1.35-.13-.331-.69-1.352-1.18-1.625-.402-.216-.977-.748-.014-.762.906-.014 1.553.834 1.769 1.179 1.035 1.74 2.688 1.25 3.349.948.1-.747.402-1.25.733-1.538-2.559-.287-5.232-1.279-5.232-5.678 0-1.25.445-2.285 1.178-3.09-.115-.288-.517-1.467.115-3.048 0 0 .963-.302 3.163 1.179.92-.259 1.897-.388 2.875-.388.977 0 1.955.13 2.875.388 2.2-1.495 3.162-1.179 3.162-1.179.633 1.581.23 2.76.115 3.048.733.805 1.179 1.825 1.179 3.09 0 4.413-2.688 5.39-5.247 5.678.417.36.776 1.05.776 2.128 0 1.538-.014 2.774-.014 3.162 0 .302.216.662.79.547C20.709 21.637 24 17.324 24 12.25 24 5.896 18.854.75 12.5.75Z">
-            </path>
-          </svg>
+        <tw-button [icon]="true" size="sm" variant="secondary">
+          <tw-icon name="star" class="text-yellow-500" />
+          <tw-icon name="github" />
         </tw-button>
       </a>
       <!-- Theme toggle icon -->
-      <tw-button [icon]="true" variant='secondary' (click)="ToggleTheme()">
-        <svg fill="currentcolor" *ngIf="dark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001.0 1010.586 10.586z" />
-        </svg>
-        <svg fill="currentcolor" *ngIf="!dark" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M10 2a1 1 0 011 1v1A1 1 0 119 4V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707A1 1 0 1113.536 5.05l.707-.707a1 1 0 011.414.0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707A1 1 0 004.343 5.757l.707.707zm1.414 8.486-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-            fill-rule="evenodd" clip-rule="evenodd" />
-        </svg>
+      <tw-button [icon]="true" size="sm" variant='secondary' (click)="ToggleTheme()">
+        <tw-icon name="moon" source="heroicons" *ngIf="!dark" />
+        <tw-icon name="sun" source="heroicons" *ngIf="dark" />
       </tw-button>
       <!-- Burger button -->
-      <tw-button [icon]="true" variant='secondary' class="2xl:hidden" (click)="toggle()">
-        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
-        </svg>
+      <tw-button [icon]="true" size="sm" variant='secondary' class="2xl:hidden" (click)="toggle()">
+        <tw-icon name="burger-menu" size="sm"/>
       </tw-button>
     </div>
   </div>
@@ -55,11 +38,8 @@
     class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-24 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-xs flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
     <div>
       <div class="relative">
-        <tw-button variant="text" size="sm" class="absolute top-0 right-0 2xl:hidden" (click)="toggle()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-            <path
-              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-          </svg>
+        <tw-button [icon]="true" variant="text" size="sm" class="absolute top-0 right-0 2xl:hidden" (click)="toggle()">
+          <tw-icon name="x-mark" source="heroicons" />
         </tw-button>
       </div>
       <h2 class="font-bold">Getting started</h2>

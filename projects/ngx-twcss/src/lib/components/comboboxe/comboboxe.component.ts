@@ -3,27 +3,21 @@ import { Dropdown } from '../dropdown/dropdown.component';
 import { Button } from '../button/button';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
+import { Icon } from '../icon/icon.component';
 
 @Component({
   selector: 'tw-comboboxe-item',
   standalone: true,
+  imports: [Icon, NgIf],
   host: {
     '(click)': 'select.emit(value)',
     '[class]': 'stateClasses',
     class: 'flex items-center hover:text-white hover:bg-blue-600 h-fit px-4 py-2 gap-1 hover:font-extrabold cursor-pointer relative'
   },
   template: `
-  @if(canDisplayOn('left')) {
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="size-5 h-full absolute inset-y-0 left-3">
-      <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
-    </svg>
-  }
+  <tw-icon *ngIf="canDisplayOn('left')" source="heroicons" name="check" class="my-auto absolute inset-y-0 left-3"/>
   <span>{{ value }}</span>
-  @if(canDisplayOn('right')) {
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="size-5">
-      <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"></path>
-    </svg>
-  }
+  <tw-icon *ngIf="canDisplayOn('right')" source="heroicons" name="check"/>
   `,
 })
 export class ComboboxeItem implements OnInit {
@@ -54,7 +48,7 @@ export class ComboboxeItem implements OnInit {
 @Component({
   selector: 'tw-comboboxe',
   standalone: true,
-  imports: [Dropdown, Button, FormsModule, ComboboxeItem, NgFor, NgIf],
+  imports: [Dropdown, Button, Icon, FormsModule, ComboboxeItem, NgFor, NgIf],
   host: {
     class: 'relative h-max',
     '(click)': 'onClick()'
@@ -65,7 +59,7 @@ export class Comboboxe implements OnInit {
   @Input() open: boolean = false;
   @Input() sort: boolean = false;
   @Input() items: string[] = [];
-  @Input() label: string = '';
+  @Input() label!: string;
   @Input() itemMinLength: number = 2;
   @Input() iconPosition: 'left' | 'right' = 'right';
   @Output() itemSelected: EventEmitter<string> = new EventEmitter<string>();
