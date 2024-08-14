@@ -3,8 +3,6 @@ trigger:
     include:
       - main
       - next
-      - fix/*
-      - feat/*
       - release/*
   paths:
     include:
@@ -32,9 +30,9 @@ variables:
     ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
       value: latest
     ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      value: next
+      value: beta
     ${{ else }}:
-      value: nightly
+      value: alpha
 
 name: $(Build.DefinitionName)-v${{variables.Release}}
 
@@ -43,8 +41,7 @@ stages:
     jobs:
     - template: ngx-twcss/job.build-test-publish.yml@template
 
-  - ${{ if or(in(variables['Build.SourceBranchName'], 'main', 'next'), contains(variables['Build.SourceBranch'], 'release/')) }}:
-    - stage: CD
-      dependsOn: CI
-      jobs:
-      - template: ngx-twcss/job.release.yml@template
+  - stage: CD
+    dependsOn: CI
+    jobs:
+    - template: ngx-twcss/job.release.yml@template
