@@ -15,19 +15,15 @@ export class AppComponent {
   title = 'Ngx-Twcss Playground';
   nextThemeMode: 'light' | 'dark' = 'dark';
 
-  constructor() {
-    this.configService.setAll();
-  }
-
   ngOnInit() {
     let lastTheme = localStorage.getItem('last-used-theme');
     if (lastTheme) {
       this.theme = parseInt(lastTheme);
-      this.changeConfig();
+      this.setConfig();
     }
   }
 
-  changeConfig() {
+  setConfig() {
     switch (this.theme) {
       case 1:
         this.configService.setButton(CustomButtonConfig)
@@ -49,15 +45,15 @@ export class AppComponent {
 
   setRose() {
     this.theme = 1;
-    this.changeConfig();
+    this.setConfig();
   }
   setOrange() {
     this.theme = 2;
-    this.changeConfig();
+    this.setConfig();
   }
   setLime() {
     this.theme = 3;
-    this.changeConfig();
+    this.setConfig();
   }
 
   reset() {

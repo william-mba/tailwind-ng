@@ -4,6 +4,9 @@ import { Padding } from './spacing/padding';
 import { FontSize } from './typography/font-size';
 import { BorderRadius } from './borders/border-radius';
 import { Gap } from './flex-grid/gap';
+import { Height } from './sizing/height';
+import { Width } from './sizing/width';
+import { Size } from './sizing/size';
 
 export type Scale = {
   fontSize: FontSize,
@@ -12,10 +15,13 @@ export type Scale = {
   margin: Partial<Margin>,
   borderRadius: Partial<BorderRadius>,
   gap: Gap,
+  size: Size,
+  width: Width,
+  height: Height,
   extend: Record<string, {}>
 }
 
-export type Size = {
+export type SizeOptions = {
   xs: Partial<Scale>,
   sm: Partial<Scale>,
   md: Partial<Scale>,

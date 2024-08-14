@@ -1,5 +1,5 @@
 import { Button } from './button';
-import { ButtonConfig, ButtonSize } from './button.config';
+import { ButtonConfig, ButtonSizeConfig, ButtonSizeOptions } from './button.config';
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ConfigService } from '../../core/services/config.service';
@@ -11,7 +11,7 @@ describe('Button Component', () => {
   const primaryStyle = toClassNames(ButtonConfig.primary);
   const secondaryStyle = toClassNames(ButtonConfig.secondary);
   const tonalStyle = toClassNames(ButtonConfig.tonal);
-  const sizeVariants = ['sm', 'md', 'lg'] as ButtonSize[];
+  const sizeOptions = ['sm', 'md', 'lg'];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -72,11 +72,11 @@ describe('Button Component', () => {
 
   it('should set size', () => {
     expect(component.size).toBeDefined();
-    component.size = sizeVariants[0];
+    component.size = sizeOptions[0] as keyof ButtonSizeOptions;
     expect(component.size).toBe('sm');
-    component.size = sizeVariants[1];
+    component.size = sizeOptions[1] as keyof ButtonSizeOptions;
     expect(component.size).toBe('md');
-    component.size = sizeVariants[2];
+    component.size = sizeOptions[2] as keyof ButtonSizeOptions;
     expect(component.size).toBe('lg');
   });
 });

@@ -10,36 +10,30 @@ import { ModalDialog } from '../../components/modal-dialog/modal-dialog.module';
   providedIn: 'root'
 })
 export class ConfigService {
-  private configStore: Record<string, BehaviorSubject<any>> = {};
+  private configs: Record<string, BehaviorSubject<any>> = {};
 
   /**
    * Get config
    */
   get<T extends Record<string, any>>(key: string): Observable<T> {
-    return this.configStore[key]?.asObservable() as Observable<T>;
+    if (!isObject(this.configs[key])) {
+      this.set(key, DefaultConfigs[key]);
+    }
+    return this.configs[key].asObservable() as Observable<T>;
   }
 
   /**
    * Set config
    */
   private set<T extends Record<string, any>>(key: string, target: T, source: Partial<T> = {}): ConfigService {
-    if (!isObject(this.configStore[key])) {
-      this.configStore[key] = new BehaviorSubject<T>(target);
+    if (!isObject(this.configs[key])) {
+      this.configs[key] = new BehaviorSubject<T>(target);
     }
     else {
       const config = mergeConfigs(target, source);
-      this.configStore[key].next(config);
+      this.configs[key].next(config);
     }
     return this;
-  }
-
-  /**
-   * Set all config
-   */
-  setAll(): void {
-    this.setButton()
-      .setDropdown()
-      .setModalDialog();
   }
 
   /**
@@ -47,6 +41,7 @@ export class ConfigService {
    */
   setButton(config: Partial<ButtonConfig> = {}): ConfigService {
     this.set(ButtonConfigKey, ButtonConfig, config);
+    console.log('setButton called');
     return this;
   }
 
@@ -55,6 +50,7 @@ export class ConfigService {
    */
   setModalDialog(config: Partial<ModalDialog> = {}): ConfigService {
     this.set(ModalDialogConfigKey, ModalDialogConfig, config);
+    console.log('setModalDialog called');
     return this;
   }
 
@@ -63,6 +59,13 @@ export class ConfigService {
    */
   setDropdown(config: Partial<DropdownConfig> = {}): ConfigService {
     this.set(DropdownConfigKey, DropdownConfig, config);
+    console.log('setDropdown called');
     return this;
   }
+}
+
+export const DefaultConfigs: Record<string, object> = {
+  ButtonConfigKey: ButtonConfig,
+  ModalDialogConfigKey: ModalDialogConfig,
+  DropdownConfigKey: DropdownConfig
 }

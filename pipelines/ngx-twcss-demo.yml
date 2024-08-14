@@ -18,14 +18,15 @@ resources:
       name: DevOps/Template
       type: git
 
-parameters:
+
+variables:
   - name: ReleaseTag
-    displayName: "Release tag"
-    type: string
-    default: latest
-    values:
-      - next
-      - latest
+    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+      value: latest
+    ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
+      value: next
+    ${{ else }}:
+      value: nightly
 
 stages:
   - stage: CI
