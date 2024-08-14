@@ -3,6 +3,8 @@
  * @returns The class names
  */
 export function toClassNames(obj: Record<string, any>): string {
+  if (isEmptyObject(obj)) return '';
+
   return Object.values(obj).map(value => {
     if (typeof value === "undefined") {
       return;
@@ -19,17 +21,13 @@ export function toClassNames(obj: Record<string, any>): string {
  * @param value The value to check
  * @returns True if the value is an object otherwise false
  */
-export function isObject(value: any): boolean {
-  return (value && !Array.isArray(value) && (typeof value === "object"));
-}
+export const isObject = (value: any): boolean => (value && !Array.isArray(value) && (typeof value === "object"));
 
 /** Check if a value is an empty object
  * @param value The value to check
  * @returns True if the value is an empty object otherwise false
  */
-export function isEmptyObject(value: any): boolean {
-  return ((Object.keys(value || {}).length === 0) && isObject(value));
-}
+export const isEmptyObject = (value: any): boolean => (isObject(value) && (Object.keys(value || {}).length === 0));
 
 /** Merge configs from source to target
  * @param target - The target config to update
@@ -112,9 +110,26 @@ export function mergeClassNames(target: string, source: string, strategy: 'first
  * getPrefix('text-red-500', '-') => 'text'
  * getPrefix('text-red-500', '-', true) => 'text-red'
  */
-export const getPrefix = (word: string, separator: string = '-', strategy: 'first' | 'last' = 'first'): string => {
+export function getPrefix(word: string, separator: string = '-', strategy: 'first' | 'last' = 'first'): string {
   if (strategy === 'first') {
     return word.substring(0, word.indexOf(separator, 1));
   }
   return word.substring(0, word.lastIndexOf(separator));
+}
+
+/**
+ * Call the object member if the condition evaluate to true
+ * @param obj the object that contains the member to call
+ * @param member the object member to call
+ * @param condition the callback function that determines the condition to evaluate
+ * @returns void
+ * @example
+ * call(this, 'setA', () => true); // this.setA() is called
+ * call(this, 'setB', () => false); // this.setB() is not called
+ * call(this, key, () => key.startsWith('set') && key !== 'setAll');
+  */
+export function call<T extends object>(obj: T, member: keyof T, condition: Function): void {
+  if (condition()) {
+    (obj[member] as Function)();
+  }
 }

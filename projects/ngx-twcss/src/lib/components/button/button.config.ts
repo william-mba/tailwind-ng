@@ -1,5 +1,5 @@
 import { Config } from "../../core/types/config";
-import { Size } from "../../core/types/size";
+import { SizeOptions } from "../../core/types/size-options";
 
 /** Button variant */
 export type ButtonVariant =
@@ -9,9 +9,8 @@ export type ButtonVariant =
   | 'text'
 
 /** Button size config */
-export type ButtonSizeConfig = Partial<Size>;
-export type ButtonSize = keyof ButtonSizeConfig;
-export const ButtonSizeConfig: ButtonSizeConfig = {
+export type ButtonSizeOptions = Partial<SizeOptions>;
+export const ButtonSizeConfig: ButtonSizeOptions = {
   xs: {
     padding: {
       x: 'px-2',
@@ -79,24 +78,28 @@ export const ButtonSizeConfig: ButtonSizeConfig = {
   }
 }
 
-/** Icon size config */
-export type IconSizeConfig = Partial<Size>;
-export type IconSize = keyof IconSizeConfig;
-export const IconSizeConfig: IconSizeConfig = {
+/** Button Icon size config */
+export type ButtonIconSizeOptions = Partial<SizeOptions>;
+export const ButtonIconSizeConfig: ButtonIconSizeOptions = {
   xs: {
-    padding: 'p-1'
+    padding: 'p-1',
+    size: '*:size-3'
   },
   sm: {
-    padding: 'p-1.5'
+    padding: 'p-1.5',
+    size: '*:size-4'
   },
   md: {
-    padding: 'p-2'
+    padding: 'p-2',
+    size: '*:size-5'
   },
   lg: {
-    padding: 'p-2.5'
+    padding: 'p-2.5',
+    size: '*:size-6'
   },
   xl: {
-    padding: 'p-3.5'
+    padding: 'p-3.5',
+    size: '*:size-7'
   }
 }
 
@@ -213,7 +216,7 @@ export type ButtonConfig = {
   secondary: Partial<SecondaryButtonConfig>,
   tonal: Partial<TonalButtonConfig>,
   text: Partial<TextButtonConfig>
-  size: Partial<ButtonSizeConfig>
+  size: Partial<ButtonSizeOptions>
 }
 
 export const ButtonConfig: ButtonConfig = {

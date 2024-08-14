@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
-import { ButtonConfig, ButtonConfigKey, ButtonSize, ButtonVariant, IconSizeConfig } from './button.config';
+import { ButtonConfig, ButtonConfigKey, ButtonIconSizeConfig, ButtonSizeOptions, ButtonVariant } from './button.config';
 import { ConfigService } from '../../core/services/config.service';
 import { Observable } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class Button implements OnInit {
   @Input() class!: string;
   @Input() fab: boolean = false;
   @Input() icon: boolean = false;
-  @Input() size: ButtonSize = 'md';
+  @Input() size: keyof ButtonSizeOptions = 'md';
   @Input() variant: ButtonVariant = 'primary';
   @Input() classMatch: 'first' | 'last' = 'first';
 
@@ -44,7 +44,7 @@ export class Button implements OnInit {
 
   private setConfig(value: string): void {
     if (this.icon) {
-      this._class = mergeClassNames(this._class, toClassNames({ ...IconSizeConfig[this.size] }));
+      this._class = mergeClassNames(this._class, toClassNames(ButtonIconSizeConfig[this.size]!));
     }
     this.config = mergeClassNames(value, this._class, this.classMatch);
   }
