@@ -26,8 +26,10 @@ variables:
       value: latest
     ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
       value: alpha
-    ${{ else }}:
+    ${{ elseif contains(variables['Build.SourceBranch'], 'release') }}:
       value: beta
+    ${{ else }}:
+      value: insiders
 
 stages:
   - stage: CI
