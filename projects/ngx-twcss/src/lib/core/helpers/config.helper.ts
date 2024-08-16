@@ -53,7 +53,7 @@ export function mergeConfigs<T extends Record<string, any>>(target: T, source: P
 /** Merge class names from source to target
  * @param target - The target style to update
  * @param source - A list of space separated class names to add or replace in style
- * @param strategy - The strategy to use to resolve the class name
+ * @param strategy - The strategy to use to resolve the class name. If 'first' the first part of the class name is used as prefix otherwise the last part is used
  * @example
  * mergeClassNames('text-red-500', 'text-blue-500') => 'text-blue-500'
  * mergeClassNames('text-opacity-10 text-lg', 'text-opacity-30', true) => 'text-opacity-30 text-lg'

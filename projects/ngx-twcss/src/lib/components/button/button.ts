@@ -23,7 +23,12 @@ export class Button implements OnInit {
   @Input() icon: boolean = false;
   @Input() size: keyof ButtonSizeOptions = 'md';
   @Input() variant: ButtonVariant = 'primary';
-  @Input() classMatch: 'first' | 'last' = 'first';
+  /**
+   * The strategy to use to resolve the class names.
+   *  If 'first' the first part of the class name is used as prefix otherwise the last part is used.
+   * @default 'first'
+   */
+  @Input() classMatchStrategy: 'first' | 'last' = 'first';
 
   ngOnInit(): void {
     this.initConfig();
@@ -46,7 +51,7 @@ export class Button implements OnInit {
     if (this.icon) {
       this._class = mergeClassNames(this._class, toClassNames(ButtonIconSizeConfig[this.size]!));
     }
-    this.config = mergeClassNames(value, this._class, this.classMatch);
+    this.config = mergeClassNames(value, this._class, this.classMatchStrategy);
   }
 }
 

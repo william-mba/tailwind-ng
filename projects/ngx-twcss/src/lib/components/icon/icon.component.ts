@@ -9,7 +9,7 @@ import { IconSourceConfig } from './icon-source.config';
   host: {
     '[class]': 'config'
   },
-  template: '<ng-content/>'
+  template: ''
 })
 export class Icon {
   @Input() class!: string;
