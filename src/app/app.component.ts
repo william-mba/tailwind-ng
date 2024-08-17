@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CustomButtonConfig, CustomButtonConfig2, CustomButtonConfig3 } from 'customs/button.config';
 import { CustomDropdownConfig, CustomDropdownConfig2, CustomDropdownConfig3 } from 'customs/dropdown.config';
-import { ConfigService } from 'ngx-twcss';
+import { ConfigService, ToggleTheme } from 'ngx-twcss';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,6 @@ export class AppComponent {
   private configService = inject(ConfigService);
   theme: number = 0;
   title = 'Ngx-Twcss Playground';
-  nextThemeMode: 'light' | 'dark' = 'dark';
 
   ngOnInit() {
     let lastTheme = localStorage.getItem('last-used-theme');
@@ -21,6 +20,7 @@ export class AppComponent {
       this.theme = parseInt(lastTheme);
       this.setConfig();
     }
+    ToggleTheme();
   }
 
   setConfig() {
