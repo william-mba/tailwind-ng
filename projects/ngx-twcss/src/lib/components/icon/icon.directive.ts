@@ -19,10 +19,10 @@ export class Icon {
 
   ngOnInit(): void {
     this.el.innerHTML = IconConfig.source[this.source][this.name];
-    this.setConfig(this.class);
+    this.setClassNames(this.class);
   }
 
-  setConfig(value: string): void {
+  setClassNames(value: string): void {
     let classNames = 'inline-block ';
 
     /* Only add size class if the element is not an avatar

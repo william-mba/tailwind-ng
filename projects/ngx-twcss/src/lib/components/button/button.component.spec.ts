@@ -1,5 +1,5 @@
-import { Button } from './button';
-import { ButtonConfig, ButtonSizeConfig, ButtonSizeOptions } from './button.config';
+import { Button } from './button.component';
+import { ButtonConfig, ButtonSizeOptions } from './button.config';
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ConfigService } from '../../core/services/config.service';
