@@ -8,7 +8,7 @@
 </tw-button>
 <tw-dropdown *ngIf="canOpenDropdown()" class="max-h-64 w-64 overflow-auto shadow-lg">
   @for (item of items; track item) {
-  <tw-comboboxe-item [value]="item" (select)="selectValue($event)" [selected]="isSelected(item)"
+  <tw-combobox-item [value]="item" (select)="selectValue($event)" [selected]="isSelected(item)"
     [iconPosition]="iconPosition" />
   }
 </tw-dropdown>

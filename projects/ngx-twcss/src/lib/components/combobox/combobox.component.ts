@@ -6,7 +6,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Icon } from '../icon/icon.component';
 
 @Component({
-  selector: 'tw-comboboxe-item',
+  selector: 'tw-combobox-item',
   standalone: true,
   imports: [Icon, NgIf],
   host: {
@@ -20,7 +20,7 @@ import { Icon } from '../icon/icon.component';
   <tw-icon *ngIf="canDisplayOn('right')" source="heroicons" name="check"/>
   `,
 })
-export class ComboboxeItem implements OnInit {
+export class ComboboxItem implements OnInit {
   protected stateClasses!: Record<string, boolean>;
 
   @Input() value!: string;
@@ -46,16 +46,16 @@ export class ComboboxeItem implements OnInit {
 }
 
 @Component({
-  selector: 'tw-comboboxe',
+  selector: 'tw-combobox',
   standalone: true,
-  imports: [Dropdown, Button, Icon, FormsModule, ComboboxeItem, NgFor, NgIf],
+  imports: [Dropdown, Button, Icon, FormsModule, ComboboxItem, NgFor, NgIf],
   host: {
     class: 'relative h-max',
     '(click)': 'onClick()'
   },
-  templateUrl: './comboboxe.component.html'
+  templateUrl: './combobox.component.html'
 })
-export class Comboboxe implements OnInit {
+export class Combobox implements OnInit {
   @Input() open: boolean = false;
   @Input() sort: boolean = false;
   @Input() items: string[] = [];
@@ -74,7 +74,7 @@ export class Comboboxe implements OnInit {
   }
 
   @ViewChild('textInput', { static: true, read: ElementRef }) input!: ElementRef<HTMLInputElement>;
-  @ViewChildren(ComboboxeItem, { read: ElementRef }) comboboxItems!: ElementRef<HTMLElement>[];
+  @ViewChildren(ComboboxItem, { read: ElementRef }) comboboxItems!: ElementRef<HTMLElement>[];
 
   onClick(): void {
     if (this.open) {

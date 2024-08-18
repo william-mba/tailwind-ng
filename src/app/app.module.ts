@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Comboboxe, Icon } from 'ngx-twcss';
+import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Combobox, Icon } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,7 +21,7 @@ import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { LabComponent } from './demos/lab/lab.component';
 import { FormsModule } from '@angular/forms';
-import { ComboboxeDemoComponent } from './demos/comboboxe-demo/comboboxe-demo.component';
+import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { ComboboxeDemoComponent } from './demos/comboboxe-demo/comboboxe-demo.co
     CodeSnippetComponent,
     RoadmapComponent,
     LabComponent,
-    ComboboxeDemoComponent
+    ComboboxDemoComponent
   ],
   imports: [
     Highlight,
@@ -52,7 +52,7 @@ import { ComboboxeDemoComponent } from './demos/comboboxe-demo/comboboxe-demo.co
     BadgeAction,
     Avatar,
     ModalDialog,
-    Comboboxe,
+    Combobox,
     Icon
   ],
   bootstrap: [AppComponent],
