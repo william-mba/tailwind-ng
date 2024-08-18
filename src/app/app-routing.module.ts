@@ -9,6 +9,7 @@ import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { LabComponent } from './demos/lab/lab.component';
 import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.component';
+import { TypographyDemoComponent } from './demos/typography-demo/typography-demo.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'lab',
     component: LabComponent
+  },
+  {
+    path: 'typography',
+    component: TypographyDemoComponent
   },
   // {
   //   path: '',

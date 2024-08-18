@@ -1,27 +1,25 @@
 <div
   class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-800 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
 
-  <h1 class="text-3xl border-none font-extrabold my-8 mt-20">
+  <tw-h2 class="mt-24">
     Modal Dialogs
-  </h1>
+  </tw-h2>
   <p>Use these Tailwind CSS modal dialog components in your Angular application to create pop-up boxes for things like
     alerts, notifications, or
     confirmation prompts.
   </p>
   <p class="text-xs my-2 font-semibold">NOTE: Click on the cancel button to stop the dialog reopening when needed.</p>
 
-  <h2 class="text-lg font-semibold mt-12">
+  <tw-h4 class="mt-16">
     Simple notification dialog
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(6)">Open dialog</tw-button>
     <tw-dialog [open]="open(6)" (click)="close(6)">
       <tw-dialog-panel>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
-            Out of stock
-          </h3>
+          <tw-h4 class="my-0">Out of stock</tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400 text-pretty">
             The item in your cart is no longer available
           </p>
@@ -34,9 +32,9 @@
   </div>
   <demo-code-snippet [code]="simpleNotificationDialog"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Simple dialog with icon
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(0)">Open dialog</tw-button>
@@ -46,9 +44,7 @@
           <tw-icon source="heroicons" name="exclamation-triangle" />
         </tw-dialog-icon>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
-            Deactivate account
-          </h3>
+          <tw-h4 class="my-0"> Deactivate account </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Are you sure you want to deactivate your account? All of your data will be permanently removed. This action
             cannot be undone.
@@ -63,25 +59,21 @@
   </div>
   <demo-code-snippet [code]="simpleDialogWithIcon"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Simple dialog with gray footer
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(1)">Open dialog</tw-button>
     <tw-dialog [open]="open(1)" class="divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
-          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-          </svg>
+          <tw-icon source="heroicons" name="exclamation-triangle" />
         </tw-dialog-icon>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Deactivate account
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Are you sure you want to deactivate your account? All of your data will be permanently removed. This action
             cannot be undone.
@@ -96,25 +88,21 @@
   </div>
   <demo-code-snippet [code]="simpleDialogWithGrayFooter"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Centered dialog with single action
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(2)">Open dialog</tw-button>
     <tw-dialog [open]="open(2)" (click)="close(2)">
       <tw-dialog-panel class="sm:-">
         <tw-dialog-icon class="text-green-600 bg-green-600/15">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-            <path fill-rule="evenodd"
-              d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-              clip-rule="evenodd" />
-          </svg>
+          <tw-icon source="heroicons" name="check-circle" />
         </tw-dialog-icon>
         <tw-dialog-content class="sm:-">
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Payment successful
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Consequatur amet labore.
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -128,25 +116,21 @@
   </div>
   <demo-code-snippet [code]="centeredDialogWithSingleAction"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Centered dialog with wide buttons
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(3)">Open dialog</tw-button>
     <tw-dialog [open]="open(3)" (click)="close(3)">
       <tw-dialog-panel class="sm:-">
         <tw-dialog-icon class="text-green-600 bg-green-600/15">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-            <path fill-rule="evenodd"
-              d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-              clip-rule="evenodd" />
-          </svg>
+          <tw-icon source="heroicons" name="check-circle" />
         </tw-dialog-icon>
         <tw-dialog-content class="sm:-">
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Payment successful
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius aliquam laudantium explicabo pariatur iste
             dolorem animi
@@ -162,9 +146,9 @@
   </div>
   <demo-code-snippet [code]="centeredDialogWithWideButton"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Simple dialog with dismiss button
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(4)">Open dialog</tw-button>
@@ -174,9 +158,9 @@
           <tw-icon source="heroicons" name="exclamation-triangle" />
         </tw-dialog-icon>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Deactivate account
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Are you sure you want to deactivate your account? All of your data will be permanently removed. This action
             cannot be undone.
@@ -195,32 +179,32 @@
   </div>
   <demo-code-snippet [code]="simpleDialogWithDismissButton"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Dialog with header, scrollable content and actions
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(5)">Open dialog</tw-button>
     <tw-dialog [open]="open(5)">
       <tw-dialog-panel class="pb-0 sm:- gap-0">
         <tw-dialog-content class="pb-0 h-96">
-          <h1 class="text-2xl border-none pb-3" id="modal-title">
+          <tw-h3 class="font-medium mt-0">
             Install Angular
-          </h1>
+          </tw-h3>
           <div class="overflow-scroll overscroll-contain p-0 pr-2 text-pretty text-gray-800 dark:text-gray-200">
-            <h3 class="text-base font-bold leading-6 my-3 mt-0">Develop across all platforms</h3>
+            <tw-h4>Develop across all platforms</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Learn one way to build applications with Angular and reuse your code and abilities to build apps for any
               deployment target. For web, mobile web, native mobile and native desktop.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Speed &amp; Performance</h3>
+            <tw-h4>Speed &amp; Performance</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Achieve the maximum speed possible on the Web Platform today, and take it further, via Web Workers and
               server-side rendering. Angular puts you in control over scalability. Meet huge data requirements by
               building
               data models on RxJS, Immutable.js or another push-model.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Incredible tooling</h3>
+            <tw-h4>Incredible tooling</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Build features quickly with simple, declarative templates. Extend the template language with your own
               components and use a wide array of existing components. Get immediate Angular-specific help and feedback
@@ -228,19 +212,19 @@
               nearly every IDE and editor. All this comes together so you can focus on building amazing apps rather than
               trying to make the code work.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Loved by millions</h3>
+            <tw-h4>Loved by millions</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               From prototype through global deployment, Angular delivers the productivity and scalable infrastructure
               that
               supports Google's largest applications.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">What is Angular?</h3>
+            <tw-h4>What is Angular?</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Angular is a platform that makes it easy to build applications with the web. Angular combines declarative
               templates, dependency injection, end to end tooling, and integrated best practices to solve development
               challenges. Angular empowers developers to build applications that live on the web, mobile, or the desktop
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Architecture overview</h3>
+            <tw-h4>Architecture overview</tw-h4>
             <p class="text-sm my-3 text-gray-700 dark:text-gray-300">
               Angular is a platform and framework for building client applications in HTML and TypeScript. Angular is
               itself
@@ -301,21 +285,21 @@
   </div>
   <demo-code-snippet [code]="dialogScrollable"></demo-code-snippet>
 
-  <h2 class="text-2xl font-bold mt-20">
+  <tw-h4 class="mt-20">
     Rounded dialogs
-  </h2>
-  <h2 class="text-lg font-semibold mt-12">
+  </tw-h4>
+  <tw-h4 class="mt-16">
     Rounded simple notification dialog
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(7)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(7)" (click)="close(7)" class="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Out of stock
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400 text-pretty">
             The item in your cart is no longer available
           </p>
@@ -328,9 +312,9 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleNotificationDialog"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded simple dialog with icon
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(8)" class="rounded-full">Open dialog</tw-button>
@@ -340,9 +324,9 @@
           <tw-icon source="heroicons" name="exclamation-triangle" />
         </tw-dialog-icon>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Deactivate account
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Are you sure you want to deactivate your account? All of your data will be permanently removed. This action
             cannot be undone.
@@ -357,25 +341,21 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithIcon"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded simple dialog with gray footer
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(9)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(9)" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
-          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-          </svg>
+          <tw-icon name="exclamation-triangle" source="heroicons"/>
         </tw-dialog-icon>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Deactivate account
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Are you sure you want to deactivate your account? All of your data will be permanently removed. This action
             cannot be undone.
@@ -390,25 +370,21 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithGrayFooter"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded centered dialog with single action
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(10)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(10)" (click)="close(10)" class="rounded-3xl">
       <tw-dialog-panel class="sm:-">
         <tw-dialog-icon class="text-green-600 bg-green-600/15">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-            <path fill-rule="evenodd"
-              d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z"
-              clip-rule="evenodd" />
-          </svg>
+          <tw-icon source="heroicons" name="check-circle" />
         </tw-dialog-icon>
         <tw-dialog-content class="sm:-">
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Payment successful
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -422,9 +398,9 @@
   </div>
   <demo-code-snippet [code]="roundedCenteredDialogWithSingleAction"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded centered dialog with wide buttons
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(11)" class="rounded-full">Open dialog</tw-button>
@@ -438,9 +414,9 @@
           </svg>
         </tw-dialog-icon>
         <tw-dialog-content class="sm:-">
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Payment successful
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius aliquam laudantium explicabo pariatur iste
             dolorem animi vitae error totam. At sapiente aliquam accusamus facere veritatis.
@@ -455,9 +431,9 @@
   </div>
   <demo-code-snippet [code]="roundedCenteredDialogWithWideButton"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded simple dialog with dismiss button
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(12)" class="rounded-full">Open dialog</tw-button>
@@ -467,9 +443,9 @@
           <tw-icon source="heroicons" name="exclamation-triangle" />
         </tw-dialog-icon>
         <tw-dialog-content>
-          <h3 class="text-base font-semibold leading-6" id="modal-title">
+          <tw-h4 class="my-0">
             Deactivate account
-          </h3>
+          </tw-h4>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             Are you sure you want to deactivate your account? All of your data will be permanently removed. This action
             cannot be undone.
@@ -488,32 +464,30 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithDismissButton"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded dialog with header, scrollable content and actions
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(13)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(13)" class="rounded-3xl">
       <tw-dialog-panel class="pb-0 sm:- gap-0">
         <tw-dialog-content class="pb-0 h-96">
-          <h1 class="text-2xl border-none pb-3" id="modal-title">
-            Install Angular
-          </h1>
+          <tw-h3 class="font-medium mt-0"> Install Angular </tw-h3>
           <div class="overflow-scroll overscroll-contain p-0 pr-2 text-pretty text-gray-800 dark:text-gray-200">
-            <h3 class="text-base font-bold leading-6 my-3 mt-0">Develop across all platforms</h3>
+            <tw-h4>Develop across all platforms</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Learn one way to build applications with Angular and reuse your code and abilities to build apps for any
               deployment target. For web, mobile web, native mobile and native desktop.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Speed &amp; Performance</h3>
+            <tw-h4>Speed &amp; Performance</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Achieve the maximum speed possible on the Web Platform today, and take it further, via Web Workers and
               server-side rendering. Angular puts you in control over scalability. Meet huge data requirements by
               building
               data models on RxJS, Immutable.js or another push-model.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Incredible tooling</h3>
+            <tw-h4>Incredible tooling</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Build features quickly with simple, declarative templates. Extend the template language with your own
               components and use a wide array of existing components. Get immediate Angular-specific help and feedback
@@ -521,19 +495,19 @@
               nearly every IDE and editor. All this comes together so you can focus on building amazing apps rather than
               trying to make the code work.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Loved by millions</h3>
+            <tw-h4>Loved by millions</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               From prototype through global deployment, Angular delivers the productivity and scalable infrastructure
               that
               supports Google's largest applications.
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">What is Angular?</h3>
+            <tw-h4>What is Angular?</tw-h4>
             <p class="text-sm text-gray-700 dark:text-gray-300">
               Angular is a platform that makes it easy to build applications with the web. Angular combines declarative
               templates, dependency injection, end to end tooling, and integrated best practices to solve development
               challenges. Angular empowers developers to build applications that live on the web, mobile, or the desktop
             </p>
-            <h3 class="text-base font-bold leading-6 my-3">Architecture overview</h3>
+            <tw-h4>Architecture overview</tw-h4>
             <p class="text-sm my-3 text-gray-700 dark:text-gray-300">
               Angular is a platform and framework for building client applications in HTML and TypeScript. Angular is
               itself

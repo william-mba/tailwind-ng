@@ -41,7 +41,6 @@ export class ConfigService {
    */
   setButton(config: Partial<ButtonConfig> = {}): ConfigService {
     this.set(ButtonConfigKey, ButtonConfig, config);
-    console.log('setButton called');
     return this;
   }
 
@@ -50,7 +49,6 @@ export class ConfigService {
    */
   setModalDialog(config: Partial<ModalDialog> = {}): ConfigService {
     this.set(ModalDialogConfigKey, ModalDialogConfig, config);
-    console.log('setModalDialog called');
     return this;
   }
 
@@ -59,7 +57,6 @@ export class ConfigService {
    */
   setDropdown(config: Partial<DropdownConfig> = {}): ConfigService {
     this.set(DropdownConfigKey, DropdownConfig, config);
-    console.log('setDropdown called');
     return this;
   }
 }

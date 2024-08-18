@@ -22,7 +22,7 @@ import { LineHeight } from "./typography/line-height"
 import { TextAlign } from "./typography/text-align"
 import { TextWrap } from "./typography/text-wrap"
 
-export type Config = {
+export type StyleConfig = {
   display: Display,
   position: Position,
   borderRadius: BorderRadius,

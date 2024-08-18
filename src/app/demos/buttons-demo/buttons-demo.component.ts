@@ -33,143 +33,104 @@ export class ButtonsDemoComponent {
 <tw-button size="lg" variant="text">Button text</tw-button>
 <tw-button size="xl" variant="text">Button text</tw-button>`;
 
-  iconButton = `<tw-button [icon]="true" size="xs" variant="text">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  iconButton = `<!-- Text -->
+<tw-button [icon]="true" size="xs" variant="text">
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
+
+<!-- Secondary -->
 <tw-button [icon]="true" size="md" variant="secondary">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
+
+<!-- Tonal -->
 <tw-button [icon]="true" size="xl" variant="tonal">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>`;
 
   fab: string = `<tw-button [icon]="true" size="xs" [fab]="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
 <tw-button [icon]="true" size="md" [fab]="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
 <tw-button [icon]="true" size="xl" [fab]="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>`;
 
   extentedFab = `<tw-button [icon]="true" size="xs" [fab]="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
   Button text
 </tw-button>
-<!-- ... -->
 <tw-button [icon]="true" size="md" [fab]="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
   Button text
 </tw-button>
-<!-- ... -->
 <tw-button [icon]="true" size="xl" [fab]="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  <tw-icon source="googlefonts" name="add" />
   Button text
 </tw-button>`;
 
-  roundedPrimaryButton = `<tw-button size="xs" className="rounded-full">Button text</tw-button>
-<tw-button size="sm" className="rounded-full">Button text</tw-button>
-<tw-button size="md" className="rounded-full">Button text</tw-button>
-<tw-button size="lg" className="rounded-full">Button text</tw-button>
-<tw-button size="xl" className="rounded-full">Button text</tw-button>`;
+  roundedPrimaryButton = `<tw-button class="rounded-full" size="xs">Button text</tw-button>
+<tw-button class="rounded-full" size="sm">Button text</tw-button>
+<tw-button class="rounded-full" size="md">Button text</tw-button>
+<tw-button class="rounded-full" size="lg">Button text</tw-button>
+<tw-button class="rounded-full" size="xl">Button text</tw-button>`;
 
-  roundedSecondaryButton = `<tw-button size="xs" variant="secondary" className="rounded-full">Button text</tw-button>
-<tw-button size="sm" variant="secondary" className="rounded-full">Button text</tw-button>
-<tw-button size="md" variant="secondary" className="rounded-full">Button text</tw-button>
-<tw-button size="lg" variant="secondary" className="rounded-full">Button text</tw-button>
-<tw-button size="xl" variant="secondary" className="rounded-full">Button text</tw-button>`;
+  roundedSecondaryButton = `<tw-button class="rounded-full" size="xs" variant="secondary">Button text</tw-button>
+<tw-button class="rounded-full" size="sm" variant="secondary">Button text</tw-button>
+<tw-button class="rounded-full" size="md" variant="secondary">Button text</tw-button>
+<tw-button class="rounded-full" size="lg" variant="secondary">Button text</tw-button>
+<tw-button class="rounded-full" size="xl" variant="secondary">Button text</tw-button>`;
 
-  roundedTonalButton = `<tw-button size="xs" variant="tonal" className="rounded-full">Button text</tw-button>
-<tw-button size="sm" variant="tonal" className="rounded-full">Button text</tw-button>
-<tw-button size="md" variant="tonal" className="rounded-full">Button text</tw-button>
-<tw-button size="lg" variant="tonal" className="rounded-full">Button text</tw-button>
-<tw-button size="xl" variant="tonal" className="rounded-full">Button text</tw-button>`;
+  roundedTonalButton = `<tw-button class="rounded-full" size="xs" variant="tonal">Button text</tw-button>
+<tw-button class="rounded-full" size="sm" variant="tonal">Button text</tw-button>
+<tw-button class="rounded-full" size="md" variant="tonal">Button text</tw-button>
+<tw-button class="rounded-full" size="lg" variant="tonal">Button text</tw-button>
+<tw-button class="rounded-full" size="xl" variant="tonal">Button text</tw-button>`;
 
-  roundedTextButton = `<tw-button size="xs" variant="text" className="rounded-full">Button text</tw-button>
-<tw-button size="sm" variant="text" className="rounded-full">Button text</tw-button>
-<tw-button size="md" variant="text" className="rounded-full">Button text</tw-button>
-<tw-button size="lg" variant="text" className="rounded-full">Button text</tw-button>
-<tw-button size="xl" variant="text" className="rounded-full">Button text</tw-button>`;
+  roundedTextButton = `<tw-button class="rounded-full" size="xs" variant="text">Button text</tw-button>
+<tw-button class="rounded-full" size="sm" variant="text">Button text</tw-button>
+<tw-button class="rounded-full" size="md" variant="text">Button text</tw-button>
+<tw-button class="rounded-full" size="lg" variant="text">Button text</tw-button>
+<tw-button class="rounded-full" size="xl" variant="text">Button text</tw-button>`;
 
-  roundedIconButton = `<tw-button [icon]="true" size="xs" variant="text" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  roundedIconButton = `<!-- Text -->
+<tw-button class="rounded-full" size="xs" variant="text" [icon]="true">
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
-<tw-button [icon]="true" size="md" variant="secondary" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+
+<!-- Secondary -->
+<tw-button class="rounded-full" size="md" variant="secondary" [icon]="true">
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
-<tw-button [icon]="true" size="xl" variant="tonal" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+
+<!-- Tonal -->
+<tw-button class="rounded-full" size="xl" variant="tonal" [icon]="true">
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>`;
 
-  roundedFab = `<tw-button [icon]="true" size="xs" [fab]="true" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  roundedFab = `<tw-button class="rounded-full" size="xs" [icon]="true" [fab]="true">
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
-<tw-button [icon]="true" size="md" [fab]="true" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+<tw-button class="rounded-full" size="md" [icon]="true" [fab]="true">
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>
-<!-- ... -->
-<tw-button [icon]="true" size="xl" [fab]="true" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+<tw-button class="rounded-full" size="xl" [icon]="true" [fab]="true">
+  <tw-icon source="googlefonts" name="add" />
 </tw-button>`;
 
-  roundedExtendedFab = `<tw-button [icon]="true" size="xs" [fab]="true" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+  roundedExtendedFab = `<tw-button class="rounded-full" size="xs" [icon]="true" [fab]="true">
+  <tw-icon source="googlefonts" name="add" />
   Button text
 </tw-button>
-<!-- ... -->
-<tw-button [icon]="true" size="md" [fab]="true" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+<tw-button class="rounded-full" size="md" [icon]="true" [fab]="true">
+  <tw-icon source="googlefonts" name="add" />
   Button text
 </tw-button>
-<!-- ... -->
-<tw-button [icon]="true" size="xl" [fab]="true" className="rounded-full">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-    <path d="M427-427H180.78v-106H427v-246.22h106V-533h246.22v106H533v246.22H427V-427Z" />
-  </svg>
+<tw-button class="rounded-full" size="xl" [icon]="true" [fab]="true">
+  <tw-icon source="googlefonts" name="add" />
   Button text
 </tw-button>`;
-
 
 }

@@ -1,11 +1,11 @@
 import { Component, Directive, Input, OnInit } from '@angular/core';
-import { Config } from "../../core/types/config";
+import { StyleConfig } from "../../core/types/style.config";
 import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 
 /**Badge config key*/
 export const BadgeConfigKey = 'BadgeConfigKey';
 /**Badge config*/
-export type BadgeConfig = Partial<Config>;
+export type BadgeConfig = Partial<StyleConfig>;
 export const BadgeConfig: BadgeConfig = {
   display: {
     type: 'inline-flex',
@@ -57,6 +57,6 @@ export class BadgeAction implements OnInit {
 
   ngOnInit(): void {
     if (this.config) return;
-    this.config = mergeClassNames("hover:bg-inherit hover:bg-opacity-20 size-3", this.class);
+    this.config = mergeClassNames("hover:bg-inherit hover:bg-opacity-20 size-3 cursor-pointer", this.class);
   }
 }
