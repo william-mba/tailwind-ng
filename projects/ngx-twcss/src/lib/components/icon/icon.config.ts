@@ -1,4 +1,3 @@
-import { SizeOptions } from "../../core/types/size-options";
 import { IconSourceConfig } from "./icon-source.config";
 
 /**
@@ -7,23 +6,13 @@ import { IconSourceConfig } from "./icon-source.config";
 export const IconConfigKey = 'IconConfigKey';
 
 /** Icon size config */
-export type IconSizeOptions = Partial<SizeOptions>;
+export type IconSizeOptions = Record<string, string>;
 export const IconSizeConfig: IconSizeOptions = {
-  xs: {
-    size: 'size-3'
-  },
-  sm: {
-    size: 'size-4'
-  },
-  md: {
-    size: 'size-5'
-  },
-  lg: {
-    size: 'size-6'
-  },
-  xl: {
-    size: 'size-7'
-  }
+  xs: 'size-3',
+  sm: 'size-4',
+  md: 'size-5',
+  lg: 'size-6',
+  xl: 'size-7'
 }
 
 /**

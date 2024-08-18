@@ -22,7 +22,7 @@ describe('Avatar Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set class names', ()=>{
+  it('should set class names', () => {
     component.class = CUSTOM_CLASSNAMES;
     expect(component.class).toBe(CUSTOM_CLASSNAMES);
   })
@@ -40,14 +40,14 @@ describe('Avatar Component', () => {
     component.ngOnInit();
 
     expect(component.ngOnInit).toHaveBeenCalled();
-    expect(component.setConfig).not.toHaveBeenCalled();
+    expect(component.setClassNames).not.toHaveBeenCalled();
     expect(component.config).toBe(CUSTOM_CLASSNAMES);
   });
 
   it('should contains custom configs', () => {
     component.class = CUSTOM_CLASSNAMES;
 
-    component.setConfig();
+    component.setClassNames();
 
     expect(component.config).toContain(mergeClassNames(DEFAULT_CONFIG, component.class));
   });

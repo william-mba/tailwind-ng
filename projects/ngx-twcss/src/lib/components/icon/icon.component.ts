@@ -1,19 +1,17 @@
-import { Component, ElementRef, inject, Input } from '@angular/core';
-import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
+import { Directive, ElementRef, inject, Input } from '@angular/core';
+import { mergeClassNames } from '../../core/helpers/config.helper';
 import { IconConfig, IconSizeOptions } from './icon.config';
 import { IconSourceConfig } from './icon-source.config';
 
-@Component({
+@Directive({
   selector: 'tw-icon, [tw-icon]',
   standalone: true,
   host: {
-    '[class]': 'config'
-  },
-  template: ''
+    '[class]': 'class'
+  }
 })
 export class Icon {
   @Input() class!: string;
-  @Input() config!: string;
   @Input() name: string = 'star';
   @Input() size: keyof IconSizeOptions = 'md';
   @Input() source: keyof IconSourceConfig = 'default';
@@ -25,6 +23,14 @@ export class Icon {
   }
 
   setConfig(value: string): void {
-    this.config = mergeClassNames(value, toClassNames(IconConfig.size[this.size]!)) + ' inline-block';
+    let classNames = 'inline-block ';
+
+    /* Only add size class if the element is not an avatar
+    *  because avatar has its own size classes
+     */
+    if (this.el.tagName !== 'TW-AVATAR') {
+      classNames += IconConfig.size[this.size];
+    }
+    this.class = mergeClassNames(value, classNames);
   }
 }
