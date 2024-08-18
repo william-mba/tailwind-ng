@@ -1,19 +1,19 @@
-import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
-import { Badge, BadgeConfig } from './badge';
+import { ButtonGroup, ButtonGroupConfig } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
 
-describe('Badge Component', () => {
-  let component: Badge;
-  let fixture: ComponentFixture<Badge>;
-  const DEFAULT_CONFIG = toClassNames(BadgeConfig);
-  const CUSTOM_CLASSNAMES = 'text-gray-500 bg-gray-500/10 text-xs';
+describe('Button Group Component', () => {
+  let component: ButtonGroup;
+  let fixture: ComponentFixture<ButtonGroup>;
+  const DEFAULT_CONFIG = toClassNames(ButtonGroupConfig);
+  const CUSTOM_CLASSNAMES = 'border border-inherit p-1.5 rounded-xl';
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Badge]
+      imports: [ButtonGroup]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Badge);
+    fixture = TestBed.createComponent(ButtonGroup);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
