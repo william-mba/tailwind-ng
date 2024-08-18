@@ -1,6 +1,7 @@
-<a href="https://github.com/William-Mba/ngx-twcss">
+<a href="https://ngx-twcss.williammba.com">
 <div align="center">
-    <h1>Ngx-twcss</h1>
+    <img src="https://ngx-twcss.williammba.com/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
+    <h1>ngx-twcss</h1>
 </div>
 </a>
 
