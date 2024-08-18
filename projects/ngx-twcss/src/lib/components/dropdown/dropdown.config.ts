@@ -1,10 +1,10 @@
-import { Config } from "../../core/types/config";
+import { StyleConfig } from "../../core/types/style.config";
 
 /** Dropdown config key */
 export const DropdownConfigKey = 'DropdownConfigKey';
 
 /** Dropdown config */
-export type DropdownConfig = Partial<Config>
+export type DropdownConfig = Partial<StyleConfig>
 export const DropdownConfig: DropdownConfig = {
   display: 'grid',
   textAlign: 'text-start',

@@ -16,9 +16,9 @@ Light | Dark
 >Code
 
 ```html
-<tw-badge className="bg-gray-600 text-gray-600">Badge</tw-badge>
-<tw-badge className="bg-red-600 text-red-700">Badge</tw-badge>
-<tw-badge className="bg-yellow-600 text-yellow-800">Badge</tw-badge>
+<tw-badge class="bg-gray-600 text-gray-600">Badge</tw-badge>
+<tw-badge class="bg-red-600 text-red-700">Badge</tw-badge>
+<tw-badge class="bg-yellow-600 text-yellow-800">Badge</tw-badge>
 ...
 ```
 
@@ -34,9 +34,9 @@ Light | Dark
 >Code
 
 ```html
-<tw-badge className="... ring-1 ring-gray-300">Badge</tw-badge>
-<tw-badge className="... ring-1 ring-yellow-800">Badge</tw-badge>
-<tw-badge className="... ring-1 ring-red-700">Badge</tw-badge>
+<tw-badge class="... ring-1 ring-gray-300">Badge</tw-badge>
+<tw-badge class="... ring-1 ring-yellow-800">Badge</tw-badge>
+<tw-badge class="... ring-1 ring-red-700">Badge</tw-badge>
 ...
 ```
 
@@ -55,7 +55,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-badge className="... rounded-full">
+<tw-badge class="... rounded-full">
   <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="12px" fill="currentColor">
     <path
       d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
@@ -79,7 +79,7 @@ Light | Dark
 
 ```html
 <!--With action-->
-<tw-badge className="... rounded-none">
+<tw-badge class="... rounded-none">
   Badge
   <button class="hover:bg-gray-600 hover:bg-opacity-20 size-[16px]">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
@@ -89,7 +89,7 @@ Light | Dark
 </tw-badge>
 ...
 <!--With action and border-->
-<tw-badge className="... rounded-none">
+<tw-badge class="... rounded-none">
   Badge
   <button class="hover:bg-indigo-600 hover:bg-opacity-20 size-[16px]">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
@@ -109,7 +109,7 @@ Light | Dark
 ---
 Property  | Type        | Attribute   | Default | Description
 ----------|-------------|-------------|---------|------------
-className | string      | `className` |  `''`   | The utilities class names to add/replace/remove.
+class | string      | `class` |  `''`   | The utilities class names to add/replace/remove.
 padding | string      | `padding` |  `px-1.5 py-1`   | The padding size of the badge.
 
 <br/>

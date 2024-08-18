@@ -1,17 +1,17 @@
 <div
   class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-800 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
-  <h1 class="text-3xl font-extrabold my-8 mt-20">
+  <tw-h2 class="mt-24">
     Badges
-  </h1>
+  </tw-h2>
   <p class="text-pretty">
     Use these Tailwind CSS badge components in your Angular application to highlight important information, statuses, or
     counts in your
     application.
   </p>
 
-  <h2 class="text-lg font-semibold mt-12">
+  <tw-h4 class="mt-16">
     Flat
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 text-xs">Badge</tw-badge>
@@ -21,9 +21,9 @@
   </div>
   <demo-code-snippet [code]="flat"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     With border
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1 text-xs">Badge</tw-badge>
@@ -33,164 +33,109 @@
   </div>
   <demo-code-snippet [code]="withBorder"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     With leading icon
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
   </div>
   <demo-code-snippet [code]="withLeadingIcon"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     With leading icon and border
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 ring-blue-500/20 ring-1 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 ring-red-500/20 ring-1 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 ring-yellow-500/20 ring-1 text-xs">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
   </div>
   <demo-code-snippet [code]="withLeadingIconAndBorder"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     With action button
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
   </div>
   <demo-code-snippet [code]="withActionButton"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     With action button and border
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 ring-blue-500/20 ring-1 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 ring-red-500/20 ring-1 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 ring-yellow-500/20 ring-1 text-xs">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
   </div>
   <demo-code-snippet [code]="withActionButtonAndBorder"></demo-code-snippet>
 
-  <h2 class="text-2xl font-bold mt-20">
+  <tw-h3 class="mt-20">
     Rounded badges
-  </h2>
-  <h2 class="text-lg font-semibold mt-12">
+  </tw-h3>
+
+  <tw-h4 class="mt-12">
     Rounded flat
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 text-xs rounded-full">Badge</tw-badge>
@@ -200,9 +145,9 @@
   </div>
   <demo-code-snippet [code]="roundedFlat"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded with border
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1 text-xs rounded-full">Badge</tw-badge>
@@ -212,154 +157,98 @@
   </div>
   <demo-code-snippet [code]="roundedWithBorder"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded with leading icon
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
   </div>
   <demo-code-snippet [code]="roundedWithLeadingIcon"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded with leading icon and border
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 ring-blue-500/20 ring-1 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 ring-red-500/20 ring-1 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 ring-yellow-500/20 ring-1 text-xs rounded-full">
-      <svg class="size-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-        <path
-          d="M480-200q-117 0-198.5-81.5T200-480q0-117 81.5-198.5T480-760q117 0 198.5 81.5T760-480q0 117-81.5 198.5T480-200Z" />
-      </svg>
+      <tw-icon name="dot" size="xs" />
       Badge
     </tw-badge>
   </div>
   <demo-code-snippet [code]="roundedWithLeadingIconAndBorder"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded with action button
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
   </div>
   <demo-code-snippet [code]="roundedWithActionButton"></demo-code-snippet>
 
-  <h2 class="text-lg font-semibold mt-20">
+  <tw-h4 class="mt-16">
     Rounded with action button and border
-  </h2>
+  </tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
     <tw-badge class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-blue-500 bg-blue-500/10 ring-blue-500/20 ring-1 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-red-500 bg-red-500/10 ring-red-500/20 ring-1 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
     <tw-badge class="text-yellow-500 bg-yellow-500/10 ring-yellow-500/20 ring-1 text-xs rounded-full">
       Badge
-      <button tw-badge-action>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="m291-240-51-51 189-189-189-189 51-51 189 189 189-189 51 51-189 189 189 189-51 51-189-189-189 189Z" />
-        </svg>
-      </button>
+      <tw-icon tw-badge-action name="x-mark" source="heroicons" size="xs" />
     </tw-badge>
   </div>
   <demo-code-snippet [code]="roundedWithActionButtonAndBorder"></demo-code-snippet>

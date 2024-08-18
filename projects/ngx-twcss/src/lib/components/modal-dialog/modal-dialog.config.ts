@@ -1,7 +1,7 @@
-import { Config } from '../../core/types/config';
+import { StyleConfig } from '../../core/types/style.config';
 
 /**Scrim config */
-export type ScrimConfig = Partial<Config>;
+export type ScrimConfig = Partial<StyleConfig>;
 export const ScrimConfig: ScrimConfig = {
   position: {
     type: 'fixed',
@@ -18,7 +18,7 @@ export const ScrimConfig: ScrimConfig = {
 };
 
 /**Backdrop config */
-export type BackdropConfig = Partial<Config>;
+export type BackdropConfig = Partial<StyleConfig>;
 export const BackdropConfig: BackdropConfig = {
   position: {
     type: 'fixed',
@@ -36,7 +36,7 @@ export const BackdropConfig: BackdropConfig = {
 
 
 /**Modal Dialog container config */
-export type DialogContainerConfig = Partial<Config>;
+export type DialogContainerConfig = Partial<StyleConfig>;
 export const DialogContainerConfig: DialogContainerConfig = {
   display: 'grid',
   position: 'relative',
@@ -57,7 +57,7 @@ export const DialogContainerConfig: DialogContainerConfig = {
 }
 
 /**Dialog panel config */
-export type DialogPanelConfig = Partial<Config>
+export type DialogPanelConfig = Partial<StyleConfig>
 export const DialogPanelConfig: DialogPanelConfig = {
   display: {
     type: 'flex',
@@ -74,7 +74,7 @@ export const DialogPanelConfig: DialogPanelConfig = {
 }
 
 /**Dialog icon config */
-export type DialogIconConfig = Partial<Config>
+export type DialogIconConfig = Partial<StyleConfig>
 export const DialogIconConfig: DialogIconConfig = {
   display: {
     type: 'flex',
@@ -98,7 +98,7 @@ export const DialogIconConfig: DialogIconConfig = {
 }
 
 /**Dialog content config */
-export type DialogContentConfig = Partial<Config>
+export type DialogContentConfig = Partial<StyleConfig>
 export const DialogContentConfig: DialogContentConfig = {
   display: {
     type: 'flex',
@@ -116,7 +116,7 @@ export const DialogContentConfig: DialogContentConfig = {
 }
 
 /**Dialog actions config */
-export type DialogActionsConfig = Partial<Config>
+export type DialogActionsConfig = Partial<StyleConfig>
 export const DialogActionsConfig: DialogActionsConfig = {
   display: {
     type: 'flex',

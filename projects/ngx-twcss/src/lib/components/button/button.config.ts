@@ -1,4 +1,4 @@
-import { Config } from "../../core/types/config";
+import { StyleConfig } from "../../core/types/style.config";
 import { SizeOptions } from "../../core/types/size-options";
 
 /** Button variant */
@@ -104,7 +104,7 @@ export const ButtonIconSizeConfig: ButtonIconSizeOptions = {
 }
 
 /** Base button config */
-export type ButtonBaseConfig = Partial<Config>
+export type ButtonBaseConfig = Partial<StyleConfig>
 export const ButtonBaseConfig: ButtonBaseConfig = {
   display: {
     type: 'inline-flex',

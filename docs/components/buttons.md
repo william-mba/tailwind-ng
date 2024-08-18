@@ -31,7 +31,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-button [icon]="true" className="rounded-lg">
+<tw-button [icon]="true" class="rounded-lg">
   <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
   </svg>
@@ -49,7 +49,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-button tw-fab className="rounded-lg">
+<tw-button tw-fab class="rounded-lg">
   <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
   </svg>
@@ -67,7 +67,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-button tw-fab className="px-6 rounded-lg">
+<tw-button tw-fab class="px-6 rounded-lg">
   <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
   </svg>
@@ -90,9 +90,9 @@ Light | Dark
 >Code
 
 ```html
-<tw-button className="rounded-full">Button text</tw-button>
-<tw-button className="rounded-full" variant="secondary">Button text</tw-button>
-<tw-button className="rounded-full" variant="tonal">Button text</tw-button>
+<tw-button class="rounded-full">Button text</tw-button>
+<tw-button class="rounded-full" variant="secondary">Button text</tw-button>
+<tw-button class="rounded-full" variant="tonal">Button text</tw-button>
 ```
 
 <br/>
@@ -142,7 +142,7 @@ Light | Dark
 >Code
 
 ```html
-<tw-button tw-fab className="px-6">
+<tw-button tw-fab class="px-6">
   <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
     <path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z" />
   </svg>
@@ -202,7 +202,7 @@ Light | Dark
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------
 size      | SizeVariant |`md`  | The button size.
-className | string      |  `''`   | The utilities class names to add/replace/remove.
+class | string      |  `''`   | The utilities class names to add/replace/remove.
 style | string      |  `''`   | The button style. This property has precedence to all other properties.
 variant | ButtonVariant      |  `primary`   | The button variant.
 ---
@@ -211,14 +211,14 @@ variant | ButtonVariant      |  `primary`   | The button variant.
 
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------
-className | string      |  `''`   | The utilities class names to add/replace/remove.
+class | string      |  `''`   | The utilities class names to add/replace/remove.
 ---
 
 ### FAB & Extented FAB `[tw-fab]`
 
 Property  | Type        | Default | Description
 ----------|-------------|---------|------------
-className | string      |  `''`   | The utilities class names to add/replace/remove.
+class | string      |  `''`   | The utilities class names to add/replace/remove.
 ---
 
 <br/>
