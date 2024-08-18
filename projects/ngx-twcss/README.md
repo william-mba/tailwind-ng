@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://ngx-twcss.williammba.com/">
-    <img src="https://ngx-twcss.williammba.com/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
+    <img src="https://github.com/William-Mba/ngx-twcss/raw/next/src/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
     <h1>ngx-twcss</h1>
   </a>
 </div>
