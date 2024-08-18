@@ -1,8 +1,8 @@
 <nav
-  class="fixed start-0 top-0 z-30 h-16 flex w-full justify-center border-b border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 bg-gradient-to-r from-[#4038ca] to-[#8881f8]">
+  class="fixed start-0 top-0 z-30 h-16 flex w-full justify-center border-b border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 bg-blue-800 shadow-xl shadow-black/15">
   <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
     <tw-button-group class="text-white gap-1.5 hover:cursor-pointer">
-      <tw-icon size="xl" name="ngx-twcss-outlined" />
+      <tw-icon size="xl" name="ngx-twcss" />
       <span class="hidden sm:inline">Angular • Tailwind CSS</span>
     </tw-button-group>
     <div class="flex items-center space-x-3 md:order-2 rtl:space-x-reverse">
@@ -13,6 +13,13 @@
             d="M426.666667 768a339.285333 339.285333.0 00208.938666-72.021333L823.168 883.541333l60.330667-60.330666L695.936 635.648A339.285333 339.285333.0 00768 426.666667C768 238.464 614.869333 85.333334 426.666667 85.333333S85.333334 238.464 85.333333 426.666667 238.464 768 426.666667 768zm0-597.333333c141.184.0 256 114.816 256 256s-114.816 256-256 256-256-114.816-256-256 114.816-256 256-256z" />
         </svg>
       </tw-button> -->
+      <!-- npm icon -->
+      <a href="https://www.npmjs.com/package/ngx-twcss">
+        <tw-button [icon]="true" size="lg" variant="secondary" classMatchStrategy="last"
+          class="text-white ring-indigo-50 *:h-fit">
+          <tw-icon name="npm" />
+        </tw-button>
+      </a>
       <!-- GitHub Icon -->
       <a href="https://github.com/William-Mba/ngx-twcss">
         <tw-button [icon]="true" size="sm" variant="secondary" classMatchStrategy="last"
@@ -27,8 +34,8 @@
         <tw-icon name="sun" source="heroicons" *ngIf="dark" />
       </tw-button>
       <!-- Burger button -->
-      <tw-button [icon]="true" size="sm" variant='secondary' class="2xl:hidden" (click)="toggle()"
-        classMatchStrategy="last" class="text-white ring-indigo-50">
+      <tw-button [icon]="true" size="sm" variant='secondary' class="text-white ring-indigo-50 2xl:hidden"
+        (click)="toggle()" classMatchStrategy="last">
         <tw-icon name="burger-menu" size="sm" />
       </tw-button>
     </div>

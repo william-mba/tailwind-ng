@@ -168,7 +168,7 @@ export class ModalDialogDemoComponent {
       <h1 class="text-2xl border-none pb-3" id="modal-title">
         Install Angular
       </h1>
-      <div class="overflow-scroll overscroll-contain p-0 pr-2 text-pretty text-gray-700 dark:text-gray-200">
+      <div class="overflow-scroll overscroll-contain p-0 pr-2 text-pretty text-gray-800 dark:text-gray-200">
         <h3 class="text-base font-bold leading-6 my-3 mt-0">Develop across all platforms</h3>
         <p class="text-sm text-gray-700 dark:text-gray-300">
           Learn one way to build applications with Angular and reuse your code and abilities to build apps for any
@@ -320,7 +320,7 @@ export class ModalDialogDemoComponent {
   <tw-dialog-panel className="pb-0 sm:- gap-0">
     <tw-dialog-content className="pb-0 h-96">
       <h1 class="text-2xl border-none pb-3" id="modal-title"> Install Angular </h1>
-      <div class="overflow-scroll overscroll-contain p-0 pr-2 text-pretty text-gray-700 dark:text-gray-200">
+      <div class="overflow-scroll overscroll-contain p-0 pr-2 text-pretty text-gray-800 dark:text-gray-200">
         <h3 class="text-base font-bold leading-6 my-3 mt-0">Develop across all platforms</h3>
         <p class="text-sm text-gray-700 dark:text-gray-300">
           Learn one way to build applications with Angular and reuse your code and abilities to build apps for any

@@ -52,10 +52,10 @@ const routes: Routes = [
   //   redirectTo: 'comboboxes',
   //   pathMatch: 'full'
   // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'roadmap'
-  // }
+  {
+    path: '**',
+    redirectTo: 'buttons'
+  }
 ];
 
 @NgModule({
