@@ -1,9 +1,10 @@
-<a href="https://ngx-twcss.williammba.com">
+
 <div align="center">
+  <a href="https://ngx-twcss.williammba.com/">
     <img src="./src/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
     <h1>ngx-twcss</h1>
+  </a>
 </div>
-</a>
 
 <div align="center">
 The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS components</a> with <a href="https://angular.dev/">Angular</a>.
@@ -17,6 +18,7 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 - [Roadmap](docs/roadmap.md)
 - [Components docs](docs/components/)
 - [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss)
+
 ---
 
 ## Quick start
