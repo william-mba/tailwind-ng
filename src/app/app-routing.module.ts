@@ -8,12 +8,12 @@ import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
 import { ModalDialogDemoComponent } from './demos/modal-dialog-demo/modal-dialog-demo.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { LabComponent } from './demos/lab/lab.component';
-import { ComboboxeDemoComponent } from './demos/comboboxe-demo/comboboxe-demo.component';
+import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.component';
 
 const routes: Routes = [
   {
     path: 'comboboxes',
-    component: ComboboxeDemoComponent
+    component: ComboboxDemoComponent
   },
   {
     path: 'modal-dialogs',
@@ -47,15 +47,15 @@ const routes: Routes = [
     path: 'lab',
     component: LabComponent
   },
-  {
-    path: '',
-    redirectTo: 'buttons',
-    pathMatch: 'full'
-  },
-  {
-    path: '**',
-    redirectTo: 'roadmap'
-  }
+  // {
+  //   path: '',
+  //   redirectTo: 'comboboxes',
+  //   pathMatch: 'full'
+  // },
+  // {
+  //   path: '**',
+  //   redirectTo: 'roadmap'
+  // }
 ];
 
 @NgModule({

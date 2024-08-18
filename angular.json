@@ -22,7 +22,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "demo",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
