@@ -44,6 +44,7 @@
 <ng-container *ngIf="open || isLargeScreen()">
   <nav
     class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-24 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-xs flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
+    <!--Getting started -->
     <div>
       <div class="relative">
         <tw-button [icon]="true" variant="text" size="sm" class="absolute top-0 right-0 2xl:hidden" (click)="toggle()">
@@ -70,6 +71,7 @@
         </li> -->
       </ul>
     </div>
+    <!--Typography -->
     <div>
       <h2 class="font-bold">Typography</h2>
       <ul
@@ -98,25 +100,28 @@
       <ul
         class="flex flex-col font-medium *:py-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
         <li routerLink="buttons" (click)="toggle()">
-          Buttons
+          Button
         </li>
         <li routerLink="button-groups" (click)="toggle()">
-          Button Groups
+          Button Group
         </li>
         <li routerLink="badges" (click)="toggle()">
-          Badges
+          Badge
         </li>
         <li routerLink="dropdowns" (click)="toggle()">
-          Dropdowns
+          Dropdown
         </li>
         <li routerLink="avatars" (click)="toggle()">
-          Avatars
+          Avatar
         </li>
         <li routerLink="modal-dialogs" (click)="toggle()">
-          Modal Dialogs
+          Modal Dialog
         </li>
         <li routerLink="comboboxes" (click)="toggle()">
-          Comboboxes
+          Combobox
+        </li>
+        <li routerLink="toggles" (click)="toggle()">
+          Toggle
         </li>
       </ul>
     </div>

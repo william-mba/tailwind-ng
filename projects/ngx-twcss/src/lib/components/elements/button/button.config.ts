@@ -1,5 +1,7 @@
-import { StyleConfig } from "../../core/types/style.config";
-import { SizeOptions } from "../../core/types/size-options";
+import { InjectionToken, Provider } from "@angular/core";
+import { ElementConfig } from "../../../core/types/element.config";
+import { SizeOptions } from "../../../core/types/size-options";
+import { mergeConfigs } from "../../../core/helpers/config.helper";
 
 /** Button variant */
 export type ButtonVariant =
@@ -104,7 +106,7 @@ export const ButtonIconSizeConfig: ButtonIconSizeOptions = {
 }
 
 /** Base button config */
-export type ButtonBaseConfig = Partial<StyleConfig>
+export type ButtonBaseConfig = Partial<ElementConfig>
 export const ButtonBaseConfig: ButtonBaseConfig = {
   display: {
     type: 'inline-flex',
@@ -208,7 +210,7 @@ export const TextButtonConfig: TonalButtonConfig = {
 }
 
 /** Button config key */
-export const ButtonConfigKey = 'ButtonConfigKey';
+export const ButtonConfigKey = 'ButtonConfig';
 
 /** Button config */
 export type ButtonConfig = {
@@ -226,3 +228,19 @@ export const ButtonConfig: ButtonConfig = {
   text: TextButtonConfig,
   size: ButtonSizeConfig
 }
+
+/**
+ * Button config token
+ */
+export const BUTTON_CONFIG = new InjectionToken<ButtonConfig>('Button config token');
+/**
+ *  Button config provider
+ * @param config The custom config
+ * @returns The config provider
+ */
+export const provideButtonConfig = (config?: Partial<ButtonConfig>): Provider => {
+  return {
+    provide: BUTTON_CONFIG,
+    useValue: mergeConfigs(ButtonConfig, config)
+  }
+};

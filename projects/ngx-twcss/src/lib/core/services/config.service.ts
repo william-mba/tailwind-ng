@@ -1,15 +1,25 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Injectable } from "@angular/core";
+import { Injectable, Provider } from "@angular/core";
 import { isObject, mergeConfigs } from '../helpers/config.helper';
-import { ButtonConfig, ButtonConfigKey } from '../../components/button/button.config';
+import { ButtonConfig, ButtonConfigKey } from '../../components/elements/button/button.config';
 import { ModalDialogConfig, ModalDialogConfigKey } from '../../components/modal-dialog/modal-dialog.config';
-import { DropdownConfig, DropdownConfigKey } from '../../components/dropdown/dropdown.config';
+import { DropdownConfig, DropdownConfigKey } from '../../components/elements/dropdown/dropdown.config';
 import { ModalDialog } from '../../components/modal-dialog/modal-dialog.module';
 
+/** Ngx-Twcss config service token */
+export abstract class ConfigServiceToken {
+  abstract get<T extends Record<string, any>>(key: string): Observable<T>;
+  abstract setButton(config?: Partial<ButtonConfig>): ConfigService;
+  abstract setModalDialog(config?: Partial<ModalDialog>): ConfigService;
+  abstract setDropdown(config?: Partial<DropdownConfig>): ConfigService;
+}
+/**
+ * Ngx-Twcss config service
+ */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ConfigService {
+export class ConfigService extends ConfigServiceToken {
   private configs: Record<string, BehaviorSubject<any>> = {};
 
   /**
@@ -17,7 +27,7 @@ export class ConfigService {
    */
   get<T extends Record<string, any>>(key: string): Observable<T> {
     if (!isObject(this.configs[key])) {
-      this.set(key, DefaultConfigs[key]);
+      this.set(key, DEFAULT_CONFIG[key]);
     }
     return this.configs[key].asObservable() as Observable<T>;
   }
@@ -60,9 +70,28 @@ export class ConfigService {
     return this;
   }
 }
+/**
+ * Ngx-twcss components default configurations
+ */
+export type DefaultConfigs = {
+  ButtonConfig: ButtonConfig,
+  ModalDialogConfig: ModalDialogConfig,
+  DropdownConfig: DropdownConfig,
+} & Record<string, object>;
 
-export const DefaultConfigs: Record<string, object> = {
-  ButtonConfigKey: ButtonConfig,
-  ModalDialogConfigKey: ModalDialogConfig,
-  DropdownConfigKey: DropdownConfig
+/**
+ * Ngx-twcss components default configurations
+ */
+export const DEFAULT_CONFIG: DefaultConfigs = {
+  ButtonConfig: ButtonConfig,
+  ModalDialogConfig: ModalDialogConfig,
+  DropdownConfig: DropdownConfig,
 }
+
+/** Ngx-Twcss config service provider */
+export const provideConfigService = (): Provider[] => {
+  return [{
+    provide: ConfigServiceToken,
+    useExisting: ConfigService
+  }]
+};

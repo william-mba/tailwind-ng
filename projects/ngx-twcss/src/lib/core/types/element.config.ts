@@ -2,9 +2,11 @@ import { BorderRadius } from "./borders/border-radius"
 import { BorderWidth } from "./borders/border-width"
 import { RingWidth } from "./borders/ring-width"
 import { BoxShadow } from "./effects/box-shadow"
+import { Opacity } from "./effects/opacity"
 import { DropShadow } from "./filters/drop-shadow"
 import { Filters } from "./filters/filters"
 import { Cursor } from "./interactivity/cursor"
+import { PointerEvents } from "./interactivity/pointer-events"
 import { UserSelect } from "./interactivity/user-select"
 import { Display } from "./layout/display"
 import { Overflow } from "./layout/overflow"
@@ -22,7 +24,7 @@ import { LineHeight } from "./typography/line-height"
 import { TextAlign } from "./typography/text-align"
 import { TextWrap } from "./typography/text-wrap"
 
-export type StyleConfig = {
+export type ElementConfig = {
   display: Display,
   position: Position,
   borderRadius: BorderRadius,
@@ -44,6 +46,8 @@ export type StyleConfig = {
   lineHeight: LineHeight,
   filters: Partial<Filters>,
   shadow: DropShadow | BoxShadow,
+  opacity: Opacity,
+  pointerEvents: PointerEvents,
   /**A property to set class name starting with sm:* */
   sm: Record<string, {}> | string
   /**A property to set class name that does not have a defined type. */

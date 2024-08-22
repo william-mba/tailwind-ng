@@ -1,6 +1,8 @@
 export type BackgroundColor =
   | 'bg-black'
+  | 'bg-black/10'
   | 'bg-white'
+  | 'bg-white/10'
   | 'bg-current'
   | 'bg-inherit'
   | 'bg-transparent'
@@ -248,7 +250,9 @@ export type BackgroundColor =
   | 'bg-rose-900'
   | 'bg-rose-950'
   | 'dark:bg-black'
+  | 'dark:bg-black/10'
   | 'dark:bg-white'
+  | 'dark:bg-white/10'
   | 'dark:bg-current'
   | 'dark:bg-inherit'
   | 'dark:bg-transparent'

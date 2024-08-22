@@ -1,9 +1,9 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewChildren } from '@angular/core';
-import { Dropdown } from '../dropdown/dropdown.component';
-import { Button } from '../button/button.component';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-import { Icon } from '../icon/icon.directive';
+import { Dropdown } from '../../elements/dropdown/dropdown.component';
+import { Button } from '../../elements/button/button.component';
+import { Icon } from '../../elements/icon/icon.directive';
 
 @Component({
   selector: 'tw-combobox-item',

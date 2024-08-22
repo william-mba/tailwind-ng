@@ -1,5 +1,5 @@
 import { Directive, ElementRef, inject, Input } from '@angular/core';
-import { mergeClassNames } from '../../core/helpers/config.helper';
+import { mergeClassNames } from '../../../core/helpers/config.helper';
 import { IconConfig, IconSizeOptions } from './icon.config';
 import { IconSourceConfig } from './icon-source.config';
 

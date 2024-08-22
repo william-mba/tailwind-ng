@@ -1,9 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { DropdownConfig, DropdownConfigKey } from './dropdown.config';
-import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
-import { ConfigService } from '../../core/services/config.service';
+import { DROPDOWN_CONFIG, DropdownConfig } from './dropdown.config';
+import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { Observable } from 'rxjs';
 
 /** Dropdown component */
 @Component({
@@ -11,7 +9,7 @@ import { Observable } from 'rxjs';
   standalone: true,
   host: {
     '[@openClose]': '',
-    '[class]': 'config'
+    '[class]': 'class'
   },
   template: `<ng-content></ng-content>`,
   animations: [
@@ -36,21 +34,17 @@ import { Observable } from 'rxjs';
   ]
 })
 export class Dropdown implements OnInit {
-  private config$: Observable<DropdownConfig> = inject(ConfigService).get(DropdownConfigKey);
+  private config = inject(DROPDOWN_CONFIG);
   private _class!: string;
 
   @Input() class!: string;
-  @Input() config!: string;
 
   ngOnInit(): void {
-    if (this.config) return;
     this._class = this.class;
-    this.config$.subscribe((conf) => {
-      this.setConfig(conf);
-    });
+    this.setConfig(this.config);
   }
 
   setConfig(config: Partial<DropdownConfig> = DropdownConfig): void {
-    this.config = mergeClassNames(toClassNames(config), this._class);
+    this.class = mergeClassNames(toClassNames(config), this._class);
   }
 }

@@ -5,31 +5,32 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
   selector: 'demo-code-snippet',
   template: `
   <details>
-    <summary class="border-x border-b border-neutral-300 dark:border-neutral-700 list-none px-2 font-mono text-sm cursor-pointer">
-      {{ label }}
+    <summary class="relative h-5 border-neutral-300 dark:border-neutral-700 list-none px-2 font-mono text-xs cursor-pointer">
+      <span (click)="changeLabel()" class="absolute top-0.5 right-2">{{ label }}</span>
     </summary>
     <div class="relative">
-      <tw-button size="sm" variant="text" class="absolute -right-2 -top-6 font-mono" (click)="copy()">
+      <tw-button size="lg" [icon]="true" variant="text" class="absolute right-0.5 font-mono text-white/80 hover:text-white" (click)="copy()">
         {{ displayText }}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
-          <path d="M379.78-233.78q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15v-466.44q0-44.3 30.85-75.15 30.85-30.85 75.15-30.85h346.44q44.3 0 75.15 30.85 30.85 30.85 30.85 75.15v466.44q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H379.78Zm-186 186q-44.3 0-75.15-30.85-30.85-30.85-30.85-75.15v-572.44h106v572.44h452.44v106H193.78Z"/>
-        </svg>
+        <tw-icon source="googlefonts" name="content-copy" />
       </tw-button>
     </div>
-    <pre class="*:text-sm *:rounded-b-xl *:border *:border-t-0 *:border-black/[.10] *:dark:border-white/[.10]"><code [highlight]="code" language="html">
+    <pre class="*:text-sm *:rounded-xl *:border *:border-black/[.10] *:dark:border-white/[.10]"><code [highlight]="code" language="html">
       </code></pre>
   </details>`
 })
 export class CodeSnippetComponent {
   private text = {
-    copy: 'Copy',
+    copy: '',
     copied: 'Copied!'
   };
   protected displayText = this.text.copy;
-  protected label = '</> View code';
+  protected label = 'View code';
 
   @Input() code!: string;
 
+  changeLabel() {
+    this.label = this.label.charAt(0) === 'V' ? 'Hide code' : 'View code';
+  }
 
   copy() {
     if (!this.code || this.displayText === this.text.copied) return;

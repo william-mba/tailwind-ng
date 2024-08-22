@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
-import { StyleConfig } from '../../core/types/style.config';
+import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
+import { ElementConfig } from '../../../core/types/element.config';
 
 /** Button group config key */
 export const ButtonGroupConfigKey = 'ButtonGroupConfigKey';
 
 /** Button group config */
-export type ButtonGroupConfig = Partial<StyleConfig>;
+export type ButtonGroupConfig = Partial<ElementConfig>;
 export const ButtonGroupConfig: ButtonGroupConfig = {
   display: {
     type: 'flex',

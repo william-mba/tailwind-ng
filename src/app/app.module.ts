@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Combobox, Icon, Typography } from 'ngx-twcss';
+import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Combobox, Icon, Typography, Toggle, provideButtonConfig, provideDropdownConfig } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,8 @@ import { LabComponent } from './demos/lab/lab.component';
 import { FormsModule } from '@angular/forms';
 import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.component';
 import { TypographyDemoComponent } from './demos/typography-demo/typography-demo.component';
+import { ToggleDemoComponent } from './demos/toggle-demo/toggle-demo.component';
+import { CodeComponent } from './code/code.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { TypographyDemoComponent } from './demos/typography-demo/typography-demo
     RoadmapComponent,
     LabComponent,
     ComboboxDemoComponent,
-    TypographyDemoComponent
+    TypographyDemoComponent,
+    ToggleDemoComponent,
+    CodeComponent
   ],
   imports: [
     Highlight,
@@ -56,13 +60,16 @@ import { TypographyDemoComponent } from './demos/typography-demo/typography-demo
     ModalDialog,
     Combobox,
     Icon,
-    Typography
+    Typography,
+    Toggle
   ],
   bootstrap: [AppComponent],
   providers: [
     provideHighlightOptions({
       fullLibraryLoader: () => import('highlight.js'),
-    })
+    }),
+    provideButtonConfig(),
+    provideDropdownConfig()
   ],
 })
 export class AppModule { }
