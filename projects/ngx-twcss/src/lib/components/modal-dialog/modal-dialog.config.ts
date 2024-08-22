@@ -1,7 +1,9 @@
-import { StyleConfig } from '../../core/types/style.config';
+import { InjectionToken, Provider } from '@angular/core';
+import { ElementConfig } from '../../core/types/element.config';
+import { mergeConfigs } from '../../core/helpers/config.helper';
 
 /**Scrim config */
-export type ScrimConfig = Partial<StyleConfig>;
+export type ScrimConfig = Partial<ElementConfig>;
 export const ScrimConfig: ScrimConfig = {
   position: {
     type: 'fixed',
@@ -18,7 +20,7 @@ export const ScrimConfig: ScrimConfig = {
 };
 
 /**Backdrop config */
-export type BackdropConfig = Partial<StyleConfig>;
+export type BackdropConfig = Partial<ElementConfig>;
 export const BackdropConfig: BackdropConfig = {
   position: {
     type: 'fixed',
@@ -36,7 +38,7 @@ export const BackdropConfig: BackdropConfig = {
 
 
 /**Modal Dialog container config */
-export type DialogContainerConfig = Partial<StyleConfig>;
+export type DialogContainerConfig = Partial<ElementConfig>;
 export const DialogContainerConfig: DialogContainerConfig = {
   display: 'grid',
   position: 'relative',
@@ -57,7 +59,7 @@ export const DialogContainerConfig: DialogContainerConfig = {
 }
 
 /**Dialog panel config */
-export type DialogPanelConfig = Partial<StyleConfig>
+export type DialogPanelConfig = Partial<ElementConfig>
 export const DialogPanelConfig: DialogPanelConfig = {
   display: {
     type: 'flex',
@@ -74,7 +76,7 @@ export const DialogPanelConfig: DialogPanelConfig = {
 }
 
 /**Dialog icon config */
-export type DialogIconConfig = Partial<StyleConfig>
+export type DialogIconConfig = Partial<ElementConfig>
 export const DialogIconConfig: DialogIconConfig = {
   display: {
     type: 'flex',
@@ -98,7 +100,7 @@ export const DialogIconConfig: DialogIconConfig = {
 }
 
 /**Dialog content config */
-export type DialogContentConfig = Partial<StyleConfig>
+export type DialogContentConfig = Partial<ElementConfig>
 export const DialogContentConfig: DialogContentConfig = {
   display: {
     type: 'flex',
@@ -116,7 +118,7 @@ export const DialogContentConfig: DialogContentConfig = {
 }
 
 /**Dialog actions config */
-export type DialogActionsConfig = Partial<StyleConfig>
+export type DialogActionsConfig = Partial<ElementConfig>
 export const DialogActionsConfig: DialogActionsConfig = {
   display: {
     type: 'flex',
@@ -133,7 +135,7 @@ export const DialogActionsConfig: DialogActionsConfig = {
 }
 
 /**Modal Dialog config key */
-export const ModalDialogConfigKey = 'ModalDialogConfigKey';
+export const ModalDialogConfigKey = 'ModalDialogConfig';
 /**Modal Dialog config */
 export type ModalDialogConfig = {
   container: Partial<DialogContainerConfig>,
@@ -153,3 +155,19 @@ export const ModalDialogConfig: ModalDialogConfig = {
   scrim: ScrimConfig,
   backdrop: BackdropConfig,
 }
+
+/**
+ * Modal Dialog config token
+ */
+export const MODAL_DIALOG_CONFIG = new InjectionToken<ModalDialogConfig>('Modal Dialog config token');
+/**
+ *  Modal Dialog config provider
+ * @param config The custom config
+ * @returns The config provider
+ */
+export const provideModalDialogConfig = (config?: Partial<ModalDialogConfig>): Provider => {
+  return {
+    provide: MODAL_DIALOG_CONFIG,
+    useValue: mergeConfigs(ModalDialogConfig, config)
+  }
+};

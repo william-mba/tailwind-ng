@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Combobox } from './combobox.component';
-import { ConfigService } from '../../core/services/config.service';
+import { ConfigService } from '../../../core/services/config.service';
+import { provideButtonConfig } from '../../elements/button/button.config';
 
 describe('Combobox Component', () => {
   let component: Combobox;
@@ -9,7 +10,8 @@ describe('Combobox Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Combobox]
+      imports: [Combobox],
+      providers: [provideButtonConfig()]
     }).compileComponents();
 
     configService = TestBed.inject(ConfigService);

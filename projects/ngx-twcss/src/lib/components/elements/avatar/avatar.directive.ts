@@ -1,6 +1,6 @@
 import { Directive, Input, OnInit } from '@angular/core';
-import { StyleConfig } from '../../core/types/style.config';
-import { toClassNames, mergeClassNames } from '../../core/helpers/config.helper';
+import { ElementConfig } from '../../../core/types/element.config';
+import { toClassNames, mergeClassNames } from '../../../core/helpers/config.helper';
 
 /**Avatar element*/
 @Directive({
@@ -23,7 +23,7 @@ export class Avatar implements OnInit {
   }
 }
 
-export type AvatarConfig = Partial<StyleConfig>;
+export type AvatarConfig = Partial<ElementConfig>;
 
 export const AvatarConfig: AvatarConfig = {
   display: {

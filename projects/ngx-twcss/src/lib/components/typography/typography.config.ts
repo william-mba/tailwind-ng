@@ -1,9 +1,9 @@
-import { StyleConfig } from "../../core/types/style.config";
+import { ElementConfig } from "../../core/types/element.config";
 
 /**
  * Typography Config
  */
-export type TypographyConfig = Partial<StyleConfig>;
+export type TypographyConfig = Partial<ElementConfig>;
 
 export const TypographyConfig: TypographyConfig = {
   display: 'block',

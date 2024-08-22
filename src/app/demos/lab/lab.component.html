@@ -1,11 +1,62 @@
 <div
-  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-800 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  class="w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-800 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  Simple Toggle
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
-    <tw-avatar tw-icon size="xs" class="text-gray-400" source="heroicons" name="user-circle" />
-    <tw-avatar tw-icon size="sm" class="text-gray-400" source="heroicons" name="user-circle" />
-    <tw-avatar tw-icon size="md" class="text-gray-400" source="heroicons" name="user-circle" />
-    <tw-avatar tw-icon size="lg" class="text-gray-400" source="heroicons" name="user-circle" />
-    <tw-avatar tw-icon size="xl" class="text-gray-400" source="heroicons" name="user-circle" />
+    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+
+    <tw-toggle (change)="logChanges($event)" />
+  </div>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+
+    <tw-toggle (change)="logChanges($event)" class="transition-colors duration-200 has-[:checked]:bg-indigo-500" />
+
+  </div>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+
+    <tw-toggle (change)="logChanges($event)"
+      class="transition-colors duration-200 has-[:checked]:bg-indigo-500 has-[:focus]:ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-indigo-500 active:ring-offset-2 active:ring-2 active:ring-indigo-500" />
+
+  </div>
+
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+
+    <tw-toggle (change)="logChanges($event)" #twToggle (click)="twToggle.input.nativeElement.focus()"
+      class="transition-colors duration-200 has-[:checked]:bg-indigo-500 has-[:focus]:ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-indigo-500 active:ring-offset-2 active:ring-2 active:ring-indigo-500">
+      <tw-icon *ngIf="twToggle.checked" class="text-indigo-500" size="xs" name="check" source="googlefonts" />
+      <tw-icon *ngIf="!twToggle.checked" class="text-black/30" size="xs" name="close" source="googlefonts" />
+    </tw-toggle>
+  </div>
+
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+
+    <tw-toggle (change)="logChanges($event)" #twToggle slider="bg-white bg-opacity-80"
+      class="transition-colors duration-200 has-[:checked]:bg-indigo-500 has-[:focus]:ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-indigo-500 active:ring-offset-2 active:ring-2 active:ring-indigo-500">
+      <tw-icon *ngIf="twToggle.checked" class="text-indigo-500" size="xs" name="check" source="googlefonts" />
+      <tw-icon *ngIf="!twToggle.checked" class="text-black/30" size="xs" name="close" source="googlefonts" />
+    </tw-toggle>
+
+    <tw-toggle (change)="logChanges($event)" #twToggle2>
+      <tw-icon *ngIf="twToggle2.checked" class="text-indigo-500" size="xs" name="check" source="googlefonts" />
+      <tw-icon *ngIf="!twToggle2.checked" class="text-black/30" size="xs" name="close" source="googlefonts" />
+    </tw-toggle>
+  </div>
+
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end mt-20 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+
+    <tw-toggle (change)="logChanges($event)" #toggle3 class="active:ring-offset-2 active:ring-2 active:ring-indigo-500">
+      <tw-icon *ngIf="toggle3.checked" class="text-indigo-500" size="xs" name="check" source="googlefonts" />
+      <tw-icon *ngIf="!toggle3.checked" class="text-black/30" size="xs" name="close" source="googlefonts" />
+    </tw-toggle>
+
+    <tw-toggle (change)="logChanges($event)" #toggle4
+      class="h-4 h-6- w-10 w-11- border- active:ring-offset-2 active:ring-2 active:ring-indigo-500">
+      <tw-icon *ngIf="toggle4.checked" class="text-indigo-500" size="xs" name="check" source="googlefonts" />
+      <tw-icon *ngIf="!toggle4.checked" class="text-black/30" size="xs" name="close" source="googlefonts" />
+    </tw-toggle>
   </div>
 </div>

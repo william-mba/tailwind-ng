@@ -1,13 +1,11 @@
 import { Button } from './button.component';
-import { ButtonConfig, ButtonSizeOptions } from './button.config';
-import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
+import { ButtonConfig, ButtonSizeOptions, provideButtonConfig } from './button.config';
+import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ConfigService } from '../../core/services/config.service';
 
 describe('Button Component', () => {
   let component: Button;
   let fixture: ComponentFixture<Button>;
-  let configService: ConfigService;
   const primaryStyle = toClassNames(ButtonConfig.primary);
   const secondaryStyle = toClassNames(ButtonConfig.secondary);
   const tonalStyle = toClassNames(ButtonConfig.tonal);
@@ -15,11 +13,11 @@ describe('Button Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Button]
+      imports: [Button],
+      providers: [
+        provideButtonConfig(),
+      ],
     }).compileComponents();
-
-    configService = TestBed.inject(ConfigService);
-    configService.setButton();
 
     fixture = TestBed.createComponent(Button);
     component = fixture.componentInstance;
@@ -48,26 +46,26 @@ describe('Button Component', () => {
     expect(component.variant).toBe('text');
   });
 
-  it('should set config', () => {
-    component.config = mergeClassNames(primaryStyle, component.class);
-    expect(component.config).toEqual(primaryStyle);
+  it('should set class names', () => {
+    component.class = primaryStyle;
+    expect(component.class).toEqual(primaryStyle);
 
-    component.config = mergeClassNames(secondaryStyle, component.class);
-    expect(component.config).toEqual(secondaryStyle);
+    component.class = secondaryStyle;
+    expect(component.class).toEqual(secondaryStyle);
 
-    component.config = mergeClassNames(tonalStyle, component.class);
-    expect(component.config).toEqual(tonalStyle);
+    component.class = tonalStyle;
+    expect(component.class).toEqual(tonalStyle);
   });
 
   it('should set custom style', () => {
     let classToAdd = 'text-red-500 bg-blue-500';
-    component.config = mergeClassNames(primaryStyle, classToAdd);
+    component.class = mergeClassNames(primaryStyle, classToAdd);
 
-    expect(component.config).toContain(classToAdd);
+    expect(component.class).toContain(classToAdd);
 
     let classToRemove = 'text- bg-';
-    component.config = mergeClassNames(primaryStyle, classToRemove);
-    expect(component.config).not.toContain(classToAdd);
+    component.class = mergeClassNames(primaryStyle, classToRemove);
+    expect(component.class).not.toContain(classToAdd);
   });
 
   it('should set size', () => {

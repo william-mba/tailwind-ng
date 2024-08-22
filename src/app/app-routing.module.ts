@@ -10,6 +10,7 @@ import { RoadmapComponent } from './roadmap/roadmap.component';
 import { LabComponent } from './demos/lab/lab.component';
 import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.component';
 import { TypographyDemoComponent } from './demos/typography-demo/typography-demo.component';
+import { ToggleDemoComponent } from './demos/toggle-demo/toggle-demo.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'typography',
     component: TypographyDemoComponent
   },
+  {
+    path: 'toggles',
+    component: ToggleDemoComponent
+  },
   // {
   //   path: '',
   //   redirectTo: 'comboboxes',
@@ -59,7 +64,7 @@ const routes: Routes = [
   // },
   {
     path: '**',
-    redirectTo: 'buttons'
+    redirectTo: 'toggles'
   }
 ];
 

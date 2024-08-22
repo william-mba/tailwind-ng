@@ -1,11 +1,11 @@
 import { Component, Directive, Input, OnInit } from '@angular/core';
-import { StyleConfig } from "../../core/types/style.config";
-import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
+import { ElementConfig } from "../../../core/types/element.config";
+import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 
 /**Badge config key*/
 export const BadgeConfigKey = 'BadgeConfigKey';
 /**Badge config*/
-export type BadgeConfig = Partial<StyleConfig>;
+export type BadgeConfig = Partial<ElementConfig>;
 export const BadgeConfig: BadgeConfig = {
   display: {
     type: 'inline-flex',

@@ -10,11 +10,11 @@
     featuring section dividers, icons, and headers.
   </p>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Simple dropdown
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button variant="secondary" (click)="toggleDropdown(0)">
         Options
@@ -33,11 +33,11 @@
   </div>
   <demo-code-snippet [code]="simple"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     With dividers
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button variant="secondary" (click)="toggleDropdown(1)">
         Options
@@ -86,11 +86,11 @@
   </div>
   <demo-code-snippet [code]="withDividers"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     With icons
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button variant="secondary" (click)="toggleDropdown(2)">
         Options
@@ -101,43 +101,43 @@
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            <tw-icon source="heroicons" name="pencil-square"/>
+            <tw-icon source="heroicons" name="pencil-square" />
             Edit
           </tw-button>
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            <tw-icon source="heroicons" name="document-duplicate"/>
+            <tw-icon source="heroicons" name="document-duplicate" />
             Duplicate
           </tw-button>
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            <tw-icon source="heroicons" name="archive-box"/>
+            <tw-icon source="heroicons" name="archive-box" />
             Archive
           </tw-button>
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            <tw-icon source="heroicons" name="arrow-right-circle"/>
+            <tw-icon source="heroicons" name="arrow-right-circle" />
             Move
           </tw-button>
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            <tw-icon source="heroicons" name="share"/>
+            <tw-icon source="heroicons" name="share" />
             Share
           </tw-button>
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            <tw-icon source="heroicons" name="star"/>
+            <tw-icon source="heroicons" name="star" />
             Add to favorites
           </tw-button>
         </div>
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            <tw-icon source="heroicons" name="strash"/>
+            <tw-icon source="heroicons" name="strash" />
             Delete
           </tw-button>
         </div>
@@ -146,11 +146,11 @@
   </div>
   <demo-code-snippet [code]="withIcons"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     With minimal menu icon
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button [icon]="true" variant="text" (click)="toggleDropdown(3)">
         <tw-icon source="googlefonts" name="more-ver" />
@@ -171,11 +171,11 @@
   <tw-h3 class="mt-20">
     Rounded dropdowns
   </tw-h3>
-  <tw-h4 class="mt-12">
+  <tw-h4 class="mt-16">
     Rounded simple
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(4)">
         Options
@@ -194,11 +194,11 @@
   </div>
   <demo-code-snippet [code]="roundedSimple"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded with dividers
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(5)">
         Options
@@ -247,11 +247,11 @@
   </div>
   <demo-code-snippet [code]="roundedWithDividers"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded with icons
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(6)">
         Options
@@ -307,11 +307,11 @@
   </div>
   <demo-code-snippet [code]="roundedWithIcons"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded with minimal menu icon
   </tw-h4>
   <div
-    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E] h-[500px]">
+    class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
       <tw-button [icon]="true" variant="text" class="rounded-3xl" (click)="toggleDropdown(7)">
         <tw-icon source="googlefonts" name="more-ver" />

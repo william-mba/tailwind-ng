@@ -10,11 +10,11 @@
   </p>
   <p class="text-xs my-2 font-semibold">NOTE: Click on the cancel button to stop the dialog reopening when needed.</p>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Simple notification dialog
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(6)">Open dialog</tw-button>
     <tw-dialog [open]="open(6)" (click)="close(6)">
       <tw-dialog-panel>
@@ -32,11 +32,11 @@
   </div>
   <demo-code-snippet [code]="simpleNotificationDialog"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Simple dialog with icon
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(0)">Open dialog</tw-button>
     <tw-dialog [open]="open(0)" (click)="close(0)">
       <tw-dialog-panel>
@@ -59,11 +59,11 @@
   </div>
   <demo-code-snippet [code]="simpleDialogWithIcon"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Simple dialog with gray footer
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(1)">Open dialog</tw-button>
     <tw-dialog [open]="open(1)" class="divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
@@ -88,11 +88,11 @@
   </div>
   <demo-code-snippet [code]="simpleDialogWithGrayFooter"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Centered dialog with single action
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(2)">Open dialog</tw-button>
     <tw-dialog [open]="open(2)" (click)="close(2)">
       <tw-dialog-panel class="sm:-">
@@ -116,11 +116,11 @@
   </div>
   <demo-code-snippet [code]="centeredDialogWithSingleAction"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Centered dialog with wide buttons
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(3)">Open dialog</tw-button>
     <tw-dialog [open]="open(3)" (click)="close(3)">
       <tw-dialog-panel class="sm:-">
@@ -146,11 +146,11 @@
   </div>
   <demo-code-snippet [code]="centeredDialogWithWideButton"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Simple dialog with dismiss button
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(4)">Open dialog</tw-button>
     <tw-dialog [open]="open(4)">
       <tw-dialog-panel>
@@ -179,11 +179,11 @@
   </div>
   <demo-code-snippet [code]="simpleDialogWithDismissButton"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Dialog with header, scrollable content and actions
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(5)">Open dialog</tw-button>
     <tw-dialog [open]="open(5)">
       <tw-dialog-panel class="pb-0 sm:- gap-0">
@@ -285,14 +285,14 @@
   </div>
   <demo-code-snippet [code]="dialogScrollable"></demo-code-snippet>
 
-  <tw-h4 class="mt-20">
+  <tw-h3 class="mt-20">
     Rounded dialogs
-  </tw-h4>
-  <tw-h4 class="mt-16">
+  </tw-h3>
+  <tw-h4 class="mt-16 font-medium">
     Rounded simple notification dialog
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(7)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(7)" (click)="close(7)" class="rounded-3xl">
       <tw-dialog-panel>
@@ -312,11 +312,11 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleNotificationDialog"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded simple dialog with icon
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(8)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(8)" (click)="close(8)" class="rounded-3xl">
       <tw-dialog-panel>
@@ -341,16 +341,16 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithIcon"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded simple dialog with gray footer
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(9)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(9)" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
-          <tw-icon name="exclamation-triangle" source="heroicons"/>
+          <tw-icon name="exclamation-triangle" source="heroicons" />
         </tw-dialog-icon>
         <tw-dialog-content>
           <tw-h4 class="my-0">
@@ -370,11 +370,11 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithGrayFooter"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded centered dialog with single action
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(10)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(10)" (click)="close(10)" class="rounded-3xl">
       <tw-dialog-panel class="sm:-">
@@ -398,11 +398,11 @@
   </div>
   <demo-code-snippet [code]="roundedCenteredDialogWithSingleAction"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded centered dialog with wide buttons
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(11)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(11)" (click)="close(11)" class="rounded-3xl">
       <tw-dialog-panel class="sm:-">
@@ -431,11 +431,11 @@
   </div>
   <demo-code-snippet [code]="roundedCenteredDialogWithWideButton"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded simple dialog with dismiss button
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(12)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(12)" class="rounded-3xl">
       <tw-dialog-panel>
@@ -464,11 +464,11 @@
   </div>
   <demo-code-snippet [code]="roundedSimpleDialogWithDismissButton"></demo-code-snippet>
 
-  <tw-h4 class="mt-16">
+  <tw-h4 class="mt-16 font-medium">
     Rounded dialog with header, scrollable content and actions
   </tw-h4>
   <div
-    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl rounded-b-none bg-white dark:bg-[#1E1E1E]">
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(13)" class="rounded-full">Open dialog</tw-button>
     <tw-dialog [open]="open(13)" class="rounded-3xl">
       <tw-dialog-panel class="pb-0 sm:- gap-0">

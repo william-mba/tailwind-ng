@@ -1,3 +1,5 @@
+import { last } from "rxjs";
+
 /** Convert an object to a string of class names
  * @param obj - The object to convert to class names
  * @returns The class names
@@ -53,13 +55,17 @@ export function mergeConfigs<T extends Record<string, any>>(target: T, source: P
 /** Merge class names from source to target
  * @param target - The target style to update
  * @param source - A list of space separated class names to add or replace in style
- * @param strategy - The strategy to use to resolve the class name. If 'first' the first part of the class name is used as prefix otherwise the last part is used
+ * @param match -
+ * The matching strategy to be use to resolve the class name.
+ * @usage 'first' (default) => the first part of the class name is used as prefix.
+ * @usage 'last' => the last part is used as suffix (including the first part).
+ * @usage 'exact' => the class name is used as is.
  * @example
  * mergeClassNames('text-red-500', 'text-blue-500') => 'text-blue-500'
  * mergeClassNames('text-opacity-10 text-lg', 'text-opacity-30', true) => 'text-opacity-30 text-lg'
  * @returns The resolved style
 */
-export function mergeClassNames(target: string, source: string, strategy: 'first' | 'last' = 'first'): string {
+export function mergeClassNames(target: string, source: string, match: 'first' | 'last' | 'exact' = 'first'): string {
   if (!source || (target === source)) return target;
 
   if (!target && source) return source;
@@ -77,14 +83,20 @@ export function mergeClassNames(target: string, source: string, strategy: 'first
       .forEach((name) => {
         if (!name || name.length < minimumClassNameLength) return;
 
-        const classPrefix = getPrefix(name, '-', strategy);
+        if (match !== 'exact' && name.length > 0) {
+          const searchTerm = getPrefix(name, '-', match);
 
-        if (classPrefix.length > 0) {
-          target = target.split(' ')
-            .filter(name => !name.startsWith(classPrefix))
-            .join(' ');
+          // Remove class names starting with the search term.
+          // Because they will be replaced by the new class name.
+          // e.g. Given 'text-red-500' in target and 'text-blue-500' in source,
+          // 'text-red-500' will be override by 'text-blue-500'.
+          if (searchTerm.length > 0) {
+            target = target.split(' ')
+              .filter(name => {
+                return !name.startsWith(searchTerm);
+              }).join(' ');
+          }
         }
-
         /* Remove class name if ending with '-' character.
         Such class are only used to remove existing classes in style
         and should not be added to the new style.
@@ -93,6 +105,14 @@ export function mergeClassNames(target: string, source: string, strategy: 'first
         if (name.charAt(name.length - 1) === '-') {
           source = source.split(name)
             .join(' ');
+
+          // Remove the class name from the target as well if it exists
+          if (match === 'exact') {
+            target = target.split(' ')
+              .filter(cls => {
+                return !cls.startsWith(name.substring(0, name.length - 1));
+              }).join(' ');
+          }
         }
       });
     target = `${source} ${divider} ${target}`;
@@ -104,14 +124,14 @@ export function mergeClassNames(target: string, source: string, strategy: 'first
  * Get the preffix of a word
  * @param word The word to get the prefix from
  * @param separator The separator to use
- * @param strategy The strategy to use to get the prefix
+ * @param match The matching strategy to be use to get the prefix
  * @returns prefix of the word
  * @example
  * getPrefix('text-red-500', '-') => 'text'
  * getPrefix('text-red-500', '-', true) => 'text-red'
  */
-export function getPrefix(word: string, separator: string = '-', strategy: 'first' | 'last' = 'first'): string {
-  if (strategy === 'first') {
+export function getPrefix(word: string, separator: string = '-', match: 'first' | 'last' = 'first'): string {
+  if (match === 'first') {
     return word.substring(0, word.indexOf(separator, 1));
   }
   return word.substring(0, word.lastIndexOf(separator));
