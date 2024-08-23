@@ -209,9 +209,6 @@ export const TextButtonConfig: TonalButtonConfig = {
   }
 }
 
-/** Button config key */
-export const ButtonConfigKey = 'ButtonConfig';
-
 /** Button config */
 export type ButtonConfig = {
   primary: Partial<PrimaryButtonConfig>,
@@ -230,13 +227,14 @@ export const ButtonConfig: ButtonConfig = {
 }
 
 /**
- * Button config token
+ * Button component config
  */
-export const BUTTON_CONFIG = new InjectionToken<ButtonConfig>('Button config token');
+export const BUTTON_CONFIG = new InjectionToken<ButtonConfig>('Button component config');
+
 /**
- *  Button config provider
+ * Button component config provider
  * @param config The custom config
- * @returns The config provider
+ * @returns The configured provider
  */
 export const provideButtonConfig = (config?: Partial<ButtonConfig>): Provider => {
   return {

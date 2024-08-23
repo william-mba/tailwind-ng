@@ -1,5 +1,6 @@
 import { BorderRadius } from "./borders/border-radius"
 import { BorderWidth } from "./borders/border-width"
+import { RingInset } from "./borders/ring-inset"
 import { RingWidth } from "./borders/ring-width"
 import { BoxShadow } from "./effects/box-shadow"
 import { Opacity } from "./effects/opacity"
@@ -47,6 +48,7 @@ export type ElementConfig = {
   filters: Partial<Filters>,
   shadow: DropShadow | BoxShadow,
   opacity: Opacity,
+  inset: RingInset
   pointerEvents: PointerEvents,
   /**A property to set class name starting with sm:* */
   sm: Record<string, {}> | string

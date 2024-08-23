@@ -1,41 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
-import { ElementConfig } from '../../../core/types/element.config';
-
-/** Button group config key */
-export const ButtonGroupConfigKey = 'ButtonGroupConfigKey';
-
-/** Button group config */
-export type ButtonGroupConfig = Partial<ElementConfig>;
-export const ButtonGroupConfig: ButtonGroupConfig = {
-  display: {
-    type: 'flex',
-    alignItem: 'items-stretch'
-  },
-  filters: {
-    backdrop: 'backdrop-blur'
-  }
-}
+import { BUTTON_GROUP_CONFIG, ButtonGroupConfig } from './button-group.config';
 
 /** Button group */
 @Component({
   selector: 'tw-button-group, [tw-button-group]',
   standalone: true,
   host: {
-    '[class]': 'config'
+    '[class]': 'class'
   },
   template: `<ng-content></ng-content>`
 })
 export class ButtonGroup implements OnInit {
-  @Input() config!: string;
+  private config: ButtonGroupConfig = inject(BUTTON_GROUP_CONFIG);
   @Input() class!: string;
 
   ngOnInit(): void {
-    if (this.config) return;
-    this.setConfig();
+    this.setConfig(this.config);
   }
 
-  setConfig(config: Partial<ButtonGroupConfig> = ButtonGroupConfig): void {
-    this.config = mergeClassNames(toClassNames(config), this.class);
+  setConfig(config: Partial<ButtonGroupConfig>): void {
+    this.class = mergeClassNames(toClassNames(config), this.class);
   }
 }

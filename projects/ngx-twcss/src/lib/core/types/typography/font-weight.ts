@@ -7,4 +7,5 @@ export type FontWeight =
   | "font-semibold"
   | "font-bold"
   | "font-extrabold"
+  | "hover:font-extrabold"
   | "font-black"

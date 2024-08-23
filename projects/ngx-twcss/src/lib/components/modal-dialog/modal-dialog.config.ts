@@ -157,13 +157,13 @@ export const ModalDialogConfig: ModalDialogConfig = {
 }
 
 /**
- * Modal Dialog config token
+ * Modal Dialog component config
  */
-export const MODAL_DIALOG_CONFIG = new InjectionToken<ModalDialogConfig>('Modal Dialog config token');
+export const MODAL_DIALOG_CONFIG = new InjectionToken<ModalDialogConfig>('Modal Dialog component config');
 /**
- *  Modal Dialog config provider
+ *  Modal Dialog component config provider
  * @param config The custom config
- * @returns The config provider
+ * @returns The configured provider
  */
 export const provideModalDialogConfig = (config?: Partial<ModalDialogConfig>): Provider => {
   return {

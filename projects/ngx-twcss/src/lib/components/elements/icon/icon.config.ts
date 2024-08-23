@@ -1,10 +1,5 @@
 import { IconSourceConfig } from "./icon-source.config";
 
-/**
- * Icon config key
- */
-export const IconConfigKey = 'IconConfigKey';
-
 /** Icon size config */
 export type IconSizeOptions = Record<string, string>;
 export const IconSizeConfig: IconSizeOptions = {
