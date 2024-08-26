@@ -13,9 +13,14 @@
   <tw-h4 class="mt-16 font-medium">
     Simple
   </tw-h4>
-  <div
+  <div [class]
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox [items]="items" (itemSelected)="selectValue($event)" label="Assigned to" />
+    <tw-combobox #cb1 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()">
+      @for (item of items; track item.id) {
+      <tw-combobox-item [value]="item.value!" (onSelect)="cb1.select($event)"
+        [selected]="cb1.inputValue.trim() === item.value" />
+      }
+    </tw-combobox>
   </div>
   <demo-code-snippet [code]="simple"></demo-code-snippet>
 
@@ -24,7 +29,12 @@
   </tw-h4>
   <div
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox [items]="items" (itemSelected)="selectValue($event)" label="Assigned to" iconPosition="left" />
+    <tw-combobox #cb2 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()">
+      @for (item of items; track item.id) {
+      <tw-combobox-item [value]="item.value!" (onSelect)="cb2.select($event)"
+        [selected]="cb2.inputValue.trim() === item.value" iconPosition="left" />
+      }
+    </tw-combobox>
   </div>
   <demo-code-snippet [code]="withCheckOnLeft"></demo-code-snippet>
 </div>

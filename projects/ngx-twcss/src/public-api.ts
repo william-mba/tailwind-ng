@@ -25,8 +25,8 @@ export { ModalDialog } from './lib/components/modal-dialog/modal-dialog.module';
 // Forms
 export * from './lib/components/forms/combobox/combobox.component';
 export { ComboboxConfig, COMBOBOX_CONFIG, provideComboboxConfig } from './lib/components/forms/combobox/combobox.config';
-export * from './lib/components/forms/combobox/combobox-string-item/combobox-string-item.component';
-export { ComboboxStringItemConfig, COMBOBOX_STRING_ITEM_CONFIG, provideComboboxStringItemConfig } from './lib/components/forms/combobox/combobox-string-item/combobox-string-item.config';
+export * from './lib/components/forms/combobox/combobox-item/combobox-item.component';
+export { ComboboxItemConfig, COMBOBOX_ITEM_CONFIG, provideComboboxItemConfig } from './lib/components/forms/combobox/combobox-item/combobox-item.config';
 export * from './lib/components/forms/toggle/toggle.component';
 
 // Typography

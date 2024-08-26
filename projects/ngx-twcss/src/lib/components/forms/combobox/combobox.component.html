@@ -1,14 +1,9 @@
 <label [for]="id" *ngIf="label" class="absolute -top-7 inset-x-0 font-medium">{{label}}</label>
-<input #textInput [id]="id"
-  class="w-64 rounded-md border-0 bg-neutral-50 dark:bg-neutral-800 py-1.5 pl-3 pr-10 shadow-sm ring ring-inset ring-neutral-300 dark:ring-neutral-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 leading-6"
-  type="text" [(ngModel)]="inputValue" (ngModelChange)="filterItems(inputValue)">
+<input #comboboxInput [id]="id" [class]="inputClass" type="text" [(ngModel)]="inputValue" (ngModelChange)="handleChange($event)">
 <tw-button [icon]="true" variant="text" class="absolute inset-y-0 right-0 rounded-r-md">
-  <tw-icon *ngIf="canDisplayResetIcon()" (click)="resetList()" source="heroicons" name="x-mark" />
+  <tw-icon *ngIf="canDisplayResetIcon()" (click)="reset()" source="heroicons" name="x-mark" />
   <tw-icon source="heroicons" name="chevron-up-down" (click)="toggle()" />
 </tw-button>
-<tw-dropdown *ngIf="canOpenDropdown()" class="max-h-64 w-64 overflow-auto shadow-lg">
-  @for (item of items; track item) {
-  <tw-combobox-item [value]="item" (select)="selectValue($event)" [selected]="isSelected(item)"
-    [iconPosition]="iconPosition" />
-  }
+<tw-dropdown *ngIf="opened" class="max-h-64 w-64 overflow-auto shadow-lg">
+  <ng-content></ng-content>
 </tw-dropdown>
