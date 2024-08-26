@@ -31,8 +31,7 @@ export class ToggleDemoComponent {
     return value
   }
 
-  simpleToggle = `<tw-toggle />`;
-  withBgColor = `<tw-toggle class="transition-colors duration-200 has-[:checked]:bg-indigo-500" />`;
+  simpleToggle = `<tw-toggle class="transition-colors duration-200 has-[:checked]:bg-indigo-500" />`;
   withOutline = `<tw-toggle class="... has-[:focus]:ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-indigo-500 active:ring-offset-2 active:ring-2 active:ring-indigo-500" />`;
   withIcon = `<tw-toggle class="..." #twToggle>
   <tw-icon *ngIf="twToggle.checked" class="text-indigo-500" size="xs" name="check" source="googlefonts" />
@@ -44,8 +43,7 @@ export class ToggleDemoComponent {
   <tw-icon *ngIf="!twToggle.checked" class="text-black/30" size="xs" name="close" source="googlefonts" />
 </tw-toggle>`;
 
-  simpleToggle2 = `<tw-toggle slider="rounded-sm" class="rounded-sm" />`;
-  withBgColor2 = `<tw-toggle slider="rounded-sm" class="rounded-sm transition-colors duration-200 has-[:checked]:bg-indigo-500" />`;
+  simpleToggle2 = `<tw-toggle slider="rounded-sm" class="rounded-sm transition-colors duration-200 has-[:checked]:bg-indigo-500" />`;
   withOutline2 = `<tw-toggle slider="rounded-sm" class="rounded-sm ... has-[:focus]:ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-indigo-500 active:ring-offset-2 active:ring-2 active:ring-indigo-500" />`;
   withIcon2 = `<tw-toggle slider="rounded-sm" class="rounded-sm ..." #twToggle>
   <tw-icon *ngIf="twToggle.checked" class="text-indigo-500" size="xs" name="check" source="googlefonts" />
