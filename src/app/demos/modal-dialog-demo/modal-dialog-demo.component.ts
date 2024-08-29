@@ -25,7 +25,7 @@ export class ModalDialogDemoComponent {
     this.dialogsStates[key] = false;
   }
 
-  simpleNotificationDialog = `<tw-dialog [open]="open" (click)="close()">
+  simpleNotificationDialog = `<tw-dialog [opened]="open" (click)="close()">
   <tw-dialog-panel>
     <tw-dialog-content>
       <tw-h4 class="my-0">Out of stock</tw-h4>
@@ -39,7 +39,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  simpleDialogWithIcon = `<tw-dialog [open]="open" (click)="close()">
+  simpleDialogWithIcon = `<tw-dialog [opened]="open" (click)="close()">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -60,7 +60,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  simpleDialogWithGrayFooter = `<tw-dialog [open]="open" class="divide-y divide-gray-200 dark:divide-neutral-900">
+  simpleDialogWithGrayFooter = `<tw-dialog [opened]="open" class="divide-y divide-gray-200 dark:divide-neutral-900">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -81,7 +81,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  centeredDialogWithSingleAction = `<tw-dialog [open]="open" (click)="close()">
+  centeredDialogWithSingleAction = `<tw-dialog [opened]="open" (click)="close()">
   <tw-dialog-panel class="sm:-">
     <tw-dialog-icon class="text-green-600 bg-green-600/15">
       <tw-icon source="heroicons" name="check-circle" />
@@ -101,7 +101,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  centeredDialogWithWideButton = `<tw-dialog [open]="open" (click)="close()">
+  centeredDialogWithWideButton = `<tw-dialog [opened]="open" (click)="close()">
   <tw-dialog-panel class="sm:-">
     <tw-dialog-icon class="text-green-600 bg-green-600/15">
       <tw-icon source="heroicons" name="check-circle" />
@@ -122,7 +122,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  simpleDialogWithDismissButton = `<tw-dialog [open]="open">
+  simpleDialogWithDismissButton = `<tw-dialog [opened]="open">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -146,7 +146,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  dialogScrollable = `<tw-dialog [open]="open">
+  dialogScrollable = `<tw-dialog [opened]="open">
   <tw-dialog-panel class="pb-0 sm:- gap-0">
     <tw-dialog-content class="pb-0 h-96">
       <tw-h3 class="mt-0 font-medium"> Install Angular </tw-h3>
@@ -176,7 +176,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedSimpleNotificationDialog = `<tw-dialog [open]="open" (click)="close()" class="rounded-3xl">
+  roundedSimpleNotificationDialog = `<tw-dialog [opened]="open" (click)="close()" class="rounded-3xl">
   <tw-dialog-panel>
     <tw-dialog-content>
       <tw-h4 class="my-0"> Out of stock </tw-h4>
@@ -188,7 +188,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedSimpleDialogWithIcon = `<tw-dialog [open]="open" (click)="close()" class="rounded-3xl">
+  roundedSimpleDialogWithIcon = `<tw-dialog [opened]="open" (click)="close()" class="rounded-3xl">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -207,7 +207,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedSimpleDialogWithGrayFooter = `<tw-dialog [open]="open" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
+  roundedSimpleDialogWithGrayFooter = `<tw-dialog [opened]="open" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -226,7 +226,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedCenteredDialogWithSingleAction = `<tw-dialog [open]="open" (click)="close()" class="rounded-3xl">
+  roundedCenteredDialogWithSingleAction = `<tw-dialog [opened]="open" (click)="close()" class="rounded-3xl">
   <tw-dialog-panel class="sm:-">
     <tw-dialog-icon class="text-green-600 bg-green-600/15">
       <tw-icon source="heroicons" name="check-circle" />
@@ -244,7 +244,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedCenteredDialogWithWideButton = `<tw-dialog [open]="open" (click)="close()" class="rounded-3xl">
+  roundedCenteredDialogWithWideButton = `<tw-dialog [opened]="open" (click)="close()" class="rounded-3xl">
   <tw-dialog-panel class="sm:-">
     <tw-dialog-icon class="text-green-600 bg-green-600/15">
       <tw-icon source="heroicons" name="check-circle" />
@@ -263,7 +263,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedSimpleDialogWithDismissButton = `<tw-dialog [open]="open" class="rounded-3xl">
+  roundedSimpleDialogWithDismissButton = `<tw-dialog [opened]="open" class="rounded-3xl">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -284,7 +284,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedDialogScrollable = `<tw-dialog [open]="open" class="rounded-3xl">
+  roundedDialogScrollable = `<tw-dialog [opened]="open" class="rounded-3xl">
   <tw-dialog-panel class="pb-0 sm:- gap-0">
     <tw-dialog-content class="pb-0 h-96">
       <tw-h4 class="mt-0 font-medium"> Install Angular </tw-h4>

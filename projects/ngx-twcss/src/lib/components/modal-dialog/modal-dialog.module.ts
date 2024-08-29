@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
-import { DialogContent, DialogActions, DialogIcon, DialogContainer, DialogPanel } from './modal-dialog.component';
 import { provideModalDialogConfig } from './modal-dialog.config';
+import { DialogActions } from './actions/dialog-actions.component';
+import { DialogContent } from './content/dialog-content.component';
+import { DialogIcon } from './icon/dialog-icon.component';
+import { DialogContainer } from './modal-dialog.component';
+import { DialogPanel } from './panel/dialog-panel.component';
 
 /**
  * Modal Dialog Module

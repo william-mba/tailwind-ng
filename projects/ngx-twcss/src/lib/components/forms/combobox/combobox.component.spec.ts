@@ -1,22 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Combobox } from './combobox.component';
-import { ConfigService } from '../../../core/services/config.service';
+import { Combobox, ICombobox } from './combobox.component';
 import { provideButtonConfig } from '../../elements/button/button.config';
+import { provideComboboxConfig } from './combobox.config';
 
 describe('Combobox Component', () => {
-  let component: Combobox;
-  let fixture: ComponentFixture<Combobox>;
-  let configService: ConfigService;
+  let component: ICombobox;
+  let fixture: ComponentFixture<ICombobox>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Combobox],
-      providers: [provideButtonConfig()]
+      providers: [
+        provideButtonConfig(),
+        provideComboboxConfig()]
     }).compileComponents();
-
-    configService = TestBed.inject(ConfigService);
-    configService.setButton();
-    configService.setDropdown();
 
     fixture = TestBed.createComponent(Combobox);
     component = fixture.componentInstance;

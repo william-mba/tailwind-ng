@@ -1,11 +1,20 @@
-import { Avatar } from './avatar.directive';
+import { TestBed } from '@angular/core/testing';
+import { Avatar, IAvatar } from './avatar.directive';
+import { provideAvatarConfig } from './avatar.config';
+import { OnInit } from '@angular/core';
 
 describe('Avatar Component', () => {
-  let component: Avatar;
+  let component: IAvatar & OnInit;
   const CUSTOM_CLASSNAMES = 'size-6 ring-2 ring-white';
 
   beforeEach(async () => {
-    component = new Avatar();
+    TestBed.configureTestingModule({
+      providers: [provideAvatarConfig()]
+    });
+
+    TestBed.runInInjectionContext(() => {
+      component = new Avatar();
+    });
   });
 
   it('should create', () => {
@@ -25,14 +34,14 @@ describe('Avatar Component', () => {
   })
 
   it('should resolve class names', () => {
-    spyOn(component, 'setClassNames');
+    spyOn(component, 'setConfig');
     const defaultClassName = 'items-center justify-center';
     const classToRemove = 'items- justify-';
     component.class = CUSTOM_CLASSNAMES + ' ' + classToRemove;
 
     component.ngOnInit();
 
-    expect(component.setClassNames).toHaveBeenCalled();
+    expect(component.setConfig).toHaveBeenCalled();
     expect(component.class).not.toContain(defaultClassName);
     expect(component.class).toContain(CUSTOM_CLASSNAMES);
   });

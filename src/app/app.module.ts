@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Combobox, Icon, Typography, Toggle, provideButtonConfig, provideDropdownConfig } from 'ngx-twcss';
+import { Badge, ButtonGroup, Dropdown, Button, Avatar, ModalDialog, BadgeAction, Combobox, Icon, Typography, Toggle, provideButtonConfig, provideDropdownConfig, provideAvatarConfig, provideBadgeConfig, provideButtonGroupConfig, provideComboboxConfig, ComboboxItem, provideModalDialogConfig } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,6 +59,7 @@ import { CodeComponent } from './code/code.component';
     Avatar,
     ModalDialog,
     Combobox,
+    ComboboxItem,
     Icon,
     Typography,
     Toggle
@@ -68,8 +69,13 @@ import { CodeComponent } from './code/code.component';
     provideHighlightOptions({
       fullLibraryLoader: () => import('highlight.js'),
     }),
+    provideAvatarConfig(),
+    provideBadgeConfig(),
+    provideButtonGroupConfig(),
     provideButtonConfig(),
-    provideDropdownConfig()
+    provideComboboxConfig(),
+    provideDropdownConfig(),
+    provideModalDialogConfig(),
   ],
 })
 export class AppModule { }

@@ -56,10 +56,6 @@ export const SliderConfig: SliderConfig = {
 }
 
 /**
- * The key for the toggle configuration.
- */
-export const ToggleConfigKey = 'ToggleConfig';
-/**
  * The configuration for the toggle.
  */
 export type ToggleConfig = {
@@ -71,12 +67,15 @@ const ToggleConfig: ToggleConfig = {
   slider: SliderConfig,
 }
 
-export const TOGGLE_CONFIG = new InjectionToken<ToggleConfig>("Toggle component default config");
+/**
+ * Toggle component config
+ */
+export const TOGGLE_CONFIG = new InjectionToken<ToggleConfig>("Toggle component config");
 
 /**
- * Toggle config provider
+ * Toggle component config provider
  * @param config The custom config
- * @returns The config provider
+ * @returns The configured provider
  */
 export const provideToggleConfig = (config?: Partial<ToggleConfig>): Provider => {
   return {

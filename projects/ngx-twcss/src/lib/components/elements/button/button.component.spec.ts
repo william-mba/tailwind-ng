@@ -1,11 +1,11 @@
-import { Button } from './button.component';
+import { Button, IButton } from './button.component';
 import { ButtonConfig, ButtonSizeOptions, provideButtonConfig } from './button.config';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 describe('Button Component', () => {
-  let component: Button;
-  let fixture: ComponentFixture<Button>;
+  let component: IButton;
+  let fixture: ComponentFixture<IButton>;
   const primaryStyle = toClassNames(ButtonConfig.primary);
   const secondaryStyle = toClassNames(ButtonConfig.secondary);
   const tonalStyle = toClassNames(ButtonConfig.tonal);
@@ -26,12 +26,6 @@ describe('Button Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should init config', () => {
-    spyOn(component, 'initConfig');
-    component.initConfig();
-    expect(component.initConfig).toHaveBeenCalled();
   });
 
   it('should set variant', () => {

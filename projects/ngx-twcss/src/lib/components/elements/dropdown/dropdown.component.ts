@@ -3,6 +3,11 @@ import { DROPDOWN_CONFIG, DropdownConfig } from './dropdown.config';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { trigger, style, animate, transition } from '@angular/animations';
 
+export interface IDropdown {
+  class: string;
+  setConfig(config: Partial<DropdownConfig>): void;
+}
+
 /** Dropdown component */
 @Component({
   selector: 'tw-dropdown',
@@ -33,7 +38,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
     ])
   ]
 })
-export class Dropdown implements OnInit {
+export class Dropdown implements OnInit, IDropdown {
   private config = inject(DROPDOWN_CONFIG);
   private _class!: string;
 

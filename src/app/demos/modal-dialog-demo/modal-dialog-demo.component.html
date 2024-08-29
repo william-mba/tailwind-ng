@@ -16,7 +16,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(6)">Open dialog</tw-button>
-    <tw-dialog [open]="open(6)" (click)="close(6)">
+    <tw-dialog [opened]="open(6)" (click)="close(6)">
       <tw-dialog-panel>
         <tw-dialog-content>
           <tw-h4 class="my-0">Out of stock</tw-h4>
@@ -38,7 +38,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(0)">Open dialog</tw-button>
-    <tw-dialog [open]="open(0)" (click)="close(0)">
+    <tw-dialog [opened]="open(0)" (click)="close(0)">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -65,7 +65,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(1)">Open dialog</tw-button>
-    <tw-dialog [open]="open(1)" class="divide-y divide-gray-200 dark:divide-neutral-900">
+    <tw-dialog [opened]="open(1)" class="divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -94,7 +94,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(2)">Open dialog</tw-button>
-    <tw-dialog [open]="open(2)" (click)="close(2)">
+    <tw-dialog [opened]="open(2)" (click)="close(2)">
       <tw-dialog-panel class="sm:-">
         <tw-dialog-icon class="text-green-600 bg-green-600/15">
           <tw-icon source="heroicons" name="check-circle" />
@@ -122,7 +122,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(3)">Open dialog</tw-button>
-    <tw-dialog [open]="open(3)" (click)="close(3)">
+    <tw-dialog [opened]="open(3)" (click)="close(3)">
       <tw-dialog-panel class="sm:-">
         <tw-dialog-icon class="text-green-600 bg-green-600/15">
           <tw-icon source="heroicons" name="check-circle" />
@@ -152,7 +152,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(4)">Open dialog</tw-button>
-    <tw-dialog [open]="open(4)">
+    <tw-dialog [opened]="open(4)">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -185,7 +185,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(5)">Open dialog</tw-button>
-    <tw-dialog [open]="open(5)">
+    <tw-dialog [opened]="open(5)">
       <tw-dialog-panel class="pb-0 sm:- gap-0">
         <tw-dialog-content class="pb-0 h-96">
           <tw-h3 class="font-medium mt-0">
@@ -294,7 +294,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(7)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [open]="open(7)" (click)="close(7)" class="rounded-3xl">
+    <tw-dialog [opened]="open(7)" (click)="close(7)" class="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-content>
           <tw-h4 class="my-0">
@@ -318,7 +318,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(8)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [open]="open(8)" (click)="close(8)" class="rounded-3xl">
+    <tw-dialog [opened]="open(8)" (click)="close(8)" class="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -347,7 +347,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(9)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [open]="open(9)" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
+    <tw-dialog [opened]="open(9)" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon name="exclamation-triangle" source="heroicons" />
@@ -376,7 +376,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(10)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [open]="open(10)" (click)="close(10)" class="rounded-3xl">
+    <tw-dialog [opened]="open(10)" (click)="close(10)" class="rounded-3xl">
       <tw-dialog-panel class="sm:-">
         <tw-dialog-icon class="text-green-600 bg-green-600/15">
           <tw-icon source="heroicons" name="check-circle" />
@@ -404,7 +404,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(11)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [open]="open(11)" (click)="close(11)" class="rounded-3xl">
+    <tw-dialog [opened]="open(11)" (click)="close(11)" class="rounded-3xl">
       <tw-dialog-panel class="sm:-">
         <tw-dialog-icon class="text-green-600 bg-green-600/15">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -437,7 +437,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(12)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [open]="open(12)" class="rounded-3xl">
+    <tw-dialog [opened]="open(12)" class="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -470,7 +470,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(13)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [open]="open(13)" class="rounded-3xl">
+    <tw-dialog [opened]="open(13)" class="rounded-3xl">
       <tw-dialog-panel class="pb-0 sm:- gap-0">
         <tw-dialog-content class="pb-0 h-96">
           <tw-h3 class="font-medium mt-0"> Install Angular </tw-h3>

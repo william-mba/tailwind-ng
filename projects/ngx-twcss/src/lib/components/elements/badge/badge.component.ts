@@ -1,24 +1,10 @@
-import { Component, Directive, Input, OnInit } from '@angular/core';
-import { ElementConfig } from "../../../core/types/element.config";
+import { Component, Directive, inject, Input, OnInit } from '@angular/core';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
+import { BADGE_CONFIG, BadgeConfig } from './badge.config';
 
-/**Badge config key*/
-export const BadgeConfigKey = 'BadgeConfigKey';
-/**Badge config*/
-export type BadgeConfig = Partial<ElementConfig>;
-export const BadgeConfig: BadgeConfig = {
-  display: {
-    type: 'inline-flex',
-    alignItem: 'items-center',
-    justifyContent: 'justify-center',
-    gap: 'gap-1',
-  },
-  padding: {
-    x: 'px-2',
-    y: 'py-1'
-  },
-  fontSize: 'text-xs',
-  fontWeight: 'font-medium'
+export interface IBadge {
+  class: string;
+  setConfig(config: Partial<BadgeConfig>): void;
 }
 
 /**Badge component*/
@@ -26,21 +12,21 @@ export const BadgeConfig: BadgeConfig = {
   standalone: true,
   selector: 'tw-badge, [tw-badge]',
   host: {
-    '[class]': 'config'
+    '[class]': 'class'
   },
   template: '<ng-content></ng-content>'
 })
-export class Badge implements OnInit {
-  @Input() config!: string;
+export class Badge implements OnInit, IBadge {
+  private config: BadgeConfig = inject(BADGE_CONFIG);
+  
   @Input() class!: string;
 
   ngOnInit(): void {
-    if (this.config) return;
-    this.setConfig();
+    this.setConfig(this.config);
   }
 
-  public setConfig(config: Partial<BadgeConfig> = BadgeConfig): void {
-    this.config = mergeClassNames(toClassNames(config), this.class);
+  public setConfig(config: Partial<BadgeConfig>): void {
+    this.class = mergeClassNames(toClassNames(config), this.class);
   }
 }
 
@@ -52,11 +38,9 @@ export class Badge implements OnInit {
   }
 })
 export class BadgeAction implements OnInit {
-  @Input() config!: string;
   @Input() class!: string;
 
   ngOnInit(): void {
-    if (this.config) return;
-    this.config = mergeClassNames("hover:bg-inherit hover:bg-opacity-20 size-3 cursor-pointer", this.class);
+    this.class = mergeClassNames("hover:bg-inherit hover:bg-opacity-20 size-3 cursor-pointer", this.class);
   }
 }

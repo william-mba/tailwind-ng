@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { Icon } from './icon.directive';
-import { ElementRef } from '@angular/core';
+import { Icon, IIcon } from './icon.directive';
+import { ElementRef, OnInit } from '@angular/core';
 
 describe('Icon Component', () => {
-  let component: Icon;
+  let component: IIcon & OnInit;
   const CUSTOM_CLASSNAMES = 'text-yellow-500';
 
   beforeEach(() => {
