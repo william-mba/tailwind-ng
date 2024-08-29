@@ -3,6 +3,33 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { TOGGLE_CONFIG } from './toggle.config';
 
+/**
+ * Toggle interface.
+ */
+export interface IToggle {
+  /**
+   * The state of the toggle.
+   */
+  checked: boolean;
+  /**
+   * The class name to be applied to the toggle container.
+   */
+  class: string;
+  /**
+   * The class name to be applied to the toggle slider.
+   */
+  slider: string;
+  /**
+   * The matching strategy to be use to resolve the class name.
+   */
+  match: 'first' | 'last' | 'exact';
+  /**
+   * An observable that emit the toggle state.
+   */
+  onToggle: EventEmitter<boolean>;
+  toggle(): void;
+}
+
 @Component({
   selector: 'tw-toggle',
   standalone: true,
@@ -30,7 +57,7 @@ import { TOGGLE_CONFIG } from './toggle.config';
     ])
   ]
 })
-export class Toggle implements OnInit {
+export class Toggle implements OnInit, IToggle {
   @Input() checked: boolean = false;
   @Input() class!: string;
   @Input() slider!: string;
@@ -42,18 +69,19 @@ export class Toggle implements OnInit {
    * @default 'exact'
    */
   @Input() match: 'first' | 'last' | 'exact' = 'exact';
-  @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @ViewChild('twToggleInput') input!: ElementRef<HTMLInputElement>;
+  @Output() onToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @ViewChild('twToggleInput')
+  private input!: ElementRef<HTMLInputElement>;
   private config = inject(TOGGLE_CONFIG);
 
   ngOnInit(): void {
     this.slider = mergeClassNames(toClassNames(this.config.slider), this.slider);
-    this.class = mergeClassNames(toClassNames(this.config.container),  this.class, this.match);
+    this.class = mergeClassNames(toClassNames(this.config.container), this.class, this.match);
   }
 
   toggle(): void {
     this.checked = !this.checked;
-    this.change.emit(this.checked);
     this.input.nativeElement.focus();
+    this.onToggle.emit(this.checked);
   }
 }

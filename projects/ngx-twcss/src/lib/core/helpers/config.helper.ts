@@ -66,15 +66,27 @@ export function mergeConfigs<T extends Record<string, any>>(target: T, source: P
  * @returns The resolved style
 */
 export function mergeClassNames(target: string, source: string, match: 'first' | 'last' | 'exact' = 'first'): string {
-  if (!source || (target === source)) return target;
-
-  if (!target && source) return source;
-
-  if (!target && !source) return '';
 
   const minimumClassNameLength = 3;
 
-  const divider = '+' // the divider that separate custom style from default style
+  /* Return source if target has no class names and source has class names */
+  if ((!target || target?.length < minimumClassNameLength)
+    && (source && source.length >= minimumClassNameLength))
+    return source;
+
+  /* Return an empty string if both target and source has no class names  */
+  if ((!target || target?.length < minimumClassNameLength)
+    && (!source || source?.length < minimumClassNameLength))
+    return '';
+
+  /* Return target if source has no class names and target has class names or target equals source */
+  if ((!source || source?.length < minimumClassNameLength)
+    && (target && target.length >= minimumClassNameLength)
+    || (target === source)) return target;
+
+  /* the divider that separate custom style from default style.
+    e.g. 'text-red-500 + text-opacity-10' */
+  const divider = '+'
 
   if (source.length >= minimumClassNameLength) {
     target = target.replace(` ${divider} `, ' ');

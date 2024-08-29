@@ -2,6 +2,11 @@ import { Component, Directive, inject, Input, OnInit } from '@angular/core';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { BADGE_CONFIG, BadgeConfig } from './badge.config';
 
+export interface IBadge {
+  class: string;
+  setConfig(config: Partial<BadgeConfig>): void;
+}
+
 /**Badge component*/
 @Component({
   standalone: true,
@@ -11,9 +16,10 @@ import { BADGE_CONFIG, BadgeConfig } from './badge.config';
   },
   template: '<ng-content></ng-content>'
 })
-export class Badge implements OnInit {
-  @Input() class!: string;
+export class Badge implements OnInit, IBadge {
   private config: BadgeConfig = inject(BADGE_CONFIG);
+  
+  @Input() class!: string;
 
   ngOnInit(): void {
     this.setConfig(this.config);

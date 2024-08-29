@@ -1,7 +1,16 @@
-import { Directive, ElementRef, inject, Input } from '@angular/core';
+import { Directive, ElementRef, inject, Input, OnInit } from '@angular/core';
 import { mergeClassNames } from '../../../core/helpers/config.helper';
 import { IconConfig, IconSizeOptions } from './icon.config';
 import { IconSourceConfig } from './icon-source.config';
+
+export interface IIcon {
+  class: string;
+  name: string;
+  size: keyof IconSizeOptions;
+  source: keyof IconSourceConfig;
+  setClassNames(value: string): void;
+}
+
 
 @Directive({
   selector: 'tw-icon, [tw-icon]',
@@ -10,7 +19,7 @@ import { IconSourceConfig } from './icon-source.config';
     '[class]': 'class'
   }
 })
-export class Icon {
+export class Icon implements OnInit, IIcon {
   @Input() class!: string;
   @Input() name: string = 'star';
   @Input() size: keyof IconSizeOptions = 'md';

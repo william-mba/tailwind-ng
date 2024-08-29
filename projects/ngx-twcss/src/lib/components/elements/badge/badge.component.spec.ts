@@ -1,10 +1,10 @@
-import { Badge } from './badge.component';
+import { Badge, IBadge } from './badge.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideBadgeConfig } from './badge.config';
 
 describe('Badge Component', () => {
-  let component: Badge;
-  let fixture: ComponentFixture<Badge>;
+  let component: IBadge;
+  let fixture: ComponentFixture<IBadge>;
   const CUSTOM_CLASSNAMES = 'text-gray-500 bg-gray-500/10 text-xs';
 
   beforeEach(async () => {

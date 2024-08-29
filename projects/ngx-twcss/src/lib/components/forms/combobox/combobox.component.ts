@@ -6,43 +6,22 @@ import { Button } from '../../elements/button/button.component';
 import { Icon } from '../../elements/icon/icon.directive';
 import { COMBOBOX_CONFIG, ComboboxConfig } from './combobox.config';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
+import { IComboboxItem } from './combobox-item/combobox-item.component';
 
-export interface IComboboxItem {
-  id: string;
-  value: string;
-  selected?: boolean;
-  scrollIntoView(): void;
-}
-
-@Component({
-  template: '',
-  host: {
-    '[id]': 'id',
-    '[class]': 'class',
-    '(click)': 'select()',
-    '[attr.value]': 'value',
-    '[attr.selected]': 'selected',
-  },
-})
-export abstract class ComboboxItemBase implements IComboboxItem {
-  @Input() value!: string;
-  @Input() class!: string;
-  @Input() selected: boolean = false;
-  @Input() id: string = crypto.randomUUID();
-  @Output() onSelect: EventEmitter<ComboboxItemBase> = new EventEmitter();
-
-  constructor(private element: ElementRef<HTMLElement>) { }
-
-  protected select(): void {
-    this.selected = true;
-    this.onSelect.emit(this);
-  }
-
-  scrollIntoView(): void {
-    setTimeout(() => {
-      this.element.nativeElement.scrollIntoView({ behavior: 'instant', block: 'nearest' }), 100
-    });
-  }
+/**
+ * Combobox interface
+ */
+export interface ICombobox {
+  label: string;
+  inputValue: string;
+  inputClass: string;
+  opened: boolean;
+  inputMinLength: number;
+  width: 'w-64' | 'w-72' | 'w-80' | 'w-96';
+  onChange: EventEmitter<string>;
+  onReset: EventEmitter<void>;
+  select(item: IComboboxItem): void;
+  checkSelection(value: string): boolean;
 }
 
 @Component({
@@ -54,10 +33,10 @@ export abstract class ComboboxItemBase implements IComboboxItem {
   },
   templateUrl: './combobox.component.html',
 })
-export class Combobox implements OnInit {
+export class Combobox implements OnInit, ICombobox {
   private config: ComboboxConfig = inject(COMBOBOX_CONFIG);
   private selectedItem!: IComboboxItem;
-  private inputValueIsTooShort = (): boolean => this.itemMinLength > this.inputValue.trim().length;
+  private inputValueIsTooShort = (): boolean => this.inputMinLength > this.inputValue.trim().length;
 
   @ViewChild('comboboxInput', { static: true, read: ElementRef })
   private input!: ElementRef<HTMLInputElement>;
@@ -69,18 +48,14 @@ export class Combobox implements OnInit {
   @Input() inputValue: string = '';
   @Input() inputClass!: string;
   @Input() opened: boolean = false;
-  @Input() itemMinLength: number = 2;
+  @Input() inputMinLength: number = 2;
+  @Input() width: 'w-64' | 'w-72' | 'w-80' | 'w-96' = 'w-64';
   @Output() onChange: EventEmitter<string> = new EventEmitter();
   @Output() onReset: EventEmitter<void> = new EventEmitter();
+  @Output() onToggle: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
-    this.inputClass = mergeClassNames(toClassNames(this.config), this.inputClass);
-  }
-
-  select(item: IComboboxItem): void {
-    this.opened = false;
-    this.selectedItem = item;
-    this.inputValue = item.value;
+    this.inputClass = mergeClassNames(toClassNames(this.config), `${this.inputClass} ${this.width}`);
   }
 
   protected handleChange(value: string): void {
@@ -94,11 +69,22 @@ export class Combobox implements OnInit {
     if (this.opened && this.selectedItem) {
       this.selectedItem.scrollIntoView();
     }
+    this.onToggle.emit(this.opened);
   }
 
   protected reset(): void {
     this.inputValue = '';
     this.input.nativeElement.focus();
     this.onReset.emit();
+  }
+
+  select(item: IComboboxItem): void {
+    this.opened = false;
+    this.selectedItem = item;
+    this.inputValue = item.value;
+  }
+
+  checkSelection(value: string): boolean {
+    return this.inputValue.trim() === value;
   }
 }

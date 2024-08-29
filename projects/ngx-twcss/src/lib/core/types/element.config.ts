@@ -29,6 +29,7 @@ export type ElementConfig = {
   display: Display,
   position: Position,
   borderRadius: BorderRadius,
+  ringWidth: RingWidth,
   borderWidth: BorderWidth | RingWidth,
   fontWeight: FontWeight,
   fontSize: FontSize,

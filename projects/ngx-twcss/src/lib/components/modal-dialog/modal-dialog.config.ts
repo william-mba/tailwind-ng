@@ -1,6 +1,10 @@
 import { InjectionToken, Provider } from '@angular/core';
 import { ElementConfig } from '../../core/types/element.config';
 import { mergeConfigs } from '../../core/helpers/config.helper';
+import { DialogActionsConfig } from './actions/dialog-actions.config';
+import { DialogContentConfig } from './content/dialog-content.config';
+import { DialogIconConfig } from './icon/dialog-icon.config';
+import { DialogPanelConfig } from './panel/dialog-panel.config';
 
 /**Scrim config */
 export type ScrimConfig = Partial<ElementConfig>;
@@ -58,84 +62,6 @@ export const DialogContainerConfig: DialogContainerConfig = {
   }
 }
 
-/**Dialog panel config */
-export type DialogPanelConfig = Partial<ElementConfig>
-export const DialogPanelConfig: DialogPanelConfig = {
-  display: {
-    type: 'flex',
-    gap: 'gap-4',
-    flexDirection: 'flex-col',
-  },
-  padding: {
-    size: 'p-6'
-  },
-  sm: {
-    flexDirection: 'sm:flex-row',
-    alignItems: 'sm:items-start'
-  }
-}
-
-/**Dialog icon config */
-export type DialogIconConfig = Partial<ElementConfig>
-export const DialogIconConfig: DialogIconConfig = {
-  display: {
-    type: 'flex',
-    alignItem: 'items-center',
-    justifyContent: 'justify-center'
-  },
-  size: 'size-12',
-  margin: 'mx-auto',
-  borderRadius: 'rounded-full',
-  sm: {
-    shrink: 'shrink-0',
-    size: 'sm:size-10',
-  },
-  theme: {
-    bgColor: 'bg-red-100',
-    dark: {
-      bgColor: 'dark:bg-red-700',
-      bgOpacity: 'dark:bg-opacity-50'
-    }
-  }
-}
-
-/**Dialog content config */
-export type DialogContentConfig = Partial<ElementConfig>
-export const DialogContentConfig: DialogContentConfig = {
-  display: {
-    type: 'flex',
-    gap: 'gap-2',
-    flexDirection: 'flex-col',
-  },
-  textAlign: 'text-center',
-  sm: "sm:text-left",
-  theme: {
-    textColor: 'text-gray-900',
-    dark: {
-      textColor: 'dark:text-gray-100'
-    }
-  }
-}
-
-/**Dialog actions config */
-export type DialogActionsConfig = Partial<ElementConfig>
-export const DialogActionsConfig: DialogActionsConfig = {
-  display: {
-    type: 'flex',
-    gap: 'gap-4',
-    flexDirection: 'flex-col',
-  },
-  padding: {
-    size: 'p-6',
-    y: 'py-4',
-  },
-  sm: {
-    flexDirection: 'sm:flex-row-reverse'
-  }
-}
-
-/**Modal Dialog config key */
-export const ModalDialogConfigKey = 'ModalDialogConfig';
 /**Modal Dialog config */
 export type ModalDialogConfig = {
   container: Partial<DialogContainerConfig>,

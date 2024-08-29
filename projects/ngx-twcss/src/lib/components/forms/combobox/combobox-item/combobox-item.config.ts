@@ -20,7 +20,7 @@ const ComboboxItemConfig: ComboboxItemConfig = {
     hover: {
       textColor: 'hover:text-white',
       bgColor: 'hover:bg-blue-600',
-      fontWeight: 'hover:font-extrabold'
+      fontWeight: 'hover:font-bold'
     }
   }
 }

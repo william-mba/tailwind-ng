@@ -21,6 +21,10 @@ export * from './lib/components/elements/icon/icon.directive';
 export * from './lib/components/modal-dialog/modal-dialog.component';
 export { ModalDialogConfig, MODAL_DIALOG_CONFIG, provideModalDialogConfig } from './lib/components/modal-dialog/modal-dialog.config';
 export { ModalDialog } from './lib/components/modal-dialog/modal-dialog.module';
+export * from './lib/components/modal-dialog/actions/dialog-actions.component';
+export * from './lib/components/modal-dialog/content/dialog-content.component';
+export * from './lib/components/modal-dialog/icon/dialog-icon.component';
+export * from './lib/components/modal-dialog/panel/dialog-panel.component';
 
 // Forms
 export * from './lib/components/forms/combobox/combobox.component';

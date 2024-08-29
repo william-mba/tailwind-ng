@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DialogContainer } from './modal-dialog.component';
+import { DialogContainer, IModalDialog } from './modal-dialog.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ModalDialogConfig, provideModalDialogConfig } from './modal-dialog.config';
 import { toClassNames } from '../../core/helpers/config.helper';
 
 describe('Modal Dialog Component', () => {
-  let component: DialogContainer;
-  let fixture: ComponentFixture<DialogContainer>;
+  let component: IModalDialog;
+  let fixture: ComponentFixture<IModalDialog>;
   const CLASS_NAMES = 'divide-y divide-gray-200 dark:divide-neutral-900';
   const CustomModalDialogConfig: Partial<ModalDialogConfig> = {
     container: {

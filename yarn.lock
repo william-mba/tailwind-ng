@@ -7372,13 +7372,13 @@ __metadata:
 
 "ngx-twcss@file:dist/ngx-twcss::locator=ngx-twcss-demo%40workspace%3A.":
   version: 0.0.0-placeholder
-  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=7fd9a3&locator=ngx-twcss-demo%40workspace%3A."
+  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=a1928b&locator=ngx-twcss-demo%40workspace%3A."
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
     "@angular/common": ^17.3.0
     "@angular/core": ^17.3.0
-  checksum: 10c0/bf6f24973951abe1ec5b69628ba9d0e661d9643d4b7bf43d7ac585408399e2c11f28d9d880582109ac3c4148067fce4c52df79305c5cde6e79241110fb46b52b
+  checksum: 10c0/7fab60884f8413ef56d6271684dec3785f3fdeecc2c0c734b3fb8439733af9296f2e405e1bf722e645164a1c10299e59a6975b6a57d5ee0a5ec907a119a0b4c9
   languageName: node
   linkType: hard
 

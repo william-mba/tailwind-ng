@@ -7,7 +7,7 @@
     Use these Tailwind CSS toggle components in your Angular application to add on/off switches for settings like dark
     mode, notifications, and feature flags.
   </p>
-  <a class="mt-6 text-xs inline-block hover:underline" href="toggles#api-ref">View API reference</a>
+  <a class="mt-6 text-xs inline-block hover:underline" href="toggles#api">Go to API reference</a>
   <tw-h4 class="mt-16 font-medium">
     Simple toggle
   </tw-h4>
@@ -128,15 +128,18 @@
   </div>
   <demo-code-snippet [code]="withInnerShadowAndIcon2"></demo-code-snippet>
 
-  <tw-h3 class="mt-20" id="api-ref">
+  <tw-h3 class="mt-20" id="api">
     API reference
   </tw-h3>
   <div class="grid gap-4">
     <p>
-      <app-code>{{ "import { Toggle } from 'ngx-twcss';" }}</app-code>
+      Import: <app-code>{{ "import { Toggle } from 'ngx-twcss';" }}</app-code>
     </p>
     <p>
       Selector: <app-code>tw-toggle</app-code>
+    </p>
+    <p>
+      Interface: <app-code>IToggle</app-code>
     </p>
   </div>
   <div class="grid border m-6 mb-36 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
@@ -185,14 +188,32 @@
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} match: <br> 'first' | 'last' | 'exact'</app-code></td>
           <td>
-            <app-code><span class="pr-2">{{'@Output()'}} change:</span><br>
+            <p class="font-sans">
+              The matching strategy to be use to resolve the class name.
+              <br>
+              Default is <app-code>'exact'</app-code>
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>toggle(): void</app-code></td>
+          <td>
+            <p class="font-sans">
+              Toggle the state of the toggle component.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code><span class="pr-2">{{'@Output()'}} onToggle:</span><br>
               <span class="pl-2">EventEmitter&#60;boolean&#62;</span>
             </app-code>
           </td>
           <td>
             <p class="font-sans">
-              Event emitted when the toggle's state changes.
+              Event emitted when the toggle state changes.
             </p>
           </td>
         </tr>
