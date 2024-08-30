@@ -20,6 +20,9 @@ export interface ICombobox {
   width: 'w-64' | 'w-72' | 'w-80' | 'w-96';
   onChange: EventEmitter<string>;
   onReset: EventEmitter<void>;
+  onToggle: EventEmitter<boolean>;
+  close(): void;
+  open(): void;
   select(item: IComboboxItem): void;
   checkSelection(value: string): boolean;
 }
@@ -78,8 +81,16 @@ export class Combobox implements OnInit, ICombobox {
     this.onReset.emit();
   }
 
-  select(item: IComboboxItem): void {
+  close(): void {
     this.opened = false;
+  }
+
+  open(): void {
+    this.opened = true;
+  }
+
+  select(item: IComboboxItem): void {
+    this.close();
     this.selectedItem = item;
     this.inputValue = item.value;
   }

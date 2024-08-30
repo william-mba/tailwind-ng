@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Dropdown, IDropdown } from './dropdown.component';
+import { Dropdown } from './dropdown.component';
 import { DropdownConfig, provideDropdownConfig } from './dropdown.config';
 import { toClassNames } from '../../../core/helpers/config.helper';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 describe('Dropdown Component', () => {
-  let component: IDropdown;
-  let fixture: ComponentFixture<IDropdown>;
+  let component: Dropdown;
+  let fixture: ComponentFixture<Dropdown>;
   const CLASS_NAMES = 'shadow-lg *:justify-start *:rounded-none *:shadow-none';
 
   const CustomDropdownConfig: Partial<DropdownConfig> = {

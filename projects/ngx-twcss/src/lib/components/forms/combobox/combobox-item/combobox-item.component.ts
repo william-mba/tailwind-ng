@@ -1,5 +1,5 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { Icon } from '../../../elements/icon/icon.directive';
 import { COMBOBOX_ITEM_CONFIG, ComboboxItemConfig } from './combobox-item.config';
 import { mergeClassNames, toClassNames } from '../../../../core/helpers/config.helper';
@@ -71,7 +71,7 @@ export abstract class ComboboxItemBase implements IComboboxItem {
     }
   ]
 })
-export class ComboboxItem extends ComboboxItemBase implements OnInit {
+export class ComboboxItem extends ComboboxItemBase implements OnInit, AfterViewInit {
   private config: ComboboxItemConfig = inject(COMBOBOX_ITEM_CONFIG);
 
   @Input() iconSlot: 'left' | 'right' = 'right';
@@ -84,6 +84,12 @@ export class ComboboxItem extends ComboboxItemBase implements OnInit {
 
   ngOnInit(): void {
     this.class = mergeClassNames(toClassNames(this.config), this.class);
+  }
+
+  ngAfterViewInit(): void {
+    if (this.selected) {
+      this.onSelect.emit(this);
+    }
   }
 
   protected resolveStateStyle(): Record<string, boolean> {

@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Combobox, ICombobox } from './combobox.component';
 import { provideButtonConfig } from '../../elements/button/button.config';
 import { provideComboboxConfig } from './combobox.config';
+import { provideDropdownConfig } from '../../elements/dropdown/dropdown.config';
 
 describe('Combobox Component', () => {
   let component: ICombobox;
@@ -12,7 +13,8 @@ describe('Combobox Component', () => {
       imports: [Combobox],
       providers: [
         provideButtonConfig(),
-        provideComboboxConfig()]
+        provideComboboxConfig(),
+        provideDropdownConfig()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(Combobox);

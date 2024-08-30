@@ -15,7 +15,7 @@
   </tw-h4>
   <div [class]
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb1 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)"
+    <tw-combobox [opened]="true" #cb1 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)"
       width="w-72">
       @for (item of items; track item.id) {
       <tw-combobox-item [id]="item.id!" [value]="item.value!" (onSelect)="cb1.select($event)"
@@ -30,7 +30,7 @@
   </tw-h4>
   <div
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb2 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)"
+    <tw-combobox [opened]="true" #cb2 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)"
       width="w-72">
       @for (item of items; track item.id) {
       <tw-combobox-item [value]="item.value!" (onSelect)="cb2.select($event)"
