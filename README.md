@@ -47,7 +47,7 @@ module.exports = {
 
 ### 3. Import ngx-twcss components
 
-If your using ``standalone`` components, import the components you want from ``ngx-twcss`` in your *.component.ts file
+If you are using ``standalone`` components, import our components in your *.component.ts file
 
 ```ts
 @Component({
@@ -66,7 +66,7 @@ export class DemoComponent {
 }
 ```
 
-If you are using ``NgModule`` based components, import the components you want from ``ngx-twcss`` in your *.module.ts file
+If you are using ``NgModule`` based components, import our components in your *.module.ts file
 
   ```ts
   @NgModule({
@@ -85,8 +85,9 @@ If you are using ``NgModule`` based components, import the components you want f
   export class DemoAppModule { }
   ```
 
-🎉Congratulations! You have completed your setup🚀 </br>
-[Visit our website for more details and sample usages](https://ngx-twcss.williammba.com)
+🎉Congratulations! You are ready 🚀 </br>
+What's next ?
+[Visit our website for more details on components](https://ngx-twcss.williammba.com).
 
 ---
 

@@ -85,8 +85,9 @@ If you are using ``NgModule`` based components, import the components you want f
   export class DemoAppModule { }
   ```
 
-🎉Congratulations! You have completed your setup🚀 </br>
-[Visit our website for more details and sample usages](https://ngx-twcss.williammba.com)
+🎉Congratulations! You are ready 🚀 </br>
+What's next ?
+[Visit our website for more details on components](https://ngx-twcss.williammba.com).
 
 ---
 
