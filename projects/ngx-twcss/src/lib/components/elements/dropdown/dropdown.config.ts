@@ -41,7 +41,7 @@ export const DROPDOWN_CONFIG = new InjectionToken<DropdownConfig>('Dropdown conf
  * @param config The custom config
  * @returns The config provider
  */
-export const provideDropdownConfig = (config?: Partial<DropdownConfig>): Provider[] => {
+export function provideDropdownConfig(config?: Partial<DropdownConfig>): Provider[] {
   return [
     provideAnimations(),
     {

@@ -92,7 +92,7 @@ export const MODAL_DIALOG_CONFIG = new InjectionToken<ModalDialogConfig>('Modal 
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideModalDialogConfig = (config?: Partial<ModalDialogConfig>): Provider[] => {
+export function provideModalDialogConfig(config?: Partial<ModalDialogConfig>): Provider[] {
   return [{
     provide: MODAL_DIALOG_CONFIG,
     useValue: mergeConfigs(ModalDialogConfig, config)

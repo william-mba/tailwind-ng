@@ -9,4 +9,4 @@ import { H4 } from './h4/h4.directive';
   imports: [H1, H2, H3, H4],
   exports: [H1, H2, H3, H4]
 })
-export class Typography { }
+export class TypographyModule { }

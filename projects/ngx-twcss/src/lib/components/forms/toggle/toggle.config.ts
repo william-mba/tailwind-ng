@@ -78,7 +78,7 @@ export const TOGGLE_CONFIG = new InjectionToken<ToggleConfig>("Toggle component 
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideToggleConfig = (config?: Partial<ToggleConfig>): Provider[] => {
+export function provideToggleConfig(config?: Partial<ToggleConfig>): Provider[] {
   return [
     provideAnimations(),
     {

@@ -29,7 +29,7 @@ export const BADGE_CONFIG = new InjectionToken<BadgeConfig>('Badge component con
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideBadgeConfig = (config?: Partial<BadgeConfig>): Provider => {
+export function provideBadgeConfig(config?: Partial<BadgeConfig>): Provider {
   return {
     provide: BADGE_CONFIG,
     useValue: mergeConfigs(BadgeConfig, config)

@@ -23,7 +23,7 @@ export const BUTTON_GROUP_CONFIG = new InjectionToken<ButtonGroupConfig>('Button
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideButtonGroupConfig = (config?: Partial<ButtonGroupConfig>): Provider => {
+export function provideButtonGroupConfig(config?: Partial<ButtonGroupConfig>): Provider {
   return {
     provide: BUTTON_GROUP_CONFIG,
     useValue: mergeConfigs(ButtonGroupConfig, config)

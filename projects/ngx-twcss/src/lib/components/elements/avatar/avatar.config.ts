@@ -40,7 +40,7 @@ export const AVATAR_CONFIG = new InjectionToken<AvatarConfig>('Avatar component 
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideAvatarConfig = (config?: Partial<AvatarConfig>): Provider => {
+export function provideAvatarConfig(config?: Partial<AvatarConfig>): Provider {
   return {
     provide: AVATAR_CONFIG,
     useValue: mergeConfigs(AvatarConfig, config)

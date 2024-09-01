@@ -4,9 +4,9 @@ import { ModalDialogConfig } from "./modal-dialog.config";
  * Ngx-twcss Modal Dialog
  */
 export interface ModalDialog {
+  opened: boolean;
   class: string;
   scrim: string;
   backdrop: string;
-  opened: boolean;
   setConfig(config: Partial<ModalDialogConfig>): void;
 }
