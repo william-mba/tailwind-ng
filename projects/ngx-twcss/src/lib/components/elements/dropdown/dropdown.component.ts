@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { DROPDOWN_CONFIG, DropdownConfig } from './dropdown.config';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { trigger, style, animate, transition, state } from '@angular/animations';
-import { DropdownAPI } from './dropdown.api';
+import { Dropdown } from './dropdown';
 
 /** Dropdown component */
 @Component({
@@ -23,29 +23,34 @@ import { DropdownAPI } from './dropdown.api';
     ])
   ]
 })
-export class Dropdown implements DropdownAPI, OnInit {
-  private config = inject(DROPDOWN_CONFIG);
+export class DropdownComponent implements Dropdown, OnInit {
+  private readonly config = inject(DROPDOWN_CONFIG);
 
-  @Input() class!: string;
-  @Input() opened: boolean = false;
+  @Input()
+  public class!: string;
+  @Input()
+  public opened: boolean = false;
+  @Output()
+  public onToggle: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
     this.setConfig(this.config);
   }
 
-  toggle(): void {
+  public toggle(): void {
     this.opened = !this.opened;
+    this.onToggle.emit(this.opened);
   }
 
-  open(): void {
+  public open(): void {
     this.opened = true;
   }
 
-  close(): void {
+  public close(): void {
     this.opened = false;
   }
 
-  setConfig(config: Partial<DropdownConfig> = DropdownConfig): void {
+  public setConfig(config: Partial<DropdownConfig> = DropdownConfig): void {
     this.class = mergeClassNames(toClassNames(config), this.class);
   }
 }

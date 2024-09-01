@@ -1,15 +1,15 @@
+import { EventEmitter } from "@angular/core";
 import { DropdownConfig } from "./dropdown.config";
 
-interface DropdownState {
+/**
+ * Ngx-twcss Dropdown
+ */
+export interface Dropdown {
   class: string;
   opened: boolean;
-}
-
-interface DropdownActions {
   toggle(): void;
   open(): void;
   close(): void;
   setConfig(config: Partial<DropdownConfig>): void;
+  onToggle: EventEmitter<boolean>
 }
-
-export interface DropdownAPI extends DropdownState, DropdownActions { }

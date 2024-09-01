@@ -1,16 +1,8 @@
 import { Directive, ElementRef, inject, Input, OnInit } from '@angular/core';
 import { mergeClassNames } from '../../../core/helpers/config.helper';
-import { IconConfig, IconSizeOptions } from './icon.config';
+import { ICON_CONFIG, IconConfig, IconSizeOptions } from './icon.config';
 import { IconSourceConfig } from './icon-source.config';
-
-export interface IIcon {
-  class: string;
-  name: string;
-  size: keyof IconSizeOptions;
-  source: keyof IconSourceConfig;
-  setClassNames(value: string): void;
-}
-
+import { Icon } from './icon';
 
 @Directive({
   selector: 'tw-icon, [tw-icon]',
@@ -19,26 +11,32 @@ export interface IIcon {
     '[class]': 'class'
   }
 })
-export class Icon implements OnInit, IIcon {
-  @Input() class!: string;
-  @Input() name: string = 'star';
-  @Input() size: keyof IconSizeOptions = 'md';
-  @Input() source: keyof IconSourceConfig = 'default';
-  private el = inject(ElementRef).nativeElement;
+export class IconDirective implements OnInit, Icon {
+  private readonly config: IconConfig = inject(ICON_CONFIG);
+  private readonly element = inject(ElementRef).nativeElement;
+
+  @Input()
+  public class!: string;
+  @Input()
+  public name: string = 'star';
+  @Input()
+  public size: keyof IconSizeOptions = 'md';
+  @Input()
+  public source: keyof IconSourceConfig = 'default';
 
   ngOnInit(): void {
-    this.el.innerHTML = IconConfig.source[this.source][this.name];
+    this.element.innerHTML = this.config.source[this.source][this.name];
     this.setClassNames(this.class);
   }
 
-  setClassNames(value: string): void {
+  public setClassNames(value: string): void {
     let classNames = 'inline-block ';
 
     /* Only add size class if the element is not an avatar
     *  because avatar has its own size classes
      */
-    if (this.el.tagName !== 'TW-AVATAR') {
-      classNames += IconConfig.size[this.size];
+    if (this.element.tagName !== 'TW-AVATAR') {
+      classNames += this.config.size[this.size];
     }
     this.class = mergeClassNames(value, classNames);
   }

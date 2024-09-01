@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Dropdown } from './dropdown.component';
+import { DropdownComponent } from './dropdown.component';
 import { DropdownConfig, provideDropdownConfig } from './dropdown.config';
 import { toClassNames } from '../../../core/helpers/config.helper';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { Dropdown } from './dropdown';
 
 describe('Dropdown Component', () => {
   let component: Dropdown;
@@ -26,14 +27,14 @@ describe('Dropdown Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Dropdown],
+      imports: [DropdownComponent],
       providers: [
         provideAnimations(),
         provideDropdownConfig(CustomDropdownConfig),
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Dropdown);
+    fixture = TestBed.createComponent(DropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

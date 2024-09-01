@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DialogContainer, IModalDialog } from './modal-dialog.component';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { ModalDialogComponent } from './modal-dialog.component';
 import { ModalDialogConfig, provideModalDialogConfig } from './modal-dialog.config';
-import { toClassNames } from '../../core/helpers/config.helper';
+import { toClassNames } from '../../../core/helpers/config.helper';
+import { ModalDialog } from './modal-dialog';
 
 describe('Modal Dialog Component', () => {
-  let component: IModalDialog;
-  let fixture: ComponentFixture<IModalDialog>;
+  let component: ModalDialog;
+  let fixture: ComponentFixture<ModalDialog>;
   const CLASS_NAMES = 'divide-y divide-gray-200 dark:divide-neutral-900';
   const CustomModalDialogConfig: Partial<ModalDialogConfig> = {
     container: {
@@ -21,14 +21,13 @@ describe('Modal Dialog Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DialogContainer],
+      imports: [ModalDialogComponent],
       providers: [
-        provideAnimations(),
         provideModalDialogConfig(CustomModalDialogConfig)
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DialogContainer);
+    fixture = TestBed.createComponent(ModalDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

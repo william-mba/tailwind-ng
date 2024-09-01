@@ -21,7 +21,7 @@ resources:
 
 variables:
   - name: MajorMinor
-    value: "0.6"
+    value: "0.7"
   - name: Patch
     value: $[counter(variables.MajorMinor, 0)]
   - name: Release

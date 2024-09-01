@@ -2,33 +2,7 @@ import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, Vie
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { TOGGLE_CONFIG } from './toggle.config';
-
-/**
- * Toggle interface.
- */
-export interface IToggle {
-  /**
-   * The state of the toggle.
-   */
-  checked: boolean;
-  /**
-   * The class name to be applied to the toggle container.
-   */
-  class: string;
-  /**
-   * The class name to be applied to the toggle slider.
-   */
-  slider: string;
-  /**
-   * The matching strategy to be use to resolve the class name.
-   */
-  match: 'first' | 'last' | 'exact';
-  /**
-   * An observable that emit the toggle state.
-   */
-  onToggle: EventEmitter<boolean>;
-  toggle(): void;
-}
+import { Toggle } from './toggle';
 
 @Component({
   selector: 'tw-toggle',
@@ -57,10 +31,17 @@ export interface IToggle {
     ])
   ]
 })
-export class Toggle implements OnInit, IToggle {
-  @Input() checked: boolean = false;
-  @Input() class!: string;
-  @Input() slider!: string;
+export class ToggleComponent implements OnInit, Toggle {
+  @ViewChild('twToggleInput')
+  private readonly input!: ElementRef<HTMLInputElement>;
+  private readonly config = inject(TOGGLE_CONFIG);
+
+  @Input()
+  public checked: boolean = false;
+  @Input()
+  public class!: string;
+  @Input()
+  public slider!: string;
   /**
    * The matching strategy to be use to resolve the class name.
    * @usage 'first' the first part of the class name is used as prefix.
@@ -68,18 +49,17 @@ export class Toggle implements OnInit, IToggle {
    * @usage 'exact' the class name is used as is.
    * @default 'exact'
    */
-  @Input() match: 'first' | 'last' | 'exact' = 'exact';
-  @Output() onToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @ViewChild('twToggleInput')
-  private input!: ElementRef<HTMLInputElement>;
-  private config = inject(TOGGLE_CONFIG);
+  @Input()
+  public match: 'first' | 'last' | 'exact' = 'exact';
+  @Output()
+  public onToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     this.slider = mergeClassNames(toClassNames(this.config.slider), this.slider);
     this.class = mergeClassNames(toClassNames(this.config.container), this.class, this.match);
   }
 
-  toggle(): void {
+  public toggle(): void {
     this.checked = !this.checked;
     this.input.nativeElement.focus();
     this.onToggle.emit(this.checked);

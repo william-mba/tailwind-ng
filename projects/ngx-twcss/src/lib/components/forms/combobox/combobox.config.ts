@@ -46,6 +46,6 @@ export const provideComboboxConfig = (config?: Partial<ComboboxConfig>, itemConf
     provide: COMBOBOX_CONFIG,
     useValue: mergeConfigs(ComboboxConfig, config)
   },
-  provideComboboxItemConfig(itemConfig)
+  provideComboboxItemConfig(itemConfig),
   ];
 };

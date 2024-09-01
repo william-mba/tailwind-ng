@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
+import { mergeClassNames, toClassNames } from '../../../../core/helpers/config.helper';
 import { MODAL_DIALOG_CONFIG } from '../modal-dialog.config';
 
 /**Dialog actions element */
@@ -11,9 +11,11 @@ import { MODAL_DIALOG_CONFIG } from '../modal-dialog.config';
   },
   template: '<ng-content></ng-content>'
 })
-export class DialogActions implements OnInit {
-  private config = inject(MODAL_DIALOG_CONFIG);
-  @Input() class!: string;
+export class DialogActionsComponent implements OnInit {
+  private readonly config = inject(MODAL_DIALOG_CONFIG);
+  
+  @Input()
+  public class!: string;
 
   ngOnInit(): void {
     this.class = mergeClassNames(toClassNames(this.config.actions), this.class);

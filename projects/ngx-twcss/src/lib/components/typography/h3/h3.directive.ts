@@ -10,7 +10,8 @@ import { TypographyConfig } from '../typography.config';
   }
 })
 export class H3 implements OnInit {
-  @Input() class!: string;
+  @Input()
+  public class!: string;
 
   ngOnInit(): void {
     this.class = mergeClassNames(`${toClassNames(TypographyConfig)} text-2xl my-4`, this.class)

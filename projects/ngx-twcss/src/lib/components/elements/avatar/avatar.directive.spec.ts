@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { Avatar, IAvatar } from './avatar.directive';
+import { AvatarDirective } from './avatar.directive';
 import { provideAvatarConfig } from './avatar.config';
 import { OnInit } from '@angular/core';
+import { Avatar } from './avatar';
 
 describe('Avatar Component', () => {
-  let component: IAvatar & OnInit;
+  let component: Avatar & OnInit;
   const CUSTOM_CLASSNAMES = 'size-6 ring-2 ring-white';
 
   beforeEach(async () => {
@@ -13,7 +14,7 @@ describe('Avatar Component', () => {
     });
 
     TestBed.runInInjectionContext(() => {
-      component = new Avatar();
+      component = new AvatarDirective();
     });
   });
 

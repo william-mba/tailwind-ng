@@ -1,4 +1,4 @@
-import { ElementConfig } from '../../../core/types/element.config';
+import { ElementConfig } from '../../../../core/types/element.config';
 
 /**Dialog content config */
 export type DialogContentConfig = Partial<ElementConfig>

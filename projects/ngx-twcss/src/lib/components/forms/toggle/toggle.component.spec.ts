@@ -1,23 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IToggle, Toggle } from './toggle.component';
+import { ToggleComponent } from './toggle.component';
 import { provideToggleConfig } from './toggle.config';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { Toggle } from './toggle';
 
 describe('Toggle Component', () => {
-  let component: IToggle;
-  let fixture: ComponentFixture<IToggle>;
+  let component: Toggle;
+  let fixture: ComponentFixture<Toggle>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Toggle],
+      imports: [ToggleComponent],
       providers: [
         provideToggleConfig(),
-        provideAnimations(),
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Toggle);
+    fixture = TestBed.createComponent(ToggleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

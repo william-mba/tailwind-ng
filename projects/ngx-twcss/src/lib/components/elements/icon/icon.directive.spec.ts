@@ -1,9 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { Icon, IIcon } from './icon.directive';
+import { IconDirective } from './icon.directive';
 import { ElementRef, OnInit } from '@angular/core';
+import { Icon } from './icon';
+import { provideIconConfig } from './icon.config';
 
 describe('Icon Component', () => {
-  let component: IIcon & OnInit;
+  let component: Icon & OnInit;
   const CUSTOM_CLASSNAMES = 'text-yellow-500';
 
   beforeEach(() => {
@@ -11,10 +13,11 @@ describe('Icon Component', () => {
       providers: [{
         provide: ElementRef,
         useValue: { nativeElement: document.createElement('TW-ICON') }
-      }]
+      },
+      provideIconConfig()]
     })
     TestBed.runInInjectionContext(() => {
-      component = new Icon();
+      component = new IconDirective();
     });
   });
 
