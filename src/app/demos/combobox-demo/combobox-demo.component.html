@@ -4,10 +4,8 @@
     Comboboxes
   </tw-h2>
   <p class="text-pretty">
-    Use these Tailwind CSS combobox in your Angular application
-    to provide a combination of input fields and dropdown menus for things like autocomplete search bars, country
-    selection,
-    and filtering options.
+    Use these combobox components to provide a combination of input fields and dropdown menus for things like autocomplete search
+    bars, country selection, and filtering options.
   </p>
   <a class="mt-6 text-xs inline-block hover:underline" href="comboboxes#api">Go to API reference</a>
   <tw-h4 class="mt-16 font-medium">
@@ -15,8 +13,8 @@
   </tw-h4>
   <div [class]
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb1 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()"
-      (onToggle)="toggle($event)" width="w-72">
+    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb1 label="Assigned to" (onChange)="filter($event)"
+      (onReset)="reset()" (onToggle)="toggle($event)" width="w-72">
       @for (item of items; track item.id) {
       <tw-combobox-item [id]="item.id!" [value]="item.value!" (onSelect)="cb1.select($event)"
         [selected]="cb1.checkSelection(item.value!)" />
@@ -193,7 +191,7 @@
       Interface: <app-code>ComboboxItem</app-code>
     </p>
   </div>
-  <div class="grid border m-6 mb-36 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+  <div class="grid border m-6 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <table class="table-auto table text-start w-full">
       <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">

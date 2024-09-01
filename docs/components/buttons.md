@@ -1,6 +1,6 @@
 # Buttons
 
-Use these Tailwind CSS button components to surface the different actions someone can perform in your interface.
+Use these button components to surface the different actions someone can perform in your interface.
 
 <br/>
 

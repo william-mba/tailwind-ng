@@ -1,6 +1,6 @@
 # Button Groups
 
-Use these Tailwind CSS button group components to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
+Use these button group components to group buttons with other elements like dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
 
 <br/>
 
