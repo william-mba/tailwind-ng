@@ -12,7 +12,7 @@ export type ButtonVariant =
 
 /** Button size config */
 export type ButtonSizeOptions = Partial<SizeOptions>;
-export const ButtonSizeConfig: ButtonSizeOptions = {
+const ButtonSizeConfig: ButtonSizeOptions = {
   xs: {
     padding: {
       x: 'px-2',
@@ -82,7 +82,7 @@ export const ButtonSizeConfig: ButtonSizeOptions = {
 
 /** Button Icon size config */
 export type ButtonIconSizeOptions = Partial<SizeOptions>;
-export const ButtonIconSizeConfig: ButtonIconSizeOptions = {
+const ButtonIconSizeConfig: ButtonIconSizeOptions = {
   xs: {
     padding: 'p-1',
     size: '*:size-3'
@@ -107,7 +107,7 @@ export const ButtonIconSizeConfig: ButtonIconSizeOptions = {
 
 /** Base button config */
 export type ButtonBaseConfig = Partial<ElementConfig>
-export const ButtonBaseConfig: ButtonBaseConfig = {
+const ButtonBaseConfig: ButtonBaseConfig = {
   display: {
     type: 'inline-flex',
     alignItem: 'items-center',
@@ -122,7 +122,7 @@ export const ButtonBaseConfig: ButtonBaseConfig = {
 
 /** Primary button config */
 export type PrimaryButtonConfig = Partial<ButtonBaseConfig>;
-export const PrimaryButtonConfig: PrimaryButtonConfig = {
+const PrimaryButtonConfig: PrimaryButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
     textColor: 'text-white',
@@ -135,7 +135,7 @@ export const PrimaryButtonConfig: PrimaryButtonConfig = {
 
 /** Secondary button config */
 export type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
-export const SecondaryButtonConfig: SecondaryButtonConfig = {
+const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
   borderWidth: 'ring-1',
   extend: 'ring-inset',
@@ -171,7 +171,7 @@ export const SecondaryButtonConfig: SecondaryButtonConfig = {
 
 /** Tonal button config */
 export type TonalButtonConfig = Partial<ButtonBaseConfig>;
-export const TonalButtonConfig: TonalButtonConfig = {
+const TonalButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   theme: {
     textColor: 'text-indigo-500',
@@ -188,7 +188,7 @@ export const TonalButtonConfig: TonalButtonConfig = {
 
 /** Text button config */
 export type TextButtonConfig = Partial<ButtonBaseConfig>;
-export const TextButtonConfig: TonalButtonConfig = {
+const TextButtonConfig: TonalButtonConfig = {
   ...ButtonBaseConfig,
   shadow: 'shadow-none',
   theme: {
@@ -214,16 +214,18 @@ export type ButtonConfig = {
   primary: Partial<PrimaryButtonConfig>,
   secondary: Partial<SecondaryButtonConfig>,
   tonal: Partial<TonalButtonConfig>,
-  text: Partial<TextButtonConfig>
-  size: Partial<ButtonSizeOptions>
+  text: Partial<TextButtonConfig>,
+  size: Partial<ButtonSizeOptions>,
+  iconSize: Partial<ButtonIconSizeOptions>
 }
 
-export const ButtonConfig: ButtonConfig = {
+const ButtonConfig: ButtonConfig = {
   primary: PrimaryButtonConfig,
   secondary: SecondaryButtonConfig,
   tonal: TonalButtonConfig,
   text: TextButtonConfig,
-  size: ButtonSizeConfig
+  size: ButtonSizeConfig,
+  iconSize: ButtonIconSizeConfig
 }
 
 /**
@@ -236,7 +238,7 @@ export const BUTTON_CONFIG = new InjectionToken<ButtonConfig>('Button component 
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideButtonConfig = (config?: Partial<ButtonConfig>): Provider => {
+export function provideButtonConfig(config?: Partial<ButtonConfig>): Provider {
   return {
     provide: BUTTON_CONFIG,
     useValue: mergeConfigs(ButtonConfig, config)

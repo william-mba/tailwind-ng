@@ -4,13 +4,13 @@ import { isObject, mergeConfigs } from '../helpers/config.helper';
 import { ButtonConfig, ButtonConfigKey } from '../../components/elements/button/button.config';
 import { ModalDialogConfig, ModalDialogConfigKey } from '../../components/modal-dialog/modal-dialog.config';
 import { DropdownConfig, DropdownConfigKey } from '../../components/elements/dropdown/dropdown.config';
-import { ModalDialog } from '../../components/modal-dialog/modal-dialog.module';
+import { ModalDialogModule } from '../../components/modal-dialog/modal-dialog.module';
 
 /** Ngx-Twcss config service token */
 export abstract class ConfigServiceToken {
   abstract get<T extends Record<string, any>>(key: string): Observable<T>;
   abstract setButton(config?: Partial<ButtonConfig>): ConfigService;
-  abstract setModalDialog(config?: Partial<ModalDialog>): ConfigService;
+  abstract setModalDialog(config?: Partial<ModalDialogModule>): ConfigService;
   abstract setDropdown(config?: Partial<DropdownConfig>): ConfigService;
 }
 /**
@@ -57,7 +57,7 @@ export class ConfigService extends ConfigServiceToken {
   /**
    * Set modal dialog config
    */
-  setModalDialog(config: Partial<ModalDialog> = {}): ConfigService {
+  setModalDialog(config: Partial<ModalDialogModule> = {}): ConfigService {
     this.set(ModalDialogConfigKey, ModalDialogConfig, config);
     return this;
   }

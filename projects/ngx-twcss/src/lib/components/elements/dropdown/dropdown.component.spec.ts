@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Dropdown, IDropdown } from './dropdown.component';
+import { DropdownComponent } from './dropdown.component';
 import { DropdownConfig, provideDropdownConfig } from './dropdown.config';
 import { toClassNames } from '../../../core/helpers/config.helper';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { Dropdown } from './dropdown';
 
 describe('Dropdown Component', () => {
-  let component: IDropdown;
-  let fixture: ComponentFixture<IDropdown>;
+  let component: Dropdown;
+  let fixture: ComponentFixture<Dropdown>;
   const CLASS_NAMES = 'shadow-lg *:justify-start *:rounded-none *:shadow-none';
 
   const CustomDropdownConfig: Partial<DropdownConfig> = {
@@ -26,14 +27,14 @@ describe('Dropdown Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Dropdown],
+      imports: [DropdownComponent],
       providers: [
         provideAnimations(),
         provideDropdownConfig(CustomDropdownConfig),
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Dropdown);
+    fixture = TestBed.createComponent(DropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

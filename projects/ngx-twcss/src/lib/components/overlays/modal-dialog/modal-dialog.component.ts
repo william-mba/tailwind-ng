@@ -1,16 +1,9 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { mergeClassNames, toClassNames } from '../../core/helpers/config.helper';
+import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { MODAL_DIALOG_CONFIG, ModalDialogConfig } from './modal-dialog.config';
 import { NgIf } from '@angular/common';
-
-export interface IModalDialog {
-  class: string;
-  scrim: string;
-  backdrop: string;
-  opened: boolean;
-  setConfig(config: Partial<ModalDialogConfig>): void;
-}
+import { ModalDialog } from './modal-dialog';
 
 /**Modal Dialog component */
 @Component({
@@ -67,18 +60,23 @@ export interface IModalDialog {
     ])
   ]
 })
-export class DialogContainer implements OnInit, IModalDialog {
-  private config = inject(MODAL_DIALOG_CONFIG);
-  @Input() class!: string;
-  @Input() scrim!: string;
-  @Input() backdrop!: string;
-  @Input() opened: boolean = true;
+export class ModalDialogComponent implements OnInit, ModalDialog {
+  private readonly config = inject(MODAL_DIALOG_CONFIG);
+
+  @Input()
+  public class!: string;
+  @Input()
+  public scrim!: string;
+  @Input()
+  public backdrop!: string;
+  @Input()
+  public opened: boolean = true;
 
   ngOnInit(): void {
     this.setConfig(this.config);
   }
 
-  setConfig(config: Partial<ModalDialogConfig>): void {
+  public setConfig(config: Partial<ModalDialogConfig>): void {
     this.class = mergeClassNames(toClassNames(config.container!), this.class);
     this.scrim = mergeClassNames(toClassNames(config.scrim!), this.scrim);
     this.backdrop = mergeClassNames(toClassNames(config.backdrop!), this.backdrop);

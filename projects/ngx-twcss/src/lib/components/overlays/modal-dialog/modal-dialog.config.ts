@@ -1,10 +1,11 @@
 import { InjectionToken, Provider } from '@angular/core';
-import { ElementConfig } from '../../core/types/element.config';
-import { mergeConfigs } from '../../core/helpers/config.helper';
+import { ElementConfig } from '../../../core/types/element.config';
+import { mergeConfigs } from '../../../core/helpers/config.helper';
 import { DialogActionsConfig } from './actions/dialog-actions.config';
 import { DialogContentConfig } from './content/dialog-content.config';
 import { DialogIconConfig } from './icon/dialog-icon.config';
 import { DialogPanelConfig } from './panel/dialog-panel.config';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 /**Scrim config */
 export type ScrimConfig = Partial<ElementConfig>;
@@ -91,9 +92,11 @@ export const MODAL_DIALOG_CONFIG = new InjectionToken<ModalDialogConfig>('Modal 
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideModalDialogConfig = (config?: Partial<ModalDialogConfig>): Provider => {
-  return {
+export const provideModalDialogConfig = (config?: Partial<ModalDialogConfig>): Provider[] => {
+  return [{
     provide: MODAL_DIALOG_CONFIG,
     useValue: mergeConfigs(ModalDialogConfig, config)
-  }
+  },
+  provideAnimations()
+  ]
 };

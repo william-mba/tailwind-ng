@@ -1,16 +1,12 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { Combobox, IComboboxItem } from 'ngx-twcss';
+import { Component, ViewChild } from '@angular/core';
+import { Combobox, ComboboxItem } from 'ngx-twcss';
 
 @Component({
   selector: 'app-combobox-demo',
   templateUrl: './combobox-demo.component.html'
 })
-export class ComboboxDemoComponent implements OnDestroy {
-  ngOnDestroy(): void {
-    console.log('Input value:', this.inputValue);
-
-  }
-  items: Partial<IComboboxItem>[] = [
+export class ComboboxDemoComponent {
+  items: Partial<ComboboxItem>[] = [
     { id: '1', value: 'Leslie Alexander' },
     { id: '2', value: 'Michael Foster' },
     { id: '3', value: 'Dries Vincent' },
@@ -39,7 +35,7 @@ export class ComboboxDemoComponent implements OnDestroy {
   protected inputValue: string = '';
   @ViewChild('combobox', { static: true }) combobox!: Combobox;
 
-  select(item: IComboboxItem): void {
+  select(item: ComboboxItem): void {
     this.combobox.select(item);
   }
 

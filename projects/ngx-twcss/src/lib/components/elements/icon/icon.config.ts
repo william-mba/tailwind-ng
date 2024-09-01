@@ -1,8 +1,10 @@
+import { InjectionToken, Provider } from "@angular/core";
 import { IconSourceConfig } from "./icon-source.config";
+import { mergeConfigs } from "../../../core/helpers/config.helper";
 
 /** Icon size config */
 export type IconSizeOptions = Record<string, string>;
-export const IconSizeConfig: IconSizeOptions = {
+const IconSizeConfig: IconSizeOptions = {
   xs: 'size-3',
   sm: 'size-4',
   md: 'size-5',
@@ -18,7 +20,16 @@ export type IconConfig = {
   source: IconSourceConfig,
 }
 
-export const IconConfig: IconConfig = {
+const IconConfig: IconConfig = {
   size: IconSizeConfig,
   source: IconSourceConfig,
+}
+
+export const ICON_CONFIG = new InjectionToken<IconConfig>('Icon config token');
+
+export function provideIconConfig(config?: Partial<IconConfig>): Provider {
+  return {
+    provide: ICON_CONFIG,
+    useValue: mergeConfigs(IconConfig, config)
+  }
 }

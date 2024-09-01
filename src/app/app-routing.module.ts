@@ -64,7 +64,7 @@ const routes: Routes = [
   // },
   {
     path: '**',
-    redirectTo: 'toggles'
+    redirectTo: 'comboboxes'
   }
 ];
 

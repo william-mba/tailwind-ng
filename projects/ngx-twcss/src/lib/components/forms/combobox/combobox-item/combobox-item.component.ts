@@ -1,58 +1,15 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, TemplateRef } from '@angular/core';
-import { Icon } from '../../../elements/icon/icon.directive';
+import { Component, ElementRef, inject, Input, OnInit, TemplateRef } from '@angular/core';
+import { IconDirective } from '../../../elements/icon/icon.directive';
 import { COMBOBOX_ITEM_CONFIG, ComboboxItemConfig } from './combobox-item.config';
 import { mergeClassNames, toClassNames } from '../../../../core/helpers/config.helper';
-
-/**
- * Combobox item interface
- */
-export interface IComboboxItem {
-  id: string;
-  value: string;
-  selected: boolean;
-  select(): void;
-  scrollIntoView(): void;
-  onSelect: EventEmitter<IComboboxItem>;
-}
-
-@Component({
-  template: '',
-  host: {
-    '[id]': 'id',
-    '[class]': 'class',
-    '(click)': 'select()',
-    '[attr.value]': 'value',
-    '[attr.selected]': 'selected',
-  },
-})
-export abstract class ComboboxItemBase implements IComboboxItem {
-  @Input() value!: string;
-  @Input() class!: string;
-  @Input() selected: boolean = false;
-  @Input() id: string = crypto.randomUUID();
-  @Output() onSelect: EventEmitter<IComboboxItem> = new EventEmitter();
-
-  constructor(private element: ElementRef<HTMLElement>) { }
-
-  public select(): void {
-    this.selected = true;
-    this.onSelect.emit(this);
-  }
-
-  public scrollIntoView(): void {
-    // Use to prevent scrollIntoView from being called before the parent element animation is completed.
-    // otherwise, the scrollIntoView method will not work as expected.
-    setTimeout(() => {
-      this.element.nativeElement.scrollIntoView({ behavior: 'instant', block: 'nearest' }), 75
-    });
-  }
-}
+import { BaseComboboxItemComponent } from './combobox-item.base';
+import { ComboboxItem } from './combobox-item';
 
 @Component({
   selector: 'tw-combobox-item',
   standalone: true,
-  imports: [Icon, NgIf, NgTemplateOutlet],
+  imports: [IconDirective, NgIf, NgTemplateOutlet],
   host: {
     '[class]': 'resolveStateStyle()',
   },
@@ -66,17 +23,20 @@ export abstract class ComboboxItemBase implements IComboboxItem {
   `,
   providers: [
     {
-      provide: ComboboxItemBase,
-      useExisting: ComboboxItem
+      provide: BaseComboboxItemComponent,
+      useExisting: ComboboxItemComponent
     }
   ]
 })
-export class ComboboxItem extends ComboboxItemBase implements OnInit {
-  private config: ComboboxItemConfig = inject(COMBOBOX_ITEM_CONFIG);
+export class ComboboxItemComponent extends BaseComboboxItemComponent implements OnInit {
+  private readonly config: ComboboxItemConfig = inject(COMBOBOX_ITEM_CONFIG);
 
-  @Input() iconSlot: 'left' | 'right' = 'right';
-  @Input() templateRef!: TemplateRef<ComboboxItem>;
-  @Input() stateSlye!: Record<string, boolean>;
+  @Input()
+  public iconSlot: 'left' | 'right' = 'right';
+  @Input()
+  public templateRef!: TemplateRef<ComboboxItem>;
+  @Input()
+  public stateSlye!: Record<string, boolean>;
 
   constructor(element: ElementRef<HTMLElement>) {
     super(element);
@@ -96,7 +56,7 @@ export class ComboboxItem extends ComboboxItemBase implements OnInit {
     }
   }
 
-  canDisplayOn(side: 'left' | 'right'): boolean {
+  protected canDisplayOn(side: 'left' | 'right'): boolean {
     return this.iconSlot === side && this.selected;
   }
 }

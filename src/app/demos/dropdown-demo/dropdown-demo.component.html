@@ -16,18 +16,15 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button variant="secondary" (click)="toggleDropdown(0)">
+      <tw-button variant="secondary" (click)="myDropdownA.toggle()">
         Options
         <tw-icon source="heroicons" name="chevron-down" />
       </tw-button>
-      <tw-dropdown *ngIf="open(0)" (click)="toggleDropdown(0)"
-        class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
-        <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-          <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
-            variant="text">
-            {{ item }}
-          </tw-button>
-        </ng-container>
+      <tw-dropdown [opened]="true" #myDropdownA class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+        @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+        <tw-button variant="text"
+          class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item }}</tw-button>
+        }
       </tw-dropdown>
     </div>
   </div>
@@ -39,12 +36,11 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button variant="secondary" (click)="toggleDropdown(1)">
+      <tw-button variant="secondary" (click)="myDropdownB.toggle()">
         Options
         <tw-icon source="heroicons" name="chevron-down" />
       </tw-button>
-      <tw-dropdown *ngIf="open(1)" (click)="toggleDropdown(1)"
-        class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
+      <tw-dropdown [opened]="true" #myDropdownB class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
@@ -92,12 +88,11 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button variant="secondary" (click)="toggleDropdown(2)">
+      <tw-button variant="secondary" (click)="myDropdownC.toggle()">
         Options
         <tw-icon source="heroicons" name="chevron-down" />
       </tw-button>
-      <tw-dropdown *ngIf="open(2)" (click)="toggleDropdown(2)"
-        class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
+      <tw-dropdown [opened]="true" #myDropdownC class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
         <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
           <tw-button variant="text"
             class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
@@ -152,17 +147,15 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button [icon]="true" variant="text" (click)="toggleDropdown(3)">
+      <tw-button [icon]="true" variant="text" (click)="myDropdownD.toggle()">
         <tw-icon source="googlefonts" name="more-ver" />
       </tw-button>
-      <tw-dropdown *ngIf="open(3)" (click)="toggleDropdown(3)"
-        class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
-        <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-          <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
-            variant="text">
-            {{ item }}
-          </tw-button>
-        </ng-container>
+      <tw-dropdown [opened]="true" #myDropdownD class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+        @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+        <tw-button variant="text"
+          class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item
+          }}</tw-button>
+        }
       </tw-dropdown>
     </div>
   </div>
@@ -177,18 +170,17 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(4)">
+      <tw-button variant="secondary" class="rounded-3xl" (click)="myDropdownE.toggle()">
         Options
         <tw-icon source="heroicons" name="chevron-down" />
       </tw-button>
-      <tw-dropdown *ngIf="open(4)" (click)="toggleDropdown(4)"
+      <tw-dropdown [opened]="true" #myDropdownE
         class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
-        <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-          <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
-            variant="text">
-            {{ item }}
-          </tw-button>
-        </ng-container>
+        @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+        <tw-button variant="text"
+          class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item
+          }}</tw-button>
+        }
       </tw-dropdown>
     </div>
   </div>
@@ -200,11 +192,11 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(5)">
+      <tw-button variant="secondary" class="rounded-3xl" (click)="myDropdownF.toggle()">
         Options
         <tw-icon source="heroicons" name="chevron-down" />
       </tw-button>
-      <tw-dropdown *ngIf="open(5)" (click)="toggleDropdown(5)"
+      <tw-dropdown [opened]="true" #myDropdownF
         class="rounded-3xl shadow-lg divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
         <div class="flex flex-col p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
@@ -253,11 +245,11 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown(6)">
+      <tw-button variant="secondary" class="rounded-3xl" (click)="myDropdownG.toggle()">
         Options
         <tw-icon source="heroicons" name="chevron-down" />
       </tw-button>
-      <tw-dropdown *ngIf="open(6)" (click)="toggleDropdown(6)"
+      <tw-dropdown [opened]="true" #myDropdownG
         class="rounded-3xl shadow-lg *:justify-start divide-y divide-black/5 dark:divide-white/5 *:rounded-none *:shadow-none">
         <div class="flex flex-col p-2 *:p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
           <tw-button variant="text"
@@ -313,17 +305,16 @@
   <div
     class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
     <div class="relative">
-      <tw-button [icon]="true" variant="text" class="rounded-3xl" (click)="toggleDropdown(7)">
+      <tw-button [icon]="true" variant="text" class="rounded-3xl" (click)="myDropdownH.toggle()">
         <tw-icon source="googlefonts" name="more-ver" />
       </tw-button>
-      <tw-dropdown *ngIf="open(7)" (click)="toggleDropdown(7)"
+      <tw-dropdown [opened]="true" #myDropdownH
         class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
-        <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-          <tw-button variant="text"
-            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            {{ item }}
-          </tw-button>
-        </ng-container>
+        @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+        <tw-button variant="text"
+          class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item
+          }}</tw-button>
+        }
       </tw-dropdown>
     </div>
   </div>

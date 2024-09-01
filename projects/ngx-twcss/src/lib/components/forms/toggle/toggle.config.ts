@@ -1,6 +1,7 @@
 import { InjectionToken, Provider } from "@angular/core";
 import { ElementConfig } from "../../../core/types/element.config";
 import { mergeConfigs } from "../../../core/helpers/config.helper";
+import { provideAnimations } from "@angular/platform-browser/animations";
 
 /**
  * The configuration for the toggle container.
@@ -77,9 +78,12 @@ export const TOGGLE_CONFIG = new InjectionToken<ToggleConfig>("Toggle component 
  * @param config The custom config
  * @returns The configured provider
  */
-export const provideToggleConfig = (config?: Partial<ToggleConfig>): Provider => {
-  return {
-    provide: TOGGLE_CONFIG,
-    useValue: mergeConfigs(ToggleConfig, config)
-  }
+export const provideToggleConfig = (config?: Partial<ToggleConfig>): Provider[] => {
+  return [
+    provideAnimations(),
+    {
+      provide: TOGGLE_CONFIG,
+      useValue: mergeConfigs(ToggleConfig, config)
+    }
+  ]
 }

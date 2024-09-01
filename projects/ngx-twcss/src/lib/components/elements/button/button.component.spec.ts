@@ -1,25 +1,33 @@
-import { Button, IButton } from './button.component';
-import { ButtonConfig, ButtonSizeOptions, provideButtonConfig } from './button.config';
+import { ButtonComponent } from './button.component';
+import { BUTTON_CONFIG, ButtonSizeOptions, provideButtonConfig } from './button.config';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Button } from './button';
 
 describe('Button Component', () => {
-  let component: IButton;
-  let fixture: ComponentFixture<IButton>;
-  const primaryStyle = toClassNames(ButtonConfig.primary);
-  const secondaryStyle = toClassNames(ButtonConfig.secondary);
-  const tonalStyle = toClassNames(ButtonConfig.tonal);
+  let component: Button;
+  let fixture: ComponentFixture<Button>;
+  let primaryStyle: string = '';
+  let secondaryStyle: string = '';
+  let tonalStyle: string = '';
   const sizeOptions = ['sm', 'md', 'lg'];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Button],
+      imports: [ButtonComponent],
       providers: [
         provideButtonConfig(),
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Button);
+    TestBed.runInInjectionContext(()=> {
+      const config = TestBed.inject(BUTTON_CONFIG);
+      primaryStyle = toClassNames(config.primary);
+      secondaryStyle = toClassNames(config.secondary);
+      tonalStyle = toClassNames(config.tonal);
+    });
+
+    fixture = TestBed.createComponent(ButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

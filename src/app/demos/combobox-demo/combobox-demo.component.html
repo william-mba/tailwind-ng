@@ -15,8 +15,8 @@
   </tw-h4>
   <div [class]
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox #cb1 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)"
-      width="w-72">
+    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb1 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()"
+      (onToggle)="toggle($event)" width="w-72">
       @for (item of items; track item.id) {
       <tw-combobox-item [id]="item.id!" [value]="item.value!" (onSelect)="cb1.select($event)"
         [selected]="cb1.checkSelection(item.value!)" />
@@ -30,8 +30,8 @@
   </tw-h4>
   <div
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox #cb2 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)"
-      width="w-72">
+    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb2 label="Assigned to" (onChange)="filter($event)"
+      (onReset)="reset()" (onToggle)="toggle($event)" width="w-72">
       @for (item of items; track item.id) {
       <tw-combobox-item [value]="item.value!" (onSelect)="cb2.select($event)"
         [selected]="cb2.checkSelection(item.value!)" iconSlot="left" />
@@ -150,7 +150,9 @@
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td>
-            <app-code>select(item: IComboboxItem): void
+            <app-code class="hidden sm:table-cell">select(item: IComboboxItem): void</app-code>
+            <app-code class="sm:hidden"><span class="pr-2">select(item: IComboboxItem):</span>
+              <br> <span class="pl-2">void</span>
             </app-code>
           </td>
           <td>
@@ -161,7 +163,11 @@
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td>
-            <app-code>checkSelection(value: string): boolean </app-code>
+            <app-code class="hidden sm:table-cell">checkSelection(value: string): boolean </app-code>
+            <app-code class="sm:hidden">
+              <span class="pr-2">checkSelection(value: string):</span>
+              <br><span class="pl-2">boolean</span>
+            </app-code>
           </td>
           <td>
             <p class="font-sans">

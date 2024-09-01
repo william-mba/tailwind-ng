@@ -1,9 +1,7 @@
 import { InjectionToken, Provider } from "@angular/core";
 import { ElementConfig } from "../../../core/types/element.config";
 import { mergeConfigs } from "../../../core/helpers/config.helper";
-
-/** Dropdown config key */
-export const DropdownConfigKey = 'DropdownConfig';
+import { provideAnimations } from "@angular/platform-browser/animations";
 
 /** Dropdown config */
 export type DropdownConfig = Partial<ElementConfig>
@@ -43,10 +41,12 @@ export const DROPDOWN_CONFIG = new InjectionToken<DropdownConfig>('Dropdown conf
  * @param config The custom config
  * @returns The config provider
  */
-export const provideDropdownConfig = (config?: Partial<DropdownConfig>): Provider => {
-  return {
-    provide: DROPDOWN_CONFIG,
-    useValue: mergeConfigs(DropdownConfig, config)
-  }
+export const provideDropdownConfig = (config?: Partial<DropdownConfig>): Provider[] => {
+  return [
+    provideAnimations(),
+    {
+      provide: DROPDOWN_CONFIG,
+      useValue: mergeConfigs(DropdownConfig, config)
+    }]
 };
 

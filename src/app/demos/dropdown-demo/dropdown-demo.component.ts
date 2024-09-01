@@ -5,35 +5,24 @@ import { Component } from '@angular/core';
   templateUrl: './dropdown-demo.component.html'
 })
 export class DropdownDemoComponent {
-  states: Record<number, boolean> = {};
-
-  open(key: number) {
-    return this.states[key];
-  }
-
-  toggleDropdown(key: number) {
-    this.states[key] = !this.states[key];
-  }
   simple = `<div>
-  <tw-button variant="secondary" (click)="toggleDropdown()">
+  <tw-button variant="secondary" (click)="demoDropdown.toggle()">
     Options
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
-    <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-      <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-        {{ item }}
-      </tw-button>
-    </ng-container>
+  <tw-dropdown #demoDropdown class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+    @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+      <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item }}</tw-button>
+    }
   </tw-dropdown>
 </div>`;
 
   withDividers = `<div>
-  <tw-button variant="secondary" (click)="toggleDropdown()">
+  <tw-button variant="secondary" (click)="demoDropdown.toggle()">
     Options
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
+  <tw-dropdown #demoDropdown class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
     <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
       <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
         Edit
@@ -67,11 +56,11 @@ export class DropdownDemoComponent {
 </div>`;
 
   withIcons = `<div>
-  <tw-button variant="secondary" (click)="toggleDropdown()">
+  <tw-button variant="secondary" (click)="demoDropdown.toggle()">
     Options
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
+  <tw-dropdown #demoDropdown class="shadow-lg divide-y divide-black/5 dark:divide-white/5">
     <div class="flex flex-col py-1 *:justify-start *:rounded-none *:shadow-none">
       <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
         <tw-icon source="heroicons" name="pencil-square"/>
@@ -112,38 +101,34 @@ export class DropdownDemoComponent {
 </div>`;
 
   withMinimalMenuIcon = `<div>
-  <tw-button [icon]="true" variant="text" (click)="toggleDropdown()">
+  <tw-button [icon]="true" variant="text" (click)="demoDropdown.toggle()">
     <tw-icon source="googlefonts" name="more-ver" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
-    <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-      <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5" variant="text">
-        {{ item }}
-      </tw-button>
-    </ng-container>
+  <tw-dropdown #demoDropdown class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+    @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+      <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item }}</tw-button>
+    }
   </tw-dropdown>
 </div>`;
 
   roundedSimple = `<div>
-  <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown()">
+  <tw-button variant="secondary" class="rounded-3xl" (click)="demoDropdown.toggle()">
     Options
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
-    <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-      <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5" variant="text">
-        {{ item }}
-      </tw-button>
-    </ng-container>
+  <tw-dropdown #demoDropdown class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
+    @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+      <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item }}</tw-button>
+    }
   </tw-dropdown>
 </div>`;
 
   roundedWithDividers = `<div>
-  <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown()">
+  <tw-button variant="secondary" class="rounded-3xl" (click)="demoDropdown.toggle()">
     Options
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="rounded-3xl shadow-lg divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
+  <tw-dropdown #demoDropdown class="rounded-3xl shadow-lg divide-y divide-black/5 dark:divide-white/5 *:justify-start *:rounded-none *:shadow-none">
     <div class="flex flex-col p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
       <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
         Edit
@@ -177,11 +162,11 @@ export class DropdownDemoComponent {
 </div>`;
 
   roundedWithIcons = `<div>
-  <tw-button variant="secondary" class="rounded-3xl" (click)="toggleDropdown()">
+  <tw-button variant="secondary" class="rounded-3xl" (click)="demoDropdown.toggle()">
     Options
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="rounded-3xl shadow-lg *:justify-start divide-y divide-black/5 dark:divide-white/5 *:rounded-none *:shadow-none">
+  <tw-dropdown #demoDropdown class="rounded-3xl shadow-lg *:justify-start divide-y divide-black/5 dark:divide-white/5 *:rounded-none *:shadow-none">
     <div class="flex flex-col p-2 *:p-2 py-1 *:justify-start *:rounded-full *:shadow-none">
       <tw-button variant="text"
         class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
@@ -229,15 +214,13 @@ export class DropdownDemoComponent {
 </div>`;
 
   roundedWithMinimalMenuIcon = `<div>
-  <tw-button [icon]="true" variant="text" class="rounded-3xl" (click)="toggleDropdown()">
+  <tw-button [icon]="true" variant="text" class="rounded-3xl" (click)="demoDropdown.toggle()">
     <tw-icon source="googlefonts" name="more-ver" />
   </tw-button>
-  <tw-dropdown [open]="open" (click)="toggleDropdown()" class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
-    <ng-container *ngFor="let item of ['Account settings', 'Support', 'License', 'Sign out']">
-      <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-        {{ item }}
-      </tw-button>
-    </ng-container>
+  <tw-dropdown #demoDropdown class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
+    @for (item of ['Account settings', 'Support', 'License', 'Sign out']; track $index) {
+      <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item }}</tw-button>
+    }
   </tw-dropdown>
 </div>`;
 

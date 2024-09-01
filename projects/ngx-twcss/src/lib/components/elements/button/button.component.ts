@@ -1,15 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
-import { BUTTON_CONFIG, ButtonConfig, ButtonIconSizeConfig, ButtonSizeOptions, ButtonVariant } from './button.config';
-
-export interface IButton {
-  class: string;
-  fab: boolean;
-  icon: boolean;
-  variant: ButtonVariant;
-  match: 'first' | 'last';
-  size: keyof ButtonSizeOptions;
-}
+import { BUTTON_CONFIG, ButtonConfig, ButtonSizeOptions, ButtonVariant } from './button.config';
+import { Button } from './button';
 
 /** Button element */
 @Component({
@@ -20,9 +12,9 @@ export interface IButton {
     '[class]': 'class'
   }
 })
-export class Button implements OnInit, IButton {
-  private config: ButtonConfig = inject(BUTTON_CONFIG);
-  private _class!: string;
+export class ButtonComponent implements OnInit, Button {
+  private readonly config: ButtonConfig = inject(BUTTON_CONFIG);
+
   @Input() class!: string;
   @Input() fab: boolean = false;
   @Input() icon: boolean = false;
@@ -39,16 +31,15 @@ export class Button implements OnInit, IButton {
     if (this.fab) {
       this.class = mergeClassNames('shadow-lg shadow-black/30', this.class);
     }
-    this._class = this.class;
 
     this.setConfig(toClassNames({ ...this.config[this.variant], ...this.config.size[this.size] }));
   }
 
   private setConfig(value: string): void {
     if (this.icon) {
-      this._class = mergeClassNames(this._class, toClassNames(ButtonIconSizeConfig[this.size]!));
+      this.class = mergeClassNames(this.class, toClassNames(this.config.iconSize[this.size]!));
     }
-    this.class = mergeClassNames(value, this._class, this.match);
+    this.class = mergeClassNames(value, this.class, this.match);
   }
 }
 

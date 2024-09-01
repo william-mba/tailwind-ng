@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ComboboxItem, IComboboxItem } from './combobox-item.component';
+import { ComboboxItemComponent } from './combobox-item.component';
 import { provideComboboxItemConfig } from './combobox-item.config';
+import { ComboboxItem } from './combobox-item';
 
 describe('Combobox Item Component', () => {
-  let component: IComboboxItem;
-  let fixture: ComponentFixture<IComboboxItem>;
+  let component: ComboboxItem;
+  let fixture: ComponentFixture<ComboboxItem>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ComboboxItem],
+      imports: [ComboboxItemComponent],
       providers: [provideComboboxItemConfig()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ComboboxItem);
+    fixture = TestBed.createComponent(ComboboxItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

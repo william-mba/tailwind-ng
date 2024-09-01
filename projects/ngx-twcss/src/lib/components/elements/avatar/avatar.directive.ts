@@ -1,15 +1,7 @@
 import { Directive, inject, Input, OnInit } from '@angular/core';
 import { toClassNames, mergeClassNames } from '../../../core/helpers/config.helper';
 import { AVATAR_CONFIG, AvatarConfig, AvatarSizeOptions } from './avatar.config';
-
-/**
- * Avatar interface
- */
-export interface IAvatar {
-  class: string;
-  size: keyof AvatarSizeOptions;
-  setConfig(config: Partial<AvatarConfig>): void;
-}
+import { Avatar } from './avatar';
 
 /**Avatar element*/
 @Directive({
@@ -19,10 +11,11 @@ export interface IAvatar {
     '[class]': 'class'
   }
 })
-export class Avatar implements OnInit, IAvatar {
+export class AvatarDirective implements OnInit, Avatar {
+  private readonly config: AvatarConfig = inject(AVATAR_CONFIG);
+  
   @Input() class!: string;
   @Input() size: keyof AvatarSizeOptions = 'md';
-  private config: AvatarConfig = inject(AVATAR_CONFIG);
 
   ngOnInit(): void {
     this.setConfig(this.config);
