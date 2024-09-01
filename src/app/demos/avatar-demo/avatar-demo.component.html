@@ -9,6 +9,7 @@
     individually or grouped
     in stacks.
   </p>
+  <a class="mt-6 text-xs inline-block hover:underline" href="avatars#api">Go to API reference</a>
   <tw-h4 class="mt-16 font-medium">
     Avatar group stacked bottom to top
   </tw-h4>
@@ -314,4 +315,74 @@
     </div>
   </div>
   <demo-code-snippet [code]="avatarWithText"></demo-code-snippet>
+
+  <tw-h3 class="mt-20" id="api">
+    API reference
+  </tw-h3>
+  <div class="grid gap-4">
+    <p>
+      Import: <app-code>{{ "import { AvatarDirective } from 'ngx-twcss';" }}</app-code>
+    </p>
+    <p>
+      Selector: <app-code>tw-avatar, [tw-avatar]</app-code>
+    </p>
+    <p>
+      Interface: <app-code>Avatar</app-code>
+    </p>
+  </div>
+  <div class="grid border m-6 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="w-48">Properties</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} class: string</app-code></td>
+          <td>
+            <div class="font-sans">
+              The style of the avatar.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>class</app-code> attribute</li>
+                <li>- DI using <app-code>provideAvatarConfig()</app-code> function</li>
+                <li>- Component instance using <app-code>setConfig</app-code> method</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>
+              <span class="pr-2">{{'@Input()'}} size:</span><br>
+              <span class="pl-2">'xs' | 'sm' | 'md' | 'lg' | 'xl'</span>
+            </app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              The size of the avatar. <br> Default is <app-code>'md'</app-code>
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code class="hidden sm:table-cell">setConfig(config: Partial&#60;AvatarConfig&#62;): void</app-code>
+            <app-code class="sm:hidden">
+              <span class="pr-2">setConfig(
+                <br> <span class="pl-6">config: Partial&#60;AvatarConfig&#62;</span>
+                <br> <span class="pl-2">): void</span>
+              </span>
+            </app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              Set the avatar style configuration.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

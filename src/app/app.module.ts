@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BadgeComponent, BadgeActionDirective, ButtonGroupComponent, DropdownComponent, ButtonComponent, AvatarDirective, ModalDialogModule, ComboboxModule, IconDirective, Typography, ToggleComponent, provideButtonConfig, provideDropdownConfig, provideAvatarConfig, provideBadgeConfig, provideButtonGroupConfig, provideComboboxConfig, provideModalDialogConfig, provideIconConfig } from 'ngx-twcss';
+import { BadgeComponent, BadgeActionDirective, ButtonGroupComponent, DropdownComponent, ButtonComponent, AvatarDirective, ModalDialogModule, ComboboxModule, IconDirective, TypographyModule, ToggleComponent, provideButtonConfig, provideDropdownConfig, provideAvatarConfig, provideBadgeConfig, provideButtonGroupConfig, provideComboboxConfig, provideModalDialogConfig, provideIconConfig, provideToggleConfig } from 'ngx-twcss';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -60,7 +60,7 @@ import { CodeComponent } from './code/code.component';
     ModalDialogModule,
     ComboboxModule,
     IconDirective,
-    Typography,
+    TypographyModule,
     ToggleComponent
   ],
   bootstrap: [AppComponent],
@@ -75,6 +75,7 @@ import { CodeComponent } from './code/code.component';
     provideComboboxConfig(),
     provideDropdownConfig(),
     provideIconConfig(),
+    provideToggleConfig(),
     provideModalDialogConfig(),
   ],
 })

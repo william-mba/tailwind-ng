@@ -9,7 +9,7 @@
     confirmation prompts.
   </p>
   <p class="text-xs my-2 font-semibold">NOTE: Click on the cancel button to stop the dialog reopening when needed.</p>
-
+  <a class="mt-6 text-xs inline-block hover:underline" href="modal-dialogs#api">Go to API reference</a>
   <tw-h4 class="mt-16 font-medium">
     Simple notification dialog
   </tw-h4>
@@ -567,4 +567,98 @@
     </tw-dialog>
   </div>
   <demo-code-snippet [code]="roundedDialogScrollable"></demo-code-snippet>
+
+  <tw-h3 class="mt-20" id="api">
+    API reference
+  </tw-h3>
+  <div class="grid gap-4">
+    <p>
+      Import: <app-code>{{ "import { ModalDialogModule } from 'ngx-twcss';" }}</app-code>
+    </p>
+    <p>
+      Selector: <app-code>tw-dialog</app-code>
+    </p>
+    <p>
+      Interface: <app-code>ModalDialog</app-code>
+    </p>
+  </div>
+  <div class="grid border m-6 mb-36 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="w-48">Properties</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} opened: boolean</app-code></td>
+          <td>
+            <p class="font-sans">
+              The state of the modal dialog.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} class: string</app-code></td>
+          <td>
+            <div class="font-sans">
+              The style of the modal dialog.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>class</app-code> attribute</li>
+                <li>- DI using <app-code>provideModalDialogConfig()</app-code> function</li>
+                <li>- Component instance using <app-code>setConfig</app-code> method</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} scrim: string</app-code></td>
+          <td>
+            <div class="font-sans">
+              The style of the modal scrim.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>[scrim]</app-code> attribute</li>
+                <li>- DI using <app-code>provideModalDialogConfig()</app-code> function</li>
+                <li>- Component instance using <app-code>setConfig</app-code> method</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} backdrop: string</app-code></td>
+          <td>
+            <div class="font-sans">
+              The style of the modal backdrop.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>[backdrop]</app-code> attribute</li>
+                <li>- DI using <app-code>provideModalDialogConfig()</app-code> function</li>
+                <li>- Component instance using <app-code>setConfig</app-code> method</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code class="hidden sm:table-cell">setConfig(config: Partial&#60;ModalDialogConfig&#62;):
+              void</app-code>
+            <app-code class="sm:hidden">
+              <span class="pr-2">setConfig(
+                <br> <span class="pl-6">config: Partial&#60;ModalDialogConfig&#62;</span>
+                <br> <span class="pl-2">): void</span>
+              </span>
+            </app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              Set the modal dialog style configuration.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

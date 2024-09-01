@@ -4,6 +4,7 @@
   <p>
     Use these Tailwind CSS typography components in your Angular application to make writing legible and beautiful.
   </p>
+  <a class="mt-6 text-xs inline-block hover:underline" href="typography#api">Go to API reference</a>
   <tw-h3 class="mt-12">Usage</tw-h3>
   <div
     class="grid sm:flex border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
@@ -31,4 +32,39 @@
     </div>
   </div>
   <demo-code-snippet [code]="codeSnippet"></demo-code-snippet>
+  <tw-h3 class="mt-20" id="api">
+    API reference
+  </tw-h3>
+  <div class="grid gap-4">
+    <p>
+      Import: <app-code>{{ "import { TypographyModule } from 'ngx-twcss';" }}</app-code>
+    </p>
+    <p>
+      Selector: <app-code>tw-h1, tw-h2, tw-h3, tw-h4</app-code>
+    </p>
+  </div>
+  <div class="grid border m-6 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="w-48">Properties</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} class: string</app-code></td>
+          <td>
+            <div class="font-sans">
+              The style of the avatar.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>class</app-code> attribute</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

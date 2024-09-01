@@ -9,16 +9,6 @@ export class ButtonGroupDemoComponent {
   checkBoxId01 = crypto.randomUUID();
   checkBoxId02 = crypto.randomUUID();
 
-  states: Record<number, boolean> = {}
-
-  open(key: number) {
-    return this.states[key];
-  }
-
-  toggleDropdown(key: number) {
-    this.states[key] = !this.states[key];
-  }
-
   simpleButtonGroups = `<tw-button-group>
   <tw-button variant="secondary" class="rounded-l-md">Days</tw-button>
   <tw-button variant="secondary" class="rounded-none">Months</tw-button>
@@ -39,16 +29,13 @@ export class ButtonGroupDemoComponent {
     Save changes
   </tw-button>
   <div>
-    <tw-button class="rounded-r-md h-full" variant="secondary" [icon]="true" (click)="toggleDropdown()">
+    <tw-button class="rounded-r-md h-full" variant="secondary" [icon]="true" (click)="myDemoDropdown.toggle()">
       <tw-icon source="heroicons" name="chevron-down" />
     </tw-button>
-    <tw-dropdown [open]="open" (click)="toggleDropdown()" class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
-      <ng-container *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
-        <tw-button class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5"
-          variant="text">
-          {{ item }}
-        </tw-button>
-      </ng-container>
+    <tw-dropdown #myDemoDropdown class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
+      @for (item of ['Save as draft', 'Save and publish', 'Save and close']; track $index) {
+        <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item }}</tw-button>
+      }
     </tw-dropdown>
   </div>
 </tw-button-group>`;
@@ -94,15 +81,13 @@ export class ButtonGroupDemoComponent {
   roundedWithDropdown = `<tw-button-group>
   <tw-button variant="secondary" class="rounded-l-full">Save changes</tw-button>
   <div>
-    <tw-button variant="secondary" class="rounded-r-full h-full pl-3" (click)="toggleDropdown()">
+    <tw-button variant="secondary" class="rounded-r-full h-full pl-3" (click)="myDemoDropdown.toggle()">
       <tw-icon source="heroicons" name="chevron-down" />
     </tw-button>
-    <tw-dropdown [open]="open" (click)="toggleDropdown()" class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
-      <ng-container *ngFor="let item of ['Save as draft', 'Save and publish', 'Save and close']">
-        <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-          {{ item }}
-        </tw-button>
-      </ng-container>
+    <tw-dropdown #myDemoDropdown class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
+      @for (item of ['Save as draft', 'Save and publish', 'Save and close']; track $index) {
+        <tw-button variant="text" class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">{{ item }}</tw-button>
+      }
     </tw-dropdown>
   </div>
 </tw-button-group>`;

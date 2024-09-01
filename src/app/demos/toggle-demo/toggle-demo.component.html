@@ -133,13 +133,13 @@
   </tw-h3>
   <div class="grid gap-4">
     <p>
-      Import: <app-code>{{ "import { Toggle } from 'ngx-twcss';" }}</app-code>
+      Import: <app-code>{{ "import { ToggleComponent } from 'ngx-twcss';" }}</app-code>
     </p>
     <p>
       Selector: <app-code>tw-toggle</app-code>
     </p>
     <p>
-      Interface: <app-code>IToggle</app-code>
+      Interface: <app-code>Toggle</app-code>
     </p>
   </div>
   <div class="grid border m-6 mb-36 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
@@ -154,29 +154,29 @@
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td><app-code>{{'@Input()'}} class: string</app-code></td>
           <td>
-            <p class="font-sans">
-              Utility classes that determine the toggle container style.
-              <tw-icon size="sm" source="heroicons" name="information-circle"
-                class="peer text-black/40 dark:text-white/40 cursor-help" />
-              <br>
-              <span class="text-sm font-light hidden peer-hover:inline-block">
-                Use this property to remove or add style in the component default one.
-              </span>
-            </p>
+            <div class="font-sans">
+              The style of the toggle.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>class</app-code> attribute</li>
+                <li>- DI using <app-code>provideToggleConfig()</app-code> function</li>
+                <li>- Component instance using <app-code>setConfig</app-code> method</li>
+              </ul>
+            </div>
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td><app-code>{{'@Input()'}} slider: string</app-code></td>
           <td>
-            <p class="font-sans">
-              Utility classes that determine the slider style.
-              <tw-icon size="sm" source="heroicons" name="information-circle"
-                class="peer text-black/40 dark:text-white/40 cursor-help" />
-              <br>
-              <span class="text-sm font-light hidden peer-hover:inline-block">
-                Use this property to remove or add style in the component default one.
-              </span>
-            </p>
+            <div class="font-sans">
+              The style of the slider.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>[slider]</app-code> attribute</li>
+                <li>- DI using <app-code>provideToggleConfig()</app-code> function</li>
+                <li>- Component instance using <app-code>setConfig</app-code> method</li>
+              </ul>
+            </div>
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
@@ -188,7 +188,12 @@
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-          <td><app-code>{{'@Input()'}} match: <br> 'first' | 'last' | 'exact'</app-code></td>
+          <td>
+            <app-code>
+              <span class="pr-2">{{'@Input()'}} match:</span>
+              <br> <span class="pl-2">'first' | 'last' | 'exact'</span>
+            </app-code>
+          </td>
           <td>
             <p class="font-sans">
               The matching strategy to be use to resolve the class name.
@@ -201,7 +206,7 @@
           <td><app-code>toggle(): void</app-code></td>
           <td>
             <p class="font-sans">
-              Toggle the state of the toggle component.
+              Toggles the state of the toggle component.
             </p>
           </td>
         </tr>

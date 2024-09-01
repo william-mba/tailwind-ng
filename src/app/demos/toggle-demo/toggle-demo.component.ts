@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { provideToggleConfig, ToggleConfig } from 'ngx-twcss';
-
-const myToggleConfig: Partial<ToggleConfig> = {}
 
 @Component({
   selector: 'app-toggle-demo',
-  templateUrl: './toggle-demo.component.html',
-  providers: [
-    provideToggleConfig(myToggleConfig)
-  ]
+  templateUrl: './toggle-demo.component.html'
 })
 export class ToggleDemoComponent {
 
