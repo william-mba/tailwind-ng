@@ -45,7 +45,7 @@ module.exports = {
   ]
 ```
 
-### 3. Imports ngx-twcss components
+### 3. Import ngx-twcss components
 
 If your using ``standalone`` components, import the components you want from ``ngx-twcss`` in your *.component.ts file
 
