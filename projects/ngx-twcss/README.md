@@ -1,6 +1,7 @@
+
 <div align="center">
   <a href="https://ngx-twcss.williammba.com/">
-    <img src="https://github.com/William-Mba/ngx-twcss/raw/next/src/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
+    <img src="./src/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
     <h1>ngx-twcss</h1>
   </a>
 </div>
@@ -14,12 +15,13 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 
 ## Resources
 
-- [Roadmap](https://github.com/William-Mba/ngx-twcss/blob/main/docs/roadmap.md)
-- [Components docs](https://github.com/William-Mba/ngx-twcss/tree/main/docs/components)
+- [Roadmap](https://ngx-twcss.williammba.com/roadmap)
 - [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss)
+- [Components docs](https://ngx-twcss.williammba.com/)
+
 ---
 
-## Quick start
+## Getting started in 3 simple steps
 
 ### 0. Prerequisites
 
@@ -43,37 +45,54 @@ module.exports = {
   ]
 ```
 
-### 3. Enable the animations module
+### 3. Imports ngx-twcss components
 
-Import ``provideAnimations`` from ``@angular/platform-browser/animations`` and add it to the providers list in the ``bootstrapApplication`` function call.
-
-```ts
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideAnimations(),
-  ]
-});
-```
-
-For ``NgModule`` based applications import ``BrowserAnimationsModule``, which introduces the animation capabilities into your Angular root application module.
+If your using ``standalone`` components, import the components you want from ``ngx-twcss`` in your *.component.ts file
 
 ```ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-@NgModule({
+@Component({
+  standalone: true,
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule
+    ...
+    // Some components
+    ButtonComponent,
+    DropdownComponent,
+    BadgeComponent,
   ],
-  declarations: [ ],
-  bootstrap: [ ]
+  ...
 })
-export class AppModule { }
+export class DemoComponent {
+  ...
+}
 ```
 
-### 4. Install forms plugin (if you will use forms elements)
+If you are using ``NgModule`` based components, import the components you want from ``ngx-twcss`` in your *.module.ts file
+
+  ```ts
+  @NgModule({
+    declarations: [
+      ...
+    ],
+    imports: [
+      ...
+      // Some components
+      ModalDialogModule,
+      ComboboxModule,
+      TypographyModule
+    ],
+    bootstrap: [DemoAppComponent]
+  })
+  export class DemoAppModule { }
+  ```
+
+🎉Congratulations! You have completed your setup🚀 </br>
+[Visit our website for more details and sample usages](https://ngx-twcss.williammba.com)
+
+---
+
+#### NOTE
+
+If you imported our forms components, install Tailwind CSS forms plugin.
 
 Install the forms plugin from npm
 
@@ -93,63 +112,6 @@ module.exports = {
 }
 ```
 
-### 5. Import Ngx-twcss components
+## Give a star ⭐️
 
-For ``standalone`` components, import components in your *.component.ts file
-
-```ts
-@Component({
-  standalone: true,
-  imports: [
-    ...
-    // Some components
-    Button,
-    Icon,
-    ButtonGroup,
-    Dropdown,
-    Badge,
-    Avatar,
-    ModalDialog
-  ],
-  ...
-})
-export class ExampleComponent {
-  ...
-}
-```
-
-For ``NgModule`` based components, import components in your *.module.ts file
-
-  ```ts
-  @NgModule({
-    declarations: [
-      ...
-    ],
-    imports: [
-      ...
-      // Some components
-      Button,
-      Icon,
-      ButtonGroup,
-      Dropdown,
-      Badge,
-      Avatar,
-      ModalDialog
-    ],
-    bootstrap: [AppComponent]
-  })
-  export class AppModule { }
-  ```
-
-## Usage samples
-
-```html
-<tw-button>Back</tw-button>
-<tw-button>Complete</tw-button>
-```
-
-For more usage samples, please visit the github repo.
-
-## Give a Star ⭐️
-
-Thanks to star this library to help increase it reach if you find it helpful or use it in your project.
+Feel free to give a star to this library if you like it.

@@ -48,7 +48,6 @@ import { CodeComponent } from './code/code.component';
     Highlight,
     HighlightAuto,
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ButtonComponent,
