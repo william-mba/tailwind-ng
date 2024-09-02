@@ -4,20 +4,19 @@
     Comboboxes
   </tw-h2>
   <p class="text-pretty">
-    Use these combobox components to provide a combination of input fields and dropdown menus for things like autocomplete search
-    bars, country selection, and filtering options.
+    Use these combobox components to provide a combination of input fields and dropdown menus for things like
+    autocomplete search bars, country selection, and filtering options.
   </p>
   <a class="mt-6 text-xs inline-block hover:underline" href="comboboxes#api">Go to API reference</a>
   <tw-h4 class="mt-16 font-medium">
     Simple
   </tw-h4>
-  <div [class]
+  <div
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb1 label="Assigned to" (onChange)="filter($event)"
-      (onReset)="reset()" (onToggle)="toggle($event)" width="w-72">
-      @for (item of items; track item.id) {
-      <tw-combobox-item [id]="item.id!" [value]="item.value!" (onSelect)="cb1.select($event)"
-        [selected]="cb1.checkSelection(item.value!)" />
+    <tw-combobox #cb1 [value]="value1" [opened]="true" (onChange)="filter(1, $event)" (onReset)="reset(1)"
+      (onToggle)="toggle(1, $event)" label="Assigned to" width="w-72">
+      @for (item of data[1].current; track item.value) {
+      <tw-combobox-item [id]="item.id!" [value]="item.value!" [combobox]="cb1" />
       }
     </tw-combobox>
   </div>
@@ -28,11 +27,10 @@
   </tw-h4>
   <div
     class="grid sm:flex border items-start justify-center mx-auto m-6 mb-0 p-9 py-16 rounded-xl bg-white dark:bg-[#1E1E1E] h-[500px]">
-    <tw-combobox [opened]="true" [inputValue]="items[2].value!" #cb2 label="Assigned to" (onChange)="filter($event)"
-      (onReset)="reset()" (onToggle)="toggle($event)" width="w-72">
-      @for (item of items; track item.id) {
-      <tw-combobox-item [value]="item.value!" (onSelect)="cb2.select($event)"
-        [selected]="cb2.checkSelection(item.value!)" iconSlot="left" />
+    <tw-combobox #cb2 [value]="value2" [opened]="true" (onChange)="filter(2, $event)" (onReset)="reset(2)"
+      (onToggle)="toggle(2, $event)" label="Assigned to" width="w-72">
+      @for (item of data[2].current; track item.value) {
+      <tw-combobox-item [id]="item.id!" [value]="item.value!" [combobox]="cb2" iconSlot="left" />
       }
     </tw-combobox>
   </div>
@@ -71,10 +69,10 @@
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-          <td><app-code>{{'@Input()'}} width: <br> 'w-64' | 'w-72' | 'w-80' | 'w-96'</app-code></td>
+          <td><app-code>{{'@Input()'}} value: string</app-code></td>
           <td>
             <p class="font-sans">
-              The combobox width. Default is <app-code>'w-72'</app-code>
+              The combobox input value.
             </p>
           </td>
         </tr>
@@ -87,22 +85,6 @@
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-          <td><app-code>{{'@Input()'}} inputMinLength: number</app-code></td>
-          <td>
-            <p class="font-sans">
-              The minimum length of the input value to trigger the filter. <br> Default is <app-code>2</app-code>
-            </p>
-          </td>
-        </tr>
-        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-          <td><app-code>{{'@Input()'}} inputValue: string</app-code></td>
-          <td>
-            <p class="font-sans">
-              The combobox input value.
-            </p>
-          </td>
-        </tr>
-        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td><app-code>{{'@Input()'}} inputClass: string</app-code></td>
           <td>
             <p class="font-sans">
@@ -111,14 +93,31 @@
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} inputMinLength: number</app-code></td>
           <td>
-            <app-code><span class="pr-2">{{'@Output()'}} onChange:</span><br>
-              <span class="pl-2">EventEmitter&#60;string&#62;</span>
+            <p class="font-sans">
+              The minimum length of the input value to trigger the filter. <br> Default is <app-code>2</app-code>
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} width: <br> 'w-64' | 'w-72' | 'w-80' | 'w-96'</app-code></td>
+          <td>
+            <p class="font-sans">
+              The combobox width. Default is <app-code>'w-72'</app-code>
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code><span class="pr-2">{{'@Output()'}} onToggle:</span><br>
+              <span class="pl-2">EventEmitter&#60;boolean&#62;</span>
             </app-code>
           </td>
           <td>
             <p class="font-sans">
-              Event emitted when the combobox input value changes.
+              Event emitted when the combobox is toggled. <br>
+              <span class="text-sm">Emits the state of the combobox.</span>
             </p>
           </td>
         </tr>
@@ -130,7 +129,8 @@
           </td>
           <td>
             <p class="font-sans">
-              Event emitted when the combobox input value changes.
+              Event emitted when the combobox input value changes. <br>
+              <span class="text-sm">Only emits the typed value. Don't triggered on select().</span>
             </p>
           </td>
         </tr>
@@ -148,8 +148,28 @@
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td>
-            <app-code class="hidden sm:table-cell">select(item: IComboboxItem): void</app-code>
-            <app-code class="sm:hidden"><span class="pr-2">select(item: IComboboxItem):</span>
+            <app-code class="hidden sm:table-cell">open(): void</app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              Opens the combobox.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code class="hidden sm:table-cell">close(): void</app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              Closes the combobox.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code class="hidden sm:table-cell">select(item: ComboboxItem): void</app-code>
+            <app-code class="sm:hidden"><span class="pr-2">select(item: ComboboxItem):</span>
               <br> <span class="pl-2">void</span>
             </app-code>
           </td>
@@ -161,15 +181,29 @@
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td>
-            <app-code class="hidden sm:table-cell">checkSelection(value: string): boolean </app-code>
+            <app-code class="hidden sm:table-cell">isSelected(item: ComboboxItem): boolean </app-code>
             <app-code class="sm:hidden">
-              <span class="pr-2">checkSelection(value: string):</span>
+              <span class="pr-2">isSelected(item: ComboboxItem):</span>
               <br><span class="pl-2">boolean</span>
             </app-code>
           </td>
           <td>
             <p class="font-sans">
               Checks if the combobox item is selected.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code class="hidden sm:table-cell">scrollIntoView(item: ComboboxItem): void</app-code>
+            <app-code class="sm:hidden">
+              <span class="pr-2">scrollIntoView(item: ComboboxItem):</span>
+              <br><span class="pl-2">void</span>
+            </app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              Scrolls the selected combobox item into view.
             </p>
           </td>
         </tr>
@@ -227,30 +261,30 @@
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-          <td><app-code>select(): void</app-code></td>
+          <td><app-code>{{'@Input()'}} combobox: Combobox</app-code></td>
           <td>
             <p class="font-sans">
-              Selects the combobox item on click.
-            </p>
-          </td>
-        </tr>
-        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-          <td><app-code>scrollIntoView(): void</app-code></td>
-          <td>
-            <p class="font-sans">
-              Scrolls the combobox item into view.
+              The combobox reference.
             </p>
           </td>
         </tr>
         <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
           <td>
             <app-code><span class="pr-2">{{'@Output()'}} onSelect: </span><br>
-              <span class="pl-2">EventEmitter&#60;IComboboxItem&#62;</span>
+              <span class="pl-2">EventEmitter&#60;ComboboxItem&#62;</span>
             </app-code>
           </td>
           <td>
             <p class="font-sans">
               Event emitted when the combobox item is selected.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>select(): void</app-code></td>
+          <td>
+            <p class="font-sans">
+              Selects the combobox item on click.
             </p>
           </td>
         </tr>

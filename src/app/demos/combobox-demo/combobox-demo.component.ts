@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { Combobox, ComboboxItem } from 'ngx-twcss';
+import { Component } from '@angular/core';
+import { ComboboxItem } from 'ngx-twcss';
 
 @Component({
   selector: 'app-combobox-demo',
@@ -20,41 +20,44 @@ export class ComboboxDemoComponent {
     { id: '11', value: 'Kristin Watson' },
     { id: '12', value: 'Emma Dorsey' }
   ];
-  simple = `<tw-combobox #cb1 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)" width="w-72">
+  simple = `<tw-combobox #combobox [value]="value" [opened]="true" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)" label="Assigned to" width="w-72">
   @for (item of items; track item.id) {
-    <tw-combobox-item [id]="item.id" [value]="item.value" (onSelect)="cb1.select($event)" [selected]="cb1.checkSelection(item.value)" />
-  }
-</tw-combobox>`;
-  withCheckOnLeft = `<tw-combobox #cb2 label="Assigned to" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)" width="w-72">
-  @for (item of items; track item.id) {
-    <tw-combobox-item [value]="item.value" (onSelect)="cb2.select($event)" [selected]="cb2.checkSelection(item.value)" iconSlot="left" />
+    <tw-combobox-item [id]="item.id" [value]="item.value" [combobox]="combobox" />
   }
 </tw-combobox>`;
 
-  private _items = this.items;
-  protected inputValue: string = '';
-  @ViewChild('combobox', { static: true }) combobox!: Combobox;
+  withCheckOnLeft = `<tw-combobox #combobox [value]="value" [opened]="true" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)" label="Assigned to" width="w-72">
+  @for (item of items; track item.id) {
+    <tw-combobox-item [id]="item.id" [value]="item.value" [combobox]="combobox" iconSlot="left" />
+  }
+</tw-combobox>`;
 
-  select(item: ComboboxItem): void {
-    this.combobox.select(item);
+  data: { [key: number]: { initial: Partial<ComboboxItem>[], current: Partial<ComboboxItem>[] } } = {
+    1: { initial: this.items, current: this.items },
+    2: { initial: this.items, current: this.items },
+  };
+
+  protected value1: string = this.data[1].initial[2].value!;
+  protected value2: string = this.data[2].initial[2].value!;
+
+  reset(id: number): void {
+    this.data[id].current = this.data[id].initial;
   }
 
-  reset(): void {
-    this.items = this._items;
-  }
-
-  toggle(opened: boolean): void {
-    if (opened) {
-      this.reset();
+  toggle(id: number, opened: boolean): void {
+    if (!opened) {
+      setTimeout(() => {
+        this.reset(id);
+      }, 100);
     }
   }
 
-  filter(value: string): void {
-    this.items = this._items.filter((item) => {
+  filter(id: number, value: string): void {
+    this.data[id].current = this.data[id].initial.filter((item) => {
       return item.value?.includes(value) || item.value?.startsWith(value);
     });
-    if (this.items.length === 0) {
-      this.items = this._items;
+    if (this.data[id].current.length === 0) {
+      this.reset(id);
     }
   }
 }
