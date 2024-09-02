@@ -3,7 +3,7 @@ import { Component, ElementRef, inject, Input, OnInit, TemplateRef } from '@angu
 import { IconDirective } from '../../../elements/icon/icon.directive';
 import { COMBOBOX_ITEM_CONFIG, ComboboxItemConfig } from './combobox-item.config';
 import { mergeClassNames, toClassNames } from '../../../../core/helpers/config.helper';
-import { BaseComboboxItemComponent } from './combobox-item.base';
+import { AbstractComboboxItem } from './combobox-item.base';
 import { ComboboxItem } from './combobox-item';
 
 @Component({
@@ -23,20 +23,17 @@ import { ComboboxItem } from './combobox-item';
   `,
   providers: [
     {
-      provide: BaseComboboxItemComponent,
+      provide: AbstractComboboxItem,
       useExisting: ComboboxItemComponent
     }
   ]
 })
-export class ComboboxItemComponent extends BaseComboboxItemComponent implements OnInit {
+export class ComboboxItemComponent extends AbstractComboboxItem implements OnInit {
   private readonly config: ComboboxItemConfig = inject(COMBOBOX_ITEM_CONFIG);
 
-  @Input()
-  public iconSlot: 'left' | 'right' = 'right';
-  @Input()
-  public templateRef!: TemplateRef<ComboboxItem>;
-  @Input()
-  public stateSlye!: Record<string, boolean>;
+  @Input() iconSlot: 'left' | 'right' = 'right';
+  @Input() templateRef!: TemplateRef<ComboboxItem>;
+  @Input() stateSlye!: Record<string, boolean>;
 
   constructor(element: ElementRef<HTMLElement>) {
     super(element);

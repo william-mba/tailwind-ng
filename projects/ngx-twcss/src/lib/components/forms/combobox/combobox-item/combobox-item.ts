@@ -1,4 +1,5 @@
 import { EventEmitter } from "@angular/core";
+import { Combobox } from "../combobox";
 
 /**
  * Ngx-twcss Combobox Item
@@ -6,8 +7,8 @@ import { EventEmitter } from "@angular/core";
 export interface ComboboxItem {
   id: string;
   value: string;
+  combobox: Combobox;
   selected: boolean;
-  select(): void;
-  scrollIntoView(): void;
+  element: HTMLElement;
   onSelect: EventEmitter<ComboboxItem>;
 }

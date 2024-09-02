@@ -6,7 +6,7 @@ import { ComboboxItem } from "./combobox-item/combobox-item";
  */
 export interface Combobox {
   label: string;
-  inputValue: string;
+  value: string;
   inputClass: string;
   opened: boolean;
   inputMinLength: number;
@@ -14,7 +14,8 @@ export interface Combobox {
   close(): void;
   open(): void;
   select(item: ComboboxItem): void;
-  checkSelection(value: string): boolean;
+  scrollIntoView(item: ComboboxItem): void;
+  isSelected(item: ComboboxItem): boolean;
   onChange: EventEmitter<string>;
   onReset: EventEmitter<void>;
   onToggle: EventEmitter<boolean>;

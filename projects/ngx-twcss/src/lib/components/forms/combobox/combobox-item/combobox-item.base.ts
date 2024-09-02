@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, ElementRef } from "@angular/core";
+import { Component, Input, Output, EventEmitter, ElementRef, AfterViewInit } from "@angular/core";
 import { ComboboxItem } from "./combobox-item";
+import { Combobox } from "../combobox";
 
 @Component({
   template: '',
@@ -11,30 +12,34 @@ import { ComboboxItem } from "./combobox-item";
     '[attr.selected]': 'selected',
   },
 })
-export abstract class BaseComboboxItemComponent implements ComboboxItem {
-  @Input()
-  public value!: string;
-  @Input()
-  public class!: string;
-  @Input()
-  public selected: boolean = false;
-  @Input()
-  public id: string = crypto.randomUUID();
-  @Output()
-  public onSelect: EventEmitter<ComboboxItem> = new EventEmitter();
+export abstract class AbstractComboboxItem implements ComboboxItem, AfterViewInit {
 
-  constructor(private element: ElementRef<HTMLElement>) { }
+  @Input() id!: string;
+  @Input() value!: string;
+  @Input() class!: string;
+  @Input() combobox!: Combobox;
+  @Output() onSelect: EventEmitter<ComboboxItem> = new EventEmitter();
 
-  public select(): void {
-    this.selected = true;
+  constructor(private el: ElementRef<HTMLElement>) {
+    this.id = this.id || crypto.randomUUID();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.selected) {
+      this.select();
+    }
+  }
+
+  select(): void {
+    this.combobox.select(this);
     this.onSelect.emit(this);
   }
 
-  public scrollIntoView(): void {
-    // Use to prevent scrollIntoView from being called before the parent element animation is completed.
-    // otherwise, the scrollIntoView method will not work as expected.
-    setTimeout(() => {
-      this.element.nativeElement.scrollIntoView({ behavior: 'instant', block: 'nearest' }), 75
-    });
+  get element(): HTMLElement {
+    return this.el.nativeElement;
+  }
+
+  get selected(): boolean {
+    return this.combobox.isSelected(this);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { DropdownComponent } from '../../elements/dropdown/dropdown.component';
@@ -18,74 +18,77 @@ import { Combobox } from './combobox';
   },
   templateUrl: './combobox.component.html',
 })
-export class ComboboxComponent implements OnInit, Combobox {
-  private readonly config: ComboboxConfig = inject(COMBOBOX_CONFIG);
+export class ComboboxComponent implements OnInit, Combobox, AfterViewInit {
   private selectedItem!: ComboboxItem;
-  private inputValueIsTooShort = (): boolean => this.inputMinLength > this.inputValue.trim().length;
+  private readonly config: ComboboxConfig = inject(COMBOBOX_CONFIG);
+  private inputValueIsTooShort = (): boolean => this.inputMinLength > this.value.trim().length;
 
-  @ViewChild('comboboxInput', { static: true, read: ElementRef })
+  @ViewChild('input', { static: true, read: ElementRef })
   private readonly input!: ElementRef<HTMLInputElement>;
 
   protected id: string = crypto.randomUUID();
-  protected canDisplayResetIcon = (): boolean => this.opened && this.inputValue.length > 0;
+  protected canDisplayResetIcon = (): boolean => this.opened && this.value.length > 0;
 
-  @Input()
-  public label!: string;
-  @Input()
-  public inputValue: string = '';
-  @Input()
-  public inputClass!: string;
-  @Input()
-  public opened: boolean = false;
-  @Input()
-  public inputMinLength: number = 2;
-  @Input()
-  public width: 'w-64' | 'w-72' | 'w-80' | 'w-96' = 'w-64';
-  @Output()
-  public onChange: EventEmitter<string> = new EventEmitter();
-  @Output()
-  public onReset: EventEmitter<void> = new EventEmitter();
-  @Output()
-  public onToggle: EventEmitter<boolean> = new EventEmitter();
+  @Input() label!: string;
+  @Input() value: string = '';
+  @Input() inputClass!: string;
+  @Input() opened: boolean = false;
+  @Input() inputMinLength: number = 2;
+  @Input() width: 'w-64' | 'w-72' | 'w-80' | 'w-96' = 'w-64';
+  @Output() onReset: EventEmitter<void> = new EventEmitter();
+  @Output() onToggle: EventEmitter<boolean> = new EventEmitter();
+  @Output() onChange: EventEmitter<string> = new EventEmitter();
 
   ngOnInit(): void {
     this.inputClass = mergeClassNames(toClassNames(this.config), `${this.inputClass} ${this.width}`);
   }
 
-  protected handleChange(value: string): void {
-    this.opened = true;
+  ngAfterViewInit(): void {
+    this.scrollToSelectedItem();
+  }
+
+  change(value: string): void {
+    this.open();
     if (this.inputValueIsTooShort()) return;
     this.onChange.emit(value.trim());
   }
 
-  protected toggle(): void {
+  toggle(): void {
     this.opened = !this.opened;
-    if (this.opened && this.selectedItem) {
-      this.selectedItem.scrollIntoView();
-    }
+    this.scrollToSelectedItem();
     this.onToggle.emit(this.opened);
   }
 
-  protected reset(): void {
-    this.inputValue = '';
+  private scrollToSelectedItem() {
+    if (this.opened && this.selectedItem) {
+      this.scrollIntoView(this.selectedItem);
+    }
+  }
+
+  reset(): void {
+    this.value = '';
     this.input.nativeElement.focus();
     this.onReset.emit();
   }
 
-  public close(): void {
+  close(): void {
     this.opened = false;
   }
 
-  public open(): void {
+  open(): void {
     this.opened = true;
   }
 
-  public select(item: ComboboxItem): void {
+  select(item: ComboboxItem): void {
     this.selectedItem = item;
-    this.inputValue = item.value;
+    this.value = item.value;
   }
 
-  public checkSelection(value: string): boolean {
-    return this.inputValue.trim() === value;
+  isSelected(item: ComboboxItem): boolean {
+    return this.value.trim() === item.value;
+  }
+
+  scrollIntoView(item: ComboboxItem): void {
+    item.element.scrollIntoView({ behavior: 'instant', block: 'nearest' });
   }
 }
