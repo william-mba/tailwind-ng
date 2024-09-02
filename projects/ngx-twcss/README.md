@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://ngx-twcss.williammba.com/">
-    <img src="./src/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
+    <img src="https://ngx-twcss.williammba.com/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
     <h1>ngx-twcss</h1>
   </a>
 </div>
@@ -21,16 +21,23 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 
 ---
 
-## Getting started in 3 simple steps
+## Quick start
 
 ### 0. Prerequisites
 
 [Install Tailwind CSS](https://tailwindcss.com/docs/guides/angular) in your Angular project.
 
-### 1. Install ngx-twcss
+### 1. Install ngx-twcss package
 
+Using npm
 ```ts
 npm install ngx-twcss
+```
+
+Using yarn
+
+```ts
+yarn add ngx-twcss
 ```
 
 ### 2. Modify tailwind.config.js
@@ -47,7 +54,7 @@ module.exports = {
 
 ### 3. Import ngx-twcss components
 
-If your using ``standalone`` components, import the components you want from ``ngx-twcss`` in your *.component.ts file
+If you are using ``standalone`` components, import our components in your *.component.ts file
 
 ```ts
 @Component({
@@ -66,7 +73,7 @@ export class DemoComponent {
 }
 ```
 
-If you are using ``NgModule`` based components, import the components you want from ``ngx-twcss`` in your *.module.ts file
+If you are using ``NgModule`` based components, import our components in your *.module.ts file
 
   ```ts
   @NgModule({
