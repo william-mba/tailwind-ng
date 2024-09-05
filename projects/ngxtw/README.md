@@ -11,6 +11,8 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 <br/>
 <br/>
 <br/>
+
+[![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fngxtw-package?repoName=William-Mba%2Fngxtw&branchName=master)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=5&repoName=William-Mba%2Fngxtw&branchName=master)
 </div>
 
 ## Resources
