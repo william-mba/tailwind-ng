@@ -1,0 +1,9 @@
+<label [for]="id" *ngIf="label" class="absolute -top-7 inset-x-0 font-medium">{{label}}</label>
+<input [id]="id" [class]="inputClass" [(ngModel)]="value" (ngModelChange)="change($event)" type="text" #input>
+<tw-button [icon]="true" variant="text" class="absolute inset-y-0 right-0 rounded-r-md">
+  <tw-icon *ngIf="canDisplayResetIcon()" (click)="reset()" source="heroicons" name="x-mark" />
+  <tw-icon source="heroicons" name="chevron-up-down" (click)="toggle()" />
+</tw-button>
+<tw-dropdown [opened]="opened" (onToggle)="toggle()" class="max-h-64 {{width}} overflow-auto shadow-lg">
+  <ng-content></ng-content>
+</tw-dropdown>

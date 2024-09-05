@@ -1,16 +1,16 @@
 {
-  "name": "ngx-twcss-demo",
+  "name": "ngxtw-demo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:package": "ng build --project ngx-twcss",
+    "build:package": "ng build --project ngxtw",
     "build:demo": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test:package": "ng test --project ngx-twcss --code-coverage",
-    "test:package:ci": "ng test --project ngx-twcss --watch=false --karma-config karma.conf.ci.js --code-coverage",
+    "test:package": "ng test --project ngxtw --code-coverage",
+    "test:package:ci": "ng test --project ngxtw --watch=false --karma-config karma.conf.ci.js --code-coverage",
     "test:demo": "ng test",
-    "publish": "npm run build && cd dist/ngx-twcss && npm publish",
+    "publish": "npm run build && cd dist/ngxtw && npm publish",
     "sync": "yarn build:package && yarn install && yarn start"
   },
   "private": true,
@@ -25,7 +25,7 @@
     "@angular/router": "^17.3.0",
     "highlight.js": "^11.10.0",
     "ngx-highlightjs": "^12.0.0",
-    "ngx-twcss": "file:dist/ngx-twcss",
+    "ngxtw": "file:dist/ngxtw",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ComboboxItem } from 'ngx-twcss';
+import { ComboboxItem } from 'ngxtw';
 
 @Component({
   selector: 'app-combobox-demo',

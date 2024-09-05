@@ -1,8 +1,8 @@
 
 <div align="center">
-  <a href="https://ngx-twcss.williammba.com/">
-    <img src="https://ngx-twcss.williammba.com/assets/images/ngx-twcss-logo-doc.png" alt="ngx-twcss" height="200" />
-    <h1>ngx-twcss</h1>
+  <a href="https://ngxtw.williammba.com/">
+    <img src="https://ngxtw.williammba.com/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="200" />
+    <h1>ngxtw</h1>
   </a>
 </div>
 
@@ -15,9 +15,9 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 
 ## Resources
 
-- [Roadmap](https://ngx-twcss.williammba.com/roadmap)
-- [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngx-twcss)
-- [Components docs](https://ngx-twcss.williammba.com/)
+- [Roadmap](https://ngxtw.williammba.com/roadmap)
+- [Live demo](https://stackblitz.com/~/github.com/William-Mba/ngxtw)
+- [Components docs](https://ngxtw.williammba.com/)
 
 ---
 
@@ -27,17 +27,17 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 
 [Install Tailwind CSS](https://tailwindcss.com/docs/guides/angular) in your Angular project.
 
-### 1. Install ngx-twcss package
+### 1. Install ngxtw package
 
 Using npm
 ```ts
-npm install ngx-twcss
+npm install ngxtw
 ```
 
 Using yarn
 
 ```ts
-yarn add ngx-twcss
+yarn add ngxtw
 ```
 
 ### 2. Modify tailwind.config.js
@@ -48,11 +48,11 @@ module.exports = {
   content: [
     ...
     // add the line bellow
-    "./node_modules/ngx-twcss/**/*.{html,ts}"
+    "./node_modules/ngxtw/**/*.{html,ts}"
   ]
 ```
 
-### 3. Import ngx-twcss components
+### 3. Import ngxtw components
 
 If you are using ``standalone`` components, import our components in your *.component.ts file
 
@@ -95,7 +95,7 @@ If you are using ``NgModule`` based components, import our components in your *.
 🎉Congratulations! You are all set 🚀 </br>
 
 What's next ?
-[Visit our website for more details on components](https://ngx-twcss.williammba.com).
+[Visit our website for more details on components](https://ngxtw.williammba.com).
 
 ---
 

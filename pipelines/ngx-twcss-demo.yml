@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - main
+      - master
       - next
       - release/*
   paths:
@@ -9,7 +9,7 @@ trigger:
       - src/*
 
 pool:
-  name: Ngx-twcss
+  name: Lab
   demands:
     - Agent.OS -equals Linux
 
@@ -22,7 +22,7 @@ resources:
 
 variables:
   - name: ReleaseTag
-    ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+    ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
       value: latest
     ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
       value: alpha
@@ -34,14 +34,14 @@ variables:
 stages:
   - stage: CI
     jobs:
-      - template: ngx-twcss-demo/job.build.yml@template
+      - template: lab/ngxtw/demo/job.build.yml@template
 
   - stage: CD
     dependsOn: CI
     pool:
-      name: Ngx-twcss
+      name: Lab
       demands:
         - Agent.OS -equals Linux
-        - AZP_RUNS -equals ngx-twcss-demo
+        - AZP_RUNS -equals demo
     jobs:
-      - template: ngx-twcss-demo/job.release.yml@template
+      - template: lab/ngxtw/demo/job.release.yml@template

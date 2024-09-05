@@ -1,0 +1,12 @@
+export type FontWeight =
+  | "font-thin"
+  | "font-extralight"
+  | "font-light"
+  | "font-normal"
+  | "font-medium"
+  | "font-semibold"
+  | "font-bold"
+  | "hover:font-bold"
+  | "font-extrabold"
+  | "hover:font-extrabold"
+  | "font-black"

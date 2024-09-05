@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { ToggleTheme } from 'ngx-twcss';
+import { ToggleTheme } from 'ngxtw';
 
 @Component({
   selector: 'app-menu',

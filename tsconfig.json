@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "paths": {
       "customs/*": [
-        "./src/assets/configs/ngx-twcss/*"
+        "./src/assets/configs/ngxtw/*"
       ]
     },
     "esModuleInterop": true,

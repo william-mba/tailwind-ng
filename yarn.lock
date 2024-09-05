@@ -7330,9 +7330,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngx-twcss-demo@workspace:.":
+"ngxtw-demo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "ngx-twcss-demo@workspace:."
+  resolution: "ngxtw-demo@workspace:."
   dependencies:
     "@angular-devkit/build-angular": "npm:^17.3.8"
     "@angular/animations": "npm:^17.3.0"
@@ -7359,7 +7359,7 @@ __metadata:
     karma-junit-reporter: "npm:^2.0.1"
     ng-packagr: "npm:^17.3.0"
     ngx-highlightjs: "npm:^12.0.0"
-    ngx-twcss: "file:dist/ngx-twcss"
+    ngxtw: "file:dist/ngxtw"
     postcss: "npm:^8.4.38"
     puppeteer: "npm:^22.13.1"
     rxjs: "npm:~7.8.0"
@@ -7370,15 +7370,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"ngx-twcss@file:dist/ngx-twcss::locator=ngx-twcss-demo%40workspace%3A.":
+"ngxtw@file:dist/ngxtw::locator=ngxtw-demo%40workspace%3A.":
   version: 0.0.0-placeholder
-  resolution: "ngx-twcss@file:dist/ngx-twcss#dist/ngx-twcss::hash=e2caec&locator=ngx-twcss-demo%40workspace%3A."
+  resolution: "ngxtw@file:dist/ngxtw#dist/ngxtw::hash=62ce49&locator=ngxtw-demo%40workspace%3A."
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
     "@angular/common": ^17.3.0
     "@angular/core": ^17.3.0
-  checksum: 10c0/6a4ec3c42d2e1b61a648b7468467df40da54680823ee3d04930e31e03d53a1bef2ffcd790ec82e28a4aa769357237dc5364eb97feb5cb8109247d33bfb0982c5
+  checksum: 10c0/c7c32b4bf98a64896c1957c9c27588d4eabd599dc2223ad991610e89bcf0331da463491bbc9b5ab98b1dd7eb194aedccf9c1e97d1fba5d9efc289a14001ee65d
   languageName: node
   linkType: hard
 
