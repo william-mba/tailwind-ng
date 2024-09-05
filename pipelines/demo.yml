@@ -1,12 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-      - next
-      - release/*
-  paths:
-    include:
-      - src/*
+trigger: none
 
 pool:
   name: Lab
@@ -18,7 +10,17 @@ resources:
     - repository: template
       name: DevOps/Template
       type: git
-
+  pipelines:
+    - pipeline: package
+      source: ngxtw-package
+      trigger:
+        branches:
+          include:
+            - master
+            - next
+            - release/*
+        stages:
+          - CD
 
 variables:
   - name: ReleaseTag
