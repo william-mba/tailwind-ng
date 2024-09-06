@@ -13,14 +13,7 @@ resources:
   pipelines:
     - pipeline: package
       source: ngxtw-package
-      trigger:
-        branches:
-          include:
-            - master
-            - next
-            - release/*
-        stages:
-          - CD
+      trigger: true
 
 variables:
   - name: ReleaseTag
