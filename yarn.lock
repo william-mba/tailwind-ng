@@ -7372,13 +7372,13 @@ __metadata:
 
 "ngxtw@file:dist/ngxtw::locator=ngxtw-demo%40workspace%3A.":
   version: 0.0.0-placeholder
-  resolution: "ngxtw@file:dist/ngxtw#dist/ngxtw::hash=ea7f82&locator=ngxtw-demo%40workspace%3A."
+  resolution: "ngxtw@file:dist/ngxtw#dist/ngxtw::hash=5c3f26&locator=ngxtw-demo%40workspace%3A."
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
     "@angular/common": ^17.3.0
     "@angular/core": ^17.3.0
-  checksum: 10c0/732e0af8bf8089a01e8fac0ad3ffbf76acb25f0c1a8ffd6ee8f1121c071203459c131b5c881f0a8fea2d80a84a09e9fc0dda353798b10d343a26a42f7f2510ae
+  checksum: 10c0/eefd67b1d339fbd2bba7f0467e00efd5ba2c8658d351750a745ff5bc6773c1707ef235866cb1a708690d32e8756127e6379247b43fd0283005a3af7f77eeb934
   languageName: node
   linkType: hard
 

@@ -13,14 +13,7 @@ resources:
   pipelines:
     - pipeline: package
       source: ngxtw-package
-      trigger:
-        branches:
-          include:
-            - master
-            - next
-            - release/*
-        stages:
-          - CD
+      trigger: true
 
 variables:
   - name: ReleaseTag
@@ -38,12 +31,13 @@ stages:
     jobs:
       - template: lab/ngxtw/demo/job.build.yml@template
 
-  - stage: CD
-    dependsOn: CI
-    pool:
-      name: Lab
-      demands:
-        - Agent.OS -equals Linux
-        - AZP_RUNS -equals demo
-    jobs:
-      - template: lab/ngxtw/demo/job.release.yml@template
+  - ${{ if or(in(variables['Build.SourceBranchName'], 'master', 'next'), contains(variables['Build.SourceBranch'], 'release')) }}:
+    - stage: CD
+      dependsOn: CI
+      pool:
+        name: Lab
+        demands:
+          - Agent.OS -equals Linux
+          - AZP_RUNS -equals demo
+      jobs:
+        - template: lab/ngxtw/demo/job.release.yml@template

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Injectable, NgModule } from '@angular/core';
+import { RouterModule, RouterStateSnapshot, Routes, TitleStrategy } from '@angular/router';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
 import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.component';
@@ -11,38 +11,47 @@ import { LabComponent } from './demos/lab/lab.component';
 import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.component';
 import { TypographyDemoComponent } from './demos/typography-demo/typography-demo.component';
 import { ToggleDemoComponent } from './demos/toggle-demo/toggle-demo.component';
+import { Title } from '@angular/platform-browser';
 
 const routes: Routes = [
   {
     path: 'comboboxes',
+    title: 'Comboboxes',
     component: ComboboxDemoComponent
   },
   {
     path: 'modal-dialogs',
+    title: 'Modal Dialogs',
     component: ModalDialogDemoComponent
   },
   {
     path: 'avatars',
+    title: 'Avatars',
     component: AvatarDemoComponent
   },
   {
     path: 'badges',
+    title: 'Badges',
     component: BadgeDemoComponent
   },
   {
     path: 'dropdowns',
+    title: 'Dropdowns',
     component: DropdownDemoComponent
   },
   {
     path: 'button-groups',
+    title:  'Button Groups',
     component: ButtonGroupDemoComponent
   },
   {
     path: 'buttons',
+    title: 'Buttons',
     component: ButtonsDemoComponent
   },
   {
     path: 'roadmap',
+    title: 'Roadmap',
     component: RoadmapComponent
   },
   {
@@ -51,25 +60,46 @@ const routes: Routes = [
   },
   {
     path: 'typography',
+    title: 'Typography',
     component: TypographyDemoComponent
   },
   {
     path: 'toggles',
+    title: 'Toggles',
     component: ToggleDemoComponent
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'comboboxes',
-  //   pathMatch: 'full'
-  // },
   {
     path: '**',
     redirectTo: 'comboboxes'
   }
 ];
 
+@Injectable({providedIn: 'root'})
+export class AppTitleStrategy extends TitleStrategy {
+  constructor(private readonly title: Title){
+    super();
+  }
+
+  override updateTitle(routerState: RouterStateSnapshot): void {
+    const title = this.buildTitle(routerState);
+    if(title){
+      if(title === 'Roadmap'){
+        return this.title.setTitle(`${title} of Tailwind CSS Components for Angular Enterprise Applications`);
+      }
+      return this.title.setTitle(`${title} - Tailwind CSS ${title} for Angular Enterprise Applications`);
+    }
+    this.title.setTitle('Tailwind CSS Components for Angular Enterprise Applications');
+  }
+}
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    {
+      provide: TitleStrategy,
+      useClass: AppTitleStrategy
+    }
+  ]
 })
 export class AppRoutingModule { }

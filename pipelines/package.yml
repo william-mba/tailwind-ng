@@ -43,7 +43,8 @@ stages:
     jobs:
     - template: lab/ngxtw/package/job.build-test-publish.yml@template
 
-  - stage: CD
-    dependsOn: CI
-    jobs:
-    - template: lab/ngxtw/package/job.release.yml@template
+  - ${{ if or(in(variables['Build.SourceBranchName'], 'master', 'next'), contains(variables['Build.SourceBranch'], 'release')) }}:
+    - stage: CD
+      dependsOn: CI
+      jobs:
+      - template: lab/ngxtw/package/job.release.yml@template
