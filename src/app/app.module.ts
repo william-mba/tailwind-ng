@@ -2,10 +2,32 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BadgeComponent, BadgeActionDirective, ButtonGroupComponent, DropdownComponent, ButtonComponent, AvatarDirective, ModalDialogModule, ComboboxModule, IconDirective, TypographyModule, ToggleComponent, provideButtonConfig, provideDropdownConfig, provideAvatarConfig, provideBadgeConfig, provideButtonGroupConfig, provideComboboxConfig, provideModalDialogConfig, provideIconConfig, provideToggleConfig } from 'ngxtw';
+import {
+  BadgeComponent,
+  BadgeActionDirective,
+  ButtonGroupComponent,
+  DropdownComponent,
+  ButtonComponent,
+  AvatarDirective,
+  ModalDialogModule,
+  ComboboxModule,
+  IconDirective,
+  TypographyModule,
+  ToggleComponent,
+  InputTextComponent,
+  provideButtonConfig,
+  provideDropdownConfig,
+  provideAvatarConfig,
+  provideBadgeConfig,
+  provideButtonGroupConfig,
+  provideComboboxConfig,
+  provideModalDialogConfig,
+  provideIconConfig,
+  provideToggleConfig,
+  provideInputConfig
+} from 'ngxtw';
 import { ButtonsDemoComponent } from './demos/buttons-demo/buttons-demo.component';
 import { ButtonGroupDemoComponent } from './demos/button-group-demo/button-group-demo.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownDemoComponent } from './demos/dropdown-demo/dropdown-demo.component';
 import { BadgeDemoComponent } from './demos/badge-demo/badge-demo.component';
 import { AvatarDemoComponent } from './demos/avatar-demo/avatar-demo.component';
@@ -25,6 +47,7 @@ import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.compo
 import { TypographyDemoComponent } from './demos/typography-demo/typography-demo.component';
 import { ToggleDemoComponent } from './demos/toggle-demo/toggle-demo.component';
 import { CodeComponent } from './code/code.component';
+import { InputDemoComponent } from './demos/input-demo/input-demo.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +65,8 @@ import { CodeComponent } from './code/code.component';
     ComboboxDemoComponent,
     TypographyDemoComponent,
     ToggleDemoComponent,
-    CodeComponent
+    CodeComponent,
+    InputDemoComponent
   ],
   imports: [
     Highlight,
@@ -60,7 +84,8 @@ import { CodeComponent } from './code/code.component';
     ComboboxModule,
     IconDirective,
     TypographyModule,
-    ToggleComponent
+    ToggleComponent,
+    InputTextComponent,
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -76,6 +101,7 @@ import { CodeComponent } from './code/code.component';
     provideIconConfig(),
     provideToggleConfig(),
     provideModalDialogConfig(),
+    provideInputConfig()
   ],
 })
 export class AppModule { }

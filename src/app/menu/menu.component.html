@@ -3,7 +3,7 @@
   <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
     <tw-button-group class="text-white gap-1.5 hover:cursor-pointer">
       <tw-icon size="xl" name="ngxtw" />
-      <span class="hidden sm:inline text-lg font-mono">{{'ngxtw'}}</span>
+      <span class="hidden sm:inline-block text-lg"></span>
     </tw-button-group>
     <div class="flex items-center space-x-3 md:order-2 rtl:space-x-reverse">
       <!-- Search button -->
@@ -116,6 +116,9 @@
         </li>
         <li routerLink="dropdowns" (click)="toggle()">
           Dropdown
+        </li>
+        <li routerLink="input-groups" (click)="toggle()">
+          Input Groups
         </li>
         <li routerLink="modal-dialogs" (click)="toggle()">
           Modal Dialog

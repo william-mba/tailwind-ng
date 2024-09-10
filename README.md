@@ -2,7 +2,7 @@
 <div align="center">
   <a href="https://ngxtw.williammba.com/">
     <img src="https://raw.githubusercontent.com/William-Mba/ngxtw/master/src/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="200" />
-    <h1>ngxtw</h1>
+    <h1>NGxTW</h1>
   </a>
 </div>
 
@@ -30,7 +30,7 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 
 [Install Tailwind CSS](https://tailwindcss.com/docs/guides/angular) in your Angular project.
 
-### 1. Install ngxtw package
+### 1. Install NGxTW package
 
 Using npm
 ```ts
@@ -55,7 +55,7 @@ module.exports = {
   ]
 ```
 
-### 3. Import ngxtw components
+### 3. Import NGxTW components
 
 If you are using ``standalone`` components, import our components in your *.component.ts file
 
