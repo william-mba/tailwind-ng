@@ -12,6 +12,7 @@ import { ComboboxDemoComponent } from './demos/combobox-demo/combobox-demo.compo
 import { TypographyDemoComponent } from './demos/typography-demo/typography-demo.component';
 import { ToggleDemoComponent } from './demos/toggle-demo/toggle-demo.component';
 import { Title } from '@angular/platform-browser';
+import { InputDemoComponent } from './demos/input-demo/input-demo.component';
 
 const routes: Routes = [
   {
@@ -69,6 +70,11 @@ const routes: Routes = [
     component: ToggleDemoComponent
   },
   {
+    path: 'input-groups',
+    title: 'Input Groups',
+    component: InputDemoComponent
+  },
+  {
     path: '**',
     redirectTo: 'comboboxes'
   }
@@ -84,11 +90,11 @@ export class AppTitleStrategy extends TitleStrategy {
     const title = this.buildTitle(routerState);
     if(title){
       if(title === 'Roadmap'){
-        return this.title.setTitle(`${title} of Tailwind CSS Components for Angular Enterprise Applications`);
+        return this.title.setTitle(`${title} of Tailwind CSS Components for Angular Applications`);
       }
-      return this.title.setTitle(`${title} - Tailwind CSS ${title} for Angular Enterprise Applications`);
+      return this.title.setTitle(`NGxTW ${title} - Tailwind CSS ${title} Components for Angular Applications`);
     }
-    this.title.setTitle('Tailwind CSS Components for Angular Enterprise Applications');
+    this.title.setTitle('NGxTW - The best way to quickly integrate Tailwind CSS Components with Angular');
   }
 }
 
