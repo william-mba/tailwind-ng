@@ -1,7 +1,7 @@
 
 <div align="center">
   <a href="https://ngxtw.williammba.com/">
-    <img src="https://raw.githubusercontent.com/William-Mba/ngxtw/master/src/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="200" />
+    <img src="src/docs/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="200" />
     <h1>NGxTW</h1>
   </a>
 </div>
