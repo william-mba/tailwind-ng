@@ -1,5 +1,3 @@
-import { last } from "rxjs";
-
 /** Convert an object to a string of class names
  * @param obj - The object to convert to class names
  * @returns The class names
@@ -84,50 +82,43 @@ export function mergeClassNames(target: string, source: string, match: 'first' |
     && (target && target.length >= minimumClassNameLength)
     || (target === source)) return target;
 
-  /* the divider that separate custom style from default style.
-    e.g. 'text-red-500 + text-opacity-10' */
-  const divider = '+'
-
   if (source.length >= minimumClassNameLength) {
-    target = target.replace(` ${divider} `, ' ');
+    source.split(' ').forEach((name) => {
+      if (!name || name.length < minimumClassNameLength) return;
 
-    source.split(' ')
-      .forEach((name) => {
-        if (!name || name.length < minimumClassNameLength) return;
+      if (match !== 'exact' && name.length > 0) {
+        const searchTerm = getPrefix(name, '-', match);
 
-        if (match !== 'exact' && name.length > 0) {
-          const searchTerm = getPrefix(name, '-', match);
-
-          // Remove class names starting with the search term.
-          // Because they will be replaced by the new class name.
-          // e.g. Given 'text-red-500' in target and 'text-blue-500' in source,
-          // 'text-red-500' will be override by 'text-blue-500'.
-          if (searchTerm.length > 0) {
-            target = target.split(' ')
-              .filter(name => {
-                return !name.startsWith(searchTerm);
-              }).join(' ');
-          }
+        // Remove class names starting with the search term.
+        // Because they will be replaced by the new class name.
+        // e.g. Given 'text-red-500' in target and 'text-blue-500' in source,
+        // 'text-red-500' will be override by 'text-blue-500'.
+        if (searchTerm.length > 0) {
+          target = target.split(' ')
+            .filter(name => {
+              return !name.startsWith(searchTerm);
+            }).join(' ');
         }
-        /* Remove class name if ending with '-' character.
-        Such class are only used to remove existing classes in style
-        and should not be added to the new style.
-        e.g. 'text-', '-p-', 'bg-', 'border-', 'rounded-'
-        */
-        if (name.charAt(name.length - 1) === '-') {
-          source = source.split(name)
-            .join(' ');
+      }
+      /* Remove class name if ending with '-' character.
+      Such class are only used to remove existing classes in style
+      and should not be added to the new style.
+      e.g. 'text-', '-p-', 'bg-', 'border-', 'rounded-'
+      */
+      if (name.charAt(name.length - 1) === '-') {
+        source = source.split(name)
+          .join(' ');
 
-          // Remove the class name from the target as well if it exists
-          if (match === 'exact') {
-            target = target.split(' ')
-              .filter(cls => {
-                return !cls.startsWith(name.substring(0, name.length - 1));
-              }).join(' ');
-          }
+        // Remove the class name from the target as well if it exists
+        if (match === 'exact') {
+          target = target.split(' ')
+            .filter(cls => {
+              return !cls.startsWith(name.substring(0, name.length - 1));
+            }).join(' ');
         }
-      });
-    target = `${source} ${divider} ${target}`;
+      }
+    });
+    target = `${source} ${target}`;
   }
   return target;
 }
