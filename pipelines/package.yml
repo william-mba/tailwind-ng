@@ -6,7 +6,7 @@ trigger:
       - release/*
   paths:
     include:
-      - projects/ngxtw/src/*
+      - src/ngxtw/src/*
 
 pool:
   name: Lab
@@ -30,7 +30,7 @@ variables:
     ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
       value: latest
     ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      value: alpha
+      value: next
     ${{ elseif contains(variables['Build.SourceBranch'], 'release') }}:
       value: beta
     ${{ else }}:
@@ -43,8 +43,7 @@ stages:
     jobs:
     - template: lab/ngxtw/package/job.build-test-publish.yml@template
 
-  - ${{ if or(in(variables['Build.SourceBranchName'], 'master', 'next'), contains(variables['Build.SourceBranch'], 'release')) }}:
-    - stage: CD
-      dependsOn: CI
-      jobs:
-      - template: lab/ngxtw/package/job.release.yml@template
+  - stage: CD
+    dependsOn: CI
+    jobs:
+    - template: lab/ngxtw/package/job.release.yml@template

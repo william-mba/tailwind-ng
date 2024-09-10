@@ -1,15 +1,15 @@
 {
-  "name": "ngxtw-demo",
+  "name": "ngxtw-docs",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build:package": "ng build --project ngxtw",
-    "build:demo": "ng build",
+    "build:docs": "ng build --project ngxtw-docs",
     "watch": "ng build --watch --configuration development",
     "test:package": "ng test --project ngxtw --code-coverage",
     "test:package:ci": "ng test --project ngxtw --watch=false --karma-config karma.conf.ci.js --code-coverage",
-    "test:demo": "ng test",
+    "test:docs": "ng test --project ngxtw-docs",
     "publish": "npm run build && cd dist/ngxtw && npm publish",
     "sync": "yarn build:package && yarn install && yarn start"
   },

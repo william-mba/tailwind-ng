@@ -7330,9 +7330,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ngxtw-demo@workspace:.":
+"ngxtw-docs@workspace:.":
   version: 0.0.0-use.local
-  resolution: "ngxtw-demo@workspace:."
+  resolution: "ngxtw-docs@workspace:."
   dependencies:
     "@angular-devkit/build-angular": "npm:^17.3.8"
     "@angular/animations": "npm:^17.3.0"
@@ -7370,15 +7370,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"ngxtw@file:dist/ngxtw::locator=ngxtw-demo%40workspace%3A.":
+"ngxtw@file:dist/ngxtw::locator=ngxtw-docs%40workspace%3A.":
   version: 0.0.0-placeholder
-  resolution: "ngxtw@file:dist/ngxtw#dist/ngxtw::hash=57c728&locator=ngxtw-demo%40workspace%3A."
+  resolution: "ngxtw@file:dist/ngxtw#dist/ngxtw::hash=527a80&locator=ngxtw-docs%40workspace%3A."
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
     "@angular/common": ^17.3.0
     "@angular/core": ^17.3.0
-  checksum: 10c0/43acbcf52aab612f97132f21e8256cd5e6f08a3ed3fbfc58eddb633be743017a5191e2ccada9bf0b79b6d014f082cd1acce58ad03f55ccfd5a1c620ac331042f
+  checksum: 10c0/6d5c3495f63c8ba1c916a79ecffa20b56a56664d816df418890f063bb3d5f55d3191784f79437fbe3654579112212457e5449c78b4465816817b000d4427b17a
   languageName: node
   linkType: hard
 
