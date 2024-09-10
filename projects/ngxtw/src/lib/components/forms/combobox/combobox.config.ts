@@ -33,7 +33,7 @@ const ComboboxConfig: ComboboxConfig = {
 /**
  * Combobox component config
  */
-export const COMBOBOX_CONFIG = new InjectionToken<ComboboxConfig>('Combobox component config');
+export const COMBOBOX_CONFIG = new InjectionToken<ComboboxConfig>('Combobox component config token');
 
 /**
  * Combobox component config provider
