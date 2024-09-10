@@ -15,7 +15,6 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 [![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fngxtw-package?repoName=William-Mba%2Fngxtw&branchName=master)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=5&repoName=William-Mba%2Fngxtw&branchName=master)
 </div>
 
-
 ## Resources
 
 - [Roadmap](https://ngxtw.williammba.com/roadmap)
@@ -33,6 +32,7 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 ### 1. Install NGxTW package
 
 Using npm
+
 ```ts
 npm install ngxtw
 ```

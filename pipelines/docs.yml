@@ -1,12 +1,4 @@
-trigger:
-  branches:
-    include:
-      - master
-      - next
-      - release/*
-  paths:
-    include:
-      - src/ngxtw/src/*
+trigger: none
 
 pool:
   name: Lab
@@ -18,14 +10,12 @@ resources:
     - repository: template
       name: DevOps/Template
       type: git
+  pipelines:
+    - pipeline: package
+      source: ngxtw-package
+      trigger: true
 
 variables:
-  - name: MajorMinor
-    value: "0.1"
-  - name: Patch
-    value: $[counter(variables.MajorMinor, 0)]
-  - name: Release
-    value: $(MajorMinor).$(Patch)
   - name: ReleaseTag
     ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
       value: latest
@@ -36,14 +26,17 @@ variables:
     ${{ else }}:
       value: insiders
 
-name: $(Build.DefinitionName)-v${{variables.Release}}
-
 stages:
   - stage: CI
     jobs:
-    - template: lab/ngxtw/package/job.build-test-publish.yml@template
+      - template: lab/ngxtw/docs/job.build.yml@template
 
   - stage: CD
     dependsOn: CI
+    pool:
+      name: Lab
+      demands:
+        - Agent.OS -equals Linux
+        - AZP_RUNS -equals docs
     jobs:
-    - template: lab/ngxtw/package/job.release.yml@template
+      - template: lab/ngxtw/docs/job.release.yml@template

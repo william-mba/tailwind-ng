@@ -1,0 +1,132 @@
+<nav
+  class="fixed start-0 top-0 z-30 h-16 flex w-full justify-center border-b border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 bg-blue-800 shadow-xl shadow-black/15">
+  <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
+    <tw-button-group class="text-white gap-1.5 hover:cursor-pointer">
+      <tw-icon size="xl" name="ngxtw" />
+      <span class="hidden sm:inline-block text-xl font-semibold">Angular Tailwind</span>
+    </tw-button-group>
+    <div class="flex items-center space-x-3 md:order-2 rtl:space-x-reverse">
+      <!-- Search button -->
+      <!-- <tw-button variant='text' size="md">
+        <svg fill="currentcolor" t="1702210633165" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M426.666667 768a339.285333 339.285333.0 00208.938666-72.021333L823.168 883.541333l60.330667-60.330666L695.936 635.648A339.285333 339.285333.0 00768 426.666667C768 238.464 614.869333 85.333334 426.666667 85.333333S85.333334 238.464 85.333333 426.666667 238.464 768 426.666667 768zm0-597.333333c141.184.0 256 114.816 256 256s-114.816 256-256 256-256-114.816-256-256 114.816-256 256-256z" />
+        </svg>
+      </tw-button> -->
+      <!-- npm icon -->
+      <a href="https://www.npmjs.com/package/ngxtw">
+        <tw-button [icon]="true" match="last" size="lg" variant="secondary" classMatchStrategy="last"
+          class="text-white ring-indigo-50 *:h-fit">
+          <tw-icon name="npm" />
+        </tw-button>
+      </a>
+      <!-- GitHub Icon -->
+      <a href="https://github.com/William-Mba/ngxtw">
+        <tw-button [icon]="true" match="last" size="sm" variant="secondary" classMatchStrategy="last"
+          class="text-white ring-indigo-50">
+          <tw-icon name="github" />
+        </tw-button>
+      </a>
+      <!-- Theme toggle icon -->
+      <tw-button [icon]="true" match="last" size="sm" variant='secondary' (click)="ToggleTheme()" classMatchStrategy="last"
+        class="text-white ring-indigo-50">
+        <tw-icon name="moon" source="heroicons" *ngIf="!dark" />
+        <tw-icon name="sun" source="heroicons" *ngIf="dark" />
+      </tw-button>
+      <!-- Burger button -->
+      <tw-button [icon]="true" match="last" size="sm" variant='secondary' class="text-white ring-indigo-50 2xl:hidden"
+        (click)="toggle()" classMatchStrategy="last">
+        <tw-icon name="burger-menu" size="sm" />
+      </tw-button>
+    </div>
+  </div>
+</nav>
+<ng-container *ngIf="open || isLargeScreen()">
+  <nav
+    class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-24 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-xs flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
+    <!--Getting started -->
+    <div>
+      <div class="relative">
+        <tw-button [icon]="true" variant="text" size="sm" class="absolute top-0 right-0 2xl:hidden" (click)="toggle()">
+          <tw-icon name="x-mark" source="heroicons" />
+        </tw-button>
+      </div>
+      <h2 class="font-bold">Getting started</h2>
+      <ul
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        <li>
+          <a href="https://www.npmjs.com/package/ngxtw" (click)="toggle()">
+            Installation
+          </a>
+        </li>
+        <li>
+          <a routerLink="roadmap" (click)="toggle()">
+            Roadmap
+          </a>
+        </li>
+        <!-- <li>
+          <a href="https://stackblitz.com/edit/stackblitz-starters-lrxhtf?file=start.sh">
+            Playground
+          </a>
+        </li> -->
+      </ul>
+    </div>
+    <!--Typography -->
+    <div>
+      <h2 class="font-bold">Typography</h2>
+      <ul
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        <li>
+          <a routerLink="typography" (click)="toggle()">
+            Headlines & body
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- <div>
+      <h2 class="font-bold">Customization</h2>
+      <ul
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        <li>
+          Theme
+        </li>
+        <li>
+          Components
+        </li>
+      </ul>
+    </div> -->
+    <div>
+      <h2 class="font-bold">Components</h2>
+      <ul
+        class="flex flex-col font-medium *:py-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        <li routerLink="avatars" (click)="toggle()">
+          Avatar
+        </li>
+        <li routerLink="badges" (click)="toggle()">
+          Badge
+        </li>
+        <li routerLink="buttons" (click)="toggle()">
+          Button
+        </li>
+        <li routerLink="button-groups" (click)="toggle()">
+          Button Group
+        </li>
+        <li routerLink="comboboxes" (click)="toggle()">
+          Combobox
+        </li>
+        <li routerLink="dropdowns" (click)="toggle()">
+          Dropdown
+        </li>
+        <li routerLink="input-groups" (click)="toggle()">
+          Input Groups
+        </li>
+        <li routerLink="modal-dialogs" (click)="toggle()">
+          Modal Dialog
+        </li>
+        <li routerLink="toggles" (click)="toggle()">
+          Toggle
+        </li>
+      </ul>
+    </div>
+  </nav>
+</ng-container>

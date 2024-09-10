@@ -1,0 +1,386 @@
+<div
+  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-800 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
+  <tw-h2 class="mt-24">
+    NGxTW Avatars
+  </tw-h2>
+  <p class="text-pretty">
+    Use these NGxTW avatar components to display user profile pictures and company
+    logos individually or grouped in stacks.
+  </p>
+  <a class="mt-6 text-xs inline-block hover:underline" href="avatars#api">Go to API reference</a>
+  <tw-h4 class="mt-16 font-medium">
+    Avatar group stacked bottom to top
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div class="flex -space-x-1">
+      <img tw-avatar size="xs" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="xs" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="xs" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <img tw-avatar size="xs" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    </div>
+
+    <div class="flex -space-x-1">
+      <img tw-avatar size="md" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="md" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="md" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <img tw-avatar size="md" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    </div>
+
+    <div class="flex -space-x-1">
+      <img tw-avatar size="lg" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="lg" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="lg" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <img tw-avatar size="lg" class="ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    </div>
+  </div>
+  <demo-code-snippet [code]="avatarGroupStackedBottomToTop"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Circular avatars
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <img tw-avatar size="xs" alt=""
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="sm" alt=""
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="md" alt=""
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="lg" alt=""
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="xl" alt=""
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  </div>
+  <demo-code-snippet [code]="circularAvatars"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Circular avatars with top notification
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <tw-avatar size="xs">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0 -right-0 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
+    </tw-avatar>
+
+    <tw-avatar size="sm">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0 -right-0 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
+    </tw-avatar>
+
+    <tw-avatar size="md">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0 -right-0 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
+    </tw-avatar>
+
+    <tw-avatar size="lg">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0 -right-0 p-0 size-3 rounded-full ring-2 ring-white bg-green-300" />
+    </tw-avatar>
+
+    <tw-avatar size="xl">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0 -right-0 p-0 size-3.5 rounded-full ring-2 ring-white bg-gray-300" />
+    </tw-avatar>
+  </div>
+  <demo-code-snippet [code]="circularAvatarsWithTopNotification"></demo-code-snippet>
+
+  <tw-h4 class="mt-20">
+    Rounded avatars
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <img tw-avatar size="xs" class="rounded-lg" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="sm" class="rounded-lg" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="md" class="rounded-lg" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="lg" class="rounded-lg" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="xl" class="rounded-lg" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  </div>
+  <demo-code-snippet [code]="roundedAvatars"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Rounded avatars with top notification
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <tw-avatar size="xs">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0 -right-0.5 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
+    </tw-avatar>
+
+    <tw-avatar size="sm">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0.5 -right-0.5 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
+    </tw-avatar>
+
+    <tw-avatar size="md">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-0.5 -right-0.5 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
+    </tw-avatar>
+
+    <tw-avatar size="lg">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-1 -right-1 p-0 size-3 rounded-full ring-2 ring-white bg-green-300" />
+    </tw-avatar>
+
+    <tw-avatar size="xl">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -top-1 -right-1 p-0 size-3.5 rounded-full ring-2 ring-white bg-gray-300" />
+    </tw-avatar>
+  </div>
+  <demo-code-snippet [code]="roundedAvatarsWithTopNotification"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Circular avatars with placeholder icon
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <tw-avatar tw-icon size="xs" class="text-gray-400" source="heroicons" name="user-circle" />
+    <tw-avatar tw-icon size="sm" class="text-gray-400" source="heroicons" name="user-circle" />
+    <tw-avatar tw-icon size="md" class="text-gray-400" source="heroicons" name="user-circle" />
+    <tw-avatar tw-icon size="lg" class="text-gray-400" source="heroicons" name="user-circle" />
+    <tw-avatar tw-icon size="xl" class="text-gray-400" source="heroicons" name="user-circle" />
+  </div>
+  <demo-code-snippet [code]="circularAvatarsWithPlaceholderIcon"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Circular avatars with placeholder initials
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <tw-avatar size="xs" class="text-xs text-white bg-gray-500">TW</tw-avatar>
+    <tw-avatar size="sm" class="text-lg text-white bg-gray-500">TW</tw-avatar>
+    <tw-avatar size="md" class="text-xl text-white bg-gray-500">TW</tw-avatar>
+    <tw-avatar size="lg" class="text-2xl text-white bg-gray-500">TW</tw-avatar>
+    <tw-avatar size="xl" class="text-3xl text-white bg-gray-500">TW</tw-avatar>
+  </div>
+  <demo-code-snippet [code]="circularAvatarsWithPlaceholderInitials"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Circular avatars with bottom notification
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <tw-avatar size="xs">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0 -right-0 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
+    </tw-avatar>
+
+    <tw-avatar size="sm">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0 -right-0 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
+    </tw-avatar>
+
+    <tw-avatar size="md">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0 -right-0 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
+    </tw-avatar>
+
+    <tw-avatar size="lg">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0 -right-0 p-0 size-3 rounded-full ring-2 ring-white bg-green-300" />
+    </tw-avatar>
+
+    <tw-avatar size="xl">
+      <img alt="" class="rounded-full"
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0 -right-0 p-0 size-3.5 rounded-full ring-2 ring-white bg-gray-300" />
+    </tw-avatar>
+  </div>
+  <demo-code-snippet [code]="circularAvatarsWithBottomNotification"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Rounded avatars with bottom notification
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <tw-avatar size="xs">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0.5 -right-0.5 size-1.5 p-0 rounded-full ring-2 ring-white bg-red-300" />
+    </tw-avatar>
+
+    <tw-avatar size="sm">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0.5 -right-0.5 p-0 size-2 rounded-full ring-2 ring-white bg-yellow-300" />
+    </tw-avatar>
+
+    <tw-avatar size="md">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-0.5 -right-1 p-0 size-2.5 rounded-full ring-2 ring-white bg-blue-300" />
+    </tw-avatar>
+
+    <tw-avatar size="lg">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-1 -right-1 p-0 size-3 rounded-full ring-2 ring-white bg-green-300" />
+    </tw-avatar>
+
+    <tw-avatar size="xl">
+      <img alt="" class="rounded-lg"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <tw-badge class="absolute -bottom-1 -right-1 p-0 size-3.5 rounded-full ring-2 ring-white bg-gray-300" />
+    </tw-avatar>
+  </div>
+  <demo-code-snippet [code]="roundedAvatarsWithBottomNotification"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Avatar group stacked top to bottom
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div class="flex -space-x-1">
+      <img tw-avatar size="xs" class="z-[4] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="xs" class="z-[3] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="xs" class="z-[2] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <img tw-avatar size="xs" class="z-[1] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    </div>
+
+    <div class="flex -space-x-1">
+      <img tw-avatar size="md" class="z-[4] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="md" class="z-[3] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="md" class="z-[2] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <img tw-avatar size="md" class="z-[1] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    </div>
+
+    <div class="flex -space-x-1">
+      <img tw-avatar size="xl" class="z-[4] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="xl" class="z-[3] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <img tw-avatar size="xl" class="z-[2] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+      <img tw-avatar size="xl" class="z-[1] hover:z-10 ring-2 ring-white" alt=""
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    </div>
+  </div>
+  <demo-code-snippet [code]="avatarGroupStackedTopToBottom"></demo-code-snippet>
+
+  <tw-h4 class="mt-16 font-medium">
+    Avatar with text
+  </tw-h4>
+  <div
+    class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div class="flex gap-x-2">
+      <img tw-avatar size="sm" alt=""
+        src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+      <span class="relative cursor-pointer text-nowrap group dark:text-white">
+        <div class="text-base leading-none">Jane Smith</div>
+        <a class="text-xs opacity-70 group-hover:opacity-[1]">View profile</a>
+      </span>
+    </div>
+  </div>
+  <demo-code-snippet [code]="avatarWithText"></demo-code-snippet>
+
+  <tw-h3 class="mt-20" id="api">
+    API reference
+  </tw-h3>
+  <div class="grid gap-4">
+    <p>
+      Import: <app-code>{{ "import { AvatarDirective } from 'ngx-twcss';" }}</app-code>
+    </p>
+    <p>
+      Selector: <app-code>tw-avatar, [tw-avatar]</app-code>
+    </p>
+    <p>
+      Interface: <app-code>Avatar</app-code>
+    </p>
+  </div>
+  <div class="grid border m-6 p-6 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="w-48">Properties</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td><app-code>{{'@Input()'}} class: string</app-code></td>
+          <td>
+            <div class="font-sans">
+              The style of the avatar.
+              <br> Can be customized through:
+              <ul>
+                <li>- HTML template using <app-code>class</app-code> attribute</li>
+                <li>- DI using <app-code>provideAvatarConfig()</app-code> function</li>
+                <li>- Component instance using <app-code>setConfig</app-code> method</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>
+              <span class="pr-2">{{'@Input()'}} size:</span><br>
+              <span class="pl-2">'xs' | 'sm' | 'md' | 'lg' | 'xl'</span>
+            </app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              The size of the avatar. <br> Default is <app-code>'md'</app-code>
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code class="hidden sm:table-cell">setConfig(config: Partial&#60;AvatarConfig&#62;): void</app-code>
+            <app-code class="sm:hidden">
+              <span class="pr-2">setConfig(
+                <br> <span class="pl-6">config: Partial&#60;AvatarConfig&#62;</span>
+                <br> <span class="pl-2">): void</span>
+              </span>
+            </app-code>
+          </td>
+          <td>
+            <p class="font-sans">
+              Set the avatar style configuration.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
