@@ -29,7 +29,7 @@ variables:
 stages:
   - stage: CI
     jobs:
-      - template: lab/ngxtw/demo/job.build.yml@template
+      - template: lab/ngxtw/docs/job.build.yml@template
 
   - ${{ if or(in(variables['Build.SourceBranchName'], 'master', 'next'), contains(variables['Build.SourceBranch'], 'release')) }}:
     - stage: CD
@@ -38,6 +38,6 @@ stages:
         name: Lab
         demands:
           - Agent.OS -equals Linux
-          - AZP_RUNS -equals demo
+          - AZP_RUNS -equals docs
       jobs:
-        - template: lab/ngxtw/demo/job.release.yml@template
+        - template: lab/ngxtw/docs/job.release.yml@template
