@@ -13,7 +13,7 @@ import { ToggleTheme } from 'ngxtw';
         animate('150ms ease-in-out', style({ transform: 'translateX(0)' }))
       ]),
       transition(':leave', [
-        animate('75ms ease-in-out', style({ transform: 'translateX(-100%)' }))
+        animate('75ms 75ms ease-in-out', style({ transform: 'translateX(-100%)' }))
       ]),
     ]),
   ],
