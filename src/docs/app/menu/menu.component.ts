@@ -1,9 +1,25 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { ToggleTheme } from 'ngxtw';
 
 @Component({
   selector: 'app-menu',
-  templateUrl: './menu.component.html'
+  templateUrl: './menu.component.html',
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ transform: 'translateX(-100%)' }),
+        animate('150ms ease-in-out', style({ transform: 'translateX(0)' }))
+      ]),
+      transition(':leave', [
+        animate('75ms ease-in-out', style({ transform: 'translateX(-100%)' }))
+      ]),
+    ]),
+  ],
+  providers: [
+    provideAnimations(),
+  ]
 })
 export class MenuComponent {
   dark: boolean = false;

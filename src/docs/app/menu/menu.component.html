@@ -1,9 +1,21 @@
 <nav
   class="fixed start-0 top-0 z-30 h-16 flex w-full justify-center border-b border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 bg-blue-800 shadow-xl shadow-black/15">
   <div class="mx-auto flex w-full flex-wrap items-center justify-between place-self-center object-center p-4 sm:px-24">
-    <tw-button-group class="text-white gap-1.5 hover:cursor-pointer">
+    <tw-button-group class="text-white gap-1.5 hover:cursor-pointer relative z-50">
       <tw-icon size="xl" name="ngxtw" />
-      <span class="hidden sm:inline-block text-xl font-semibold">Angular Tailwind</span>
+      <span class="hidden sm:inline-block text-xl">Angular Tailwind</span>
+      <tw-badge class="relative rounded-full h-4 bg-blue-500">Alpha</tw-badge>
+      <!-- <tw-dropdown #tagsDropdown [opened]="true" class="top-8 min-w-16">
+        <tw-button variant="text"
+          class="rounded-none hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Latest</tw-button>
+        <tw-button variant="text"
+          class="rounded-none hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Beta</tw-button>
+        <tw-button variant="text"
+          class="rounded-none hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Alpha</tw-button>
+        <tw-button variant="text"
+          class="rounded-none hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Insiders</tw-button>
+      </tw-dropdown> -->
+
     </tw-button-group>
     <div class="flex items-center space-x-3 md:order-2 rtl:space-x-reverse">
       <!-- Search button -->
@@ -28,8 +40,8 @@
         </tw-button>
       </a>
       <!-- Theme toggle icon -->
-      <tw-button [icon]="true" match="last" size="sm" variant='secondary' (click)="ToggleTheme()" classMatchStrategy="last"
-        class="text-white ring-indigo-50">
+      <tw-button [icon]="true" match="last" size="sm" variant='secondary' (click)="ToggleTheme()"
+        classMatchStrategy="last" class="text-white ring-indigo-50">
         <tw-icon name="moon" source="heroicons" *ngIf="!dark" />
         <tw-icon name="sun" source="heroicons" *ngIf="dark" />
       </tw-button>
@@ -41,9 +53,8 @@
     </div>
   </div>
 </nav>
-<ng-container *ngIf="open || isLargeScreen()">
-  <nav
-    class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-24 z-50 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-xs flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
+  <nav @slideInOut  *ngIf="open || isLargeScreen()"
+    class="fixed left-0 overflow-y-auto overscroll-y-contain shadow-lg md:shadow-none bg-neutral-50 dark:bg-neutral-900 top-16 p-4 sm:pl-24 z-10 *:*:*:text-sm *:*:*:cursor-pointer *:*:text-gray-800 dark:*:*:text-gray-300 inset-y-0 w-full max-w-xs md:max-w-xs flex flex-col gap-6 border-r border-black/[.10] dark:border-white/[.10] dark:border-opacity-10 dark:text-neutral-50">
     <!--Getting started -->
     <div>
       <div class="relative">
@@ -53,14 +64,14 @@
       </div>
       <h2 class="font-bold">Getting started</h2>
       <ul
-        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-300 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
         <li>
           <a href="https://www.npmjs.com/package/ngxtw" (click)="toggle()">
             Installation
           </a>
         </li>
-        <li>
-          <a routerLink="roadmap" (click)="toggle()">
+        <li routerLink="roadmap" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
+          <a>
             Roadmap
           </a>
         </li>
@@ -75,18 +86,16 @@
     <div>
       <h2 class="font-bold">Typography</h2>
       <ul
-        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
-        <li>
-          <a routerLink="typography" (click)="toggle()">
-            Headlines & body
-          </a>
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-300 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        <li routerLink="typography" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
+          Headlines & body
         </li>
       </ul>
     </div>
     <!-- <div>
       <h2 class="font-bold">Customization</h2>
       <ul
-        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        class="flex flex-col font-medium *:p-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-300 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
         <li>
           Theme
         </li>
@@ -98,35 +107,34 @@
     <div>
       <h2 class="font-bold">Components</h2>
       <ul
-        class="flex flex-col font-medium *:py-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-200 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
-        <li routerLink="avatars" (click)="toggle()">
+        class="flex flex-col font-medium *:py-1.5 mt-1.5 *:px-6 *:border-l *:border-neutral-300 dark:*:border-neutral-600 hover:*:border-neutral-400 *:text-gray-700 hover:*:text-gray-900 dark:*:text-gray-400 dark:hover:*:text-gray-200">
+        <li routerLink="avatars" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Avatar
         </li>
-        <li routerLink="badges" (click)="toggle()">
+        <li routerLink="badges" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Badge
         </li>
-        <li routerLink="buttons" (click)="toggle()">
+        <li routerLink="buttons" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Button
         </li>
-        <li routerLink="button-groups" (click)="toggle()">
+        <li routerLink="button-groups" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Button Group
         </li>
-        <li routerLink="comboboxes" (click)="toggle()">
+        <li routerLink="comboboxes" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Combobox
         </li>
-        <li routerLink="dropdowns" (click)="toggle()">
+        <li routerLink="dropdowns" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Dropdown
         </li>
-        <li routerLink="input-groups" (click)="toggle()">
+        <li routerLink="input-groups" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Input Groups
         </li>
-        <li routerLink="modal-dialogs" (click)="toggle()">
+        <li routerLink="modal-dialogs" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Modal Dialog
         </li>
-        <li routerLink="toggles" (click)="toggle()">
+        <li routerLink="toggles" routerLinkActive="ml-0.5 bg-black/5 dark:bg-white/5 sm:w-44" (click)="toggle()">
           Toggle
         </li>
       </ul>
     </div>
   </nav>
-</ng-container>
