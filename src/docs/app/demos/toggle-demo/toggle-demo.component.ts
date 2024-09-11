@@ -5,7 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './toggle-demo.component.html'
 })
 export class ToggleDemoComponent {
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   states: Map<number, boolean> = new Map()
 
   toggle(item: number): void {

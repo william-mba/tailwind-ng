@@ -223,5 +223,12 @@ export class DropdownDemoComponent {
     }
   </tw-dropdown>
 </div>`;
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
 }

@@ -6,7 +6,14 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
   templateUrl: './modal-dialog-demo.component.html'
 })
 export class ModalDialogDemoComponent {
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   open(key: number) {
     return this.dialogsStates[key];
   };

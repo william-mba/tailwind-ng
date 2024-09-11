@@ -5,7 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './badge-demo.component.html'
 })
 export class BadgeDemoComponent {
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   flat = `<tw-badge class="text-gray-500 bg-gray-500/10 text-xs">Badge</tw-badge>
 <tw-badge class="text-blue-500 bg-blue-500/10 text-xs">Badge</tw-badge>
 <tw-badge class="text-red-500 bg-red-500/10 text-xs">Badge</tw-badge>

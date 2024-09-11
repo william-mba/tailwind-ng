@@ -1,6 +1,6 @@
 <div
   class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-gray-800 dark:text-gray-200 *:gap-4 *:border-black/[.10] *:dark:border-white/[.10]">
-  <tw-h2 class="mt-24">NGxTW Input Groups</tw-h2>
+  <tw-h2 class="mt-20">NGxTW Input Groups</tw-h2>
   <p>
     Use these NGxTW input components to create things like search bars with buttons, credit card forms, and other form
     inputs
@@ -18,7 +18,7 @@
         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <span class="text-gray-500 sm:text-sm">$</span>
         </div>
-        <tw-input id="price" name="price" class="pl-7 pr-16" />
+        <tw-input id="price" name="price" class="w-64 sm:w-80 pl-7 pr-16" />
         <div class="absolute inset-y-0 right-0 flex items-center">
           <label for="currency" class="sr-only">Currency</label>
           <select id="currency" name="currency"
@@ -40,7 +40,7 @@
       <label for="email1" class="block text-sm mb-2 font-medium leading-6 text-gray-900 dark:text-gray-100">
         Email
       </label>
-      <tw-input type="email" id="email1" name="email" placeholder="you@example.com" />
+      <tw-input type="email" id="email1" name="email" placeholder="you@example.com" class="w-64 sm:w-80" />
     </div>
   </div>
   <demo-code-snippet [code]="inputWithLabel"></demo-code-snippet>
@@ -52,7 +52,7 @@
       <label for="email2" class="block text-sm mb-2 font-medium leading-6 text-gray-900 dark:text-gray-100">
         Email
       </label>
-      <tw-input type="email" id="email2" name="email" placeholder="you@example.com" />
+      <tw-input type="email" id="email2" name="email" placeholder="you@example.com" class="w-64 sm:w-80" />
       <div class="opacity-50 text-sm mt-2">We'll only use this for spam.</div>
     </div>
   </div>
@@ -69,7 +69,7 @@
         Email
       </label>
       <div class="relative">
-        <tw-input #email type="email" id="email3" name="email" class="pr-10" placeholder="you@example.com"
+        <tw-input #email type="email" id="email3" name="email" class="w-64 sm:w-80 pr-10" placeholder="you@example.com"
           value="williammba" />
         <tw-icon *ngIf="email.invalid" source="heroicons" name="exclamation-circle"
           class="absolute inset-y-0 my-auto right-3 text-red-600/80" />

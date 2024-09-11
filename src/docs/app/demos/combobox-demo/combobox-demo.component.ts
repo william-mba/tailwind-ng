@@ -39,7 +39,14 @@ export class ComboboxDemoComponent {
 
   protected value1: string = this.data[1].initial[2].value!;
   protected value2: string = this.data[2].initial[2].value!;
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   reset(id: number): void {
     this.data[id].current = this.data[id].initial;
   }

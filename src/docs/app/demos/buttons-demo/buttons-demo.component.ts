@@ -8,7 +8,14 @@ export class ButtonsDemoComponent {
   copy(text: string) {
     navigator.clipboard.writeText(text);
   }
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   primaryButton = `<tw-button size="xs">Button text</tw-button>
 <tw-button size="sm">Button text</tw-button>
 <tw-button size="md">Button text</tw-button>

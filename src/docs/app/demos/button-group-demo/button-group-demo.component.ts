@@ -5,7 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './button-group-demo.component.html',
 })
 export class ButtonGroupDemoComponent {
-
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   checkBoxId01 = crypto.randomUUID();
   checkBoxId02 = crypto.randomUUID();
 

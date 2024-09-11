@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-avatar-demo',
   templateUrl: './avatar-demo.component.html'
 })
 export class AvatarDemoComponent {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   avatarGroupStackedBottomToTop = `<div class="flex -space-x-1">
   <img tw-avatar size="xs" class="ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
   <img tw-avatar size="xs" class="ring-2 ring-white" alt="" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">

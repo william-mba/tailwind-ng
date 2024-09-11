@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'button-groups',
-    title:  'Button Groups',
+    title: 'Button Groups',
     component: ButtonGroupDemoComponent
   },
   {
@@ -80,16 +80,16 @@ const routes: Routes = [
   }
 ];
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AppTitleStrategy extends TitleStrategy {
-  constructor(private readonly title: Title){
+  constructor(private readonly title: Title) {
     super();
   }
 
   override updateTitle(routerState: RouterStateSnapshot): void {
     const title = this.buildTitle(routerState);
-    if(title){
-      if(title === 'Roadmap'){
+    if (title) {
+      if (title === 'Roadmap') {
         return this.title.setTitle(`${title} of Tailwind CSS Components for Angular Applications`);
       }
       return this.title.setTitle(`NGxTW ${title} - Tailwind CSS ${title} Components for Angular Applications`);

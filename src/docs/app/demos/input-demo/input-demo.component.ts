@@ -55,6 +55,14 @@ export class InputDemoComponent {
   <!-- Error Message -->
   <div *ngIf="email.invalid" class="text-sm mt-2 text-red-600/90">Not a valid email address.</div>
 </div>`;
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   forbiddenNameValidator(name: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       console.log('control.value', control.value);

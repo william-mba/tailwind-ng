@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class TypographyDemoComponent {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   codeSnippet = `<p>Welcome to the show</p>
 <tw-h4>Welcome to the show</tw-h4>
 <tw-h3>Welcome to the show</tw-h3>
