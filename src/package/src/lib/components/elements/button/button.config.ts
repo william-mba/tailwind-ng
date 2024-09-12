@@ -117,7 +117,7 @@ const ButtonBaseConfig: ButtonBaseConfig = {
   shadow: 'shadow-sm',
   textWrap: 'text-nowrap',
   userSelect: 'select-none',
-  cursor: 'cursor-pointer'
+  cursor: 'cursor-pointer',
 }
 
 /** Primary button config */
@@ -138,7 +138,7 @@ export type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
 const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
   borderWidth: 'ring-1',
-  extend: 'ring-inset',
+  inset: 'ring-inset',
   theme: {
     light: {
       bgColor: 'bg-black',
