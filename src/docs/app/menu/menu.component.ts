@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { ToggleTheme } from 'ngxtw';
+import { setDarkMode, setLightMode } from 'ngxtw';
 
 @Component({
   selector: 'app-menu',
@@ -19,18 +19,44 @@ import { ToggleTheme } from 'ngxtw';
   ],
   providers: [
     provideAnimations(),
-  ]
+  ],
+  host: {
+    '(window:resize)': 'onResize($event)',
+  }
 })
 export class MenuComponent {
-  dark: boolean = false;
-
+  dark: boolean = true;
+  open: boolean = false;
   screenWidth: number = window.innerWidth;
 
-  open: boolean = false;
+  private readonly themeKey: string = 'prefered-theme';
 
-  ToggleTheme() {
-    ToggleTheme();
+  ngOnInit() {
+    this.initTheme();
+  }
+
+  initTheme() {
+    const themePreference = localStorage.getItem(this.themeKey);
+    if (themePreference === 'dark') {
+      this.dark = true;
+      setDarkMode();
+      return;
+    }
+    this.dark = false;
+    setLightMode();
+  }
+
+  toggleTheme() {
     this.dark = !this.dark;
+
+    if (this.dark) {
+      setDarkMode();
+      localStorage.setItem(this.themeKey, 'dark');
+    }
+    if (!this.dark) {
+      setLightMode();
+      localStorage.setItem(this.themeKey, 'light');
+    }
   }
 
   isLargeScreen() {
@@ -41,7 +67,7 @@ export class MenuComponent {
     this.open = !this.open;
   }
 
-  @HostListener('window:resize', ['$event']) onResize(event: any) {
+  onResize(event: any) {
     this.screenWidth = window.innerWidth;
   }
 }

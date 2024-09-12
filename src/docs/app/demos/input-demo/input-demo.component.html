@@ -13,8 +13,8 @@
     class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <!-- Price -->
     <div>
-      <label for="price" class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-100">Price</label>
-      <div class="relative mt-2 rounded-md shadow-sm">
+      <label for="price" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Price</label>
+      <div class="relative mt-2">
         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <span class="text-gray-500 sm:text-sm">$</span>
         </div>
@@ -31,32 +31,32 @@
       </div>
     </div>
   </div>
-  <demo-code-snippet [code]="inputWithInlineLeadingAddonAndTrailingDropdown"></demo-code-snippet>
+  <demo-code-snippet [code]="input_with_inline_leading_addon_and_trailing_dropdown"></demo-code-snippet>
 
   <tw-h4 class="mt-8">Input with label</tw-h4>
   <div
     class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <div>
-      <label for="email1" class="block text-sm mb-2 font-medium leading-6 text-gray-900 dark:text-gray-100">
+      <label for="email1" class="block text-sm mb-2 font-medium text-gray-900 dark:text-gray-100">
         Email
       </label>
       <tw-input type="email" id="email1" name="email" placeholder="you@example.com" class="w-64 sm:w-80" />
     </div>
   </div>
-  <demo-code-snippet [code]="inputWithLabel"></demo-code-snippet>
+  <demo-code-snippet [code]="input_with_label"></demo-code-snippet>
 
   <tw-h4 class="mt-8">Input with label and help text</tw-h4>
   <div
     class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <div>
-      <label for="email2" class="block text-sm mb-2 font-medium leading-6 text-gray-900 dark:text-gray-100">
+      <label for="email2" class="block text-sm mb-2 font-medium text-gray-900 dark:text-gray-100">
         Email
       </label>
       <tw-input type="email" id="email2" name="email" placeholder="you@example.com" class="w-64 sm:w-80" />
       <div class="opacity-50 text-sm mt-2">We'll only use this for spam.</div>
     </div>
   </div>
-  <demo-code-snippet [code]="inputWithLabelAndHelpText"></demo-code-snippet>
+  <demo-code-snippet [code]="input_with_label_and_help_text"></demo-code-snippet>
 
   <tw-h4 class="mt-8">Input with validation error</tw-h4>
   <p class="border-l-8 pl-3 text-sm">
@@ -65,7 +65,7 @@
   <div
     class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <div>
-      <label for="email3" class="block text-sm mb-2 font-medium leading-6 text-gray-900 dark:text-gray-100">
+      <label for="email3" class="block text-sm mb-2 font-medium text-gray-900 dark:text-gray-100">
         Email
       </label>
       <div class="relative">
@@ -74,10 +74,183 @@
         <tw-icon *ngIf="email.invalid" source="heroicons" name="exclamation-circle"
           class="absolute inset-y-0 my-auto right-3 text-red-600/80" />
       </div>
-      <div *ngIf="email.invalid" class="text-sm mt-2 text-red-600/90">Not a valid email address.</div>
+      <div *ngIf="email.invalid" class="text-sm mt-2 text-red-600/90 dark:text-red-500/90">Not a valid email address.
+      </div>
     </div>
   </div>
-  <demo-code-snippet [code]="inputWithValidationError"></demo-code-snippet>
+  <demo-code-snippet [code]="input_with_validation_error"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with disabled state</tw-h4>
+  <div
+    class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="email4" class="block text-sm mb-2 font-medium text-gray-900 dark:text-gray-100">
+        Email
+      </label>
+      <tw-input type="email" id="email4" name="email" [disabled]="true" class="w-64 sm:w-80 disabled:cursor-not-allowed"
+        placeholder="you@example.com" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_disable_state"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input without label</tw-h4>
+  <div
+    class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <tw-input type="email" name="email" class="w-64 sm:w-80" placeholder="you@example.com" />
+  </div>
+  <demo-code-snippet [code]="input_without_label"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with corner hint</tw-h4>
+  <div
+    class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <div class="flex justify-between text-sm mb-2">
+        <label for="email5" class="font-medium text-gray-900 dark:text-gray-100">
+          Email
+        </label>
+        <span class="opacity-70">Optional</span>
+      </div>
+      <tw-input type="email" id="email5" name="email" placeholder="you@example.com" class="w-64 sm:w-80" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_corner_hint"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with leading icon</tw-h4>
+  <div
+    class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="email6" class="block text-sm font-medium text-gray-900 dark:text-gray-100">
+        Email
+      </label>
+      <div class="relative mt-2">
+        <tw-icon class="absolute inset-y-0 my-auto left-3 text-gray-400 dark:text-gray-500" source="heroicons"
+          name="envelope" />
+        <tw-input type="email" id="email6" name="email" class="w-64 sm:w-80 pl-10" placeholder="you@example.com" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_leading_icon"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with trailing icon</tw-h4>
+  <div
+    class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="account-number" class="block text-sm font-medium text-gray-900 dark:text-gray-100">
+        Account number
+      </label>
+      <div class="relative mt-2">
+        <tw-icon source="heroicons" name="question-mark-circle"
+          class="absolute inset-y-0 my-auto right-3 text-gray-400 dark:text-gray-500" />
+        <tw-input id="account-number" name="account-number" class="w-64 sm:w-80 pr-10" placeholder="000-00-0000" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_trailing_icon"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with add-on</tw-h4>
+  <div
+    class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="company-website" class="block text-sm font-medium text-gray-900 dark:text-gray-100">
+        Company Website
+      </label>
+      <div
+        class="mt-2 inline-flex divide-x divide-black/10 dark:divide-white/10 ring-1 ring-black/10 dark:ring-white/10 rounded-md">
+        <span class="select-none py-1.5 px-3 text-neutral-500">
+          http://
+        </span>
+        <div>
+          <tw-input type="url" id="company-website" name="company-website" class="ring-0 w-64 rounded-l-none rounded-md"
+            placeholder="www.example.com" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_addon"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with inline add-on</tw-h4>
+  <div
+    class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="company-website2" class="block text-sm font-medium text-gray-900 dark:text-gray-100">Company
+        Website</label>
+      <div class="relative mt-2">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <span class="text-gray-500 sm:text-sm">http://</span>
+        </div>
+        <tw-input type="url" id="company-website2" name="company-website" class="w-64 sm:w-80 pl-14"
+          placeholder="www.example.com" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_inline_addon"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with inline leading and trailing add-ons</tw-h4>
+  <div
+    class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="price2" class="block text-sm font-medium text-gray-900 dark:text-gray-100">
+        Price
+      </label>
+      <div class="relative mt-2">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <span class="text-gray-500 sm:text-sm">$</span>
+        </div>
+        <tw-input id="price2" name="price" class="w-64 sm:w-80 pl-7 pr-12" placeholder="you@example.com" />
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+          <span class="text-gray-500 sm:text-sm">CAD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_inline_leading_and_trailing_addons"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with inline leading dropdown</tw-h4>
+  <div
+    class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="phone-number" class="block text-sm font-medium text-gray-900 dark:text-gray-100">
+        Phone Number
+      </label>
+      <div class="relative mt-2">
+        <div class="absolute inset-y-0 left-0 flex items-center">
+          <label for="country-code" class="sr-only">Country code</label>
+          <select id="country-code" name="country"
+            class="h-full rounded-md border-0 bg-transparent py-0 pl-3 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+            <option>US</option>
+            <option>CA</option>
+            <option>EU</option>
+          </select>
+        </div>
+        <tw-input type="tel" id="phone-number" name="phone-number" class="w-64 sm:w-80 pl-16"
+          placeholder="+1 (514) 256-9580" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_inline_leading_dropdown"></demo-code-snippet>
+
+  <tw-h4 class="mt-8">Input with leading icon and trailing button</tw-h4>
+  <div
+    class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
+    <div>
+      <label for="candidate" class="block text-sm font-medium text-gray-900 dark:text-gray-100">
+        Search candidates
+      </label>
+      <div
+        class="relative mt-2 inline-flex divide-x divide-black/10 dark:divide-white/10 ring-1 ring-black/10 dark:ring-white/10 rounded-md">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <tw-icon source="heroicons" name="users" class="text-gray-500 sm:text-sm" />
+        </div>
+        <tw-input id="candidate" name="candidate" class="w-64 sm:w-80 pl-10 ring-0 rounded-r-none rounded-md"
+          placeholder="Jane Doe" />
+        <tw-button variant="secondary" class="rounded-l-none rounded-md ring-0">
+          <tw-icon source="heroicons" name="bars-arrow-up" />
+          Sort
+        </tw-button>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="input_with_leading_icon_and_trailing_button"></demo-code-snippet>
 
   <!-- <tw-h3 class="mt-20" id="api">
     API reference

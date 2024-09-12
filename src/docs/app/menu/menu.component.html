@@ -40,10 +40,10 @@
         </tw-button>
       </a>
       <!-- Theme toggle icon -->
-      <tw-button [icon]="true" match="last" size="sm" variant='secondary' (click)="ToggleTheme()"
+      <tw-button [icon]="true" match="last" size="sm" variant='secondary' (click)="toggleTheme()"
         classMatchStrategy="last" class="text-white ring-indigo-50">
-        <tw-icon name="moon" source="heroicons" *ngIf="!dark" />
-        <tw-icon name="sun" source="heroicons" *ngIf="dark" />
+        <tw-icon name="moon" source="heroicons" *ngIf="dark" />
+        <tw-icon name="sun" source="heroicons" *ngIf="!dark" />
       </tw-button>
       <!-- Burger button -->
       <tw-button [icon]="true" match="last" size="sm" variant='secondary' class="text-white ring-indigo-50 2xl:hidden"
