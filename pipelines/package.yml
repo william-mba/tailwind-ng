@@ -6,7 +6,7 @@ trigger:
       - release/*
   paths:
     include:
-      - src/ngxtw/src/*
+      - src/package/src/*
 
 pool:
   name: Lab
