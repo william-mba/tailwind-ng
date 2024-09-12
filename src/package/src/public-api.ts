@@ -47,7 +47,7 @@ export { Toggle } from './lib/components/forms/toggle/toggle';
 export { ToggleComponent } from './lib/components/forms/toggle/toggle.component';
 export { ToggleConfig, TOGGLE_CONFIG, provideToggleConfig } from './lib/components/forms/toggle/toggle.config';
 export { InputModel } from './lib/components/forms/input/input.model';
-export { InputTextComponent } from './lib/components/forms/input/input-text/input-text.component';
+export { InputComponent } from './lib/components/forms/input/input.component';
 export { InputConfig, INPUT_CONFIG, provideInputConfig } from './lib/components/forms/input/input.config';
 
 // Typography

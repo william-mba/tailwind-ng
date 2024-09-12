@@ -18,11 +18,15 @@ const InputConfig: InputConfig = {
   width: 'w-80',
   shadow: 'shadow-sm',
   theme: {
-    bgColor: 'bg-neutral-50',
-    borderColor: 'ring-neutral-300',
+    bgColor: 'bg-black',
+    bgOpacity: 'bg-opacity-0',
+    borderColor: 'ring-black',
+    borderOpacity: 'ring-opacity-10',
     dark: {
-      bgColor: 'dark:bg-neutral-800',
-      borderColor: 'dark:ring-neutral-700'
+      bgColor: 'dark:bg-white',
+      bgOpacity: 'dark:bg-opacity-0',
+      borderColor: 'dark:ring-white',
+      borderOpacity: 'dark:ring-opacity-10'
     },
     focus: {
       borderWidth: 'focus:ring-2',

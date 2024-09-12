@@ -14,7 +14,7 @@ import {
   IconDirective,
   TypographyModule,
   ToggleComponent,
-  InputTextComponent,
+  InputComponent,
   provideButtonConfig,
   provideDropdownConfig,
   provideAvatarConfig,
@@ -85,7 +85,7 @@ import { InputDemoComponent } from './demos/input-demo/input-demo.component';
     IconDirective,
     TypographyModule,
     ToggleComponent,
-    InputTextComponent,
+    InputComponent,
   ],
   bootstrap: [AppComponent],
   providers: [

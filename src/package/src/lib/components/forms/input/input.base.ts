@@ -4,8 +4,6 @@ import { InputProps, InputType } from './input.model';
 import { afterNextRender, AfterRenderPhase, Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
-export const INPUT_SELECTOR = 'tw-input, [tw-input]';
-
 @Component({ template: '' })
 export abstract class AbstractInput implements InputProps, OnInit {
   @Input() id!: string;
@@ -21,7 +19,8 @@ export abstract class AbstractInput implements InputProps, OnInit {
   @Input() readonly: boolean = false;
   @Input() pattern?: string | RegExp;
 
-  @ViewChild('inputRef', { static: true, read: ElementRef }) inputRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('inputRef', { static: true, read: ElementRef })
+  inputRef!: ElementRef<HTMLInputElement>;
 
   public control!: FormControl<string>;
   public hostRef: HTMLElement = inject(ElementRef).nativeElement;
