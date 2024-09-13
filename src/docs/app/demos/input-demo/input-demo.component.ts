@@ -7,14 +7,14 @@ import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
   styles: ``
 })
 export class InputDemoComponent {
-  // ngAfterViewInit(): void {
-  //   setTimeout(() => {
-  //     window.scrollTo({
-  //       top: 0,
-  //       behavior: "smooth",
-  //     })
-  //   }, 500);
-  // }
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
 
   forbiddenNameValidator(name: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {

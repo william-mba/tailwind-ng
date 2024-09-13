@@ -15,43 +15,46 @@
       <tw-button variant="secondary" class="rounded-r-md">Years</tw-button>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="simpleButtonGroups"></demo-code-snippet>
+  <demo-code-snippet [code]="simple_button_groups"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">With two icon buttons</tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
-    <tw-button-group class="border border-inherit p-1.5 rounded-xl">
-      <tw-button [icon]="true" size="sm" variant="secondary" class="rounded-l-md">
+    <tw-button-group>
+      <tw-button [icon]="true" variant="secondary" class="rounded-l-md">
         <tw-icon source="heroicons" name="chevron-left" />
       </tw-button>
-      <tw-button [icon]="true" size="sm" variant="secondary" class="rounded-r-md">
+      <tw-button [icon]="true" variant="secondary" class="rounded-r-md">
         <tw-icon source="heroicons" name="chevron-right" />
       </tw-button>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="withTwoButtons"></demo-code-snippet>
+  <demo-code-snippet [code]="with_two_buttons"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">With dropdown</tw-h4>
   <div
     class="grid sm:flex h-64 border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button-group>
-      <tw-button variant="secondary" class="rounded-l-md">Save changes</tw-button>
-      <div class="relative">
-        <tw-button [icon]="true" variant="secondary" class="rounded-r-md h-full" (click)="dropdownA.toggle()">
+      <tw-button variant="secondary" class="rounded-l-md">
+        Save changes
+      </tw-button>
+      <div>
+        <tw-button class="rounded-r-md ring-0" variant="secondary" [icon]="true" (click)="dropdown.toggle()">
           <tw-icon source="heroicons" name="chevron-down" />
         </tw-button>
-        <tw-dropdown [opened]="true" #dropdownA class="shadow-lg *:justify-start *:rounded-none *:shadow-none">
-          @for (item of ['Save as draft', 'Save and publish', 'Save and close']; track $index) {
-          <tw-button variant="text"
-            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            {{ item }}
-          </tw-button>
-          }
+        <tw-dropdown [opened]="true" #dropdown class="shadow-lg">
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:font-semibold">
+            <li class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Save as draft</li>
+            <li class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Save and publish
+            </li>
+            <li class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Save and close
+            </li>
+          </ul>
         </tw-dropdown>
       </div>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="withDropdown"></demo-code-snippet>
+  <demo-code-snippet [code]="with_dropdown"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">With stats</tw-h4>
   <div
@@ -64,21 +67,21 @@
       <tw-button variant="secondary" class="rounded-r-md">12k</tw-button>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="withStats"></demo-code-snippet>
+  <demo-code-snippet [code]="with_stats"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">With checkbox and select</tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button-group>
-      <tw-button variant="text" class="relative border border-neutral-300 dark:border-neutral-600 rounded-l-md h-auto">
+      <tw-button variant="text" class="relative rounded-l-md h-auto">
         <label for={{checkBoxId01}} class="absolute inset-0 min-h-full min-w-full"></label>
         <input type="checkbox" id={{checkBoxId01}}
           class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
-      <tw-button variant="text" class="*:size-auto p-0">
+      <tw-button variant="text" class="*:size-auto p-0 rounded-l-none">
         <label for="currency" class="sr-only">Currency</label>
         <select id="currency" name="currency"
-          class="rounded-r-md border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+          class="rounded-r-md bg-inherit border-0 dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
           <option>Unread messages</option>
           <option>Sent messages</option>
           <option>All messages</option>
@@ -86,64 +89,65 @@
       </tw-button>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="withChecboxAndSelect"></demo-code-snippet>
+  <demo-code-snippet [code]="with_checbox_and_select"></demo-code-snippet>
 
   <tw-h3 class="mt-8"> Rounded button groups </tw-h3>
 
   <tw-h4 class="mt-8 font-medium">Rounded simple button groups</tw-h4>
   <div
     class="grid gap-9 border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
-    <tw-button-group>
+    <tw-button-group class="rounded-full">
       <tw-button variant="secondary" class="rounded-l-full">Days</tw-button>
       <tw-button variant="secondary" class="rounded-none">Months</tw-button>
       <tw-button variant="secondary" class="rounded-r-full">Years</tw-button>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="simpleRoundedButtonGroups"></demo-code-snippet>
+  <demo-code-snippet [code]="simple_rounded_button_groups"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">Rounded swith two icon buttons</tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
-    <tw-button-group>
-      <tw-button [icon]="true" size="sm" variant="secondary" class="rounded-l-full">
+    <tw-button-group class="rounded-full">
+      <tw-button [icon]="true" variant="secondary" class="rounded-l-full">
         <tw-icon source="heroicons" name="chevron-left" />
       </tw-button>
-      <tw-button [icon]="true" size="sm" variant="secondary" class="rounded-r-full">
+      <tw-button [icon]="true" variant="secondary" class="rounded-r-full">
         <tw-icon source="heroicons" name="chevron-right" />
       </tw-button>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="roundedWithTwoButtons"></demo-code-snippet>
+  <demo-code-snippet [code]="rounded_with_two_buttons"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">Rounded with dropdown</tw-h4>
   <div
     class="grid sm:flex h-64 border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
-    <tw-button-group>
+    <tw-button-group class="rounded-full">
       <tw-button variant="secondary" class="rounded-l-full">
         Save changes
       </tw-button>
-      <div class="relative">
-        <tw-button variant="secondary" class="rounded-r-full h-full pl-3" (click)="myDropdownB.toggle()">
+      <div>
+        <tw-button class="rounded-r-full ring-0" variant="secondary" [icon]="true" (click)="dropdownB.toggle()">
           <tw-icon source="heroicons" name="chevron-down" />
         </tw-button>
-        <tw-dropdown [opened]="true" #myDropdownB
-          class="rounded-3xl shadow-lg *:justify-start *:shadow-none *:rounded-full p-2">
-          @for (item of ['Save as draft', 'Save and publish', 'Save and close']; track $index) {
-          <tw-button variant="text"
-            class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">
-            {{ item }}
-          </tw-button>
-          }
+        <tw-dropdown [opened]="true" #dropdownB class="py-2 shadow-lg rounded-3xl">
+          <ul class="px-2 *:rounded-full *:px-4 *:py-2 *:cursor-pointer *:font-semibold">
+            <li class="hover:bg-black/5 dark:hover:bg-white/5"> Save as draft
+            </li>
+            <li class="hover:bg-black/5 dark:hover:bg-white/5"> Save and publish
+            </li>
+            <li class="hover:bg-black/5 dark:hover:bg-white/5"> Save and close
+            </li>
+          </ul>
         </tw-dropdown>
       </div>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="roundedWithDropdown"></demo-code-snippet>
+  <demo-code-snippet [code]="rounded_with_dropdown"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">Rounded with stats</tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
-    <tw-button-group>
+    <tw-button-group class="rounded-full">
       <tw-button variant="secondary" class="rounded-l-full">
         <tw-icon source="heroicons" name="bookmark" />
         Bookmark
@@ -151,29 +155,29 @@
       <tw-button variant="secondary" class="rounded-r-full"> 12k </tw-button>
     </tw-button-group>
   </div>
-  <demo-code-snippet [code]="roundedWithStats"></demo-code-snippet>
+  <demo-code-snippet [code]="rounded_with_stats"></demo-code-snippet>
 
   <tw-h4 class="mt-8 font-medium">Rounded with checkbox and select</tw-h4>
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
-    <div tw-button-group>
-      <tw-button variant="text" class="relative border border-neutral-300 dark:border-neutral-600 rounded-l-3xl h-auto">
+    <tw-button-group class="rounded-full">
+      <tw-button variant="text" class="relative rounded-l-full h-auto">
         <label for={{checkBoxId02}} class="absolute inset-0 min-h-full min-w-full"></label>
         <input type="checkbox" id={{checkBoxId02}}
-          class="hover:cursor-pointer rounded-full border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+          class="hover:cursor-pointer rounded-sm border-neutral-300 dark:border-neutral-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
       </tw-button>
-      <tw-button variant="text" class="*:size-auto p-0">
+      <tw-button variant="text" class="*:size-auto p-0 rounded-l-none">
         <label for="currency" class="sr-only">Currency</label>
         <select id="currency" name="currency"
-          class="rounded-r-3xl border border-neutral-200 dark:border-neutral-700 bg-inherit dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+          class="rounded-r-full bg-inherit border-0 dark:bg-neutral-800 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
           <option>Unread messages</option>
           <option>Sent messages</option>
           <option>All messages</option>
         </select>
       </tw-button>
-    </div>
+    </tw-button-group>
   </div>
-  <demo-code-snippet [code]="roundedWithChecboxAndSelect"></demo-code-snippet>
+  <demo-code-snippet [code]="rounded_with_checbox_and_select"></demo-code-snippet>
 
   <tw-h3 class="mt-20" id="api">
     API reference
