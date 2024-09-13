@@ -11,8 +11,23 @@ const ButtonGroupConfig: ButtonGroupConfig = {
   },
   filters: {
     backdrop: 'backdrop-blur'
+  },
+  borderRadius: 'rounded-md',
+  divideWidth: 'divide-x',
+  ringWidth: 'ring-1',
+  children: {
+    ringWidth: '*:ring-0',
+  },
+  theme: {
+    divideColor: 'divide-black/10',
+    ringColor: 'ring-black/10',
+    dark: {
+      divideColor: 'dark:divide-white/10',
+      ringColor: 'dark:ring-white/10'
+    }
   }
 }
+
 /**
  * Button group component config
  */
