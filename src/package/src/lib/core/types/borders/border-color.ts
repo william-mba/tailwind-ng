@@ -1,6 +1,8 @@
 export type BorderColor =
   | 'border-black'
+  | 'border-black/10'
   | 'border-white'
+  | 'border-white/10'
   | 'border-current'
   | 'border-inherit'
   | 'border-transparent'
@@ -247,7 +249,9 @@ export type BorderColor =
   | 'border-rose-900'
   | 'border-rose-950'
   | 'dark:border-black'
+  | 'dark:border-black/10'
   | 'dark:border-white'
+  | 'dark:border-white/10'
   | 'dark:border-current'
   | 'dark:border-inherit'
   | 'dark:border-transparent'

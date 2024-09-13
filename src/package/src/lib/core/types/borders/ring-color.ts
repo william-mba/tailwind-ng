@@ -1,6 +1,8 @@
 export type RingColor =
   | 'ring-black'
+  | 'ring-black/10'
   | 'ring-white'
+  | 'ring-white/10'
   | 'ring-current'
   | 'ring-inherit'
   | 'ring-transparent'
@@ -247,7 +249,9 @@ export type RingColor =
   | 'ring-rose-900'
   | 'ring-rose-950'
   | 'dark:ring-black'
+  | 'dark:ring-black/10'
   | 'dark:ring-white'
+  | 'dark:ring-white/10'
   | 'dark:ring-current'
   | 'dark:ring-inherit'
   | 'dark:ring-transparent'

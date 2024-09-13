@@ -1,6 +1,8 @@
 export type DivideColor =
   | 'divide-black'
+  | 'divide-black/10'
   | 'divide-white'
+  | 'divide-white/10'
   | 'divide-current'
   | 'divide-inherit'
   | 'divide-transparent'
@@ -247,7 +249,9 @@ export type DivideColor =
   | 'divide-rose-900'
   | 'divide-rose-950'
   | 'dark:divide-black'
+  | 'dark:divide-black/10'
   | 'dark:divide-white'
+  | 'dark:divide-white/10'
   | 'dark:divide-current'
   | 'dark:divide-inherit'
   | 'dark:divide-transparent'

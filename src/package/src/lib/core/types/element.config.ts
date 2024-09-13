@@ -1,5 +1,6 @@
 import { BorderRadius } from "./borders/border-radius"
 import { BorderWidth } from "./borders/border-width"
+import { DivideWidth } from "./borders/divide-width"
 import { RingInset } from "./borders/ring-inset"
 import { RingWidth } from "./borders/ring-width"
 import { BoxShadow } from "./effects/box-shadow"
@@ -30,7 +31,8 @@ export type ElementConfig = {
   position: Position,
   borderRadius: BorderRadius,
   ringWidth: RingWidth,
-  borderWidth: BorderWidth | RingWidth,
+  divideWidth: DivideWidth,
+  borderWidth: BorderWidth | RingWidth | DivideWidth,
   fontWeight: FontWeight,
   fontSize: FontSize,
   theme: Partial<Theme> | Record<string, Partial<Theme>>,
@@ -54,5 +56,14 @@ export type ElementConfig = {
   /**A property to set class name starting with sm:* */
   sm: Record<string, {}> | string
   /**A property to set class name that does not have a defined type. */
-  extend: Record<string, {}> | string
+  extend: Record<string, {}> | string,
+  /**
+   * A property to set class name that apply to children
+   * @example string: '*:bg-red-500'
+   * @example object: {
+   * 'bgColor': '*:bg-red-500',
+   * 'textColor': '*:text-white'
+   * }
+   */
+  children: Record<string, {}> | string
 }
