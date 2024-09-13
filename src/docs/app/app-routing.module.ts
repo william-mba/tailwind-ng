@@ -76,7 +76,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'comboboxes'
+    redirectTo: 'roadmap'
   }
 ];
 
