@@ -118,7 +118,7 @@ export class InputDemoComponent {
     <span class="select-none py-1.5 px-3 text-neutral-500"> http:// </span>
     <div>
       <!-- NGxTW Input -->
-      <tw-input type="url" id="company-website" name="company-website" class="ring-0 w-64 rounded-l-none rounded-md" placeholder="www.example.com" />
+      <tw-input type="url" id="company-website" name="company-website" class="w-48 sm:w-64 ring-0 rounded-l-none rounded-md" placeholder="www.example.com" />
     </div>
   </div>
 </div>`;
@@ -176,7 +176,7 @@ export class InputDemoComponent {
     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
       <tw-icon source="heroicons" name="users" class="text-gray-500 sm:text-sm" />
     </div>
-    <tw-input id="candidate" name="candidate" class="w-64 sm:w-80 pl-10 ring-0 rounded-r-none rounded-md" placeholder="Jane Doe" />
+    <tw-input id="candidate" name="candidate" class="w-48 sm:w-64 pl-10 ring-0 rounded-r-none rounded-md" placeholder="Jane Doe" />
     <tw-button variant="secondary" class="rounded-l-none rounded-md ring-0">
       <tw-icon source="heroicons" name="bars-arrow-up" />
       Sort
