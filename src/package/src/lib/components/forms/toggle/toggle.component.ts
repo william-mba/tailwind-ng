@@ -51,7 +51,7 @@ export class ToggleComponent implements OnInit, Toggle {
    */
   @Input()
   public match: 'first' | 'last' | 'exact' = 'exact';
-  @Output()
+  @Output('toggle')
   public onToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   ngOnInit(): void {
