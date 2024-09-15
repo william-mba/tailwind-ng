@@ -5,7 +5,7 @@ import { asyncScheduler, concatMap, scheduled, timer } from 'rxjs';
   selector: 'demo-code-snippet',
   template: `
   <details>
-    <summary class="relative h-5 border-neutral-300 dark:border-neutral-700 list-none px-2 font-mono text-xs cursor-pointer">
+    <summary class="relative h-5 my-2 border-neutral-300 dark:border-neutral-700 list-none px-2 font-mono text-xs cursor-pointer">
       <span (click)="changeLabel()" class="absolute top-0.5 right-2">{{ label }}</span>
     </summary>
     <div class="relative">

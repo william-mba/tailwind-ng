@@ -20,13 +20,13 @@ export class ComboboxDemoComponent {
     { id: '11', value: 'Kristin Watson' },
     { id: '12', value: 'Emma Dorsey' }
   ];
-  simple = `<tw-combobox #combobox [value]="value" [opened]="true" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)" label="Assigned to" width="w-72">
+  simple = `<tw-combobox #combobox [value]="value" [opened]="true" (change)="filter($event)" (reset)="reset()" (toggle)="toggle($event)" label="Assigned to" width="w-72">
   @for (item of items; track item.id) {
     <tw-combobox-item [id]="item.id" [value]="item.value" [combobox]="combobox" />
   }
 </tw-combobox>`;
 
-  withCheckOnLeft = `<tw-combobox #combobox [value]="value" [opened]="true" (onChange)="filter($event)" (onReset)="reset()" (onToggle)="toggle($event)" label="Assigned to" width="w-72">
+  withCheckOnLeft = `<tw-combobox #combobox [value]="value" [opened]="true" (change)="filter($event)" (reset)="reset()" (toggle)="toggle($event)" label="Assigned to" width="w-72">
   @for (item of items; track item.id) {
     <tw-combobox-item [id]="item.id" [value]="item.value" [combobox]="combobox" iconSlot="left" />
   }
