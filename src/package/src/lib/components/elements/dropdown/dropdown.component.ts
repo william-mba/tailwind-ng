@@ -3,6 +3,7 @@ import { DROPDOWN_CONFIG, DropdownConfig } from './dropdown.config';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { trigger, style, animate, transition, state } from '@angular/animations';
 import { Dropdown } from './dropdown';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 /** Dropdown component */
 @Component({
@@ -14,10 +15,19 @@ import { Dropdown } from './dropdown';
     '(click)': 'toggle()'
   },
   template: `<ng-content></ng-content>`,
+  providers: [provideAnimations()],
   animations: [
     trigger('toggle', [
-      state('opened', style({ opacity: 1, visibility: 'visible', transform: 'scale(1)' })),
-      state('closed', style({ opacity: 0, visibility: 'hidden', transform: 'scale(.95)' })),
+      state('opened', style({
+        opacity: 1,
+        visibility: 'visible',
+        transform: 'translate(0)',
+      })),
+      state('closed', style({
+        opacity: 0,
+        visibility: 'hidden',
+        transform: 'translate(0, -1.5rem)',
+      })),
       transition('closed => opened', [animate('100ms ease-out')]),
       transition('opened => closed', [animate('75ms ease-in')])
     ])
@@ -30,7 +40,7 @@ export class DropdownComponent implements Dropdown, OnInit {
   public class!: string;
   @Input()
   public opened: boolean = false;
-  @Output()
+  @Output('toggle')
   public onToggle: EventEmitter<boolean> = new EventEmitter();
 
   ngOnInit(): void {
