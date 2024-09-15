@@ -65,7 +65,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(1)">Open dialog</tw-button>
-    <tw-dialog [opened]="open(1)" class="divide-y divide-gray-200 dark:divide-neutral-900">
+    <tw-dialog [opened]="open(1)">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -80,7 +80,7 @@
           </p>
         </tw-dialog-content>
       </tw-dialog-panel>
-      <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20">
+      <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20 border-t border-gray-200 dark:border-neutral-900">
         <tw-button class="bg-red-600">Deactivate</tw-button>
         <tw-button (click)="close(1)" variant="secondary">Cancel</tw-button>
       </tw-dialog-actions>
@@ -347,7 +347,7 @@
   <div
     class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
     <tw-button variant="secondary" (click)="toggleDialog(9)" class="rounded-full">Open dialog</tw-button>
-    <tw-dialog [opened]="open(9)" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
+    <tw-dialog [opened]="open(9)" class="rounded-3xl">
       <tw-dialog-panel>
         <tw-dialog-icon class="text-red-600">
           <tw-icon name="exclamation-triangle" source="heroicons" />
@@ -362,7 +362,7 @@
           </p>
         </tw-dialog-content>
       </tw-dialog-panel>
-      <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20">
+      <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20 border-t border-gray-200 dark:border-neutral-900">
         <tw-button class="rounded-full bg-red-600">Deactivate</tw-button>
         <tw-button (click)="close(9)" variant="secondary" class="rounded-full">Cancel</tw-button>
       </tw-dialog-actions>

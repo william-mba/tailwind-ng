@@ -67,7 +67,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  simpleDialogWithGrayFooter = `<tw-dialog [opened]="open" class="divide-y divide-gray-200 dark:divide-neutral-900">
+  simpleDialogWithGrayFooter = `<tw-dialog [opened]="open">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -82,7 +82,7 @@ export class ModalDialogDemoComponent {
       </p>
     </tw-dialog-content>
   </tw-dialog-panel>
-  <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20">
+  <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20 border-t border-gray-200 dark:border-neutral-900">
     <tw-button class="bg-red-600">Deactivate</tw-button>
     <tw-button (click)="close()" variant="secondary">Cancel</tw-button>
   </tw-dialog-actions>
@@ -214,7 +214,7 @@ export class ModalDialogDemoComponent {
   </tw-dialog-actions>
 </tw-dialog>`;
 
-  roundedSimpleDialogWithGrayFooter = `<tw-dialog [opened]="open" class="rounded-3xl divide-y divide-gray-200 dark:divide-neutral-900">
+  roundedSimpleDialogWithGrayFooter = `<tw-dialog [opened]="open" class="rounded-3xl">
   <tw-dialog-panel>
     <tw-dialog-icon class="text-red-600">
       <tw-icon source="heroicons" name="exclamation-triangle" />
@@ -227,7 +227,7 @@ export class ModalDialogDemoComponent {
       </p>
     </tw-dialog-content>
   </tw-dialog-panel>
-  <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20">
+  <tw-dialog-actions class="bg-neutral-100 dark:bg-neutral-900/20 border-t border-gray-200 dark:border-neutral-900">
     <tw-button class="rounded-full bg-red-600">Deactivate</tw-button>
     <tw-button (click)="close()" variant="secondary" class="rounded-full">Cancel</tw-button>
   </tw-dialog-actions>
