@@ -35,9 +35,9 @@ export class ComboboxComponent implements OnInit, Combobox, AfterViewInit {
   @Input() opened: boolean = false;
   @Input() inputMinLength: number = 2;
   @Input() width: 'w-64' | 'w-72' | 'w-80' | 'w-96' = 'w-64';
-  @Output() onReset: EventEmitter<void> = new EventEmitter();
-  @Output() onToggle: EventEmitter<boolean> = new EventEmitter();
-  @Output() onChange: EventEmitter<string> = new EventEmitter();
+  @Output('reset') onReset: EventEmitter<void> = new EventEmitter();
+  @Output('toggle') onToggle: EventEmitter<boolean> = new EventEmitter();
+  @Output('change') onChange: EventEmitter<string> = new EventEmitter();
 
   ngOnInit(): void {
     this.inputClass = mergeClassNames(toClassNames(this.config), `${this.inputClass} ${this.width}`);

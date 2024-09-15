@@ -18,7 +18,7 @@ export abstract class AbstractComboboxItem implements ComboboxItem, AfterViewIni
   @Input() value!: string;
   @Input() class!: string;
   @Input() combobox!: Combobox;
-  @Output() onSelect: EventEmitter<ComboboxItem> = new EventEmitter();
+  @Output('select') onSelect: EventEmitter<ComboboxItem> = new EventEmitter();
 
   constructor(private el: ElementRef<HTMLElement>) {
     this.id = this.id || crypto.randomUUID();
