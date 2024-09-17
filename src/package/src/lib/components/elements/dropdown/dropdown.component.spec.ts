@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropdownComponent } from './dropdown.component';
 import { DropdownConfig, provideDropdownConfig } from './dropdown.config';
 import { toClassNames } from '../../../core/helpers/config.helper';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { Dropdown } from './dropdown';
 
 describe('Dropdown Component', () => {
@@ -29,7 +28,6 @@ describe('Dropdown Component', () => {
     await TestBed.configureTestingModule({
       imports: [DropdownComponent],
       providers: [
-        provideAnimations(),
         provideDropdownConfig(CustomDropdownConfig),
       ]
     }).compileComponents();
@@ -44,7 +42,7 @@ describe('Dropdown Component', () => {
   });
 
   it('should set class names', () => {
-    component.class = CLASS_NAMES;
+    (component as DropdownComponent).class = CLASS_NAMES;
     expect(component.class).toBe(CLASS_NAMES);
   })
 
