@@ -20,7 +20,7 @@
           "standalone": false
         }
       },
-      "root": "src",
+      "root": "src/docs",
       "sourceRoot": "src/docs",
       "prefix": "app",
       "architect": {

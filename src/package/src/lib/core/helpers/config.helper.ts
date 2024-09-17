@@ -35,6 +35,9 @@ export const isEmptyObject = (value: any): boolean => (isObject(value) && (Objec
  * @returns The merged config
  */
 export function mergeConfigs<T extends Record<string, any>>(target: T, source: Partial<T> = {}): T {
+  if (!isEmptyObject(target) && isEmptyObject(source)) return target;
+  if (!isEmptyObject(source) && isEmptyObject(target)) return source as T;
+  
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {

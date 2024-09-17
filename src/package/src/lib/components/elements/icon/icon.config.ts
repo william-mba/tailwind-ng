@@ -30,6 +30,6 @@ export const ICON_CONFIG = new InjectionToken<IconConfig>('Icon config token');
 export function provideIconConfig(config?: Partial<IconConfig>): Provider {
   return {
     provide: ICON_CONFIG,
-    useValue: mergeConfigs(IconConfig, config)
+    useFactory: () => mergeConfigs(IconConfig, config)
   }
 }

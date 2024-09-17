@@ -95,7 +95,7 @@ export const MODAL_DIALOG_CONFIG = new InjectionToken<ModalDialogConfig>('Modal 
 export function provideModalDialogConfig(config?: Partial<ModalDialogConfig>): Provider[] {
   return [{
     provide: MODAL_DIALOG_CONFIG,
-    useValue: mergeConfigs(ModalDialogConfig, config)
+    useFactory: () => mergeConfigs(ModalDialogConfig, config)
   },
   provideAnimations()
   ]

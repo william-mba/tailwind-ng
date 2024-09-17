@@ -44,7 +44,7 @@ export const COMBOBOX_CONFIG = new InjectionToken<ComboboxConfig>('Combobox comp
 export function provideComboboxConfig(config?: Partial<ComboboxConfig>, itemConfig?: Partial<ComboboxItemConfig>): Provider[] {
   return [{
     provide: COMBOBOX_CONFIG,
-    useValue: mergeConfigs(ComboboxConfig, config)
+    useFactory: () => mergeConfigs(ComboboxConfig, config)
   },
   provideComboboxItemConfig(itemConfig),
   ];

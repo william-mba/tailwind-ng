@@ -241,6 +241,6 @@ export const BUTTON_CONFIG = new InjectionToken<ButtonConfig>('Button component 
 export function provideButtonConfig(config?: Partial<ButtonConfig>): Provider {
   return {
     provide: BUTTON_CONFIG,
-    useValue: mergeConfigs(ButtonConfig, config)
+    useFactory: () => mergeConfigs(ButtonConfig, config)
   }
 };

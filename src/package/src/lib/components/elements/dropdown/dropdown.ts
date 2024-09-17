@@ -5,8 +5,9 @@ import { DropdownConfig } from "./dropdown.config";
  * ngxtw Dropdown
  */
 export interface Dropdown {
-  class: string;
-  opened: boolean;
+  readonly class: string;
+  readonly opened: boolean;
+  readonly config: DropdownConfig;
   toggle(): void;
   open(): void;
   close(): void;

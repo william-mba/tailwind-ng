@@ -83,7 +83,7 @@ export function provideToggleConfig(config?: Partial<ToggleConfig>): Provider[] 
     provideAnimations(),
     {
       provide: TOGGLE_CONFIG,
-      useValue: mergeConfigs(ToggleConfig, config)
+      useFactory: () => mergeConfigs(ToggleConfig, config)
     }
   ]
 }

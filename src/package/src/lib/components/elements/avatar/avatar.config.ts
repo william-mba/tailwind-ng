@@ -43,6 +43,6 @@ export const AVATAR_CONFIG = new InjectionToken<AvatarConfig>('Avatar component 
 export function provideAvatarConfig(config?: Partial<AvatarConfig>): Provider {
   return {
     provide: AVATAR_CONFIG,
-    useValue: mergeConfigs(AvatarConfig, config)
+    useFactory: () => mergeConfigs(AvatarConfig, config)
   }
 }

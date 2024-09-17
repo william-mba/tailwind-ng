@@ -2,7 +2,10 @@
  * Public API Surface of ngxtw
  */
 
+
+// Helpers
 export * from './lib/core/helpers/theme.helper';
+export { toClassNames } from './lib/core/helpers/config.helper';
 
 // Elements
 export { Avatar } from './lib/components/elements/avatar/avatar';

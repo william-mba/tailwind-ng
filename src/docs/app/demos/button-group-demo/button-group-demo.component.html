@@ -5,7 +5,7 @@
     Use these NGxTW button group components to group buttons with other elements like
     dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
   </p>
-  <a class="mt-6 text-xs inline-block hover:underline" href="button-groups#api">Go to API reference</a>
+  <a class="mt-6 text-xs inline-block hover:underline" href="button-groups#api">View API reference</a>
   <tw-h4 class="mt-8 font-medium"> Simple button groups </tw-h4>
   <div
     class="grid gap-9 border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl bg-white dark:bg-[#1E1E1E]">
@@ -39,10 +39,10 @@
         Save changes
       </tw-button>
       <div>
-        <tw-button class="rounded-r-md ring-0" variant="secondary" [icon]="true" (click)="dropdown.toggle()">
+        <tw-button class="rounded-r-md ring-0" variant="secondary" [icon]="true" (click)="dropdownA.toggle()">
           <tw-icon source="heroicons" name="chevron-down" />
         </tw-button>
-        <tw-dropdown [opened]="true" #dropdown class="shadow-lg">
+        <tw-dropdown [opened]="true" #dropdownA class="shadow-lg">
           <ul class="*:px-4 *:py-2 *:cursor-pointer">
             <li class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Save as draft</li>
             <li class="hover:bg-black hover:bg-opacity-5 dark:hover:bg-white dark:hover:bg-opacity-5">Save and publish
@@ -179,12 +179,12 @@
   </div>
   <demo-code-snippet [code]="rounded_with_checbox_and_select"></demo-code-snippet>
 
-  <tw-h3 class="mt-20" id="api">
+  <tw-h3 class="mt-8" id="api">
     API reference
   </tw-h3>
   <div class="grid gap-4">
     <p>
-      Import: <app-code>{{ "import { ButtonGroupComponent } from 'ngx-twcss';" }}</app-code>
+      <app-code>{{ "import { ButtonGroupComponent } from 'ngxtw';" }}</app-code>
     </p>
     <p>
       Selector: <app-code>tw-button-group, [tw-button-group]</app-code>

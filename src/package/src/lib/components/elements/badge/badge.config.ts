@@ -32,6 +32,6 @@ export const BADGE_CONFIG = new InjectionToken<BadgeConfig>('Badge component con
 export function provideBadgeConfig(config?: Partial<BadgeConfig>): Provider {
   return {
     provide: BADGE_CONFIG,
-    useValue: mergeConfigs(BadgeConfig, config)
+    useFactory: () => mergeConfigs(BadgeConfig, config)
   }
 }

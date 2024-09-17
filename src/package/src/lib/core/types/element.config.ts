@@ -20,6 +20,7 @@ import { Width } from "./sizing/width"
 import { Margin } from "./spacing/margin"
 import { Padding } from "./spacing/padding"
 import { Theme } from "./theme"
+import { TransformOrigin } from "./transforms/transform-origin"
 import { FontSize } from "./typography/font-size"
 import { FontWeight } from "./typography/font-weight"
 import { LineHeight } from "./typography/line-height"
@@ -53,6 +54,7 @@ export type ElementConfig = {
   opacity: Opacity,
   inset: RingInset
   pointerEvents: PointerEvents,
+  transformOrigin: TransformOrigin,
   /**A property to set class name starting with sm:* */
   sm: Record<string, {}> | string
   /**A property to set class name that does not have a defined type. */

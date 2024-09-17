@@ -12,6 +12,7 @@ export const DropdownConfig: DropdownConfig = {
   zIndex: 'z-10',
   width: 'min-w-52',
   overflow: 'overflow-hidden',
+  transformOrigin: 'origin-top',
   position: {
     type: 'absolute',
     right: 'right-0',
@@ -29,7 +30,7 @@ export const DropdownConfig: DropdownConfig = {
       borderColor: 'dark:border-neutral-700'
     }
   }
-}
+};
 
 
 /**
@@ -41,12 +42,12 @@ export const DROPDOWN_CONFIG = new InjectionToken<DropdownConfig>('Dropdown conf
  * @param config The custom config
  * @returns The config provider
  */
-export function provideDropdownConfig(config?: Partial<DropdownConfig>): Provider[] {
+export function provideDropdownConfig(config: Partial<DropdownConfig> = {}): Provider[] {
   return [
     provideAnimations(),
     {
       provide: DROPDOWN_CONFIG,
-      useValue: mergeConfigs(DropdownConfig, config)
+      useFactory: () => mergeConfigs(DropdownConfig, config)
     }]
 };
 

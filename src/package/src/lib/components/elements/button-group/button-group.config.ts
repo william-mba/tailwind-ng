@@ -41,6 +41,6 @@ export const BUTTON_GROUP_CONFIG = new InjectionToken<ButtonGroupConfig>('Button
 export function provideButtonGroupConfig(config?: Partial<ButtonGroupConfig>): Provider {
   return {
     provide: BUTTON_GROUP_CONFIG,
-    useValue: mergeConfigs(ButtonGroupConfig, config)
+    useFactory: () => mergeConfigs(ButtonGroupConfig, config)
   }
 }

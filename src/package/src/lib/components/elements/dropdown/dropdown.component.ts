@@ -3,7 +3,6 @@ import { DROPDOWN_CONFIG, DropdownConfig } from './dropdown.config';
 import { mergeClassNames, toClassNames } from '../../../core/helpers/config.helper';
 import { trigger, style, animate, transition, state } from '@angular/animations';
 import { Dropdown } from './dropdown';
-import { provideAnimations } from '@angular/platform-browser/animations';
 
 /** Dropdown component */
 @Component({
@@ -15,18 +14,17 @@ import { provideAnimations } from '@angular/platform-browser/animations';
     '(click)': 'toggle()'
   },
   template: `<ng-content></ng-content>`,
-  providers: [provideAnimations()],
   animations: [
     trigger('toggle', [
       state('opened', style({
         opacity: 1,
         visibility: 'visible',
-        transform: 'translate(0)',
+        transform: 'scaleY(1)',
       })),
       state('closed', style({
         opacity: 0,
         visibility: 'hidden',
-        transform: 'translate(0, -1.5rem)',
+        transform: 'scaleY(0.95)',
       })),
       transition('closed => opened', [animate('100ms ease-out')]),
       transition('opened => closed', [animate('75ms ease-in')])
@@ -34,8 +32,6 @@ import { provideAnimations } from '@angular/platform-browser/animations';
   ]
 })
 export class DropdownComponent implements Dropdown, OnInit {
-  private readonly config = inject(DROPDOWN_CONFIG);
-
   @Input()
   public class!: string;
   @Input()
@@ -43,8 +39,15 @@ export class DropdownComponent implements Dropdown, OnInit {
   @Output('toggle')
   public onToggle: EventEmitter<boolean> = new EventEmitter();
 
+  private readonly _config = inject(DROPDOWN_CONFIG);
+  private _class!: string;
+
+  public get config(): DropdownConfig {
+    return this._config;
+  }
+
   ngOnInit(): void {
-    this.setConfig(this.config);
+    this.initClassName();
   }
 
   public toggle(): void {
@@ -60,7 +63,13 @@ export class DropdownComponent implements Dropdown, OnInit {
     this.opened = false;
   }
 
-  public setConfig(config: Partial<DropdownConfig> = DropdownConfig): void {
-    this.class = mergeClassNames(toClassNames(config), this.class);
+  public setConfig(config: Partial<DropdownConfig>): void {
+    this.class = mergeClassNames(this._class, toClassNames(config));
   }
+
+  private initClassName() {
+    this._class = mergeClassNames(toClassNames(this._config), this.class);
+    this.class = this._class;
+  }
+
 }

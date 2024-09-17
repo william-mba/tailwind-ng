@@ -60,39 +60,39 @@ export class DropdownDemoComponent {
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
   <tw-dropdown [opened]="true" #dropdown class="shadow-lg py-0 *:py-1 divide-y divide-black/5 dark:divide-white/5">
-    <ul class="px-1 *:rounded-sm *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="pencil-square" />
+    <ul class="*:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="pencil-square" />
         Edit
       </li>
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="document-duplicate" />
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="document-duplicate" />
         Duplicate
       </li>
     </ul>
-    <ul class="px-1 *:rounded-sm *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="archive-box" />
+    <ul class="*:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="archive-box" />
         Archive
       </li>
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="arrow-right-circle" />
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="arrow-right-circle" />
         Move
       </li>
     </ul>
-    <ul class="px-1 *:rounded-sm *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="share" />
+    <ul class="*:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="share" />
         Share
       </li>
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="star" />
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="star" />
         Add to favorites
       </li>
     </ul>
-    <ul class="px-1 *:rounded-sm *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="strash" />
+    <ul class="*:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="strash" />
         Delete
       </li>
     </ul>
@@ -158,39 +158,39 @@ export class DropdownDemoComponent {
     <tw-icon source="heroicons" name="chevron-down" />
   </tw-button>
   <tw-dropdown [opened]="true" #dropdown class="rounded-3xl shadow-lg py-0 *:py-1 divide-y divide-black/5 dark:divide-white/5">
-    <ul class="px-1 *:rounded-full *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="pencil-square" />
+    <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="pencil-square" />
         Edit
       </li>
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="document-duplicate" />
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="document-duplicate" />
         Duplicate
       </li>
     </ul>
-    <ul class="px-1 *:rounded-full *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="archive-box" />
+    <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="archive-box" />
         Archive
       </li>
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="arrow-right-circle" />
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="arrow-right-circle" />
         Move
       </li>
     </ul>
-    <ul class="px-1 *:rounded-full *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="share" />
+    <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="share" />
         Share
       </li>
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="star" />
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="star" />
         Add to favorites
       </li>
     </ul>
-    <ul class="px-1 *:rounded-full *:px-2 *:py-2 *:cursor-pointer">
-      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-2">
-        <tw-icon size="sm" source="heroicons" name="strash" />
+    <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:cursor-pointer">
+      <li class="hover:bg-black/5 dark:hover:bg-white/5 w-full inline-flex items-center gap-3">
+        <tw-icon class="opacity-50" source="heroicons" name="strash" />
         Delete
       </li>
     </ul>
@@ -210,4 +210,75 @@ export class DropdownDemoComponent {
     </ul>
   </tw-dropdown>
 </div>`;
+
+  html_template_customization = `<tw-dropdown class="rounded-3xl shadow-lg"> ... </tw-dropdown>`;
+  component_instance_customization = `// 1. Import the Dropdown, DropdownComponent and DropdownConfig
+import { Dropdown, DropdownComponent, DropdownConfig } from 'ngxtw';
+
+@Component({
+  standalone: true,
+  selector: 'app-demo',
+  // 2. Add the DropdownComponent class to your component imports
+  imports: [DropdownComponent],
+  // 3. Add the dropdown component to the template with a template reference variable
+  template: \`<tw-dropdown #dropdown> ... </tw-dropdown>\`
+})
+export class AppDemoComponent {
+  // 4. Get the dropdown component reference
+  @ViewChild('dropdown') dropdown!: Dropdown;
+
+  ngAfterViewInit() {
+    // 5. Define your custom configuration
+    const CustomDropdownConfig: Partial<DropdownConfig> = {
+      shadow: 'shadow-lg',
+      theme: {
+        dark: {
+          bgColor: 'dark:bg-neutral-900',
+          borderColor: 'dark:border-neutral-700'
+        }
+      }
+    }
+    // 6. Apply your custom configuration
+    // Note: setTimeout is used to avoid ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => this.dropdown.setConfig(this.customDropdownConfig), 0)
+  }
+
+  // Note: You can also use the setConfig method inside your component methods to change the configuration dynamically
+  someMethod() {
+    this.dropdown.setConfig({ shadow: 'shadow-lg' });
+  }
+}`;
+  dependency_injection_customization = `// 1. Import the DropdownComponent, DropdownConfig and provideDropdownConfig
+import { DropdownComponent, DropdownConfig, provideDropdownConfig } from 'ngxtw';
+
+// 2. Define your custom configuration
+const CustomDropdownConfig: Partial<DropdownConfig> = {
+  shadow: 'shadow-lg',
+  theme: {
+    dark: {
+      bgColor: 'dark:bg-neutral-900',
+      borderColor: 'dark:border-neutral-700'
+    }
+  }
+}
+
+@Component({
+  standalone: true,
+  selector: 'app-demo',
+  // 3. Add the DropdownComponent class to your component imports
+  imports: [DropdownComponent],
+  providers: [
+    // 4. Provide the custom configuration
+    provideDropdownConfig(CustomDropdownConfig)
+  ]
+})
+export class AppDemoComponent { ... }`;
+
+  configure_provider = `...
+  imports: [DropdownComponent], // Import the DropdownComponent
+  providers: [
+    provideDropdownConfig() // Provide the default configuration
+  ]
+})
+...`;
 }

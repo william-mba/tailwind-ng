@@ -37,3 +37,15 @@ code.hljs {
 .hljs-emphasis {
     font-style: italic
 }
+
+.hljs-meta,.hljs-title.class_  {
+    color: #4EC9B0;
+}
+
+.hljs-title.function_,.hljs-built_in,.hljs-number {
+    color: #DCDCAA;
+}
+
+.hljs-keyword,.hljs-variable.language_,.hljs-literal,.hljs-params,.hljs-punctuation {
+    color: #569CD6
+}

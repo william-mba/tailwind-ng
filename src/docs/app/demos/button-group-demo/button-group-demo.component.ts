@@ -13,7 +13,7 @@ export class ButtonGroupDemoComponent {
       })
     }, 500);
   }
-  
+
   checkBoxId01 = crypto.randomUUID();
   checkBoxId02 = crypto.randomUUID();
 

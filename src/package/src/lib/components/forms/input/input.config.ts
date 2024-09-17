@@ -49,6 +49,6 @@ export const INPUT_CONFIG = new InjectionToken<InputConfig>('Input component con
 export function provideInputConfig(config?: Partial<InputConfig>): Provider[] {
   return [{
     provide: INPUT_CONFIG,
-    useValue: mergeConfigs(InputConfig, config)
+    useFactory: () => mergeConfigs(InputConfig, config)
   }];
 }
