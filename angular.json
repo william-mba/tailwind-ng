@@ -20,27 +20,20 @@
           "standalone": false
         }
       },
-      "root": "src/docs",
-      "sourceRoot": "src/docs",
+      "root": "projects/docs",
+      "sourceRoot": "projects/docs",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/ngxtw-docs",
-            "index": "src/docs/index.html",
-            "browser": "src/docs/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "index": "projects/docs/index.html",
+            "browser": "projects/docs/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/docs/favicon.ico",
-              "src/docs/assets"
-            ],
-            "styles": [
-              "src/docs/styles.css"
-            ],
+            "assets": ["projects/docs/favicon.ico", "projects/docs/assets"],
+            "styles": ["projects/docs/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -88,18 +81,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/docs/favicon.ico",
-              "src/docs/assets"
-            ],
-            "styles": [
-              "src/docs/styles.css"
-            ],
+            "assets": ["projects/docs/favicon.ico", "projects/docs/assets"],
+            "styles": ["projects/docs/styles.css"],
             "scripts": []
           }
         }
@@ -107,21 +92,21 @@
     },
     "ngxtw": {
       "projectType": "library",
-      "root": "src/package",
-      "sourceRoot": "src/package/src",
+      "root": "projects/lib",
+      "sourceRoot": "projects/lib/src",
       "prefix": "tw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "src/package/ng-package.json"
+            "project": "projects/lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "src/package/tsconfig.lib.prod.json"
+              "tsConfig": "projects/lib/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "src/package/tsconfig.lib.json"
+              "tsConfig": "projects/lib/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -129,11 +114,8 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "src/package/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "tsConfig": "projects/lib/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }

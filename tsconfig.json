@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "paths": {
       "customs/*": [
-        "./src/docs/assets/configs/ngxtw/*"
+        "./projects/docs/assets/configs/ngxtw/*"
       ]
     },
     "esModuleInterop": true,

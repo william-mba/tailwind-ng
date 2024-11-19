@@ -1,0 +1,32 @@
+{
+  "name": "ngxtw",
+  "version": "0.9.0",
+  "author": {
+    "email": "w.mba@outlook.com",
+    "name": "William Mba",
+    "url": "https://github.com/William-Mba"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "description": "The best way to quickly integrate Tailwind CSS components with Angular.",
+  "keywords": [
+    "angular",
+    "tailwind css",
+    "web components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-Mba/ngxtw.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William-Mba/ngxtw/issues"
+  },
+  "homepage": "https://www.ngxtw.com"
+}

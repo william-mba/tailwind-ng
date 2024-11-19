@@ -1,0 +1,448 @@
+<div
+  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-slate-800 dark:text-slate-200 *:gap-4 *:border-slate-300 *:dark:border-slate-700">
+  <tw-h3 class="mt-20">Inputs</tw-h3>
+  <p class="text-balance">
+    Use these Tailwind CSS input components for Angular to create things like search bars with buttons, credit
+    card forms, and other form inputs with combined input and label elements.
+  </p>
+  <app-api-ref-links />
+  <p class="mt-8 font-medium">Input with inline leading add-on and trailing dropdown</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <!-- Price -->
+    <div>
+      <label for="price" class="block text-sm mb-2 font-medium">Price</label>
+      <div class="relative">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <span class="text-gray-600 dark:text-gray-400 sm:text-sm">$</span>
+        </div>
+        <!-- Input -->
+        <input tw-input id="price" placeholder="0.0"
+          class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600 pl-7 pr-16" />
+        <div class="absolute inset-y-0 right-0 flex items-center">
+          <label for="currency" class="sr-only">Currency</label>
+          <select id="currency" name="currency"
+            class="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 *:dark:text-slate-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+            <option>USD</option>
+            <option>CAD</option>
+            <option>EUR</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_inline_leading_addon_and_trailing_dropdown"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with label</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="email1" class="block text-sm mb-2 font-medium">
+        Email
+      </label>
+      <input tw-input type="email" id="email1" name="email" placeholder="you@example.com"
+        class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_label"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with label and help text</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="email2" class="block text-sm mb-2 font-medium">
+        Email
+      </label>
+      <input tw-input type="email" id="email2" name="email" placeholder="you@example.com"
+        class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+      <p class="text-gray-400 dark:text-gray-600 text-sm mt-2">We'll only use this for spam.</p>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_label_and_help_text"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with validation error</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="email3" class="block text-sm mb-2 font-medium">
+        Email
+      </label>
+      <div class="relative">
+        <input tw-input type="email" name="email3" id="email3" [formControl]="email" [class.invalid]="isInvalid(email)"
+          class="sm:w-80 pr-10 placeholder:text-gray-400 placeholder:dark:text-gray-600 invalid:ring-red-600/60 focus:invalid:ring-red-600/60"
+          placeholder="you@example.com" />
+        <div class="absolute inset-y-0 right-3 flex items-center text-red-600/80">
+          <tw-icon *ngIf="isInvalid(email)" key="exclamation-circle" source="heroicons" />
+        </div>
+      </div>
+
+      <div *ngIf="isInvalid(email)" class="max-w-xl text-sm mt-2 text-red-600/90 dark:text-red-500/90">
+        Not a valid email address.
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_validation_error"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with disabled state</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="email4" class="block text-sm mb-2 font-medium">Email</label>
+      <input tw-input type="email" id="email4" name="email" disabled="true"
+        class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" placeholder="you@example.com" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_disable_state"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input without label</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <input tw-input type="email" id="email5" name="email"
+      class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" placeholder="you@example.com" />
+  </div>
+  <demo-code-snippet [code]="sample.input_without_label"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with corner hint</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <div class="flex justify-between text-sm mb-2">
+        <label for="email15" class="font-medium">Email</label>
+        <span class="opacity-60">Optional</span>
+      </div>
+      <input tw-input type="email" id="email15" name="email" placeholder="you@example.com"
+        class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_corner_hint"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with leading icon</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="email6" class="block text-sm font-medium">Email</label>
+      <div class="relative mt-2">
+        <div class="absolute inset-y-0 flex items-center left-2.5 text-slate-400 dark:text-slate-600">
+          <tw-icon key="envelope" source="heroicons" />
+        </div>
+        <input tw-input type="email" id="email6" name="email"
+          class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600 pl-10"
+          placeholder="you@example.com" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_leading_icon"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with trailing icon</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="account-number" class="block text-sm font-medium">
+        Account number
+      </label>
+      <div class="relative mt-2">
+        <input tw-input id="account-number" name="account-number"
+          class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600 pr-10" placeholder="000-00-0000" />
+        <div class="absolute inset-y-0 flex items-center right-3 text-slate-400 dark:text-slate-600">
+          <tw-icon key="question-mark-circle" source="heroicons" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_trailing_icon"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with add-on</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="company-website" class="block text-sm font-medium">
+        Company Website
+      </label>
+      <div tw-group class="mt-2 last:*:rounded-r-md">
+        <span class="select-none py-2 px-3 text-sm text-gray-600 dark:text-gray-400">
+          http://
+        </span>
+        <input tw-input type="url" id="company-website"
+          class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" placeholder="www.example.com" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_addon"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with inline add-on</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="company-website2" class="block text-sm font-medium">Company Website</label>
+      <div class="relative mt-2">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <span class="text-gray-600 dark:text-gray-400 sm:text-sm">http://</span>
+        </div>
+        <input tw-input type="url" id="company-website2"
+          class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600 pl-14"
+          placeholder="www.example.com" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_inline_addon"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with inline leading and trailing add-ons</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="price2" class="block text-sm font-medium">Price</label>
+      <div class="relative mt-2">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <span class="text-gray-600 dark:text-gray-400 sm:text-sm">$</span>
+        </div>
+        <!-- Input -->
+        <input tw-input id="price2" class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600 pl-7 pr-12"
+          placeholder="0.0" />
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+          <span class="text-gray-600 dark:text-gray-400 sm:text-sm">CAD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_inline_leading_and_trailing_addons"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with inline leading dropdown</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="phone-number" class="block text-sm font-medium">Phone Number</label>
+      <div class="relative mt-2">
+        <div class="absolute inset-y-0 left-0 flex items-center">
+          <label for="country-code" class="sr-only">Country code</label>
+          <select id="country-code"
+            class="h-full rounded-md border-0 bg-transparent py-0 pl-3 pr-7 *:dark:text-slate-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm">
+            <option>US</option>
+            <option>CA</option>
+            <option>EU</option>
+          </select>
+        </div>
+        <input tw-input type="tel" id="phone-number"
+          class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600 pl-16"
+          placeholder="+1 (543) 234-5678" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_inline_leading_dropdown"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with leading icon and trailing button</p>
+  <div class="grid sm:flex border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="candidate" class="block text-sm font-medium">
+        Search candidates
+      </label>
+      <div class="relative mt-2 inline-flex -space-x-px">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <tw-icon size="sm" key="users" source="heroicons" class="text-gray-400 dark:text-gray-600" />
+        </div>
+        <input tw-input id="candidate"
+          class="sm:w-80 pl-10 rounded-r-none rounded-md z-10 placeholder:text-gray-400 placeholder:dark:text-gray-600"
+          placeholder="Jane Doe" />
+        <tw-button size="sm" variant="secondary" class="rounded-l-none rounded-md text-gray-700 dark:text-gray-300">
+          <tw-icon size="sm" key="bars-arrow-up" source="heroicons" class="text-gray-400 dark:text-gray-600" />
+          Sort
+        </tw-button>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_leading_icon_and_trailing_button"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Inputs with shared borders</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div class="sm:w-80">
+      <!-- Card details -->
+      <fieldset>
+        <legend class="block text-sm font-medium">Card details</legend>
+        <div class="mt-2 -space-y-px rounded-md shadow-sm">
+          <input tw-input id="card-number" name="card-number" type="text" placeholder="Card number"
+            class="rounded-none rounded-t-md placeholder:text-gray-400 focus:z-10">
+          <div class="flex -space-x-px">
+            <input tw-input id="card-expiration-date" name="card-expiration-date" type="text" placeholder="MM / YY"
+              class="rounded-none rounded-bl-md placeholder:text-gray-400 focus:z-10">
+            <input tw-input id="card-cvc" name="card-cvc" type="text" placeholder="CVC"
+              class="rounded-none rounded-br-md placeholder:text-gray-400 focus:z-10">
+          </div>
+        </div>
+      </fieldset>
+      <!-- Billing address -->
+      <fieldset class="mt-6">
+        <legend class="block text-sm font-medium">Billing address</legend>
+        <div class="mt-2 -space-y-px rounded-md shadow-sm">
+          <div>
+            <label for="country"
+              class="absolute size-px p-0 -m-px overflow-hidden whitespace-nowrap border-0">Country</label>
+            <select id="country" name="country" autocomplete="country-name"
+              class="block w-full rounded-none rounded-t-md border-0 bg-inherit *:dark:text-slate-800 py-1.5 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+              <option>Canada</option>
+              <option>United States</option>
+              <option>Mexico</option>
+            </select>
+          </div>
+          <input tw-input id="postal-code" name="postal-code" type="text" placeholder="ZIP / Postal code"
+            autocomplete="postal-code" class="rounded-none rounded-b-md placeholder:text-gray-400 focus:z-10">
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_shared_borders"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with inset label</p>
+  <div class="grid border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div class="relative">
+      <label for="user-name1" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
+        Name
+      </label>
+      <input tw-input type="text" id="user-name1" placeholder="Marco Polo"
+        class="pt-6 sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_inset_label"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with inset label and shared borders</p>
+  <div class="grid border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div class="-space-y-px">
+      <div class="relative">
+        <label for="email7" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
+          Email
+        </label>
+        <input tw-input type="email" id="email7" placeholder="you@example.com"
+          class="rounded-b-none pt-6 sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+      </div>
+      <div class="relative">
+        <label for="password" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
+          Password
+        </label>
+        <input tw-input type="password" id="password" placeholder="Enter your password"
+          class="rounded-t-none pt-6 sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_inset_labels_and_shared_borders"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with overlapping label</p>
+  <div class="grid border justify-center items-end m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div class="relative">
+      <label for="user-name" class="absolute left-1.5 -top-2 px-1.5 bg-slate-50 dark:bg-slate-900 text-xs font-medium">
+        Name
+      </label>
+      <input tw-input type="text" id="user-name" placeholder="John Smith"
+        class="sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_overlapping_label"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with keyboard shortcut</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+      <div class="relative">
+        <input tw-input name="search" id="search"
+          class="sm:w-80 pr-10 placeholder:text-gray-400 placeholder:dark:text-gray-600 invalid:ring-red-600/60 focus:invalid:ring-red-600/60" />
+        <div class="absolute inset-y-0 -top-1.5 right-1.5 flex items-center">
+          <tw-icon key="cmd-k" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_keyboard_shortcut"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with pill shape</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="email12" class="pl-2.5 block text-sm mb-2 font-medium"> Email </label>
+      <input tw-input type="email" id="email12" name="email" placeholder="you@example.com"
+        class="rounded-full sm:w-80 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_pill_shape"></demo-code-snippet>
+
+  <p class="mt-8 font-medium">Input with gray background and bottom border</p>
+  <div class="grid border justify-center items-end  m-6 mb-0 p-6 py-10 mx-auto *:mx-auto rounded-xl">
+    <div>
+      <label for="email13" class="block text-sm mb-2 font-medium"> Email </label>
+      <input tw-input type="email" id="email13" name="email" placeholder="you@example.com"
+        class="border-0 border-b-2 border-slate-300 dark:border-slate-700 rounded-none ring-0 focus:ring-0 sm:w-80 bg-black/5 dark:bg-white/5" />
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.input_with_gray_background_and_bottom_border"></demo-code-snippet>
+
+  <app-api-ref selector="input[tw-input], input[twInput]" interface="TwInput, InputState, InputActions, InputConfig"
+    [usage]="sample.quick_start_guide">
+    <!-- Properties -->
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="sm:w-96">Properties</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <!-- Base properties -->
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Input({"}} <br>
+              <span class="p-3"></span>{{"transform: stringToArray,"}} <br>
+              {{"}) class: ClassName[] = []"}}
+            </app-code>
+          </td>
+          <td>
+            <p>The initial class list setted before the input initialization.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"classList: ClassList = new ClassList()"}}</app-code>
+          </td>
+          <td>
+            <p>A reference to the class list instance of the input.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{'nativeElement: HTMLElement'}} </app-code>
+          </td>
+          <td>
+            <p>A reference to the native input element inside of a view.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Input({ transform: booleanAttribute })"}}</app-code><br>
+            <app-code>disabled: boolean = false</app-code>
+          </td>
+          <td>
+            <p>Whether the input is disabled.</p>
+          </td>
+        </tr>
+        <!-- Component specific properties -->
+      </tbody>
+    </table>
+    <!-- Methods -->
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="sm:w-96">Methods</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <!-- Base methods -->
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>disable(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Disables the input.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>enable(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Enables the input.
+            </p>
+          </td>
+        </tr>
+        <!-- Component specific methods -->
+      </tbody>
+    </table>
+  </app-api-ref>
+  <app-customization [html]="sample.html_template_customization" [component]="sample.component_instance_customization"
+    [provider]="sample.config_provider_customization" [manager]="sample.config_manager_customization" />
+
+</div>

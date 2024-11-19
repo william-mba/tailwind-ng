@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:package": "ng build --project ngxtw",
+    "build:lib": "ng build --project ngxtw",
     "build:docs": "ng build --project ngxtw-docs",
     "watch": "ng build --watch --configuration development",
-    "test:package": "ng test --project ngxtw --code-coverage",
-    "test:package:ci": "ng test --project ngxtw --watch=false --karma-config karma.conf.ci.js --code-coverage",
+    "test:lib": "ng test --project ngxtw --code-coverage",
+    "test:lib:ci": "ng test --project ngxtw --watch=false --karma-config karma.conf.ci.js --code-coverage",
     "test:docs": "ng test --project ngxtw-docs",
-    "publish": "npm run build && cd dist/ngxtw && npm publish",
-    "sync": "yarn build:package && yarn install && yarn start"
+    "publish": "npm run build:lib && cd dist/ngxtw && npm publish",
+    "sync": "yarn build:lib && yarn install && yarn start"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +24,6 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "highlight.js": "^11.10.0",
-    "ngx-highlightjs": "^12.0.0",
     "ngxtw": "file:dist/ngxtw",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

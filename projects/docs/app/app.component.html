@@ -1,0 +1,17 @@
+<app-menu *ngIf="!isHomePage"></app-menu>
+
+<router-outlet />
+<div
+  class="relative z-10 md:z-30 bg-slate-50 dark:bg-slate-900">
+  <div class="hidden dark:block absolute -top-4 w-full">
+    <div class="bg-black h-px inline-block w-1/4 bg-gradient-to-r from-indigo-600 to-green-500"></div>
+    <div class="bg-black h-px inline-block w-1/4 bg-gradient-to-r from-green-500 to-rose-600"></div>
+    <div class="bg-black h-px inline-block w-1/4 bg-gradient-to-r from-rose-600 to-fuchsia-500"></div>
+    <div class="bg-black h-px inline-block w-1/4 bg-gradient-to-r from-fuchsia-500 to-yellow-500"></div>
+  </div>
+  <div class="p-12 sm:px-20 border-t text-center sm:text-left text-slate-500 dark:text-white/50 border-slate-200 dark:border-white/15 text-xs">
+    Built and hosted with ❤️ by William.
+    <br> Package licensed under MIT license.
+    <br> Documentation licensed under CC BY 4.0.
+  </div>
+</div>
