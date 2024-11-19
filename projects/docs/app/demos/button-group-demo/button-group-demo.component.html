@@ -1,0 +1,251 @@
+<div
+  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-6 mx-auto p-6 text-slate-800 dark:text-slate-200 *:gap-4 *:border-slate-300 *:dark:border-slate-700">
+  <tw-h3 class="mt-20">Button Groups </tw-h3>
+  <p class="text-balance">
+    Use these Tailwind CSS button group components for Angular to group buttons with other elements like
+    dropdowns and checkboxes, for things like filtering options, pagination, or buttons with multiple actions.
+  </p>
+  <app-api-ref-links />
+  <tw-h4 class="mt-8 font-medium"> Simple button groups </tw-h4>
+  <div class="grid gap-9 border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div tw-button-group class="*:text-sm">
+      <button tw-button variant="secondary">Days</button>
+      <button tw-button variant="secondary">Months</button>
+      <button tw-button variant="secondary">Years</button>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.simple_button_groups"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium">With icon buttons</tw-h4>
+  <div class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div tw-button-group>
+      <button tw-button size="sm" variant="secondary">
+        <tw-icon size="sm" key="chevron-left" source="heroicons" class="text-slate-500" />
+      </button>
+      <button tw-button size="sm" variant="secondary">
+        <tw-icon size="sm" key="chevron-right" source="heroicons" class="text-slate-500" />
+      </button>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.with_two_buttons"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium">With dropdown</tw-h4>
+  <div
+    class="grid sm:flex h-64 border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div>
+      <div tw-button-group class="*:text-sm">
+        <button tw-button variant="secondary">
+          Save changes
+        </button>
+        <button tw-button variant="secondary" (click)="dropdownA.toggle()">
+          <tw-icon key="chevron-down" source="heroicons" class="text-slate-500" />
+        </button>
+      </div>
+      <div class="relative">
+        <div tw-dropdown opened="true" #dropdownA class="shadow-lg" (click)="dropdownA.close()">
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/50 dark:hover:bg-gray-800/50">
+              Save as draft
+            </li>
+            <li class="hover:bg-gray-200/50 dark:hover:bg-gray-800/50">
+              Save and publish
+            </li>
+            <li class="hover:bg-gray-200/50 dark:hover:bg-gray-800/50">
+              Save and close
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.with_dropdown"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium">With stats</tw-h4>
+  <div class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div tw-button-group class="*:text-sm">
+      <button tw-button variant="secondary">
+        <tw-icon source="heroicons" key="bookmark" class="text-slate-400 dark:text-slate-600" />
+        Bookmark
+      </button>
+      <button tw-button variant="secondary">12k</button>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.with_stats"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium">With checkbox and select</tw-h4>
+  <div class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div tw-button-group>
+      <button tw-button variant="text">
+        <label for="select-all" class="sr-only">Select all</label>
+        <input id="select-all" type="checkbox"
+          class="hover:cursor-pointer rounded border-slate-300 dark:border-slate-600 text-indigo-600 focus:ring-indigo-600 bg-transparent">
+      </button>
+      <button tw-button variant="text" class="p-0">
+        <label for="message" class="sr-only">Messages</label>
+        <select id="message"
+          class="rounded-r-md bg-slate-50 dark:bg-slate-900 border-0 dark:text-inherit focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm">
+          <option>Unread messages</option>
+          <option>Sent messages</option>
+          <option>All messages</option>
+        </select>
+      </button>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.with_checbox_and_select"></demo-code-snippet>
+
+  <tw-h3 class="mt-8"> Rounded button groups </tw-h3>
+
+  <tw-h4 class="mt-8 font-medium">Rounded simple button groups</tw-h4>
+  <div class="grid gap-9 border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div tw-button-group class="*:text-sm rounded-full">
+      <button tw-button variant="secondary">Days</button>
+      <button tw-button variant="secondary">Months</button>
+      <button tw-button variant="secondary">Years</button>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.simple_rounded_button_groups"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium">Rounded with icon buttons</tw-h4>
+  <div class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div tw-button-group class="rounded-full">
+      <button tw-button size="sm" variant="secondary">
+        <tw-icon size="sm" key="chevron-left" source="heroicons" class="text-slate-500" />
+      </button>
+      <button tw-button size="sm" variant="secondary">
+        <tw-icon size="sm" key="chevron-right" source="heroicons" class="text-slate-500" />
+      </button>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.rounded_with_two_buttons"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium">Rounded with dropdown</tw-h4>
+  <div
+    class="grid sm:flex h-64 border justify-center justify-items-center items-start m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div>
+      <div tw-button-group class="rounded-3xl *:text-sm">
+        <button tw-button variant="secondary">
+          Save changes
+        </button>
+        <button tw-button variant="secondary" (click)="dropdownB.toggle()">
+          <tw-icon key="chevron-down" source="heroicons" class="text-slate-500" />
+        </button>
+      </div>
+      <div class="relative">
+        <div tw-dropdown opened="true" #dropdownB class="shadow-lg rounded-3xl p-1.5" (click)="dropdownB.close()">
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:rounded-3xl *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">
+              Save as draft
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">
+              Save and publish
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">
+              Save and close
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.rounded_with_dropdown"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium">Rounded with stats</tw-h4>
+  <div class="grid sm:flex border justify-center justify-items-center items-end m-6 mb-0 p-6 py-10 mx-auto rounded-xl">
+    <div tw-button-group class="rounded-full *:text-sm">
+      <button tw-button variant="secondary">
+        <tw-icon source="heroicons" key="bookmark" class="text-slate-400 dark:text-slate-600" />
+        Bookmark
+      </button>
+      <button tw-button variant="secondary"> 12k </button>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.rounded_with_stats"></demo-code-snippet>
+
+  <app-api-ref selector="tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]"
+    interface="ButtonGroup, ButtonGroupState, ButtonGroupActions, ButtonGroupConfig" [usage]="sample.quick_start_guide">
+    <!-- Properties -->
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="sm:w-96">Properties</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <!-- Base properties -->
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Input({"}} <br>
+              <span class="p-3"></span>{{"transform: stringToArray,"}} <br>
+              {{"}) class: ClassName[] = []"}}
+            </app-code>
+          </td>
+          <td>
+            <p>The initial class list setted before the button group initialization.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"classList: ClassList = new ClassList()"}}</app-code>
+          </td>
+          <td>
+            <p>A reference to the class list instance of the button group.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{'nativeElement: HTMLElement'}} </app-code>
+          </td>
+          <td>
+            <p>A reference to the native element of the button group inside of a view.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Input({ transform: booleanAttribute })"}}</app-code><br>
+            <app-code>disabled: boolean = false</app-code>
+          </td>
+          <td>
+            <p>Whether the button group is disabled.</p>
+          </td>
+        </tr>
+        <!-- Component specific properties -->
+      </tbody>
+    </table>
+    <!-- Methods -->
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="sm:w-96">Methods</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <!-- Base methods -->
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>disable(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Disables the button group.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>enable(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Enables the button group.
+            </p>
+          </td>
+        </tr>
+        <!-- Component specific methods -->
+      </tbody>
+    </table>
+  </app-api-ref>
+  <app-customization [html]="sample.html_template_customization" [component]="sample.component_instance_customization"
+    [provider]="sample.config_provider_customization" [manager]="sample.config_manager_customization" />
+</div>

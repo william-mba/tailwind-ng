@@ -1,14 +1,19 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'selector',
+  darkMode: "selector",
   content: [
-    "./src/**/*.{html,ts}",
-    "./node_modules/ngxtw/**/*.{html,ts}"
+    "./projects/docs/**/*.{html,ts}",
+    "./node_modules/ngxtw/**/*.{html,ts}",
+    // "./dist/ngxtw/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["InterVariable", ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
-  plugins: [
-    require('@tailwindcss/forms')
-  ],
-}
+  plugins: [require("@tailwindcss/forms")],
+};

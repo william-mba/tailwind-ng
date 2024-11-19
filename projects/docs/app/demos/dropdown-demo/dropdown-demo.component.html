@@ -1,0 +1,446 @@
+<div
+  class="container w-full sm:max-w-2xl md:max-w-4xl 2xl:pl-4 mx-auto p-6 text-slate-800 dark:text-slate-200 *:gap-4 *:border-slate-300 *:dark:border-slate-700">
+  <tw-h3 class="mt-20"> Dropdowns </tw-h3>
+  <p class="text-balance">
+    Use these Tailwind CSS dropdown and popover components for Angular to create dropdown menus for
+    action items and navigation, featuring section dividers, icons, and headers.
+  </p>
+  <app-api-ref-links />
+  <tw-h4 class="mt-16 font-medium"> Simple dropdown </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-72">
+    <div>
+      <button tw-button size="sm" variant="secondary" (click)="myDropdownA.toggle()">
+        Options <tw-icon size="sm" key="chevron-down" source="heroicons" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <div tw-dropdown opened="true" (click)="myDropdownA.close()" #myDropdownA class="shadow-lg text-sm">
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70"> Account settings </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Support</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">License</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Sign out</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <demo-code-snippet [code]="sample.simple"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium"> With dividers </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-[440px]">
+    <div>
+      <button tw-button size="sm" variant="secondary" (click)="myDropdownB.toggle()">
+        Options <tw-icon size="sm" key="chevron-down" source="heroicons" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <tw-dropdown opened="true" #myDropdownB (click)="myDropdownB.close()"
+          class="shadow-lg py-0 *:py-1 *:text-sm divide-y divide-gray-200/70 dark:divide-gray-800/70">
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Edit</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Duplicate</li>
+          </ul>
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Archive</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Move</li>
+          </ul>
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Share</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">
+              Add to favorites
+            </li>
+          </ul>
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Delete</li>
+          </ul>
+        </tw-dropdown>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.with_dividers"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium"> With icons </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-[440px]">
+    <div>
+      <button tw-button size="sm" variant="secondary" (click)="myDropdownC.toggle()">
+        Options
+        <tw-icon size="sm" key="chevron-down" source="heroicons" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <tw-dropdown opened="true" #myDropdownC (click)="myDropdownC.close()"
+          class="shadow-lg py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-800/70">
+          <ul class="*:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="pencil-square" />
+              Edit
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="document-duplicate" />
+              Duplicate
+            </li>
+          </ul>
+          <ul class="*:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="archive-box" />
+              Archive
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="arrow-right-circle" />
+              Move
+            </li>
+          </ul>
+          <ul class="*:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="share" />
+              Share
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="star" />
+              Add to favorites
+            </li>
+          </ul>
+          <ul class="*:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="strash" />
+              Delete
+            </li>
+          </ul>
+        </tw-dropdown>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.with_icons"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium"> With minimal menu icon </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-72">
+    <div>
+      <button tw-button variant="text" class="p-0" (click)="myDropdownD.toggle()">
+        <tw-icon size="sm" key="more-ver" source="googlefonts" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <tw-dropdown opened="true" #myDropdownD (click)="myDropdownD.close()" class="shadow-lg"
+          [position]="{ top: 'top-2', right: 'right-1' }">
+          <ul class="*:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Account settings</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Support</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">License</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Sign out</li>
+          </ul>
+        </tw-dropdown>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.with_minimal_menu_icon"></demo-code-snippet>
+
+  <tw-h3 class="mt-8"> Rounded dropdowns </tw-h3>
+  <tw-h4 class="mt-8"> Rounded simple </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-80">
+    <div>
+      <button tw-button size="sm" variant="secondary" class="rounded-3xl" (click)="myDropdownE.toggle()">
+        Options <tw-icon size="sm" key="chevron-down" source="heroicons" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <tw-dropdown opened="true" #myDropdownE (click)="myDropdownE.close()" class="rounded-3xl shadow-lg">
+          <ul class="px-1 *:rounded-full *:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Account settings</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Support</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">License</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Sign out</li>
+          </ul>
+        </tw-dropdown>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.rounded_simple"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium"> Rounded with dividers </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-[440px]">
+    <div>
+      <button tw-button size="sm" variant="secondary" class="rounded-3xl" (click)="myDropdownF.toggle()">
+        Options <tw-icon size="sm" key="chevron-down" source="heroicons" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <tw-dropdown opened="true" #myDropdownF (click)="myDropdownF.close()"
+          class="rounded-3xl shadow-lg py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-800/70">
+          <ul class="px-1 *:rounded-full *:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Edit</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Duplicate</li>
+          </ul>
+          <ul class="px-1 *:rounded-full *:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Archive</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Move</li>
+          </ul>
+          <ul class="px-1 *:rounded-full *:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Share</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Add to favorites</li>
+          </ul>
+          <ul class="px-1 *:rounded-full *:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Delete</li>
+          </ul>
+        </tw-dropdown>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.rounded_with_dividers"></demo-code-snippet>
+
+  <tw-h4 class="mt-8 font-medium"> Rounded with icons </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-[440px]">
+    <div>
+      <button tw-button size="sm" variant="secondary" class="rounded-3xl" (click)="myDropdownG.toggle()">
+        Options <tw-icon size="sm" key="chevron-down" source="heroicons" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <tw-dropdown opened="true" #myDropdownG (click)="myDropdownG.close()"
+          class="rounded-3xl shadow-lg py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-800/70">
+          <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="pencil-square" />
+              Edit
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="document-duplicate" />
+              Duplicate
+            </li>
+          </ul>
+          <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="archive-box" />
+              Archive
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="arrow-right-circle" />
+              Move
+            </li>
+          </ul>
+          <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="share" />
+              Share
+            </li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="star" />
+              Add to favorites
+            </li>
+          </ul>
+          <ul class="px-1 *:rounded-full *:px-3 *:py-2 *:text-sm *:cursor-pointer">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70 w-full inline-flex items-center gap-3">
+              <tw-icon size="sm" class="opacity-50" source="heroicons" key="strash" />
+              Delete
+            </li>
+          </ul>
+        </tw-dropdown>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.rounded_with_icons" />
+
+  <tw-h4 class="mt-8 font-medium"> Rounded with minimal menu icon </tw-h4>
+  <div class="grid sm:flex border items-start justify-end mx-auto m-6 mb-0 p-9 rounded-xl h-80">
+    <div>
+      <button tw-button variant="secondary" class="rounded-3xl p-1" (click)="myDropdownH.toggle()">
+        <tw-icon size="sm" key="more-ver" source="googlefonts" class="text-slate-500" />
+      </button>
+      <div class="relative">
+        <tw-dropdown opened="true" #myDropdownH (click)="myDropdownH.close()" class="rounded-3xl shadow-lg">
+          <ul class="px-1 *:rounded-full *:px-4 *:py-2 *:cursor-pointer *:text-sm">
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Account settings</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Support</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">License</li>
+            <li class="hover:bg-gray-200/70 dark:hover:bg-gray-800/70">Sign out</li>
+          </ul>
+        </tw-dropdown>
+      </div>
+    </div>
+  </div>
+  <demo-code-snippet [code]="sample.rounded_with_minimal_menu_icon" />
+
+  <app-api-ref selector="tw-dropdown, [tw-dropdown], [twDropdown]" interface="Dropdown, DropdownState, DropdownActions, DropdownEvents, DropdownConfig"
+    [usage]="sample.quick_start_guide">
+    <!-- Properties -->
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="sm:w-96">Properties</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <!-- Base properties -->
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Input({"}} <br>
+              <span class="p-3"></span>{{"transform: stringToArray,"}} <br>
+              {{"}) class: ClassName[] = []"}}
+            </app-code>
+          </td>
+          <td>
+            <p>The initial class list setted before the dropdown initialization.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"classList: ClassList = new ClassList()"}}</app-code>
+          </td>
+          <td>
+            <p>A reference to the class list instance of the dropdown.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{'nativeElement: HTMLElement'}} </app-code>
+          </td>
+          <td>
+            <p>A reference to the native element of the dropdown inside of a view.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Input({ transform: booleanAttribute })"}}</app-code><br>
+            <app-code>disabled: boolean = false</app-code>
+          </td>
+          <td>
+            <p>Whether the dropdown is disabled.</p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Input({ transform: booleanAttribute })"}}</app-code><br>
+            <app-code>opened: boolean = false</app-code>
+          </td>
+          <td>
+            <p>Whether the dropdown is opened.</p>
+          </td>
+        </tr>
+        <!-- Component specific properties -->
+      </tbody>
+    </table>
+    <!-- Methods -->
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="sm:w-96">Methods</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <!-- Base methods -->
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>disable(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Disables the dropdown (making it non-interactive).
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>enable(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Enables the dropdown (making it interactive).
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>open(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Opens the dropdown.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>close(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Closes the dropdown.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>toggle(): void</app-code>
+          </td>
+          <td>
+            <p>
+              Toggles the dropdown.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>setPosition(position: OverlayPosition): void</app-code>
+          </td>
+          <td>
+            <p>
+              Sets the position of the dropdown.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>closeAfter(delay: number): void</app-code>
+          </td>
+          <td>
+            <p>
+              Closes the dropdown after the specified delay.
+            </p>
+          </td>
+        </tr>
+        <!-- Component specific methods -->
+      </tbody>
+    </table>
+    <!-- Events -->
+    <table class="table-auto table text-start w-full">
+      <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <th class="sm:w-96">Events</th>
+          <th class="p-3">Description</th>
+        </tr>
+      </thead>
+      <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
+        <!-- Base events -->
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Output('open') onOpen: EventEmitter\<void>"}}</app-code>
+          </td>
+          <td>
+            <p>
+              Event emitted when the dropdown is opened.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Output('close') onClose: EventEmitter\<void>"}}</app-code>
+          </td>
+          <td>
+            <p>
+              Event emitted when the dropdown is closed.
+            </p>
+          </td>
+        </tr>
+        <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
+          <td>
+            <app-code>{{"@Output('toggle') onToggle: EventEmitter\<boolean>"}}</app-code>
+          </td>
+          <td>
+            <p>
+              An observable that emits the state (open/closed) of the dropdown when it is toggled.
+            </p>
+          </td>
+        </tr>
+        <!-- Component specific events -->
+      </tbody>
+    </table>
+  </app-api-ref>
+  <app-customization [html]="sample.html_template_customization" [component]="sample.component_instance_customization"
+    [provider]="sample.config_provider_customization" [manager]="sample.config_manager_customization" />
+</div>

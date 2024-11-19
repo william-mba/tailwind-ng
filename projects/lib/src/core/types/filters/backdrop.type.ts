@@ -1,0 +1,10 @@
+export type Backdrop =
+  | 'backdrop-blur'
+  | 'backdrop-blur-0'
+  | 'backdrop-blur-none'
+  | 'backdrop-blur-sm'
+  | 'backdrop-blur-md'
+  | 'backdrop-blur-lg'
+  | 'backdrop-blur-xl'
+  | 'backdrop-blur-2xl'
+  | 'backdrop-blur-3xl'

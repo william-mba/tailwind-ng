@@ -6,7 +6,7 @@ trigger:
       - release/*
   paths:
     include:
-      - src/package/src/*
+      - projects/lib/src/*
 
 pool:
   name: Lab
@@ -41,9 +41,9 @@ name: $(Build.DefinitionName)-v${{variables.Release}}
 stages:
   - stage: CI
     jobs:
-    - template: lab/ngxtw/package/job.build-test-publish.yml@template
+      - template: lab/ngxtw/package/job.build-test-publish.yml@template
 
   - stage: CD
     dependsOn: CI
     jobs:
-    - template: lab/ngxtw/package/job.release.yml@template
+      - template: lab/ngxtw/package/job.release.yml@template
