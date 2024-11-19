@@ -4548,13 +4548,13 @@ __metadata:
   linkType: hard
 
 "cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3":
-  version: 7.0.3
-  resolution: "cross-spawn@npm:7.0.3"
+  version: 7.0.6
+  resolution: "cross-spawn@npm:7.0.6"
   dependencies:
     path-key: "npm:^3.1.0"
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
-  checksum: 10c0/5738c312387081c98d69c98e105b6327b069197f864a60593245d64c8089c8a0a744e16349281210d56835bb9274130d825a78b2ad6853ca13cfbeffc0c31750
+  checksum: 10c0/053ea8b2135caff68a9e81470e845613e374e7309a47731e81639de3eaeb90c3d01af0e0b44d2ab9d50b43467223b88567dfeb3262db942dc063b9976718ffc1
   languageName: node
   linkType: hard
 
@@ -7587,13 +7587,10 @@ __metadata:
 
 "ngxtw@file:dist/ngxtw::locator=ngxtw-docs%40workspace%3A.":
   version: 0.0.0-placeholder
-  resolution: "ngxtw@file:dist/ngxtw#dist/ngxtw::hash=483bc6&locator=ngxtw-docs%40workspace%3A."
+  resolution: "ngxtw@file:dist/ngxtw#dist/ngxtw::hash=c39150&locator=ngxtw-docs%40workspace%3A."
   dependencies:
     tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/common": ^17.3.0
-    "@angular/core": ^17.3.0
-  checksum: 10c0/c15fad3710841bbc807d338ff8b2a0d870153e048298021cf6085e1bffd213624a4ad7d199c2db371518441a702776611b9b83b5bcb9693a19ea6872142ce449
+  checksum: 10c0/7080f402237d0459e91b9c879a499a73f94cc0f286b497180f7cd09d2d2b534e354cb27b0a1979fed512bf3ff3580eabd5b808395c9b866b36cab7b9ca0c5b65
   languageName: node
   linkType: hard
 
