@@ -45,13 +45,13 @@ NGXTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtim
     <tr>
       <td>Angular</td>
       <td>
-        18, 19
+        17+
       </td>
       <td>A web framework that empowers developers to build fast, reliable and scalable applications.</td>
     </tr>
     <tr>
       <td>Tailwind CSS</td>
-      <td>3, 4</td>
+      <td>3+</td>
       <td>A utility-first CSS framework for rapidly building custom user interfaces.</td>
     </tr>
   </tbody>
