@@ -19,20 +19,22 @@ Ultimate <a href="https://tailwindui.com/">Tailwind CSS components</a> library f
 
 ### Why This Project?
 
-A few months ago, I wanted to use **Tailwind CSS components** in my Angular project. However, at the time, the Tailwind UI documentation only offered components for React, Vue, and pure HTML templates.  
+A few months ago, I wanted to use **Tailwind CSS components** in my Angular project. However, at the time, the Tailwind UI documentation only offered components for React, Vue, and pure HTML templates.
 
-The need of beautiful, fast and reliabale UI components based on Taiwind CSS inspired me to create this library.  
+The need of beautiful, fast and reliabale UI components based on Taiwind CSS inspired me to create this library.
 
-I’ve dedicated a significant amount of time to **carefully crafting each component** so that you don’t have to. My goal was to make this library **simple to use, highly customizable, and easily extendable**, enabling you to stay productive and focused while building exceptional UIs—without needing advanced design skills.  
+I’ve dedicated a significant amount of time to **carefully crafting each component** so that you don’t have to. My goal was to make this library **simple to use, highly customizable, and easily extendable**, enabling you to stay productive and focused while building exceptional UIs—without needing advanced design skills.
 
-While there’s still a long way to go with more components to implement, I encourage you to try the existing ones and share your thoughts. Your **feedback is invaluable**, and I’d love to hear how NGXTW fits into your needs and how it could be improved.  
+While there’s still a long way to go with more components to implement, I encourage you to try the existing ones and share your thoughts. Your **feedback is invaluable**, and I’d love to hear how NGxTW fits into your needs and how it could be improved.
 
-I hope you enjoy using NGXTW as much as I enjoyed creating it. Together, we can make this library even better—your contributions, in any form, are always welcome!  
+I hope you enjoy using NGxTW as much as I enjoyed creating it. Together, we can make this library even better—your contributions, in any form, are always welcome!
 
 <br/>
 
 ## Dependency & Compatibility
+
 NGXTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtime library for TypeScript helper functions) and it's compatible with the following packages.
+
 <table>
   <thead>
     <tr>
@@ -66,7 +68,6 @@ NGXTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtim
 - [Components docs](https://www.ngxtw.com/)
 
 <br/>
-
 
 ## Star this project ⭐️
 
