@@ -1,6 +1,6 @@
 {
   "name": "ngxtw",
-  "version": "0.9.0",
+  "version": "0.0.0-placeholder",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/William-Mba/ngxtw.git"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/William-Mba/ngxtw/issues"
   },
