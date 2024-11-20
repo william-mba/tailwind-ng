@@ -1,9 +1,4 @@
 trigger:
-  branches:
-    include:
-      - master
-      - next
-      - release/*
   paths:
     include:
       - projects/lib/src/*
