@@ -15,13 +15,13 @@ resources:
       type: git
 
 parameters:
-  - name: RunTests
+  - name: RunSetup
     type: boolean
     default: true
   - name: RunBuild
     type: boolean
     default: true
-  - name: RunSetup
+  - name: RunTests
     type: boolean
     default: true
 
@@ -44,9 +44,9 @@ stages:
     jobs:
       - template: lab/ngxtw/package/job.build-test-publish.yml@template
         parameters:
-          RunTests: ${{parameters.RunTests}}
-          RunBuild: ${{parameters.RunBuild}}
           RunSetup: ${{parameters.RunSetup}}
+          RunBuild: ${{parameters.RunBuild}}
+          RunTests: ${{parameters.RunTests}}
 
   - stage: CD
     dependsOn: CI
