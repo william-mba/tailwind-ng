@@ -69,6 +69,4 @@ NGxTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtim
 
 <br/>
 
-## Give a star ⭐️
-
-If you find this helpful, star this repository to make it more visible to other people. Thank you :-)
+**Love this project ? Give a star ⭐️ ⬆️**
