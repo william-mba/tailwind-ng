@@ -37,8 +37,6 @@ variables:
   - name: Patch
     value: $[counter(variables.MajorMinor, 0)]
 
-name: $(Build.DefinitionName)-v${{variables.Release}}
-
 stages:
   - stage: CI
     jobs:
