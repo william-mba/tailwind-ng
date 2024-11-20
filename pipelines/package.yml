@@ -19,22 +19,28 @@ resources:
       name: DevOps/Template
       type: git
 
+parameters:
+  - name: RunTests
+    type: boolean
+    default: true
+  - name: RunBuild
+    type: boolean
+    default: true
+  - name: RunSetup
+    type: boolean
+    default: true
+
 variables:
-  - name: MajorMinor
-    value: "0.9"
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    - group: ngxtw-master
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
+    - group: ngxtw-next
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'release') }}:
+    - group: ngxtw-release
+  - ${{ else }}:
+    - group: ngxtw-dev
   - name: Patch
     value: $[counter(variables.MajorMinor, 0)]
-  - name: Release
-    value: $(MajorMinor).$(Patch)
-  - name: ReleaseTag
-    ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-      value: latest
-    ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      value: next
-    ${{ elseif contains(variables['Build.SourceBranch'], 'release') }}:
-      value: beta
-    ${{ else }}:
-      value: insiders
 
 name: $(Build.DefinitionName)-v${{variables.Release}}
 
