@@ -32,13 +32,13 @@ parameters:
 
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-    - group: ngxtw-master
+      - group: ngxtw-master
   - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-    - group: ngxtw-next
+      - group: ngxtw-next
   - ${{ elseif eq(variables['Build.SourceBranchName'], 'release') }}:
-    - group: ngxtw-release
+      - group: ngxtw-release
   - ${{ else }}:
-    - group: ngxtw-dev
+      - group: ngxtw-dev
   - name: Patch
     value: $[counter(variables.MajorMinor, 0)]
 
@@ -48,6 +48,10 @@ stages:
   - stage: CI
     jobs:
       - template: lab/ngxtw/package/job.build-test-publish.yml@template
+        parameters:
+          RunTests: ${{parameters.RunTests}}
+          RunBuild: ${{parameters.RunBuild}}
+          RunSetup: ${{parameters.RunSetup}}
 
   - stage: CD
     dependsOn: CI
