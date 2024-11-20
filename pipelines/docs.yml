@@ -35,7 +35,6 @@ stages:
     pool:
       name: Lab
       demands:
-        - Agent.OS -equals Linux
-        - AZP_RUNS -equals docs
+        - AZP_TARGET -equals docs
     jobs:
       - template: lab/ngxtw/docs/job.release.yml@template
