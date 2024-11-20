@@ -1,12 +1,12 @@
 <div align="center">
   <a href="https://www.ngxtw.com/">
-    <img src="projects/docs/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="100" />
+    <img src="projects/docs/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
     <h1>NGxTW</h1>
   </a>
 </div>
 
 <div align="center">
-The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS components</a> with <a href="https://angular.dev/">Angular</a>.
+Ultimate <a href="https://tailwindui.com/">Tailwind CSS components</a> library for <a href="https://angular.dev/">Angular</a>.
 <br/>
 <br/>
 <br/>
@@ -30,8 +30,34 @@ While there’s still a long way to go with more components to implement, I enco
 I hope you enjoy using NGXTW as much as I enjoyed creating it. Together, we can make this library even better—your contributions, in any form, are always welcome!  
 
 <br/>
-<br/>
 
+## Dependency & Compatibility
+NGXTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtime library for TypeScript helper functions) and it's compatible with the following packages.
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Angular</td>
+      <td>
+        18, 19
+      </td>
+      <td>A web framework that empowers developers to build fast, reliable and scalable applications.</td>
+    </tr>
+    <tr>
+      <td>Tailwind CSS</td>
+      <td>3, 4</td>
+      <td>A utility-first CSS framework for rapidly building custom user interfaces.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
 
 ## Resources
 
@@ -40,12 +66,9 @@ I hope you enjoy using NGXTW as much as I enjoyed creating it. Together, we can 
 - [Components docs](https://www.ngxtw.com/)
 
 <br/>
-<br/>
-
----
 
 
-### Star this project ⭐️
+## Star this project ⭐️
 
 If you find this helpful, star this repository to make it more visible to other people. Thank you :-)
 
