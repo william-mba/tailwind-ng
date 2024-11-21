@@ -1,12 +1,12 @@
 <div align="center">
   <a href="https://www.ngxtw.com/">
-    <img src="projects/docs/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="100" />
+    <img src="projects/docs/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
     <h1>NGxTW</h1>
   </a>
 </div>
 
 <div align="center">
-The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS components</a> with <a href="https://angular.dev/">Angular</a>.
+Ultimate <a href="https://tailwindui.com/">Tailwind CSS components</a> library for <a href="https://angular.dev/">Angular</a>.
 <br/>
 <br/>
 <br/>
@@ -19,19 +19,47 @@ The best way to quickly integrate <a href="https://tailwindui.com/">Tailwind CSS
 
 ### Why This Project?
 
-A few months ago, I wanted to use **Tailwind CSS components** in my Angular project. However, at the time, the Tailwind UI documentation only offered components for React, Vue, and pure HTML templates.  
+A few months ago, I wanted to use **Tailwind CSS components** in my Angular project. However, at the time, the Tailwind UI documentation only offered components for React, Vue, and pure HTML templates.
 
-The need of beautiful, fast and reliabale UI components based on Taiwind CSS inspired me to create this library.  
+The need of beautiful, fast and reliabale UI components based on Taiwind CSS inspired me to create this library.
 
-I’ve dedicated a significant amount of time to **carefully crafting each component** so that you don’t have to. My goal was to make this library **simple to use, highly customizable, and easily extendable**, enabling you to stay productive and focused while building exceptional UIs—without needing advanced design skills.  
+I’ve dedicated a significant amount of time to **carefully crafting each component** so that you don’t have to. My goal was to make this library **simple to use, highly customizable, and easily extendable**, enabling you to stay productive and focused while building exceptional UIs—without needing advanced design skills.
 
-While there’s still a long way to go with more components to implement, I encourage you to try the existing ones and share your thoughts. Your **feedback is invaluable**, and I’d love to hear how NGXTW fits into your needs and how it could be improved.  
+While there’s still a long way to go with more components to implement, I encourage you to try the existing ones and share your thoughts. Your **feedback is invaluable**, and I’d love to hear how NGxTW fits into your needs and how it could be improved.
 
-I hope you enjoy using NGXTW as much as I enjoyed creating it. Together, we can make this library even better—your contributions, in any form, are always welcome!  
+I hope you enjoy using NGxTW as much as I enjoyed creating it. Together, we can make this library even better—your contributions, in any form, are always welcome!
 
 <br/>
-<br/>
 
+## Dependency & Compatibility
+
+NGxTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtime library for TypeScript helper functions) and it's compatible with the following packages.
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Angular</td>
+      <td>
+        17+
+      </td>
+      <td>A web framework that empowers developers to build fast, reliable applications.</td>
+    </tr>
+    <tr>
+      <td>Tailwind CSS</td>
+      <td>3+</td>
+      <td>A utility-first CSS framework for rapidly building custom user interfaces.</td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
 
 ## Resources
 
@@ -40,12 +68,5 @@ I hope you enjoy using NGXTW as much as I enjoyed creating it. Together, we can 
 - [Components docs](https://www.ngxtw.com/)
 
 <br/>
-<br/>
 
----
-
-
-### Star this project ⭐️
-
-If you find this helpful, star this repository to make it more visible to other people. Thank you :-)
-
+**Love this project ? Give a star ⭐️ ⬆️**

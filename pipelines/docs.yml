@@ -16,15 +16,14 @@ resources:
       trigger: true
 
 variables:
-  - name: ReleaseTag
-    ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-      value: latest
-    ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      value: next
-    ${{ elseif contains(variables['Build.SourceBranch'], 'release') }}:
-      value: beta
-    ${{ else }}:
-      value: insiders
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    - group: ngxtw-master
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
+    - group: ngxtw-next
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'release') }}:
+    - group: ngxtw-release
+  - ${{ else }}:
+    - group: ngxtw-dev
 
 stages:
   - stage: CI
@@ -36,7 +35,6 @@ stages:
     pool:
       name: Lab
       demands:
-        - Agent.OS -equals Linux
-        - AZP_RUNS -equals docs
+        - AZP_TARGET -equals docs
     jobs:
       - template: lab/ngxtw/docs/job.release.yml@template
