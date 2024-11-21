@@ -33,7 +33,7 @@ I hope you enjoy using NGxTW as much as I enjoyed creating it. Together, we can 
 
 ## Dependency & Compatibility
 
-NGxTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtime library for TypeScript helper functions) and it's compatible with the following packages.
+NGxTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtime library for TypeScript helper functions) and it's compatible with the following frameworks.
 
 <table>
   <thead>
