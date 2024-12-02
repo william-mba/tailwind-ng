@@ -17,9 +17,7 @@ junit
 /node_modules
 npm-debug.log
 yarn-error.log
-
-.vscode
-.hintrc
+package-lock.json
 
 # IDEs and editors
 .idea/
@@ -37,7 +35,6 @@ yarn-error.log
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
-unpublish.ps1
 
 # Miscellaneous
 /.angular/cache
@@ -51,9 +48,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
-# Docker
-[Dd]ocker*
-
-# Nginx
-nginx

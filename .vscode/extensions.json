@@ -1,0 +1,31 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+  "recommendations": [
+    "angular.ng-template",
+    "systemticks.c4-dsl-extension",
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "christian-kohler.path-intellisense",
+    "lokalise.i18n-ally",
+    "bierner.markdown-preview-github-styles",
+    "Postman.postman-for-vscode",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "ms-azure-devops.azure-pipelines",
+    "esbenp.prettier-vscode",
+    // Source Control
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+    // themes & icons
+    "PKief.material-icon-theme",
+    "jock.svg",
+    "antfu.iconify",
+    // life savers!
+    "lokalise.i18n-ally",
+    "GitHub.copilot",
+    "usernamehw.errorlens",
+    "formulahendry.auto-rename-tag",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

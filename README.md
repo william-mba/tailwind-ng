@@ -29,35 +29,19 @@ The aim of this project is to provide to Angular Developers a set of beautiful, 
 ### Installation
 
 ```bash
-npm install ngxtw
+ng test
 ```
 
-### Usage
+## Running end-to-end tests
 
-```typescript
-// Import from ngxtw
-import { ButtonComponent } from 'ngxtw';
-import { DropdownComponent } from 'ngxtw';
+For end-to-end (e2e) testing, run:
 
-@Component({
-  standalone: true,
-  imports: [
-    DropdownComponent // Add to your component's imports
-    ...
-  ],
-  // Use in your component's template
-  template: `<button tw-button click="dropdown.toggle()"> Save changes </button>
-    <div class="relative">
-      <ul tw-dropdown #dropdown (click)="dropdown.close()" class="shadow-lg">
-        <!-- Your content goes here -->
-      </ul>
-    </div>
-  </div>`
-})
-export class ExampleComponent { ... }
+```bash
+ng e2e
 ```
 
-### Documentation
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-- [Getting Started](https://www.ngxtw.com/docs/getting-started)
-- [Components](https://www.ngxtw.com/docs/components)
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
