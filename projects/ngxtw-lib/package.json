@@ -1,6 +1,26 @@
 {
   "name": "ngxtw",
-  "version": "0.0.1",
+  "version": "0.0.0-placeholder",
+  "author": {
+    "email": "w.mba@outlook.com",
+    "name": "William Mba",
+    "url": "https://github.com/William-Mba"
+  },
+  "description": "Tailwind CSS components for Angular",
+  "keywords": [
+    "angular",
+    "tailwind css",
+    "web components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-Mba/ngxtw.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William-Mba/ngxtw/issues"
+  },
+  "homepage": "https://www.ngxtw.com",
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0"

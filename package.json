@@ -1,16 +1,18 @@
 {
-  "name": "ngxtw",
-  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "build:app": "ng build --configuration production --project ngxtw-app",
+    "build:lib": "ng build --configuration production --project ngxtw-lib",
+    "test:app": "ng test --project ngxtw-app",
+    "test:lib": "ng test --project ngxtw-lib",
+    "test:lib:ci": "ng test --project ngxtw-lib --watch=false --karma-config karma.conf.ci.js --code-coverage",
     "watch:lib-css": "npx @tailwindcss/cli -i projects/ngxtw-lib/src/tailwind.css -o projects/ngxtw-lib/src/styles.css --watch",
     "watch:app-css": "npx @tailwindcss/cli -i projects/ngxtw-app/src/tailwind.css -o projects/ngxtw-app/src/styles.css --watch",
     "watch:lib": "ng build --watch --configuration development --project ngxtw-lib",
     "watch:app": "ng build --watch --configuration development --project ngxtw-app",
-    "dev": "npm-run-all --parallel watch:* start"
+    "dev": "npm-run-all --parallel watch:* start",
+    "publish": "npm run build:lib && cd dist/ngxtw-lib && npm publish"
   },
   "private": true,
   "dependencies": {
