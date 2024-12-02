@@ -11,8 +11,8 @@ resources:
       name: DevOps/Template
       type: git
   pipelines:
-    - pipeline: package
-      source: ngxtw-package
+    - pipeline: lib
+      source: ngxtw-lib
       trigger: true
 
 variables:
@@ -28,13 +28,9 @@ variables:
 stages:
   - stage: CI
     jobs:
-      - template: ngxtw/job.build-website.yml@template
+      - template: ngxtw/job.build-app.yml@template
 
   - stage: CD
     dependsOn: CI
-    pool:
-      name: Lab
-      demands:
-        - AZP_TARGET -equals website
     jobs:
-      - template: ngxtw/job.release-website.yml@template
+      - template: ngxtw/job.release-app.yml@template

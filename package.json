@@ -7,9 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "watch:lib-css": "npx @tailwindcss/cli -i projects/ngxtw-lib/src/tailwind.css -o projects/ngxtw-lib/src/styles.css --watch",
-    "watch:web-css": "npx @tailwindcss/cli -i projects/ngxtw-web/src/tailwind.css -o projects/ngxtw-web/src/styles.css --watch",
+    "watch:app-css": "npx @tailwindcss/cli -i projects/ngxtw-app/src/tailwind.css -o projects/ngxtw-app/src/styles.css --watch",
     "watch:lib": "ng build --watch --configuration development --project ngxtw-lib",
-    "watch:web": "ng build --watch --configuration development --project ngxtw-web",
+    "watch:app": "ng build --watch --configuration development --project ngxtw-app",
     "dev": "npm-run-all --parallel watch:* start"
   },
   "private": true,
@@ -29,6 +29,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.2",
     "@angular/cli": "^19.0.1",
     "@angular/compiler-cli": "^19.0.0",
     "@types/jasmine": "~5.1.0",
@@ -38,6 +39,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^19.0.0",
     "npm-run-all": "^4.1.5",
     "typescript": "~5.6.2"
   }
