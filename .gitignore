@@ -10,6 +10,9 @@
 coverage
 junit
 
+# Tailwind
+/projects/src/tailwind.css
+
 # Node
 /node_modules
 npm-debug.log

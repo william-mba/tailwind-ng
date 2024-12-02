@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-Ultimate <a href="https://tailwindui.com/">Tailwind CSS components</a> library for <a href="https://angular.dev/">Angular</a>.
+Tailwind CSS components for Angular.
 <br/>
 <br/>
 <br/>
@@ -15,58 +15,49 @@ Ultimate <a href="https://tailwindui.com/">Tailwind CSS components</a> library f
 
 </div>
 
-<br/>
 
-### Why This Project?
+### Motivation
 
-A few months ago, I wanted to use **Tailwind CSS components** in my Angular project. However, at the time, the Tailwind UI documentation only offered components for React, Vue, and pure HTML templates.
+The aim of this project is to provide to Angular Developers a set of beautiful, fast and reliable UI components based on Tailwind CSS as Tailwind UI does for React and Vue.
 
-The need of beautiful, fast and reliabale UI components based on Taiwind CSS inspired me to create this library.
+### Features
 
-I’ve dedicated a significant amount of time to **carefully crafting each component** so that you don’t have to. My goal was to make this library **simple to use, highly customizable, and easily extendable**, enabling you to stay productive and focused while building exceptional UIs—without needing advanced design skills.
+- **High quality**: Thoughtfully-crafted and well tested to ensure performance and reliability.
+- **Versatile**: Ready to use and fully customizable components to rapidly build great UIs easier than ever.
+- **Frictionless**: Super easy to use and integrate to your existing Angular projects.
 
-While there’s still a long way to go with more components to implement, I encourage you to try the existing ones and share your thoughts. Your **feedback is invaluable**, and I’d love to hear how NGxTW fits into your needs and how it could be improved.
+### Installation
 
-I hope you enjoy using NGxTW as much as I enjoyed creating it. Together, we can make this library even better—your contributions, in any form, are always welcome!
+```bash
+npm install ngxtw
+```
 
-<br/>
+### Usage
 
-## Dependency & Compatibility
+```typescript
+// Import from ngxtw
+import { ButtonComponent } from 'ngxtw';
+import { DropdownComponent } from 'ngxtw';
 
-NGxTW only depend on [tslib ^2.3.0](https://www.typescriptlang.org/) (the runtime library for TypeScript helper functions) and it's compatible with the following frameworks.
+@Component({
+  standalone: true,
+  imports: [
+    DropdownComponent // Add to your component's imports
+    ...
+  ],
+  // Use in your component's template
+  template: `<button tw-button click="dropdown.toggle()"> Save changes </button>
+    <div class="relative">
+      <ul tw-dropdown #dropdown (click)="dropdown.close()" class="shadow-lg">
+        <!-- Your content goes here -->
+      </ul>
+    </div>
+  </div>`
+})
+export class ExampleComponent { ... }
+```
 
-<table>
-  <thead>
-    <tr>
-      <th>Package</th>
-      <th>Version</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Angular</td>
-      <td>
-        v17 and newer
-      </td>
-      <td>A web framework that empowers developers to build fast, reliable applications.</td>
-    </tr>
-    <tr>
-      <td>Tailwind CSS</td>
-      <td>v3 and newer</td>
-      <td>A utility-first CSS framework for rapidly building custom user interfaces.</td>
-    </tr>
-  </tbody>
-</table>
+### Documentation
 
-<br/>
-
-## Resources
-
-- [Quick start](https://ngxtw.com/quick-start)
-- [Roadmap](https://www.ngxtw.com/roadmap)
-- [Components docs](https://www.ngxtw.com/)
-
-<br/>
-
-**Love this project ? Give a star ⭐️ ⬆️**
+- [Getting Started](https://www.ngxtw.com/docs/getting-started)
+- [Components](https://www.ngxtw.com/docs/components)

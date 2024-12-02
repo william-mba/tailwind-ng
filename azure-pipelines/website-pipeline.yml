@@ -28,13 +28,13 @@ variables:
 stages:
   - stage: CI
     jobs:
-      - template: lab/ngxtw/docs/job.build.yml@template
+      - template: ngxtw/job.build-website.yml@template
 
   - stage: CD
     dependsOn: CI
     pool:
       name: Lab
       demands:
-        - AZP_TARGET -equals docs
+        - AZP_TARGET -equals website
     jobs:
-      - template: lab/ngxtw/docs/job.release.yml@template
+      - template: ngxtw/job.release-website.yml@template

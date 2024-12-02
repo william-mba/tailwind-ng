@@ -40,7 +40,7 @@ variables:
 stages:
   - stage: CI
     jobs:
-      - template: lab/ngxtw/package/job.build-test-publish.yml@template
+      - template: ngxtw/job.build-test-publish-lib.yml@template
         parameters:
           RunSetup: ${{parameters.RunSetup}}
           RunBuild: ${{parameters.RunBuild}}
@@ -49,4 +49,4 @@ stages:
   - stage: CD
     dependsOn: CI
     jobs:
-      - template: lab/ngxtw/package/job.release.yml@template
+      - template: ngxtw/job.release-lib.yml@template
