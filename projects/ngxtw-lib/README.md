@@ -1,63 +1,33 @@
-# NgxtwLib
+<div align="center">
+  <a href="https://www.ngxtw.com/">
+    <img src="projects/docs/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
+    <h1>NGxTW</h1>
+  </a>
+</div>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.0.
+<div align="center">
+Tailwind CSS components for Angular.
+<br/>
+<br/>
+<br/>
 
-## Code scaffolding
+[![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fngxtw-lib?repoName=William-Mba%2Fngxtw&branchName=master)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=5&repoName=William-Mba%2Fngxtw&branchName=master)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+</div>
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Motivation
 
-```bash
-ng generate --help
-```
+The aim of this project is to provide to Angular Developers a set of beautiful, fast and reliable UI components based on Tailwind CSS as Tailwind UI does for React and Vue.
 
-## Building
+### Features
 
-To build the library, run:
+- **High quality**: Thoughtfully-crafted and well tested to ensure performance and reliability.
+- **Versatile**: Ready to use and fully customizable components to rapidly build great UIs easier than ever.
+- **Frictionless**: Super easy to use and integrate to your existing Angular projects.
 
-```bash
-ng build ngxtw-lib
-```
+### Resources
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ngxtw-lib
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [Quick start](https://ngxtw.com/quick-start)
+- [Roadmap](https://www.ngxtw.com/roadmap)
+- [Components](https://www.ngxtw.com/)

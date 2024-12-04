@@ -11,7 +11,7 @@ coverage
 junit
 
 # Tailwind
-/projects/src/tailwind.css
+**/*.css
 
 # Node
 /node_modules

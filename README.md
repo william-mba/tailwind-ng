@@ -26,22 +26,8 @@ The aim of this project is to provide to Angular Developers a set of beautiful, 
 - **Versatile**: Ready to use and fully customizable components to rapidly build great UIs easier than ever.
 - **Frictionless**: Super easy to use and integrate to your existing Angular projects.
 
-### Installation
+### Resources
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [Quick start](https://ngxtw.com/quick-start)
+- [Roadmap](https://www.ngxtw.com/roadmap)
+- [Components](https://www.ngxtw.com/)

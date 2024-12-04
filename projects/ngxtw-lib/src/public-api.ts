@@ -1,6 +1,76 @@
 /*
- * Public API Surface of ngxtw-lib
+ * Public API for ngxtw
  */
 
-export * from './lib/ngxtw-lib.service';
-export * from './lib/ngxtw-lib.component';
+// Core
+// -----
+/// Utilities
+export { toggleTheme } from './core/helpers/theme.helper';
+export { mergeConfig } from './config/config.helper';
+export { objectToArray } from './core/helpers/object.helper';
+/// Configs
+export { ReactiveConfig } from './config/reactive-config';
+/// Types
+export { type ClassName } from './core/types/class-name.type';
+
+// Elements
+// --------
+/// Avatar
+export { AvatarComponent } from './ui/elements/avatar/avatar.component';
+export { type AvatarConfig, provideAvatarConfig } from './ui/elements/avatar/avatar.config';
+/// Badge
+export { BadgeComponent } from './ui/elements/badge/badge.component';
+export { type BadgeConfig, provideBadgeConfig } from './ui/elements/badge/badge.config';
+/// Button
+export * from './ui/elements/button/button.interface';
+export { ButtonComponent } from './ui/elements/button/button.component';
+export { type ButtonConfig, provideButtonConfig, } from './ui/elements/button/button.config';
+// /// Button Group
+// export * from './ui/elements/button-group/button-group.interface';
+// export { ButtonGroupComponent } from './ui/elements/button-group/button-group.component';
+// export { ButtonGroupConfig, provideButtonGroupConfig, } from './ui/elements/button-group/button-group.config';
+// /// Dropdown
+// export * from './ui/elements/dropdown/dropdown.interface';
+// export { DropdownComponent } from './ui/elements/dropdown/dropdown.component';
+// export { DropdownConfig, provideDropdownConfig } from './ui/elements/dropdown/dropdown.config';
+// /// Icon
+// export * from './ui/elements/icon/icon.interface';
+// export { IconDirective } from './ui/elements/icon/icon.component';
+// export { IconConfig, provideIconConfig } from './ui/elements/icon/icon.config';
+
+// // Overlays
+// // --------
+// /// Modal Dialog
+// export * from './overlays/modal-dialog/modal-dialog.interface';
+// export { DialogActionsComponent } from './overlays/modal-dialog/actions/dialog-actions.component';
+// export { DialogContentComponent } from './overlays/modal-dialog/panel/content/dialog-content.component';
+// export { DialogIconComponent } from './overlays/modal-dialog/panel/icon/dialog-icon.component';
+// export { DialogPanelComponent } from './overlays/modal-dialog/panel/dialog-panel.component';
+// export { ModalDialogComponent } from './overlays/modal-dialog/modal-dialog.component';
+// export { ModalDialogConfig, provideModalDialogConfig } from './overlays/modal-dialog/modal-dialog.config';
+// export { ModalDialogModule } from './overlays/modal-dialog/modal-dialog.module';
+
+// // Forms
+// // -----
+// /// Combobox
+// export { ComboboxModule } from './forms/combobox/combobox.module';
+// export * from './forms/combobox/combobox.interface';
+// export { ComboboxComponent } from './forms/combobox/combobox.component';
+// export * from './forms/combobox/combobox-item/combobox-item.interface';
+// export { ComboboxItemComponent } from './forms/combobox/combobox-item/combobox-item.component';
+// export { ComboboxItemConfig, provideComboboxItemConfig } from './forms/combobox/combobox-item/combobox-item.config';
+// /// Toggle
+// export * from './forms/toggle/toggle.interface';
+// export { ToggleComponent } from './forms/toggle/toggle.component';
+// export { ToggleConfig, provideToggleConfig } from './forms/toggle/toggle.config';
+// /// Input
+// export * from './forms/input/input.interface';
+// export { InputComponent } from './forms/input/input.component';
+// export { InputConfig, provideInputConfig } from './forms/input/input.config';
+
+// // Typography
+// export * from './typography/typography.module';
+// export * from './typography/h1/h1.directive';
+// export * from './typography/h2/h2.directive';
+// export * from './typography/h3/h3.directive';
+// export * from './typography/h4/h4.directive';

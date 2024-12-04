@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ButtonComponent, toggleTheme } from 'ngxtw';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [ButtonComponent],
   templateUrl: './app.component.html',
   styles: [],
 })
 export class AppComponent {
-  title = 'ngxtw-web';
+  ngOnInit() {
+    toggleTheme();
+  }
+
+  toggleTheme() {
+    toggleTheme();
+  }
 }

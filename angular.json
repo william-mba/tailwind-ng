@@ -26,7 +26,7 @@
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/ngxtw-app/tsconfig.app.json",
+            "tsConfig": "projects/ngxtw-app/tsconfig.json",
             "assets": [
               {
                 "glob": "**/*",
@@ -108,14 +108,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngxtw-lib/ng-package.json"
+            "project": "projects/ngxtw-lib/ng-package.json",
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngxtw-lib/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngxtw-lib/tsconfig.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngxtw-lib/tsconfig.lib.json"
+              "tsConfig": "projects/ngxtw-lib/tsconfig.json"
             }
           },
           "defaultConfiguration": "production"
