@@ -4,24 +4,26 @@ import { SizeOption } from "../../../core/types/size-options.type";
 import { StyleConfig } from "../../../core/types/style-config.type";
 import { mergeConfig } from "../../../config/config.helper";
 
-const AvatarSizeConfig: { [key in SizeOption]: string } = {
-  xs: 'size-6',
-  sm: 'size-9',
-  md: 'size-11',
-  lg: 'size-14',
-  xl: 'size-16'
-}
-
-export const AVATAR_SIZE_CONFIG = InjectionTokenFactory.create(AvatarSizeConfig, 'AVATAR_SIZE_CONFIG');
-
-export interface AvatarConfig extends Partial<StyleConfig> { };
+export type AvatarConfig = {
+  theme: Partial<StyleConfig>
+  size: { [key in SizeOption]: string }
+};
 
 const AvatarConfig: AvatarConfig = {
-  display: 'flex',
-  alignItem: 'items-center',
-  justifyContent: 'justify-center',
-  position: 'relative',
-  borderRadius: 'rounded-full'
+  theme: {
+    display: 'flex',
+    alignItem: 'items-center',
+    justifyContent: 'justify-center',
+    position: 'relative',
+    borderRadius: 'rounded-full',
+  },
+  size: {
+    xs: 'size-6',
+    sm: 'size-9',
+    md: 'size-11',
+    lg: 'size-14',
+    xl: 'size-16'
+  }
 }
 
 /**

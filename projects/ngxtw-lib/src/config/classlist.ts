@@ -1,5 +1,4 @@
-import { Injectable, signal } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from "@angular/core";
 import { resolve } from "../core/helpers/string.helper";
 import { objectToArray, ValueObject } from "../core/helpers/object.helper";
 
@@ -8,25 +7,23 @@ import { objectToArray, ValueObject } from "../core/helpers/object.helper";
  */
 @Injectable()
 export class ClassList {
+  private _value: string[] = [];
   /**
-   * Base class list used to resolve the final class list's value.
+   * The current class list value.
    */
-  readonly base = new BehaviorSubject<string[]>([]);
-  readonly value = signal<string[]>([]);
-  private _initial: string[] = []
-
-  constructor() {
-    this.base.subscribe((value) => {
-      this._initial = resolve(this._initial, value);
-      this.update(this._initial);
-    });
-  }
+  get value(): string[] {
+    return this._value;
+  };
+  /**
+  * The custom class list to merge with the default class list's value.
+  */
+  base: string[] = []
 
   /**
    * Sets a brand new class list.
    */
   set(value: string[]): void {
-    this.value.set(resolve(value, this._initial));
+    this._value = resolve(value, this.base);
   }
 
   /**
@@ -34,7 +31,7 @@ export class ClassList {
    * @param value
    */
   update(value: string[]): void {
-    this.value.update((current) => resolve(current, value));
+    this._value = resolve(this._value, value);
   }
 
   /**

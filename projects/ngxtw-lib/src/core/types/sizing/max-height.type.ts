@@ -11,4 +11,5 @@ export type MaxHeight =
   | 'max-h-min'
   | 'max-h-max'
   | 'max-h-fit'
+  | 'max-h-full'
   | `max-h-${Spacing}`

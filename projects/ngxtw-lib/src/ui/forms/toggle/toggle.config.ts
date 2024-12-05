@@ -1,14 +1,14 @@
 import { Provider } from "@angular/core";
-import { provideAnimations } from "@angular/platform-browser/animations";
-import { StyleConfig } from "../../../../ngxtw-lib/src/lib/core/types/style-config.type";
-import { mergeConfig } from "../../core/utils/config.util";
-import { InjectionTokenFactory } from "../../core/tokens/injection-token-factory";
-import { ValueObject } from "../../core/utils/object.util";
+import { ModifiedStyle, StyleConfig } from "../../../core/types/style-config.type";
+import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
+import { mergeConfig } from "../../../config/config.helper";
 
 /**
  * The configuration for the toggle container.
  */
-interface ToggleContainerConfig extends Partial<StyleConfig> { };
+interface ToggleContainerConfig extends Partial<StyleConfig> {
+  checked?: Partial<ModifiedStyle<'checked'>>;
+};
 export const ToggleContainerConfig: ToggleContainerConfig = {
   position: 'relative',
   cursor: 'cursor-pointer',
@@ -51,7 +51,7 @@ export const SliderConfig: SliderConfig = {
 /**
  * The configuration for the toggle.
  */
-export interface ToggleConfig extends ValueObject {
+export interface ToggleConfig {
   container: ToggleContainerConfig;
   slider: SliderConfig;
 }
@@ -70,12 +70,9 @@ export const TOGGLE_CONFIG = InjectionTokenFactory.create(ToggleConfig, 'TOGGLE_
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideToggleConfig(config: Partial<ToggleConfig> = {}): Provider[] {
-  return [
-    provideAnimations(),
-    {
-      provide: TOGGLE_CONFIG,
-      useValue: mergeConfig({ target: ToggleConfig, source: [config] })
-    }
-  ]
+export function provideToggleConfig(config: Partial<ToggleConfig> = {}): Provider {
+  return {
+    provide: TOGGLE_CONFIG,
+    useValue: mergeConfig({ target: ToggleConfig, source: [config] })
+  }
 }

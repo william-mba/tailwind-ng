@@ -13,6 +13,8 @@ export type Width =
   | 'w-min'
   | 'w-max'
   | 'w-fit'
+  | 'w-full'
+  | 'w-1/2'
   | `w-${Spacing}`
   | MinWidth
   | MaxWidth

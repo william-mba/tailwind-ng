@@ -161,21 +161,19 @@ export type StyleConfig = {
   md: Partial<ModifiedStyle<'md', Omit<StyleConfig, MediaQueryModifier>>>;
   lg: Partial<ModifiedStyle<'lg', Omit<StyleConfig, MediaQueryModifier>>>;
   // State modifiers
-  focus: Partial<ModifiedStyle<'focus', StyleConfig>>;
-  focusVisible: Partial<ModifiedStyle<'focus-visible', StyleConfig>>;
-  hover: Partial<ModifiedStyle<'hover', StyleConfig>>;
-  active: Partial<ModifiedStyle<'active', StyleConfig>>;
-  disabled: Partial<ModifiedStyle<'disabled', StyleConfig>>;
-  checked: Partial<ModifiedStyle<'checked', StyleConfig>>;
+  focus: Partial<ModifiedStyle<'focus'>>;
+  hover: Partial<ModifiedStyle<'hover'>>;
+  active: Partial<ModifiedStyle<'active'>>;
+  disabled: Partial<ModifiedStyle<'disabled'>>;
   // Style modifiers
-  child: Partial<ModifiedStyle<'*', StyleConfig>>;
-  first: Partial<ModifiedStyle<'first', StyleConfig>>;
-  last: Partial<ModifiedStyle<'last', StyleConfig>>;
-  dark: Partial<ModifiedStyle<'dark', StyleConfig>>;
+  child: Partial<ModifiedStyle<'*'>>;
+  first: Partial<ModifiedStyle<'first'>>;
+  last: Partial<ModifiedStyle<'last'>>;
+  dark: Partial<ModifiedStyle<'dark'>>;
 };
 
 /**A type to define styles that apply on modifiers. Ex.: sm: - focus: - click: - dark: etc.*/
-export type ModifiedStyle<Modifier extends string, Type extends ValueObject> = {
+export type ModifiedStyle<Modifier extends string, Type extends ValueObject = StyleConfig> = {
   [p1 in keyof Type]: `${Modifier}:${Extract<Type[p1], string>}` | {
     [p2 in keyof Type[p1]]: `${Modifier}:${string}:${string}`
   }

@@ -11,4 +11,5 @@ export type MaxWidth =
   | 'max-w-min'
   | 'max-w-max'
   | 'max-w-fit'
+  | 'max-w-full'
   | `max-w-${Spacing}`

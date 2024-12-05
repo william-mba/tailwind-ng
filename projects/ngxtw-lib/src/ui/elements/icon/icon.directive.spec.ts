@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { IconDirective } from './icon.component';
+import { IconDirective } from './icon.directive';
 import { ElementRef } from '@angular/core';
 import { provideIconConfig } from './icon.config';
 

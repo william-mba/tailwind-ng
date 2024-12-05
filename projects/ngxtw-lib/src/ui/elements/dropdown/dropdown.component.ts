@@ -1,18 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { DropdownConfig } from './dropdown.config';
-import { trigger, style, animate, transition, state } from '@angular/animations';
-import { Dropdown } from './dropdown.interface';
-import { objectToArray } from '../../core/utils/object.util';
-import { PopupBaseDirective } from '../../core/bases/popup-base.directive';
-import { OverlayPosition } from '../../../../ngxtw-lib/src/lib/core/types/layout/position.type';
+import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
+import { PopupBaseDirective } from '../../../core/directives/popup-base.directive';
+import { objectToArray } from '../../../core/helpers/object.helper';
+import { OverlayPosition } from '../../../core/types/layout/position.type';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 /** Dropdown component */
 @Component({
   selector: 'tw-dropdown, [tw-dropdown], [twDropdown]',
   exportAs: 'twDropdown',
-  standalone: true,
   host: {
-    '[@toggle]': 'opened ? "opened" : "closed"'
+    '[@toggle]': 'isOpened() ? "opened" : "closed"'
   },
   template: `<ng-content />`,
   animations: [
@@ -34,18 +31,11 @@ import { OverlayPosition } from '../../../../ngxtw-lib/src/lib/core/types/layout
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownComponent extends PopupBaseDirective implements Dropdown {
-  @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0', };
+export class DropdownComponent extends PopupBaseDirective {
+  position = input<OverlayPosition>({ top: 'top-2', right: 'right-0', });
 
-  setPosition(position: OverlayPosition): void {
-    this.position = position;
-    this.buildStyle();
-  }
-
-  protected override buildStyle(): void {
-    this.classList.init(objectToArray(this.position));
-    this._configManager.get<DropdownConfig>('Dropdown').subscribe(config => {
-      this.classList.setFrom(config);
-    });
+  protected override onInit(): void {
+    this.classList.base = this.classList.base.concat(objectToArray(this.position()));
+    this._config.get('Dropdown').subscribe(config => this.classList.setFrom(config));
   }
 }

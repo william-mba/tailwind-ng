@@ -1,3 +1,9 @@
+<div class="relative">
+  <button (click)="toggleTheme()" tw-button variant="secondary" size="xs" class="fixed bottom-1 right-1">Switch
+    theme</button>
+</div>
+
+<!-- Buttons -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <button tw-button size="xs">Subscribe</button>
   <button tw-button size="sm">Subscribe</button>
@@ -28,8 +34,266 @@
   <button tw-button variant="text" size="lg">Subscribe</button>
   <button tw-button variant="text" size="xl">Subscribe</button>
 </div>
+<!-- Buttons end -->
 
-<div class="relative">
-  <button (click)="toggleTheme()" tw-button variant="secondary" size="xs" class="fixed bottom-1 right-1">Switch
-    theme</button>
+<!-- Avatars -->
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <div class="flex -space-x-1">
+    <img tw-avatar size="xs" class="ring-2 ring-white" alt="" fetchpriority="high"
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="xs" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="xs" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+    <img tw-avatar size="xs" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  </div>
+
+  <div class="flex -space-x-1">
+    <img tw-avatar size="md" class="ring-2 ring-white" alt="" fetchpriority="high"
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="md" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="md" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+    <img tw-avatar size="md" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  </div>
+
+  <div class="flex -space-x-1">
+    <img tw-avatar size="xl" class="ring-2 ring-white" alt="" fetchpriority="high"
+      src="https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="xl" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+    <img tw-avatar size="xl" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80">
+    <img tw-avatar size="xl" class="ring-2 ring-white" alt=""
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+  </div>
 </div>
+
+<!-- Badges -->
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-badge class="text-slate-500 bg-slate-500/10">Badge</tw-badge>
+  <tw-badge class="text-blue-500 bg-blue-500/10">Badge</tw-badge>
+  <tw-badge class="text-red-500 bg-red-500/10">Badge</tw-badge>
+  <tw-badge class="text-yellow-500 bg-yellow-500/10">Badge</tw-badge>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-badge class="text-slate-500 bg-slate-500/10 rounded-full">Badge</tw-badge>
+  <tw-badge class="text-blue-500 bg-blue-500/10 rounded-full">Badge</tw-badge>
+  <tw-badge class="text-red-500 bg-red-500/10 rounded-full">Badge</tw-badge>
+  <tw-badge class="text-yellow-500 bg-yellow-500/10 rounded-full">Badge</tw-badge>
+</div>
+<!-- Badges end -->
+
+<!-- Button group -->
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <div tw-button-group>
+    <button tw-button variant="secondary">Days</button>
+    <button tw-button variant="secondary">Months</button>
+    <button tw-button variant="secondary">Years</button>
+  </div>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <div tw-button-group class="rounded-full">
+    <button tw-button variant="secondary">Days</button>
+    <button tw-button variant="secondary">Months</button>
+    <button tw-button variant="secondary">Years</button>
+  </div>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <div tw-button-group>
+    <button tw-button size="sm" variant="secondary">
+      <tw-icon size="sm" key="chevron-left" class="text-slate-500" />
+    </button>
+    <button tw-button size="sm" variant="secondary">
+      <tw-icon size="sm" key="chevron-right" class="text-slate-500" />
+    </button>
+  </div>
+</div>
+<!-- Button group end -->
+
+<!-- Icon Buttons -->
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <!-- Secondary -->
+  <button type="button" tw-button size="xs" fab="true" variant="secondary" class="p-1.5">
+    <tw-icon size="xs" key="language" />
+  </button>
+  <button type="button" tw-button size="sm" fab="true" variant="secondary" class="p-2">
+    <tw-icon size="sm" key="language" />
+  </button>
+  <button type="button" tw-button size="md" fab="true" variant="secondary" class="p-2.5">
+    <tw-icon size="md" key="language" />
+  </button>
+  <button type="button" tw-button size="lg" fab="true" variant="secondary" class="p-3">
+    <tw-icon size="lg" key="language" />
+  </button>
+  <button type="button" tw-button size="xl" fab="true" variant="secondary" class="p-3.5">
+    <tw-icon size="xl" key="language" />
+  </button>
+</div>
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <!-- Tonal -->
+  <button type="button" tw-button size="xs" fab="true" variant="tonal" class="p-1.5">
+    <tw-icon size="xs" key="language" />
+  </button>
+  <button type="button" tw-button size="sm" fab="true" variant="tonal" class="p-2">
+    <tw-icon size="sm" key="language" />
+  </button>
+  <button type="button" tw-button size="md" fab="true" variant="tonal" class="p-2.5">
+    <tw-icon size="md" key="language" />
+  </button>
+  <button type="button" tw-button size="lg" fab="true" variant="tonal" class="p-3">
+    <tw-icon size="lg" key="language" />
+  </button>
+  <button type="button" tw-button size="xl" fab="true" variant="tonal" class="p-3.5">
+    <tw-icon size="xl" key="language" />
+  </button>
+</div>
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <!-- Primary -->
+  <button type="button" tw-button size="xs" fab="true" class="p-1.5">
+    <tw-icon size="xs" key="language" />
+  </button>
+  <button type="button" tw-button size="sm" fab="true" class="p-2">
+    <tw-icon size="sm" key="language" />
+  </button>
+  <button type="button" tw-button size="md" fab="true" class="p-2.5">
+    <tw-icon size="md" key="language" />
+  </button>
+  <button type="button" tw-button size="lg" fab="true" class="p-3">
+    <tw-icon size="lg" key="language" />
+  </button>
+  <button type="button" tw-button size="xl" fab="true" class="p-3.5">
+    <tw-icon size="xl" key="language" />
+  </button>
+</div>
+<!-- Icon Buttons end -->
+
+<!-- Dropdowns -->
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8 mb-32">
+  <div>
+    <button tw-button size="sm" variant="secondary" (click)="dropdown.toggle()">
+      Options <tw-icon size="sm" key="chevron-down" class="text-slate-500" />
+    </button>
+    <div class="relative">
+      <ul tw-dropdown #dropdown [opened]="true" (click)="dropdown.close()" class="*:px-4 *:py-2">
+        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Account settings </li>
+        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Support </li>
+        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> License </li>
+        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Sign out </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8 mb-64">
+  <div>
+    <button tw-button size="sm" variant="secondary" (click)="dropdown2.toggle()">
+      Options <tw-icon size="sm" key="chevron-down" class="text-slate-500" />
+    </button>
+    <div class="relative">
+      <tw-dropdown #dropdown2 [opened]="true" (click)="dropdown2.close()"
+        class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50">
+        <ul class="*:px-4 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Edit</li>
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Duplicate</li>
+        </ul>
+        <ul class="*:px-4 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Archive</li>
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Move</li>
+        </ul>
+        <ul class="*:px-4 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Share</li>
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Add to favorites</li>
+        </ul>
+        <ul class="*:px-4 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Delete</li>
+        </ul>
+      </tw-dropdown>
+    </div>
+  </div>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8 mb-96">
+  <div>
+    <button tw-button size="sm" variant="secondary" (click)="dropdown3.toggle()">
+      Options <tw-icon size="sm" key="chevron-down" class="text-slate-500" />
+    </button>
+    <div class="relative">
+      <tw-dropdown #dropdown3 [opened]="true" (click)="dropdown3.close()"
+        class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50">
+        <ul class="*:px-3 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+            <tw-icon size="sm" class="opacity-50" key="pencil-square" />
+            Edit
+          </li>
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+            <tw-icon size="sm" class="opacity-50" key="document-duplicate" />
+            Duplicate
+          </li>
+        </ul>
+        <ul class="*:px-3 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+            <tw-icon size="sm" class="opacity-50" key="archive-box" />
+            Archive
+          </li>
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+            <tw-icon size="sm" class="opacity-50" key="arrow-right-circle" />
+            Move
+          </li>
+        </ul>
+        <ul class="*:px-3 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+            <tw-icon size="sm" class="opacity-50" key="share" />
+            Share
+          </li>
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+            <tw-icon size="sm" class="opacity-50" key="star" />
+            Add to favorites
+          </li>
+        </ul>
+        <ul class="*:px-3 *:py-2">
+          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+            <tw-icon size="sm" class="opacity-50" key="strash" />
+            Delete
+          </li>
+        </ul>
+      </tw-dropdown>
+    </div>
+  </div>
+</div>
+<!-- Dropdowns end -->
+
+<!-- Toggles -->
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-toggle [checked]="true" class="aria-checked:bg-blue-600" />
+  <tw-toggle class="w-16 aria-checked:bg-blue-600" />
+  <tw-toggle class="w-20 aria-checked:bg-blue-600" />
+</div>
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-toggle
+    class="aria-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600" />
+  <tw-toggle
+    class="w-16 aria-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600" />
+  <tw-toggle
+    class="w-20 aria-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600" />
+</div>
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+
+</div>
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+
+</div>
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+
+</div>
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+
+</div>
+
+<div class="mb-96"></div>

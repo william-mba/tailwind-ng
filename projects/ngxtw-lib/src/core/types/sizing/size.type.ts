@@ -10,4 +10,5 @@ export type Size =
   | 'size-min'
   | 'size-max'
   | 'size-fit'
+  | 'size-full'
   | `size-${Spacing}`

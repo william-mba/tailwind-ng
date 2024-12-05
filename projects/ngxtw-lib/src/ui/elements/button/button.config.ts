@@ -1,10 +1,9 @@
 import { Provider } from "@angular/core";
-import { ValueObject } from "../../../core/helpers/object.helper";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { BoxShadowColor } from "../../../core/types/effects/box-shadow-color.type";
 import { BoxShadow } from "../../../core/types/effects/box-shadow.type";
 import { SizeOptions } from "../../../core/types/size-options.type";
-import { StyleConfig } from "../../../core/types/style-config.type";
+import { ModifiedStyle, StyleConfig } from "../../../core/types/style-config.type";
 import { mergeConfig } from "../../../config/config.helper";
 
 /** Button variant */
@@ -15,8 +14,7 @@ export type ButtonVariant =
   | 'text'
 
 /** Button size config */
-interface ButtonSizeOptions extends SizeOptions { };
-const ButtonSizeConfig: ButtonSizeOptions = {
+const ButtonSizeConfig: SizeOptions = {
   xs: {
     padding: {
       x: 'px-2',
@@ -89,7 +87,9 @@ const ButtonBaseConfig: ButtonBaseConfig = {
 }
 
 /** Primary button config */
-type PrimaryButtonConfig = Partial<ButtonBaseConfig>;
+interface PrimaryButtonConfig extends Partial<ButtonBaseConfig> {
+  focusVisible: Partial<ModifiedStyle<'focus-visible'>>
+};
 const PrimaryButtonConfig: PrimaryButtonConfig = {
   ...ButtonBaseConfig,
   textColor: 'text-white',
@@ -164,25 +164,29 @@ const TextButtonConfig: TonalButtonConfig = {
 }
 
 /** Button config */
-export interface ButtonConfig extends ValueObject {
-  primary: Partial<PrimaryButtonConfig>,
-  secondary: Partial<SecondaryButtonConfig>,
-  tonal: Partial<TonalButtonConfig>,
-  text: Partial<TextButtonConfig>,
-  fab: {
-    boxShadow?: BoxShadow
-    boxShadowColor?: BoxShadowColor
+export type ButtonConfig = {
+  theme: {
+    primary: Partial<PrimaryButtonConfig>,
+    secondary: Partial<SecondaryButtonConfig>,
+    tonal: Partial<TonalButtonConfig>,
+    text: Partial<TextButtonConfig>,
+    fab: {
+      boxShadow?: BoxShadow
+      boxShadowColor?: BoxShadowColor
+    }
   },
-  size: Partial<ButtonSizeOptions>
+  size: Partial<SizeOptions>
 }
 
 const ButtonConfig: ButtonConfig = {
-  primary: PrimaryButtonConfig,
-  secondary: SecondaryButtonConfig,
-  tonal: TonalButtonConfig,
-  text: TextButtonConfig,
-  fab: {
-    boxShadow: 'shadow-lg'
+  theme: {
+    primary: PrimaryButtonConfig,
+    secondary: SecondaryButtonConfig,
+    tonal: TonalButtonConfig,
+    text: TextButtonConfig,
+    fab: {
+      boxShadow: 'shadow-lg'
+    }
   },
   size: ButtonSizeConfig
 }

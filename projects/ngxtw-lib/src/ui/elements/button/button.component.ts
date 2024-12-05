@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation, input, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, input } from '@angular/core';
 import { ButtonConfig, ButtonVariant } from './button.config';
-import { Button } from './button.interface';
-import { ElementBase } from '../../../core/directives/element-base.directive';
+import { BaseDirective } from '../../../core/directives/element-base.directive';
 import { SizeOption } from '../../../core/types/size-options.type';
 
 /**
@@ -14,18 +13,18 @@ import { SizeOption } from '../../../core/types/size-options.type';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent extends ElementBase<HTMLButtonElement> implements Button {
+export class ButtonComponent extends BaseDirective<HTMLButtonElement> {
   isFab = input(false);
-  variant = model<ButtonVariant>('primary');
+  size = input<SizeOption>('md');
+  variant = input<ButtonVariant>('primary');
 
-  protected override buildStyle(): void {
+  protected override onInit(): void {
     this._config.get<ButtonConfig>('Button').subscribe((config) => {
-      const obj = {
-        v: config[this.variant()],
-        s: config.size[this.size()],
-        f: this.isFab() ? config.fab : {}
-      };
-      this.classList.setFrom(obj);
+      this.classList.setFrom({
+        ...config.size[this.size()],
+        ...config.theme[this.variant()],
+        ...this.isFab() ? config.theme.fab : {}
+      });
     });
   }
 }

@@ -1,23 +1,22 @@
 import { Directive, model, output } from '@angular/core';
-import { ElementBase } from './element-base.directive';
+import { BaseDirective } from './element-base.directive';
 import { PopupBase } from './popup-base.interface';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @Directive({
   host: {
     '[attr.aria-expanded]': 'isOpened() ? "" : null',
     '[attr.aria-hidden]': 'isOpened() ? null : ""',
-    '[attr.hidden]': 'isOpened() ? null : ""',
+    // '[attr.hidden]': 'isOpened() ? null : ""',
     '[attr.open]': 'isOpened() ? "" : null',
     '(mouseenter)': 'onHover($event)',
     '(mouseleave)': 'onHover($event)',
-  },
+  }
 })
-export abstract class PopupBaseDirective extends ElementBase<HTMLElement> implements PopupBase {
+export abstract class PopupBaseDirective extends BaseDirective implements PopupBase {
 
-  isOpened = model(false);
-  isHovered = model(false);
-  opened = output();
-  closed = output();
+  isOpened = model(false, { alias: 'opened' });
+  isHovered = model(false, { alias: 'hovered' });
   toggled = output<boolean>();
 
   toggle(): void {
@@ -27,13 +26,11 @@ export abstract class PopupBaseDirective extends ElementBase<HTMLElement> implem
 
   open(): void {
     this.isOpened.set(true);
-    this.opened.emit();
   }
 
   close(): void {
     this.isOpened.set(false);
     this.isHovered.set(false);
-    this.closed.emit();
   }
 
   /**

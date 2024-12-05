@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, model, ViewEncapsulation } from '@angular/core';
-import { AVATAR_SIZE_CONFIG, AvatarConfig } from './avatar.config';
-import { ElementBase } from '../../../core/directives/element-base.directive';
+import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
+import { AvatarConfig } from './avatar.config';
+import { BaseDirective } from '../../../core/directives/element-base.directive';
 import { SizeOption } from '../../../core/types/size-options.type';
 
 /**Avatar element*/
@@ -11,17 +11,12 @@ import { SizeOption } from '../../../core/types/size-options.type';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AvatarComponent extends ElementBase<HTMLElement> {
-  private readonly _sizeConfig = inject(AVATAR_SIZE_CONFIG);
-  override size = model<SizeOption>('md');
+export class AvatarComponent extends BaseDirective<HTMLElement> {
+  size = input<SizeOption>('md');
 
-  protected override buildStyle(): void {
-    this.size.subscribe((value) => {
-      this.classList.base.next([this._sizeConfig[value]]);
-    })
-
+  protected override onInit(): void {
     this._config.get<AvatarConfig>('Avatar').subscribe(config => {
-      this.classList.updateFrom(config);
+      this.classList.setFrom({ t: config.theme, s: config.size[this.size()] });
     });
   }
 }

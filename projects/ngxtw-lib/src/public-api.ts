@@ -22,21 +22,17 @@ export { type AvatarConfig, provideAvatarConfig } from './ui/elements/avatar/ava
 export { BadgeComponent } from './ui/elements/badge/badge.component';
 export { type BadgeConfig, provideBadgeConfig } from './ui/elements/badge/badge.config';
 /// Button
-export * from './ui/elements/button/button.interface';
 export { ButtonComponent } from './ui/elements/button/button.component';
 export { type ButtonConfig, provideButtonConfig, } from './ui/elements/button/button.config';
-// /// Button Group
-// export * from './ui/elements/button-group/button-group.interface';
-// export { ButtonGroupComponent } from './ui/elements/button-group/button-group.component';
-// export { ButtonGroupConfig, provideButtonGroupConfig, } from './ui/elements/button-group/button-group.config';
-// /// Dropdown
-// export * from './ui/elements/dropdown/dropdown.interface';
-// export { DropdownComponent } from './ui/elements/dropdown/dropdown.component';
-// export { DropdownConfig, provideDropdownConfig } from './ui/elements/dropdown/dropdown.config';
-// /// Icon
-// export * from './ui/elements/icon/icon.interface';
-// export { IconDirective } from './ui/elements/icon/icon.component';
-// export { IconConfig, provideIconConfig } from './ui/elements/icon/icon.config';
+/// Button Group
+export { ButtonGroupComponent } from './ui/elements/button-group/button-group.component';
+export { type ButtonGroupConfig, provideButtonGroupConfig, } from './ui/elements/button-group/button-group.config';
+/// Dropdown
+export { DropdownComponent } from './ui/elements/dropdown/dropdown.component';
+export { type DropdownConfig, provideDropdownConfig } from './ui/elements/dropdown/dropdown.config';
+/// Icon
+export { IconDirective } from './ui/elements/icon/icon.directive';
+export { type IconConfig, provideIconConfig } from './ui/elements/icon/icon.config';
 
 // // Overlays
 // // --------
@@ -59,10 +55,9 @@ export { type ButtonConfig, provideButtonConfig, } from './ui/elements/button/bu
 // export * from './forms/combobox/combobox-item/combobox-item.interface';
 // export { ComboboxItemComponent } from './forms/combobox/combobox-item/combobox-item.component';
 // export { ComboboxItemConfig, provideComboboxItemConfig } from './forms/combobox/combobox-item/combobox-item.config';
-// /// Toggle
-// export * from './forms/toggle/toggle.interface';
-// export { ToggleComponent } from './forms/toggle/toggle.component';
-// export { ToggleConfig, provideToggleConfig } from './forms/toggle/toggle.config';
+/// Toggle
+export { ToggleComponent } from './ui/forms/toggle/toggle.component';
+export { type ToggleConfig, provideToggleConfig } from './ui/forms/toggle/toggle.config';
 // /// Input
 // export * from './forms/input/input.interface';
 // export { InputComponent } from './forms/input/input.component';

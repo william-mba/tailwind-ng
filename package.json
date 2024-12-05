@@ -5,7 +5,7 @@
     "test:app": "ng test --project ngxtw-app",
     "test:lib": "ng test --project ngxtw-lib",
     "build:app": "ng build --configuration production --project ngxtw-app",
-    "build:lib": "ng build --configuration production --project ngxtw-lib --watch",
+    "build:lib": "ng build --configuration production --project ngxtw-lib",
     "build:css": "npx @tailwindcss/cli -i projects/ngxtw-app/src/tailwind.css -o projects/ngxtw-app/src/styles.css",
     "watch:lib": "ng build --watch --configuration development --project ngxtw-lib",
     "test:lib:ci": "ng test --project ngxtw-lib --watch=false --karma-config karma.conf.ci.js --code-coverage",

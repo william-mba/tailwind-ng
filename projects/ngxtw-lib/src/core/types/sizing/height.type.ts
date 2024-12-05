@@ -13,6 +13,7 @@ export type Height =
   | 'h-min'
   | 'h-max'
   | 'h-fit'
+  | 'h-full'
   | MinHeight
   | MaxHeight
   | `h-${Spacing}`

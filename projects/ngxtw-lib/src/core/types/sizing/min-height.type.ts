@@ -11,4 +11,5 @@ export type MinHeight =
   | 'min-h-min'
   | 'min-h-max'
   | 'min-h-fit'
+  | 'min-h-full'
   | `min-h-${Spacing}`

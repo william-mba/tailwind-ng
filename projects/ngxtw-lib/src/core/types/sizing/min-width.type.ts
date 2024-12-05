@@ -11,4 +11,5 @@ export type MinWidth =
   | 'min-w-min'
   | 'min-w-max'
   | 'min-w-fit'
+  | 'min-w-full'
   | `min-w-${Spacing}`
