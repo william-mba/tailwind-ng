@@ -11,7 +11,7 @@ import { Cursor } from './interactivity/cursor.type';
 import { PointerEvents } from './interactivity/pointer-events.type';
 import { UserSelect } from './interactivity/user-select.type';
 import { Overflow } from './layout/overflow.type';
-import { PositionType } from './layout/position.type';
+import { Position } from './layout/position.type';
 import { ZIndex } from './layout/z-index.type';
 import { Height } from './sizing/height.type';
 import { Size } from './sizing/size.type';
@@ -36,9 +36,9 @@ import { MaxHeight } from './sizing/max-height.type';
 import { VerticalAlign } from './typography/vertical-align.type';
 import { RingOffsetWidth } from './borders/ring-offset-width.type';
 import { OutlineColor } from './borders/outline-color.type';
-import { OutlineOffset } from './borders/outline-offset.type';
+import { OutlineOffsetWidth } from './borders/outline-offset-width.type';
 import { OutlineWidth } from './borders/outline-width.type';
-import { BorderType } from './borders/border.type';
+import { Border } from './borders/border.type';
 import { Bottom } from './layout/position/bottom.type';
 import { InsetX } from './layout/position/inset-x.type';
 import { InsetY } from './layout/position/inset-y.type';
@@ -87,13 +87,13 @@ export type ClassName =
   | RadiusLeft
   | BorderStyle
   | BorderWidth
-  | BorderType
+  | Border
   | DivideColor
   | DivideStyle
   | DivideWidth
   | OutlineColor
   | OutlineWidth
-  | OutlineOffset
+  | OutlineOffsetWidth
   | RingColor
   | RingOffsetWidth
   | RingWidth
@@ -133,7 +133,7 @@ export type ClassName =
   // Layout
   | Display
   | Overflow
-  | PositionType
+  | Position
   | ZIndex
   // Sizing
   | Height

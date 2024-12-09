@@ -1,7 +1,8 @@
+import { ConfigValue } from "../types/config.type";
 import { isObject, isString, isEmptyObject } from "./type-check.helper";
 
 /** Returns the object properties values, including properties values of it child objects in a string.*/
-export function objectToString(obj: ValueObject): string {
+export function objectToString(obj: ConfigValue): string {
   /* Given an object with values to extract
 
   1. If the object is undefined, return an empty string
@@ -26,7 +27,7 @@ export function objectToString(obj: ValueObject): string {
 }
 
 /** Returns the object properties values, including properties values of it child objects in an array.*/
-export function objectToArray(obj: ValueObject): string[] {
+export function objectToArray(obj: ConfigValue): string[] {
   /* Given an object with values to extract
 
   1. If the object is undefined, return an empty []
@@ -50,17 +51,15 @@ export function objectToArray(obj: ValueObject): string[] {
   return res;
 }
 
-export type ValueObject = Record<string, any>;
-
 /** Simply merges objects from source to target.
  * @NOTE Empty child objet(s) of source are ignored during the merge.
  * @param target - The target object to update
  * @param source - The source objects to merge
  * @returns The merged object
  */
-export function mergeSimply<T extends ValueObject>(
+export function mergeSimply<T extends ConfigValue>(
   target: T,
-  ...source: Partial<ValueObject>[]
+  ...source: Partial<ConfigValue>[]
 ): T {
   /* Given a list of objects to merge in a target object
 
@@ -92,9 +91,9 @@ export function mergeSimply<T extends ValueObject>(
  * @param source - The source object to merge
  * @returns The merged object
  */
-export function mergeStrictly<T extends ValueObject>(
+export function mergeStrictly<T extends ConfigValue>(
   target: T,
-  ...source: Partial<ValueObject>[]
+  ...source: Partial<ConfigValue>[]
 ): T {
   /* Given a list of objects to merge in target object
     1. Loop through each object in source objects

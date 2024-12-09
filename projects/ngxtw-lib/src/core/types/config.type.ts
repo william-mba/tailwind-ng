@@ -1,7 +1,3 @@
-import { BorderRadius } from './borders/border-radius.type';
-import { BorderWidth } from './borders/border-width.type';
-import { DivideWidth } from './borders/divide-width.type';
-import { RingWidth } from './borders/ring-width.type';
 import { BoxShadow } from './effects/box-shadow.type';
 import { Opacity } from './effects/opacity.type';
 import { Backdrop } from './filters/backdrop.type';
@@ -27,19 +23,12 @@ import { TextAlign } from './typography/text-align.type';
 import { TextWrap } from './typography/text-wrap.type';
 import { BackgroundColor } from './backgrounds/background-color.type';
 import { BackgroundGradient } from './backgrounds/background-gradient.type';
-import { BorderColor } from './borders/border-color.type';
-import { DivideColor } from './borders/divide-color.type';
-import { RingColor } from './borders/ring-color.type';
 import { BoxShadowColor } from './effects/box-shadow-color.type';
 import { TextColor } from './typography/text-color.type';
 import { MaxWidth } from './sizing/max-width.type';
 import { MaxHeight } from './sizing/max-height.type';
 import { VerticalAlign } from './typography/vertical-align.type';
-import { RingOffsetWidth } from './borders/ring-offset-width.type';
-import { OutlineColor } from './borders/outline-color.type';
-import { OutlineOffset } from './borders/outline-offset.type';
-import { OutlineWidth } from './borders/outline-width.type';
-import { BorderType } from './borders/border.type';
+import { Border } from './borders/border.type';
 import { AlignContent } from './flex-grid/align-content.type';
 import { AlignItem } from './flex-grid/align-item.type';
 import { AlignSelf } from './flex-grid/align-self.type';
@@ -52,14 +41,33 @@ import { GridColumns } from './flex-grid/grid-cols.type';
 import { JustifyContent } from './flex-grid/justify-content.type';
 import { PlaceContent } from './flex-grid/place-content.type';
 import { PlaceItems } from './flex-grid/place-items.type';
-import { TransitionProperty } from './transitions-animations/transition-property.type';
+import { Transition } from './transitions-animations/transition.type';
 import { TwAnimation } from './transitions-animations/animation.type';
-import { TransitionDuration } from './transitions-animations/transition-duration.type';
-import { TransitionTimingFunction } from './transitions-animations/transition-timing-function.type';
 import { TwTranslate } from './transforms/translate.type';
-import { ValueObject } from '../helpers/object.helper';
+import { Ring } from './borders/ring.type';
+import { RingColor } from './borders/ring-color.type';
+import { RingOffsetWidth } from './borders/ring-offset-width.type';
+import { RingWidth } from './borders/ring-width.type';
+import { BorderColor } from './borders/border-color.type';
+import { BorderRadius, RadiusTop, RadiusRight, RadiusBottom, RadiusLeft } from './borders/border-radius.type';
+import { BorderStyle } from './borders/border-style.type';
+import { BorderWidth } from './borders/border-width.type';
+import { OutlineColor } from './borders/outline-color.type';
+import { OutlineOffsetWidth } from './borders/outline-offset-width.type';
+import { OutlineWidth } from './borders/outline-width.type';
+import { DivideColor } from './borders/divide-color.type';
+import { DivideStyle } from './borders/divide-style.type';
+import { DivideWidth } from './borders/divide-width.type';
+import { Bottom } from './layout/position/bottom.type';
+import { InsetX } from './layout/position/inset-x.type';
+import { InsetY } from './layout/position/inset-y.type';
+import { Inset } from './layout/position/inset.type';
+import { Left } from './layout/position/left.type';
+import { Right } from './layout/position/right.type';
+import { Top } from './layout/position/top.type';
+import { OutlineStyle } from './borders/outline-style.type';
 
-export type StyleConfig = {
+export interface BaseConfig {
   /**Utilities for controlling how flex and grid items are positioned along a container's cross axis.
      * @see https://tailwindcss.com/docs/align-items
      */
@@ -109,27 +117,38 @@ export type StyleConfig = {
    */
   alignContent: AlignContent;
   animation: TwAnimation;
-  transitionDuration: TransitionDuration;
-  transitionProperty: TransitionProperty;
-  transitionTimingFunction: TransitionTimingFunction;
+  transition: Transition;
   ringColor: RingColor;
   ringOffsetWidth: RingOffsetWidth;
-  borderType: BorderType;
-  outlineWidth: OutlineWidth;
-  outlineOffset: OutlineOffset;
+  ringWidth: RingWidth;
+  ring: Ring;
+  borderColor: BorderColor;
+  borderRadius: BorderRadius;
+  borderRadiusTop: RadiusTop;
+  borderRadiusRight: RadiusRight;
+  borderRadiusBottom: RadiusBottom;
+  borderRadiusLeft: RadiusLeft;
+  borderStyle: BorderStyle;
+  borderWidth: BorderWidth;
+  border: Border;
+  outlineStyle: OutlineStyle;
   outlineColor: OutlineColor;
+  outlineOffsetWidth: OutlineOffsetWidth;
+  outlineWidth: OutlineWidth;
   divideColor: DivideColor;
+  divideStyle: DivideStyle;
   divideWidth: DivideWidth;
   textColor: TextColor;
   bgColor: BackgroundColor;
   bgGradient: BackgroundGradient;
-  borderColor: BorderColor;
   shadowColor: BoxShadowColor;
   display: Display;
+  top: Top;
+  right: Right;
+  bottom: Bottom;
+  left: Left;
+  inset: Inset | InsetX | InsetY,
   position: Position;
-  borderRadius: BorderRadius;
-  ringWidth: RingWidth;
-  borderWidth: BorderWidth;
   fontWeight: FontWeight;
   fontSize: FontSize;
   overflow: Overflow;
@@ -157,25 +176,24 @@ export type StyleConfig = {
   translate: TwTranslate;
   verticalAlign: VerticalAlign;
   // Media queries modifiers
-  sm: Partial<ModifiedStyle<'sm', Omit<StyleConfig, MediaQueryModifier>>>;
-  md: Partial<ModifiedStyle<'md', Omit<StyleConfig, MediaQueryModifier>>>;
-  lg: Partial<ModifiedStyle<'lg', Omit<StyleConfig, MediaQueryModifier>>>;
+  sm: Modifier<'sm', Omit<BaseConfig, MediaQueryModifier>>;
+  md: Modifier<'md', Omit<BaseConfig, MediaQueryModifier>>;
+  lg: Modifier<'lg', Omit<BaseConfig, MediaQueryModifier>>;
   // State modifiers
-  focus: Partial<ModifiedStyle<'focus'>>;
-  hover: Partial<ModifiedStyle<'hover'>>;
-  active: Partial<ModifiedStyle<'active'>>;
-  disabled: Partial<ModifiedStyle<'disabled'>>;
+  focus: Modifier<'focus'>;
+  hover: Modifier<'hover'>;
+  active: Modifier<'active'>;
+  disabled: Modifier<'disabled'>;
   // Style modifiers
-  child: Partial<ModifiedStyle<'*'>>;
-  first: Partial<ModifiedStyle<'first'>>;
-  last: Partial<ModifiedStyle<'last'>>;
-  dark: Partial<ModifiedStyle<'dark'>>;
+  dark: Modifier<'dark'>;
 };
 
-/**A type to define styles that apply on modifiers. Ex.: sm: - focus: - click: - dark: etc.*/
-export type ModifiedStyle<Modifier extends string, Type extends ValueObject = StyleConfig> = {
-  [p1 in keyof Type]: `${Modifier}:${Extract<Type[p1], string>}` | {
-    [p2 in keyof Type[p1]]: `${Modifier}:${string}:${string}`
+export type ConfigValue = Record<string, any>;
+export type ConfigType = Partial<BaseConfig>;
+
+export type Modifier<Prefix extends string, Type extends ConfigValue = BaseConfig> = {
+  [L1 in keyof Type]?: `${Type[L1]}` extends `${infer X}` ? `${Prefix}:${X}` : {
+    [L2 in keyof Type[L1]]?: `${Type[L1][L2] & string}` extends `${infer X}:${infer Y}` ? `${Prefix}:${X}:${Y}` : Modifier<Prefix, Type[L1][L2]>
   }
 };
 

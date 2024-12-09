@@ -3,20 +3,20 @@ import { BehaviorSubject } from "rxjs";
 import { ConfigKey } from "./config-key";
 import { ConfigStore } from "./config-store";
 import { mergeConfig } from "./config.helper";
-import { ValueObject } from "../core/helpers/object.helper";
+import { ConfigValue } from "../core/types/config.type";
 
 export interface ReactiveConfig {
   /** Returns a Subject of the configuration corresponding to the key.
    * If it does not exist, it will be initialized with the default configuration
    * @param key The configuration key
    */
-  get<T extends ValueObject>(key: ConfigKey): BehaviorSubject<T>;
+  get<T extends ConfigValue>(key: ConfigKey): BehaviorSubject<T>;
 
   /** Updates the configuration value
    * @param key The configuration key
    * @param value The value to update
    */
-  update<T extends ValueObject>(key: ConfigKey, ...value: Partial<T>[]): void;
+  update<T extends ConfigValue>(key: ConfigKey, ...value: Partial<T>[]): void;
 }
 
 /** @ngxtw Reactive configuration */
@@ -25,20 +25,20 @@ export class ReactiveConfig implements ReactiveConfig {
   protected readonly store: Map<ConfigKey, BehaviorSubject<any>> = new Map();
   protected readonly config: ConfigStore = inject(ConfigStore);
 
-  protected set(key: ConfigKey, config: ValueObject): void {
+  protected set(key: ConfigKey, config: ConfigValue): void {
     if (!this.store.has(key)) {
       this.store.set(key, new BehaviorSubject(config));
     }
   }
 
-  update<T extends ValueObject>(key: ConfigKey, ...value: Partial<T>[]): void {
+  update<T extends ConfigValue>(key: ConfigKey, ...value: Partial<T>[]): void {
     if (this.store.has(key)) {
       const config = this.get(key);
       config.next(mergeConfig({ target: config.value, source: value }));
     }
   }
 
-  get<T extends ValueObject>(key: ConfigKey): BehaviorSubject<T> {
+  get<T extends ConfigValue>(key: ConfigKey): BehaviorSubject<T> {
     // If there is no key in the store, set an initial value then returning it
     if (!this.store.has(key)) {
       switch (key) {
@@ -54,18 +54,18 @@ export class ReactiveConfig implements ReactiveConfig {
         case 'ButtonGroup':
           this.set(key, this.config.buttonGroup);
           break;
-        // case 'ComboboxItem':
-        //   this.set(key, this.config.comboboxItem);
-        //   break;
+        case 'ComboboxItem':
+          this.set(key, this.config.comboboxItem);
+          break;
         case 'Dropdown':
           this.set(key, this.config.dropdown);
           break;
         case 'Icon':
           this.set(key, this.config.icon);
           break;
-        // case 'Input':
-        //   this.set(key, this.config.input);
-        //   break;
+        case 'Input':
+          this.set(key, this.config.input);
+          break;
         // case 'ModalDialog':
         //   this.set(key, this.config.modalDialog);
         //   break;

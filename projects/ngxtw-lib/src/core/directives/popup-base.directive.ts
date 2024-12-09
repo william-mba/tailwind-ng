@@ -1,7 +1,6 @@
 import { Directive, model, output } from '@angular/core';
 import { BaseDirective } from './element-base.directive';
 import { PopupBase } from './popup-base.interface';
-import { provideAnimations } from '@angular/platform-browser/animations';
 
 @Directive({
   host: {
@@ -17,7 +16,9 @@ export abstract class PopupBaseDirective extends BaseDirective implements PopupB
 
   isOpened = model(false, { alias: 'opened' });
   isHovered = model(false, { alias: 'hovered' });
-  toggled = output<boolean>();
+  toggled = output<boolean>({ alias: 'toggle' });
+  opened = output<void>({ alias: 'open' });
+  closed = output<void>({ alias: 'close' });
 
   toggle(): void {
     this.isOpened() ? this.close() : this.open();
@@ -26,11 +27,13 @@ export abstract class PopupBaseDirective extends BaseDirective implements PopupB
 
   open(): void {
     this.isOpened.set(true);
+    this.opened.emit();
   }
 
   close(): void {
     this.isOpened.set(false);
     this.isHovered.set(false);
+    this.closed.emit();
   }
 
   /**

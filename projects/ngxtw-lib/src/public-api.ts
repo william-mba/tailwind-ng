@@ -46,26 +46,18 @@ export { type IconConfig, provideIconConfig } from './ui/elements/icon/icon.conf
 // export { ModalDialogConfig, provideModalDialogConfig } from './overlays/modal-dialog/modal-dialog.config';
 // export { ModalDialogModule } from './overlays/modal-dialog/modal-dialog.module';
 
-// // Forms
-// // -----
-// /// Combobox
-// export { ComboboxModule } from './forms/combobox/combobox.module';
-// export * from './forms/combobox/combobox.interface';
-// export { ComboboxComponent } from './forms/combobox/combobox.component';
-// export * from './forms/combobox/combobox-item/combobox-item.interface';
-// export { ComboboxItemComponent } from './forms/combobox/combobox-item/combobox-item.component';
-// export { ComboboxItemConfig, provideComboboxItemConfig } from './forms/combobox/combobox-item/combobox-item.config';
+// Forms
+// -----
+/// Combobox
+export { ComboboxModule } from './ui/forms/combobox/combobox.module';
+export * from './ui/forms/combobox/combobox.interface';
+export { ComboboxComponent } from './ui/forms/combobox/combobox.component';
+export * from './ui/forms/combobox/combobox-item/combobox-item.interface';
+export { ComboboxItemComponent } from './ui/forms/combobox/combobox-item/combobox-item.component';
+export { type ComboboxItemConfig, provideComboboxItemConfig } from './ui/forms/combobox/combobox-item/combobox-item.config';
 /// Toggle
 export { ToggleComponent } from './ui/forms/toggle/toggle.component';
 export { type ToggleConfig, provideToggleConfig } from './ui/forms/toggle/toggle.config';
-// /// Input
-// export * from './forms/input/input.interface';
-// export { InputComponent } from './forms/input/input.component';
-// export { InputConfig, provideInputConfig } from './forms/input/input.config';
-
-// // Typography
-// export * from './typography/typography.module';
-// export * from './typography/h1/h1.directive';
-// export * from './typography/h2/h2.directive';
-// export * from './typography/h3/h3.directive';
-// export * from './typography/h4/h4.directive';
+/// Input
+export { InputComponent } from './ui/forms/input/input.component';
+export { type InputConfig, provideInputConfig } from './ui/forms/input/input.config';

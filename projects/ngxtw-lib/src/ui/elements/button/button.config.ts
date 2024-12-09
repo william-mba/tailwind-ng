@@ -3,7 +3,7 @@ import { InjectionTokenFactory } from "../../../core/shared/injection-token.fact
 import { BoxShadowColor } from "../../../core/types/effects/box-shadow-color.type";
 import { BoxShadow } from "../../../core/types/effects/box-shadow.type";
 import { SizeOptions } from "../../../core/types/size-options.type";
-import { ModifiedStyle, StyleConfig } from "../../../core/types/style-config.type";
+import { Modifier, ConfigType } from "../../../core/types/config.type";
 import { mergeConfig } from "../../../config/config.helper";
 
 /** Button variant */
@@ -68,7 +68,7 @@ const ButtonSizeConfig: SizeOptions = {
 }
 
 /** Base button config */
-type ButtonBaseConfig = Partial<StyleConfig>
+type ButtonBaseConfig = ConfigType
 const ButtonBaseConfig: ButtonBaseConfig = {
   display: 'inline-flex',
   alignItem: 'items-center',
@@ -88,7 +88,7 @@ const ButtonBaseConfig: ButtonBaseConfig = {
 
 /** Primary button config */
 interface PrimaryButtonConfig extends Partial<ButtonBaseConfig> {
-  focusVisible: Partial<ModifiedStyle<'focus-visible'>>
+  focusVisible: Modifier<'focus-visible'>
 };
 const PrimaryButtonConfig: PrimaryButtonConfig = {
   ...ButtonBaseConfig,
@@ -98,10 +98,10 @@ const PrimaryButtonConfig: PrimaryButtonConfig = {
     bgColor: 'hover:bg-blue-600/90'
   },
   focusVisible: {
-    borderType: 'focus-visible:outline',
+    border: 'focus-visible:outline',
     outlineWidth: 'focus-visible:outline-2',
     outlineColor: 'focus-visible:outline-blue-600',
-    outlineOffset: 'focus-visible:outline-offset-2',
+    outlineOffsetWidth: 'focus-visible:outline-offset-2'
   }
 }
 
@@ -110,10 +110,10 @@ type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
 const SecondaryButtonConfig: SecondaryButtonConfig = {
   ...ButtonBaseConfig,
   ringWidth: 'ring-1',
-  borderType: 'ring-inset',
+  ringColor: 'ring-gray-300',
+  ring: 'ring-inset',
   bgColor: 'bg-inherit',
   textColor: 'text-gray-800',
-  ringColor: 'ring-gray-300',
   backdrop: 'backdrop-blur',
   hover: {
     bgColor: 'hover:bg-gray-300/30'
@@ -158,7 +158,7 @@ const TextButtonConfig: TonalButtonConfig = {
   dark: {
     textColor: 'dark:text-gray-300',
     hover: {
-      textColor: 'dark:hover:text-gray-100'
+      textColor: 'dark:hover:text-gray-100',
     }
   }
 }

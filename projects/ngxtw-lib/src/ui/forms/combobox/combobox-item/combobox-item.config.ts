@@ -1,9 +1,9 @@
 import { Provider } from "@angular/core";
-import { StyleConfig } from "../../../../../ngxtw-lib/src/lib/core/types/style-config.type";
-import { mergeConfig } from "../../../core/utils/config.util";
-import { InjectionTokenFactory } from "../../../core/tokens/injection-token-factory";
+import { InjectionTokenFactory } from "../../../../core/shared/injection-token.factory";
+import { mergeConfig } from "../../../../config/config.helper";
+import { ConfigType } from "../../../../core/types/config.type";
 
-export interface ComboboxItemConfig extends Partial<StyleConfig> { };
+export interface ComboboxItemConfig extends ConfigType { };
 const ComboboxItemConfig: ComboboxItemConfig = {
   height: 'h-fit',
   padding: {

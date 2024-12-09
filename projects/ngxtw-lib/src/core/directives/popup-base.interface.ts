@@ -35,4 +35,12 @@ export interface PopupBase extends BaseElement {
    * Event emitted when the component is toggled.
    */
   readonly toggled: OutputEmitterRef<boolean>
+  /**
+   * Event emitted when the component is opened.
+   */
+  readonly opened: OutputEmitterRef<void>
+  /**
+   * Event emitted when the component is closed.
+   */
+  readonly closed: OutputEmitterRef<void>
 }

@@ -1,64 +1,53 @@
 import { Provider } from "@angular/core";
-import { ModifiedStyle, StyleConfig } from "../../../core/types/style-config.type";
+import { Modifier, ConfigType } from "../../../core/types/config.type";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { mergeConfig } from "../../../config/config.helper";
 
 /**
  * The configuration for the toggle container.
  */
-interface ToggleContainerConfig extends Partial<StyleConfig> {
-  checked?: Partial<ModifiedStyle<'checked'>>;
+export interface ToggleConfig extends ConfigType {
+  ariaChecked?: Modifier<'aria-checked'>;
+  hasChecked?: Modifier<'has-[:checked]'>;
+  slider: Modifier<'*', ToggleConfig>;
 };
-export const ToggleContainerConfig: ToggleContainerConfig = {
+
+export const ToggleConfig: ToggleConfig = {
   position: 'relative',
   cursor: 'cursor-pointer',
   userSelect: 'select-none',
   borderWidth: 'border-2',
+  borderRadius: 'rounded-full',
+  borderColor: 'border-transparent',
   width: 'w-11',
   height: 'h-6',
-  borderRadius: 'rounded-full',
   bgColor: 'bg-gray-200',
-  transitionProperty: 'transition-colors',
-  transitionDuration: 'duration-200',
-  borderColor: 'border-transparent',
+  transition: {
+    property: 'transition-colors',
+    duration: 'duration-200',
+  },
   dark: {
     bgColor: 'dark:bg-gray-800',
-  }
-}
-
-/**
- * The configuration for the slider.
- */
-interface SliderConfig extends Partial<StyleConfig> { };
-export const SliderConfig: SliderConfig = {
-  position: {
-    type: 'absolute',
-    left: 'left-0',
-    inset: 'inset-y-0',
   },
-  height: 'h-full',
-  width: 'w-1/2',
-  borderRadius: 'rounded-full',
-  userSelect: 'select-none',
-  pointerEvents: 'pointer-events-none',
-  boxShadow: 'shadow',
-  bgColor: 'bg-white',
-  alignItem: 'items-center',
-  justifyContent: 'justify-center',
-  display: 'inline-flex'
-}
-
-/**
- * The configuration for the toggle.
- */
-export interface ToggleConfig {
-  container: ToggleContainerConfig;
-  slider: SliderConfig;
-}
-const ToggleConfig: ToggleConfig = {
-  container: ToggleContainerConfig,
-  slider: SliderConfig,
-}
+  hasChecked: {
+    bgColor: 'has-[:checked]:bg-blue-600',
+  },
+  slider: {
+    position: '*:absolute',
+    left: '*:left-0',
+    inset: '*:inset-y-0',
+    borderRadius: '*:rounded-full',
+    height: '*:h-full',
+    width: '*:w-1/2',
+    userSelect: '*:select-none',
+    pointerEvents: '*:pointer-events-none',
+    boxShadow: '*:shadow',
+    bgColor: '*:bg-white',
+    alignItem: '*:items-center',
+    justifyContent: '*:justify-center',
+    display: '*:inline-flex'
+  }
+};
 
 /**
  * Toggle component config

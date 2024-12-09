@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
 import { PopupBaseDirective } from '../../../core/directives/popup-base.directive';
 import { objectToArray } from '../../../core/helpers/object.helper';
-import { OverlayPosition } from '../../../core/types/layout/position.type';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { OverlayPosition } from '../../../core/types/layout/overlay-position.type';
 
 /** Dropdown component */
 @Component({

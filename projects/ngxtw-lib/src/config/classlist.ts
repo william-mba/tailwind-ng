@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { resolve } from "../core/helpers/string.helper";
-import { objectToArray, ValueObject } from "../core/helpers/object.helper";
+import { objectToArray } from "../core/helpers/object.helper";
+import { ConfigValue } from "../core/types/config.type";
 
 /**
  * Class list instance of the component.
@@ -37,14 +38,14 @@ export class ClassList {
   /**
    * Sets class list using config object.
    */
-  setFrom<T extends ValueObject>(config: T) {
+  setFrom<T extends ConfigValue>(config: T) {
     this.set(objectToArray(config));
   }
 
   /**
    * Updates class list using config object.
    */
-  updateFrom<T extends ValueObject>(config: T) {
+  updateFrom<T extends ConfigValue>(config: T) {
     this.update(objectToArray(config));
   }
 }

@@ -1,10 +1,12 @@
 import { Provider } from "@angular/core";
-import { StyleConfig } from "../../../core/types/style-config.type";
+import { ConfigType, Modifier } from "../../../core/types/config.type";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { mergeConfig } from "../../../config/config.helper";
 
 /** Button group config */
-export interface ButtonGroupConfig extends Partial<StyleConfig> { };
+export interface ButtonGroupConfig extends ConfigType {
+  child: Modifier<'*'>;
+};
 const ButtonGroupConfig: ButtonGroupConfig = {
   display: 'inline-flex',
   boxShadow: 'shadow-sm',
@@ -21,9 +23,9 @@ const ButtonGroupConfig: ButtonGroupConfig = {
   child: {
     ringWidth: '*:ring-0',
     fontSize: '*:text-sm',
-    borderRadius: '*:rounded-none',
+    borderRadius: '*:rounded-none'
   },
-  borderRadius: 'rounded-md',
+  borderRadius: 'rounded-md'
 }
 
 /**

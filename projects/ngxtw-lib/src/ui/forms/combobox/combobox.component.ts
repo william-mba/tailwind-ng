@@ -1,19 +1,16 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, EventEmitter, inject, Input, Output, ViewEncapsulation } from '@angular/core';
-import { ComboboxItem, ComboboxItemState } from './combobox-item/combobox-item.interface';
+import { ChangeDetectionStrategy, Component, contentChild, inject, input, output, ViewEncapsulation } from '@angular/core';
+import { ComboboxItem } from './combobox-item/combobox-item.interface';
 import { Combobox } from './combobox.interface';
-import { PopupBaseDirective } from '../../core/bases/popup-base.directive';
 import { DropdownComponent } from '../../elements/dropdown/dropdown.component';
-import { DropdownActions } from '../../elements/dropdown/dropdown.interface';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { InputComponent } from '../input/input.component';
-import { TwInput } from '../input/input.interface';
+import { PopupBaseDirective } from '../../../core/directives/popup-base.directive';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
   exportAs: 'twCombobox',
-  standalone: true,
   host: {
-    '(keypress)': 'onKeyPress($event)'
+    '(keypress)': 'keyPressed.emit($event)'
   },
   template: `<ng-content select="label" />
   <div class="relative">
@@ -24,100 +21,101 @@ import { TwInput } from '../input/input.interface';
     <ng-content select="tw-dropdown, [tw-dropdown], [twDropdown]" />
   </div>`,
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ComboboxComponent extends PopupBaseDirective implements Combobox, AfterContentInit {
-  @ContentChild(DropdownComponent) private readonly dropdown!: DropdownActions;
-  @ContentChild(InputComponent) private readonly input!: TwInput;
-  @Output('valueChanges') onValueChanges: EventEmitter<string> = new EventEmitter();
-  private readonly _formBuilder = inject(NonNullableFormBuilder);
-  @Input() control = this._formBuilder.control('', Validators.minLength(3));
-  private selectedItem?: ComboboxItemState;
+export class ComboboxComponent extends PopupBaseDirective implements Combobox {
+  protected dropdownRef = contentChild.required(DropdownComponent);
+  protected inputRef = contentChild.required(InputComponent);
+  control = input<FormControl<string>>(inject(NonNullableFormBuilder).control('', Validators.minLength(3)));
+  protected selectionMap = new Map<string, ComboboxItem>();
+  valueChanged = output<string>();
+  isMultiselect = input<boolean>(false);
+  valueSelected = output<any>();
+  keyPressed = output<KeyboardEvent>();
+  valueSeparator = input<string>(',');
 
-  ngAfterContentInit(): void {
-    if (this.opened) {
-      this.open();
-    }
-  }
+  protected override onInit(): void {
+    this.classList.set(["relative", "h-max"]);
 
-  protected override buildStyle(): void {
-    this.classList.merge(["relative", "h-max"]);
-  }
+    if (this.isOpened()) this.open();
 
-  override ngOnInit(): void {
-    super.ngOnInit();
-    this.control.valueChanges.subscribe(value => {
-      this.handleChanges(value);
+    this.control().valueChanges.subscribe(value => {
+      if (!this.isOpened()) this.open();
+      this.valueChanged.emit(value);
     });
   }
 
-
-  protected handleChanges(value: string): void {
-    // Handle the case where an item is selected by clicking on it.
-    if (this.selectedItem && this.selectedItem.value === value) {
-      this.control.reset(value, { emitEvent: false });
-    } else {
-      if (!this.opened) this.open();
-      this.onValueChanges.emit(value);
-    }
-  }
-
   override toggle(): void {
-    this.dropdown.toggle();
+    this.dropdownRef().toggle();
     super.toggle();
   }
 
   override open(): void {
-    this.dropdown.open();
+    this.dropdownRef().open();
     super.open();
   }
 
   override close(): void {
-    this.dropdown.close();
+    this.updateControlValue();
+    this.dropdownRef().close();
     super.close();
-    // Handle the case where an item is selected by pressing Enter.
-    if (this.selectedItem && this.control.valid) {
-      this.control.setValue(this.selectedItem.value, { emitEvent: false });
+    this.emitSelection();
+  }
+
+  private emitSelection() {
+    if (this.isMultiselect()) {
+      let values: string[] = [];
+      this.selectionMap.forEach(item => values.push(item.value));
+      this.valueSelected.emit(values);
+    } else {
+      this.valueSelected.emit(this.control().value);
     }
   }
 
-  contains(value: string): boolean {
-    return this.control.value === value;
+  private updateControlValue() {
+    if (this.selectionMap.size === 0) return;
+
+    let values: string[] = [];
+    this.selectionMap.forEach(item => values.push(item.value));
+
+    if (this.isMultiselect()) {
+      this.control().setValue(values.join(', '), { emitEvent: false });
+    } else {
+      this.control().setValue(values[0], { emitEvent: false });
+    }
   }
 
   has(item: ComboboxItem): boolean {
-    // Select the item if it value includes the control's value and the combobox is valid.
-    if (this.isValid && item.value.includes(this.control.value)) {
-      this.selectedItem = item;
-      return true;
-    }
-    return false;
+    return this.selectionMap.has(item.value);
   }
 
   get isValid() {
-    const touchedOrDirty = this.control.touched || this.control.dirty;
-    return this.control.valid && touchedOrDirty && this.control.value.trim().length >= 3;
-  }
-
-  protected onKeyPress(event: KeyboardEvent): void {
-    if (event.key === 'Enter' && this.selectedItem) {
-      this.close();
-    }
+    const touchedOrDirty = this.control().touched || this.control().dirty;
+    return this.control().valid && touchedOrDirty && this.control().value.trim().length >= 3;
   }
 
   select(item: ComboboxItem): void {
-    this.selectedItem = item;
-    this.control.setValue(item.value);
-    this.input.nativeElement.focus();
-    this.control.markAsDirty();
-    this.control.markAsTouched();
-    this.close();
+    if (this.isMultiselect()) {
+      if (this.has(item)) {
+        this.selectionMap.delete(item.value);
+      } else {
+        this.selectionMap.set(item.value, item);
+      }
+      this.updateControlValue();
+    } else {
+      this.selectionMap.clear();
+      this.selectionMap.set(item.value, item);
+      this.close();
+    }
+    this.inputRef().nativeElement.focus();
+    this.control().markAsDirty();
+    this.control().markAsTouched();
   }
 
   reset(): void {
-    this.control.reset();
-    this.selectedItem = undefined;
-    if (!this.opened) this.open();
-    this.input.nativeElement.focus();
+    this.control().reset();
+    this.selectionMap.clear();
+    if (!this.isOpened()) this.open();
+    this.inputRef().nativeElement.focus();
   }
 }

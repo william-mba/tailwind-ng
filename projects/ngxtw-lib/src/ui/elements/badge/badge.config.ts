@@ -1,12 +1,12 @@
 import { Provider } from "@angular/core";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { SizeOption } from "../../../core/types/size-options.type";
-import { StyleConfig } from "../../../core/types/style-config.type";
+import { ConfigType } from "../../../core/types/config.type";
 import { mergeConfig } from "../../../config/config.helper";
 
 /** @ngxtw Badge config*/
 export type BadgeConfig = {
-  theme: Partial<StyleConfig>;
+  theme: ConfigType;
   size: { [key in SizeOption]: string };
 };
 const BadgeConfig: BadgeConfig = {

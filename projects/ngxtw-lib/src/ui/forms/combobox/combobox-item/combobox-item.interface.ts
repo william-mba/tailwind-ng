@@ -1,24 +1,16 @@
-import { EventEmitter } from "@angular/core";
-import { ElementBaseActions, ElementBaseState } from "../../../core/bases/element-base.interface";
-import { ComboboxActions } from "../combobox.interface";
-
-export interface ComboboxItemState extends ElementBaseState<HTMLElement> {
-  readonly value: string;
-  readonly selected: boolean;
-  readonly combobox: ComboboxActions;
-}
-
-export interface ComboboxItemActions extends ElementBaseActions {
-  select(): void;
-  scrollIntoView(): void;
-}
-
-export interface ComboboxItemEvents {
-  onSelect: EventEmitter<ComboboxItem>;
-}
+import { InputSignal, OutputEmitterRef } from "@angular/core";
+import { BaseElement } from "../../../../core/directives/element-base.interface";
+import { Combobox } from "../combobox.interface";
 
 
 /**
  * @ngxtw Combobox Item
  */
-export interface ComboboxItem extends ComboboxItemState, ComboboxItemActions, ComboboxItemEvents { }
+export interface ComboboxItem extends BaseElement {
+  readonly value: string;
+  readonly isSelected: boolean;
+  readonly combobox: InputSignal<Combobox>;
+  select(): void;
+  scrollIntoView(): void;
+  selected: OutputEmitterRef<ComboboxItem>;
+}

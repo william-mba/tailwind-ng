@@ -1,21 +1,37 @@
-import { EventEmitter } from "@angular/core";
+import { InputSignal, OutputEmitterRef } from "@angular/core";
 import { ComboboxItem } from "./combobox-item/combobox-item.interface";
 import { FormControl } from "@angular/forms";
-import { PopupBaseActions, PopupBaseEvents, PopupBaseState } from "../../core/bases/popup-base.interface";
+import { PopupBaseDirective } from "../../../core/directives/popup-base.directive";
 
-export interface ComboboxState extends PopupBaseState {
+/**
+ * @ngxtw Combobox
+ */
+export interface Combobox extends PopupBaseDirective {
+  readonly valueSeparator: InputSignal<string>;
+  /**
+   * Event that emits the combobox value when it closes.
+   * - When isMultiselect is false, it emits a string corresponding to the control value.
+   * - When isMultiselect is true, it emits an array of strings corresponding to the selected values.
+   */
+  readonly valueSelected: OutputEmitterRef<any>;
+  /**
+   * Event that emits the combobox value when it changes.
+   */
+  readonly valueChanged: OutputEmitterRef<string>;
   /**
    * Returns true if the combobox is valid. Otherwise, returns false.
    * - A combobox is valid if it control is valid and touched or dirty.
    */
   readonly isValid: boolean;
+  readonly isMultiselect: InputSignal<boolean>;
   /**
    * The form control instance of the input element.
    */
-  readonly control: FormControl<string>;
-}
-
-export interface ComboboxActions extends PopupBaseActions {
+  readonly control: InputSignal<FormControl<string>>;
+  /**
+   * Emits the Keyboard event corresponding to the key pressed.
+   */
+  readonly keyPressed: OutputEmitterRef<KeyboardEvent>;
   /**
    * Resets the combobox.
    */
@@ -26,25 +42,8 @@ export interface ComboboxActions extends PopupBaseActions {
    */
   select(item: ComboboxItem): void;
   /**
-   * Returns true if the combobox contains the specified value. Otherwise, returns false.
-   * @param value The value to check.
-   */
-  contains(value: string): boolean;
-  /**
-   * Returns true if the combobox contains the specified item. Otherwise, returns false.
+   * Returns true if the combobox has the specified item. Otherwise, returns false.
    * @param item The item to check.
    */
   has(item: ComboboxItem): boolean;
 }
-
-export interface ComboboxEvents extends PopupBaseEvents {
-  /**
-   * Event emitted when the value of the combobox changes.
-   */
-  onValueChanges: EventEmitter<string>;
-}
-
-/**
- * @ngxtw Combobox
- */
-export interface Combobox extends ComboboxState, ComboboxActions, ComboboxEvents { }

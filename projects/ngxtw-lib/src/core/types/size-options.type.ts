@@ -7,7 +7,7 @@ import { Gap } from './flex-grid/gap.type';
 import { Height } from './sizing/height.type';
 import { Width } from './sizing/width.type';
 import { Size } from './sizing/size.type';
-import { ModifiedStyle } from './style-config.type';
+import { Modifier } from './config.type';
 
 export type Scale = {
   fontSize: FontSize;
@@ -18,10 +18,9 @@ export type Scale = {
   gap: Gap;
   size: Size;
   width: Width;
-  height: Height
-  // Style modifiers
-  child: Partial<ModifiedStyle<'*', Scale>>;
-  dark: Partial<ModifiedStyle<'dark', Scale>>;
+  height: Height;
+  child: Modifier<'*', Scale>;
+  dark: Modifier<'dark', Scale>;
 };
 
 export type SizeOptions = {

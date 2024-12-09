@@ -6,9 +6,9 @@ import { BUTTON_GROUP_CONFIG } from "../ui/elements/button-group/button-group.co
 import { ICON_CONFIG } from "../ui/elements/icon/icon.config";
 import { DROPDOWN_CONFIG } from "../ui/elements/dropdown/dropdown.config";
 import { TOGGLE_CONFIG } from "../ui/forms/toggle/toggle.config";
-// import { INPUT_CONFIG } from "../forms/input/input.config";
+import { INPUT_CONFIG } from "../ui/forms/input/input.config";
 // import { MODAL_DIALOG_CONFIG } from "../overlays/modal-dialog/modal-dialog.config";
-// import { COMBOBOX_ITEM_CONFIG } from "../forms/combobox/combobox-item/combobox-item.config";
+import { COMBOBOX_ITEM_CONFIG } from "../ui/forms/combobox/combobox-item/combobox-item.config";
 
 /** @ngxtw configuration store */
 @Injectable({ providedIn: 'root' })
@@ -18,9 +18,9 @@ export class ConfigStore {
   readonly button = inject(BUTTON_CONFIG);
   readonly buttonGroup = inject(BUTTON_GROUP_CONFIG);
   readonly dropdown = inject(DROPDOWN_CONFIG);
-  // readonly input = inject(INPUT_CONFIG);
+  readonly input = inject(INPUT_CONFIG);
   readonly icon = inject(ICON_CONFIG);
   // readonly modalDialog = inject(MODAL_DIALOG_CONFIG);
   readonly toggle = inject(TOGGLE_CONFIG);
-  // readonly comboboxItem = inject(COMBOBOX_ITEM_CONFIG);
+  readonly comboboxItem = inject(COMBOBOX_ITEM_CONFIG);
 }

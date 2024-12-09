@@ -271,17 +271,89 @@
 
 <!-- Toggles -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <tw-toggle [checked]="true" class="aria-checked:bg-blue-600" />
-  <tw-toggle class="w-16 aria-checked:bg-blue-600" />
-  <tw-toggle class="w-20 aria-checked:bg-blue-600" />
+  <tw-toggle [checked]="true" />
+  <tw-toggle class="w-16" />
+  <tw-toggle class="w-20" />
 </div>
+
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-toggle class="ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-blue-600 active:ring-2 active:ring-blue-600" />
   <tw-toggle
-    class="aria-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600" />
+    class="w-16 ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-blue-600 active:ring-2 active:ring-blue-600" />
   <tw-toggle
-    class="w-16 aria-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600" />
-  <tw-toggle
-    class="w-20 aria-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600" />
+    class="w-20 ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-blue-600 active:ring-2 active:ring-blue-600" />
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-toggle #toggle
+    class="has-[:checked]:bg-blue-600 ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-blue-600 active:ring-offset-2 active:ring-2 active:ring-blue-600">
+    <tw-icon *ngIf="toggle.isChecked()" class="text-blue-600" size="xs" key="check" />
+    <tw-icon *ngIf="!toggle.isChecked()" class="text-gray-300" size="xs" key="close" />
+  </tw-toggle>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-toggle class="rounded-sm *:rounded-sm" />
+  <tw-toggle class="w-16 rounded-sm *:rounded-sm" />
+  <tw-toggle class="w-20 rounded-sm *:rounded-sm" />
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-toggle #toggle2
+    class="rounded-sm *:rounded-sm has-[:checked]:bg-blue-600 ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-blue-600 active:ring-offset-2 active:ring-2 active:ring-blue-600">
+    <tw-icon *ngIf="toggle2.isChecked()" class="text-blue-600" size="xs" key="check" />
+    <tw-icon *ngIf="!toggle2.isChecked()" class="text-gray-300" size="xs" key="close" />
+  </tw-toggle>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <div>
+    <label for="price" class="block text-sm mb-2 font-medium">Price</label>
+    <div class="relative">
+      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <span class="text-gray-600 dark:text-gray-400 sm:text-sm">$</span>
+      </div>
+      <!-- Input -->
+      <input tw-input id="price" placeholder="0.0"
+        class="sm:w-80 pl-7 pr-16 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
+      <div class="absolute inset-y-0 right-0 flex items-center">
+        <label for="currency" class="sr-only">Currency</label>
+        <select id="currency" name="currency"
+          class="outline-none h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 *:dark:text-slate-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+          <option>USD</option>
+          <option>CAD</option>
+          <option>EUR</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <!-- Combobox -->
+  <div tw-combobox #combobox [opened]="true" (valueSelected)="saveValue($event)" [isMultiselect]="false"
+    (valueChanged)="filter($event)" (open)="reset()" class="sm:w-80">
+    <!-- Label -->
+    <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+    <!-- Input -->
+    <input tw-input id="search" [formControl]="combobox.control()" class="pr-10" />
+    <!-- Button -->
+    <button tw-button variant="text" size="sm"
+      class="absolute inset-y-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
+      <tw-icon *ngIf="combobox.isOpened() && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
+      <tw-icon (click)="combobox.toggle()" size="sm" key="chevron-up-down" />
+    </button>
+    <!-- Dropdown -->
+    <tw-dropdown class="shadow-lg w-full max-h-56 overflow-y-auto">
+      @for (user of users1; track $index) {
+      <div tw-combobox-item #item [value]="user.name" [combobox]="combobox"
+        class="aria-selected:text-white aria-selected:bg-blue-600 aria-selected:font-bold">
+        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check" />
+        <span>{{ user.name }}</span>
+      </div>
+      }
+    </tw-dropdown>
+  </div>
 </div>
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
 
@@ -295,5 +367,4 @@
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
 
 </div>
-
 <div class="mb-96"></div>

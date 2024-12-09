@@ -1,17 +1,19 @@
 import { Provider } from '@angular/core';
-import { StyleConfig } from '../../../../ngxtw-lib/src/lib/core/types/style-config.type';
-import { mergeConfig } from '../../core/utils/config.util';
-import { InjectionTokenFactory } from '../../core/tokens/injection-token-factory';
+import { ConfigType } from '../../../core/types/config.type';
+import { InjectionTokenFactory } from '../../../core/shared/injection-token.factory';
+import { mergeConfig } from '../../../config/config.helper';
 
-export interface InputConfig extends Partial<StyleConfig> { };
+export interface InputConfig extends ConfigType { };
 
 const InputConfig: InputConfig = {
   borderRadius: 'rounded-md',
-  borderWidth: 'border-0',
-  fontSize: 'text-sm',
+  borderStyle: 'border-none',
+  outlineStyle: 'outline-none',
   ringWidth: 'ring-1',
+  ringColor: 'ring-gray-300',
+  ring: 'ring-inset',
+  fontSize: 'text-sm',
   lineHeight: 'leading-6',
-  borderType: 'ring-inset',
   padding: {
     y: 'py-1.5',
     x: 'px-3'
@@ -19,14 +21,15 @@ const InputConfig: InputConfig = {
   width: 'w-full',
   boxShadow: 'shadow-sm',
   bgColor: 'bg-transparent',
-  ringColor: 'ring-gray-300',
   dark: {
     ringColor: 'dark:ring-gray-700'
   },
   focus: {
-    ringWidth: 'focus:ring-2',
-    borderType: 'focus:ring-inset',
+    borderRadius: 'focus:rounded-md',
+    borderColor: 'focus:border-transparent',
     ringColor: 'focus:ring-indigo-600',
+    ringWidth: 'focus:ring-2',
+    ring: 'focus:ring-inset'
   },
   disabled: {
     opacity: 'disabled:opacity-70',

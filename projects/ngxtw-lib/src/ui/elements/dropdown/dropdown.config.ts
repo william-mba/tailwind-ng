@@ -1,16 +1,15 @@
 import { Provider } from "@angular/core";
-import { ModifiedStyle, StyleConfig } from "../../../core/types/style-config.type";
+import { Modifier, ConfigType } from "../../../core/types/config.type";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { mergeConfig } from "../../../config/config.helper";
 
 /** Dropdown config */
-export interface DropdownConfig extends Partial<StyleConfig> {
-  opened: Partial<ModifiedStyle<'open'>>
+export interface DropdownConfig extends ConfigType {
+  opened: Modifier<'open', DropdownConfig>
 };
 const DropdownConfig: DropdownConfig = {
   display: 'grid',
   textAlign: 'text-start',
-  fontSize: 'text-sm',
   padding: 'py-1',
   zIndex: 'z-10',
   width: 'min-w-52',
@@ -19,11 +18,11 @@ const DropdownConfig: DropdownConfig = {
   position: 'absolute',
   borderWidth: 'border',
   borderRadius: 'rounded-md',
+  borderColor: 'border-gray-200',
   bgColor: 'bg-gray-50',
   boxShadow: 'shadow-lg',
-  borderColor: 'border-gray-200',
   dark: {
-    bgColor: 'dark:bg-gray-800',
+    bgColor: 'dark:bg-gray-900',
     textColor: 'dark:text-gray-100',
     borderColor: 'dark:border-gray-800'
   },

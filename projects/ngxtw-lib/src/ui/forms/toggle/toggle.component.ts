@@ -1,10 +1,8 @@
-import { ChangeDetectionStrategy, Component, input, model, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, model, viewChild, ViewEncapsulation } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ToggleConfig } from './toggle.config';
 import { Toggle } from './toggle.interface';
 import { BaseDirective } from '../../../core/directives/element-base.directive';
-import { ClassName } from '../../../core/types/class-name.type';
-import { ClassList } from '../../../config/classlist';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -16,13 +14,13 @@ import { ClassList } from '../../../config/classlist';
   },
   animations: [
     trigger('slide', [
-      state('on', style({ transform: 'translateX(100%)' })),
       state('off', style({ transform: 'translateX(0)' })),
+      state('on', style({ transform: 'translateX(100%)' })),
       transition('on <=> off', [animate('150ms ease-in-out')])
     ])
   ],
-  template: `
-  <span [class]="sliderClassList.value" [@slide]="isChecked() ? 'on': 'off'">
+  template: `<input type="checkbox" #checkbox [checked]="isChecked()" style="height: 0px; width: 0px; opacity: 0%">
+  <span [@slide]="isChecked() ? 'on': 'off'">
     <ng-content />
   </span>
   `,
@@ -30,21 +28,20 @@ import { ClassList } from '../../../config/classlist';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleComponent extends BaseDirective implements Toggle {
-  readonly sliderClassList: ClassList = new ClassList();
+  protected checkbox = viewChild.required<ElementRef>('checkbox');
   isChecked = model<boolean>(false, { alias: 'checked' });
-  slider = input<ClassName[]>([]);
 
   protected override onInit(): void {
-    this.sliderClassList.base = this.slider() as string[];
+    this.nativeElement.focus = () => this.checkbox().nativeElement.focus();
     this._config.get<ToggleConfig>('Toggle').subscribe(config => {
-      this.classList.setFrom(config.container);
-      this.sliderClassList.setFrom(config.slider);
+      this.classList.setFrom(config);
     });
   }
 
   toggle(): void {
     // Prevent toggling when disabled
     if (this.isDisabled()) return;
+    this.nativeElement.focus();
     this.isChecked.set(!this.isChecked());
   }
 }
