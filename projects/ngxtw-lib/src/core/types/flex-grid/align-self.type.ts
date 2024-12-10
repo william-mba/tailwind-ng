@@ -4,5 +4,4 @@ export type AlignSelf =
   | 'self-end'
   | 'self-center'
   | 'self-stretch'
-  | '*:self-stretch'
   | 'self-baseline'

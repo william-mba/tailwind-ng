@@ -1,7 +1,7 @@
 export type Blur =
   | 'blur-none'
+  | 'blur-xs'
   | 'blur-sm'
-  | 'blur'
   | 'blur-md'
   | 'blur-lg'
   | 'blur-xl'

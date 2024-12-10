@@ -1,6 +1,6 @@
 export type DropShadow =
+  | 'drop-shadow-xs'
   | 'drop-shadow-sm'
-  | 'drop-shadow'
   | 'drop-shadow-md'
   | 'drop-shadow-lg'
   | 'drop-shadow-xl'

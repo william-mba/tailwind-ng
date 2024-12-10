@@ -10,17 +10,18 @@ export type Margin = Partial<{
   size: MarginSize
 }> | MarginSize | MarginX | MarginY | MarginTop | MarginRight | MarginBottom | MarginLeft;
 
+type MarginSpacing = Spacing | 'auto'
 
-export type MarginRight = `mr-${Spacing}`
+export type MarginRight = `mr-${MarginSpacing}`
 
-export type MarginLeft = `ml-${Spacing}`
+export type MarginLeft = `ml-${MarginSpacing}`
 
-export type MarginTop = `mt-${Spacing}`
+export type MarginTop = `mt-${MarginSpacing}`
 
-export type MarginBottom = `mb-${Spacing}`
+export type MarginBottom = `mb-${MarginSpacing}`
 
-export type MarginX = `mx-${Spacing}`
+export type MarginX = `mx-${MarginSpacing}`
 
-export type MarginY = `my-${Spacing}`
+export type MarginY = `my-${MarginSpacing}`
 
-export type MarginSize = `m-${Spacing}`
+export type MarginSize = `m-${MarginSpacing}`
