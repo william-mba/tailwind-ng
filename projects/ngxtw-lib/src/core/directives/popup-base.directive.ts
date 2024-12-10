@@ -1,5 +1,5 @@
 import { Directive, model, output } from '@angular/core';
-import { BaseDirective } from './element-base.directive';
+import { ElementBaseDirective } from './element-base.directive';
 import { PopupBase } from './popup-base.interface';
 
 @Directive({
@@ -11,7 +11,7 @@ import { PopupBase } from './popup-base.interface';
     '(mouseleave)': 'onHover($event)',
   }
 })
-export abstract class PopupBaseDirective extends BaseDirective implements PopupBase {
+export abstract class PopupBaseDirective extends ElementBaseDirective implements PopupBase {
 
   isOpened = model(false, { alias: 'opened' });
   isHovered = model(false, { alias: 'hovered' });

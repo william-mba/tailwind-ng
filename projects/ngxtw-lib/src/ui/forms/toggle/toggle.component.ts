@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, model, viewChild, ViewE
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ToggleConfig } from './toggle.config';
 import { Toggle } from './toggle.interface';
-import { BaseDirective } from '../../../core/directives/element-base.directive';
+import { ElementBaseDirective } from '../../../core/directives/element-base.directive';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -27,7 +27,7 @@ import { BaseDirective } from '../../../core/directives/element-base.directive';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToggleComponent extends BaseDirective implements Toggle {
+export class ToggleComponent extends ElementBaseDirective implements Toggle {
   protected checkbox = viewChild.required<ElementRef>('checkbox');
   isChecked = model<boolean>(false, { alias: 'checked' });
 

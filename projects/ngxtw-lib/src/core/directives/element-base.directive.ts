@@ -13,22 +13,24 @@ import { stringToArray } from "../helpers/string.helper";
     '[attr.tabindex]': 'isDisabled() ? -1 : null',
   }
 })
-export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseElement<T>, OnInit {
+export abstract class ElementBaseDirective<T extends HTMLElement = HTMLElement> implements BaseElement<T>, OnInit {
   protected readonly _config = inject(ReactiveConfig)
   readonly nativeElement: T = inject(ElementRef).nativeElement;
-  readonly classList = new ClassList();
 
   /**
    * The initial class list setted before the component initialization.
    */
   class = input([], { transform: stringToArray });
+  readonly classList = new ClassList(this.class());
   isDisabled = model(false, { alias: 'disabled' });
 
   ngOnInit(): void {
-    this.classList.base = this.class()
     this.onInit();
   }
 
+  /**
+   * Called when the component is initialized.
+   */
   protected abstract onInit(): void;
 
   enable(): void {

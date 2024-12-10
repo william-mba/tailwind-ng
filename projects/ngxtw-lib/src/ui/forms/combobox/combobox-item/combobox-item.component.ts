@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input, output, ViewEncapsulation } from '@angular/core';
 import { ComboboxItem } from './combobox-item.interface';
 import { Combobox } from '../combobox.interface';
-import { BaseDirective } from '../../../../core/directives/element-base.directive';
+import { ElementBaseDirective } from '../../../../core/directives/element-base.directive';
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -14,7 +14,7 @@ import { BaseDirective } from '../../../../core/directives/element-base.directiv
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ComboboxItemComponent extends BaseDirective implements ComboboxItem {
+export class ComboboxItemComponent extends ElementBaseDirective implements ComboboxItem {
   get isSelected(): boolean {
     return this.combobox().has(this);
   }

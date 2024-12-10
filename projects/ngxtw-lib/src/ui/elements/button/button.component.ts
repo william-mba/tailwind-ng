@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, input } from '@angular/core';
 import { ButtonConfig, ButtonVariant } from './button.config';
-import { BaseDirective } from '../../../core/directives/element-base.directive';
+import { ElementBaseDirective } from '../../../core/directives/element-base.directive';
 import { SizeOption } from '../../../core/types/size-options.type';
 
 /**
@@ -13,7 +13,7 @@ import { SizeOption } from '../../../core/types/size-options.type';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent extends BaseDirective<HTMLButtonElement> {
+export class ButtonComponent extends ElementBaseDirective<HTMLButtonElement> {
   isFab = input(false);
   size = input<SizeOption>('md');
   variant = input<ButtonVariant>('primary');
