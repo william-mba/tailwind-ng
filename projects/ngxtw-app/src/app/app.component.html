@@ -331,21 +331,21 @@
 
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <!-- Combobox -->
-  <div tw-combobox #combobox [opened]="true" (valueSelected)="saveValue($event)" [isMultiselect]="false"
-    (valueChanged)="filter($event)" (open)="reset()" class="sm:w-80">
+  <div tw-combobox #combobox [opened]="true" (valueSelected)="saveValue($event)" [isMultiselect]="true"
+    (valueChanged)="filter($event)" (close)="reset()" class="sm:w-80">
     <!-- Label -->
     <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input id="search" [formControl]="combobox.control()" class="pr-10" />
+    <input tw-input id="search" [formControl]="combobox.control()" class="pr-12" />
     <!-- Button -->
     <button tw-button variant="text" size="sm"
-      class="absolute inset-y-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-      <tw-icon *ngIf="combobox.isOpened() && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
+      class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
+      <tw-icon *ngIf="combobox.isOpened() && combobox.isValid" (click)="combobox.reset()" size="xs" key="x-mark" />
       <tw-icon (click)="combobox.toggle()" size="sm" key="chevron-up-down" />
     </button>
     <!-- Dropdown -->
     <tw-dropdown class="shadow-lg w-full max-h-56 overflow-y-auto">
-      @for (user of users1; track $index) {
+      @for (user of users1; track user.name) {
       <div tw-combobox-item #item [value]="user.name" [combobox]="combobox"
         class="aria-selected:text-white aria-selected:bg-blue-600 aria-selected:font-bold">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check" />
