@@ -10,6 +10,7 @@ export { mergeConfig } from './config/config.helper';
 export { objectToArray } from './core/helpers/object.helper';
 /// Configs
 export { ReactiveConfig } from './config/reactive-config';
+export { ClassList } from './config/classlist';
 /// Types
 export { type ClassName } from './core/types/class-name.type';
 
@@ -34,17 +35,17 @@ export { type DropdownConfig, provideDropdownConfig } from './ui/elements/dropdo
 export { IconDirective } from './ui/elements/icon/icon.directive';
 export { type IconConfig, provideIconConfig } from './ui/elements/icon/icon.config';
 
-// // Overlays
-// // --------
-// /// Modal Dialog
-// export * from './overlays/modal-dialog/modal-dialog.interface';
-// export { DialogActionsComponent } from './overlays/modal-dialog/actions/dialog-actions.component';
-// export { DialogContentComponent } from './overlays/modal-dialog/panel/content/dialog-content.component';
-// export { DialogIconComponent } from './overlays/modal-dialog/panel/icon/dialog-icon.component';
-// export { DialogPanelComponent } from './overlays/modal-dialog/panel/dialog-panel.component';
-// export { ModalDialogComponent } from './overlays/modal-dialog/modal-dialog.component';
-// export { ModalDialogConfig, provideModalDialogConfig } from './overlays/modal-dialog/modal-dialog.config';
-// export { ModalDialogModule } from './overlays/modal-dialog/modal-dialog.module';
+// Overlays
+// --------
+/// Modal Dialog
+export * from './ui/overlays/modal-dialog/modal-dialog.interface';
+export { DialogActionsComponent } from './ui/overlays/modal-dialog/actions/dialog-actions.component';
+export { DialogContentComponent } from './ui/overlays/modal-dialog/panel/content/dialog-content.component';
+export { DialogIconComponent } from './ui/overlays/modal-dialog/panel/icon/dialog-icon.component';
+export { DialogPanelComponent } from './ui/overlays/modal-dialog/panel/dialog-panel.component';
+export { ModalDialogComponent } from './ui/overlays/modal-dialog/modal-dialog.component';
+export { type ModalDialogConfig, provideModalDialogConfig } from './ui/overlays/modal-dialog/modal-dialog.config';
+export { ModalDialogModule } from './ui/overlays/modal-dialog/modal-dialog.module';
 
 // Forms
 // -----
