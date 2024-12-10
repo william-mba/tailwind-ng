@@ -9,7 +9,7 @@ import { PopupBaseDirective } from "../../../core/directives/popup-base.directiv
 export interface Combobox extends PopupBaseDirective {
   readonly valueSeparator: InputSignal<string>;
   /**
-   * Event that emits the combobox value when it closes.
+   * Event that emits the selected values of the combobox when an item is selected.
    * - When isMultiselect is false, it emits a string corresponding to the control value.
    * - When isMultiselect is true, it emits an array of strings corresponding to the selected values.
    */
