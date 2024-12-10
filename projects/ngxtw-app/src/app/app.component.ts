@@ -176,23 +176,24 @@ export class AppComponent {
     toggleTheme();
   }
 
+  checkMatch = (x: string, y: string) => {
+    x = x.toLocaleLowerCase();
+    return x.includes(y) || x.startsWith(y)
+  };
+
   filter(value: string, id: number = 1): void {
     const values = value.split(',').map((x) => x.trim());
     switch (id) {
       case 1:
         if (values.length > 1) {
-          const arr: User[] = [];
-          values.forEach((v) => {
-            console.log('V:', v);
-            arr.push(...this._users.filter((x) => {
-              return x.name.includes(v) || x.name.startsWith(v);
-            }));
+          const usersMap = new Map<string, User>();
+          const filtered = this._users.filter((x) => {
+            return values.some((v) => this.checkMatch(x.name, v));
           });
-          this.users1 = arr;
+          filtered.forEach((f) => usersMap.set(f.name, f));
+          this.users1 = [...usersMap.values()];
         } else {
-          this.users1 = this._users.filter((x) => {
-            return x.name.includes(value) || x.name.startsWith(value);
-          });
+          this.users1 = this._users.filter((x) => this.checkMatch(x.name, value));
         }
         break;
       case 2:
