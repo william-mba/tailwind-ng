@@ -7,7 +7,7 @@ import { Combobox } from "../combobox.interface";
  * @ngxtw Combobox Item
  */
 export interface ComboboxItem extends BaseElement {
-  readonly value: string;
+  readonly value: InputSignal<string>;
   readonly isSelected: boolean;
   readonly combobox: InputSignal<Combobox>;
   select(): void;
