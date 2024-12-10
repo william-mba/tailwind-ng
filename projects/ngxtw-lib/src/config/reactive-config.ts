@@ -66,9 +66,9 @@ export class ReactiveConfig implements ReactiveConfig {
         case 'Input':
           this.set(key, this.config.input);
           break;
-        // case 'ModalDialog':
-        //   this.set(key, this.config.modalDialog);
-        //   break;
+        case 'ModalDialog':
+          this.set(key, this.config.modalDialog);
+          break;
         case 'Toggle':
           this.set(key, this.config.toggle);
           break;
