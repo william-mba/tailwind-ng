@@ -6,7 +6,6 @@ import { PopupBase } from './popup-base.interface';
   host: {
     '[attr.aria-expanded]': 'isOpened() ? "" : null',
     '[attr.aria-hidden]': 'isOpened() ? null : ""',
-    // '[attr.hidden]': 'isOpened() ? null : ""',
     '[attr.open]': 'isOpened() ? "" : null',
     '(mouseenter)': 'onHover($event)',
     '(mouseleave)': 'onHover($event)',
