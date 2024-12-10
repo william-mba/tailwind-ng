@@ -1,7 +1,7 @@
 import { isString } from "./type-check.helper";
 
 /** Merges strings from source to target.
- * @param separator The character to use as seperator in the set of merged strings.
+ * @param separator The character to use as separator in the set of merged strings.
  * @returns An array of merged string set or a string set separated by the given separator. */
 export function merge(target: string[], source: string[], separator?: string): string[] | string {
   if (!source || source.length === 0) return separator ? target.join(separator) : target;
