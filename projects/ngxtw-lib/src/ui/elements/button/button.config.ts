@@ -31,7 +31,7 @@ const ButtonSizeConfig: SizeOptions = {
       y: 'py-2'
     },
     gap: 'gap-1.5',
-    fontSize: 'text-sm',
+    fontSize: 'text-xs',
     borderRadius: 'rounded-md',
     fontWeight: 'font-semibold'
   },
@@ -41,7 +41,7 @@ const ButtonSizeConfig: SizeOptions = {
       y: 'py-2.5'
     },
     gap: 'gap-2',
-    fontSize: 'text-base',
+    fontSize: 'text-sm',
     borderRadius: 'rounded-md',
     fontWeight: 'font-semibold'
   },
@@ -51,7 +51,7 @@ const ButtonSizeConfig: SizeOptions = {
       y: 'py-3'
     },
     gap: 'gap-2.5',
-    fontSize: 'text-lg',
+    fontSize: 'text-sm',
     borderRadius: 'rounded-md',
     fontWeight: 'font-semibold'
   },
@@ -61,7 +61,7 @@ const ButtonSizeConfig: SizeOptions = {
       y: 'py-3.5'
     },
     gap: 'gap-3',
-    fontSize: 'text-xl',
+    fontSize: 'text-base',
     borderRadius: 'rounded-md',
     fontWeight: 'font-semibold'
   }
@@ -114,7 +114,7 @@ const SecondaryButtonConfig: SecondaryButtonConfig = {
   ring: 'ring-inset',
   bgColor: 'bg-inherit',
   textColor: 'text-gray-800',
-  backdrop: 'backdrop-blur',
+  backdrop: 'backdrop-blur-xs',
   hover: {
     bgColor: 'hover:bg-gray-300/30'
   },
@@ -143,7 +143,7 @@ const TonalButtonConfig: TonalButtonConfig = {
   hover: {
     bgColor: 'hover:bg-blue-600/15'
   },
-  backdrop: 'backdrop-blur'
+  backdrop: 'backdrop-blur-xs'
 }
 
 /** Text button config */
