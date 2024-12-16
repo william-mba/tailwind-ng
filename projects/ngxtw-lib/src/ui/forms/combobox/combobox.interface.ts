@@ -1,19 +1,18 @@
-import { InputSignal, OutputEmitterRef } from "@angular/core";
+import { OutputEmitterRef } from "@angular/core";
 import { ComboboxItem } from "./combobox-item/combobox-item.interface";
 import { FormControl } from "@angular/forms";
-import { PopupBaseDirective } from "../../../core/directives/popup-base.directive";
+import { PopoverBaseDirective } from "../../../core/directives/popover-base.directive";
 
 /**
  * @ngxtw Combobox
  */
-export interface Combobox extends PopupBaseDirective {
-  readonly valueSeparator: InputSignal<string>;
+export interface Combobox extends PopoverBaseDirective {
+  readonly valueSeparator: string;
   /**
-   * Event that emits the selected values of the combobox when an item is selected.
-   * - When isMultiselect is false, it emits a string corresponding to the control value.
-   * - When isMultiselect is true, it emits an array of strings corresponding to the selected values.
+   * Event that emits the selected item(s) when a selection occurs.
+   * Emits an empty array if no item is selected.
    */
-  readonly valueSelected: OutputEmitterRef<any>;
+  readonly valueSelected: OutputEmitterRef<string[]>;
   /**
    * Event that emits the combobox value when it changes.
    */
@@ -23,11 +22,11 @@ export interface Combobox extends PopupBaseDirective {
    * - A combobox is valid if it control is valid and touched or dirty.
    */
   readonly isValid: boolean;
-  readonly isMultiselect: InputSignal<boolean>;
+  readonly isMultiselect: boolean;
   /**
    * The form control instance of the input element.
    */
-  readonly control: InputSignal<FormControl<string>>;
+  readonly control: FormControl<string>;
   /**
    * Emits the Keyboard event corresponding to the key pressed.
    */
