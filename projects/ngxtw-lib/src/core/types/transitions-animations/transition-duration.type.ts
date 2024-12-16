@@ -1,5 +1,8 @@
 export type TransitionDuration =
   | 'duration-0'
+  | 'duration-5'
+  | 'duration-25'
+  | 'duration-50'
   | 'duration-75'
   | 'duration-100'
   | 'duration-150'
