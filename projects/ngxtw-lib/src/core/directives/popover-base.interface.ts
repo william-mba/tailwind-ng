@@ -2,9 +2,9 @@ import { OutputEmitterRef, } from "@angular/core";
 import { BaseElement } from "./element-base.interface";
 
 /**
- * @ngxtw Popup component base
+ * @ngxtw Popover base component
  */
-export interface PopupBase extends BaseElement {
+export interface PopoverBase extends BaseElement {
 
   /**
    * Whether the component is opened.
