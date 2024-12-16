@@ -9,7 +9,7 @@ import { mergeConfig } from "../../../config/config.helper";
 export interface ToggleConfig extends ConfigType {
   ariaChecked?: Modifier<'aria-checked'>;
   hasChecked?: Modifier<'has-[:checked]'>;
-  slider: Modifier<'*', ToggleConfig>;
+  child: Modifier<'*', ToggleConfig>;
 };
 
 export const ToggleConfig: ToggleConfig = {
@@ -19,9 +19,10 @@ export const ToggleConfig: ToggleConfig = {
   borderWidth: 'border-2',
   borderRadius: 'rounded-full',
   borderColor: 'border-transparent',
-  width: 'w-11',
+  width: 'w-12',
   height: 'h-6',
   bgColor: 'bg-gray-200',
+  overflow: 'overflow-hidden',
   transition: {
     property: 'transition-colors',
     duration: 'duration-200',
@@ -32,20 +33,18 @@ export const ToggleConfig: ToggleConfig = {
   hasChecked: {
     bgColor: 'has-[:checked]:bg-blue-600',
   },
-  slider: {
+  child: {
     position: '*:absolute',
-    left: '*:left-0',
     inset: '*:inset-y-0',
-    borderRadius: '*:rounded-full',
     height: '*:h-full',
     width: '*:w-1/2',
+    padding: '*:p-1',
     userSelect: '*:select-none',
     pointerEvents: '*:pointer-events-none',
-    boxShadow: '*:shadow',
-    bgColor: '*:bg-white',
     alignItem: '*:items-center',
     justifyContent: '*:justify-center',
-    display: '*:inline-flex'
+    display: '*:inline-flex',
+    overflow: '*:overflow-hidden',
   }
 };
 

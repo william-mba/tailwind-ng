@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, model, viewChild, ViewEncapsulation } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, ElementRef, OutputEmitterRef, viewChild, ViewEncapsulation } from '@angular/core';
 import { ToggleConfig } from './toggle.config';
 import { Toggle } from './toggle.interface';
 import { ElementBaseDirective } from '../../../core/directives/element-base.directive';
@@ -10,26 +9,22 @@ import { ElementBaseDirective } from '../../../core/directives/element-base.dire
   host: {
     role: 'switch',
     '(click)': 'toggle()',
-    '[attr.aria-checked]': 'isChecked() || null',
+    '[attr.aria-checked]': 'isChecked || null',
+    '[attr.checked]': 'isChecked || null',
   },
-  animations: [
-    trigger('slide', [
-      state('off', style({ transform: 'translateX(0)' })),
-      state('on', style({ transform: 'translateX(100%)' })),
-      transition('on <=> off', [animate('150ms ease-in-out')])
-    ])
-  ],
-  template: `<input type="checkbox" #checkbox [checked]="isChecked()" style="height: 0px; width: 0px; opacity: 0%">
-  <span [@slide]="isChecked() ? 'on': 'off'">
+  template: `
+    <input type="checkbox" #checkbox [checked]="isChecked" class="peer" style="height: 0px; width: 0px; opacity: 0%">
     <ng-content />
-  </span>
   `,
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  inputs: ['isChecked'],
+  outputs: ['toggled'],
 })
 export class ToggleComponent extends ElementBaseDirective implements Toggle {
   protected checkbox = viewChild.required<ElementRef>('checkbox');
-  isChecked = model<boolean>(false, { alias: 'checked' });
+  isChecked = false;
+  toggled = new OutputEmitterRef<boolean>();
 
   protected override onInit(): void {
     this.nativeElement.focus = () => this.checkbox().nativeElement.focus();
@@ -40,8 +35,9 @@ export class ToggleComponent extends ElementBaseDirective implements Toggle {
 
   toggle(): void {
     // Prevent toggling when disabled
-    if (this.isDisabled()) return;
+    if (this.isDisabled) return;
     this.nativeElement.focus();
-    this.isChecked.set(!this.isChecked());
+    this.isChecked = !this.isChecked;
+    this.toggled.emit(this.isChecked);
   }
 }
