@@ -1,6 +1,6 @@
 import { Directive, OutputEmitterRef } from '@angular/core';
 import { ElementBaseDirective } from './element-base.directive';
-import { PopupBase } from './popup-base.interface';
+import { PopoverBase } from './popover-base.interface';
 
 @Directive({
   host: {
@@ -14,7 +14,7 @@ import { PopupBase } from './popup-base.interface';
   outputs: ['toggled', 'opened', 'closed',
   ]
 })
-export abstract class PopoverBaseDirective extends ElementBaseDirective implements PopupBase {
+export abstract class PopoverBaseDirective extends ElementBaseDirective implements PopoverBase {
 
   isOpened = false;
   isHovered = false;
