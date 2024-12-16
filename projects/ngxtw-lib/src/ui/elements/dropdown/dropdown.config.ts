@@ -5,29 +5,55 @@ import { mergeConfig } from "../../../config/config.helper";
 
 /** Dropdown config */
 export interface DropdownConfig extends ConfigType {
-  opened: Modifier<'open', DropdownConfig>
+  open: Modifier<'open', DropdownConfig>
+  notOpen: Modifier<'not-open', DropdownConfig>
+  starting: Modifier<'starting', DropdownConfig>
 };
 const DropdownConfig: DropdownConfig = {
-  display: 'grid',
   textAlign: 'text-start',
   padding: 'py-1',
   zIndex: 'z-10',
-  width: 'min-w-52',
+  minWidth: 'min-w-52',
+  userSelect: 'select-none',
   overflow: 'overflow-hidden',
   transformOrigin: 'origin-top',
+  transition: {
+    property: 'transition-all',
+    duration: 'duration-0',
+    timing: 'ease-in',
+    behavior: 'transition-discrete'
+  },
+  fontSize: 'text-sm',
   position: 'absolute',
   borderWidth: 'border',
   borderRadius: 'rounded-md',
   borderColor: 'border-gray-200',
   bgColor: 'bg-gray-50',
   boxShadow: 'shadow-lg',
+  display: 'grid',
+  colorScheme: 'scheme-light',
   dark: {
     bgColor: 'dark:bg-gray-900',
     textColor: 'dark:text-gray-100',
-    borderColor: 'dark:border-gray-800'
+    borderColor: 'dark:border-gray-800',
+    colorScheme: 'dark:scheme-dark'
   },
-  opened: {
+  open: {
+    scale: 'open:scale-y-100',
+    opacity: 'open:opacity-100',
+    visibility: 'open:visible',
     cursor: 'open:cursor-pointer',
+  },
+  notOpen: {
+    scale: 'not-open:scale-y-95',
+    opacity: 'not-open:opacity-0',
+    visibility: 'not-open:invisible',
+  },
+  starting: {
+    open: {
+      opacity: 'starting:open:opacity-0',
+      scale: 'starting:open:scale-y-95'
+    }
   }
 };
 
