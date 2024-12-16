@@ -14,11 +14,11 @@ export type IconConfig = {
 const IconConfig: IconConfig = {
   source: {},
   size: {
-    xs: '*:size-4',
-    sm: '*:size-5',
-    md: '*:size-6',
-    lg: '*:size-7',
-    xl: '*:size-8'
+    xs: '*:size-3',
+    sm: '*:size-4',
+    md: '*:size-5',
+    lg: '*:size-6',
+    xl: '*:size-7'
   },
 }
 
