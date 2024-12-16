@@ -13,9 +13,9 @@ import { ZIndex } from './layout/z-index.type';
 import { Height } from './sizing/height.type';
 import { Size } from './sizing/size.type';
 import { Width } from './sizing/width.type';
-import { Margin } from './spacing/margin.type';
-import { Padding } from './spacing/padding.type';
-import { TransformOrigin } from './transforms/transform-origin.type';
+import { Margin, MarginX, MarginY } from './spacing/margin.type';
+import { Padding, PaddingX, PaddingY } from './spacing/padding.type';
+import { Scale, TransformOrigin } from './transforms/transforms.type';
 import { FontSize } from './typography/font-size.type';
 import { FontWeight } from './typography/font-weight.type';
 import { LineHeight } from './typography/line-height.type';
@@ -66,55 +66,21 @@ import { Left } from './layout/position/left.type';
 import { Right } from './layout/position/right.type';
 import { Top } from './layout/position/top.type';
 import { OutlineStyle } from './borders/outline-style.type';
+import { MinWidth } from './sizing/min-width.type';
+import { MinHeight } from './sizing/min-height.type';
 
 export interface BaseConfig {
-  /**Utilities for controlling how flex and grid items are positioned along a container's cross axis.
-     * @see https://tailwindcss.com/docs/align-items
-     */
   alignItem: AlignItem;
-  /**Utilities for controlling the direction of flex items.
-   * @see https://tailwindcss.com/docs/flex-direction
-   */
   flexDirection: FlexDirection;
-  /**Utilities for controlling how flex items grow.
-   * @see https://tailwindcss.com/docs/flex-grow
-   */
   flexGrow: FlexGrow;
-  /**Utilities for controlling how flex items shrink.
-   * @see https://tailwindcss.com/docs/flex-shrink
-   */
   flexShrink: FlexShrink;
-  /**Utilities for controlling how flex items wrap.
-   * @see https://tailwindcss.com/docs/flex-wrap
-   */
   flexWrap: FlexWrap;
-  /**Utilities for controlling gutters between grid and flexbox items.
-   * @see https://tailwindcss.com/docs/gap
-   */
   gap: Gap;
-  /**Utilities for specifying the columns in a grid layout.
-   * @see https://tailwindcss.com/docs/grid-template-columns
-   */
   gridCols: GridColumns;
-  /**Utilities for controlling how flex and grid items are positioned along a container's main axis.
-   * @see https://tailwindcss.com/docs/justify-content
-   */
   justifyContent: JustifyContent;
-  /**Utilities for controlling how content is justified and aligned at the same time.
-   * @see https://tailwindcss.com/docs/place-content
-   */
   placeContent: PlaceContent;
-  /**Utilities for controlling how items are justified and aligned at the same time.
-   * @see https://tailwindcss.com/docs/place-items
-   */
   placeItems: PlaceItems;
-  /**Utilities for controlling how an individual flex or grid item is positioned along its container's cross axis.
-   * @see https://tailwindcss.com/docs/align-self
-   */
   alignSelf: AlignSelf;
-  /**Utilities for controlling how rows are positioned in multi-row flex and grid containers.
-   * @see https://tailwindcss.com/docs/align-content
-   */
   alignContent: AlignContent;
   animation: TwAnimation;
   transition: Transition;
@@ -153,11 +119,17 @@ export interface BaseConfig {
   fontSize: FontSize;
   overflow: Overflow;
   padding: Padding;
+  paddingX: PaddingX;
+  paddingY: PaddingY;
   margin: Margin;
+  marginX: MarginX;
+  marginY: MarginY;
   size: Size;
   width: Width;
+  minWidth: MinWidth;
   maxWidth: MaxWidth;
   height: Height;
+  minHeight: MinHeight;
   maxHeight: MaxHeight;
   textWrap: TextWrap;
   userSelect: UserSelect;
@@ -167,14 +139,17 @@ export interface BaseConfig {
   lineHeight: LineHeight;
   blur: Blur;
   isolation: 'isolate' | 'isolation-auto';
+  visibility: 'visible' | 'invisible';
   backdrop: Backdrop;
   dropShadow: DropShadow;
   boxShadow: BoxShadow;
   opacity: Opacity;
   pointerEvents: PointerEvents;
   transformOrigin: TransformOrigin;
+  scale: Scale;
   translate: TwTranslate;
   verticalAlign: VerticalAlign;
+  colorScheme: 'scheme-light' | 'scheme-dark';
   // Media queries modifiers
   sm: Modifier<'sm', Omit<BaseConfig, MediaQueryModifier>>;
   md: Modifier<'md', Omit<BaseConfig, MediaQueryModifier>>;
@@ -188,13 +163,14 @@ export interface BaseConfig {
   dark: Modifier<'dark'>;
 };
 
-export type ConfigValue = Record<string, any>;
-export type ConfigType = Partial<BaseConfig>;
+export interface ConfigValue extends Record<string, any> { };
+export interface ConfigType extends Partial<BaseConfig> { };
 
 export type Modifier<Prefix extends string, Type extends ConfigValue = BaseConfig> = {
-  [L1 in keyof Type]?: `${Type[L1]}` extends `${infer X}` ? `${Prefix}:${X}` : {
-    [L2 in keyof Type[L1]]?: `${Type[L1][L2] & string}` extends `${infer X}:${infer Y}` ? `${Prefix}:${X}:${Y}` : Modifier<Prefix, Type[L1][L2]>
-  }
+  [L1 in keyof Type]?: `${Type[L1] & {}}` extends `${infer X}` ? `${Prefix}:${X}` : {
+    [L2 in keyof Type[L1]]?: `${Type[L1][L2] & {}}` extends `${infer X}:${infer Y}` ?
+    `${Prefix}:${X}:${Y}` : Modifier<Prefix, Type[L1][L2]>
+  } | Modifier<Prefix, Type[L1]>
 };
 
 export type MediaQueryModifier = 'sm' | 'md' | 'lg';
