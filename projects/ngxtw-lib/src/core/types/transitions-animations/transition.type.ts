@@ -6,4 +6,5 @@ export interface Transition {
   property?: TransitionProperty;
   duration?: TransitionDuration;
   timing?: TransitionTimingFunction;
+  behavior?: 'transition-discrete' | 'transition-normal';
 }
