@@ -1,4 +1,3 @@
-import { Injectable } from "@angular/core";
 import { resolve } from "../core/helpers/string.helper";
 import { objectToArray } from "../core/helpers/object.helper";
 import { ConfigValue } from "../core/types/config.type";
@@ -6,7 +5,6 @@ import { ConfigValue } from "../core/types/config.type";
 /**
  * Class list instance of the component.
  */
-@Injectable()
 export class ClassList {
   private _value: string[] = [];
   /**
@@ -15,35 +13,67 @@ export class ClassList {
   get value(): string[] {
     return this._value;
   };
+
+  private _base: string[] = []
+
   /**
   * The custom class list to merge with the default class list's value.
   */
-  base: string[] = []
+  get base(): string[] {
+    return this._base;
+  }
+
+  /**
+   * Creates a new instance of the class list.
+   * @param base The custom class list to merge with the default class list's value.
+   */
+  constructor(base: string[] = []) {
+    this._base = base;
+  }
+
+  /**
+   * Initializes the class list.
+   * - Resolves class list from given `value` to `this.base` keeping class deletor.
+   */
+  init(value: string[]): void {
+    this._base = resolve(this._base, value, { keepClassDeletor: true });
+  }
 
   /**
    * Sets a brand new class list.
+   * - Resolves class list from `this.base` to given `value`.
    */
   set(value: string[]): void {
-    this._value = resolve(value, this.base);
+    this._value = resolve(value, this._base);
   }
 
   /**
    * Updates the current class list.
-   * @param value
+   * - Resolves class list from given `value` to current `this.value`.
    */
   update(value: string[]): void {
     this._value = resolve(this._value, value);
   }
 
   /**
-   * Sets class list using config object.
+   * Initializes class list using the specified config object.
+   * - Calls `this.init` method passing the given `config` converted to `string[]`.
    */
-  setFrom<T extends ConfigValue>(config: T) {
+  initFrom<T extends ConfigValue>(config: T): void {
+    this.init(objectToArray(config));
+  }
+
+  /**
+   * Sets class list using config object.
+   * - Calls `this.set` method passing the given `config` converted to `string[]`.
+   */
+  setFrom<T extends ConfigValue>(config: T): void {
     this.set(objectToArray(config));
   }
 
   /**
    * Updates class list using config object.
+   * - Calls `this.update` method passing the given `config` converted to `string[]`.
    */
   updateFrom<T extends ConfigValue>(config: T) {
     this.update(objectToArray(config));
