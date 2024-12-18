@@ -7,17 +7,13 @@ import { PopoverBase } from './popover-base.interface';
     '[attr.aria-expanded]': 'isOpened ? "" : null',
     '[attr.aria-hidden]': 'isOpened ? null : ""',
     '[attr.open]': 'isOpened ? "" : null',
-    '(mouseenter)': 'onHover($event)',
-    '(mouseleave)': 'onHover($event)',
   },
-  inputs: ['isOpened', 'isHovered'],
-  outputs: ['toggled', 'opened', 'closed',
-  ]
+  inputs: ['isOpened'],
+  outputs: ['toggled', 'opened', 'closed']
 })
 export abstract class PopoverBaseDirective extends ElementBaseDirective implements PopoverBase {
-
+  protected isHovered = false;
   isOpened = false;
-  isHovered = false;
   toggled = new OutputEmitterRef<boolean>();
   opened = new OutputEmitterRef<void>();
   closed = new OutputEmitterRef<void>();
@@ -38,20 +34,25 @@ export abstract class PopoverBaseDirective extends ElementBaseDirective implemen
     this.closed.emit();
   }
 
-  /**
-   * Closes the component after the specified delay.
-   * @param delay The delay in milliseconds.
-   */
   closeAfter(delay: number): void {
-    const interval = setInterval(() => {
+    delay = (delay >= 1000 && delay <= 10000) ? delay : 5000;
+    const id = setInterval(() => {
       if (!this.isHovered) {
         this.close();
-        clearInterval(interval);
+        clearInterval(id);
       }
     }, delay);
   }
 
-  protected onHover(event: MouseEvent): void {
-    this.isHovered = event.type === 'mouseenter';
+  protected onMouseEnter(event: MouseEvent): void {
+    if (event.type === 'mouseenter') {
+      this.isHovered = true;
+    }
+  }
+
+  protected onMouseLeave(event: MouseEvent): void {
+    if (event.type === 'mouseleave') {
+      this.isHovered = false;
+    }
   }
 }

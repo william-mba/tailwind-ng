@@ -4,7 +4,6 @@ import { ClassList } from "../../config/classlist";
 import { ReactiveConfig } from "../../public-api";
 import { stringToArray } from "../helpers/string.helper";
 
-
 @Directive({
   host: {
     '[class]': 'classList.value',

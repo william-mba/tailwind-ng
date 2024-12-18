@@ -5,15 +5,10 @@ import { BaseElement } from "./element-base.interface";
  * @ngxtw Popover base component
  */
 export interface PopoverBase extends BaseElement {
-
   /**
    * Whether the component is opened.
    */
   readonly isOpened: boolean;
-  /**
-   * Whether the component is hovered.
-   */
-  readonly isHovered: boolean;
   /**
    * Toggles the component.
    */
@@ -27,7 +22,9 @@ export interface PopoverBase extends BaseElement {
    */
   close(): void;
   /**
-   * Close the component after the specified delay.
+   * Closes the component after the specified delay (in milliseconds).
+   * - Delay range: Minimum = 1000ms; Maximum = 10000ms; Default = 5000ms (5 seconds).
+   * - If the given delay is outside the range, the default delay will be used.
    * @param delay The delay in milliseconds.
    */
   closeAfter(delay: number): void
