@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, ElementRef, viewChild, viewChildren } from '@angular/core';
+import { Component, ElementRef, TemplateRef, viewChild, viewChildren } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   AvatarComponent,
@@ -10,8 +10,10 @@ import {
   DropdownComponent,
   IconDirective,
   InputComponent,
+  DialogModule,
   ToggleComponent,
-  toggleTheme
+  toggleTheme,
+  ClassList
 } from 'ngxtw';
 
 
@@ -34,6 +36,7 @@ interface User {
     InputComponent,
     ToggleComponent,
     ButtonGroupComponent,
+    DialogModule,
     ReactiveFormsModule
   ],
   templateUrl: './app.component.html',
@@ -160,16 +163,21 @@ export class AppComponent {
     ]
   };
 
+  isMulti = false;
+
+  toggleMulti() {
+    this.isMulti = !this.isMulti;
+  }
+
   users1: User[] = this._users;
   users2: User[] = this._users;
   users3: User[] = this._users;
   users4: User[] = this._users;
 
+  backdrop: string[] = []
+
   ngOnInit() {
     toggleTheme();
-  }
-
-  ngAfterViewInit() {
   }
 
   toggleTheme() {
@@ -197,9 +205,16 @@ export class AppComponent {
         }
         break;
       case 2:
-        this.users2 = this._users.filter((x) => {
-          return x.name.includes(value) || x.name.startsWith(value);
-        });
+        if (values.length > 1) {
+          const usersMap = new Map<string, User>();
+          const filtered = this._users.filter((x) => {
+            return values.some((v) => this.checkMatch(x.name, v));
+          });
+          filtered.forEach((f) => usersMap.set(f.name, f));
+          this.users2 = [...usersMap.values()];
+        } else {
+          this.users2 = this._users.filter((x) => this.checkMatch(x.name, value));
+        }
         break;
       case 3:
         this.users3 = this._users.filter((x) => {
@@ -215,20 +230,22 @@ export class AppComponent {
   }
 
   reset(id: number = 1): void {
-    switch (id) {
-      case 1:
-        this.users1 = this._users;
-        break;
-      case 2:
-        this.users2 = this._users;
-        break;
-      case 3:
-        this.users3 = this._users;
-        break;
-      case 4:
-        this.users4 = this._users;
-        break
-    }
+    setTimeout(() => {
+      switch (id) {
+        case 1:
+          this.users1 = this._users;
+          break;
+        case 2:
+          this.users2 = this._users;
+          break;
+        case 3:
+          this.users3 = this._users;
+          break;
+        case 4:
+          this.users4 = this._users;
+          break
+      }
+    }, 100);
   }
 
   saveValue(value: string | string[]): void {
