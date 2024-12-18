@@ -1,4 +1,4 @@
-export type AlignItem =
+export type AlignItems =
   | 'items-start'
   | 'items-end'
   | 'items-center'

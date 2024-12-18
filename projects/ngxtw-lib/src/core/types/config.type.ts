@@ -1,6 +1,6 @@
 import { BoxShadow } from './effects/box-shadow.type';
 import { Opacity } from './effects/opacity.type';
-import { Backdrop } from './filters/backdrop.type';
+import { BackdropBlur } from './filters/backdrop-blur.type';
 import { Blur } from './filters/blur.type';
 import { DropShadow } from './filters/drop-shadow.type';
 import { Cursor } from './interactivity/cursor.type';
@@ -30,7 +30,7 @@ import { MaxHeight } from './sizing/max-height.type';
 import { VerticalAlign } from './typography/vertical-align.type';
 import { Border } from './borders/border.type';
 import { AlignContent } from './flex-grid/align-content.type';
-import { AlignItem } from './flex-grid/align-item.type';
+import { AlignItems } from './flex-grid/align-items.type';
 import { AlignSelf } from './flex-grid/align-self.type';
 import { FlexDirection } from './flex-grid/flex-direction.type';
 import { FlexGrow } from './flex-grid/flex-grow.type';
@@ -68,9 +68,11 @@ import { Top } from './layout/position/top.type';
 import { OutlineStyle } from './borders/outline-style.type';
 import { MinWidth } from './sizing/min-width.type';
 import { MinHeight } from './sizing/min-height.type';
+import { BackdropOpacity } from './filters/backdrop-opacity.type';
+import { PlaceSelf } from './flex-grid/place-self.type';
 
 export interface BaseConfig {
-  alignItem: AlignItem;
+  alignItems: AlignItems;
   flexDirection: FlexDirection;
   flexGrow: FlexGrow;
   flexShrink: FlexShrink;
@@ -80,6 +82,7 @@ export interface BaseConfig {
   justifyContent: JustifyContent;
   placeContent: PlaceContent;
   placeItems: PlaceItems;
+  placeSelf: PlaceSelf;
   alignSelf: AlignSelf;
   alignContent: AlignContent;
   animation: TwAnimation;
@@ -140,7 +143,8 @@ export interface BaseConfig {
   blur: Blur;
   isolation: 'isolate' | 'isolation-auto';
   visibility: 'visible' | 'invisible';
-  backdrop: Backdrop;
+  backdropBlur: BackdropBlur;
+  backdropOpacity: BackdropOpacity;
   dropShadow: DropShadow;
   boxShadow: BoxShadow;
   opacity: Opacity;

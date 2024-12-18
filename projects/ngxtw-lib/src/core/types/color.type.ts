@@ -265,6 +265,6 @@ export type Percentage =
   | '85'
   | '90'
   | '95'
-  | '100';
+  | '100'
 
 export type ColorPalette = 'current' | 'inherit' | 'transparent' | Color | `${Color}/${Percentage}`;

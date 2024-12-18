@@ -13,6 +13,14 @@ export type TwTranslate =
   | `-translate-x-full`
   | `-translate-y-full`
   | `-translate-z-full`
+  | `translate-${number}`
+  | `translate-x-${number}`
+  | `translate-y-${number}`
+  | `translate-z-${number}`
+  | `-translate-${number}`
+  | `-translate-x-${number}`
+  | `-translate-y-${number}`
+  | `-translate-z-${number}`
   | `translate-${Spacing}`
   | `translate-x-${Spacing}`
   | `translate-y-${Spacing}`
