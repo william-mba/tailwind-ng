@@ -13,7 +13,7 @@ import { ComboboxComponent } from '../combobox.component';
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  inputs: [{ name: 'value', required: true }, 'combobox']
+  inputs: [{ name: 'value', required: true }, 'combobox'],
 })
 export class ComboboxItemComponent extends ElementBaseDirective implements ComboboxItem {
   value!: string;

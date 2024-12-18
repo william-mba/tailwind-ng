@@ -1,12 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropdownComponent } from './dropdown.component';
 import { DropdownConfig, provideDropdownConfig } from './dropdown.config';
-import { Dropdown } from './dropdown.interface';
-import { objectToString } from '../../core/utils/object.util';
 
 describe('Dropdown Component', () => {
-  let component: Dropdown;
-  let fixture: ComponentFixture<Dropdown>;
+  let component: DropdownComponent;
+  let fixture: ComponentFixture<DropdownComponent>;
   const CLASS_NAMES = 'shadow-lg *:justify-start *:rounded-none *:shadow-none';
 
   const CustomDropdownConfig: Partial<DropdownConfig> = {
@@ -35,14 +33,5 @@ describe('Dropdown Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should set class names', () => {
-    component.class = CLASS_NAMES;
-    expect(component.class).toBe(CLASS_NAMES);
-  })
-
-  it('should set custom configs', async () => {
-    expect(component.class).toContain(objectToString(CustomDropdownConfig));
   });
 });

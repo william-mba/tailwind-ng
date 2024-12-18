@@ -3,23 +3,28 @@ import { ComboboxItemComponent } from './combobox-item.component';
 import { provideComboboxItemConfig } from './combobox-item.config';
 import { ComboboxItem } from './combobox-item.interface';
 import { ComboboxComponent } from '../combobox.component';
-import { provideComboboxConfig } from '../combobox.config';
+import { ElementRef } from '@angular/core';
 
-describe('Combobox Item Component', () => {
-  let component: ComboboxItem;
-  let fixture: ComponentFixture<ComboboxItem>;
+describe('ComboboxItemComponent', () => {
+  let component: ComboboxItemComponent;
+  let fixture: ComponentFixture<ComboboxItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ComboboxItemComponent],
-      providers: [provideComboboxItemConfig(), provideComboboxConfig()],
+      providers: [ComboboxComponent,
+        {
+          provide: ComboboxItemComponent,
+          useFactory: () => new ComboboxItemComponent(),
+        }, {
+          provide: ElementRef,
+          useValue: { nativeElement: document.createElement('tw-combobox-item') }
+        }
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ComboboxItemComponent);
     component = fixture.componentInstance;
-    TestBed.runInInjectionContext(() => {
-      component.combobox = new ComboboxComponent();
-    });
+    component.value = 'test item';
     fixture.detectChanges();
   });
 

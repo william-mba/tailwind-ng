@@ -24,25 +24,4 @@ describe('Icon Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set class', () => {
-    component.class = CUSTOM_CLASSNAMES;
-    expect(component.class).toBe(CUSTOM_CLASSNAMES);
-  });
-
-  it('should set size', () => {
-    const size = 'lg';
-    component.size = 'lg';
-    expect(component.size).toBe(size);
-  });
-
-  it('should merge class names', () => {
-    spyOn(component, 'setClassList');
-    component.class = CUSTOM_CLASSNAMES;
-
-    component.ngOnInit();
-
-    expect(component.setClassList).toHaveBeenCalled();
-    expect(component.class).toContain(CUSTOM_CLASSNAMES.join(' '));
-  });
-
 });

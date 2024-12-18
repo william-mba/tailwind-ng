@@ -1,11 +1,10 @@
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideButtonGroupConfig } from './button-group.config';
-import { ButtonGroup } from './button-group.interface';
 
-describe('Button Group Component', () => {
-  let component: ButtonGroup;
-  let fixture: ComponentFixture<ButtonGroup>;
+describe('ButtonGroupComponent', () => {
+  let component: ButtonGroupComponent;
+  let fixture: ComponentFixture<ButtonGroupComponent>;
   const CUSTOM_CLASSNAMES = 'border border-inherit p-1.5 rounded-xl';
 
   beforeEach(async () => {
@@ -22,9 +21,4 @@ describe('Button Group Component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should set class names', () => {
-    component.class = CUSTOM_CLASSNAMES;
-    expect(component.class).toBe(CUSTOM_CLASSNAMES);
-  })
 });

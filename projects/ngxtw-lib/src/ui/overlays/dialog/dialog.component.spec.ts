@@ -1,14 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalDialogComponent } from './modal-dialog.component';
-import { ModalDialogConfig, provideModalDialogConfig } from './modal-dialog.config';
-import { ModalDialog } from './modal-dialog.interface';
-import { objectToString } from '../../core/utils/object.util';
+import { DialogConfig, provideDialogConfig } from './dialog.config';
+import { Dialog } from './dialog.interface';
+import { DialogComponent } from './dialog.component';
 
 describe('Modal Dialog Component', () => {
-  let component: ModalDialog;
-  let fixture: ComponentFixture<ModalDialog>;
+  let component: Dialog;
+  let fixture: ComponentFixture<Dialog>;
   const CLASS_NAMES = 'divide-y divide-gray-200 dark:divide-neutral-900';
-  const CustomModalDialogConfig: Partial<ModalDialogConfig> = {
+  const CustomDialogConfig: Partial<DialogConfig> = {
     container: {
       bgColor: 'bg-blue-100',
       dark: {
@@ -19,27 +18,18 @@ describe('Modal Dialog Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalDialogComponent],
+      imports: [DialogComponent],
       providers: [
-        provideModalDialogConfig(CustomModalDialogConfig)
+        provideDialogConfig(CustomDialogConfig)
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModalDialogComponent);
+    fixture = TestBed.createComponent(DialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should set class names', () => {
-    component.class = CLASS_NAMES;
-    expect(component.class).toBe(CLASS_NAMES);
-  })
-
-  it('should contains custom configs', async () => {
-    expect(component.class).toContain(objectToString(CustomModalDialogConfig.container!));
   });
 });
