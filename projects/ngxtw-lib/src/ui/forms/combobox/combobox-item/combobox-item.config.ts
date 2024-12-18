@@ -17,7 +17,7 @@ const ComboboxItemConfig: ComboboxItemConfig = {
   position: 'relative',
   display: 'flex',
   gap: 'gap-1',
-  alignItem: 'items-center',
+  alignItems: 'items-center',
   hover: {
     textColor: 'hover:text-white',
     bgColor: 'hover:bg-blue-600',

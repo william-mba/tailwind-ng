@@ -14,75 +14,79 @@ export type ButtonVariant =
   | 'text'
 
 /** Button size config */
-const ButtonSizeConfig: SizeOptions = {
-  xs: {
-    padding: {
-      x: 'px-2',
-      y: 'py-1.5'
+const ButtonSizeConfig = (): SizeOptions => {
+  return {
+    xs: {
+      padding: {
+        x: 'px-2',
+        y: 'py-1.5'
+      },
+      gap: 'gap-1',
+      fontSize: 'text-xs',
+      borderRadius: 'rounded',
+      fontWeight: 'font-semibold'
     },
-    gap: 'gap-1',
-    fontSize: 'text-xs',
-    borderRadius: 'rounded',
-    fontWeight: 'font-semibold'
-  },
-  sm: {
-    padding: {
-      x: 'px-3',
-      y: 'py-2'
+    sm: {
+      padding: {
+        x: 'px-3',
+        y: 'py-2'
+      },
+      gap: 'gap-1.5',
+      fontSize: 'text-xs',
+      borderRadius: 'rounded-md',
+      fontWeight: 'font-semibold'
     },
-    gap: 'gap-1.5',
-    fontSize: 'text-xs',
-    borderRadius: 'rounded-md',
-    fontWeight: 'font-semibold'
-  },
-  md: {
-    padding: {
-      x: 'px-4',
-      y: 'py-2.5'
+    md: {
+      padding: {
+        x: 'px-4',
+        y: 'py-2.5'
+      },
+      gap: 'gap-2',
+      fontSize: 'text-sm',
+      borderRadius: 'rounded-md',
+      fontWeight: 'font-semibold'
     },
-    gap: 'gap-2',
-    fontSize: 'text-sm',
-    borderRadius: 'rounded-md',
-    fontWeight: 'font-semibold'
-  },
-  lg: {
-    padding: {
-      x: 'px-5',
-      y: 'py-3'
+    lg: {
+      padding: {
+        x: 'px-5',
+        y: 'py-3'
+      },
+      gap: 'gap-2.5',
+      fontSize: 'text-sm',
+      borderRadius: 'rounded-md',
+      fontWeight: 'font-semibold'
     },
-    gap: 'gap-2.5',
-    fontSize: 'text-sm',
-    borderRadius: 'rounded-md',
-    fontWeight: 'font-semibold'
-  },
-  xl: {
-    padding: {
-      x: 'px-6',
-      y: 'py-3.5'
-    },
-    gap: 'gap-3',
-    fontSize: 'text-base',
-    borderRadius: 'rounded-md',
-    fontWeight: 'font-semibold'
+    xl: {
+      padding: {
+        x: 'px-6',
+        y: 'py-3.5'
+      },
+      gap: 'gap-3',
+      fontSize: 'text-base',
+      borderRadius: 'rounded-md',
+      fontWeight: 'font-semibold'
+    }
   }
 }
 
 /** Base button config */
 type ButtonBaseConfig = ConfigType
-const ButtonBaseConfig: ButtonBaseConfig = {
-  display: 'inline-flex',
-  alignItem: 'items-center',
-  justifyContent: 'justify-center',
-  boxShadow: 'shadow-sm',
-  textWrap: 'text-nowrap',
-  userSelect: 'select-none',
-  cursor: 'cursor-pointer',
-  width: 'w-fit',
-  height: 'h-fit',
-  lineHeight: 'leading-none',
-  disabled: {
-    opacity: 'disabled:opacity-50',
-    cursor: 'disabled:cursor-not-allowed'
+const ButtonBaseConfig = (): ButtonBaseConfig => {
+  return {
+    display: 'inline-flex',
+    alignItems: 'items-center',
+    justifyContent: 'justify-center',
+    boxShadow: 'shadow-sm',
+    textWrap: 'text-nowrap',
+    userSelect: 'select-none',
+    cursor: 'cursor-pointer',
+    width: 'w-fit',
+    height: 'h-fit',
+    lineHeight: 'leading-none',
+    disabled: {
+      opacity: 'disabled:opacity-50',
+      cursor: 'disabled:cursor-not-allowed'
+    }
   }
 }
 
@@ -90,75 +94,84 @@ const ButtonBaseConfig: ButtonBaseConfig = {
 interface PrimaryButtonConfig extends Partial<ButtonBaseConfig> {
   focusVisible: Modifier<'focus-visible'>
 };
-const PrimaryButtonConfig: PrimaryButtonConfig = {
-  ...ButtonBaseConfig,
-  textColor: 'text-white',
-  bgColor: 'bg-blue-600',
-  hover: {
-    bgColor: 'hover:bg-blue-600/90'
-  },
-  focusVisible: {
-    border: 'focus-visible:outline',
-    outlineWidth: 'focus-visible:outline-2',
-    outlineColor: 'focus-visible:outline-blue-600',
-    outlineOffsetWidth: 'focus-visible:outline-offset-2'
+
+const PrimaryButtonConfig = (): PrimaryButtonConfig => {
+  return {
+    ...ButtonBaseConfig(),
+    textColor: 'text-white',
+    bgColor: 'bg-blue-600',
+    hover: {
+      bgColor: 'hover:bg-blue-600/90'
+    },
+    focusVisible: {
+      border: 'focus-visible:outline',
+      outlineWidth: 'focus-visible:outline-2',
+      outlineColor: 'focus-visible:outline-blue-600',
+      outlineOffsetWidth: 'focus-visible:outline-offset-2'
+    }
   }
 }
 
 /** Secondary button config */
 type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
-const SecondaryButtonConfig: SecondaryButtonConfig = {
-  ...ButtonBaseConfig,
-  ringWidth: 'ring-1',
-  ringColor: 'ring-gray-300',
-  ring: 'ring-inset',
-  bgColor: 'bg-inherit',
-  textColor: 'text-gray-800',
-  backdrop: 'backdrop-blur-xs',
-  hover: {
-    bgColor: 'hover:bg-gray-300/30'
-  },
-  focus: {
-    ringColor: 'focus:ring-gray-400'
-  },
-  dark: {
-    bgColor: 'dark:bg-inherit',
-    textColor: 'dark:text-gray-200',
-    ringColor: 'dark:ring-gray-700',
+const SecondaryButtonConfig = (): SecondaryButtonConfig => {
+  return {
+    ...ButtonBaseConfig(),
+    ringWidth: 'ring-1',
+    ringColor: 'ring-gray-300',
+    ring: 'ring-inset',
+    bgColor: 'bg-inherit',
+    textColor: 'text-gray-800',
+    backdropBlur: 'backdrop-blur-xs',
     hover: {
-      bgColor: 'dark:hover:bg-gray-700/30',
+      bgColor: 'hover:bg-gray-300/30'
     },
     focus: {
-      ringColor: 'dark:focus:ring-gray-600',
+      ringColor: 'focus:ring-gray-400'
+    },
+    dark: {
+      bgColor: 'dark:bg-inherit',
+      textColor: 'dark:text-gray-200',
+      ringColor: 'dark:ring-gray-700',
+      hover: {
+        bgColor: 'dark:hover:bg-gray-700/30',
+      },
+      focus: {
+        ringColor: 'dark:focus:ring-gray-600',
+      }
     }
   }
 }
 
 /** Tonal button config */
 type TonalButtonConfig = Partial<ButtonBaseConfig>;
-const TonalButtonConfig: TonalButtonConfig = {
-  ...ButtonBaseConfig,
-  textColor: 'text-blue-500',
-  bgColor: 'bg-blue-600/10',
-  hover: {
-    bgColor: 'hover:bg-blue-600/15'
-  },
-  backdrop: 'backdrop-blur-xs'
+const TonalButtonConfig = (): TonalButtonConfig => {
+  return {
+    ...ButtonBaseConfig(),
+    textColor: 'text-blue-500',
+    bgColor: 'bg-blue-600/10',
+    hover: {
+      bgColor: 'hover:bg-blue-600/15'
+    },
+    backdropBlur: 'backdrop-blur-xs'
+  }
 }
 
 /** Text button config */
 type TextButtonConfig = Partial<ButtonBaseConfig>;
-const TextButtonConfig: TonalButtonConfig = {
-  ...ButtonBaseConfig,
-  boxShadow: 'shadow-none',
-  textColor: 'text-gray-700',
-  hover: {
-    textColor: 'hover:text-gray-900'
-  },
-  dark: {
-    textColor: 'dark:text-gray-300',
+const TextButtonConfig = (): TonalButtonConfig => {
+  return {
+    ...ButtonBaseConfig(),
+    boxShadow: 'shadow-none',
+    textColor: 'text-gray-700',
     hover: {
-      textColor: 'dark:hover:text-gray-100',
+      textColor: 'hover:text-gray-900'
+    },
+    dark: {
+      textColor: 'dark:text-gray-300',
+      hover: {
+        textColor: 'dark:hover:text-gray-100',
+      }
     }
   }
 }
@@ -178,23 +191,25 @@ export type ButtonConfig = {
   size: Partial<SizeOptions>
 }
 
-const ButtonConfig: ButtonConfig = {
-  theme: {
-    primary: PrimaryButtonConfig,
-    secondary: SecondaryButtonConfig,
-    tonal: TonalButtonConfig,
-    text: TextButtonConfig,
-    fab: {
-      boxShadow: 'shadow-lg'
-    }
-  },
-  size: ButtonSizeConfig
+const ButtonConfig = (): ButtonConfig => {
+  return {
+    theme: {
+      primary: PrimaryButtonConfig(),
+      secondary: SecondaryButtonConfig(),
+      tonal: TonalButtonConfig(),
+      text: TextButtonConfig(),
+      fab: {
+        boxShadow: 'shadow-lg'
+      }
+    },
+    size: ButtonSizeConfig()
+  }
 }
 
 /**
  * Button config token
  */
-export const BUTTON_CONFIG = InjectionTokenFactory.create(ButtonConfig, 'BUTTON_CONFIG');
+export const BUTTON_CONFIG = InjectionTokenFactory.create(ButtonConfig(), 'BUTTON_CONFIG');
 
 /**
  * Button config provider
@@ -204,6 +219,6 @@ export const BUTTON_CONFIG = InjectionTokenFactory.create(ButtonConfig, 'BUTTON_
 export function provideButtonConfig(config: Partial<ButtonConfig> = {}): Provider {
   return {
     provide: BUTTON_CONFIG,
-    useValue: mergeConfig({ target: ButtonConfig, source: [config] })
+    useValue: mergeConfig({ target: ButtonConfig(), source: [config] })
   }
 };

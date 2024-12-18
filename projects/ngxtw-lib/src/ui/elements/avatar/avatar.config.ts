@@ -12,7 +12,7 @@ export type AvatarConfig = {
 const AvatarConfig: AvatarConfig = {
   theme: {
     display: 'flex',
-    alignItem: 'items-center',
+    alignItems: 'items-center',
     justifyContent: 'justify-center',
     position: 'relative',
     borderRadius: 'rounded-full',

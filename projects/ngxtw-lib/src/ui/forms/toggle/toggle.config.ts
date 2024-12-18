@@ -28,7 +28,7 @@ export const ToggleConfig: ToggleConfig = {
     duration: 'duration-200',
   },
   dark: {
-    bgColor: 'dark:bg-gray-800',
+    bgColor: 'dark:bg-gray-900',
   },
   hasChecked: {
     bgColor: 'has-[:checked]:bg-blue-600',
@@ -41,7 +41,7 @@ export const ToggleConfig: ToggleConfig = {
     padding: '*:p-1',
     userSelect: '*:select-none',
     pointerEvents: '*:pointer-events-none',
-    alignItem: '*:items-center',
+    alignItems: '*:items-center',
     justifyContent: '*:justify-center',
     display: '*:inline-flex',
     overflow: '*:overflow-hidden',

@@ -8,7 +8,7 @@ import { DROPDOWN_CONFIG } from "../ui/elements/dropdown/dropdown.config";
 import { TOGGLE_CONFIG } from "../ui/forms/toggle/toggle.config";
 import { INPUT_CONFIG } from "../ui/forms/input/input.config";
 import { COMBOBOX_ITEM_CONFIG } from "../ui/forms/combobox/combobox-item/combobox-item.config";
-import { MODAL_DIALOG_CONFIG } from "../ui/overlays/modal-dialog/modal-dialog.config";
+import { DIALOG_CONFIG } from "../ui/overlays/dialog/dialog.config";
 
 /** @ngxtw configuration store */
 @Injectable({ providedIn: 'root' })
@@ -20,7 +20,7 @@ export class ConfigStore {
   readonly dropdown = inject(DROPDOWN_CONFIG);
   readonly input = inject(INPUT_CONFIG);
   readonly icon = inject(ICON_CONFIG);
-  readonly modalDialog = inject(MODAL_DIALOG_CONFIG);
+  readonly modalDialog = inject(DIALOG_CONFIG);
   readonly toggle = inject(TOGGLE_CONFIG);
   readonly comboboxItem = inject(COMBOBOX_ITEM_CONFIG);
 }

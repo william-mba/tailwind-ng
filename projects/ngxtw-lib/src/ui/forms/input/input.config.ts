@@ -14,7 +14,7 @@ const InputConfig: InputConfig = {
   ring: 'ring-inset',
   fontSize: 'text-sm',
   lineHeight: 'leading-6',
-  backdrop: 'backdrop-blur-xs',
+  backdropBlur: 'backdrop-blur-xs',
   padding: {
     y: 'py-1.5',
     x: 'px-3'

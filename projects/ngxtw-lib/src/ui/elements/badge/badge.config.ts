@@ -13,7 +13,7 @@ const BadgeConfig: BadgeConfig = {
   theme: {
     display: 'inline-flex',
     gap: 'gap-1',
-    alignItem: 'items-center',
+    alignItems: 'items-center',
     justifyContent: 'justify-center',
     padding: {
       x: 'px-1.5',
