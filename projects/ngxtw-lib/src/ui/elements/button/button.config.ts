@@ -191,7 +191,7 @@ export type ButtonConfig = {
   size: Partial<SizeOptions>
 }
 
-const ButtonConfig = (): ButtonConfig => {
+export const ButtonConfig = (): ButtonConfig => {
   return {
     theme: {
       primary: PrimaryButtonConfig(),
