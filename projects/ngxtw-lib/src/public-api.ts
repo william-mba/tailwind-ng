@@ -1,5 +1,5 @@
 /*
- * Public API for ngxtw
+ * NGXTW Public API
  */
 
 // Core
@@ -7,7 +7,6 @@
 /// Utilities
 export { toggleTheme } from './core/helpers/theme.helper';
 export { mergeConfig } from './config/config.helper';
-export { objectToArray } from './core/helpers/object.helper';
 /// Configs
 export { ReactiveConfig } from './config/reactive-config';
 export { ClassList } from './config/classlist';
@@ -38,14 +37,12 @@ export { type IconConfig, provideIconConfig } from './ui/elements/icon/icon.conf
 // Overlays
 // --------
 /// Modal Dialog
-export * from './ui/overlays/modal-dialog/modal-dialog.interface';
-export { DialogActionsComponent } from './ui/overlays/modal-dialog/actions/dialog-actions.component';
-export { DialogContentComponent } from './ui/overlays/modal-dialog/panel/content/dialog-content.component';
-export { DialogIconComponent } from './ui/overlays/modal-dialog/panel/icon/dialog-icon.component';
-export { DialogPanelComponent } from './ui/overlays/modal-dialog/panel/dialog-panel.component';
-export { ModalDialogComponent } from './ui/overlays/modal-dialog/modal-dialog.component';
-export { type ModalDialogConfig, provideModalDialogConfig } from './ui/overlays/modal-dialog/modal-dialog.config';
-export { ModalDialogModule } from './ui/overlays/modal-dialog/modal-dialog.module';
+export { type Dialog } from './ui/overlays/dialog/dialog.interface';
+export { DialogComponent } from './ui/overlays/dialog/dialog.component';
+export { DialogContainer } from './ui/overlays/dialog/dialog-container.directive';
+export { DialogBackdrop } from './ui/overlays/dialog/dialog-backdrop.directive';
+export { type DialogConfig, provideDialogConfig } from './ui/overlays/dialog/dialog.config';
+export { DialogModule } from './ui/overlays/dialog/dialog.module';
 
 // Forms
 // -----
