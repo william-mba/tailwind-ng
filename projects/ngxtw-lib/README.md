@@ -22,7 +22,6 @@ The aim of this project is to provide to Angular Developers a set of beautiful, 
 
 ### Features
 
-- **Free and open-source**: MIT License
 - **High-quality**:
   - Beautiful and consistent design.
   - Fully tested to ensure performance and reliability.

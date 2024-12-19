@@ -23,7 +23,6 @@ The aim of this project is to provide to Angular Developers a set of beautiful, 
 Inspired by [Tailwind UI](https://tailwindui.com/) and [Material Design](https://m3.material.io/), NGxTW provides a set of high-quality, production-ready Angular components out of the box.
 ### Features
 
-- **Free and open-source**: MIT License
 - **High-quality**:
   - Beautiful and consistent design.
   - Fully tested to ensure performance and reliability.
