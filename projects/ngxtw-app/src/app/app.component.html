@@ -10,6 +10,7 @@
   <button tw-button size="lg">Subscribe</button>
   <button tw-button size="xl">Subscribe</button>
 </div>
+
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <button tw-button variant="secondary" size="xs">Subscribe now</button>
   <button tw-button variant="secondary" size="sm">Subscribe now</button>
@@ -283,13 +284,13 @@
   </tw-toggle>
   <tw-toggle class="w-20 has-[:checked]:bg-">
     <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
-    <span class="text-xs text-gray-800 peer-checked:text-gray-500 left-0"> No </span>
-    <span class="text-xs text-gray-500 peer-checked:text-gray-800 right-0"> Yes </span>
+    <span class="text-xs text-gray-700 peer-checked:text-gray-500 left-0"> No </span>
+    <span class="text-xs text-gray-500 peer-checked:text-gray-700 right-0"> Yes </span>
   </tw-toggle>
   <tw-toggle class="w-40 has-[:checked]:bg-">
     <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
-    <span class="text-xs text-gray-800 peer-checked:text-gray-500 left-0"> Deactivated </span>
-    <span class="text-xs text-gray-500 peer-checked:text-gray-800 right-0"> Activated </span>
+    <span class="text-xs text-gray-700 peer-checked:text-gray-500 left-0"> Deactivated </span>
+    <span class="text-xs text-gray-500 peer-checked:text-gray-700 right-0"> Activated </span>
   </tw-toggle>
 </div>
 
@@ -299,13 +300,13 @@
   </tw-toggle>
   <tw-toggle
     class="w-20 ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-blue-600 active:ring-2 active:ring-blue-600">
-    <span class="text-xs peer-checked:text-gray-100 left-0"> Yes </span>
+    <span class="text-xs text-gray-700 dark:peer-checked:text-gray-300 left-0"> Yes </span>
     <span class="text-xs text-gray-500 right-0"> No </span>
     <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
   </tw-toggle>
   <tw-toggle
     class="w-40 ring-offset-2 has-[:focus]:ring-2 has-[:focus]:ring-blue-600 active:ring-2 active:ring-blue-600">
-    <span class="text-xs peer-checked:text-gray-100 left-0"> Activated </span>
+    <span class="text-xs text-gray-700 dark:peer-checked:text-gray-300 left-0"> Activated </span>
     <span class="text-xs text-gray-500 right-0"> Deactivated </span>
     <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
   </tw-toggle>
@@ -450,7 +451,7 @@
     (click)="dialogWithLeftAlignedButtons.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container class="translate-0 starting:translate-0 not-in-open:opacity-0 duration-100">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start">
         <tw-icon key="exclamation-triangle"
@@ -477,7 +478,7 @@
     (click)="dialogWithScrollableContent.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container class="translate-0 starting:translate-0 not-in-open:opacity-0 duration-100">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-gray-700 dark:text-gray-300 text-pretty text-center sm:text-start">
         <h1 class="font-bold text-2xl mb-3 text-gray-800 dark:text-gray-200">
@@ -575,10 +576,10 @@
     </div>
   </div>
 
-  <div tw-dialog #dialogWithWideButtons [isOpened]="true" class="sm:max-w-sm" (click)="dialogWithWideButtons.close()">
+  <div tw-dialog #dialogWithWideButtons [isOpened]="false" class="sm:max-w-sm" (click)="dialogWithWideButtons.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container class="translate-0 starting:translate-0 not-in-open:opacity-0 duration-100">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
         <tw-icon key="check-thin" class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto" />
@@ -604,7 +605,7 @@
     (click)="dialogWithSingleAction.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container class="sm:translate-0 sm:starting:translate-0 sm:not-in-open:opacity-0 sm:duration-100">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
         <tw-icon key="check-thin" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
@@ -626,7 +627,7 @@
   <div tw-dialog #dialogWithIcon [isOpened]="false" class="sm:max-w-lg" (click)="dialogWithIcon.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container class="translate-0 starting:translate-0 not-in-open:opacity-0 duration-100">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start">
         <tw-icon key="exclamation-triangle" class="text-red-600 bg-red-400/10 rounded-full p-3 mx-auto" />
@@ -652,7 +653,7 @@
   <div tw-dialog #centeredDialogWithBackdrop (click)="centeredDialogWithBackdrop.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container class="translate-0 starting:translate-0 not-in-open:opacity-0 duration-100">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
@@ -684,14 +685,14 @@
         </p>
       </div>
       <!-- Dialog actions -->
-      <tw-icon source="heroicons" key="x-mark" class="absolute top-3 right-3 cursor-pointer" />
+      <tw-icon source="heroicons" key="x-mark" class="absolute top-5 right-5 cursor-pointer" />
     </div>
   </div>
 
-  <div tw-dialog #bottomRightDialog [isOpened]="false" class="sm:max-w-sm place-self-end" [isAutoClose]="true"
+  <div tw-dialog #bottomRightDialog [isOpened]="true" class="sm:max-w-sm place-self-end" [isAutoClose]="true"
     (click)="bottomRightDialog.close()">
     <!-- Dialog container -->
-    <div tw-dialog-container>
+    <div tw-dialog-container class="opacity-100 translate-y-200 starting:translate-y-200 in-open:translate-y-0">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
@@ -703,7 +704,7 @@
         </p>
       </div>
       <!-- Dialog actions -->
-      <tw-icon source="heroicons" key="x-mark" class="absolute top-3 right-3 cursor-pointer" />
+      <tw-icon source="heroicons" key="x-mark" class="absolute top-5 right-5 cursor-pointer" />
     </div>
   </div>
 </div>
