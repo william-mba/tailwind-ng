@@ -31,11 +31,12 @@ export class ReactiveConfig implements ReactiveConfig {
     }
   }
 
-  update<T extends ConfigValue>(key: ConfigKey, ...value: Partial<T>[]): void {
+  update<T extends ConfigValue>(key: ConfigKey, ...value: Partial<T>[]): ReactiveConfig {
     if (this.store.has(key)) {
       const config = this.get(key);
       config.next(mergeConfig({ target: config.value, source: value }));
     }
+    return this;
   }
 
   get<T extends ConfigValue>(key: ConfigKey): BehaviorSubject<T> {
