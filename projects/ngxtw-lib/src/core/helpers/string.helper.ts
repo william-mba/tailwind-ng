@@ -31,11 +31,8 @@ function resolve(target: string[], source: string[], opts?: Partial<ResolveOptio
 
   for (let i = 0; i < source.length; i++) {
     if (source[i].length >= opts.minStringLength!) {
-      // When the class name is a class-deletor,
-      // all target values starting with the class name should be removed.
-      // ex:
-      //  - 'bg-red-' remove 'bg-red-*',
-      //  - 'bg-' remove 'bg-*' etc.
+      // When the class name is a class-deletor, target values starting with source value should be removed.
+      // Ex: bg-red-' remove 'bg-red-*', 'bg-' remove 'bg-*' etc.
       if (source[i].charAt(source[i].length - 1) === '-') {
         const lengthsEqual = source[i].length === opts.minStringLength;
         const searchString = source[i].substring(0, lengthsEqual ? source[i].length : source[i].length - 1);
@@ -55,18 +52,12 @@ function resolve(target: string[], source: string[], opts?: Partial<ResolveOptio
 
         target = target.filter(value => {
           const foundInTarget = Array.from(value.matchAll(/-/g)).length;
+          const matchPercentage = (value.length * 100) / source[i].length;
 
           // When target is for instance 'bg-blue-*' and source 'bg-red-*'
           if (foundInSource >= foundInTarget && foundInSource > 1) {
             // When source is for instance 'text-blue-600' and target is 'text-sm'
             if (foundInSource > foundInTarget && foundInTarget === 1) {
-              // if (value === 'rounded-md') {
-              //   console.group('if (foundInSource > foundInTarget && foundInTarget === 1)');
-              //   console.log(`source: ${source[i].length}`, source[i]);
-              //   console.log(`value: ${value.length}`, value);
-              //   console.log('keepped');
-              //   console.groupEnd();
-              // }
               return true;
             }
 
@@ -79,77 +70,22 @@ function resolve(target: string[], source: string[], opts?: Partial<ResolveOptio
             if (lastIndexOfSeperator > 0) {
               searchString = searchString.substring(0, lastIndexOfSeperator);
             }
-            const res = value.startsWith(searchString)
-            // if (value === 'rounded-md') {
-            //   console.group('after if (lastIndexOfSeperator > 0)');
-            //   console.log(`source: ${source[i].length}`, source[i]);
-            //   console.log(`value: ${value.length}`, value);
-            //   console.log('keepped', !res);
-            //   console.groupEnd();
-            // }
-            return !res;
+            return !value.startsWith(searchString);
           } else if (foundInSource === foundInTarget) {
-            const matchPercentage = (value.length * 100) / source[i].length;
             if (matchPercentage < 150) {
-              const res = value.startsWith(searchString)
-              // if (value === 'rounded-md') {
-              //   console.group('if (matchPercentage < 150)');
-              //   console.log(`source: ${source[i].length}`, source[i]);
-              //   console.log(`value: ${value.length}`, value);
-              //   console.log(`matchPercentage: ${matchPercentage}`);
-              //   console.log('keepped', !res);
-              //   console.groupEnd();
-              // }
-              return !res;
+              return !value.startsWith(searchString);
             } else {
-              const res = value.startsWith(searchString)
-              // if (value === 'rounded-md') {
-              //   console.group('(else) of if (matchPercentage < 150)');
-              //   console.log(`source: ${source[i].length}`, source[i]);
-              //   console.log(`value: ${value.length}`, value);
-              // }
-
               // When target is 'ring-2' and source is 'ring-inset' or
               // target is `rounded-md` and source is `ring-2` for instance
               if (matchPercentage < 170) {
-                // console.log(`if (matchPercentage < 170)`);
-                // console.log(`matchPercentage: ${matchPercentage}`);
-                // console.log('keepped', true);
-                // console.groupEnd();
                 return true;
               }
-              // if (value === 'rounded-md') {
-              //   console.log(`matchPercentage: ${matchPercentage}`);
-              //   console.log('keepped', !res);
-              //   console.groupEnd();
-              // }
-              return !res;
+              return !value.startsWith(searchString);
             }
           } else if (foundInSource < foundInTarget) {
             // When target value is for instance scale-y-100 and source value is scale-100
-            const matchPercentage = (value.length * 100) / source[i].length;
             if (matchPercentage < 150) {
-              const res = value.startsWith(searchString)
-              // if (value === 'rounded-md') {
-              //   console.group('if (matchPercentage < 150) IN else if (foundInSource < foundInTarget)');
-              //   console.log(`source: ${source[i].length}`, source[i]);
-              //   console.log(`value: ${value.length}`, value);
-              //   console.log(`matchPercentage: ${matchPercentage}`);
-              //   console.log('keepped', !res);
-              //   console.groupEnd();
-              // }
-              return !res;
-            } else {
-              const res = value.startsWith(searchString)
-              // if (value === 'rounded-md') {
-              //   console.group('(else) IN else if (foundInSource < foundInTarget)');
-              //   console.log(`source: ${source[i].length}`, source[i]);
-              //   console.log(`value: ${value.length}`, value);
-              //   console.log(`matchPercentage: ${matchPercentage}`);
-              //   console.log('keepped', !res);
-              //   console.groupEnd();
-              // }
-              return !res;
+              return !value.startsWith(searchString);
             }
           }
           return true;
