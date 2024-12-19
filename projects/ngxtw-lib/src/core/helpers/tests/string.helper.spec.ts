@@ -1,7 +1,7 @@
 import { StringHelper } from '../string.helper';
 
 describe('StringHelper', () => {
-  fit('should resolve values', () => {
+  it('should resolve values', () => {
     const source = ['bg-blue-600', 'text-blue-600', 'ring-blue-600', 'ring-2', 'translate-x-0', 'scale-100', 'p-3.5'];
     const target = ['bg-red-100', 'text-red-600', 'text-sm', 'ring-red-600', 'translate-0', 'translate-y-0',
       'ring-inherit', 'ring-inset', 'rounded-md', 'scale-y-100', 'px-3.5', 'py-2'];
