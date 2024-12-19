@@ -11,22 +11,24 @@ export type IconConfig = {
   size: Partial<{ [key in SizeOption]: string }>,
 }
 
-const IconConfig: IconConfig = {
-  source: {},
-  size: {
-    xs: '*:size-3',
-    sm: '*:size-4',
-    md: '*:size-5',
-    lg: '*:size-6',
-    xl: '*:size-7'
-  },
+export const IconConfig = (): IconConfig => {
+  return {
+    source: {},
+    size: {
+      xs: '*:size-3',
+      sm: '*:size-4',
+      md: '*:size-5',
+      lg: '*:size-6',
+      xl: '*:size-7'
+    },
+  }
 }
 
-export const ICON_CONFIG = InjectionTokenFactory.create(IconConfig, 'ICON_CONFIG');
+export const ICON_CONFIG = InjectionTokenFactory.create(IconConfig(), 'ICON_CONFIG');
 
 export function provideIconConfig(config: Partial<IconConfig> = {}): Provider {
   return {
     provide: ICON_CONFIG,
-    useValue: mergeConfig({ target: IconConfig, source: [config] })
+    useValue: mergeConfig({ target: IconConfig(), source: [config] })
   }
 }

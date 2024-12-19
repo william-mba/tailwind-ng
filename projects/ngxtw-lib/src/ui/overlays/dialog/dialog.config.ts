@@ -29,7 +29,7 @@ const BaseConfig = (): ConfigType => {
     transition: {
       property: 'transition-all',
       behavior: 'transition-discrete',
-      duration: 'duration-300',
+      duration: 'duration-200',
     }
   }
 };
@@ -72,20 +72,21 @@ export const ContainerConfig = (): ContainerConfig => {
     ...BaseConfig(),
     gap: 'gap-9',
     size: 'size-fit',
+    position: 'relative',
     borderRadius: 'rounded-lg',
     overflow: 'overflow-hidden',
     textAlign: 'text-left',
     boxShadow: 'shadow-lg',
     bgColor: 'bg-white',
-    translate: 'translate-y-200',
+    opacity: 'opacity-0',
     dark: {
       bgColor: 'dark:bg-gray-900',
     },
-    inOpen: {
-      translate: 'in-open:translate-y-0',
-    },
     starting: {
-      translate: 'starting:translate-y-200'
+      opacity: 'starting:opacity-0'
+    },
+    inOpen: {
+      opacity: 'in-open:opacity-100',
     },
     display: 'grid',
     padding: 'p-5',

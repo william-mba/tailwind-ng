@@ -12,46 +12,48 @@ export interface ToggleConfig extends ConfigType {
   child: Modifier<'*', ToggleConfig>;
 };
 
-export const ToggleConfig: ToggleConfig = {
-  position: 'relative',
-  cursor: 'cursor-pointer',
-  userSelect: 'select-none',
-  borderWidth: 'border-2',
-  borderRadius: 'rounded-full',
-  borderColor: 'border-transparent',
-  width: 'w-12',
-  height: 'h-6',
-  bgColor: 'bg-gray-200',
-  overflow: 'overflow-hidden',
-  transition: {
-    property: 'transition-colors',
-    duration: 'duration-200',
-  },
-  dark: {
-    bgColor: 'dark:bg-gray-900',
-  },
-  hasChecked: {
-    bgColor: 'has-[:checked]:bg-blue-600',
-  },
-  child: {
-    position: '*:absolute',
-    inset: '*:inset-y-0',
-    height: '*:h-full',
-    width: '*:w-1/2',
-    padding: '*:p-1',
-    userSelect: '*:select-none',
-    pointerEvents: '*:pointer-events-none',
-    alignItems: '*:items-center',
-    justifyContent: '*:justify-center',
-    display: '*:inline-flex',
-    overflow: '*:overflow-hidden',
+export const ToggleConfig = (): ToggleConfig => {
+  return {
+    position: 'relative',
+    cursor: 'cursor-pointer',
+    userSelect: 'select-none',
+    borderWidth: 'border-2',
+    borderRadius: 'rounded-full',
+    borderColor: 'border-transparent',
+    width: 'w-12',
+    height: 'h-6',
+    bgColor: 'bg-gray-200',
+    overflow: 'overflow-hidden',
+    transition: {
+      property: 'transition-colors',
+      duration: 'duration-200',
+    },
+    dark: {
+      bgColor: 'dark:bg-gray-900',
+    },
+    hasChecked: {
+      bgColor: 'has-[:checked]:bg-blue-600',
+    },
+    child: {
+      position: '*:absolute',
+      inset: '*:inset-y-0',
+      height: '*:h-full',
+      width: '*:w-1/2',
+      padding: '*:p-1',
+      userSelect: '*:select-none',
+      pointerEvents: '*:pointer-events-none',
+      alignItems: '*:items-center',
+      justifyContent: '*:justify-center',
+      display: '*:inline-flex',
+      overflow: '*:overflow-hidden',
+    }
   }
 };
 
 /**
  * Toggle component config
  */
-export const TOGGLE_CONFIG = InjectionTokenFactory.create(ToggleConfig, 'TOGGLE_CONFIG');
+export const TOGGLE_CONFIG = InjectionTokenFactory.create(ToggleConfig(), 'TOGGLE_CONFIG');
 
 /**
  * Toggle component config provider
@@ -61,6 +63,6 @@ export const TOGGLE_CONFIG = InjectionTokenFactory.create(ToggleConfig, 'TOGGLE_
 export function provideToggleConfig(config: Partial<ToggleConfig> = {}): Provider {
   return {
     provide: TOGGLE_CONFIG,
-    useValue: mergeConfig({ target: ToggleConfig, source: [config] })
+    useValue: mergeConfig({ target: ToggleConfig(), source: [config] })
   }
 }

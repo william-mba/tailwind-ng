@@ -9,32 +9,34 @@ export type BadgeConfig = {
   theme: ConfigType;
   size: { [key in SizeOption]: string };
 };
-const BadgeConfig: BadgeConfig = {
-  theme: {
-    display: 'inline-flex',
-    gap: 'gap-1',
-    alignItems: 'items-center',
-    justifyContent: 'justify-center',
-    padding: {
-      x: 'px-1.5',
-      y: 'py-0.5'
+export const BadgeConfig = (): BadgeConfig => {
+  return {
+    theme: {
+      display: 'inline-flex',
+      gap: 'gap-1',
+      alignItems: 'items-center',
+      justifyContent: 'justify-center',
+      padding: {
+        x: 'px-1.5',
+        y: 'py-0.5'
+      },
+      fontSize: 'text-xs',
+      fontWeight: 'font-medium'
     },
-    fontSize: 'text-xs',
-    fontWeight: 'font-medium'
-  },
-  size: {
-    xs: 'p-0.5',
-    sm: 'p-1',
-    md: 'p-1.5',
-    lg: 'p-2',
-    xl: 'p-2.5',
+    size: {
+      xs: 'p-0.5',
+      sm: 'p-1',
+      md: 'p-1.5',
+      lg: 'p-2',
+      xl: 'p-2.5',
+    }
   }
 }
 
 /**
  * Badge component config
  */
-export const BADGE_CONFIG = InjectionTokenFactory.create(BadgeConfig, 'BADGE_CONFIG');
+export const BADGE_CONFIG = InjectionTokenFactory.create(BadgeConfig(), 'BADGE_CONFIG');
 
 /**
  * Badge component config provider
@@ -44,6 +46,6 @@ export const BADGE_CONFIG = InjectionTokenFactory.create(BadgeConfig, 'BADGE_CON
 export function provideBadgeConfig(config: Partial<BadgeConfig> = {}): Provider {
   return {
     provide: BADGE_CONFIG,
-    useValue: mergeConfig({ target: BadgeConfig, source: [config] })
+    useValue: mergeConfig({ target: BadgeConfig(), source: [config] })
   }
 }
