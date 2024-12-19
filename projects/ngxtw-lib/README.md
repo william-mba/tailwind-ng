@@ -20,9 +20,11 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 
 The goal of this project is to provide a set of beautiful, fast and reliable Angular components based on Tailwind CSS as the Tailwind team does for React and Vue.
 
-Inspired by [Tailwind UI](https://tailwindui.com/) and [Material Design](https://m3.material.io/), l think NGxTW is the best way to quickly integrate Tailwind CSS components with Angular. From simple buttons to complex components that are super ease to use and customize, NGxTW provides a wide range of production-ready components to help you build your application faster.
+### Challenge
 
-### Why use NGxTW?
+After looking at existing Angular libraries using Tailwind, you will agree with me that NGXTW is the best way to quickly integrate Tailwind CSS components with Angular. From simple buttons to complex components that are ease to use and customize, NGXTW provides a wide range of production-ready UI components to help you build your application even faster.
+
+### Why NGxTW?
 
 - **High-quality**:
   - Beautiful and consistent design.
