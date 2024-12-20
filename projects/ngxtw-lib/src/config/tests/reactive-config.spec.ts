@@ -1,16 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { ReactiveConfig } from './../reactive-config';
-import { AVATAR_CONFIG, AvatarConfig } from '../../ui/elements/avatar/avatar.config';
+import { AvatarConfig, provideAvatarConfig } from '../../ui/elements/avatar/avatar.config';
 
 describe('ReactiveConfig', () => {
   let reactiveConfig: ReactiveConfig;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{
-        provide: AVATAR_CONFIG,
-        useValue: AvatarConfig()
-      }]
+      providers: [provideAvatarConfig()]
     });
     reactiveConfig = TestBed.inject(ReactiveConfig);
   });
