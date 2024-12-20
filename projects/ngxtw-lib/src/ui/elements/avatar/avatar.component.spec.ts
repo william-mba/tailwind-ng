@@ -1,22 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { AvatarComponent } from './avatar.component';
-import { input } from '@angular/core';
+import { Component, input, viewChild } from '@angular/core';
 import { SizeOption } from '../../../core/types/size-options.type';
 import { ClassList } from '../../../config/classlist';
 import { AvatarConfig, provideAvatarConfig } from './avatar.config';
 import { StringHelper } from '../../../core/helpers/string.helper';
 
 describe('AvatarComponent', () => {
-  let component: AvatarComponent;
-  let fixture: ComponentFixture<AvatarComponent>;
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AvatarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
   it('should set size', () => {
+    const fixture = TestBed.createComponent(AvatarComponent);
+    const component = fixture.componentInstance;
+    fixture.detectChanges();
+
     TestBed.runInInjectionContext(() => {
       const xl = input<SizeOption>('xl');
       const lg = input<SizeOption>('lg');
@@ -42,6 +37,10 @@ describe('AvatarComponent', () => {
   });
 
   it('should set classList', () => {
+    const fixture = TestBed.createComponent(AvatarComponent);
+    const component = fixture.componentInstance;
+    fixture.detectChanges();
+
     const config = AvatarConfig();
     const classList = new ClassList();
 
@@ -53,52 +52,116 @@ describe('AvatarComponent', () => {
 
   it('should get reactive config', () => {
     const config = AvatarConfig();
+    const fixture = TestBed.createComponent(AvatarComponent);
+    const component = fixture.componentInstance;
+
+    fixture.detectChanges();
+
     expect(component.config.get<AvatarConfig>('Avatar').value).toEqual(config);
   });
 
   it('should set customizations using class attribute', () => {
-    const customizations = 'rounded-md ring-2 ring-white';
-    const defaultBorderRadius = AvatarConfig().theme.borderRadius || 'rounded-full';
-    component.class = StringHelper.toArray(customizations);
+    const defaultRadius = AvatarConfig().theme.borderRadius!;
+    const defaultRingWidth = AvatarConfig().theme.ringWidth!;
+    const defaultRingColor = AvatarConfig().theme.ringColor!;
+    const customizations = 'ring-2 ring-white rounded-md';
 
-    component.class.forEach(c => {
-      expect(component.classList.value.includes(c)).toBeTrue;
-    });
+    @Component({
+      selector: 'test-app',
+      standalone: true,
+      imports: [AvatarComponent],
+      template: `
+      <img tw-avatar class="ring-2 ring-white rounded-md">
+      `
+    }) class TestApp {
+      avatar = viewChild.required(AvatarComponent);
+    }
 
-    expect(component.classList.value.includes(defaultBorderRadius)).toBeFalse;
+    const fixture = TestBed.createComponent(TestApp);
+    const testApp = fixture.componentInstance;
+    fixture.detectChanges()
+
+    StringHelper.toArray(customizations).forEach(c => {
+      expect(testApp.avatar().classList.value.includes(c)).toBeTrue();
+    })
+
+    expect(testApp.avatar().classList.value.includes(defaultRadius)).toBeFalse();
+    expect(testApp.avatar().classList.value.includes(defaultRingColor)).toBeFalse();
+    expect(testApp.avatar().classList.value.includes(defaultRingWidth)).toBeFalse();
   });
 
   it('should set customizations using dependency injection', () => {
-    const config = AvatarConfig();
-    config.theme.borderRadius = 'rounded-md';
-    config.theme.ringWidth = 'ring-2';
-    config.theme.ringColor = 'ring-white';
+    const defaultRadius = AvatarConfig().theme.borderRadius!;
+    const defaultRingWidth = AvatarConfig().theme.ringWidth!;
+    const defaultRingColor = AvatarConfig().theme.ringColor!;
+    const customizations = 'ring-2 ring-white rounded-md';
 
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
-        provideAvatarConfig(config)
+        provideAvatarConfig({
+          theme: {
+            ringWidth: 'ring-2',
+            ringColor: 'ring-white',
+            borderRadius: 'rounded-md'
+          }
+        })
       ]
     });
-    const defaultBorderRadius = AvatarConfig().theme.borderRadius!;
 
-    expect(component.classList.value.includes(defaultBorderRadius)).toBeFalse;
-    expect(component.classList.value.includes(config.theme.borderRadius)).toBeTrue;
-    expect(component.classList.value.includes(config.theme.ringWidth)).toBeTrue;
-    expect(component.classList.value.includes(config.theme.ringColor)).toBeTrue;
+    @Component({
+      selector: 'test-app',
+      standalone: true,
+      imports: [AvatarComponent],
+      template: ` <img tw-avatar >`
+    }) class TestApp {
+      avatar = viewChild.required(AvatarComponent);
+    }
+
+    const fixture = TestBed.createComponent(TestApp);
+    const testApp = fixture.componentInstance;
+    fixture.detectChanges()
+
+    StringHelper.toArray(customizations).forEach(c => {
+      expect(testApp.avatar().classList.value.includes(c)).toBeTrue();
+    })
+
+    expect(testApp.avatar().classList.value.includes(defaultRadius)).toBeFalse();
+    expect(testApp.avatar().classList.value.includes(defaultRingColor)).toBeFalse();
+    expect(testApp.avatar().classList.value.includes(defaultRingWidth)).toBeFalse();
   });
 
   it('should update classList', () => {
     const newClassList = ['rounded-md', 'ring-2', 'ring-white'];
-    const defaultBorderRadius = AvatarConfig().theme.borderRadius || 'rounded-full';
+    const defaultRadius = AvatarConfig().theme.borderRadius!;
+    const defaultRingWidth = AvatarConfig().theme.ringWidth!;
+    const defaultRingColor = AvatarConfig().theme.ringColor!;
 
-    component.classList.update(newClassList);
+    @Component({
+      selector: 'test-app',
+      standalone: true,
+      imports: [AvatarComponent],
+      template: ` <img tw-avatar > `
+    }) class TestApp {
+      avatar = viewChild.required(AvatarComponent);
+
+      update() {
+        this.avatar().classList.update(newClassList);
+      }
+    }
+
+    const fixture = TestBed.createComponent(TestApp);
+    const testApp = fixture.componentInstance;
+    fixture.detectChanges();
+    testApp.update();
 
     newClassList.forEach(c => {
-      expect(component.classList.value.includes(c)).toBeTrue;
+      expect(testApp.avatar().classList.value.includes(c)).toBeTrue();
     });
 
-    expect(component.classList.value.includes(defaultBorderRadius)).toBeFalse;
+    expect(testApp.avatar().classList.value.includes(defaultRadius)).toBeFalse();
+    expect(testApp.avatar().classList.value.includes(defaultRingColor)).toBeFalse();
+    expect(testApp.avatar().classList.value.includes(defaultRingWidth)).toBeFalse();
   })
 
 });
