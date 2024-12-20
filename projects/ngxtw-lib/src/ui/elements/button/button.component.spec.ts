@@ -65,7 +65,7 @@ describe('ButtonComponent', () => {
     expect(component.variant).toBe(text);
   });
 
-  describe('Variants', () => {
+  describe('Variant', () => {
     describe('Primary button', () => {
       it('should set classList', () => {
         const config = ButtonConfig();
@@ -113,10 +113,6 @@ describe('ButtonComponent', () => {
       });
 
       it('should set customizations using dependency injection', () => {
-        const config = ButtonConfig();
-        config.theme.primary.gap = 'gap-3';
-        config.theme.primary.bgColor = 'bg-red-600';
-        config.theme.primary.borderRadius = 'rounded-full';
         const customizations = 'rounded-full bg-red-600 gap-3';
 
         const defaultGap = ButtonConfig().size.md!.gap!;
@@ -135,7 +131,15 @@ describe('ButtonComponent', () => {
         TestBed.resetTestingModule();
         TestBed.configureTestingModule({
           providers: [
-            provideButtonConfig(config)
+            provideButtonConfig({
+              theme: {
+                primary: {
+                  gap: 'gap-3',
+                  bgColor: 'bg-red-600',
+                  borderRadius: 'rounded-full'
+                }
+              }
+            })
           ]
         });
 
