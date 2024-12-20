@@ -5,6 +5,7 @@ import { BoxShadow } from "../../../core/types/effects/box-shadow.type";
 import { SizeOptions } from "../../../core/types/size-options.type";
 import { Modifier, ConfigType } from "../../../core/types/config.type";
 import { mergeConfig } from "../../../config/config.helper";
+import { DeepPartial } from "../../../core/types/deep-partial.type";
 
 /** Button variant */
 export type ButtonVariant =
@@ -91,7 +92,7 @@ const ButtonBaseConfig = (): ButtonBaseConfig => {
 }
 
 /** Primary button config */
-interface PrimaryButtonConfig extends Partial<ButtonBaseConfig> {
+interface PrimaryButtonConfig extends ButtonBaseConfig {
   focusVisible: Modifier<'focus-visible'>
 };
 
@@ -113,7 +114,7 @@ const PrimaryButtonConfig = (): PrimaryButtonConfig => {
 }
 
 /** Secondary button config */
-type SecondaryButtonConfig = Partial<ButtonBaseConfig>;
+interface SecondaryButtonConfig extends ButtonBaseConfig { };
 const SecondaryButtonConfig = (): SecondaryButtonConfig => {
   return {
     ...ButtonBaseConfig(),
@@ -144,7 +145,7 @@ const SecondaryButtonConfig = (): SecondaryButtonConfig => {
 }
 
 /** Tonal button config */
-type TonalButtonConfig = Partial<ButtonBaseConfig>;
+interface TonalButtonConfig extends ButtonBaseConfig { };
 const TonalButtonConfig = (): TonalButtonConfig => {
   return {
     ...ButtonBaseConfig(),
@@ -158,7 +159,7 @@ const TonalButtonConfig = (): TonalButtonConfig => {
 }
 
 /** Text button config */
-type TextButtonConfig = Partial<ButtonBaseConfig>;
+interface TextButtonConfig extends ButtonBaseConfig { };
 const TextButtonConfig = (): TonalButtonConfig => {
   return {
     ...ButtonBaseConfig(),
@@ -179,16 +180,16 @@ const TextButtonConfig = (): TonalButtonConfig => {
 /** Button config */
 export type ButtonConfig = {
   theme: {
-    primary: Partial<PrimaryButtonConfig>,
-    secondary: Partial<SecondaryButtonConfig>,
-    tonal: Partial<TonalButtonConfig>,
-    text: Partial<TextButtonConfig>,
+    primary: PrimaryButtonConfig,
+    secondary: SecondaryButtonConfig,
+    tonal: TonalButtonConfig,
+    text: TextButtonConfig,
     fab: {
       boxShadow?: BoxShadow
       boxShadowColor?: BoxShadowColor
     }
   },
-  size: Partial<SizeOptions>
+  size: SizeOptions
 }
 
 export const ButtonConfig = (): ButtonConfig => {
@@ -216,7 +217,7 @@ export const BUTTON_CONFIG = InjectionTokenFactory.create(ButtonConfig(), 'BUTTO
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButtonConfig(config: Partial<ButtonConfig> = {}): Provider {
+export function provideButtonConfig(config: DeepPartial<ButtonConfig> = {}): Provider {
   return {
     provide: BUTTON_CONFIG,
     useValue: mergeConfig({ target: ButtonConfig(), source: [config] })
