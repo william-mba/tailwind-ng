@@ -1,4 +1,4 @@
-import { isString } from "./type-check.helper";
+import { TypeCheckHelper } from "./type-check.helper";
 
 interface ResolveOptions {
   /** Whether to keep the class-deletor in the target array. */
@@ -97,12 +97,13 @@ function resolve(target: string[], source: string[], opts?: Partial<ResolveOptio
   return target.concat(temp);
 }
 
-/** Transfroms string value to an array then returns it. Returns an empty array if value is undefined. */
+/** Transfroms string value to an array then returns it.
+ * Returns an empty array if value is undefined. */
 export function stringToArray(value: unknown): string[] {
-  return isString(value) ? (value as string).split(' ') : [];
+  return TypeCheckHelper.isString(value) ? (value as string).split(' ') : [];
 }
 
 export abstract class StringHelper {
-  static resolve = resolve;
-  static toArray = stringToArray;
+  static readonly resolve = resolve;
+  static readonly toArray = stringToArray;
 }

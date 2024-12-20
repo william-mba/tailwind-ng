@@ -1,5 +1,5 @@
 import { ConfigValue } from "../types/config.type";
-import { isObject, isString, isEmptyObject } from "./type-check.helper";
+import { TypeCheckHelper } from "./type-check.helper";
 
 /** Returns the object properties values, including properties values of it child objects in a string.*/
 export function objectToString(obj: ConfigValue): string {
@@ -13,13 +13,13 @@ export function objectToString(obj: ConfigValue): string {
       2. Else, if it is an object, make a recursion on it and store the result in res
   4. Return res.
   */
-  if (!isObject(obj)) return '';
+  if (!TypeCheckHelper.isObject(obj)) return '';
 
   let res = '';
   for (let value of Object.values(obj)) {
-    if (isString(value)) {
+    if (TypeCheckHelper.isString(value)) {
       res += value + ' ';
-    } else if (isObject(value)) {
+    } else if (TypeCheckHelper.isObject(value)) {
       res += objectToString(value);
     }
   }
@@ -38,13 +38,13 @@ export function objectToArray(obj: ConfigValue): string[] {
       2. Else, if it is an object, make a recursion on it and store the result in res
   4. Return res.
   */
-  if (!isObject(obj)) return [];
+  if (!TypeCheckHelper.isObject(obj)) return [];
 
   let res: string[] = [];
   for (let value of Object.values(obj)) {
-    if (isString(value)) {
+    if (TypeCheckHelper.isString(value)) {
       res.push(value);
-    } else if (isObject(value)) {
+    } else if (TypeCheckHelper.isObject(value)) {
       res = res.concat(objectToArray(value));
     }
   }
@@ -75,7 +75,7 @@ export function mergeSimply<T extends ConfigValue>(
 
   for (const obj of source) {
     for (const k in obj) {
-      if (isObject(target[k])) {
+      if (TypeCheckHelper.isObject(target[k])) {
         mergeSimply(target[k], obj[k]);
       } else {
         Object.assign(target, { [k]: obj[k] });
@@ -109,10 +109,10 @@ export function mergeStrictly<T extends ConfigValue>(
    */
 
   for (const obj of source) {
-    if (isEmptyObject(obj)) return obj as T;
+    if (TypeCheckHelper.isEmptyObject(obj)) return obj as T;
 
     for (const k in obj) {
-      if (isObject(target[k])) {
+      if (TypeCheckHelper.isObject(target[k])) {
         Object.assign(target, {
           [k]: mergeStrictly(target[k], obj[k]),
         });
