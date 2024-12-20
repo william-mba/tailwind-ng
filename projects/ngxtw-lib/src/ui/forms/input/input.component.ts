@@ -11,7 +11,7 @@ import { ElementBaseDirective } from '../../../core/directives/element-base.dire
 })
 export class InputComponent extends ElementBaseDirective<HTMLInputElement> {
   protected override onInit(): void {
-    this._config.get<InputConfig>('Input').subscribe(config => {
+    this.config.get<InputConfig>('Input').subscribe(config => {
       this.classList.setFrom(config);
     });
   }

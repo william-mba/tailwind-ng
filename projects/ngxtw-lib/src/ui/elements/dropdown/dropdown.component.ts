@@ -16,6 +16,6 @@ export class DropdownComponent extends PopoverBaseDirective {
 
   protected override onInit(): void {
     this.classList.initFrom(this.position);
-    this._config.get('Dropdown').subscribe(config => this.classList.setFrom(config));
+    this.config.get('Dropdown').subscribe(config => this.classList.setFrom(config));
   }
 }

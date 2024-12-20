@@ -16,7 +16,7 @@ export class IconDirective extends ElementBaseDirective {
   size: SizeOption = 'md';
 
   protected override onInit(): void {
-    this._config.get<IconConfig>('Icon').subscribe((config) => {
+    this.config.get<IconConfig>('Icon').subscribe((config) => {
       this.classList.set([config.size[this.size]!]);
       if (!config.source[this.key]) {
         console.error(new Error(`Icon with key "${this.key}" does not exists in the icons source config.`));

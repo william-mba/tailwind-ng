@@ -15,7 +15,7 @@ import { stringToArray } from "../helpers/string.helper";
   outputs: ['disabled', 'enabled'],
 })
 export abstract class ElementBaseDirective<T extends HTMLElement = HTMLElement> implements BaseElement<T>, OnInit {
-  protected readonly _config = inject(ReactiveConfig)
+  readonly config = inject(ReactiveConfig)
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
   readonly classList = new ClassList();
   class: string[] = [];

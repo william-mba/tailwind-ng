@@ -20,7 +20,7 @@ export class ButtonComponent extends ElementBaseDirective<HTMLButtonElement> {
   variant: ButtonVariant = 'primary';
 
   protected override onInit(): void {
-    this._config.get<ButtonConfig>('Button').subscribe((config) => {
+    this.config.get<ButtonConfig>('Button').subscribe((config) => {
       this.classList.setFrom({
         ...config.size[this.size],
         ...config.theme[this.variant],

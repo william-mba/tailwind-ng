@@ -8,7 +8,7 @@ import { DialogConfig } from "./dialog.config";
 })
 export class DialogBackdrop extends ElementBaseDirective {
   override onInit() {
-    this._config.get<DialogConfig>('ModalDialog').subscribe(config => {
+    this.config.get<DialogConfig>('ModalDialog').subscribe(config => {
       this.classList.setFrom(config.backdrop);
     });
   }

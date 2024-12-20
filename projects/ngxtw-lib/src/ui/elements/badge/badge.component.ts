@@ -14,7 +14,7 @@ export class BadgeComponent extends ElementBaseDirective<HTMLElement> {
   size = input<SizeOption>('md');
 
   protected override onInit(): void {
-    this._config.get<BadgeConfig>('Badge').subscribe(config => {
+    this.config.get<BadgeConfig>('Badge').subscribe(config => {
       this.classList.updateFrom({
         t: config.theme,
         s: config.size[this.size()]

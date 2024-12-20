@@ -28,7 +28,7 @@ export class ToggleComponent extends ElementBaseDirective implements Toggle {
 
   protected override onInit(): void {
     this.nativeElement.focus = () => this.checkbox().nativeElement.focus();
-    this._config.get<ToggleConfig>('Toggle').subscribe(config => {
+    this.config.get<ToggleConfig>('Toggle').subscribe(config => {
       this.classList.setFrom(config);
     });
   }

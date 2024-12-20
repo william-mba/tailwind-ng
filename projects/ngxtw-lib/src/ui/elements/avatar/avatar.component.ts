@@ -15,7 +15,7 @@ export class AvatarComponent extends ElementBaseDirective<HTMLElement> {
   size = input<SizeOption>('md');
 
   protected override onInit(): void {
-    this._config.get<AvatarConfig>('Avatar').subscribe(config => {
+    this.config.get<AvatarConfig>('Avatar').subscribe(config => {
       this.classList.setFrom({ t: config.theme, s: config.size[this.size()] });
     });
   }

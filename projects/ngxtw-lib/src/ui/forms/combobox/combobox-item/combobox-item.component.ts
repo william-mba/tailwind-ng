@@ -27,7 +27,7 @@ export class ComboboxItemComponent extends ElementBaseDirective implements Combo
   }
 
   protected override onInit(): void {
-    this._config.get('ComboboxItem').subscribe(config => {
+    this.config.get('ComboboxItem').subscribe(config => {
       this.classList.setFrom(config);
     });
 

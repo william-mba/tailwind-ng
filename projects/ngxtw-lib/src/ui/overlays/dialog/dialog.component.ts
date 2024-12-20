@@ -31,7 +31,7 @@ export class DialogComponent extends PopoverBaseDirective implements Dialog, Aft
   isAutoClose = false;
 
   protected override onInit(): void {
-    this._config.get<DialogConfig>('ModalDialog').subscribe(config => {
+    this.config.get<DialogConfig>('ModalDialog').subscribe(config => {
       this.classList.setFrom(config.scrim);
     });
   }

@@ -11,7 +11,7 @@ import { ElementBaseDirective } from '../../../core/directives/element-base.dire
 })
 export class ButtonGroupComponent extends ElementBaseDirective {
   protected override onInit(): void {
-    this._config.get<ButtonGroupConfig>('ButtonGroup').subscribe((config) => {
+    this.config.get<ButtonGroupConfig>('ButtonGroup').subscribe((config) => {
       this.classList.setFrom(config);
     });
   }
