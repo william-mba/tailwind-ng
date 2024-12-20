@@ -1,4 +1,4 @@
-<button (click)="toggleTheme()" tw-button variant="secondary" size="xs" class="fixed top-2 right-2 rounded-full">
+<button (click)="toggleTheme()" tw-button variant="secondary" size="xs" class="fixed top-2 right-2 rounded-full z-50">
   Switch theme
 </button>
 
@@ -689,7 +689,7 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomRightDialog [isOpened]="true" class="sm:max-w-sm place-self-end" [isAutoClose]="true"
+  <div tw-dialog #bottomRightDialog [isOpened]="false" class="sm:max-w-sm place-self-end" [isAutoClose]="true"
     (click)="bottomRightDialog.close()">
     <!-- Dialog container -->
     <div tw-dialog-container class="opacity-100 translate-y-200 starting:translate-y-200 in-open:translate-y-0">
