@@ -1,6 +1,7 @@
 import { OutputEmitterRef } from "@angular/core";
 import { ClassList } from "../../config/classlist";
 import { SizeOption } from "../types/size-options.type";
+import { ReactiveConfig } from "../../config/reactive-config";
 
 export interface BaseElement<T extends HTMLElement = HTMLElement> {
   /**
@@ -11,6 +12,10 @@ export interface BaseElement<T extends HTMLElement = HTMLElement> {
    * A reference to the class list instance of the component.
    */
   readonly classList: ClassList;
+  /**
+   * A reference to the reactive config instance.
+   */
+  readonly config: ReactiveConfig;
   readonly isDisabled: boolean;
   readonly nativeElement: T;
   readonly size?: SizeOption
