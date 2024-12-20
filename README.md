@@ -15,40 +15,24 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 
 </div>
 
-### Motivation
+## Motivation
 
-The goal of this project is to provide a set of beautiful, fast and reliable Angular components based on Tailwind CSS as the Tailwind team does for React and Vue.
+The main goal of this project is to provide a set of Angular components based on Tailwind CSS, similar to what the Tailwind team offers for React and Vue.
 
-### Challenge
+## Why NGXTW?
 
-After looking at existing Angular libraries using Tailwind, you will agree with me that NGXTW is the best way to quickly integrate Tailwind CSS components with Angular. From simple buttons to complex components that are ease to use and customize, NGXTW provides a wide range of production-ready UI components to help you build your application even faster.
+- **Beautiful**: Pre-designed components that look great out of the box.
+- **Fast**: Optimized for performance to ensure your application runs smoothly.
+- **Reliable**: Well-tested components to ensure stability and reliability.
 
-### Why NGXTW?
-
-- **High-quality**:
-  - Beautiful and consistent design.
-  - Fully tested to ensure performance and reliability.
-  - Light and dark mode support out of the box.
-- **Lightweight and fast**:
-    - No external dependencies.
-    - Use only Tailwind CSS for animations.
-    - Standalone and tree-shakable components by default.
-- **Fully customizable**:
-  - Dependency injection based configuration.
-  - Support for customs class names from the HTML class attribute.
-  - Built with Tailwind CSS but can be use with any utility-first CSS framework.
-
-### Technologies used
-  - Angular 19
-  - Tailwind CSS 4
-
-### Resources
+## Resources
 
 - [Quick start](https://ngxtw.com/quick-start)
 - [Roadmap](https://www.ngxtw.com/roadmap)
 - [Components](https://www.ngxtw.com/)
 
-### Acknowledgements
+
+## Acknowledgements
 
 NGXTW is made possible thanks to the inspirations from the following projects:
 
