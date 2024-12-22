@@ -11,6 +11,7 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 <br/>
 <br/>
 
+[![Socket Badge](https://socket.dev/api/badge/npm/package/ngxtw)](https://socket.dev/npm/package/ngxtw/overview)
 [![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fngxtw-lib?repoName=William-Mba%2Fngxtw&branchName=master)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=5&repoName=William-Mba%2Fngxtw&branchName=master)
 
 </div>
