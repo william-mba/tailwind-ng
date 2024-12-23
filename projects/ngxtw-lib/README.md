@@ -18,13 +18,13 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 
 ## Motivation
 
-The main goal of this project is to provide a set of Angular components based on Tailwind CSS, similar to what the Tailwind team offers for React and Vue.
+Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, NGXTW aims to provide Tailwind CSS components for Angular, helping Angular developers to rapidly build great UIs with ease at any scale, feeling more joyful and powerful than ever before.
 
 ## Why NGXTW?
 
-- **Beautiful**: Pre-designed components that look great out of the box.
-- **Fast**: Optimized for performance to ensure your application runs smoothly.
-- **Reliable**: Well-tested components to ensure stability and reliability.
+- **Beautiful**: Ready-to-use and fully-customizable components that look great out of the box.
+- **Fast**: Lightweight and optimized for large-scale Angular applications.
+- **Reliable**: Thoughfully-tested to ensure high performance and reliability.
 
 ## Resources
 
