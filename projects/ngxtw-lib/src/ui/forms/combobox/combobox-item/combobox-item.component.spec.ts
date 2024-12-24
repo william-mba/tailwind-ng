@@ -1,34 +1,41 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComboboxItemComponent } from './combobox-item.component';
-import { provideComboboxItemConfig } from './combobox-item.config';
-import { ComboboxItem } from './combobox-item.interface';
 import { ComboboxComponent } from '../combobox.component';
 import { ElementRef } from '@angular/core';
+import { ComboboxItemConfig } from './combobox-item.config';
+import { ReactiveConfig } from '../../../../config/reactive-config';
 
 describe('ComboboxItemComponent', () => {
-  let component: ComboboxItemComponent;
+  let comboboxItem: ComboboxItemComponent;
   let fixture: ComponentFixture<ComboboxItemComponent>;
+  let itemValue = 'dummy value';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      providers: [ComboboxComponent,
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        ComboboxComponent,
+        ReactiveConfig,
         {
-          provide: ComboboxItemComponent,
-          useFactory: () => new ComboboxItemComponent(),
-        }, {
           provide: ElementRef,
           useValue: { nativeElement: document.createElement('tw-combobox-item') }
         }
       ],
-    }).compileComponents();
-
+    });
     fixture = TestBed.createComponent(ComboboxItemComponent);
-    component = fixture.componentInstance;
-    component.value = 'test item';
+    comboboxItem = fixture.componentInstance;
+    comboboxItem.value = itemValue;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(comboboxItem).toBeTruthy();
+  });
+
+  it('should set a value', () => {
+    expect(comboboxItem.value).toBe(itemValue);
+  });
+
+  it('should get config', () => {
+    expect(comboboxItem.config.get('ComboboxItem').value).toEqual(ComboboxItemConfig());
   });
 });
