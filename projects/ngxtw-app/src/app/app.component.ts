@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, ElementRef, TemplateRef, viewChild, viewChildren } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   AvatarComponent,
@@ -13,7 +13,7 @@ import {
   DialogModule,
   ToggleComponent,
   toggleTheme,
-  ClassList
+  DialogBackdrop
 } from 'ngxtw';
 
 
@@ -37,6 +37,7 @@ interface User {
     ToggleComponent,
     ButtonGroupComponent,
     DialogModule,
+    DialogBackdrop,
     ReactiveFormsModule
   ],
   templateUrl: './app.component.html',

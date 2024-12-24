@@ -399,9 +399,9 @@
   <div tw-combobox #combobox2 [isOpened]="false" (valueSelected)="saveValue($event)" [isMultiselect]="true"
     (valueChanged)="filter($event, 2)" (closed)="reset(2)" class="sm:w-80">
     <!-- Label -->
-    <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+    <label for="search-2" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input id="search" [formControl]="combobox2.control" class="pr-12" />
+    <input tw-input id="search-2" [formControl]="combobox2.control" class="pr-12" />
     <!-- Button -->
     <button tw-button variant="text" size="sm"
       class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
