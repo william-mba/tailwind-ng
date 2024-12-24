@@ -50,7 +50,7 @@ describe('AvatarComponent', () => {
     expect(component.classList.value).toEqual(classList.value);
   });
 
-  it('should get reactive config', () => {
+  it('should get config', () => {
     const config = AvatarConfig();
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
