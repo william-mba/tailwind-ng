@@ -16,7 +16,6 @@ import { Dialog } from './dialog.interface';
     </div>
   `,
   host: {
-    '[role]': 'dialog',
     '[attr.class]': 'null',
     '[attr.aria-modal]': 'isOpened',
   },

@@ -5,6 +5,9 @@ import { DialogConfig } from "./dialog.config";
 @Directive({
   selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',
   exportAs: 'twDialogContainer',
+  host: {
+    role: 'dialog',
+  },
 })
 export class DialogContainer extends ElementBaseDirective {
   override onInit() {
