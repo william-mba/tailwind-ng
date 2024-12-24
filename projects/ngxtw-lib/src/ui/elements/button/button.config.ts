@@ -5,7 +5,7 @@ import { BoxShadow } from "../../../core/types/effects/box-shadow.type";
 import { SizeOptions } from "../../../core/types/size-options.type";
 import { Modifier, ConfigType } from "../../../core/types/config.type";
 import { mergeConfig } from "../../../config/config.helper";
-import { DeepPartial } from "../../../core/types/deep-partial.type";
+import { FullyOptional } from "../../../core/types/fully-optional.type";
 
 /** Button variant */
 export type ButtonVariant =
@@ -217,7 +217,7 @@ export const BUTTON_CONFIG = InjectionTokenFactory.create(ButtonConfig(), 'BUTTO
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButtonConfig(config: DeepPartial<ButtonConfig> = {}): Provider {
+export function provideButtonConfig(config: FullyOptional<ButtonConfig> = {}): Provider {
   return {
     provide: BUTTON_CONFIG,
     useValue: mergeConfig({ target: ButtonConfig(), source: [config] })

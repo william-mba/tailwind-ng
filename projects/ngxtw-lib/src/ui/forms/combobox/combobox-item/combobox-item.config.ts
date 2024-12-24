@@ -1,3 +1,4 @@
+import { FullyOptional } from '../../../../core/types/fully-optional.type';
 import { Provider } from "@angular/core";
 import { InjectionTokenFactory } from "../../../../core/shared/injection-token.factory";
 import { ConfigType, Modifier } from "../../../../core/types/config.type";
@@ -7,7 +8,7 @@ export interface ComboboxItemConfig extends ConfigType {
   ariaSelected: Modifier<'aria-selected'>;
 };
 
-export const ComboboxItemConfig = (): ComboboxItemConfig => {
+const BaseConfig = (): ComboboxItemConfig => {
   return {
     height: 'h-fit',
     padding: {
@@ -32,11 +33,15 @@ export const ComboboxItemConfig = (): ComboboxItemConfig => {
   }
 }
 
+export const ComboboxItemConfig = (customization?: FullyOptional<ComboboxItemConfig>): ComboboxItemConfig => {
+  return customization ? mergeConfig({ target: BaseConfig(), source: [customization] }) : BaseConfig();
+}
+
 export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create(ComboboxItemConfig(), 'COMBOBOX_ITEM_CONFIG');
 
-export function provideComboboxItemConfig(config: Partial<ComboboxItemConfig> = {}): Provider {
+export function provideComboboxItemConfig(customization?: FullyOptional<ComboboxItemConfig>): Provider {
   return {
     provide: COMBOBOX_ITEM_CONFIG,
-    useValue: mergeConfig({ target: ComboboxItemConfig(), source: [config] })
+    useValue: ComboboxItemConfig(customization)
   }
 }

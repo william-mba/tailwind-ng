@@ -21,7 +21,6 @@ export const InputConfig = (): InputConfig => {
       x: 'px-3'
     },
     width: 'w-full',
-    boxShadow: 'shadow-sm',
     bgColor: 'bg-transparent',
     dark: {
       ringColor: 'dark:ring-gray-700'
