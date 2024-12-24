@@ -192,7 +192,7 @@ export type ButtonConfig = {
   size: SizeOptions
 }
 
-export const ButtonConfig = (): ButtonConfig => {
+const DefaultConfig = (): ButtonConfig => {
   return {
     theme: {
       primary: PrimaryButtonConfig(),
@@ -207,6 +207,10 @@ export const ButtonConfig = (): ButtonConfig => {
   }
 }
 
+export const ButtonConfig = (customization?: FullyOptional<ButtonConfig>): ButtonConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
+}
+
 /**
  * Button config token
  */
@@ -217,9 +221,9 @@ export const BUTTON_CONFIG = InjectionTokenFactory.create(ButtonConfig(), 'BUTTO
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButtonConfig(config: FullyOptional<ButtonConfig> = {}): Provider {
+export function provideButtonConfig(customization?: FullyOptional<ButtonConfig>): Provider {
   return {
     provide: BUTTON_CONFIG,
-    useValue: mergeConfig({ target: ButtonConfig(), source: [config] })
+    useValue: ButtonConfig(customization)
   }
 };

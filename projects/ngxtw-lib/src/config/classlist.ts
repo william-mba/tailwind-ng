@@ -1,5 +1,5 @@
 import { StringHelper } from "../core/helpers/string.helper";
-import { objectToArray } from "../core/helpers/object.helper";
+import { ObjectHelper } from "../core/helpers/object.helper";
 import { ConfigValue } from "../core/types/config.type";
 
 export interface ClassList {
@@ -72,7 +72,7 @@ export class ClassList implements ClassList {
    * - Calls `this.init` method passing the given `config` converted to `string[]`.
    */
   initFrom<T extends ConfigValue>(config: T): void {
-    this.init(objectToArray(config));
+    this.init(ObjectHelper.toArray(config));
   }
 
   /**
@@ -80,7 +80,7 @@ export class ClassList implements ClassList {
    * - Calls `this.set` method passing the given `config` converted to `string[]`.
    */
   setFrom<T extends ConfigValue>(config: T): void {
-    this.set(objectToArray(config));
+    this.set(ObjectHelper.toArray(config));
   }
 
   /**
@@ -88,6 +88,6 @@ export class ClassList implements ClassList {
    * - Calls `this.update` method passing the given `config` converted to `string[]`.
    */
   updateFrom<T extends ConfigValue>(config: T) {
-    this.update(objectToArray(config));
+    this.update(ObjectHelper.toArray(config));
   }
 }

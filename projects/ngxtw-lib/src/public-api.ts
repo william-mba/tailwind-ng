@@ -7,6 +7,8 @@
 /// Utilities
 export { toggleTheme } from './core/helpers/theme.helper';
 export { mergeConfig } from './config/config.helper';
+export { StringHelper } from './core/helpers/string.helper';
+export { ObjectHelper } from './core/helpers/object.helper';
 /// Configs
 export { ReactiveConfig } from './config/reactive-config';
 export { ClassList } from './config/classlist';

@@ -2,12 +2,13 @@ import { Provider } from "@angular/core";
 import { ConfigType, Modifier } from "../../../core/types/config.type";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { mergeConfig } from "../../../config/config.helper";
+import { FullyOptional } from "../../../core/types/fully-optional.type";
 
 /** Button group config */
 export interface ButtonGroupConfig extends ConfigType {
   child: Modifier<'*'>;
 };
-export const ButtonGroupConfig = (): ButtonGroupConfig => {
+const DefaultConfig = (): ButtonGroupConfig => {
   return {
     display: 'inline-flex',
     boxShadow: 'shadow-sm',
@@ -30,6 +31,10 @@ export const ButtonGroupConfig = (): ButtonGroupConfig => {
   }
 }
 
+export const ButtonGroupConfig = (customization?: FullyOptional<ButtonGroupConfig>): ButtonGroupConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
+}
+
 /**
  * Button group component config
  */
@@ -40,9 +45,9 @@ export const BUTTON_GROUP_CONFIG = InjectionTokenFactory.create(ButtonGroupConfi
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButtonGroupConfig(config: Partial<ButtonGroupConfig> = {}): Provider {
+export function provideButtonGroupConfig(customization?: FullyOptional<ButtonGroupConfig>): Provider {
   return {
     provide: BUTTON_GROUP_CONFIG,
-    useValue: mergeConfig({ target: ButtonGroupConfig(), source: [config] })
+    useValue: ButtonGroupConfig(customization)
   }
 }

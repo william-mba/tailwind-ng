@@ -2,7 +2,7 @@ import { ConfigValue } from "../types/config.type";
 import { TypeCheckHelper } from "./type-check.helper";
 
 /** Returns the object properties values, including properties values of it child objects in a string.*/
-export function objectToString(obj: ConfigValue): string {
+function objectToString(obj: ConfigValue): string {
   /* Given an object with values to extract
 
   1. If the object is undefined, return an empty string
@@ -27,7 +27,7 @@ export function objectToString(obj: ConfigValue): string {
 }
 
 /** Returns the object properties values, including properties values of it child objects in an array.*/
-export function objectToArray(obj: ConfigValue): string[] {
+function objectToArray(obj: ConfigValue): string[] {
   /* Given an object with values to extract
 
   1. If the object is undefined, return an empty []
@@ -57,7 +57,7 @@ export function objectToArray(obj: ConfigValue): string[] {
  * @param source - The source objects to merge
  * @returns The merged object
  */
-export function mergeSimply<T extends ConfigValue>(
+function mergeSimply<T extends ConfigValue>(
   target: T,
   ...source: Partial<ConfigValue>[]
 ): T {
@@ -91,7 +91,7 @@ export function mergeSimply<T extends ConfigValue>(
  * @param source - The source object to merge
  * @returns The merged object
  */
-export function mergeStrictly<T extends ConfigValue>(
+function mergeStrictly<T extends ConfigValue>(
   target: T,
   ...source: Partial<ConfigValue>[]
 ): T {
@@ -122,4 +122,22 @@ export function mergeStrictly<T extends ConfigValue>(
     }
   }
   return target;
+}
+
+/**
+ * Object helper class with static methods for object manipulation.
+ */
+export abstract class ObjectHelper {
+  static readonly toString = objectToString
+  static readonly toArray = objectToArray
+  static readonly merge = {
+    /**
+     * Merges objects from source to target ignoring empty child objects from source.
+     */
+    simple: mergeSimply,
+    /**
+     * Merges objects from source to target including empty child objects from source. If a property exists in both objects, the value from the source object will be used.
+     */
+    strict: mergeStrictly,
+  }
 }

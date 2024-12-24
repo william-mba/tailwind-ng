@@ -3,13 +3,14 @@ import { InjectionTokenFactory } from "../../../core/shared/injection-token.fact
 import { SizeOption } from "../../../core/types/size-options.type";
 import { ConfigType } from "../../../core/types/config.type";
 import { mergeConfig } from "../../../config/config.helper";
+import { FullyOptional } from "../../../core/types/fully-optional.type";
 
 /** @ngxtw Badge config*/
 export type BadgeConfig = {
   theme: ConfigType;
   size: { [key in SizeOption]: string };
 };
-export const BadgeConfig = (): BadgeConfig => {
+const DefaultConfig = (): BadgeConfig => {
   return {
     theme: {
       display: 'inline-flex',
@@ -33,6 +34,10 @@ export const BadgeConfig = (): BadgeConfig => {
   }
 }
 
+export const BadgeConfig = (customization?: FullyOptional<BadgeConfig>): BadgeConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
+}
+
 /**
  * Badge component config
  */
@@ -43,9 +48,9 @@ export const BADGE_CONFIG = InjectionTokenFactory.create(BadgeConfig(), 'BADGE_C
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideBadgeConfig(config: Partial<BadgeConfig> = {}): Provider {
+export function provideBadgeConfig(customization?: FullyOptional<BadgeConfig>): Provider {
   return {
     provide: BADGE_CONFIG,
-    useValue: mergeConfig({ target: BadgeConfig(), source: [config] })
+    useValue: BadgeConfig(customization)
   }
 }

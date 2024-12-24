@@ -2,6 +2,7 @@ import { Provider } from "@angular/core";
 import { Modifier, ConfigType } from "../../../core/types/config.type";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { mergeConfig } from "../../../config/config.helper";
+import { FullyOptional } from "../../../core/types/fully-optional.type";
 
 /** Dropdown config */
 export interface DropdownConfig extends ConfigType {
@@ -9,7 +10,7 @@ export interface DropdownConfig extends ConfigType {
   notOpen: Modifier<'not-open', DropdownConfig>
   starting: Modifier<'starting', DropdownConfig>
 };
-export const DropdownConfig = (): DropdownConfig => {
+const DefaultConfig = (): DropdownConfig => {
   return {
     textAlign: 'text-start',
     padding: 'py-1',
@@ -59,6 +60,10 @@ export const DropdownConfig = (): DropdownConfig => {
   }
 };
 
+export const DropdownConfig = (customization?: FullyOptional<DropdownConfig>): DropdownConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
+};
+
 /**
  * Dropdown config token
  */
@@ -68,10 +73,10 @@ export const DROPDOWN_CONFIG = InjectionTokenFactory.create(DropdownConfig(), 'D
  * @param config The custom config
  * @returns The config provider
  */
-export function provideDropdownConfig(config: Partial<DropdownConfig> = {}): Provider {
+export function provideDropdownConfig(customization?: FullyOptional<DropdownConfig>): Provider {
   return {
     provide: DROPDOWN_CONFIG,
-    useValue: mergeConfig({ target: DropdownConfig(), source: [config] })
+    useValue: DropdownConfig(customization)
   }
 };
 

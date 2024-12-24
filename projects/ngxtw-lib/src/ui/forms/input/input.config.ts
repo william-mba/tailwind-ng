@@ -2,10 +2,11 @@ import { Provider } from '@angular/core';
 import { ConfigType } from '../../../core/types/config.type';
 import { InjectionTokenFactory } from '../../../core/shared/injection-token.factory';
 import { mergeConfig } from '../../../config/config.helper';
+import { FullyOptional } from '../../../core/types/fully-optional.type';
 
 export interface InputConfig extends ConfigType { };
 
-export const InputConfig = (): InputConfig => {
+const DefaultConfig = (): InputConfig => {
   return {
     borderRadius: 'rounded-md',
     borderStyle: 'border-none',
@@ -42,6 +43,9 @@ export const InputConfig = (): InputConfig => {
     }
   }
 };
+export const InputConfig = (customization?: FullyOptional<InputConfig>): InputConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
+};
 
 /**
  * @ngxtw Input component config
@@ -50,12 +54,10 @@ export const INPUT_CONFIG = InjectionTokenFactory.create(InputConfig(), 'INPUT_C
 
 /**
  * Input component config provider
- * @param config The custom config
- * @returns The configured provider
  */
-export function provideInputConfig(config: Partial<InputConfig> = {}): Provider {
+export function provideInputConfig(customization?: FullyOptional<InputConfig>): Provider {
   return {
     provide: INPUT_CONFIG,
-    useValue: mergeConfig({ target: InputConfig(), source: [config] })
+    useValue: InputConfig(customization)
   };
 }

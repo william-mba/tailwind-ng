@@ -9,10 +9,10 @@ import { FullyOptional } from "../../../core/types/fully-optional.type";
  */
 export type IconConfig = {
   source: { [p1: string]: string }
-  size: Partial<{ [key in SizeOption]: string }>,
+  size: { [key in SizeOption]: string },
 }
 
-const Base = (): IconConfig => {
+const DefaultConfig = (): IconConfig => {
   return {
     source: {},
     size: {
@@ -25,15 +25,15 @@ const Base = (): IconConfig => {
   }
 };
 
-export const IconConfig = (config?: FullyOptional<IconConfig>): IconConfig => {
-  return config ? mergeConfig({ target: Base(), source: [config] }) : Base();
+export const IconConfig = (customization?: FullyOptional<IconConfig>): IconConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
 }
 
 export const ICON_CONFIG = InjectionTokenFactory.create(IconConfig(), 'ICON_CONFIG');
 
-export function provideIconConfig(config?: Partial<IconConfig>): Provider {
+export function provideIconConfig(customization?: FullyOptional<IconConfig>): Provider {
   return {
     provide: ICON_CONFIG,
-    useValue: IconConfig(config)
+    useValue: IconConfig(customization)
   }
 }

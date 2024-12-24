@@ -2,6 +2,7 @@ import { Provider } from "@angular/core";
 import { Modifier, ConfigType } from "../../../core/types/config.type";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { mergeConfig } from "../../../config/config.helper";
+import { FullyOptional } from "../../../core/types/fully-optional.type";
 
 /**
  * The configuration for the toggle container.
@@ -12,7 +13,7 @@ export interface ToggleConfig extends ConfigType {
   child: Modifier<'*', ToggleConfig>;
 };
 
-export const ToggleConfig = (): ToggleConfig => {
+const DefaultConfig = (): ToggleConfig => {
   return {
     position: 'relative',
     cursor: 'cursor-pointer',
@@ -49,6 +50,9 @@ export const ToggleConfig = (): ToggleConfig => {
     }
   }
 };
+export const ToggleConfig = (customization?: FullyOptional<ToggleConfig>): ToggleConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
+};
 
 /**
  * Toggle component config
@@ -60,9 +64,9 @@ export const TOGGLE_CONFIG = InjectionTokenFactory.create(ToggleConfig(), 'TOGGL
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideToggleConfig(config: Partial<ToggleConfig> = {}): Provider {
+export function provideToggleConfig(customization?: FullyOptional<ToggleConfig>): Provider {
   return {
     provide: TOGGLE_CONFIG,
-    useValue: mergeConfig({ target: ToggleConfig(), source: [config] })
+    useValue: ToggleConfig(customization)
   }
 }

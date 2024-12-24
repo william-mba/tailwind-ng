@@ -3,7 +3,7 @@ import { DialogConfig, provideDialogConfig } from './dialog.config';
 import { Dialog } from './dialog.interface';
 import { DialogComponent } from './dialog.component';
 
-describe('Modal Dialog Component', () => {
+describe('DialogComponent', () => {
   let component: Dialog;
   let fixture: ComponentFixture<Dialog>;
   const CLASS_NAMES = 'divide-y divide-gray-200 dark:divide-neutral-900';

@@ -3,13 +3,14 @@ import { InjectionTokenFactory } from "../../../core/shared/injection-token.fact
 import { SizeOption } from "../../../core/types/size-options.type";
 import { ConfigType } from "../../../core/types/config.type";
 import { mergeConfig } from "../../../config/config.helper";
+import { FullyOptional } from "../../../core/types/fully-optional.type";
 
 export type AvatarConfig = {
   theme: ConfigType,
   size: { [key in SizeOption]: string }
 };
 
-export const AvatarConfig = (): AvatarConfig => {
+const DefaultConfig = (): AvatarConfig => {
   return {
     theme: {
       display: 'flex',
@@ -28,6 +29,10 @@ export const AvatarConfig = (): AvatarConfig => {
   }
 }
 
+export const AvatarConfig = (customization?: FullyOptional<AvatarConfig>): AvatarConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
+}
+
 /**
  * @ngxtw Avatar config
  */
@@ -37,9 +42,9 @@ export const AVATAR_CONFIG = InjectionTokenFactory.create(AvatarConfig(), 'AVATA
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideAvatarConfig(config: Partial<AvatarConfig> = {}): Provider {
+export function provideAvatarConfig(customization?: FullyOptional<AvatarConfig>): Provider {
   return {
     provide: AVATAR_CONFIG,
-    useValue: mergeConfig({ target: AvatarConfig(), source: [config] })
+    useValue: AvatarConfig(customization)
   }
 }

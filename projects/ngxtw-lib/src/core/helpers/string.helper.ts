@@ -103,6 +103,9 @@ export function stringToArray(value: unknown): string[] {
   return TypeCheckHelper.isString(value) ? (value as string).split(' ') : [];
 }
 
+/**
+ * A helper class for string operations.
+ */
 export abstract class StringHelper {
   static readonly resolve = resolve;
   static readonly toArray = stringToArray;

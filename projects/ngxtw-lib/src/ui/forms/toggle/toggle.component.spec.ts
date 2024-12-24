@@ -4,7 +4,7 @@ import { ToggleComponent } from './toggle.component';
 import { provideToggleConfig } from './toggle.config';
 import { Toggle } from './toggle.interface';
 
-describe('Toggle Component', () => {
+describe('ToggleComponent', () => {
   let component: Toggle;
   let fixture: ComponentFixture<Toggle>;
 

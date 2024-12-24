@@ -2,6 +2,7 @@ import { Provider } from '@angular/core';
 import { InjectionTokenFactory } from '../../../core/shared/injection-token.factory';
 import { ConfigType, Modifier } from '../../../core/types/config.type';
 import { mergeConfig } from '../../../config/config.helper';
+import { FullyOptional } from '../../../core/types/fully-optional.type';
 
 export interface BackdropConfig extends ConfigType {
   inOpen?: Modifier<'in-open'>;
@@ -34,7 +35,7 @@ const BaseConfig = (): ConfigType => {
   }
 };
 
-export const BackdropConfig = (): BackdropConfig => {
+const BackdropConfig = (): BackdropConfig => {
   return {
     ...BaseConfig(),
     opacity: 'opacity-0',
@@ -55,7 +56,7 @@ export const BackdropConfig = (): BackdropConfig => {
   }
 }
 
-export const ScrimConfig = (): ScrimConfig => {
+const ScrimConfig = (): ScrimConfig => {
   return {
     ...BaseConfig(),
     display: 'grid',
@@ -67,7 +68,7 @@ export const ScrimConfig = (): ScrimConfig => {
   }
 }
 
-export const ContainerConfig = (): ContainerConfig => {
+const ContainerConfig = (): ContainerConfig => {
   return {
     ...BaseConfig(),
     gap: 'gap-9',
@@ -93,16 +94,19 @@ export const ContainerConfig = (): ContainerConfig => {
   }
 }
 
-/** Dialog config
- * @param config - Custom configuration
- * @returns  The Popover configuration
- */
-export const DialogConfig = (): DialogConfig => {
+const DefaultConfig = (): DialogConfig => {
   return {
     scrim: ScrimConfig(),
     backdrop: BackdropConfig(),
     container: ContainerConfig(),
   }
+}
+
+/** Dialog config
+ * @returns  The Popover configuration
+ */
+export const DialogConfig = (customization?: FullyOptional<DialogConfig>): DialogConfig => {
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
 }
 
 /**
@@ -112,12 +116,11 @@ export const DIALOG_CONFIG = InjectionTokenFactory.create(DialogConfig(), 'DIALO
 
 /**
  *  Dialog component config provider
- * @param config The custom config
  * @returns The configured provider
  */
-export function provideDialogConfig(config: Partial<DialogConfig> = {}): Provider {
+export function provideDialogConfig(customization?: FullyOptional<DialogConfig>): Provider {
   return {
     provide: DIALOG_CONFIG,
-    useValue: mergeConfig({ target: DialogConfig(), source: [config] })
+    useValue: DialogConfig(customization)
   }
 };

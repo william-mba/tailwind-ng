@@ -1,6 +1,6 @@
 import { ClassList } from '../classlist';
 import { ConfigType } from '../../core/types/config.type';
-import { objectToArray } from '../../core/helpers/object.helper';
+import { ObjectHelper } from '../../core/helpers/object.helper';
 
 describe('ClassList', () => {
   let classList: ClassList;
@@ -75,7 +75,7 @@ describe('ClassList', () => {
         }
       }
     };
-    const configArray = objectToArray(configObj);
+    const configArray = ObjectHelper.toArray(configObj);
 
     classList.initFrom(configObj);
 
@@ -97,7 +97,7 @@ describe('ClassList', () => {
         }
       }
     };
-    const configArray = objectToArray(configObj);
+    const configArray = ObjectHelper.toArray(configObj);
 
     classList.setFrom(configObj);
 
@@ -118,7 +118,7 @@ describe('ClassList', () => {
         }
       }
     };
-    const defaultConfig = objectToArray(configObj);
+    const defaultConfig = ObjectHelper.toArray(configObj);
     classList.setFrom(configObj);
 
     const newConfigObj: ConfigType = {
@@ -134,7 +134,7 @@ describe('ClassList', () => {
       }
     };
 
-    const newConfig = objectToArray(newConfigObj);
+    const newConfig = ObjectHelper.toArray(newConfigObj);
 
     classList.updateFrom(newConfigObj);
 

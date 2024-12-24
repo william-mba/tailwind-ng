@@ -8,7 +8,7 @@ export interface ComboboxItemConfig extends ConfigType {
   ariaSelected: Modifier<'aria-selected'>;
 };
 
-const BaseConfig = (): ComboboxItemConfig => {
+const DefaultConfig = (): ComboboxItemConfig => {
   return {
     height: 'h-fit',
     padding: {
@@ -34,7 +34,7 @@ const BaseConfig = (): ComboboxItemConfig => {
 }
 
 export const ComboboxItemConfig = (customization?: FullyOptional<ComboboxItemConfig>): ComboboxItemConfig => {
-  return customization ? mergeConfig({ target: BaseConfig(), source: [customization] }) : BaseConfig();
+  return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
 }
 
 export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create(ComboboxItemConfig(), 'COMBOBOX_ITEM_CONFIG');

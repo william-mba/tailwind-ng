@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InputComponent } from './input.component';
 import { provideInputConfig } from './input.config';
 
-describe('Input Component', () => {
+describe('InputComponent', () => {
   let component: InputComponent;
   let fixture: ComponentFixture<InputComponent>;
 
@@ -12,7 +12,7 @@ describe('Input Component', () => {
       imports: [InputComponent],
       providers: [provideInputConfig()]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(InputComponent);
     component = fixture.componentInstance;
