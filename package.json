@@ -8,7 +8,7 @@
     "build:lib": "ng build --configuration production --project ngxtw-lib",
     "build:css": "npx @tailwindcss/cli -i projects/ngxtw-app/src/tailwind.css -o projects/ngxtw-app/src/styles.css",
     "watch:lib": "ng build --watch --configuration development --project ngxtw-lib",
-    "test:lib:ci": "ng test --project ngxtw-lib --watch=false --karma-config karma.conf.ci.js --code-coverage",
+    "test:lib:ci": "ng test --project ngxtw-lib --no-watch --no-progress --browsers=ChromeHeadless --karma-config karma.conf.ci.js --code-coverage",
     "watch:app-css": "npx @tailwindcss/cli -i projects/ngxtw-app/src/tailwind.css -o projects/ngxtw-app/src/styles.css --watch",
     "publish": "npm run build:lib && cd dist/ngxtw-lib && npm publish"
   },

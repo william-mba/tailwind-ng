@@ -1,28 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DialogConfig, provideDialogConfig } from './dialog.config';
-import { Dialog } from './dialog.interface';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { DialogConfig } from './dialog.config';
 import { DialogComponent } from './dialog.component';
+import { DialogModule } from './dialog.module';
+import { Component, ElementRef, viewChild } from '@angular/core';
+import { DialogBackdrop } from './dialog-backdrop.directive';
+import { ButtonComponent } from '../../elements/button/button.component';
+import { DialogContainer } from './dialog-container.directive';
+import { ClassList } from '../../../config/classlist';
 
 describe('DialogComponent', () => {
-  let component: Dialog;
-  let fixture: ComponentFixture<Dialog>;
-  const CLASS_NAMES = 'divide-y divide-gray-200 dark:divide-neutral-900';
-  const CustomDialogConfig: Partial<DialogConfig> = {
-    container: {
-      bgColor: 'bg-blue-100',
-      dark: {
-        bgColor: 'dark:bg-blue-800'
-      }
-    }
-  };
+  let component: DialogComponent;
+  let fixture: ComponentFixture<DialogComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [DialogComponent],
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       providers: [
-        provideDialogConfig(CustomDialogConfig)
+        {
+          provide: ElementRef,
+          useValue: {
+            nativeElement: document.createElement('div')
+          }
+        }
       ]
-    }).compileComponents();
+    });
 
     fixture = TestBed.createComponent(DialogComponent);
     component = fixture.componentInstance;
@@ -31,5 +31,194 @@ describe('DialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should open', () => {
+    expect(component.isOpened).toBeFalse();
+    component.open();
+    expect(component.isOpened).toBeTrue();
+  });
+
+  it('should close', () => {
+    expect(component.isOpened).toBeFalse();
+    component.open();
+    expect(component.isOpened).toBeTrue();
+    component.close();
+    expect(component.isOpened).toBeFalse();
+  });
+
+  it('should auto close after specified display duration', fakeAsync(() => {
+    const duration = 1000;
+    fixture = TestBed.createComponent(DialogComponent);
+    component = fixture.componentInstance;
+    component.isAutoClose = true;
+    component.displayDuration = duration;
+    fixture.detectChanges();
+
+    spyOn(component, 'closeAfter').and.callThrough();
+    spyOn(component, 'close').and.callThrough();
+
+    expect(component.isAutoClose).toBeTrue();
+    expect(component.isOpened).toBeFalse();
+    expect(component.displayDuration).toBe(duration);
+
+    component.open();
+    expect(component.isOpened).toBeTrue();
+
+    tick(duration / 2);
+    expect(component.isOpened).toBeTrue();
+
+    tick(duration / 2);
+    expect(component.isOpened).toBeFalse();
+    expect(component.closeAfter).toHaveBeenCalled();
+    expect(component.closeAfter).toHaveBeenCalledWith(duration);
+    expect(component.closeAfter).toHaveBeenCalledTimes(1);
+    expect(component.close).toHaveBeenCalled();
+    expect(component.close).toHaveBeenCalledTimes(1);
+  }, { flush: true }));
+
+  it('should not auto close if isAutoClose is false', fakeAsync(() => {
+    const duration = 1000;
+    fixture = TestBed.createComponent(DialogComponent);
+    component = fixture.componentInstance;
+    component.displayDuration = duration;
+    fixture.detectChanges();
+
+    spyOn(component, 'closeAfter').and.callThrough();
+    spyOn(component, 'close').and.callThrough();
+
+    expect(component.isAutoClose).toBeFalse();
+    expect(component.isOpened).toBeFalse();
+    expect(component.displayDuration).toBe(duration);
+
+    component.open();
+    expect(component.isOpened).toBeTrue();
+
+    tick(duration);
+    expect(component.isOpened).toBeTrue();
+    expect(component.closeAfter).not.toHaveBeenCalled();
+    expect(component.close).not.toHaveBeenCalled();
+  }));
+
+  it('should set transition duration', () => {
+    component.transitionDuration = 500;
+    expect(component.transitionDuration).toBe(500);
+  });
+
+  it('should get config', () => {
+    expect(component.config.get<DialogConfig>('ModalDialog').value).toEqual(DialogConfig());
+  });
+
+  describe('Container', () => {
+    it('should set classList', () => {
+      @Component({
+        imports: [DialogModule, DialogBackdrop, ButtonComponent],
+        template: `
+      <div tw-dialog #dialog (click)="dialog.close()">
+        <tw-dialog-backdrop />
+        <!-- Dialog container -->
+        <div tw-dialog-container>
+          <!-- Dialog content -->
+          <div class="grid gap-3 text-center sm:text-left">
+            <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
+              Out of stock
+            </h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400 text-pretty">
+              The item in your cart is no longer available.
+            </p>
+          </div>
+          <!-- Dialog actions -->
+          <div class="flex justify-end">
+            <button tw-button class="w-full sm:w-fit">OK</button>
+          </div>
+        </div>
+      </div>
+      `
+      }) class TestComponent {
+        container = viewChild(DialogContainer);
+        dialog = viewChild.required(DialogComponent);
+
+        showDialog() {
+          this.dialog().open();
+        }
+
+        closeDialog() {
+          this.dialog().close();
+        }
+      }
+
+      let fixture = TestBed.createComponent(TestComponent);
+      let component: TestComponent = fixture.debugElement.componentInstance;
+      fixture.detectChanges();
+
+      const classList = new ClassList().setFrom(DialogConfig().container);
+      expect(component.container()!.classList.value).toEqual(classList.value);
+    });
+
+    it('should get config', () => {
+      expect(component.config.get<DialogConfig>('ModalDialog').value.container).toEqual(DialogConfig().container);
+    });
+  });
+
+  describe('Backdrop', () => {
+    it('should set classList', () => {
+      @Component({
+        imports: [DialogModule, DialogBackdrop, ButtonComponent],
+        template: `
+      <div tw-dialog #dialog (click)="dialog.close()">
+        <tw-dialog-backdrop />
+        <!-- Dialog container -->
+        <div tw-dialog-container>
+          <!-- Dialog content -->
+          <div class="grid gap-3 text-center sm:text-left">
+            <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
+              Out of stock
+            </h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400 text-pretty">
+              The item in your cart is no longer available.
+            </p>
+          </div>
+          <!-- Dialog actions -->
+          <div class="flex justify-end">
+            <button tw-button class="w-full sm:w-fit">OK</button>
+          </div>
+        </div>
+      </div>
+      `
+      }) class TestComponent {
+        backdrop = viewChild(DialogBackdrop);
+        dialog = viewChild.required(DialogComponent);
+
+        showDialog() {
+          this.dialog().open();
+        }
+
+        closeDialog() {
+          this.dialog().close();
+        }
+      }
+
+      let fixture = TestBed.createComponent(TestComponent);
+      let component: TestComponent = fixture.debugElement.componentInstance;
+      fixture.detectChanges();
+
+      const classList = new ClassList().setFrom(DialogConfig().backdrop);
+      expect(component.backdrop()!.classList.value).toEqual(classList.value);
+    });
+
+    it('should get config', () => {
+      expect(component.config.get<DialogConfig>('ModalDialog').value.backdrop).toEqual(DialogConfig().backdrop);
+    });
+  });
+
+  describe('Scrim', () => {
+    it('should set classList', () => {
+      const classList = new ClassList().setFrom(DialogConfig().scrim);
+      expect(component.classList.value).toEqual(classList.value);
+    });
+
+    it('should get config', () => {
+      expect(component.config.get<DialogConfig>('ModalDialog').value.scrim).toEqual(DialogConfig().scrim);
+    });
   });
 });
