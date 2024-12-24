@@ -9,15 +9,6 @@ import { PopoverBaseDirective } from "../../../core/directives/popover-base.dire
 export interface Combobox extends PopoverBaseDirective {
   readonly valueSeparator: string;
   /**
-   * Event that emits the selected item(s) when a selection occurs.
-   * Emits an empty array if no item is selected.
-   */
-  readonly valueSelected: OutputEmitterRef<string[]>;
-  /**
-   * Event that emits the combobox value when it changes.
-   */
-  readonly valueChanged: OutputEmitterRef<string>;
-  /**
    * Returns true if the combobox is valid. Otherwise, returns false.
    * - A combobox is valid if it control is valid and touched or dirty.
    */
@@ -27,10 +18,6 @@ export interface Combobox extends PopoverBaseDirective {
    * The form control instance of the input element.
    */
   readonly control: FormControl<string>;
-  /**
-   * Emits the Keyboard event corresponding to the key pressed.
-   */
-  readonly keyPressed: OutputEmitterRef<KeyboardEvent>;
   /**
    * Resets the combobox.
    */
@@ -45,4 +32,17 @@ export interface Combobox extends PopoverBaseDirective {
    * @param item The item to check.
    */
   has(item: ComboboxItem): boolean;
+  /**
+   * Event that emits the selected item(s) when a selection occurs.
+   * Emits an empty array if no item is selected.
+   */
+  readonly valueSelected: OutputEmitterRef<string[]>;
+  /**
+   * Event that emits the combobox value when it changes.
+   */
+  readonly valueChanged: OutputEmitterRef<string>;
+  /**
+   * Emits the Keyboard event corresponding to the key pressed.
+   */
+  readonly keyPressed: OutputEmitterRef<KeyboardEvent>;
 }
