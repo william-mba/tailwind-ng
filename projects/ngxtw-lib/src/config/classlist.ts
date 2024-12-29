@@ -3,9 +3,9 @@ import { ObjectHelper } from "../core/helpers/object.helper";
 import { ConfigValue } from "../core/types/config.type";
 
 export interface ClassList {
-  init(value: string[]): ClassList;
-  set(value: string[]): ClassList;
-  update(value: string[]): ClassList;
+  init(value: string | string[]): ClassList;
+  set(value: string | string[]): ClassList;
+  update(value: string | string[]): ClassList;
   initFrom<T extends ConfigValue>(config: T): ClassList;
   setFrom<T extends ConfigValue>(config: T): ClassList;
   updateFrom<T extends ConfigValue>(config: T): ClassList;
@@ -47,7 +47,7 @@ export class ClassList implements ClassList {
    * Initializes the class list.
    * - Resolves class list from given `value` to `this.base` keeping class deletor.
    */
-  init(value: string[]): ClassList {
+  init(value: string | string[]): ClassList {
     this._base = StringHelper.resolve(this._base, value, { keepClassDeletor: true });
     return this;
   }
@@ -56,7 +56,7 @@ export class ClassList implements ClassList {
    * Sets a brand new class list.
    * - Resolves class list from `this.base` to given `value`.
    */
-  set(value: string[]): ClassList {
+  set(value: string | string[]): ClassList {
     this._value = StringHelper.resolve(value, this._base);
     return this;
   }
@@ -65,7 +65,7 @@ export class ClassList implements ClassList {
    * Updates the current class list.
    * - Resolves class list from given `value` to current `this.value`.
    */
-  update(value: string[]): ClassList {
+  update(value: string | string[]): ClassList {
     this._value = StringHelper.resolve(this._value, value);
     return this;
   }
