@@ -32,10 +32,9 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, NGXTW aims t
 - [Roadmap](https://www.ngxtw.com/roadmap)
 - [Components](https://www.ngxtw.com/)
 
-
 ## Acknowledgements
 
 NGXTW is made possible thanks to the inspirations from the following projects:
 
-  - [Tailwind UI](https://tailwindui.com/)
-  - [Material Design](https://m3.material.io/)
+- [Tailwind UI](https://tailwindui.com/)
+- [Material Design](https://m3.material.io/)
