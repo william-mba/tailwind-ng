@@ -32,7 +32,7 @@ function isUndefined(value: any): boolean {
   return typeof value === 'undefined';
 }
 
-export abstract class TypeCheckHelper {
+export abstract class TypeChecker {
   static readonly isObject = isObject;
   static readonly isEmptyObject = isEmptyObject;
   static readonly isFunction = isFunction;

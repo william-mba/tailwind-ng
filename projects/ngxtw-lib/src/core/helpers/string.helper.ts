@@ -1,4 +1,4 @@
-import { TypeCheckHelper } from "./type-check.helper";
+import { TypeChecker } from "./type-check.helper";
 
 interface ResolveOptions {
   /** Whether to keep the class-deletor in the target array. */
@@ -13,7 +13,13 @@ interface ResolveOptions {
  * - Adds to target, source value(s) that does not end by the '-' character.
  * @param resolveOpts The resolve options.
  * @returns An array of resolved strings. */
-function resolve(target: string[], source: string[], opts?: Partial<ResolveOptions>): string[] {
+function resolve(target: string | string[], source: string | string[], opts?: Partial<ResolveOptions>): string[] {
+  if (typeof target === 'string') {
+    target = StringHelper.toArray(target);
+  }
+  if (typeof source === 'string') {
+    source = StringHelper.toArray(source);
+  }
   if (!source || source.length === 0) return target;
   if (!target || target.length === 0) return source;
   if ((!source || source.length === 0) && (!target || target.length === 0)) return [];
@@ -99,8 +105,8 @@ function resolve(target: string[], source: string[], opts?: Partial<ResolveOptio
 
 /** Transfroms string value to an array then returns it.
  * Returns an empty array if value is undefined. */
-export function stringToArray(value: unknown): string[] {
-  return TypeCheckHelper.isString(value) ? (value as string).split(' ') : [];
+function stringToArray(value: unknown, separator: string = ' '): string[] {
+  return TypeChecker.isString(value) ? (value as string).split(separator) : [];
 }
 
 /**
