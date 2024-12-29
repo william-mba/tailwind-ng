@@ -1,3 +1,4 @@
+import { By } from '@angular/platform-browser';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { DialogConfig } from './dialog.config';
 import { DialogComponent } from './dialog.component';
@@ -7,6 +8,8 @@ import { DialogBackdrop } from './dialog-backdrop.directive';
 import { ButtonComponent } from '../../elements/button/button.component';
 import { DialogContainer } from './dialog-container.directive';
 import { ClassList } from '../../../config/classlist';
+import { DialogScrim } from './dialog-scrim.directive';
+import { NgIf } from '@angular/common';
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
@@ -101,8 +104,8 @@ describe('DialogComponent', () => {
   }));
 
   it('should set transition duration', () => {
-    component.transitionDuration = 500;
-    expect(component.transitionDuration).toBe(500);
+    component.animationsDuration = 500;
+    expect(component.animationsDuration).toBe(500);
   });
 
   it('should get config', () => {
@@ -214,7 +217,55 @@ describe('DialogComponent', () => {
   describe('Scrim', () => {
     it('should set classList', () => {
       const classList = new ClassList().setFrom(DialogConfig().scrim);
-      expect(component.classList.value).toEqual(classList.value);
+
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          {
+            provide: ElementRef,
+            useValue: { nativeElement: document.createElement('div') }
+          }
+        ],
+      });
+
+      @Component({
+        selector: 'app-test',
+        imports: [
+          NgIf,
+          ButtonComponent,
+          DialogModule,
+          DialogBackdrop
+        ],
+        template: `
+          <div tw-dialog #centeredDialogWithBackdrop [isOpened]="true" (click)="centeredDialogWithBackdrop.close()">
+            <tw-dialog-backdrop />
+            <!-- Dialog container -->
+            <div tw-dialog-container>
+              <!-- Dialog content -->
+              <div class="grid gap-3 text-center sm:text-left">
+                <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
+                  Out of stock
+                </h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400 text-pretty">
+                  The item in your cart is no longer available.
+                </p>
+              </div>
+              <!-- Dialog actions -->
+              <div class="flex justify-end">
+                <button tw-button class="w-full sm:w-fit">OK</button>
+              </div>
+            </div>
+          </div>
+            `
+      }) class TestComponent { }
+
+      const testComponent = TestBed.createComponent(TestComponent);
+      const scrim = testComponent.debugElement.query(By.directive(DialogScrim)).nativeElement;
+      testComponent.detectChanges();
+
+      classList.value.forEach(className => {
+        expect(scrim.classList.contains(className)).toBeTrue();
+      });
     });
 
     it('should get config', () => {
