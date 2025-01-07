@@ -4,6 +4,7 @@
 
 // Core
 // -----
+export { OptionDirective } from './core/directives/option.directive';
 /// Utilities
 export { toggleTheme } from './core/helpers/theme.helper';
 export { mergeConfig } from './config/config.helper';
@@ -39,8 +40,9 @@ export { type IconConfig, provideIconConfig } from './ui/elements/icon/icon.conf
 // Overlays
 // --------
 /// Modal Dialog
-export { type Dialog } from './ui/overlays/dialog/dialog.interface';
+export * from './ui/overlays/dialog/dialog.interface';
 export { DialogComponent } from './ui/overlays/dialog/dialog.component';
+export { DialogScrim } from './ui/overlays/dialog/dialog-scrim.directive';
 export { DialogContainer } from './ui/overlays/dialog/dialog-container.directive';
 export { DialogBackdrop } from './ui/overlays/dialog/dialog-backdrop.directive';
 export { type DialogConfig, provideDialogConfig } from './ui/overlays/dialog/dialog.config';
