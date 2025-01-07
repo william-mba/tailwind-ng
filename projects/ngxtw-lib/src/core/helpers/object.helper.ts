@@ -134,10 +134,10 @@ export abstract class ObjectHelper {
     /**
      * Merges objects from source to target ignoring empty child objects from source.
      */
-    simple: mergeSimply,
+    simply: mergeSimply,
     /**
      * Merges objects from source to target including empty child objects from source. If a property exists in both objects, the value from the source object will be used.
      */
-    strict: mergeStrictly,
+    strictly: mergeStrictly,
   }
 }

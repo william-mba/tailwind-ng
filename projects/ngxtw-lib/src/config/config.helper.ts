@@ -9,7 +9,7 @@ import { FullyOptional } from "../core/types/fully-optional.type";
  */
 export function mergeConfig<T extends ConfigValue>(arg: { target: T, source: FullyOptional<T>[], strict?: boolean }): T {
   if (arg.strict) {
-    return ObjectHelper.merge.strict(arg.target, ...arg.source);
+    return ObjectHelper.merge.strictly(arg.target, ...arg.source);
   }
-  return ObjectHelper.merge.simple(arg.target, ...arg.source);
+  return ObjectHelper.merge.simply(arg.target, ...arg.source);
 }
