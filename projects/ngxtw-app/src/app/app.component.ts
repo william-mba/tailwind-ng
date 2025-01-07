@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, ElementRef, inject, viewChild } from '@angular/core';
+import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   AvatarComponent,
   BadgeComponent,
@@ -13,7 +13,9 @@ import {
   DialogModule,
   ToggleComponent,
   toggleTheme,
-  DialogBackdrop
+  DialogBackdrop,
+  OptionDirective,
+  ClassList
 } from 'ngxtw';
 
 
@@ -22,6 +24,8 @@ interface User {
   name: string;
   status?: 'active' | 'inactive';
 }
+
+type Viewport = 'mobile' | 'tablet' | 'desktop';
 
 @Component({
   selector: 'app-root',
@@ -38,12 +42,34 @@ interface User {
     ButtonGroupComponent,
     DialogModule,
     DialogBackdrop,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OptionDirective
   ],
   templateUrl: './app.component.html',
   styles: [],
 })
 export class AppComponent {
+  private _formBuilder = inject(NonNullableFormBuilder);
+
+  isInvalid = (control: AbstractControl): boolean => control.invalid;
+  isTouchedAndInvalid = (control: AbstractControl): boolean => control.touched && control.invalid;
+
+  email = this._formBuilder.control('williammba', Validators.email);
+
+  ngOnInit() {
+    toggleTheme();
+  }
+
+  viewports = {
+    mobile: '375px',
+    tablet: '768px',
+    desktop: '1024px',
+  };
+
+  resize(el: HTMLElement, vp: Viewport) {
+    el.style.width = this.viewports[vp];
+  }
+
   get _users(): User[] {
     return [
       {
@@ -176,10 +202,6 @@ export class AppComponent {
   users4: User[] = this._users;
 
   backdrop: string[] = []
-
-  ngOnInit() {
-    toggleTheme();
-  }
 
   toggleTheme() {
     toggleTheme();

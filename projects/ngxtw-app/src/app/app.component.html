@@ -177,84 +177,84 @@
 <!-- Dropdowns -->
 <div class="grid place-items-center justify-end sm:flex sm:flex-wrap gap-8 gap-x-36 p-8 mb-96 max-w-6xl mx-auto">
   <div>
-    <button tw-button size="sm" variant="secondary" (click)="dropdown.toggle()">
+    <button tw-button size="sm" variant="secondary" [popup]="dropdown">
       Options <tw-icon key="chevron-down" class="text-gray-500" />
     </button>
     <div class="relative">
-      <ul tw-dropdown #dropdown [isOpened]="true" (click)="dropdown.close()" class="*:px-4 *:py-2">
-        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Account settings </li>
-        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Support </li>
-        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> License </li>
-        <li class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Sign out </li>
+      <ul tw-dropdown #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2">
+        <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Account settings </li>
+        <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Support </li>
+        <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> License </li>
+        <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Sign out </li>
       </ul>
     </div>
   </div>
 
   <div>
-    <button tw-button size="sm" variant="secondary" (click)="dropdown2.toggle()">
+    <button tw-button size="sm" variant="secondary" [popup]="dropdown2">
       Options <tw-icon key="chevron-down" class="text-gray-500" />
     </button>
     <div class="relative">
-      <tw-dropdown #dropdown2 [isOpened]="true" (click)="dropdown2.close()"
+      <tw-dropdown #dropdown2 (click)="dropdown2.close()"
         class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50">
-        <ul class="*:px-4 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Edit</li>
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Duplicate</li>
+        <ul tw-option class="*:px-4 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Edit</li>
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Duplicate</li>
         </ul>
-        <ul class="*:px-4 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Archive</li>
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Move</li>
+        <ul tw-option class="*:px-4 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Archive</li>
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Move</li>
         </ul>
-        <ul class="*:px-4 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Share</li>
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Add to favorites</li>
+        <ul tw-option class="*:px-4 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Share</li>
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Add to favorites</li>
         </ul>
-        <ul class="*:px-4 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Delete</li>
+        <ul tw-option class="*:px-4 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Delete</li>
         </ul>
       </tw-dropdown>
     </div>
   </div>
 
   <div>
-    <button tw-button size="sm" variant="secondary" (click)="dropdown3.toggle()">
+    <button tw-button size="sm" variant="secondary" [popup]="dropdown3">
       Options <tw-icon key="chevron-down" class="text-gray-500" />
     </button>
     <div class="relative">
-      <tw-dropdown #dropdown3 [isOpened]="true" (click)="dropdown3.close()"
+      <tw-dropdown #dropdown3 (click)="dropdown3.close()"
         class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50">
-        <ul class="*:px-3 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+        <ul tw-option class="*:px-3 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
             <tw-icon size="sm" class="opacity-50" key="pencil-square" />
             Edit
           </li>
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
             <tw-icon size="sm" class="opacity-50" key="document-duplicate" />
             Duplicate
           </li>
         </ul>
-        <ul class="*:px-3 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+        <ul tw-option class="*:px-3 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
             <tw-icon size="sm" class="opacity-50" key="archive-box" />
             Archive
           </li>
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
             <tw-icon size="sm" class="opacity-50" key="arrow-right-circle" />
             Move
           </li>
         </ul>
-        <ul class="*:px-3 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+        <ul tw-option class="*:px-3 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
             <tw-icon size="sm" class="opacity-50" key="share" />
             Share
           </li>
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
             <tw-icon size="sm" class="opacity-50" key="star" />
             Add to favorites
           </li>
         </ul>
-        <ul class="*:px-3 *:py-2">
-          <li class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+        <ul tw-option class="*:px-3 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
             <tw-icon size="sm" class="opacity-50" key="strash" />
             Delete
           </li>
@@ -348,7 +348,8 @@
   </tw-toggle>
 </div>
 
-<div class="grid place-items-center p-8 mb-16">
+<!-- Inputs -->
+<div class="grid gap-8 place-items-center p-8 mb-16">
   <div>
     <label for="price" class="block text-sm mb-2 font-medium">Price</label>
     <div class="relative">
@@ -369,24 +370,63 @@
       </div>
     </div>
   </div>
+  <div>
+    <label for="email" class="block text-sm mb-2 font-medium">
+      Email
+    </label>
+    <div class="relative">
+      <input tw-input type="email" name="email" id="email" [formControl]="email" class="sm:w-80 pr-10"
+        placeholder="you@example.com" />
+      <div class="absolute inset-y-0 right-3 flex items-center text-red-600/80">
+        <tw-icon *ngIf="isInvalid(email)" key="exclamation-circle" source="heroicons" />
+      </div>
+    </div>
+    <div *ngIf="isInvalid(email)" class="max-w-xl text-sm mt-2 text-red-600/90 dark:text-red-500/90">
+      Not a valid email address.
+    </div>
+  </div>
+  <div class="grid text-sm">
+    <p class="font-semibold">Notifications</p>
+    <p class="mt-2">How do you prefer to receive notifications? </p>
+    <div class="grid gap-4 mt-6">
+      <div class="flex items-center gap-4">
+        <input type="radio"
+          class="relative size-4 appearance-none rounded-full border-1 forced-colors:appearance-auto before:forced-colors:hidden disabled:bg-gray-100 disabled:border-gray-300 disabled:before:bg-gray-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 border-gray-300 dark:border-gray-700 before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-blue-600 checked:bg-blue-600"
+          id="email-notification" />
+        <label for="email-notification">Email</label>
+      </div>
+      <div class="flex items-center gap-4">
+        <input type="radio"
+          class="relative size-4 appearance-none rounded-full border-1 forced-colors:appearance-auto before:forced-colors:hidden disabled:bg-gray-100 disabled:border-gray-300 disabled:before:bg-gray-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 border-gray-300 dark:border-gray-700 before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-blue-600 checked:bg-blue-600"
+          id="sms" />
+        <label for="sms">Phone (SMS)</label>
+      </div>
+      <div class="flex items-center gap-4">
+        <input type="radio"
+          class="relative size-4 appearance-none rounded-full border-1 forced-colors:appearance-auto before:forced-colors:hidden disabled:bg-gray-100 disabled:border-gray-300 disabled:before:bg-gray-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 border-gray-300 dark:border-gray-700 before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-blue-600 checked:bg-blue-600"
+          id="push-notification" />
+        <label for="push-notification">Push notification</label>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="grid sm:grid-cols-2 gap-y-72 sm:gap-6 place-items-center mb-72 w-fit mx-auto">
   <!-- Combobox -->
-  <div tw-combobox #combobox [isOpened]="false" (valueSelected)="saveValue($event)" (valueChanged)="filter($event)"
-    (closed)="reset()" class="sm:w-80">
+  <div tw-combobox #combobox (valueSelected)="saveValue($event)" (valueChanged)="filter($event)" class="sm:w-80">
     <!-- Label -->
     <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
+    <input tw-input autocomplete="off" id="search" [formControl]="combobox.control" class="pr-14" />
     <!-- Button -->
-    <button tw-button variant="text" size="sm"
-      class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-      <tw-icon *ngIf="combobox.isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
-      <tw-icon (click)="combobox.toggle()" key="chevron-up-down" />
+    <button tw-button variant="text" size="sm" [popup]="combobox.popup()"
+      class="absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+      <tw-icon *ngIf="combobox.popup().isOpened && combobox.isValid" (click)="combobox.reset()" size="sm"
+        key="x-mark" />
+      <tw-icon key="chevron-up-down" />
     </button>
     <!-- Dropdown -->
-    <tw-dropdown [isOpened]="combobox.isOpened" class="w-full overflow-y-auto max-h-56 duration-0">
+    <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56 duration-0">
       @for (user of users1; track user.name) {
       <div tw-combobox-item #item [value]="user.name">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
@@ -396,59 +436,59 @@
     </tw-dropdown>
   </div>
   <!-- Combobox -->
-  <div tw-combobox #combobox2 [isOpened]="false" (valueSelected)="saveValue($event)" [isMultiselect]="true"
-    (valueChanged)="filter($event, 2)" (closed)="reset(2)" class="sm:w-80">
+  <div tw-combobox #combobox2 (valueSelected)="saveValue($event)" [isMultiselect]="true"
+    (valueChanged)="filter($event, 2)" class="sm:w-80">
     <!-- Label -->
     <label for="search-2" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input id="search-2" [formControl]="combobox2.control" class="pr-12" />
+    <input tw-input autocomplete="off" id="search-2" [formControl]="combobox2.control" class="pr-14" />
     <!-- Button -->
-    <button tw-button variant="text" size="sm"
-      class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-      <tw-icon *ngIf="combobox2.isOpened && combobox2.isValid" (click)="combobox2.reset()" size="sm" key="x-mark" />
-      <tw-icon (click)="combobox2.toggle()" key="chevron-up-down" />
+    <button tw-button variant="text" size="sm" [popup]="combobox2.popup()"
+      class="absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+      <tw-icon *ngIf="combobox2.popup().isOpened && combobox2.isValid" (click)="combobox2.reset()" size="sm"
+        key="x-mark" />
+      <tw-icon key="chevron-up-down" />
     </button>
     <!-- Dropdown -->
-    <tw-dropdown [isOpened]="combobox2.isOpened" class="w-full overflow-y-auto max-h-56 duration-0">
+    <div tw-dropdown (closed)="reset(2)" class="w-full overflow-y-auto max-h-56 duration-0 focus:border-4">
       @for (user of users2; track user.name) {
-      <div tw-combobox-item #item [value]="user.name">
+      <div tw-combobox-item #item [value]="user.name" class="focus-visible:bg-blue-600">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
         <span>{{ user.name }}</span>
       </div>
       }
-    </tw-dropdown>
+    </div>
   </div>
 </div>
 
 <div class="grid gap-6 place-content-center p-8 relative w-fit grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mx-auto">
   <!-- Trigger button -->
-  <button tw-button variant="secondary" (click)="centeredDialogWithBackdrop.open()">
+  <button tw-button variant="secondary" [popup]="centeredDialogWithBackdrop">
     View center dialog with backdrop
   </button>
-  <button tw-button variant="secondary" (click)="bottomLeftDialog.open()">
+  <button tw-button variant="secondary" [popup]="bottomLeftDialog">
     View bottom-left notification dialog
   </button>
-  <button tw-button variant="secondary" (click)="bottomRightDialog.open()">
+  <button tw-button variant="secondary" [popup]="bottomRightDialog">
     View bottom-right notification dialog
   </button>
-  <button tw-button variant="secondary" (click)="dialogWithIcon.open()">
+  <button tw-button variant="secondary" [popup]="dialogWithIcon">
     View dialog with icon
   </button>
-  <button tw-button variant="secondary" (click)="dialogWithSingleAction.open()">
+  <button tw-button variant="secondary" [popup]="dialogWithSingleAction">
     View dialog with single action
   </button>
-  <button tw-button variant="secondary" (click)="dialogWithWideButtons.open()">
+  <button tw-button variant="secondary" [popup]="dialogWithWideButtons">
     View dialog with wide buttons
   </button>
-  <button tw-button variant="secondary" (click)="dialogWithScrollableContent.open()">
+  <button tw-button variant="secondary" [popup]="dialogWithScrollableContent">
     View dialog with scrollable content
   </button>
-  <button tw-button variant="secondary" (click)="dialogWithLeftAlignedButtons.open()">
+  <button tw-button variant="secondary" [popup]="dialogWithLeftAlignedButtons">
     View dialog with left-aligned buttons
   </button>
 
-  <div tw-dialog #dialogWithLeftAlignedButtons [isOpened]="false" class="sm:max-w-lg"
-    (click)="dialogWithLeftAlignedButtons.close()">
+  <div tw-dialog #dialogWithLeftAlignedButtons (click)="dialogWithLeftAlignedButtons.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container>
@@ -466,7 +506,8 @@
           </p>
           <!-- Dialog actions -->
           <div class="grid sm:flex gap-4 mt-5">
-            <button tw-button class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90">Deactivate</button>
+            <button tw-button
+              class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-offset-2 focus:outline-red-600">Deactivate</button>
             <button tw-button class="w-full sm:w-fit" variant="secondary">Cancel</button>
           </div>
         </div>
@@ -474,8 +515,7 @@
     </div>
   </div>
 
-  <div tw-dialog #dialogWithScrollableContent [isOpened]="false" class="sm:max-w-lg"
-    (click)="dialogWithScrollableContent.close()">
+  <div tw-dialog #dialogWithScrollableContent (click)="dialogWithScrollableContent.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container>
@@ -485,7 +525,7 @@
           Install Angular
         </h1>
         <!-- Scrollable content -->
-        <div class="grid gap-2 pr-2 overflow-y-auto overscroll-contain max-h-96">
+        <div class="grid gap-2 pr-2 overflow-y-auto overscroll-contain max-h-72">
           <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200">
             Develop across all platforms
           </h2>
@@ -576,10 +616,10 @@
     </div>
   </div>
 
-  <div tw-dialog #dialogWithWideButtons [isOpened]="false" class="sm:max-w-sm" (click)="dialogWithWideButtons.close()">
+  <div tw-dialog #dialogWithWideButtons (click)="dialogWithWideButtons.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container>
+    <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
         <tw-icon key="check-thin" class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto" />
@@ -601,11 +641,10 @@
     </div>
   </div>
 
-  <div tw-dialog #dialogWithSingleAction [isOpened]="false" class="sm:max-w-sm self-end sm:self-center"
-    (click)="dialogWithSingleAction.close()">
+  <div tw-dialog #dialogWithSingleAction (click)="dialogWithSingleAction.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container>
+    <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
         <tw-icon key="check-thin" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
@@ -624,7 +663,7 @@
     </div>
   </div>
 
-  <div tw-dialog #dialogWithIcon [isOpened]="false" class="sm:max-w-lg" (click)="dialogWithIcon.close()">
+  <div tw-dialog #dialogWithIcon (click)="dialogWithIcon.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container>
@@ -644,7 +683,8 @@
       </div>
       <!-- Dialog actions -->
       <div class="flex justify-items-end flex-col gap-4 sm:flex-row-reverse">
-        <button tw-button class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90">Deactivate</button>
+        <button tw-button
+          class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 focus:outline-offset-2 active:bg-red-700/90 focus:outline-red-600/90">Deactivate</button>
         <button tw-button class="w-full sm:w-fit" variant="secondary">Cancel</button>
       </div>
     </div>
@@ -653,13 +693,13 @@
   <div tw-dialog #centeredDialogWithBackdrop (click)="centeredDialogWithBackdrop.close()">
     <tw-dialog-backdrop />
     <!-- Dialog container -->
-    <div tw-dialog-container>
+    <div tw-dialog-container class="sm:max-w-fit">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
           Out of stock
         </h1>
-        <p class="text-sm text-gray-600 dark:text-gray-400 text-pretty">
+        <p class="text-sm text-gray-600 dark:text-gray-400">
           The item in your cart is no longer available.
         </p>
       </div>
@@ -670,8 +710,7 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomLeftDialog [isOpened]="false" class="sm:max-w-sm place-self-start self-end" [isAutoClose]="true"
-    (click)="bottomLeftDialog.close()">
+  <div tw-dialog #bottomLeftDialog class="place-self-start self-end" (click)="bottomLeftDialog.close()">
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -689,10 +728,11 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomRightDialog [isOpened]="false" class="sm:max-w-sm place-self-end" [isAutoClose]="true"
+  <div tw-dialog #bottomRightDialog [autoClose]="true" class="place-self-end self-end"
     (click)="bottomRightDialog.close()">
     <!-- Dialog container -->
-    <div tw-dialog-container class="opacity-100 translate-y-200 starting:translate-y-200 in-open:translate-y-0">
+    <div tw-dialog-container
+      class="place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
@@ -709,6 +749,17 @@
   </div>
 </div>
 
+<!-- <div class="grid mx-auto gap-3 w-fit">
+  <div
+    class="cursor-pointer text-xs p-1 *:p-1 *:px-2 *:hover:bg-gray-200 dark:*:hover:bg-gray-800 *:active:bg-gray-300 dark:*:active:bg-gray-600 *:rounded-full shadow-xs backdrop-blur-xs rounded-full ring-inset ring-1 ring-gray-300 dark:ring-gray-800 flex items-center *:transition-all *:duration-200">
+    <span (click)="resize(iframe, 'mobile')"> Mobile </span>
+    <span (click)="resize(iframe, 'tablet')"> Tablet </span>
+    <span (click)="resize(iframe, 'desktop')"> Deskstop </span>
+  </div>
+  <iframe #iframe src="/" [width]="viewports.tablet"
+    class="transition-all duration-300 rounded-xl size-[600px] overscroll-contain">
+  </iframe>
+</div> -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
 
 </div>
