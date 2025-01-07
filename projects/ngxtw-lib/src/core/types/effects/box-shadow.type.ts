@@ -1,6 +1,6 @@
 export type BoxShadow =
+  | 'shadow-xs'
   | 'shadow-sm'
-  | 'shadow'
   | 'shadow-md'
   | 'shadow-lg'
   | 'shadow-xl'
