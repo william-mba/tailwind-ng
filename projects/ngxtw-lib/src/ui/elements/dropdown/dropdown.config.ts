@@ -18,6 +18,7 @@ const DefaultConfig = (): DropdownConfig => {
     minWidth: 'min-w-52',
     userSelect: 'select-none',
     overflow: 'overflow-hidden',
+    overscroll: 'overscroll-contain',
     transformOrigin: 'origin-top',
     transition: {
       property: 'transition-all',

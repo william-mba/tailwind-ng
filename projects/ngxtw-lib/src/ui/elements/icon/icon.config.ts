@@ -3,6 +3,7 @@ import { SizeOption } from "../../../core/types/size-options.type";
 import { mergeConfig } from "../../../config/config.helper";
 import { InjectionTokenFactory } from "../../../core/shared/injection-token.factory";
 import { FullyOptional } from "../../../core/types/fully-optional.type";
+import { ConfigType } from "../../../core/types/config.type";
 
 /**
  * Icon config
@@ -10,6 +11,7 @@ import { FullyOptional } from "../../../core/types/fully-optional.type";
 export type IconConfig = {
   source: { [p1: string]: string }
   size: { [key in SizeOption]: string },
+  theme: ConfigType
 }
 
 const DefaultConfig = (): IconConfig => {
@@ -22,6 +24,13 @@ const DefaultConfig = (): IconConfig => {
       lg: '*:size-6',
       xl: '*:size-7'
     },
+    theme: {
+      focus: {
+        border: 'focus:outline',
+        outlineWidth: 'focus:outline-2',
+        outlineColor: 'focus:outline-gray-500/80',
+      }
+    }
   }
 };
 

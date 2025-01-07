@@ -3,7 +3,7 @@ import { InjectionTokenFactory } from "../../../core/shared/injection-token.fact
 import { BoxShadowColor } from "../../../core/types/effects/box-shadow-color.type";
 import { BoxShadow } from "../../../core/types/effects/box-shadow.type";
 import { SizeOptions } from "../../../core/types/size-options.type";
-import { Modifier, ConfigType } from "../../../core/types/config.type";
+import { ConfigType } from "../../../core/types/config.type";
 import { mergeConfig } from "../../../config/config.helper";
 import { FullyOptional } from "../../../core/types/fully-optional.type";
 
@@ -71,13 +71,13 @@ const ButtonSizeConfig = (): SizeOptions => {
 }
 
 /** Base button config */
-type ButtonBaseConfig = ConfigType
+interface ButtonBaseConfig extends ConfigType { }
 const ButtonBaseConfig = (): ButtonBaseConfig => {
   return {
     display: 'inline-flex',
     alignItems: 'items-center',
     justifyContent: 'justify-center',
-    boxShadow: 'shadow-sm',
+    boxShadow: 'shadow-xs',
     textWrap: 'text-nowrap',
     userSelect: 'select-none',
     cursor: 'cursor-pointer',
@@ -87,14 +87,16 @@ const ButtonBaseConfig = (): ButtonBaseConfig => {
     disabled: {
       opacity: 'disabled:opacity-50',
       cursor: 'disabled:cursor-not-allowed'
+    },
+    transition: {
+      property: 'transition-colors',
+      duration: 'duration-100'
     }
   }
 }
 
 /** Primary button config */
-interface PrimaryButtonConfig extends ButtonBaseConfig {
-  focusVisible: Modifier<'focus-visible'>
-};
+interface PrimaryButtonConfig extends ButtonBaseConfig { };
 
 const PrimaryButtonConfig = (): PrimaryButtonConfig => {
   return {
@@ -104,11 +106,14 @@ const PrimaryButtonConfig = (): PrimaryButtonConfig => {
     hover: {
       bgColor: 'hover:bg-blue-600/90'
     },
-    focusVisible: {
-      border: 'focus-visible:outline',
-      outlineWidth: 'focus-visible:outline-2',
-      outlineColor: 'focus-visible:outline-blue-600',
-      outlineOffsetWidth: 'focus-visible:outline-offset-2'
+    focus: {
+      border: 'focus:outline',
+      outlineWidth: 'focus:outline-2',
+      outlineColor: 'focus:outline-blue-600',
+      outlineOffsetWidth: 'focus:outline-offset-2'
+    },
+    active: {
+      bgColor: 'active:bg-blue-700/90'
     }
   }
 }
@@ -128,17 +133,27 @@ const SecondaryButtonConfig = (): SecondaryButtonConfig => {
       bgColor: 'hover:bg-gray-300/30'
     },
     focus: {
-      ringColor: 'focus:ring-gray-400'
+      ringColor: 'focus:ring-gray-400/90',
+      border: 'focus:outline',
+      ringWidth: 'focus:ring-0',
+      outlineWidth: 'focus:outline-2',
+      outlineColor: 'focus:outline-gray-500/80',
+    },
+    active: {
+      bgColor: 'active:bg-gray-300/60'
     },
     dark: {
       bgColor: 'dark:bg-inherit',
       textColor: 'dark:text-gray-200',
-      ringColor: 'dark:ring-gray-700',
+      ringColor: 'dark:ring-gray-700/90',
       hover: {
         bgColor: 'dark:hover:bg-gray-700/30',
       },
       focus: {
         ringColor: 'dark:focus:ring-gray-600',
+      },
+      active: {
+        bgColor: 'dark:active:bg-gray-700/60'
       }
     }
   }
@@ -154,7 +169,15 @@ const TonalButtonConfig = (): TonalButtonConfig => {
     hover: {
       bgColor: 'hover:bg-blue-600/15'
     },
-    backdropBlur: 'backdrop-blur-xs'
+    backdropBlur: 'backdrop-blur-xs',
+    active: {
+      bgColor: 'active:bg-blue-600/25'
+    },
+    focus: {
+      border: 'focus:outline',
+      outlineWidth: 'focus:outline-2',
+      outlineColor: 'focus:outline-blue-500/80',
+    }
   }
 }
 
@@ -173,6 +196,12 @@ const TextButtonConfig = (): TonalButtonConfig => {
       hover: {
         textColor: 'dark:hover:text-gray-100',
       }
+    },
+    focus: {
+      border: 'focus:outline',
+      borderStyle: 'focus:border-dotted',
+      outlineWidth: 'focus:outline-2',
+      outlineColor: 'focus:outline-gray-500/80',
     }
   }
 }

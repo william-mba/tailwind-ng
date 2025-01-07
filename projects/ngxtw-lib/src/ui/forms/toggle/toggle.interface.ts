@@ -1,18 +1,27 @@
 import { OutputEmitterRef } from "@angular/core";
-import { BaseElement } from "../../../core/directives/element-base.interface";
+import { BaseState, BaseActions, BaseEvents } from "../../../core/directives/base.interface";
 
 /**
- * @ngxtw Toggle
+ * @ngxtw Toggle's state
  */
-export interface Toggle extends BaseElement {
+export interface ToggleState extends BaseState {
   /**
    * The state of the toggle.
    */
   readonly isChecked: boolean;
-  /**
-   * Toggles the state of the toggle.
-   */
+}
+
+/**
+ * @ngxtw Toggle's actions
+ */
+export interface ToggleActions extends BaseActions {
   toggle(): void;
+}
+
+/**
+ * @ngxtw Toggle's events
+ */
+export interface ToggleEvents extends BaseEvents {
   /**
    * Emits the toggle's state when it changes.
    */

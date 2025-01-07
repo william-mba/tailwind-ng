@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { ButtonGroupConfig } from './button-group.config';
-import { ElementBaseDirective } from '../../../core/directives/element-base.directive';
+import { BaseDirective } from '../../../core/directives/base.directive';
 
 @Component({
   selector: 'tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]',
@@ -9,7 +9,7 @@ import { ElementBaseDirective } from '../../../core/directives/element-base.dire
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonGroupComponent extends ElementBaseDirective {
+export class ButtonGroupComponent extends BaseDirective {
   protected override onInit(): void {
     this.config.get<ButtonGroupConfig>('ButtonGroup').subscribe((config) => {
       this.classList.setFrom(config);

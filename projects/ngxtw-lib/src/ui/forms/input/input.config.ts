@@ -1,10 +1,13 @@
 import { Provider } from '@angular/core';
-import { ConfigType } from '../../../core/types/config.type';
+import { ConfigType, Modifier } from '../../../core/types/config.type';
 import { InjectionTokenFactory } from '../../../core/shared/injection-token.factory';
 import { mergeConfig } from '../../../config/config.helper';
 import { FullyOptional } from '../../../core/types/fully-optional.type';
 
-export interface InputConfig extends ConfigType { };
+export interface InputConfig extends ConfigType {
+  placeholder?: Modifier<'placeholder'>;
+  invalid?: Modifier<'invalid'>;
+};
 
 const DefaultConfig = (): InputConfig => {
   return {
@@ -40,9 +43,26 @@ const DefaultConfig = (): InputConfig => {
       dark: {
         bgColor: 'disabled:dark:bg-white/10',
       }
+    },
+    placeholder: {
+      textColor: 'placeholder:text-gray-400',
+      dark: {
+        textColor: 'placeholder:dark:text-gray-600'
+      }
+    },
+    invalid: {
+      ringColor: 'invalid:ring-red-600/60',
+      focus: {
+        ringColor: 'invalid:focus:ring-red-600/60'
+      }
+    },
+    dataActive: {
+      ringColor: 'data-active:ring-indigo-600',
+      ringWidth: 'data-active:ring-2',
     }
   }
 };
+
 export const InputConfig = (customization?: FullyOptional<InputConfig>): InputConfig => {
   return !customization ? DefaultConfig() : mergeConfig({ target: DefaultConfig(), source: [customization] });
 };

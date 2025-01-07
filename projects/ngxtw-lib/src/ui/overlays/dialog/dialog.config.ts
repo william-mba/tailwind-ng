@@ -64,6 +64,7 @@ const ScrimConfig = (): ScrimConfig => {
     zIndex: 'z-50',
     inset: 'inset-0',
     position: 'fixed',
+    size: 'size-fit',
     placeSelf: 'place-self-center',
   }
 }
@@ -72,7 +73,8 @@ const ContainerConfig = (): ContainerConfig => {
   return {
     ...BaseConfig(),
     gap: 'gap-9',
-    size: 'size-fit',
+    width: 'w-full',
+    height: 'h-fit',
     position: 'relative',
     borderRadius: 'rounded-lg',
     overflow: 'overflow-hidden',
@@ -80,6 +82,7 @@ const ContainerConfig = (): ContainerConfig => {
     boxShadow: 'shadow-lg',
     bgColor: 'bg-white',
     opacity: 'opacity-0',
+    placeSelf: 'place-self-center',
     dark: {
       bgColor: 'dark:bg-gray-900',
     },
@@ -91,6 +94,9 @@ const ContainerConfig = (): ContainerConfig => {
     },
     display: 'grid',
     padding: 'p-5',
+    sm: {
+      width: 'sm:max-w-md',
+    }
   }
 }
 

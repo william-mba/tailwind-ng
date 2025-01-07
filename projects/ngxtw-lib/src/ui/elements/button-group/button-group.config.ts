@@ -18,6 +18,7 @@ const DefaultConfig = (): ButtonGroupConfig => {
     divideColor: 'divide-gray-300',
     ringWidth: 'ring-1',
     ringColor: 'ring-gray-300',
+    width: 'w-fit',
     dark: {
       ringColor: 'dark:ring-gray-700',
       divideColor: 'dark:divide-gray-700',

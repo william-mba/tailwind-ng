@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OutputEmitterRef, viewChild, ViewEncapsulation } from '@angular/core';
 import { ToggleConfig } from './toggle.config';
-import { Toggle } from './toggle.interface';
-import { ElementBaseDirective } from '../../../core/directives/element-base.directive';
+import { ToggleState, ToggleActions, ToggleEvents } from './toggle.interface';
+import { BaseDirective } from '../../../core/directives/base.directive';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -21,21 +21,22 @@ import { ElementBaseDirective } from '../../../core/directives/element-base.dire
   inputs: ['isChecked'],
   outputs: ['toggled'],
 })
-export class ToggleComponent extends ElementBaseDirective implements Toggle {
+export class ToggleComponent extends BaseDirective implements ToggleState, ToggleActions, ToggleEvents {
   protected checkbox = viewChild.required<ElementRef>('checkbox');
   isChecked = false;
   toggled = new OutputEmitterRef<boolean>();
 
   protected override onInit(): void {
-    this.nativeElement.focus = () => this.checkbox().nativeElement.focus();
+    this.nativeElement.addEventListener('focus', () => {
+      this.checkbox().nativeElement.focus();
+    }, { once: true, passive: true, capture: true });
+
     this.config.get<ToggleConfig>('Toggle').subscribe(config => {
       this.classList.setFrom(config);
     });
   }
 
   toggle(): void {
-    // Prevent toggling when disabled
-    if (this.isDisabled) return;
     this.nativeElement.focus();
     this.isChecked = !this.isChecked;
     this.toggled.emit(this.isChecked);

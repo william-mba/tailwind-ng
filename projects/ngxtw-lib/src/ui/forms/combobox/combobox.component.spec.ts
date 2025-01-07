@@ -12,109 +12,110 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideIconConfig } from '../../elements/icon/icon.config';
 import { ComboboxItemComponent } from './combobox-item/combobox-item.component';
 
-describe('ComboboxComponent', () => {
-  interface User {
-    image?: string;
-    name: string;
-    status?: 'active' | 'inactive';
-  }
+interface User {
+  image?: string;
+  name: string;
+  status?: 'active' | 'inactive';
+}
 
-  const USERS_STUB = (): User[] => {
-    return [
-      {
-        name: 'Elizabeth Martinez',
-        status: 'inactive'
-      },
-      {
-        name: 'David Rodriguez',
-        status: 'inactive'
-      },
-      {
-        name: 'Susan Wilson',
-        status: 'active'
-      },
-      {
-        name: 'Courtney Henry',
-        status: 'inactive'
-      },
-      {
-        name: 'Tom Cook',
-        status: 'active'
-      },
-      {
-        name: 'Charles Thomas',
-        status: 'active'
-      },
-      {
-        name: 'Mary Taylor',
-        status: 'inactive'
-      },
-      {
-        name: 'Christopher Moore',
-        status: 'active'
-      },
-      {
-        name: 'Lindsay Walton',
-        status: 'inactive'
-      },
-      {
-        name: 'James Williams',
-        status: 'active'
-      },
-      {
-        name: 'Linda Jones',
-        status: 'active'
-      },
-      {
-        name: 'Barbara Garcia',
-        status: 'inactive'
-      },
-      {
-        name: 'Whitney Francis',
-        status: 'active'
-      },
-      {
-        name: 'Leonard Krasner',
-        status: 'active'
-      },
-      {
-        name: 'Floyd Miles',
-        status: 'active'
-      },
-      {
-        name: 'Emily Selman',
-        status: 'inactive'
-      },
-      {
-        name: 'Kristin Watson',
-        status: 'active'
-      },
-      {
-        name: 'Emma Dorsey',
-        status: 'active'
-      },
-      {
-        name: 'John Doe',
-        status: 'active'
-      },
-      {
-        name: 'Jane Smith',
-        status: 'inactive'
-      },
-      {
-        name: 'Patricia Brown',
-        status: 'active'
-      },
-      {
-        name: 'Ronald Rodriguez',
-        status: 'inactive'
-      },
-      {
-        name: 'Anthony Lewis',
-        status: 'active'
-      },
-    ]
-  };
+export const USERS_STUB = (): User[] => {
+  return [
+    {
+      name: 'Elizabeth Martinez',
+      status: 'inactive'
+    },
+    {
+      name: 'David Rodriguez',
+      status: 'inactive'
+    },
+    {
+      name: 'Susan Wilson',
+      status: 'active'
+    },
+    {
+      name: 'Courtney Henry',
+      status: 'inactive'
+    },
+    {
+      name: 'Tom Cook',
+      status: 'active'
+    },
+    {
+      name: 'Charles Thomas',
+      status: 'active'
+    },
+    {
+      name: 'Mary Taylor',
+      status: 'inactive'
+    },
+    {
+      name: 'Christopher Moore',
+      status: 'active'
+    },
+    {
+      name: 'Lindsay Walton',
+      status: 'inactive'
+    },
+    {
+      name: 'James Williams',
+      status: 'active'
+    },
+    {
+      name: 'Linda Jones',
+      status: 'active'
+    },
+    {
+      name: 'Barbara Garcia',
+      status: 'inactive'
+    },
+    {
+      name: 'Whitney Francis',
+      status: 'active'
+    },
+    {
+      name: 'Leonard Krasner',
+      status: 'active'
+    },
+    {
+      name: 'Floyd Miles',
+      status: 'active'
+    },
+    {
+      name: 'Emily Selman',
+      status: 'inactive'
+    },
+    {
+      name: 'Kristin Watson',
+      status: 'active'
+    },
+    {
+      name: 'Emma Dorsey',
+      status: 'active'
+    },
+    {
+      name: 'John Doe',
+      status: 'active'
+    },
+    {
+      name: 'Jane Smith',
+      status: 'inactive'
+    },
+    {
+      name: 'Patricia Brown',
+      status: 'active'
+    },
+    {
+      name: 'Ronald Rodriguez',
+      status: 'inactive'
+    },
+    {
+      name: 'Anthony Lewis',
+      status: 'active'
+    },
+  ]
+};
+
+describe('ComboboxComponent', () => {
 
   it('should create', () => {
     TestBed.resetTestingModule();
@@ -146,18 +147,18 @@ describe('ComboboxComponent', () => {
         DropdownComponent
       ],
       template: `
-        <div tw-combobox #combobox [isOpened]="isOpened" [isMultiselect]="isMultiselect" (valueSelected)="saveSelection($event)" class="sm:w-80">
+        <div tw-combobox #combobox [isMultiselect]="isMultiselect" (valueSelected)="saveSelection($event)" class="sm:w-80">
           <!-- Label -->
           <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
           <!-- Input -->
           <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
-          <button tw-button variant="text" size="sm"
+          <button tw-button variant="text" size="sm" [popup]="combobox.popup()"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon (click)="combobox.toggle()" key="chevron-up-down" />
+            <tw-icon key="chevron-up-down" />
           </button>
           <!-- Dropdown -->
-          <tw-dropdown [isOpened]="combobox.isOpened" class="w-full overflow-y-auto max-h-56 duration-0">
+          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
               <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
@@ -188,8 +189,7 @@ describe('ComboboxComponent', () => {
     expect(combobox).toBeTruthy();
     expect(combobox.control).toBeTruthy();
     expect(combobox.isValid).toBeFalse();
-    expect(combobox.isOpened).toBeFalse();
-    expect(combobox.valueSeparator).toBe(',');
+    expect(combobox.popup().isOpened).toBeFalse();
     expect(combobox.isMultiselect).toBeFalse();
 
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
@@ -244,12 +244,12 @@ describe('ComboboxComponent', () => {
           <!-- Input -->
           <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
-          <button tw-button variant="text" size="sm"
+          <button tw-button variant="text" size="sm" [popup]="combobox.popup()"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon (click)="combobox.toggle()" key="chevron-up-down" />
+            <tw-icon key="chevron-up-down" />
           </button>
           <!-- Dropdown -->
-          <tw-dropdown [isOpened]="combobox.isOpened" class="w-full overflow-y-auto max-h-56 duration-0">
+          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
               <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
@@ -276,16 +276,16 @@ describe('ComboboxComponent', () => {
     const combobox = testComponent.combobox();
     const toggleIcon = fixture.debugElement.query(By.css('tw-icon[key="chevron-up-down"]')).nativeElement;
 
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.popup().isOpened).toBeFalse();
     toggleIcon.click();
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.popup().isOpened).toBeTrue();
     toggleIcon.click();
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.popup().isOpened).toBeFalse();
     toggleIcon.click();
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.popup().isOpened).toBeTrue();
   });
 
-  it('should select an item', () => {
+  it('should handle single selection', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
@@ -321,12 +321,12 @@ describe('ComboboxComponent', () => {
           <!-- Input -->
           <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
-          <button tw-button variant="text" size="sm"
+          <button tw-button variant="text" size="sm" [popup]="combobox.popup()"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon (click)="combobox.toggle()" key="chevron-up-down" />
+            <tw-icon key="chevron-up-down" />
           </button>
           <!-- Dropdown -->
-          <tw-dropdown [isOpened]="combobox.isOpened" class="w-full overflow-y-auto max-h-56 duration-0">
+          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
               <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
@@ -354,12 +354,12 @@ describe('ComboboxComponent', () => {
     const combobox = testComponent.combobox();
 
     // Combobox is closed by default
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.popup().isOpened).toBeFalse();
     const toggleIcon: HTMLElement = fixture.debugElement.query(By.css('tw-icon[key="chevron-up-down"]')).nativeElement;
     toggleIcon.click();
 
     // Initial state when combobox is opened for the first time
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.popup().isOpened).toBeTrue();
     expect(combobox.isValid).toBeFalse();
     expect(testComponent.valueSelected).toBe('');
     expect(combobox.control.value).toBe('');
@@ -376,7 +376,7 @@ describe('ComboboxComponent', () => {
     expect(testComponent.valueSelected).toBe(item0.value);
     expect(combobox.control.value).toBe(item0.value);
     expect(input.value).toBe(item0.value);
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.popup().isOpened).toBeFalse();
     expect(combobox.isValid).toBeTrue();
 
     // Second selection
@@ -389,7 +389,7 @@ describe('ComboboxComponent', () => {
     expect(testComponent.valueSelected).toBe(item1.value);
     expect(combobox.control.value).toBe(item1.value);
     expect(input.value).toBe(item1.value);
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.popup().isOpened).toBeFalse();
     expect(combobox.isValid).toBeTrue();
 
     // first item selected should be unselected after second selection
@@ -398,16 +398,16 @@ describe('ComboboxComponent', () => {
     expect(combobox.control.value).not.toBe(item0.value);
     expect(input.value).not.toBe(item0.value);
 
-    // Selected item should be unselected after clicking on it again
+    // Selected item should remain selected when clicking on it again
     item1.nativeElement.click();
-    expect(combobox.isValid).toBeFalse();
-    expect(item1.isSelected).toBeFalse();
-    expect(testComponent.valueSelected).toBe('');
-    expect(combobox.control.value).toBe('');
-    expect(input.value).toBe('');
+    expect(item1.isSelected).toBeTrue();
+    expect(testComponent.valueSelected).toBe(item1.value);
+    expect(combobox.control.value).toBe(item1.value);
+    expect(input.value).toBe(item1.value);
+    expect(combobox.isValid).toBeTrue();
   });
 
-  it('should select multiple items', () => {
+  it('should handle multiselection', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
@@ -443,12 +443,12 @@ describe('ComboboxComponent', () => {
           <!-- Input -->
           <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
-          <button tw-button variant="text" size="sm"
+          <button tw-button variant="text" size="sm" [popup]="combobox.popup()"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon (click)="combobox.toggle()" key="chevron-up-down" />
+            <tw-icon key="chevron-up-down" />
           </button>
           <!-- Dropdown -->
-          <tw-dropdown [isOpened]="combobox.isOpened" class="w-full overflow-y-auto max-h-56 duration-0">
+          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
               <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
@@ -476,12 +476,12 @@ describe('ComboboxComponent', () => {
     const combobox = testComponent.combobox();
 
     // Combobox is closed by default
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.popup().isOpened).toBeFalse();
     const toggleIcon: HTMLElement = fixture.debugElement.query(By.css('tw-icon[key="chevron-up-down"]')).nativeElement;
     toggleIcon.click();
 
     // Initial state when combobox is opened for the first time
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.popup().isOpened).toBeTrue();
     expect(combobox.isValid).toBeFalse();
     expect(combobox.isMultiselect).toBeTrue();
     expect(testComponent.valueSelected).toBe('');
@@ -510,11 +510,11 @@ describe('ComboboxComponent', () => {
     let expectedValue = `${item0.value}, ${item1.value}, ${item2.value}`;
 
     expect(testComponent.valueSelected).toBe(expectedValue);
-    expect(combobox.control.value).toBe(expectedValue);
-    expect(input.value).toBe(expectedValue);
+    expect(combobox.control.value).toBe(expectedValue + ', ');
+    expect(input.value).toBe(expectedValue + ', ');
 
     // Combobox should remain opened
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.popup().isOpened).toBeTrue();
     expect(combobox.isValid).toBeTrue();
 
     // Selected item should be unselected when clicking on it again
@@ -522,8 +522,8 @@ describe('ComboboxComponent', () => {
     expectedValue = `${item0.value}, ${item2.value}`;
     expect(item1.isSelected).toBeFalse();
     expect(testComponent.valueSelected).toBe(expectedValue);
-    expect(combobox.control.value).toBe(expectedValue);
-    expect(input.value).toBe(expectedValue);
+    expect(combobox.control.value).toBe(expectedValue + ', ');
+    expect(input.value).toBe(expectedValue + ', ');
   });
 
   it('should reset', () => {
@@ -562,20 +562,20 @@ describe('ComboboxComponent', () => {
           <!-- Input -->
           <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
-          <button tw-button variant="text" size="sm"
+          <button tw-button variant="text" size="sm" [popup]="combobox.popup()"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon *ngIf="combobox.isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
-            <tw-icon (click)="combobox.toggle()" key="chevron-up-down" />
+            <tw-icon *ngIf="combobox.popup().isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
+            <tw-icon key="chevron-up-down" />
           </button>
           <!-- Dropdown -->
-          <tw-dropdown [isOpened]="combobox.isOpened" class="w-full overflow-y-auto max-h-56 duration-0">
+          <div tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
               <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
               <span>{{ user.name }}</span>
             </div>
             }
-          </tw-dropdown>
+          </div>
         </div>
       `
     }) class TestComponent {
@@ -598,10 +598,10 @@ describe('ComboboxComponent', () => {
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
 
     // Combobox is closed by default
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.popup().isOpened).toBeFalse();
     toggleIcon.click();
     fixture.detectChanges();
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.popup().isOpened).toBeTrue();
     expect(combobox.isValid).toBeFalse();
 
     const item0 = testComponent.comboboxItems()[0];
@@ -626,11 +626,11 @@ describe('ComboboxComponent', () => {
     let expectedValue = `${item0.value}, ${item1.value}, ${item2.value}`;
 
     expect(testComponent.valueSelected).toBe(expectedValue);
-    expect(combobox.control.value).toBe(expectedValue);
-    expect(input.value).toBe(expectedValue);
+    expect(combobox.control.value).toBe(expectedValue + ', ');
+    expect(input.value).toBe(expectedValue + ', ');
 
     // Before reset
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.popup().isOpened).toBeTrue();
     expect(combobox.isValid).toBeTrue();
     const resetIcon: HTMLElement = fixture.debugElement.query(By.css('tw-icon[key="x-mark"]')).nativeElement;
 

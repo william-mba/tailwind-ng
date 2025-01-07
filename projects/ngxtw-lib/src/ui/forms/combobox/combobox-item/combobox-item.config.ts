@@ -29,6 +29,18 @@ const DefaultConfig = (): ComboboxItemConfig => {
       textColor: 'aria-selected:text-white',
       bgColor: 'aria-selected:bg-blue-600',
       fontWeight: 'aria-selected:font-bold'
+    },
+    focus: {
+      textColor: 'focus:text-white',
+      bgColor: 'focus:bg-blue-700',
+      fontWeight: 'focus:font-bold',
+      outlineWidth: 'focus:outline-0',
+    },
+    dataActive: {
+      textColor: 'data-active:text-white',
+      bgColor: 'data-active:bg-blue-700',
+      fontWeight: 'data-active:font-bold',
+      outlineWidth: 'data-active:outline-0',
     }
   }
 }

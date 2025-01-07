@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { InputConfig } from './input.config';
-import { ElementBaseDirective } from '../../../core/directives/element-base.directive';
+import { BaseDirective } from '../../../core/directives/base.directive';
 
 @Component({
   selector: 'input[tw-input], input[twInput]',
@@ -9,7 +9,7 @@ import { ElementBaseDirective } from '../../../core/directives/element-base.dire
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InputComponent extends ElementBaseDirective<HTMLInputElement> {
+export class InputComponent extends BaseDirective<HTMLInputElement> {
   protected override onInit(): void {
     this.config.get<InputConfig>('Input').subscribe(config => {
       this.classList.setFrom(config);
