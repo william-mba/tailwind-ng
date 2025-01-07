@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.ngxtw.com/">
-    <img src="projects/docs/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
+    <img src="https://www.ngxtw.com/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
     <h1>NGXTW</h1>
   </a>
 </div>
@@ -25,6 +25,8 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, NGXTW aims t
 - **Beautiful**: Ready-to-use and fully-customizable components that look great out of the box.
 - **Fast**: Lightweight and optimized components for large-scale Angular applications.
 - **Reliable**: Thoughfully-tested to ensure high performance and reliability.
+- **Accessible**: Fully accessible components that comply to W3C WAI standards.
+- **Customizable**: Highly customizable components to fit your specific needs effortlessly.
 
 ## Resources
 
