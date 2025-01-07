@@ -1,20 +1,25 @@
 import { OutputEmitterRef, } from "@angular/core";
-import { ElementActions, ElementEvents, ElementState } from "./element.interface";
+import { BaseActions, BaseEvents, BaseState } from "./base.interface";
 
 /**
- * @ngxtw Popover component's base state.
+ * @ngxtw Popup base state.
  */
-export interface PopoverState extends ElementState {
+export interface PopupState extends BaseState {
+  readonly id: string;
   /**
    * Whether the component is hovered.
    */
   readonly isHovered: boolean;
+  /**
+   * Whether the component is opened.
+   */
+  readonly isOpened: boolean;
 }
 
 /**
- * @ngxtw Popover component's actions.
+ * @ngxtw Popup actions.
  */
-export interface PopoverActions extends ElementActions {
+export interface PopupActions extends BaseActions {
   /**
    * Toggles the component.
    */
@@ -34,12 +39,16 @@ export interface PopoverActions extends ElementActions {
    * @param delay The delay in milliseconds.
    */
   closeAfter(delay: number): void
+  /**
+   * Updates the position of the component if needed.
+   */
+  updatePositionIfNeeded(): void;
 }
 
 /**
- * @ngxtw Popover component's events.
+ * @ngxtw Popup events.
  */
-export interface PopoverEvents extends ElementEvents {
+export interface PopupEvents extends BaseEvents {
   /**
    * Event emitted when the component is toggled.
    */
@@ -53,3 +62,5 @@ export interface PopoverEvents extends ElementEvents {
    */
   readonly closed: OutputEmitterRef<void>
 }
+
+export interface Popup extends PopupState, PopupActions, PopupEvents { }
