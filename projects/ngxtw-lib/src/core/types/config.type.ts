@@ -70,6 +70,7 @@ import { MinWidth } from './sizing/min-width.type';
 import { MinHeight } from './sizing/min-height.type';
 import { BackdropOpacity } from './filters/backdrop-opacity.type';
 import { PlaceSelf } from './flex-grid/place-self.type';
+import { Overscroll } from './layout/overscroll-behavior';
 
 export interface BaseConfig {
   alignItems: AlignItems;
@@ -121,17 +122,18 @@ export interface BaseConfig {
   fontWeight: FontWeight;
   fontSize: FontSize;
   overflow: Overflow;
+  overscroll: Overscroll;
   padding: Padding;
   paddingX: PaddingX;
   paddingY: PaddingY;
-  margin: Margin;
+  margin: Margin | MarginX | MarginY;
   marginX: MarginX;
   marginY: MarginY;
   size: Size;
-  width: Width;
+  width: Width | MinWidth | MaxWidth;
   minWidth: MinWidth;
   maxWidth: MaxWidth;
-  height: Height;
+  height: Height | MinHeight | MaxHeight;
   minHeight: MinHeight;
   maxHeight: MaxHeight;
   textWrap: TextWrap;
@@ -163,6 +165,9 @@ export interface BaseConfig {
   hover: Modifier<'hover'>;
   active: Modifier<'active'>;
   disabled: Modifier<'disabled'>;
+  /** Style that applies when the element has visual focus.*/
+  dataActive: Modifier<'data-active'>;
+  focusVisible: Modifier<'focus-visible'>;
   // Style modifiers
   dark: Modifier<'dark'>;
 };
