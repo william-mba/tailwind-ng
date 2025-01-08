@@ -22,11 +22,11 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, NGXTW aims t
 
 ## Why NGXTW?
 
-- **Beautiful**: Ready-to-use and fully-customizable components that look great out of the box.
-- **Fast**: Lightweight and optimized components for large-scale Angular applications.
-- **Reliable**: Thoughfully-tested to ensure high performance and reliability.
-- **Accessibility**: Fully accessible components compliant to the W3C WAI standards.
-- **Customizable**: Highly customizable components to fit your specific needs effortlessly.
+- **Beautiful**: Well-crafted components that look great out of the box.
+- **Fast**: Lightweight and optimized for large-scale Angular applications.
+- **Reliable**: Thoughfully-tested to ensure performance and reliability.
+- **Accessibility**: Fully-accessible components compliant to the [W3C WAI-ARIA standards](https://www.w3.org/TR/wai-aria/).
+- **Customizable**: Fully-customizable and predictable components to fit your specific needs without hassles.
 
 ## Resources
 
