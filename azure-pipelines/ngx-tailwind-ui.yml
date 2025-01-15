@@ -27,20 +27,20 @@ parameters:
 
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-      - group: ngxtw-master
+      - group: ngx-tailwind-master
   - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      - group: ngxtw-next
+      - group: ngx-tailwind-next
   - ${{ elseif eq(variables['Build.SourceBranchName'], 'release') }}:
-      - group: ngxtw-release
+      - group: ngx-tailwind-release
   - ${{ else }}:
-      - group: ngxtw-dev
+      - group: ngx-tailwind-dev
   - name: Patch
     value: $[counter(variables.MajorMinor, 0)]
 
 stages:
   - stage: CI
     jobs:
-      - template: ngxtw/job.build-test-publish.yml@template
+      - template: ngx-tailwind/job.build-test-publish.yml@template
         parameters:
           ProjetName: ngx-tailwind-ui
           RunSetup: ${{parameters.RunSetup}}
@@ -50,4 +50,4 @@ stages:
   - stage: CD
     dependsOn: CI
     jobs:
-      - template: ngxtw/job.release-lib.yml@template
+      - template: ngx-tailwind/job.release-lib.yml@template

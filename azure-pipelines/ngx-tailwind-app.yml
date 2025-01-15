@@ -12,25 +12,25 @@ resources:
       type: git
   pipelines:
     - pipeline: lib
-      source: ngxtw-ui
+      source: ngx-tailwind-ui
       trigger: true
 
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-    - group: ngxtw-master
+    - group: ngx-tailwind-master
   - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-    - group: ngxtw-next
+    - group: ngx-tailwind-next
   - ${{ elseif eq(variables['Build.SourceBranchName'], 'release') }}:
-    - group: ngxtw-release
+    - group: ngx-tailwind-release
   - ${{ else }}:
-    - group: ngxtw-dev
+    - group: ngx-tailwind-dev
 
 stages:
   - stage: CI
     jobs:
-      - template: ngxtw/job.build-app.yml@template
+      - template: ngx-tailwind/job.build-app.yml@template
 
   - stage: CD
     dependsOn: CI
     jobs:
-      - template: ngxtw/job.release-app.yml@template
+      - template: ngx-tailwind/job.release-app.yml@template
