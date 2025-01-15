@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, ElementRef, inject, viewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   AvatarComponent,
@@ -12,12 +12,9 @@ import {
   InputComponent,
   DialogModule,
   ToggleComponent,
-  toggleTheme,
-  DialogBackdrop,
-  OptionDirective,
-  ClassList
-} from 'ngxtw';
-
+  DialogBackdrop
+} from '@ngxtw/ui';
+import { toggleTheme, OptionDirective } from "@ngxtw/core";
 
 interface User {
   image?: string;
@@ -48,7 +45,7 @@ type Viewport = 'mobile' | 'tablet' | 'desktop';
   templateUrl: './app.component.html',
   styles: [],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private _formBuilder = inject(NonNullableFormBuilder);
 
   isInvalid = (control: AbstractControl): boolean => control.invalid;
@@ -212,7 +209,7 @@ export class AppComponent {
     return x.includes(y) || x.startsWith(y)
   };
 
-  filter(value: string, id: number = 1): void {
+  filter(value: string, id = 1): void {
     const values = value.split(',').map((x) => x.trim());
     switch (id) {
       case 1:
@@ -252,7 +249,7 @@ export class AppComponent {
     }
   }
 
-  reset(id: number = 1): void {
+  reset(id = 1): void {
     setTimeout(() => {
       switch (id) {
         case 1:

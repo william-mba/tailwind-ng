@@ -1,0 +1,35 @@
+{
+  "name": "@ngx-tailwind/css",
+  "version": "4.0.0-beta.1",
+  "author": {
+    "email": "w.mba@outlook.com",
+    "name": "William Mba",
+    "url": "https://github.com/William-Mba"
+  },
+  "description": "@ngx-tailwind/ui components stylesheet.",
+  "keywords": [
+    "angular",
+    "tailwind css",
+    "web components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-Mba/ngx-tailwind.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William-Mba/ngx-tailwind/issues"
+  },
+  "homepage": "https://www.ngxtw.com",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./styles.css",
+      "require": "./styles.css",
+      "default": "./styles.css"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

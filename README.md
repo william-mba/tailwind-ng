@@ -1,7 +1,7 @@
 <div align="center">
   <a href="https://www.ngxtw.com/">
-    <img src="https://www.ngxtw.com/assets/images/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
-    <h1>NGXTW</h1>
+    <img src="https://ngxtw-assets.pages.dev/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
+    <h1>@ngx-tailwind</h1>
   </a>
 </div>
 
@@ -11,21 +11,20 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 <br/>
 <br/>
 
-[![Socket Badge](https://socket.dev/api/badge/npm/package/ngxtw)](https://socket.dev/npm/package/ngxtw/overview)
 [![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fngxtw-lib?repoName=William-Mba%2Fngxtw&branchName=master)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=5&repoName=William-Mba%2Fngxtw&branchName=master)
 
 </div>
 
 ## Motivation
 
-Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, NGXTW aims to provide Tailwind CSS components for Angular, helping developers to rapidly create great Angular applications at any scale.
+Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, @ngx-tailwind/ui provides high-quality Tailwind CSS components for Angular, helping developers to rapidly build great Angular applications at any scale.
 
-## Why NGXTW?
+## Why using ngx-tailwind ?
 
-- **Beautiful**: Well-crafted components that look great out of the box.
-- **Fast**: Lightweight and optimized for large-scale Angular applications.
+- **Beautiful**: Well-designed components that look great out of the box.
+- **Fast & Lightweight**: Optimized components for large-scale Angular applications.
 - **Reliable**: Thoughfully-tested to ensure performance and reliability.
-- **Accessibility**: Fully-accessible components compliant to the [W3C WAI-ARIA standards](https://www.w3.org/TR/wai-aria/).
+- **Accessibility**: Accessible components compliant to the [W3C WAI-ARIA standards](https://www.w3.org/TR/wai-aria/).
 - **Customizable**: Fully-customizable and predictable components to fit your specific needs without hassles.
 
 ## Resources

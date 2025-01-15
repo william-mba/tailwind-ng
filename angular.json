@@ -2,7 +2,10 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "pnpm",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -96,26 +99,36 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngxtw-app/**/*.ts",
+              "projects/ngxtw-app/**/*.html"
+            ],
+            "eslintConfig": "projects/ngxtw-app/eslint.config.js"
+          }
         }
       }
     },
-    "ngxtw-lib": {
+    "ngxtw-ui": {
       "projectType": "library",
-      "root": "projects/ngxtw-lib",
-      "sourceRoot": "projects/ngxtw-lib/src",
+      "root": "projects/ngxtw-ui",
+      "sourceRoot": "projects/ngxtw-ui/src",
       "prefix": "tw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngxtw-lib/ng-package.json"
+            "project": "projects/ngxtw-ui/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngxtw-lib/tsconfig.prod.json"
+              "tsConfig": "projects/ngxtw-ui/tsconfig.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngxtw-lib/tsconfig.json"
+              "tsConfig": "projects/ngxtw-ui/tsconfig.json"
             }
           },
           "defaultConfiguration": "production"
@@ -123,11 +136,64 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ngxtw-lib/tsconfig.spec.json",
+            "tsConfig": "projects/ngxtw-ui/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngxtw-ui/**/*.ts",
+              "projects/ngxtw-ui/**/*.html"
+            ],
+            "eslintConfig": "projects/ngxtw-ui/eslint.config.js"
+          }
+        }
+      }
+    },
+    "ngxtw-core": {
+      "projectType": "library",
+      "root": "projects/ngxtw-core",
+      "sourceRoot": "projects/ngxtw-core/src",
+      "prefix": "tw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngxtw-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngxtw-core/tsconfig.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngxtw-core/tsconfig.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ngxtw-core/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngxtw-core/**/*.ts",
+              "projects/ngxtw-core/**/*.html"
+            ],
+            "eslintConfig": "projects/ngxtw-core/eslint.config.js"
           }
         }
       }

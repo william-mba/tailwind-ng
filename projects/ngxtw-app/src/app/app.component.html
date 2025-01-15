@@ -419,10 +419,9 @@
     <!-- Input -->
     <input tw-input autocomplete="off" id="search" [formControl]="combobox.control" class="pr-14" />
     <!-- Button -->
-    <button tw-button variant="text" size="sm" [popup]="combobox.popup()"
+    <button tw-button variant="text" size="sm" [popup]="combobox"
       class="absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="combobox.popup().isOpened && combobox.isValid" (click)="combobox.reset()" size="sm"
-        key="x-mark" />
+      <tw-icon *ngIf="combobox.isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
       <tw-icon key="chevron-up-down" />
     </button>
     <!-- Dropdown -->
@@ -443,10 +442,9 @@
     <!-- Input -->
     <input tw-input autocomplete="off" id="search-2" [formControl]="combobox2.control" class="pr-14" />
     <!-- Button -->
-    <button tw-button variant="text" size="sm" [popup]="combobox2.popup()"
+    <button tw-button variant="text" size="sm" [popup]="combobox2"
       class="absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="combobox2.popup().isOpened && combobox2.isValid" (click)="combobox2.reset()" size="sm"
-        key="x-mark" />
+      <tw-icon *ngIf="combobox2.isOpened && combobox2.isValid" (click)="combobox2.reset()" size="sm" key="x-mark" />
       <tw-icon key="chevron-up-down" />
     </button>
     <!-- Dropdown -->

@@ -12,7 +12,7 @@ resources:
       type: git
   pipelines:
     - pipeline: lib
-      source: ngxtw-lib
+      source: ngxtw-ui
       trigger: true
 
 variables:
