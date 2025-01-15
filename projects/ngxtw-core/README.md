@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-Beautiful, fast and reliable Tailwind CSS components for Angular.
+Core infrastructure and tools for <a href="https://www.npmjs.com/package/@ngx-tailwind/ui">@ngx-tailwind/ui</a>.
 <br/>
 <br/>
 <br/>
@@ -17,7 +17,7 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 
 ## Motivation
 
-Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, @ngx-tailwind/ui provides high-quality Tailwind CSS components for Angular, helping developers to rapidly build great Angular applications at any scale.
+Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, <a href="https://www.npmjs.com/package/@ngx-tailwind/ui">@ngx-tailwind/ui</a> provides high-quality Tailwind CSS components for Angular, helping developers to rapidly build great Angular applications at any scale.
 
 ## Why using ngx-tailwind ?
 

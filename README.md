@@ -1,7 +1,7 @@
 <div align="center">
   <a href="https://www.ngxtw.com/">
     <img src="https://ngxtw-assets.pages.dev/ngxtw-logo-doc.png" alt="ngxtw" height="120" />
-    <h1>@ngx-tailwind</h1>
+    <h1>ngx-tailwind</h1>
   </a>
 </div>
 
@@ -17,7 +17,7 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 
 ## Motivation
 
-Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, @ngx-tailwind/ui provides high-quality Tailwind CSS components for Angular, helping developers to rapidly build great Angular applications at any scale.
+Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, <a href="https://www.npmjs.com/package/@ngx-tailwind/ui">@ngx-tailwind/ui</a> provides high-quality Tailwind CSS components for Angular, helping developers to rapidly build great Angular applications at any scale.
 
 ## Why using ngx-tailwind ?
 

@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-<a href="https://www.npmjs.com/package/@ngxtw/ui">@ngx-tailwind/ui</a> components stylesheet <br/> built with <a href="https://tailwindcss.com/">tailwindcss v4</a>
+<a href="https://www.npmjs.com/package/@ngx-tailwind/ui">@ngx-tailwind/ui</a> components stylesheet <br/> built with <a href="https://tailwindcss.com/">tailwindcss v4</a>
 </div>
 
 ## Usage
