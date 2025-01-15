@@ -1,0 +1,35 @@
+{
+  "name": "@ngx-tailwind/core",
+  "version": "0.0.0-placeholder",
+  "author": {
+    "email": "w.mba@outlook.com",
+    "name": "William Mba",
+    "url": "https://github.com/William-Mba"
+  },
+  "description": "Beautiful, fast and reliable Tailwind CSS components for Angular.",
+  "keywords": [
+    "angular",
+    "tailwind css",
+    "web components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-Mba/ngx-tailwind.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William-Mba/ngx-tailwind/issues"
+  },
+  "homepage": "https://www.ngx-tailwind.com",
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
