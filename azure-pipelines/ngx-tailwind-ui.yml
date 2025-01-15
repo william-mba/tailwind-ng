@@ -42,7 +42,7 @@ stages:
     jobs:
       - template: ngx-tailwind/job.build-test-publish.yml@template
         parameters:
-          ProjetName: ngx-tailwind-ui
+          ProjectName: ngx-tailwind-ui
           RunSetup: ${{parameters.RunSetup}}
           RunBuild: ${{parameters.RunBuild}}
           RunTests: ${{parameters.RunTests}}
