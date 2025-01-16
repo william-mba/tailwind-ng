@@ -6,6 +6,7 @@ export type ConfigKey =
   | 'Dropdown'
   | 'Icon'
   | 'Input'
-  | 'ModalDialog'
+  | 'Dialog'
   | 'Toggle'
   | 'ComboboxItem'
+  | ''
