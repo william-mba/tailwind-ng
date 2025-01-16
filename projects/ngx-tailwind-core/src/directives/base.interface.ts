@@ -1,4 +1,4 @@
-import { ClassList, ReactiveConfig } from "../config";
+import { ClassList } from "../config";
 
 /**
  * @ngx-tailwind Component's base state.
@@ -14,10 +14,6 @@ export interface BaseState<T extends HTMLElement = HTMLElement> {
    * The component's class list instance.
    */
   readonly classList: ClassList;
-  /**
-   * A reference to the reactive config instance.
-   */
-  readonly config: ReactiveConfig;
   /**
    * A reference to the component's native element.
    */

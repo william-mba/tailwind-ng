@@ -1,6 +1,7 @@
-import { Directive, ElementRef, inject, Input, OnInit } from "@angular/core";
+import { Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
 import { BaseState, BaseActions, FocusOptions } from "./base.interface";
-import { ClassList, ReactiveConfig } from "../config";
+import { DOCUMENT } from '@angular/common';
+import { ClassList } from "../config";
 
 /**
  * @ngx-tailwind Base component directive.
@@ -14,9 +15,9 @@ import { ClassList, ReactiveConfig } from "../config";
 })
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseState<T>, BaseActions, OnInit {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
-  readonly config = inject(ReactiveConfig);
+  private readonly _document = inject(DOCUMENT);
+  protected readonly _injector = inject(Injector);
   readonly classList = new ClassList();
-
   @Input() class?: string;
 
   private _isDisabled = false;
@@ -34,11 +35,11 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   }
 
   get isFocused(): boolean {
-    return this.nativeElement === document.activeElement;
+    return this.nativeElement === this._document.activeElement;
   }
 
   get hasFocus(): boolean {
-    return this.nativeElement.contains(document.activeElement);
+    return this.nativeElement.contains(this._document.activeElement);
   }
 
   isHovered = false;
