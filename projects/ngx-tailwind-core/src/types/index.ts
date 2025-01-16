@@ -17,5 +17,6 @@ export * from './config.type';
 export * from './dynamic-spacing.type';
 export * from './element-config.type';
 export * from './layout-config.type';
+export * from './observable-config';
 export * from './size-options.type';
 export * from './theme-config.type';
