@@ -1,6 +1,4 @@
-import { Signal } from "@angular/core";
 import { AdvancedPopupActions, BasicPopupActions, PopupEvents, PopupState } from "@ngx-tailwind/core";
-import { DialogContainer } from "./dialog-container.directive";
 
 export interface DialogState extends PopupState {
   /**
@@ -25,7 +23,6 @@ export interface DialogState extends PopupState {
    * - If the given delay is outside the range, the default delay will be used.
    */
   displayDuration?: number;
-  container: Signal<DialogContainer>;
 }
 
 /**

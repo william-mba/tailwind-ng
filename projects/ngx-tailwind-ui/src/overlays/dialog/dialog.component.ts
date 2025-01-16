@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, contentChild, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, contentChild, DestroyRef, inject, Input, ViewEncapsulation } from '@angular/core';
 import { DialogToken } from '@ngx-tailwind/core';
 import { Dialog } from './dialog.interface';
 import { DialogScrim } from './dialog-scrim.directive';
 import { DialogContainer } from './dialog-container.directive';
+import { DOCUMENT } from '@angular/common';
 
 /** Dialog component */
 @Component({
@@ -25,11 +26,13 @@ import { DialogContainer } from './dialog-container.directive';
   providers: [{ provide: DialogToken, useExisting: DialogComponent }]
 })
 export class DialogComponent extends DialogToken implements Dialog {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly document = inject(DOCUMENT);
   @Input() displayDuration!: number;
   @Input() animationDuration = 500;
   @Input() autoClose = false;
   @Input() autoFocus = true;
-  container = contentChild.required(DialogContainer);
+  protected container = contentChild.required(DialogContainer);
   protected clonedChild!: Element;
 
   protected override onInit(): void {
@@ -46,6 +49,11 @@ export class DialogComponent extends DialogToken implements Dialog {
     } else {
       this.onClose();
     }
+
+    this.destroyRef.onDestroy(() => {
+      this.opened.unsubscribe();
+      this.removeEventListeners();
+    });
   }
 
   override open() {
@@ -117,7 +125,7 @@ export class DialogComponent extends DialogToken implements Dialog {
       this.close();
     } else if (['Enter', ' '].includes(event.key)) {
       const icon = this.container().nativeElement.querySelector('tw-icon') as HTMLElement;
-      if (icon && icon === document.activeElement) {
+      if (icon && icon === this.document.activeElement) {
         event.preventDefault();
         icon.tabIndex = 0;
         icon.click();
