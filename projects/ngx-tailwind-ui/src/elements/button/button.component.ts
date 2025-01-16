@@ -1,6 +1,5 @@
 import { afterNextRender, ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { ButtonConfig, ButtonVariant } from './button.config';
-import { ButtonToken, ComboboxToken, DialogToken, DropdownToken, PopupDirective, SizeOption } from '@ngx-tailwind/core';
+import { ButtonToken, ButtonVariant, ComboboxToken, DialogToken, DropdownToken, PopupDirective, SizeOption } from '@ngx-tailwind/core';
 
 /**
  * @ngx-tailwind Button component
@@ -39,7 +38,7 @@ export class ButtonComponent extends ButtonToken {
   }
 
   protected override onInit(): void {
-    this.config.get<ButtonConfig>('Button').subscribe((config) => {
+    this.config$.subscribe((config) => {
       this.classList.setFrom({
         // The order of destructuring is important here.
         // Because we want next object properties value to

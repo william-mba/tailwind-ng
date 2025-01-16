@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
-import { BadgeConfig } from './badge.config';
 import { SizeOption, BadgeToken } from '@ngx-tailwind/core';
 
 @Component({
@@ -14,7 +13,7 @@ export class BadgeComponent extends BadgeToken {
   size = input<SizeOption>('md');
 
   protected override onInit(): void {
-    this.config.get<BadgeConfig>('Badge').subscribe(config => {
+    this.config$.subscribe(config => {
       this.classList.setFrom({ b: config.base, s: config[this.size()] });
     });
   }

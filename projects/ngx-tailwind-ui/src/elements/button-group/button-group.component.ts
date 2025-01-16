@@ -11,7 +11,7 @@ import { ButtonGroupToken } from '@ngx-tailwind/core';
 })
 export class ButtonGroupComponent extends ButtonGroupToken {
   protected override onInit(): void {
-    this.config.get('ButtonGroup').subscribe((config) => {
+    this.config$.subscribe((config) => {
       this.classList.setFrom(config);
     });
   }

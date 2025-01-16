@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { InputConfig } from './input.config';
 import { InputToken } from '@ngx-tailwind/core';
 
 @Component({ // eslint-disable-next-line @angular-eslint/component-selector
@@ -12,7 +11,7 @@ import { InputToken } from '@ngx-tailwind/core';
 })
 export class InputComponent extends InputToken {
   protected override onInit(): void {
-    this.config.get<InputConfig>('Input').subscribe(config => {
+    this.config$.subscribe(config => {
       this.classList.setFrom(config);
     });
   }

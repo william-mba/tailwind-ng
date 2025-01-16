@@ -1,6 +1,6 @@
-import { afterNextRender, Directive, Input } from "@angular/core";
-import { BaseDirective } from '@ngx-tailwind/core';
-import { DialogConfig } from "./dialog.config";
+import { afterNextRender, Directive, inject, Input } from "@angular/core";
+import { BaseDirective, ObservableConfig, ReactiveConfig } from '@ngx-tailwind/core';
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Directive({
   selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',
@@ -11,8 +11,9 @@ import { DialogConfig } from "./dialog.config";
     '[tabindex]': 'isDisabled ? null : 0',
   }
 }) // eslint-disable-next-line @angular-eslint/directive-class-suffix
-export class DialogContainer extends BaseDirective {
+export class DialogContainer extends BaseDirective implements ObservableConfig {
   @Input() isModal: 'true' | 'false' = 'true';
+  config$ = inject(ReactiveConfig).get('Dialog').pipe(takeUntilDestroyed());
 
   constructor() {
     super();
@@ -24,8 +25,8 @@ export class DialogContainer extends BaseDirective {
   }
 
   protected override onInit() {
-    this.config.get<DialogConfig>('ModalDialog').subscribe(config => {
-      this.classList.setFrom(config.container!);
+    this.config$.subscribe(config => {
+      this.classList.setFrom(config.container);
     });
   }
 }
