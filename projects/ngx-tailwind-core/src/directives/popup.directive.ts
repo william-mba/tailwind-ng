@@ -37,6 +37,8 @@ export abstract class PopupDirective extends BaseDirective implements Popup {
     this.closed.emit();
   }
 
+
+
   closeAfter(delay: number): void {
     delay = (delay >= 1000 && delay <= 10000) ? delay : 5000;
     const id = setInterval(() => {

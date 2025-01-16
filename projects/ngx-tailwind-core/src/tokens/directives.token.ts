@@ -1,37 +1,58 @@
-import { Directive } from "@angular/core";
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Directive, inject, Input } from "@angular/core";
 import { BaseDirective, PopupDirective } from "../directives";
+import { ReactiveConfig } from "../config";
+import { ObservableConfig } from "../types";
 
 // Elements
 @Directive({})
-export abstract class AvatarToken extends BaseDirective { }
+export abstract class AvatarToken extends BaseDirective implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Avatar').pipe(takeUntilDestroyed());
+}
 
 @Directive({})
-export abstract class BadgeToken extends BaseDirective { }
+export abstract class BadgeToken extends BaseDirective implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Badge').pipe(takeUntilDestroyed());
+}
 
 @Directive({})
-export abstract class ButtonToken extends BaseDirective<HTMLButtonElement> { }
+export abstract class ButtonToken extends BaseDirective<HTMLButtonElement> implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Button').pipe(takeUntilDestroyed());
+}
 
 @Directive({})
-export abstract class ButtonGroupToken extends BaseDirective { }
+export abstract class ButtonGroupToken extends BaseDirective implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('ButtonGroup').pipe(takeUntilDestroyed());
+}
 
 @Directive({ providers: [{ provide: PopupDirective, useExisting: DropdownToken }] })
-export abstract class DropdownToken extends PopupDirective { }
+export abstract class DropdownToken extends PopupDirective implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Dropdown').pipe(takeUntilDestroyed());
+}
 
 @Directive({})
-export abstract class IconToken extends BaseDirective { }
+export abstract class IconToken extends BaseDirective implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Icon').pipe(takeUntilDestroyed());
+}
 
 // Forms
 @Directive({})
-export abstract class ComboboxItemToken extends BaseDirective { }
+export abstract class ComboboxItemToken extends BaseDirective implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('ComboboxItem').pipe(takeUntilDestroyed());
+}
 
 @Directive({ providers: [{ provide: PopupDirective, useExisting: ComboboxToken }] })
 export abstract class ComboboxToken extends PopupDirective { }
 
 @Directive({})
-export abstract class InputToken extends BaseDirective<HTMLInputElement> { }
+export abstract class InputToken extends BaseDirective<HTMLInputElement> implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Input').pipe(takeUntilDestroyed());
+}
 
 @Directive({})
-export abstract class ToggleToken extends BaseDirective { }
+export abstract class ToggleToken extends BaseDirective implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Toggle').pipe(takeUntilDestroyed());
+}
 
 // Overlays
 @Directive({ providers: [{ provide: PopupDirective, useExisting: DialogToken }] })
