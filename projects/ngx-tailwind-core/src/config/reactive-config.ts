@@ -3,7 +3,7 @@ import { BehaviorSubject } from "rxjs";
 import { ConfigKey } from "./config-key";
 import { ConfigStore } from "./config-store";
 import { mergeConfig } from "./config.helper";
-import { ComponentConfig, Config } from "../types";
+import { ConfigFrom } from "./config-from.type";
 
 /**
  * @ngx-tailwind Reactive configuration interface.
@@ -13,38 +13,39 @@ export interface IReactiveConfig {
    * If it does not exist, it will be initialized with the default configuration
    * @param key The configuration key
    */
-  get<T extends Config = ComponentConfig>(key: ConfigKey): BehaviorSubject<T>;
+  get(key: ConfigKey): BehaviorSubject<ConfigFrom<typeof key>>;
 
   /** Updates the configuration value
    * @param key The configuration key
    * @param value The value to update
    */
-  update<T extends Config = ComponentConfig>(key: ConfigKey, ...value: Partial<T>[]): void;
+  update(key: ConfigKey, ...value: Partial<ConfigFrom<typeof key>>[]): void;
 }
 
 /** @ngx-tailwind Reactive configuration */
 @Injectable({ providedIn: 'root' })
 export class ReactiveConfig implements IReactiveConfig {
-  private readonly _store = new Map<ConfigKey, BehaviorSubject<Config>>();
+  private readonly store = new Map<ConfigKey, BehaviorSubject<ConfigFrom<ConfigKey>>>();
   protected readonly config: ConfigStore = inject(ConfigStore);
 
-  private set(key: ConfigKey, config: Config): void {
-    if (!this._store.has(key)) {
-      this._store.set(key, new BehaviorSubject(config));
+  private set(key: ConfigKey, config: ConfigFrom<typeof key>): void {
+    if (!this.store.has(key)) {
+      this.store.set(key, new BehaviorSubject(config));
     }
   }
 
-  update<T extends Config = ComponentConfig>(key: ConfigKey, ...value: Partial<T>[]): IReactiveConfig {
-    if (this._store.has(key)) {
-      const config = this.get(key);
-      config.next(mergeConfig([config.value as T, ...value]));
+  update(key: ConfigKey, ...value: Partial<ConfigFrom<typeof key>>[]): IReactiveConfig {
+    if (this.store.has(key)) {
+      const config = this.get(key)!;
+      config.next(mergeConfig([config.value!, ...value]));
     }
     return this;
   }
 
-  get<T extends Config = ComponentConfig>(key: ConfigKey): BehaviorSubject<T> {
-    // If there is no key in the store, set an initial value then returning it
-    if (!this._store.has(key)) {
+  get<T extends ConfigKey = ConfigKey>(key: T) {
+    // If there is no key in the store,
+    // we set an initial value then return it
+    if (!this.store.has(key)) {
       switch (key) {
         case 'Avatar':
           this.set(key, this.config.avatar);
@@ -70,14 +71,14 @@ export class ReactiveConfig implements IReactiveConfig {
         case 'Input':
           this.set(key, this.config.input);
           break;
-        case 'ModalDialog':
-          this.set(key, this.config.modalDialog);
+        case 'Dialog':
+          this.set(key, this.config.dialog);
           break;
         case 'Toggle':
           this.set(key, this.config.toggle);
           break;
       }
     }
-    return this._store.get(key) as BehaviorSubject<T>;
+    return this.store.get(key) as BehaviorSubject<ConfigFrom<typeof key>>;
   }
 }
