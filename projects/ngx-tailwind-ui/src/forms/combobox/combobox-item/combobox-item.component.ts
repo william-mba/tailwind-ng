@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, Input, ViewEncapsulation } from '@angular/core';
 import { ComboboxItem } from './combobox-item.interface';
 import { ComboboxComponent } from '../combobox.component';
 import { ComboboxItemToken } from '@ngx-tailwind/core';
@@ -18,8 +18,9 @@ import { ComboboxItemToken } from '@ngx-tailwind/core';
 })
 export class ComboboxItemComponent extends ComboboxItemToken implements ComboboxItem {
   @Input({ required: true }) value!: string;
-  private combobox = inject(ComboboxComponent, { skipSelf: true });
-  private computedValue = computed(() => this.value.toLocaleLowerCase());
+  private readonly combobox = inject(ComboboxComponent, { skipSelf: true });
+  private readonly computedValue = computed(() => this.value.toLocaleLowerCase());
+  private readonly destroyRef = inject(DestroyRef);
 
   private get isValueEqualsInputValue() {
     return this.computedValue() === this.combobox.control.value.toLocaleLowerCase();
@@ -29,27 +30,27 @@ export class ComboboxItemComponent extends ComboboxItemToken implements Combobox
   }
 
   protected override onInit(): void {
-    this.config.get('ComboboxItem').subscribe(config => {
+    this.config$.subscribe(config => {
       this.classList.setFrom(config);
     });
 
     // Select the item if it is the default value.
     if (this.isValueEqualsInputValue) {
-      this.combobox.select(this);
+      this.select();
     }
 
     // Select the item if the value changed matchs the item value.
-    this.combobox.valueChanged.subscribe(value => {
+    const valueChanged = this.combobox.valueChanged.subscribe(value => {
       if (this.combobox.isMultiselect) {
         const some = value.split(',').some(x => this.computedValue() === x.trim().toLocaleLowerCase());
         if (!this.isSelected && some) {
-          this.combobox.select(this);
+          this.select();
         } else if (this.isSelected && !some) {
-          this.combobox.select(this);
+          this.select();
         }
       } else {
         if (!this.isSelected && this.isValueEqualsInputValue) {
-          this.combobox.select(this);
+          this.select();
         }
       }
     });
@@ -58,9 +59,17 @@ export class ComboboxItemComponent extends ComboboxItemToken implements Combobox
       if (this.isSelected) this.scrollIntoView();
     });
 
-    this.nativeElement.addEventListener('click', () => {
-      this.combobox.select(this);
-    }, { passive: true, capture: true });
+    this.nativeElement.addEventListener('click', this.select.bind(this), { passive: true, capture: true });
+
+    this.destroyRef.onDestroy(() => {
+      valueChanged.unsubscribe();
+      this.combobox.opened.unsubscribe();
+      this.nativeElement.removeEventListener('click', this.select.bind(this), true);
+    });
+  }
+
+  private select(): void {
+    this.combobox.select(this);
   }
 
   scrollIntoView(): void {

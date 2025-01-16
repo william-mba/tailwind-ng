@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, contentChild, inject, Input, Output, OutputEmitterRef, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, contentChild, DestroyRef, inject, Input, Output, OutputEmitterRef, ViewEncapsulation } from '@angular/core';
 import { ComboboxItem } from './combobox-item/combobox-item.interface';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { ComboboxToken, DropdownToken, InputToken } from '@ngx-tailwind/core';
@@ -24,6 +24,7 @@ import { Combobox } from './combobox.interface';
   providers: [{ provide: ComboboxToken, useExisting: ComboboxComponent }]
 })
 export class ComboboxComponent extends ComboboxToken implements Combobox {
+  private readonly destroyRef = inject(DestroyRef);
   private input = contentChild.required(InputToken);
   private selectionMap = new Map<string, ComboboxItem>();
   protected activeElement?: HTMLElement;
@@ -41,7 +42,7 @@ export class ComboboxComponent extends ComboboxToken implements Combobox {
   protected override onInit(): void {
     this.classList.set("relative h-max");
 
-    this.control.valueChanges.subscribe(value => {
+    const valueChanges = this.control.valueChanges.subscribe(value => {
       if (!this.isOpened) {
         this.open();
       }
@@ -51,12 +52,12 @@ export class ComboboxComponent extends ComboboxToken implements Combobox {
       this.resetActiveElementIfAny();
       this.valueChanged.emit(value);
 
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         this.dropdown().updatePositionIfNeeded();
-      });
+      }, 100);
     });
 
-    this.valueSelected.subscribe(() => {
+    const valueSelected = this.valueSelected.subscribe(() => {
       if (this.selectionMap.size === 0) {
         this.reset();
       }
@@ -75,16 +76,25 @@ export class ComboboxComponent extends ComboboxToken implements Combobox {
 
     this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
     this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
+
+    this.destroyRef.onDestroy(() => {
+      valueChanges.unsubscribe();
+      valueSelected.unsubscribe();
+      this.opened.unsubscribe();
+      this.closed.unsubscribe();
+      this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
+      this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
+    });
   }
 
   protected onBlur(): void {
-    requestAnimationFrame(() => {
+    setTimeout(() => {
       if (!this.hasFocus) {
         this.close();
         this.resetActiveElementIfAny();
         this.input().removeVisualfocus();
       }
-    });
+    }, 0);
   }
 
   protected onKeyboardEvent(event: KeyboardEvent): void {
