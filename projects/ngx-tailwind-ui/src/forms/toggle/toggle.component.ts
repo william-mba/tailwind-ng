@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, Output, OutputEmitterRef, viewChild, ViewEncapsulation } from '@angular/core';
-import { ToggleConfig } from './toggle.config';
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, inject, Input, Output, OutputEmitterRef, viewChild, ViewEncapsulation } from '@angular/core';
 import { Toggle } from './toggle.interface';
 import { ToggleToken } from '@ngx-tailwind/core';
 
@@ -22,19 +21,35 @@ import { ToggleToken } from '@ngx-tailwind/core';
   providers: [{ provide: ToggleToken, useExisting: ToggleComponent }]
 })
 export class ToggleComponent extends ToggleToken implements Toggle {
-  protected checkbox = viewChild.required<ElementRef>('checkbox');
+  private readonly checkbox = viewChild.required<ElementRef>('checkbox');
+  private readonly destroyRef = inject(DestroyRef);
   @Input() isChecked = false;
   @Input() tabIndex = 0;
   @Output() toggled = new OutputEmitterRef<boolean>();
 
   protected override onInit(): void {
-    this.nativeElement.addEventListener('focus', () => {
-      this.checkbox().nativeElement.focus();
-    }, { once: true, passive: true, capture: true });
-
-    this.config.get<ToggleConfig>('Toggle').subscribe(config => {
+    this.config$.subscribe(config => {
       this.classList.setFrom(config);
     });
+    this.nativeElement.addEventListener('click', this.toggle.bind(this), { passive: true, capture: true });
+    this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), { passive: true, capture: true });
+    this.nativeElement.addEventListener('focus', this.focusCheckbox.bind(this), { passive: true, capture: true });
+
+    this.destroyRef.onDestroy(() => {
+      this.nativeElement.removeEventListener('click', this.toggle.bind(this), true);
+      this.nativeElement.removeEventListener('keydown', this.onKeydown.bind(this), true);
+      this.nativeElement.removeEventListener('focus', this.focusCheckbox.bind(this), true);
+    });
+  }
+
+  private focusCheckbox(): void {
+    this.checkbox().nativeElement.focus();
+  }
+
+  private onKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.toggle();
+    }
   }
 
   toggle(): void {
