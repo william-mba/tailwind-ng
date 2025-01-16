@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, ViewEncapsulation } from '@angular/core';
 import { DropdownToken, OverlayPosition } from '@ngx-tailwind/core';
 
 /** Dropdown component */
@@ -11,11 +11,12 @@ import { DropdownToken, OverlayPosition } from '@ngx-tailwind/core';
   providers: [{ provide: DropdownToken, useExisting: DropdownComponent }]
 })
 export class DropdownComponent extends DropdownToken {
+  private readonly destroyRef = inject(DestroyRef);
   @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0' };
 
   protected override onInit(): void {
     this.classList.initFrom(this.position);
-    this.config.get('Dropdown').subscribe(config => this.classList.setFrom(config));
+    this.config$.subscribe(config => this.classList.setFrom(config));
 
     this.opened.subscribe(() => {
       this.updatePositionIfNeeded();
@@ -29,6 +30,12 @@ export class DropdownComponent extends DropdownToken {
     } else {
       this.removeEventListeners();
     }
+
+    this.destroyRef.onDestroy(() => {
+      this.opened.unsubscribe();
+      this.closed.unsubscribe();
+      this.removeEventListeners();
+    });
   }
 
   protected initEventListeners(): void {
