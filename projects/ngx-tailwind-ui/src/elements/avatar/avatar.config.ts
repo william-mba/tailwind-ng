@@ -1,12 +1,5 @@
 import { Provider } from "@angular/core";
-import { mergeConfig, SizeOption, AVATAR_CONFIG, ComponentConfig, SizingLayout } from "@ngx-tailwind/core";
-
-/**
- * @ngx-tailwind Avatar config
- */
-export interface AvatarConfig extends Record<SizeOption, Pick<SizingLayout, 'size'>> {
-  base: ComponentConfig
-};
+import { mergeConfig, AvatarConfig, AVATAR_CONFIG } from "@ngx-tailwind/core";
 
 const DefaultConfig = (): AvatarConfig => {
   return {
@@ -35,7 +28,7 @@ const DefaultConfig = (): AvatarConfig => {
   }
 }
 
-export const AvatarConfig = (customization?: Partial<AvatarConfig>): AvatarConfig => {
+export const GetAvatarConfig = (customization?: Partial<AvatarConfig>): AvatarConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -47,6 +40,6 @@ export const AvatarConfig = (customization?: Partial<AvatarConfig>): AvatarConfi
 export function provideAvatarConfig(customization?: Partial<AvatarConfig>): Provider {
   return {
     provide: AVATAR_CONFIG,
-    useValue: AvatarConfig(customization)
+    useValue: GetAvatarConfig(customization)
   }
 }

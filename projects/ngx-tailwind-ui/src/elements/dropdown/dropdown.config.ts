@@ -1,12 +1,5 @@
 import { Provider } from "@angular/core";
-import { DROPDOWN_CONFIG, ComponentConfig, Modifier, mergeConfig } from "@ngx-tailwind/core";
-
-/** Dropdown config */
-export interface DropdownConfig extends ComponentConfig {
-  open: Modifier<'open'>
-  notOpen: Modifier<'not-open'>
-  starting: Modifier<'starting', DropdownConfig>
-};
+import { DROPDOWN_CONFIG, mergeConfig, DropdownConfig } from "@ngx-tailwind/core";
 
 const DefaultConfig = (): DropdownConfig => {
   return {
@@ -59,7 +52,7 @@ const DefaultConfig = (): DropdownConfig => {
   }
 };
 
-export const DropdownConfig = (customization?: Partial<DropdownConfig>): DropdownConfig => {
+export const GetDropdownConfig = (customization?: Partial<DropdownConfig>): DropdownConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
@@ -71,7 +64,7 @@ export const DropdownConfig = (customization?: Partial<DropdownConfig>): Dropdow
 export function provideDropdownConfig(customization?: Partial<DropdownConfig>): Provider {
   return {
     provide: DROPDOWN_CONFIG,
-    useValue: DropdownConfig(customization)
+    useValue: GetDropdownConfig(customization)
   }
 };
 

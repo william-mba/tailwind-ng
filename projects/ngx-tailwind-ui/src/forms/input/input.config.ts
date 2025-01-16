@@ -1,10 +1,5 @@
 import { Provider } from '@angular/core';
-import { INPUT_CONFIG, Modifier, mergeConfig, ComponentConfig } from "@ngx-tailwind/core";
-
-export interface InputConfig extends ComponentConfig {
-  placeholder: Modifier<'placeholder', InputConfig>;
-  invalid: Modifier<'invalid'>;
-};
+import { INPUT_CONFIG, mergeConfig, InputConfig } from "@ngx-tailwind/core";
 
 const DefaultConfig = (): InputConfig => {
   return {
@@ -58,7 +53,7 @@ const DefaultConfig = (): InputConfig => {
   }
 };
 
-export const InputConfig = (customization?: Partial<InputConfig>): InputConfig => {
+export const GetInputConfig = (customization?: Partial<InputConfig>): InputConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
@@ -68,6 +63,6 @@ export const InputConfig = (customization?: Partial<InputConfig>): InputConfig =
 export function provideInputConfig(customization?: Partial<InputConfig>): Provider {
   return {
     provide: INPUT_CONFIG,
-    useValue: InputConfig(customization)
+    useValue: GetInputConfig(customization)
   };
 }

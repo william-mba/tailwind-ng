@@ -1,10 +1,5 @@
 import { Provider } from "@angular/core";
-import { mergeConfig, SizeOption, ComponentConfig, BADGE_CONFIG, SpacingLayout } from "@ngx-tailwind/core";
-
-/** @ngx-tailwind Badge config*/
-export interface BadgeConfig extends Record<SizeOption, Pick<SpacingLayout, 'padding'>> {
-  base: ComponentConfig;
-};
+import { mergeConfig, BADGE_CONFIG, BadgeConfig } from "@ngx-tailwind/core";
 
 const DefaultConfig = (): BadgeConfig => {
   return {
@@ -36,7 +31,7 @@ const DefaultConfig = (): BadgeConfig => {
   }
 }
 
-export const BadgeConfig = (customization?: Partial<BadgeConfig>): BadgeConfig => {
+export const GetBadgeConfig = (customization?: Partial<BadgeConfig>): BadgeConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -48,6 +43,6 @@ export const BadgeConfig = (customization?: Partial<BadgeConfig>): BadgeConfig =
 export function provideBadgeConfig(customization?: Partial<BadgeConfig>): Provider {
   return {
     provide: BADGE_CONFIG,
-    useValue: BadgeConfig(customization)
+    useValue: GetBadgeConfig(customization)
   }
 }

@@ -1,6 +1,6 @@
-import { Config } from "@ngx-tailwind/core";
+import { Config, DialogConfig } from "@ngx-tailwind/core";
 import { Provider } from "@angular/core";
-import { DialogConfig, provideDialogConfig } from "./dialog";
+import { provideDialogConfig } from "./dialog";
 
 /**
  * @ngx-tailwind Overlays configuration interface.

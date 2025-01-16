@@ -1,12 +1,5 @@
 import { Provider } from "@angular/core";
-import { TOGGLE_CONFIG, ComponentConfig, Modifier, mergeConfig } from "@ngx-tailwind/core";
-
-/**
- * The configuration for the toggle container.
- */
-export interface ToggleConfig extends ComponentConfig {
-  hasChecked: Modifier<'has-checked'>;
-};
+import { TOGGLE_CONFIG, mergeConfig, ToggleConfig } from "@ngx-tailwind/core";
 
 const DefaultConfig = (): ToggleConfig => {
   return {
@@ -45,7 +38,8 @@ const DefaultConfig = (): ToggleConfig => {
     }
   }
 };
-export const ToggleConfig = (customization?: Partial<ToggleConfig>): ToggleConfig => {
+
+export const GetToggleConfig = (customization?: Partial<ToggleConfig>): ToggleConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
@@ -57,6 +51,6 @@ export const ToggleConfig = (customization?: Partial<ToggleConfig>): ToggleConfi
 export function provideToggleConfig(customization?: Partial<ToggleConfig>): Provider {
   return {
     provide: TOGGLE_CONFIG,
-    useValue: ToggleConfig(customization)
+    useValue: GetToggleConfig(customization)
   }
 }

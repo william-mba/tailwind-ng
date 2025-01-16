@@ -1,9 +1,5 @@
 import { Provider } from "@angular/core";
-import { COMBOBOX_ITEM_CONFIG, ComponentConfig, Modifier, mergeConfig } from "@ngx-tailwind/core";
-
-export interface ComboboxItemConfig extends ComponentConfig {
-  ariaSelected: Modifier<'aria-selected'>;
-};
+import { COMBOBOX_ITEM_CONFIG, ComboboxItemConfig, mergeConfig } from "@ngx-tailwind/core";
 
 const DefaultConfig = (): ComboboxItemConfig => {
   return {
@@ -40,13 +36,13 @@ const DefaultConfig = (): ComboboxItemConfig => {
   }
 }
 
-export const ComboboxItemConfig = (customization?: Partial<ComboboxItemConfig>): ComboboxItemConfig => {
+export const GetComboboxItemConfig = (customization?: Partial<ComboboxItemConfig>): ComboboxItemConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
 export function provideComboboxItemConfig(customization?: Partial<ComboboxItemConfig>): Provider {
   return {
     provide: COMBOBOX_ITEM_CONFIG,
-    useValue: ComboboxItemConfig(customization)
+    useValue: GetComboboxItemConfig(customization)
   }
 }

@@ -1,13 +1,5 @@
 import { Provider } from "@angular/core";
-import { ICON_CONFIG, SizeOption, mergeConfig, Modifier, SizingLayout, ComponentConfig } from "@ngx-tailwind/core";
-
-/**
- * @ngx-tailwind Icon config
- */
-export interface IconConfig extends Record<SizeOption, Modifier<'*', Pick<SizingLayout, 'size'>>> {
-  base: ComponentConfig,
-  source: Record<string, string>,
-};
+import { ICON_CONFIG, mergeConfig, IconConfig } from "@ngx-tailwind/core";
 
 const DefaultConfig = (): IconConfig => {
   return {
@@ -40,13 +32,13 @@ const DefaultConfig = (): IconConfig => {
 /**
  * Returns the icon config. If customization is provided, it will be merged with the default config.
  */
-export const IconConfig = (customization?: Partial<IconConfig>): IconConfig => {
+export const GetIconConfig = (customization?: Partial<IconConfig>): IconConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
 export function provideIconConfig(customization?: Partial<IconConfig>): Provider {
   return {
     provide: ICON_CONFIG,
-    useValue: IconConfig(customization)
+    useValue: GetIconConfig(customization)
   }
 }

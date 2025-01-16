@@ -1,9 +1,9 @@
-import { ComponentConfig } from "@ngx-tailwind/core";
-import { AvatarConfig, provideAvatarConfig } from "./avatar";
-import { BadgeConfig, provideBadgeConfig } from "./badge";
-import { ButtonConfig, provideButtonConfig } from "./button";
-import { DropdownConfig, provideDropdownConfig } from "./dropdown";
-import { IconConfig, provideIconConfig } from "./icon";
+import { AvatarConfig, BadgeConfig, ButtonConfig, ComponentConfig, DropdownConfig, IconConfig } from "@ngx-tailwind/core";
+import { provideAvatarConfig } from "./avatar";
+import { provideBadgeConfig } from "./badge";
+import { provideButtonConfig } from "./button";
+import { provideDropdownConfig } from "./dropdown";
+import { provideIconConfig } from "./icon";
 import { Provider } from "@angular/core";
 import { provideButtonGroupConfig } from "./button-group";
 

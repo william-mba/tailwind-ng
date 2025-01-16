@@ -1,7 +1,8 @@
 import { Provider } from "@angular/core";
-import { ComboboxItemConfig, provideComboboxItemConfig } from './combobox';
-import { InputConfig, provideInputConfig } from './input';
-import { ToggleConfig, provideToggleConfig } from './toggle';
+import { provideComboboxItemConfig } from './combobox';
+import { provideInputConfig } from './input';
+import { provideToggleConfig } from './toggle';
+import { ComboboxItemConfig, InputConfig, ToggleConfig } from "@ngx-tailwind/core";
 
 /**
  * @ngx-tailwind Forms configuration interface.

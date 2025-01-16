@@ -28,7 +28,7 @@ const DefaultConfig = (): ComponentConfig => {
 /**
  * Returns the ButtonGroup configuration. If customization is provided, it will be merged with the default configuration.
  */
-export const ButtonGroupConfig = (customization?: Partial<ComponentConfig>): ComponentConfig => {
+export const GetButtonGroupConfig = (customization?: Partial<ComponentConfig>): ComponentConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -40,6 +40,6 @@ export const ButtonGroupConfig = (customization?: Partial<ComponentConfig>): Com
 export function provideButtonGroupConfig(customization?: Partial<ComponentConfig>): Provider {
   return {
     provide: BUTTON_GROUP_CONFIG,
-    useValue: ButtonGroupConfig(customization)
+    useValue: GetButtonGroupConfig(customization)
   }
 }

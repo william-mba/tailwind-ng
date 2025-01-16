@@ -1,21 +1,5 @@
 import { Provider } from '@angular/core';
-import { DIALOG_CONFIG, Config, ComponentConfig, Modifier, mergeConfig } from '@ngx-tailwind/core';
-
-export interface BackdropConfig extends ComponentConfig {
-  inOpen: Modifier<'in-open'>;
-  starting: Modifier<'starting', BackdropConfig>;
-}
-
-export interface ContainerConfig extends ComponentConfig {
-  inOpen: Modifier<'in-open'>;
-  starting: Modifier<'starting', ContainerConfig>;
-}
-
-export interface DialogConfig extends Config {
-  scrim: ComponentConfig;
-  backdrop: BackdropConfig;
-  container: ContainerConfig;
-}
+import { DIALOG_CONFIG, DialogConfig, BackdropConfig, ComponentConfig, mergeConfig, ContainerConfig } from '@ngx-tailwind/core';
 
 const BaseConfig = (): ComponentConfig => {
   return {
@@ -27,7 +11,7 @@ const BaseConfig = (): ComponentConfig => {
   }
 };
 
-const BackdropConfig = (): BackdropConfig => {
+const DefaultBackdropConfig = (): BackdropConfig => {
   return {
     ...BaseConfig(),
     opacity: 'opacity-0',
@@ -48,7 +32,7 @@ const BackdropConfig = (): BackdropConfig => {
   }
 }
 
-const ScrimConfig = (): ComponentConfig => {
+const DefaultScrimConfig = (): ComponentConfig => {
   return {
     ...BaseConfig(),
     display: 'grid',
@@ -61,7 +45,7 @@ const ScrimConfig = (): ComponentConfig => {
   }
 }
 
-const ContainerConfig = (): ContainerConfig => {
+const DefaultContainerConfig = (): ContainerConfig => {
   return {
     ...BaseConfig(),
     gap: 'gap-9',
@@ -94,16 +78,16 @@ const ContainerConfig = (): ContainerConfig => {
 
 const DefaultConfig = (): DialogConfig => {
   return {
-    scrim: ScrimConfig(),
-    backdrop: BackdropConfig(),
-    container: ContainerConfig(),
+    scrim: DefaultScrimConfig(),
+    backdrop: DefaultBackdropConfig(),
+    container: DefaultContainerConfig(),
   }
 }
 
 /** Dialog config
  * @returns  The Popover configuration
  */
-export const DialogConfig = (customization?: Partial<DialogConfig>): DialogConfig => {
+export const GetDialogConfig = (customization?: Partial<DialogConfig>): DialogConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -114,6 +98,6 @@ export const DialogConfig = (customization?: Partial<DialogConfig>): DialogConfi
 export function provideDialogConfig(customization?: Partial<DialogConfig>): Provider {
   return {
     provide: DIALOG_CONFIG,
-    useValue: DialogConfig(customization)
+    useValue: GetDialogConfig(customization)
   }
 };

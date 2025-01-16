@@ -1,8 +1,5 @@
 import { Provider } from "@angular/core";
-import { BUTTON_CONFIG, SizeOptions, mergeConfig, BoxShadowColor, BoxShadow, ComponentConfig } from "@ngx-tailwind/core";
-
-/** Button variant */
-export type ButtonVariant = 'primary' | 'secondary' | 'tonal' | 'text';
+import { BUTTON_CONFIG, SizeOptions, mergeConfig, ComponentConfig, ButtonConfig } from "@ngx-tailwind/core";
 
 /** Button size config */
 const ButtonSizeConfig = (): SizeOptions => {
@@ -180,20 +177,6 @@ const TextButtonConfig = (): ComponentConfig => {
   }
 }
 
-/**
- * @ngx-tailwind Button config
- */
-export interface ButtonConfig extends SizeOptions {
-  primary: ComponentConfig,
-  secondary: ComponentConfig,
-  tonal: ComponentConfig,
-  text: ComponentConfig,
-  fab: {
-    boxShadow?: BoxShadow
-    boxShadowColor?: BoxShadowColor
-  }
-}
-
 const DefaultConfig = (): ButtonConfig => {
   return {
     ...ButtonSizeConfig(),
@@ -207,7 +190,7 @@ const DefaultConfig = (): ButtonConfig => {
   }
 }
 
-export const ButtonConfig = (customization?: Partial<ButtonConfig>): ButtonConfig => {
+export const GetButtonConfig = (customization?: Partial<ButtonConfig>): ButtonConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -219,6 +202,6 @@ export const ButtonConfig = (customization?: Partial<ButtonConfig>): ButtonConfi
 export function provideButtonConfig(customization?: Partial<ButtonConfig>): Provider {
   return {
     provide: BUTTON_CONFIG,
-    useValue: ButtonConfig(customization)
+    useValue: GetButtonConfig(customization)
   }
 };
