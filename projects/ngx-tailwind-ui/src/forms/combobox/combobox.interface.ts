@@ -12,7 +12,10 @@ export interface ComboboxState extends PopupState {
    * - A combobox is valid if it control is valid and touched or dirty.
    */
   readonly isValid: boolean;
-  readonly isMultiselect: boolean;
+  /**
+   * Whether the combobox is in multi-selection mode.
+   */
+  readonly isMulti: boolean;
   /**
    * The form control instance of the input element.
    */

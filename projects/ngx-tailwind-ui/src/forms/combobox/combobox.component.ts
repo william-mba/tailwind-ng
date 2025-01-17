@@ -29,7 +29,7 @@ export class ComboboxComponent extends ComboboxToken implements Combobox {
   private selectionMap = new Map<string, ComboboxItem>();
   protected activeElement?: HTMLElement;
   protected dropdown = contentChild.required<DropdownToken>(DropdownToken);
-  @Input() isMultiselect = false;
+  @Input() isMulti = false;
   @Input() control = inject(NonNullableFormBuilder).control('', Validators.minLength(3));
   @Output() valueChanged = new OutputEmitterRef<string>();
   @Output() valueSelected = new OutputEmitterRef<string[]>();
@@ -151,7 +151,7 @@ export class ComboboxComponent extends ComboboxToken implements Combobox {
   }
 
   select(item: ComboboxItem): void {
-    if (this.isMultiselect) {
+    if (this.isMulti) {
       if (this.has(item)) {
         this.selectionMap.delete(item.value);
       } else {
@@ -210,7 +210,7 @@ export class ComboboxComponent extends ComboboxToken implements Combobox {
     const values: string[] = [];
     this.selectionMap.forEach(item => values.push(item.value));
 
-    if (this.isMultiselect) {
+    if (this.isMulti) {
       this.control.setValue(values.join(', ') + ', ', { emitEvent: false });
     } else {
       this.control.setValue(values[0], { emitEvent: false });

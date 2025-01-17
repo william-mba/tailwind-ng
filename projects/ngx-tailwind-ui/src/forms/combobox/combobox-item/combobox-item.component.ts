@@ -41,7 +41,7 @@ export class ComboboxItemComponent extends ComboboxItemToken implements Combobox
 
     // Select the item if the value changed matchs the item value.
     const valueChanged = this.combobox.valueChanged.subscribe(value => {
-      if (this.combobox.isMultiselect) {
+      if (this.combobox.isMulti) {
         const some = value.split(',').some(x => this.computedValue() === x.trim().toLocaleLowerCase());
         if (!this.isSelected && some) {
           this.select();
