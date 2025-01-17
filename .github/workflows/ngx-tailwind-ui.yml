@@ -37,7 +37,10 @@ jobs:
     - name: Build
       run: pnpm build:${{ matrix.project }}
     - name: Test
-      run: pnpm test:${{ matrix.project }}:ci
+      run: |
+        pnpm install-chrome
+        Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
+        pnpm test:${{ matrix.project }}:ci
     - name: Publish test results summary
       uses: janisz/action@v2
       with:
