@@ -12,7 +12,7 @@ export class DialogScrim extends BaseDirective implements ObservableConfig {
 
   protected override onInit(): void {
     this.config$.subscribe(config => {
-      this.classList.setFrom(config.scrim!);
+      this.classList.setFrom(config.scrim);
     });
   }
 }
