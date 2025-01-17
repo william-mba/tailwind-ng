@@ -355,7 +355,7 @@
         <span class="text-gray-600 dark:text-gray-400 sm:text-sm z-1">$</span>
       </div>
       <!-- Input -->
-      <input tw-input id="price" placeholder="0.0"
+      <input tw-input type="text" id="price" placeholder="0.0"
         class="sm:w-80 pl-7 pr-16 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
       <div class="absolute inset-y-0 right-0 flex items-center">
         <label for="currency" class="sr-only">Currency</label>
@@ -383,42 +383,41 @@
       Not a valid email address.
     </div>
   </div>
+</div>
+
+<!-- Inputs Radio -->
+<div class="grid gap-8 place-items-center p-8 mb-16">
   <div class="grid text-sm">
     <p class="font-semibold">Notifications</p>
     <p class="mt-2">How do you prefer to receive notifications? </p>
     <div class="grid gap-4 mt-6">
       <div class="flex items-center gap-4">
-        <input type="radio"
-          class="relative size-4 appearance-none rounded-full border-1 forced-colors:appearance-auto before:forced-colors:hidden disabled:bg-gray-100 disabled:border-gray-300 disabled:before:bg-gray-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 border-gray-300 dark:border-gray-700 before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-blue-600 checked:bg-blue-600"
-          id="email-notification" />
+        <input tw-input type="radio" name="notification" id="email-notification" />
         <label for="email-notification">Email</label>
       </div>
       <div class="flex items-center gap-4">
-        <input type="radio"
-          class="relative size-4 appearance-none rounded-full border-1 forced-colors:appearance-auto before:forced-colors:hidden disabled:bg-gray-100 disabled:border-gray-300 disabled:before:bg-gray-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 border-gray-300 dark:border-gray-700 before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-blue-600 checked:bg-blue-600"
-          id="sms" />
+        <input tw-input type="radio" disabled="" name="notification" id="sms" />
         <label for="sms">Phone (SMS)</label>
       </div>
       <div class="flex items-center gap-4">
-        <input type="radio"
-          class="relative size-4 appearance-none rounded-full border-1 forced-colors:appearance-auto before:forced-colors:hidden disabled:bg-gray-100 disabled:border-gray-300 disabled:before:bg-gray-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 border-gray-300 dark:border-gray-700 before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-blue-600 checked:bg-blue-600"
-          id="push-notification" />
+        <input tw-input type="radio" name="notification" id="push-notification" />
         <label for="push-notification">Push notification</label>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Comboboxes -->
 <div class="grid sm:grid-cols-2 gap-y-72 sm:gap-6 place-items-center mb-72 w-fit mx-auto">
   <!-- Combobox -->
   <div tw-combobox #combobox (valueSelected)="saveValue($event)" (valueChanged)="filter($event)" class="sm:w-80">
     <!-- Label -->
     <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input autocomplete="off" id="search" [formControl]="combobox.control" class="pr-14" />
+    <input tw-input type="text" autocomplete="off" id="search" [formControl]="combobox.control" class="pr-14" />
     <!-- Button -->
     <button tw-button variant="text" size="sm" [popup]="combobox"
-      class="absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+      class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
       <tw-icon *ngIf="combobox.isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
       <tw-icon key="chevron-up-down" />
     </button>
@@ -438,10 +437,10 @@
     <!-- Label -->
     <label for="search-2" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input autocomplete="off" id="search-2" [formControl]="combobox2.control" class="pr-14" />
+    <input tw-input type="text" autocomplete="off" id="search-2" [formControl]="combobox2.control" class="pr-14" />
     <!-- Button -->
     <button tw-button variant="text" size="sm" [popup]="combobox2"
-      class="absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+      class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
       <tw-icon *ngIf="combobox2.isOpened && combobox2.isValid" (click)="combobox2.reset()" size="sm" key="x-mark" />
       <tw-icon key="chevron-up-down" />
     </button>
