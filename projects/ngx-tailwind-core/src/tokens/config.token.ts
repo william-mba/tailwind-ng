@@ -16,6 +16,8 @@ export const TOGGLE_CONFIG = InjectionTokenFactory.create({}, 'TOGGLE_CONFIG');
 
 export const INPUT_CONFIG = InjectionTokenFactory.create({}, 'INPUT_CONFIG');
 
+export const INPUT_RADIO_CONFIG = InjectionTokenFactory.create({}, 'INPUT_RADIO_CONFIG');
+
 export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create({}, 'COMBOBOX_ITEM_CONFIG');
 
 export const DIALOG_CONFIG = InjectionTokenFactory.create({}, 'DIALOG_CONFIG');

@@ -1,4 +1,4 @@
-import { PointerEvents, UserSelect } from './interactivity';
+import { Appearance, PointerEvents, UserSelect } from './interactivity';
 import { LayoutConfig } from './layout-config.type';
 import { ThemeConfig } from './theme-config.type';
 import { Config } from './config.type';
@@ -6,6 +6,7 @@ import { Config } from './config.type';
 export interface ElementConfig extends LayoutConfig, ThemeConfig {
   userSelect: UserSelect;
   pointerEvents: PointerEvents;
+  appearance: Appearance;
   /**
    * Defines element's children configuration.
    */

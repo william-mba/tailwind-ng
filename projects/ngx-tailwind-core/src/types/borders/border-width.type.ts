@@ -4,6 +4,7 @@ export type BorderWidth =
   | 'border-4'
   | 'border-8'
   | 'border'
+  | 'border-1'
   | 'border-x-0'
   | 'border-x-2'
   | 'border-x-4'

@@ -6,4 +6,5 @@ export * from './dialog-config';
 export * from './dropdown-config';
 export * from './icon-config';
 export * from './input-config';
+export * from './input-radio-config';
 export * from './toggle-config';
