@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://www.ngx-tailwind.com/">
-    <img src="https://ngx-tailwind-assets.pages.dev/ngx-tailwind-logo-doc.png" alt="ngx-tailwind" height="120" />
+    <img src="https://ngxtw-assets.pages.dev/ngxtw-logo-doc.png" alt="ngx-tailwind" height="120" />
     <h1>@ngx-tailwind/ui</h1>
   </a>
 </div>
