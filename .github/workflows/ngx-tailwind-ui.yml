@@ -6,10 +6,10 @@ name: "@ngx-tailwind/ui"
 on:
   push:
     branches: [ "next", "release", "master" ]
-    paths: [ "projects/ngx-tailwind-ui/src/**" ]
+    paths: [ "projects/ngx-tailwind-ui/**", ".github/workflows/ngx-tailwind-ui.yml" ]
   pull_request:
     branches: [ "next" ]
-    paths: [ "projects/ngx-tailwind-ui/src/**" ]
+    paths: [ "projects/ngx-tailwind-ui/**" ]
 
 jobs:
   build:
