@@ -9,10 +9,11 @@ import {
   ComboboxModule,
   DropdownComponent,
   IconDirective,
-  InputComponent,
+  InputRadioDirective,
   DialogModule,
   ToggleComponent,
-  DialogBackdrop
+  DialogBackdrop,
+  InputDirective
 } from '@ngx-tailwind/ui';
 import { toggleTheme, OptionDirective } from "@ngx-tailwind/core";
 
@@ -34,7 +35,8 @@ type Viewport = 'mobile' | 'tablet' | 'desktop';
     ComboboxModule,
     DropdownComponent,
     IconDirective,
-    InputComponent,
+    InputDirective,
+    InputRadioDirective,
     ToggleComponent,
     ButtonGroupComponent,
     DialogModule,

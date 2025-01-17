@@ -1,11 +1,12 @@
 import { Observable } from "rxjs";
 import { ConfigFrom } from "../config/config-from.type";
-import { ConfigKey } from "../config/config-key";
-
+import { ConfigKey } from "../config/config-key.type";
 
 export interface ObservableConfig {
   /**
-   * The component's config observable.
+   * The config source on which the componenet should subscribe to get config's updates.
+   * - Use the `takeUntilDestroyed` operator to ensure the subscription completes when the component is destroyed.
+   * - This behavior is provided by default in the component abstract class which name end by `Token`.
    */
   readonly config$: Observable<ConfigFrom<ConfigKey>>;
 }

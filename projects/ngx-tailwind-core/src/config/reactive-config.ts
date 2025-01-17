@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { ConfigKey } from "./config-key";
+import { ConfigKey } from "./config-key.type";
 import { ConfigStore } from "./config-store";
 import { mergeConfig } from "./config.helper";
 import { ConfigFrom } from "./config-from.type";
@@ -46,38 +46,7 @@ export class ReactiveConfig implements IReactiveConfig {
     // If there is no key in the store,
     // we set an initial value then return it
     if (!this.store.has(key)) {
-      switch (key) {
-        case 'Avatar':
-          this.set(key, this.config.avatar);
-          break;
-        case 'Badge':
-          this.set(key, this.config.badge);
-          break;
-        case 'Button':
-          this.set(key, this.config.button);
-          break;
-        case 'ButtonGroup':
-          this.set(key, this.config.buttonGroup);
-          break;
-        case 'ComboboxItem':
-          this.set(key, this.config.comboboxItem);
-          break;
-        case 'Dropdown':
-          this.set(key, this.config.dropdown);
-          break;
-        case 'Icon':
-          this.set(key, this.config.icon);
-          break;
-        case 'Input':
-          this.set(key, this.config.input);
-          break;
-        case 'Dialog':
-          this.set(key, this.config.dialog);
-          break;
-        case 'Toggle':
-          this.set(key, this.config.toggle);
-          break;
-      }
+      this.set(key, this.config[key as keyof ConfigStore]);
     }
     return this.store.get(key) as BehaviorSubject<ConfigFrom<typeof key>>;
   }
