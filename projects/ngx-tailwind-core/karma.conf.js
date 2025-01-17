@@ -44,10 +44,10 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    browsers: ['Chrome'],
     customLaunchers: {
-      ChromeHeadless: {
-        base: 'Chrome',
+      Chrome: {
+        base: 'ChromeHeadless',
         flags: ['--disable-gpu', '--disable-software-rasterizer', '--no-sandbox']
       }
     },
