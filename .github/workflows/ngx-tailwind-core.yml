@@ -33,8 +33,6 @@ jobs:
       run: pnpm lint:${{ matrix.project }}
     - name: Build
       run: pnpm build:${{ matrix.project }}
-    - name: Set CHROME_BIN environment variable
-      run: echo "CHROME_BIN=/home/runner/.cache/puppeteer/chrome/linux-132.0.6834.83/chrome-linux64/chrome" >> $GITHUB_ENV
     - name: Test
       run: |
         pnpm install-chrome

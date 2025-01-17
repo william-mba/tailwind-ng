@@ -31,7 +31,7 @@
     "deps:check:app": "pnpx dpdm --tree false --ext .ts projects/ngx-tailwind-app/src/* --exclude ^@angular/core$",
     "deps:check:all": "pnpm deps:check:core && pnpm deps:check:ui && pnpm deps:check:app",
     "verify": "pnpm lint:all && pnpm test:all:ci && pnpm build:all && pnpm deps:check:all",
-    "install-chrome": "pnpx puppeteer browsers install chrome@stable"
+    "install-chrome": "pnpx puppeteer browsers install chrome@131.0.6778.204"
   },
   "private": true,
   "dependencies": {
