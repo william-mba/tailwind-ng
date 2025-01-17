@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InputComponent } from './input.component';
-import { InputConfig, provideInputConfig } from './input.config';
-import { ClassList } from '@ngx-tailwind/core';
+import { InputComponent } from './input.directive';
+import { provideInputConfig } from './input.config';
+import { InputConfig, ClassList } from '@ngx-tailwind/core';
 
 describe('InputComponent', () => {
   let component: InputComponent;
@@ -20,7 +20,7 @@ describe('InputComponent', () => {
 
 
   it('should get config', () => {
-    expect(component.config.get('Input').value).toEqual(InputConfig());
+    expect(component.config$.).toEqual(InputConfig());
   });
 
   it('should set classlist', () => {

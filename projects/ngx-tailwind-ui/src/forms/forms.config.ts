@@ -2,7 +2,8 @@ import { Provider } from "@angular/core";
 import { provideComboboxItemConfig } from './combobox';
 import { provideInputConfig } from './input';
 import { provideToggleConfig } from './toggle';
-import { ComboboxItemConfig, InputConfig, ToggleConfig } from "@ngx-tailwind/core";
+import { ComboboxItemConfig, InputConfig, InputRadioConfig, ToggleConfig } from "@ngx-tailwind/core";
+import { provideInputRadioConfig } from "./input-radio";
 
 /**
  * @ngx-tailwind Forms configuration interface.
@@ -10,6 +11,7 @@ import { ComboboxItemConfig, InputConfig, ToggleConfig } from "@ngx-tailwind/cor
 export interface FormsConfig {
   comboboxItem: Partial<ComboboxItemConfig>;
   input: Partial<InputConfig>;
+  inputRadio: Partial<InputRadioConfig>;
   toggle: Partial<ToggleConfig>;
 }
 
@@ -20,6 +22,7 @@ export function provideFormsConfig(customization?: Partial<FormsConfig>): Provid
   return [
     provideComboboxItemConfig(customization?.comboboxItem),
     provideInputConfig(customization?.input),
+    provideInputRadioConfig(customization?.inputRadio),
     provideToggleConfig(customization?.toggle)
   ]
 }
