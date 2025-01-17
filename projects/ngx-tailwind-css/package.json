@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tailwind/css",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0-beta.2",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -27,6 +27,11 @@
       "import": "./styles.css",
       "require": "./styles.css",
       "default": "./styles.css"
+    },
+    "./min": {
+      "import": "./styles.min.css",
+      "require": "./styles.min.css",
+      "default": "./styles.min.css"
     }
   },
   "publishConfig": {

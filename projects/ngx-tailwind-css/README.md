@@ -44,6 +44,9 @@ Then, import the stylesheet in your css file
 
 ```css
 @import '@ngx-tailwind/css';
+
+/* Minified version */
+@import '@ngx-tailwind/css/min';
 ```
 
 ## Note
