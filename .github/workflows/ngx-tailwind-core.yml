@@ -1,0 +1,44 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: "@ngx-tailwind/core CI"
+
+on:
+  push:
+    branches: [ "next", "release", "master", "feat/*", "fix/*" ]
+  pull_request:
+    branches: [ "next" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20]
+        project: [ngx-tailwind-core]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install
+    - name: Lint
+      run: pnpm lint:${{ matrix.project }}
+    - name: Build
+      run: pnpm build:${{ matrix.project }}
+    - name: Test
+      run: |
+        pnpm install-chrome
+        Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
+        pnpm test:${{ matrix.project }}:ci
+    - name: Publish test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.project }}-test-results-${{ github.run_id }}
