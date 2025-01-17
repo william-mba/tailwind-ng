@@ -3,12 +3,12 @@ import { Str } from '@ngx-tailwind/core';
 import { TestBed } from '@angular/core/testing';
 import { IconDirective } from './icon.directive';
 import { Component, ElementRef } from '@angular/core';
-import { IconConfig, provideIconConfig } from './icon.config';
+import { GetIconConfig, provideIconConfig } from './icon.config';
 import { By } from '@angular/platform-browser';
 
 describe('IconDirective', () => {
   let component: IconDirective;
-  const config = IconConfig({
+  const config = GetIconConfig({
     source: {
       'language': 'fake svg',
     }
@@ -32,7 +32,9 @@ describe('IconDirective', () => {
 
   it('should set config', () => {
     // As set earlier, the source should be the same as the config provided
-    expect(component.config.get<IconConfig>('Icon').value).toEqual(config);
+    component.config$.subscribe(c => {
+      expect(c).toEqual(config);
+    }).unsubscribe();
 
     // When no config is provided, the source should be an empty object
     TestBed.resetTestingModule();
@@ -49,16 +51,20 @@ describe('IconDirective', () => {
     TestBed.runInInjectionContext(() => {
       component = TestBed.inject(IconDirective);
     });
-    expect(component.config.get<IconConfig>('Icon').value.xs).toEqual(config.xs);
-    expect(component.config.get<IconConfig>('Icon').value.sm).toEqual(config.sm);
-    expect(component.config.get<IconConfig>('Icon').value.md).toEqual(config.md);
-    expect(component.config.get<IconConfig>('Icon').value.lg).toEqual(config.lg);
-    expect(component.config.get<IconConfig>('Icon').value.xl).toEqual(config.xl);
-    expect(component.config.get<IconConfig>('Icon').value.source).toEqual({});
+    component.config$.subscribe(c => {
+      expect(c.xs).toEqual(config.xs);
+      expect(c.sm).toEqual(config.sm);
+      expect(c.md).toEqual(config.md);
+      expect(c.lg).toEqual(config.lg);
+      expect(c.xl).toEqual(config.xl);
+      expect(c.source).toEqual({});
+    }).unsubscribe();
   });
 
   it('should get config', () => {
-    expect(component.config.get<IconConfig>('Icon').value).toEqual(config);
+    component.config$.subscribe(c => {
+      expect(c).toEqual(config);
+    }).unsubscribe();
   });
 
   it('should set size', () => {

@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { NgIf } from '@angular/common';
 import { IconDirective } from './../../elements/icon/icon.directive';
 import { DropdownComponent } from './../../elements/dropdown/dropdown.component';
-import { InputComponent } from './../input/input.component';
+import { InputDirective } from './../input/input.directive';
 import { TestBed } from '@angular/core/testing';
 import { ComboboxComponent } from './combobox.component';
 import { Component, ElementRef, viewChild, viewChildren } from '@angular/core';
@@ -142,17 +142,17 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
       ],
       template: `
-        <div tw-combobox #combobox [isMultiselect]="isMultiselect" (valueSelected)="saveSelection($event)" class="sm:w-80">
+        <div tw-combobox #combobox [isMulti]="isMulti" (valueSelected)="saveSelection($event)" class="sm:w-80">
           <!-- Label -->
           <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
           <!-- Input -->
-          <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
+          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
@@ -173,7 +173,7 @@ describe('ComboboxComponent', () => {
       combobox = viewChild.required(ComboboxComponent);
       valueSelected = '';
       isOpened = false;
-      isMultiselect = false;
+      isMulti = false;
       users = USERS_STUB();
 
       protected saveSelection(value: string[]) {
@@ -191,7 +191,7 @@ describe('ComboboxComponent', () => {
     expect(combobox.control).toBeTruthy();
     expect(combobox.isValid).toBeFalse();
     expect(combobox.isOpened).toBeFalse();
-    expect(combobox.isMultiselect).toBeFalse();
+    expect(combobox.isMulti).toBeFalse();
 
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
     expect(input).toBeTruthy();
@@ -233,7 +233,7 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
@@ -243,7 +243,7 @@ describe('ComboboxComponent', () => {
           <!-- Label -->
           <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
           <!-- Input -->
-          <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
+          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
@@ -310,7 +310,7 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
@@ -320,7 +320,7 @@ describe('ComboboxComponent', () => {
           <!-- Label -->
           <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
           <!-- Input -->
-          <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
+          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
@@ -432,17 +432,17 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
       ],
       template: `
-        <div tw-combobox #combobox [isMultiselect]="true" (valueSelected)="saveSelection($event)" class="sm:w-80">
+        <div tw-combobox #combobox [isMulti]="true" (valueSelected)="saveSelection($event)" class="sm:w-80">
           <!-- Label -->
           <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
           <!-- Input -->
-          <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
+          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
@@ -484,7 +484,7 @@ describe('ComboboxComponent', () => {
     // Initial state when combobox is opened for the first time
     expect(combobox.isOpened).toBeTrue();
     expect(combobox.isValid).toBeFalse();
-    expect(combobox.isMultiselect).toBeTrue();
+    expect(combobox.isMulti).toBeTrue();
     expect(testComponent.valueSelected).toBe('');
     expect(combobox.control.value).toBe('');
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
@@ -551,17 +551,17 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
       ],
       template: `
-        <div tw-combobox #combobox [isMultiselect]="true" (valueSelected)="saveSelection($event)" class="sm:w-80">
+        <div tw-combobox #combobox [isMulti]="true" (valueSelected)="saveSelection($event)" class="sm:w-80">
           <!-- Label -->
           <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
           <!-- Input -->
-          <input tw-input id="search" [formControl]="combobox.control" class="pr-12" />
+          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
@@ -649,4 +649,4 @@ describe('ComboboxComponent', () => {
   });
 });
 
- 
+

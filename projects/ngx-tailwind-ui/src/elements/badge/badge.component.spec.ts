@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { BadgeComponent } from './badge.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BadgeConfig, provideBadgeConfig } from './badge.config';
+import { GetBadgeConfig, provideBadgeConfig } from './badge.config';
 import { Component, input, viewChild } from '@angular/core';
 import { SizeOption, ClassList, Str } from '@ngx-tailwind/core';
 
@@ -46,7 +46,7 @@ describe('BadgeComponent', () => {
   });
 
   it('should set classList', () => {
-    const config = BadgeConfig();
+    const config = GetBadgeConfig();
     const classList = new ClassList();
 
     classList.setFrom({ b: config.base, s: config[component.size()] });
@@ -56,15 +56,17 @@ describe('BadgeComponent', () => {
   });
 
   it('should get reactive config', () => {
-    const config = BadgeConfig();
-    expect(component.config.get<BadgeConfig>('Badge').value).toEqual(config);
+    const config = GetBadgeConfig();
+    component.config$.subscribe(c => {
+      expect(c).toEqual(config);
+    }).unsubscribe();
   });
 
   it('should set customizations using class attribute', () => {
     const customizations = 'rounded-md text-blue-500 gap-2 bg-blue-500/10';
-    const defaultGap = BadgeConfig().base.gap!;
-    const defaultFontSize = BadgeConfig().base.fontSize!;
-    const defaultDisplay = BadgeConfig().base.display!;
+    const defaultGap = GetBadgeConfig().base.gap!;
+    const defaultFontSize = GetBadgeConfig().base.fontSize!;
+    const defaultDisplay = GetBadgeConfig().base.display!;
 
     @Component({
       selector: 'test-app',
@@ -90,11 +92,11 @@ describe('BadgeComponent', () => {
   });
 
   it('should set customizations using dependency injection', () => {
-    const config = BadgeConfig();
+    const config = GetBadgeConfig();
     config.base.gap = 'gap-2';
     config.base.ringWidth = 'ring-2';
     config.base.ringColor = 'ring-white';
-    const defaultGap = BadgeConfig().base.gap!;
+    const defaultGap = GetBadgeConfig().base.gap!;
 
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
@@ -114,7 +116,7 @@ describe('BadgeComponent', () => {
 
   it('should update classList', () => {
     const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
-    const defaultGap = BadgeConfig().base.gap!;
+    const defaultGap = GetBadgeConfig().base.gap!;
 
     component.classList.update(newClassList);
 

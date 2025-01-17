@@ -1,29 +1,50 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InputComponent } from './input.directive';
-import { provideInputConfig } from './input.config';
-import { InputConfig, ClassList } from '@ngx-tailwind/core';
+import { InputDirective } from './input.directive';
+import { TestBed } from '@angular/core/testing';
+import { GetInputConfig, provideInputConfig } from './input.config';
+import { ClassList } from '@ngx-tailwind/core';
+import { Component, viewChild } from '@angular/core';
 
-describe('InputComponent', () => {
-  let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
-
+describe('InputDirective', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
         provideInputConfig()
       ]
     });
-    fixture = TestBed.createComponent(InputComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-
   it('should get config', () => {
-    expect(component.config$.).toEqual(InputConfig());
+    @Component({
+      selector: 'tw-test-app',
+      standalone: true,
+      imports: [InputDirective],
+      template: `<input tw-input type="text" />`
+    }) class TestAppComponent {
+      input = viewChild.required(InputDirective);
+    }
+
+    const appFixture = TestBed.createComponent(TestAppComponent);
+    const testApp = appFixture.componentInstance;
+    appFixture.detectChanges();
+
+    testApp.input().config$.subscribe(c => {
+      expect(c).toEqual(GetInputConfig());
+    }).unsubscribe();
   });
 
   it('should set classlist', () => {
-    expect(component.classList.value).toEqual(new ClassList().setFrom(InputConfig()).value);
+    @Component({
+      selector: 'tw-test-app',
+      standalone: true,
+      imports: [InputDirective],
+      template: `<input tw-input type="email" />`
+    }) class TestAppComponent {
+      input = viewChild.required(InputDirective);
+    }
+
+    const appFixture = TestBed.createComponent(TestAppComponent);
+    const testApp = appFixture.componentInstance;
+    appFixture.detectChanges();
+    expect(testApp.input().classList.value).toEqual(new ClassList().setFrom(GetInputConfig()).value);
   });
 });

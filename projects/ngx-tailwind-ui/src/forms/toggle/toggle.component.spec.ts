@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToggleComponent } from './toggle.component';
-import { provideToggleConfig, ToggleConfig } from './toggle.config';
+import { GetToggleConfig, provideToggleConfig } from './toggle.config';
 import { ClassList } from '@ngx-tailwind/core';
 
 describe('ToggleComponent', () => {
@@ -30,10 +30,12 @@ describe('ToggleComponent', () => {
   });
 
   it('should get config', () => {
-    expect(component.config.get('Toggle').value).toEqual(ToggleConfig());
+    component.config$.subscribe(c => {
+      expect(c).toEqual(GetToggleConfig());
+    }).unsubscribe();
   });
 
   it('should set classlist', () => {
-    expect(component.classList.value).toEqual(new ClassList().setFrom(ToggleConfig()).value);
+    expect(component.classList.value).toEqual(new ClassList().setFrom(GetToggleConfig()).value);
   });
 });

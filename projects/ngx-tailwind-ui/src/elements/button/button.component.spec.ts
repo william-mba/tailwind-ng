@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { SizeOption, ClassList, Str } from '@ngx-tailwind/core';
+import { SizeOption, ClassList, Str, ButtonVariant } from '@ngx-tailwind/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import { ButtonConfig, ButtonVariant, provideButtonConfig } from './button.config';
+import { GetButtonConfig, provideButtonConfig } from './button.config';
 import { Component, viewChild } from '@angular/core';
 
 describe('ButtonComponent', () => {
@@ -21,8 +21,10 @@ describe('ButtonComponent', () => {
   });
 
   it('should get config', () => {
-    const config = ButtonConfig();
-    expect(component.config.get<ButtonConfig>('Button').value).toEqual(config);
+    const config = GetButtonConfig();
+    component.config$.subscribe(c => {
+      expect(c).toEqual(config);
+    }).unsubscribe();
   });
 
   it('should set size', () => {
@@ -72,7 +74,7 @@ describe('ButtonComponent', () => {
   describe('Variant', () => {
     describe('Primary button', () => {
       it('should set classList', () => {
-        const config = ButtonConfig();
+        const config = GetButtonConfig();
         const classList = new ClassList();
 
         classList.setFrom({
@@ -88,9 +90,9 @@ describe('ButtonComponent', () => {
       });
 
       it('should set customizations using class attribute', () => {
-        const defaultGap = ButtonConfig().md.gap!;
-        const defaultBgColor = ButtonConfig().primary.bgColor!;
-        const defaultRadius = ButtonConfig().md.radius!;
+        const defaultGap = GetButtonConfig().md.gap!;
+        const defaultBgColor = GetButtonConfig().primary.bgColor!;
+        const defaultRadius = GetButtonConfig().md.radius!;
         const customizations = 'rounded-full bg-red-600 gap-3';
 
         @Component({
@@ -141,9 +143,9 @@ describe('ButtonComponent', () => {
 
         const customizations = 'rounded-full bg-red-600 gap-3';
 
-        const defaultGap = ButtonConfig().md.gap!;
-        const defaultRadius = ButtonConfig().md.radius!;
-        const defaultBgColor = ButtonConfig().primary.bgColor!;
+        const defaultGap = GetButtonConfig().md.gap!;
+        const defaultRadius = GetButtonConfig().md.radius!;
+        const defaultBgColor = GetButtonConfig().primary.bgColor!;
 
         const appFixture = TestBed.createComponent(TestApp);
         const testApp = appFixture.componentInstance;
@@ -160,7 +162,7 @@ describe('ButtonComponent', () => {
 
       it('should update classList', () => {
         const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
-        const defaultRadius = ButtonConfig().primary.gap!;
+        const defaultRadius = GetButtonConfig().primary.gap!;
 
         component.classList.update(newClassList);
 
@@ -174,7 +176,7 @@ describe('ButtonComponent', () => {
 
     describe('Secondary button', () => {
       it('should set classList', () => {
-        const config = ButtonConfig();
+        const config = GetButtonConfig();
         const classList = new ClassList();
         classList.setFrom({
           ...config.secondary,
@@ -194,11 +196,11 @@ describe('ButtonComponent', () => {
       });
 
       it('should set customizations using class attribute', () => {
-        const defaultRingColor = ButtonConfig().secondary.ringColor!;
-        const defaultShadow = ButtonConfig().secondary.boxShadow!;
-        const defaultRingWidth = ButtonConfig().secondary.ringWidth!;
-        const defaultRing = ButtonConfig().secondary.ring!;
-        const defaultRadius = ButtonConfig().md.radius!;
+        const defaultRingColor = GetButtonConfig().secondary.ringColor!;
+        const defaultShadow = GetButtonConfig().secondary.boxShadow!;
+        const defaultRingWidth = GetButtonConfig().secondary.ringWidth!;
+        const defaultRing = GetButtonConfig().secondary.ring!;
+        const defaultRadius = GetButtonConfig().md.radius!;
         const customizations = 'rounded-full ring-red-600 ring-3 shadow-lg';
 
         @Component({
@@ -229,16 +231,16 @@ describe('ButtonComponent', () => {
       });
 
       it('should set customizations using dependency injection', () => {
-        const config = ButtonConfig();
+        const config = GetButtonConfig();
         config.secondary.ringWidth = 'ring-4';
         config.secondary.ringColor = 'ring-red-600';
         config.secondary.radius = 'rounded-full';
         const customizations = 'rounded-full ring-red-600 ring-4';
 
-        const defaultRingWith = ButtonConfig().secondary.ringWidth!;
-        const defaultRing = ButtonConfig().secondary.ring!;
-        const defaultRingColor = ButtonConfig().secondary.ringColor!;
-        const defaultRadius = ButtonConfig().md.radius!;
+        const defaultRingWith = GetButtonConfig().secondary.ringWidth!;
+        const defaultRing = GetButtonConfig().secondary.ring!;
+        const defaultRingColor = GetButtonConfig().secondary.ringColor!;
+        const defaultRadius = GetButtonConfig().md.radius!;
 
         @Component({
           selector: 'test-app',
@@ -274,9 +276,9 @@ describe('ButtonComponent', () => {
 
       it('should update classList', () => {
         const newClassList = ['rounded-md', 'ring-4', 'ring-indigo-600', 'ring-inset'];
-        const defaultRing = ButtonConfig().secondary.ring!;
-        const defaultRingWidth = ButtonConfig().secondary.ringWidth!;
-        const defaultRingColor = ButtonConfig().secondary.ringColor!;
+        const defaultRing = GetButtonConfig().secondary.ring!;
+        const defaultRingWidth = GetButtonConfig().secondary.ringWidth!;
+        const defaultRingColor = GetButtonConfig().secondary.ringColor!;
 
         fixture = TestBed.createComponent(ButtonComponent);
         component = fixture.componentInstance;

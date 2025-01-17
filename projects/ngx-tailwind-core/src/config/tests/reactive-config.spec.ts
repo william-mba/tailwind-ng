@@ -1,20 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { ReactiveConfig } from '../reactive-config';
 import { AVATAR_CONFIG } from '../../tokens';
-import { ComponentConfig } from '../../types';
+import { ConfigTypeOf } from '../config-type-of.type';
 
 describe('ReactiveConfig', () => {
-  let reactiveConfig: ReactiveConfig;
+  let rConfig: ReactiveConfig;
 
-  const configStub = (): ComponentConfig => {
+  const configStub = (): Partial<ConfigTypeOf<'Avatar'>> => {
     return {
-      display: 'flex',
-      alignItems: 'items-center',
-      justifyContent: 'justify-center',
-      position: 'relative',
-      radius: 'rounded-full',
-      bgColor: 'bg-gray-200',
-      textColor: 'text-gray-800',
+      base: {
+        display: 'flex',
+        alignItems: 'items-center',
+        justifyContent: 'justify-center',
+        position: 'relative',
+        radius: 'rounded-full',
+        bgColor: 'bg-gray-200',
+        textColor: 'text-gray-800',
+      }
     }
   };
 
@@ -27,22 +29,22 @@ describe('ReactiveConfig', () => {
         }
       ]
     });
-    reactiveConfig = TestBed.inject(ReactiveConfig);
+    rConfig = TestBed.inject(ReactiveConfig);
   });
 
   it('should get config', () => {
-    const config = reactiveConfig.get('Avatar').value;
-    expect(config).toEqual(configStub());
+    const config = rConfig.get('Avatar').value.base;
+    expect(config).toEqual(configStub().base!);
   });
 
   it('should update config', () => {
-    const config = reactiveConfig.get('Avatar').value;
-    config.bgColor = 'bg-red-500';
-    config.textColor = 'text-white';
-    config.radius = 'rounded-md';
+    const config = rConfig.get('Avatar').value;
+    config.base.bgColor = 'bg-red-500';
+    config.base.textColor = 'text-white';
+    config.base.radius = 'rounded-md';
 
-    const updatedConfig = reactiveConfig.update('Avatar', config).get('Avatar').value;
+    const result = rConfig.update('Avatar', config).get('Avatar').value;
 
-    expect(updatedConfig).toEqual(config);
+    expect(result).toEqual(config);
   });
 });

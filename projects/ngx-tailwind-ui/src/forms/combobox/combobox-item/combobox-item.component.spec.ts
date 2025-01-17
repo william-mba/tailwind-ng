@@ -3,8 +3,8 @@ import { DropdownComponent } from './../../../elements/dropdown/dropdown.compone
 import { TestBed } from '@angular/core/testing';
 import { ComboboxItemComponent } from './combobox-item.component';
 import { Component, ElementRef, viewChildren } from '@angular/core';
-import { ComboboxItemConfig, provideComboboxItemConfig } from './combobox-item.config';
-import { InputComponent } from '../../input/input.component';
+import { GetComboboxItemConfig, provideComboboxItemConfig } from './combobox-item.config';
+import { InputDirective } from '../../input/input.directive';
 import { USERS_STUB } from '../combobox.component.spec';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -31,7 +31,7 @@ describe('ComboboxItemComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         DropdownComponent
       ],
@@ -78,7 +78,7 @@ describe('ComboboxItemComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         DropdownComponent
       ],
@@ -130,7 +130,7 @@ describe('ComboboxItemComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputComponent,
+        InputDirective,
         ButtonComponent,
         DropdownComponent
       ],
@@ -168,7 +168,9 @@ describe('ComboboxItemComponent', () => {
     testFixture.detectChanges();
 
     const item = testComponent.comboboxItems()[0];
-    expect(item.config.get('ComboboxItem').value).toEqual(ComboboxItemConfig());
+    item.config$.subscribe(c => {
+      expect(c).toEqual(GetComboboxItemConfig());
+    }).unsubscribe();
   });
 });
 

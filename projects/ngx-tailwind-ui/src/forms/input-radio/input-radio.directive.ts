@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 import { InputRadioToken } from '@ngx-tailwind/core';
 
-@Directive({ // eslint-disable-next-line @angular-eslint/component-selector
+@Directive({
   selector: 'input[tw-input][type="radio"], input[twInput][type="radio"]',
   exportAs: 'twInputRadio',
   providers: [{ provide: InputRadioToken, useExisting: InputRadioDirective }]

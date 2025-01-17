@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ButtonGroupConfig, provideButtonGroupConfig } from './button-group.config';
+import { GetButtonGroupConfig, provideButtonGroupConfig } from './button-group.config';
 import { ClassList } from '@ngx-tailwind/core';
 import { Component, viewChild } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
@@ -22,22 +22,23 @@ describe('ButtonGroupComponent', () => {
   });
 
   it('should get config', () => {
-    const config = ButtonGroupConfig();
-
-    expect(component.config.get('ButtonGroup').value).toEqual(config);
+    const config = GetButtonGroupConfig();
+    component.config$.subscribe(c => {
+      expect(c).toEqual(config);
+    }).unsubscribe();
   });
 
   it('should set classList', () => {
     const classList = new ClassList();
-    classList.setFrom(ButtonGroupConfig());
+    classList.setFrom(GetButtonGroupConfig());
 
     expect(component.classList.base).toEqual(classList.base);
     expect(component.classList.value).toEqual(classList.value);
   });
 
   it('should set customizations using class attribute', () => {
-    const defaultRadius = ButtonGroupConfig().radius!;
-    const defaultBoxShadow = ButtonGroupConfig().boxShadow!;
+    const defaultRadius = GetButtonGroupConfig().radius!;
+    const defaultBoxShadow = GetButtonGroupConfig().boxShadow!;
 
     @Component({
       selector: 'test-app',
@@ -64,8 +65,8 @@ describe('ButtonGroupComponent', () => {
   });
 
   it('should set customizations using dependency injection', () => {
-    const defaultRadius = ButtonGroupConfig().radius!;
-    const defaultBoxShadow = ButtonGroupConfig().boxShadow!;
+    const defaultRadius = GetButtonGroupConfig().radius!;
+    const defaultBoxShadow = GetButtonGroupConfig().boxShadow!;
 
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({

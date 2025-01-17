@@ -3,10 +3,9 @@ import { ClassList, SizeOption, Str } from '@ngx-tailwind/core';
 import { TestBed } from '@angular/core/testing';
 import { AvatarComponent } from './avatar.component';
 import { Component, input, viewChild } from '@angular/core';
-import { AvatarConfig, provideAvatarConfig } from './avatar.config';
+import { GetAvatarConfig, provideAvatarConfig } from './avatar.config';
 
 describe('AvatarComponent', () => {
-
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
@@ -49,7 +48,7 @@ describe('AvatarComponent', () => {
     const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    const config = AvatarConfig();
+    const config = GetAvatarConfig();
     const classList = new ClassList();
 
     classList.setFrom({ b: config.base, s: config[component.size()] });
@@ -59,19 +58,21 @@ describe('AvatarComponent', () => {
   });
 
   it('should get config', () => {
-    const config = AvatarConfig();
+    const config = GetAvatarConfig();
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
 
     fixture.detectChanges();
 
-    expect(component.config.get<AvatarConfig>('Avatar').value).toEqual(config);
+    component.config$.subscribe(c => {
+      expect(c).toEqual(config);
+    }).unsubscribe();
   });
 
   it('should set customizations using class attribute', () => {
-    const defaultRadius = AvatarConfig().base.radius!;
-    const defaultRingWidth = AvatarConfig().base.ringWidth!;
-    const defaultRingColor = AvatarConfig().base.ringColor!;
+    const defaultRadius = GetAvatarConfig().base.radius!;
+    const defaultRingWidth = GetAvatarConfig().base.ringWidth!;
+    const defaultRingColor = GetAvatarConfig().base.ringColor!;
     const customizations = 'ring-2 ring-white rounded-md';
 
     @Component({
@@ -99,9 +100,9 @@ describe('AvatarComponent', () => {
   });
 
   it('should set customizations using dependency injection', () => {
-    const defaultRadius = AvatarConfig().base.radius!;
-    const defaultRingWidth = AvatarConfig().base.ringWidth!;
-    const defaultRingColor = AvatarConfig().base.ringColor!;
+    const defaultRadius = GetAvatarConfig().base.radius!;
+    const defaultRingWidth = GetAvatarConfig().base.ringWidth!;
+    const defaultRingColor = GetAvatarConfig().base.ringColor!;
     const customizations = 'ring-2 ring-white rounded-md';
 
     TestBed.resetTestingModule();
@@ -141,9 +142,9 @@ describe('AvatarComponent', () => {
 
   it('should update classList', () => {
     const newClassList = ['rounded-md', 'ring-2', 'ring-white'];
-    const defaultRadius = AvatarConfig().base.radius!;
-    const defaultRingWidth = AvatarConfig().base.ringWidth!;
-    const defaultRingColor = AvatarConfig().base.ringColor!;
+    const defaultRadius = GetAvatarConfig().base.radius!;
+    const defaultRingWidth = GetAvatarConfig().base.ringWidth!;
+    const defaultRingColor = GetAvatarConfig().base.ringColor!;
 
     @Component({
       selector: 'test-app',
