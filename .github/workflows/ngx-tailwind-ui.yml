@@ -11,6 +11,9 @@ on:
     branches: [ "next" ]
     paths: [ "projects/ngx-tailwind-ui/**" ]
 
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTHTOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,3 +53,23 @@ jobs:
       with:
         name: ${{ matrix.project }}-${{ github.run_id }}
         path: "dist/${{ matrix.project }}"
+    - if: github.event_name == 'push' && github.ref == 'refs/heads/release'
+      name: Publish @beta
+      run: |
+        cd dist/${{ matrix.project }}
+        pnpm version ${{ vars.BETA_VERSION }}
+        pnpm publish --tag beta
+
+    - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      name: Publish @latest
+      run: |
+        cd dist/${{ matrix.project }}
+        pnpm version ${{ vars.LATEST_VERSION }}
+        pnpm publish --tag latest
+
+    - if: github.event_name == 'push' && github.ref == 'refs/heads/next'
+      name: Publish @alpha
+      run: |
+        cd dist/${{ matrix.project }}
+        pnpm version ${{ vars.ALPHA_VERSION }}
+        pnpm publish --tag alpha
