@@ -36,7 +36,7 @@ jobs:
     - name: Test
       run: |
         pnpm install-chrome
-        pnpm test:${{ matrix.project }}:ci
+        set CHROME_BIN=/home/runner/.cache/puppeteer/chrome/linux-132.0.6834.83/chrome-linux64/chrome && pnpm test:${{ matrix.project }}:ci
     - name: Display test results summary
       uses: janisz/action@v2
       with:
