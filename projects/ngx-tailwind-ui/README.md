@@ -11,7 +11,7 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 <br/>
 <br/>
 
-[![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fngx-tailwind-lib?repoName=William-Mba%2Fngx-tailwind&branchName=master)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=5&repoName=William-Mba%2Fngx-tailwind&branchName=master)
+[![@ngx-tailwind/ui](https://github.com/william-mba/ngx-tailwind/actions/workflows/ngx-tailwind-ui.yml/badge.svg)](https://github.com/william-mba/ngx-tailwind/actions/workflows/ngx-tailwind-ui.yml)
 
 </div>
 

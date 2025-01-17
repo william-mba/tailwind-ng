@@ -11,7 +11,7 @@ Core infrastructure and tools for <a href="https://www.npmjs.com/package/@ngx-ta
 <br/>
 <br/>
 
-[![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fngx-tailwind-lib?repoName=William-Mba%2Fngx-tailwind&branchName=master)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=5&repoName=William-Mba%2Fngx-tailwind&branchName=master)
+[![@ngx-tailwind/core](https://github.com/william-mba/ngx-tailwind/actions/workflows/ngx-tailwind-core.yml/badge.svg)](https://github.com/william-mba/ngx-tailwind/actions/workflows/ngx-tailwind-core.yml)
 
 </div>
 
