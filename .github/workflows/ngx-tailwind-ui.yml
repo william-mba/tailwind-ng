@@ -1,13 +1,15 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: "@ngx-tailwind/ui CI"
+name: "@ngx-tailwind/ui"
 
 on:
   push:
     branches: [ "next", "release", "master" ]
+    paths: [ "projects/ngx-tailwind-ui/src/**" ]
   pull_request:
     branches: [ "next" ]
+    paths: [ "projects/ngx-tailwind-ui/src/**" ]
 
 jobs:
   build:
@@ -39,12 +41,12 @@ jobs:
         pnpm install-chrome
         Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
         pnpm test:${{ matrix.project }}:ci
-    - name: Display test results summary
+    - name: Publish test results summary
       uses: janisz/action@v2
       with:
         paths: "junit/**/TESTS-*.xml"
-    - name: Publish test results
+    - name: Publish artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.project }}-test-results-${{ github.run_id }}
-        path: "**/TESTS-*.xml"
+        name: ${{ matrix.project }}-${{ github.run_id }}
+        path: "dist/${{ matrix.project }}"

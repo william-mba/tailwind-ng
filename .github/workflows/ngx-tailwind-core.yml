@@ -1,13 +1,15 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: "@ngx-tailwind/core CI"
+name: "@ngx-tailwind/core"
 
 on:
   push:
     branches: [ "next", "release", "master", "feat/*", "fix/*" ]
+    paths: [ "projects/ngx-tailwind-core/src/**" ]
   pull_request:
     branches: [ "next" ]
+    paths: [ "projects/ngx-tailwind-core/src/**" ]
 
 jobs:
   build:
@@ -40,8 +42,8 @@ jobs:
       uses: janisz/action@v2
       with:
         paths: "junit/**/TESTS-*.xml"
-    - name: Publish test results
+    - name: Publish artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.project }}-test-results-${{ github.run_id }}
-        path: "**/TESTS-*.xml"
+        name: ${{ matrix.project }}-${{ github.run_id }}
+        path: "dist/${{ matrix.project }}"
