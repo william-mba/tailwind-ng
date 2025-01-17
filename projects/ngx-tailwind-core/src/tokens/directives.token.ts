@@ -1,5 +1,5 @@
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Directive, inject, Input } from "@angular/core";
+import { Directive, forwardRef, inject, Input } from "@angular/core";
 import { BaseDirective, PopupDirective } from "../directives";
 import { ReactiveConfig } from "../config";
 import { ObservableConfig } from "../types";
@@ -25,7 +25,7 @@ export abstract class ButtonGroupToken extends BaseDirective implements Observab
   @Input() config$ = inject(ReactiveConfig).get('ButtonGroup').pipe(takeUntilDestroyed());
 }
 
-@Directive({ providers: [{ provide: PopupDirective, useExisting: DropdownToken }] })
+@Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DropdownToken) }] })
 export abstract class DropdownToken extends PopupDirective implements ObservableConfig {
   @Input() config$ = inject(ReactiveConfig).get('Dropdown').pipe(takeUntilDestroyed());
 }
@@ -41,7 +41,7 @@ export abstract class ComboboxItemToken extends BaseDirective implements Observa
   @Input() config$ = inject(ReactiveConfig).get('ComboboxItem').pipe(takeUntilDestroyed());
 }
 
-@Directive({ providers: [{ provide: PopupDirective, useExisting: ComboboxToken }] })
+@Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => ComboboxToken) }] })
 export abstract class ComboboxToken extends PopupDirective { }
 
 @Directive({})
@@ -50,10 +50,15 @@ export abstract class InputToken extends BaseDirective<HTMLInputElement> impleme
 }
 
 @Directive({})
+export abstract class InputRadioToken extends BaseDirective<HTMLInputElement> implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('InputRadio').pipe(takeUntilDestroyed());
+}
+
+@Directive({})
 export abstract class ToggleToken extends BaseDirective implements ObservableConfig {
   @Input() config$ = inject(ReactiveConfig).get('Toggle').pipe(takeUntilDestroyed());
 }
 
 // Overlays
-@Directive({ providers: [{ provide: PopupDirective, useExisting: DialogToken }] })
+@Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogToken) }] })
 export abstract class DialogToken extends PopupDirective { }
