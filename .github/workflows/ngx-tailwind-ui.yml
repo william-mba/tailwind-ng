@@ -32,7 +32,6 @@ jobs:
         pnpm add @ngx-tailwind/core@file:projects/ngx-tailwind-core/src
         sed "s/ngx-tailwind/temp/g" -i ./tsconfig.json
         pnpm install
-        cat ./tsconfig.json
     - name: Lint
       run: pnpm lint:${{ matrix.project }}
     - name: Build
