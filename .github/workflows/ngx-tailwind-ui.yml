@@ -39,6 +39,7 @@ jobs:
       run: pnpm build:${{ matrix.project }}
     - name: Test
       run: |
+        sed "s/temp/ngx-tailwind/g" -i ./tsconfig.json
         pnpm install-chrome
         pnpm test:${{ matrix.project }}:ci
     - name: Publish test results summary
