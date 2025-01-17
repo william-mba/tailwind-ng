@@ -34,6 +34,8 @@ jobs:
     - name: Build
       run: pnpm build:${{ matrix.project }}
     - name: Test
+      env:
+        CHROME_BIN: /home/runner/.cache/puppeteer/chrome-headless-shell/linux-132.0.6834.83/chrome-headless-shell-linux64/chrome-headless-shell
       run: |
         pnpm install-chrome
         Xvfb -ac :0 -screen 0 1280x1024x16 -nolisten unix & export DISPLAY=:0
