@@ -30,10 +30,9 @@ jobs:
     - name: Install dependencies
       run: |
         pnpm add @ngx-tailwind/core@file:projects/ngx-tailwind-core/src
-        cat ./package.json
-        sed "/@ngx-tailwind\/core//d" -i ./tsconfig.json
-        cat ./tsconfig.json
+        sed "s/ngx-tailwind/temp/g" -i ./tsconfig.json
         pnpm install
+        cat ./tsconfig.json
     - name: Lint
       run: pnpm lint:${{ matrix.project }}
     - name: Build
