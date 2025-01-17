@@ -58,18 +58,18 @@ jobs:
       run: |
         cd dist/${{ matrix.project }}
         pnpm version ${{ vars.BETA_VERSION }}
-        pnpm publish --tag beta
+        pnpm publish --tag beta --no-git-checks
 
     - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
       name: Publish @latest
       run: |
         cd dist/${{ matrix.project }}
         pnpm version ${{ vars.LATEST_VERSION }}
-        pnpm publish --tag latest
+        pnpm publish --tag latest --no-git-checks
 
     - if: github.event_name == 'push' && github.ref == 'refs/heads/next'
       name: Publish @alpha
       run: |
         cd dist/${{ matrix.project }}
         pnpm version ${{ vars.ALPHA_VERSION }}
-        pnpm publish --tag alpha
+        pnpm publish --tag alpha --no-git-checks
