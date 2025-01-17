@@ -63,7 +63,6 @@ export class ComboboxItemComponent extends ComboboxItemToken implements Combobox
 
     this.destroyRef.onDestroy(() => {
       valueChanged.unsubscribe();
-      this.combobox.opened.unsubscribe();
       this.nativeElement.removeEventListener('click', this.select.bind(this), true);
     });
   }
