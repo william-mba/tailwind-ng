@@ -43,8 +43,8 @@
     "@angular/platform-browser": "^19.1.1",
     "@angular/platform-browser-dynamic": "^19.1.1",
     "@angular/router": "^19.1.1",
-    "@ngx-tailwind/ui": "file:projects\\ngx-tailwind-ui\\src",
     "@ngx-tailwind/core": "file:projects\\ngx-tailwind-core\\src",
+    "@ngx-tailwind/ui": "file:projects\\ngx-tailwind-ui\\src",
     "@tailwindcss/cli": "4.0.0-beta.9",
     "rxjs": "~7.8.1",
     "tailwindcss": "4.0.0-beta.9",
@@ -52,8 +52,8 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.1",
-    "@angular/cli": "^19.1.1",
+    "@angular-devkit/build-angular": "^19.1.2",
+    "@angular/cli": "^19.1.2",
     "@angular/compiler-cli": "^19.1.1",
     "@eslint/js": "^9.18.0",
     "@types/jasmine": "~5.1.5",
