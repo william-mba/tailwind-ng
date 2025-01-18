@@ -35,6 +35,12 @@ importers:
       '@ngx-tailwind/core':
         specifier: file:projects\ngx-tailwind-core\src
         version: src@file:projects/ngx-tailwind-core/src
+      '@ngx-tailwind/css':
+        specifier: ^0.10.0
+        version: 0.10.0
+      '@ngx-tailwind/ui':
+        specifier: ^0.10.7
+        version: 0.10.7(@angular/common@19.1.1(@angular/core@19.1.1(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.1(rxjs@7.8.1)(zone.js@0.15.0))
       '@tailwindcss/cli':
         specifier: 4.0.0-beta.9
         version: 4.0.0-beta.9
@@ -1373,6 +1379,15 @@ packages:
       '@angular/compiler-cli': ^19.0.0
       typescript: '>=5.5 <5.8'
       webpack: ^5.54.0
+
+  '@ngx-tailwind/css@0.10.0':
+    resolution: {integrity: sha512-8PyEht5X+Y48CZs3qR1S/UzW2X6x4xM+4mEyN+t8jF0omDHUczR0bgL5QyIRxo013xwXsQndhqEMUfXOTDv/OQ==}
+
+  '@ngx-tailwind/ui@0.10.7':
+    resolution: {integrity: sha512-DT44cx3fUbVFFbtN5vOXl9ftuKiWI1oczUMJPRNCrnwNJ8fkq/yAcRg+jMdSZxrojxuVmf/B9t2irCvuU5z0JQ==}
+    peerDependencies:
+      '@angular/common': ^19.0.0
+      '@angular/core': ^19.0.0
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -6769,6 +6784,14 @@ snapshots:
       '@angular/compiler-cli': 19.1.1(@angular/compiler@19.1.1(@angular/core@19.1.1(rxjs@7.8.1)(zone.js@0.15.0)))(typescript@5.6.3)
       typescript: 5.6.3
       webpack: 5.97.1(esbuild@0.24.2)
+
+  '@ngx-tailwind/css@0.10.0': {}
+
+  '@ngx-tailwind/ui@0.10.7(@angular/common@19.1.1(@angular/core@19.1.1(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.1.1(rxjs@7.8.1)(zone.js@0.15.0))':
+    dependencies:
+      '@angular/common': 19.1.1(@angular/core@19.1.1(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
+      '@angular/core': 19.1.1(rxjs@7.8.1)(zone.js@0.15.0)
+      tslib: 2.8.1
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

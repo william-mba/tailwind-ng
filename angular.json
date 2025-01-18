@@ -95,7 +95,7 @@
               }
             ],
             "styles": [
-              "projects/ngx-tailwind-app/src/styles.css"
+              "https://cdn.jsdelivr.net/npm/@ngx-tailwind/css@latest/styles.min.css"
             ],
             "scripts": []
           }

@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tailwind/ui",
-  "version": "0.10.0",
+  "version": "0.10.7",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -12,6 +12,13 @@
     "tailwind css",
     "web components"
   ],
+  "exports": {
+    "./theme": {
+      "import": "./themes/default.css",
+      "require": "./themes/default.css",
+      "default": "./themes/default.css"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/William-Mba/ngx-tailwind.git"

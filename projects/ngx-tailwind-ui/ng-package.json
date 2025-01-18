@@ -4,5 +4,8 @@
   "dest": "../../dist/ngx-tailwind-ui",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    "./themes/**/*.css"
+  ]
 }
