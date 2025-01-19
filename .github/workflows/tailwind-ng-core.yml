@@ -30,13 +30,13 @@ jobs:
     - name: Install dependencies
       run: pnpm install
     - name: Lint
-      run: pnpm lint:${{ matrix.project }}
+      run: pnpm lint:lib-core
     - name: Build
-      run: pnpm build:${{ matrix.project }}
+      run: pnpm build:lib-core
     - name: Test
       run: |
         pnpm install-chrome
-        pnpm test:${{ matrix.project }}:ci
+        pnpm test:lib-core:ci
     - name: Display test results summary
       uses: janisz/action@v2
       with:
