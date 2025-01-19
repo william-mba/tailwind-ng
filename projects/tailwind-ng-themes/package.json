@@ -1,0 +1,40 @@
+{
+  "name": "@tailwind-ng/themes",
+  "version": "0.10.9",
+  "author": {
+    "email": "w.mba@outlook.com",
+    "name": "William Mba",
+    "url": "https://github.com/William-Mba"
+  },
+  "description": "Tailwind NG themes library.",
+  "keywords": [
+    "angular",
+    "tailwind css",
+    "web components"
+  ],
+  "exports": {
+    "./default": {
+      "import": "./default/index.css",
+      "require": "./default/index.css",
+      "default": "./default/index.css"
+    },
+    "./default/min": {
+      "import": "./default/index.min.css",
+      "require": "./default/index.min.css",
+      "default": "./default/index.min.css"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-Mba/tailwind-ng.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William-Mba/tailwind-ng/issues"
+  },
+  "homepage": "https://www.tailwind-ng.com",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -51,7 +51,7 @@ jobs:
       run: |
         cd dist/${{ matrix.project }}
         pnpm version ${{ vars.BETA_VERSION }}
-        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
+        pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
         pnpm publish --tag beta --no-git-checks
 
     - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
@@ -59,7 +59,7 @@ jobs:
       run: |
         cd dist/${{ matrix.project }}
         pnpm version ${{ vars.LATEST_VERSION }}
-        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
+        pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
         pnpm publish --tag latest --no-git-checks
 
     - if: github.event_name == 'push' && github.ref == 'refs/heads/next'
@@ -67,5 +67,5 @@ jobs:
       run: |
         cd dist/${{ matrix.project }}
         pnpm version ${{ vars.ALPHA_VERSION }}
-        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
+        pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
         pnpm publish --tag alpha --no-git-checks

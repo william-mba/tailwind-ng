@@ -4,8 +4,5 @@
   "dest": "../../dist/tailwind-ng",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "assets": [
-    "./themes/**/*.css"
-  ]
+  }
 }
