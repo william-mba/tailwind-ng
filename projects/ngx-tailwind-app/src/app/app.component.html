@@ -267,56 +267,63 @@
 
 <!-- Toggles -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <tw-toggle [isChecked]="true">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
+  <tw-toggle #toggle [isChecked]="true" />
+  <tw-toggle class="w-20" />
+  <tw-toggle class="w-40" />
+</div>
+
+<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
+  <tw-toggle class="data-checked:bg-" />
+  <tw-toggle class="w-20 data-checked:bg-">
+    <span
+      class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+      No
+    </span>
+    <span
+      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+      Yes
+    </span>
   </tw-toggle>
-  <tw-toggle class="w-20">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
-  </tw-toggle>
-  <tw-toggle class="w-40">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
+  <tw-toggle class="w-40 data-checked:bg-">
+    <span
+      class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+      Deactivated
+    </span>
+    <span
+      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+      Activated
+    </span>
   </tw-toggle>
 </div>
 
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <tw-toggle class="has-checked:bg-">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
+  <tw-toggle class="focus:-" />
+  <tw-toggle class="w-20 focus:-">
+    <span class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
+      No
+    </span>
+    <span
+      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
+      Yes
+    </span>
   </tw-toggle>
-  <tw-toggle class="w-20 has-checked:bg-">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
-    <span class="text-xs text-gray-700 peer-checked:text-gray-500 left-0"> No </span>
-    <span class="text-xs text-gray-500 peer-checked:text-gray-700 right-0"> Yes </span>
-  </tw-toggle>
-  <tw-toggle class="w-40 has-checked:bg-">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
-    <span class="text-xs text-gray-700 peer-checked:text-gray-500 left-0"> Deactivated </span>
-    <span class="text-xs text-gray-500 peer-checked:text-gray-700 right-0"> Activated </span>
-  </tw-toggle>
-</div>
-
-<div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <tw-toggle class="ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
-  </tw-toggle>
-  <tw-toggle class="w-20 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600">
-    <span class="text-xs text-gray-700 dark:peer-checked:text-gray-300 left-0"> Yes </span>
-    <span class="text-xs text-gray-500 right-0"> No </span>
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
-  </tw-toggle>
-  <tw-toggle class="w-40 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-2 active:ring-blue-600">
-    <span class="text-xs text-gray-700 dark:peer-checked:text-gray-300 left-0"> Activated </span>
-    <span class="text-xs text-gray-500 right-0"> Deactivated </span>
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow"></span>
+  <tw-toggle class="w-40 focus:-">
+    <span class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
+      Deactivated
+    </span>
+    <span
+      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
+      Activated
+    </span>
   </tw-toggle>
 </div>
 
 <div class="grid place-items-center p-8">
-  <tw-toggle #toggle
-    class="has-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-offset-2 active:ring-2 active:ring-blue-600">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-full shadow">
-      <tw-icon *ngIf="toggle.isChecked" class="text-blue-600" size="xs" key="check" />
-      <tw-icon *ngIf="!toggle.isChecked" class="text-gray-300" size="xs" key="close" />
-    </span>
+  <tw-toggle>
+    <tw-icon size="xs" key="close"
+      class="absolute left-0 w-1/2 justify-items-center text-gray-400 in-data-checked:opacity-0 not-in-data-checked:duration-500 transition-opacity" />
+    <tw-icon size="xs" key="check"
+      class="absolute right-0 w-1/2 justify-items-center text-blue-600 not-in-data-checked:opacity-0 in-data-checked:duration-500 transition-opacity" />
   </tw-toggle>
 </div>
 
@@ -338,7 +345,7 @@
 
 <div class="grid place-items-center p-8">
   <tw-toggle #toggle2
-    class="rounded-md has-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-offset-2 active:ring-2 active:ring-blue-600">
+    class="rounded-md data-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-offset-2 active:ring-2 active:ring-blue-600">
     <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-sm shadow">
       <tw-icon *ngIf="toggle2.isChecked" class="text-blue-600" size="xs" key="check" />
       <tw-icon *ngIf="!toggle2.isChecked" class="text-gray-300" size="xs" key="close" />

@@ -95,7 +95,7 @@
               }
             ],
             "styles": [
-              "https://cdn.jsdelivr.net/npm/@ngx-tailwind/css@latest/styles.min.css"
+              "https://cdn.jsdelivr.net/npm/@ngx-tailwind/ui@alpha/styles.css"
             ],
             "scripts": []
           }
