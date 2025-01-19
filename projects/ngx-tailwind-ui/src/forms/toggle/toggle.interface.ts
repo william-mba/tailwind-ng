@@ -25,7 +25,7 @@ export interface ToggleEvents {
   /**
    * Emits the toggle's state when it changes.
    */
-  toggled: OutputEmitterRef<boolean>;
+  checked: OutputEmitterRef<boolean>;
 }
 
 export interface Toggle extends ToggleState, ToggleActions, ToggleEvents { }

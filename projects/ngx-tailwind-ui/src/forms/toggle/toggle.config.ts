@@ -9,6 +9,8 @@ const DefaultConfig = (): ToggleConfig => {
     borderWidth: 'border-2',
     radius: 'rounded-full',
     borderColor: 'border-transparent',
+    display: 'inline-flex',
+    placeItems: 'place-items-center',
     width: 'w-12',
     height: 'h-6',
     bgColor: 'bg-gray-200',
@@ -20,21 +22,37 @@ const DefaultConfig = (): ToggleConfig => {
     dark: {
       bgColor: 'dark:bg-gray-900',
     },
-    hasChecked: {
-      bgColor: 'has-checked:bg-blue-600',
+    focus: {
+      outlineWidth: 'focus:outline-2',
+      outlineOffsetWidth: 'focus:outline-offset-2',
+      outlineColor: 'focus:outline-blue-600'
     },
-    child: {
-      position: '*:absolute',
-      insetY: '*:inset-y-0',
-      height: '*:h-full',
-      width: '*:w-1/2',
-      padding: '*:p-1',
-      userSelect: '*:select-none',
-      pointerEvents: '*:pointer-events-none',
-      alignItems: '*:items-center',
-      justifyContent: '*:justify-center',
-      display: '*:inline-flex',
-      overflow: '*:overflow-hidden',
+    dataChecked: {
+      bgColor: 'data-checked:bg-blue-600',
+      before: {
+        translate: 'data-checked:before:translate-x-full',
+      }
+    },
+    before: {
+      position: 'before:absolute',
+      insetY: 'before:inset-y-0',
+      height: 'before:h-full',
+      width: 'before:w-1/2',
+      padding: 'before:p-1',
+      userSelect: 'before:select-none',
+      pointerEvents: 'before:pointer-events-none',
+      alignItems: 'before:items-center',
+      justifyContent: 'before:justify-center',
+      display: 'before:inline-flex',
+      overflow: 'before:overflow-hidden',
+      bgColor: 'before:bg-white',
+      radius: 'before:rounded-full',
+      left: 'before:left-0',
+      boxShadow: 'before:shadow-sm',
+      transition: {
+        duration: 'before:duration-100',
+        timing: 'before:ease-in-out',
+      }
     }
   }
 };
