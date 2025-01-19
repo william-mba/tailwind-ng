@@ -5,9 +5,9 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@ngx-tailwind/core": [
-        "./projects/ngx-tailwind-core/src/public-api.ts"
-      ],
+      // "@ngx-tailwind/core": [
+      //   "./projects/ngx-tailwind-core/src/public-api.ts"
+      // ],
       "@ngx-tailwind/ui": [
         "./projects/ngx-tailwind-ui/src/public-api.ts"
       ]
