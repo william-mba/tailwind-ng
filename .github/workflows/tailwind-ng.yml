@@ -1,0 +1,75 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: "tailwind-ng"
+
+on:
+  push:
+    branches: [ "next", "release", "master" ]
+    paths: [ "projects/tailwind-ng/**", ".github/workflows/tailwind-ng.yml" ]
+  pull_request:
+    branches: [ "next" ]
+    paths: [ "projects/tailwind-ng/**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+        project: [tailwind-ng]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: |
+        pnpm add @tailwind-ng/core@file:projects/tailwind-ng-core/src
+        sed "s/tailwind-ng/temp/g" -i ./tsconfig.json
+        pnpm install
+    - name: Lint
+      run: pnpm lint:${{ matrix.project }}
+    - name: Build
+      run: pnpm build:${{ matrix.project }}
+    - name: Test
+      run: |
+        sed "s/temp/tailwind-ng/g" -i ./tsconfig.json
+        pnpm install-chrome
+        pnpm test:${{ matrix.project }}:ci
+    - name: Publish test results summary
+      uses: janisz/action@v2
+      with:
+        paths: "junit/**/TESTS-*.xml"
+    - name: Publish artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.project }}-${{ github.run_id }}
+        path: "dist/${{ matrix.project }}"
+    - if: github.event_name == 'push' && github.ref == 'refs/heads/release'
+      name: Publish @beta
+      run: |
+        cd dist/${{ matrix.project }}
+        pnpm version ${{ vars.BETA_VERSION }}
+        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
+        pnpm publish --tag beta --no-git-checks
+
+    - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      name: Publish @latest
+      run: |
+        cd dist/${{ matrix.project }}
+        pnpm version ${{ vars.LATEST_VERSION }}
+        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
+        pnpm publish --tag latest --no-git-checks
+
+    - if: github.event_name == 'push' && github.ref == 'refs/heads/next'
+      name: Publish @alpha
+      run: |
+        cd dist/${{ matrix.project }}
+        pnpm version ${{ vars.ALPHA_VERSION }}
+        npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
+        pnpm publish --tag alpha --no-git-checks

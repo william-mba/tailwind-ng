@@ -5,13 +5,16 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "paths": {
-      // "@ngx-tailwind/core": [
-      //   "./projects/ngx-tailwind-core/src/public-api.ts"
-      // ],
-      "@ngx-tailwind/ui": [
-        "./projects/ngx-tailwind-ui/src/public-api.ts"
-      ]
+      "tailwind-ng": [
+        "./projects/tailwind-ng/src/public-api.ts"
+      ],
+      "@tailwind-ng/core": [
+        "./projects/tailwind-ng-core/src/public-api.ts"
+      ],
     },
+    "types": [
+      "jasmine"
+    ],
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -29,16 +32,12 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "types": [],
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
       "dom"
     ],
   },
-  "exclude": [
-    "**/*.spec.ts",
-  ],
   "angularCompilerOptions": {
     "strictPropertyInitialization": true,
     "enableI18nLegacyMessageIdFormat": false,
