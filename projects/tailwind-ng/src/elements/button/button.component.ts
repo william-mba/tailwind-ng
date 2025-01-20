@@ -5,7 +5,7 @@ import { ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, Popu
  * @ngx-tailwind Button component
  */
 @Component({
-  selector: 'tw-button, [tw-button], [twButton]',
+  selector: 'tw-button, button[tw-button], button[twButton]',
   exportAs: 'twButton',
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,
@@ -39,7 +39,7 @@ export class ButtonComponent extends ButtonBase {
 
   protected override onInit(): void {
     this.config$.subscribe((config) => {
-      this.classList.setFrom({
+      this.classList.set({
         // The order of destructuring is important here.
         // Because we want next object properties value to
         // override the value of identical properties from objects destructured before.
@@ -85,9 +85,27 @@ export class ButtonComponent extends ButtonBase {
     });
 
     if (this.popup) {
-      this.nativeElement.addEventListener('click', () => this.popup?.toggle(), true);
+      this.nativeElement.addEventListener('click', this.onClick.bind(this), true);
     }
     this.nativeElement.addEventListener('keydown', this.onKeyDown.bind(this), true);
+
+    this.destroyRef.onDestroy(() => {
+      if (this.popup) {
+        this.nativeElement.removeEventListener('click', this.onClick.bind(this), true);
+      }
+      this.nativeElement.removeEventListener('keydown', this.onKeyDown.bind(this), true);
+    });
+  }
+
+  protected onClick(event: MouseEvent): void {
+    if (this.isDisabled) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+    if (this.popup) {
+      this.popup.toggle();
+    }
   }
 
   protected onKeyDown(event: KeyboardEvent): void {

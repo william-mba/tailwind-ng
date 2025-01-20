@@ -9,7 +9,7 @@ import { InputRadioBase } from '@tailwind-ng/core';
 export class InputRadioDirective extends InputRadioBase {
   protected override onInit(): void {
     this.config$.subscribe(config => {
-      this.classList.setFrom(config);
+      this.classList.set(config);
     });
   }
 }

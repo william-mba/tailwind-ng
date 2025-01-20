@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { BadgeComponent } from './badge.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GetBadgeConfig, provideBadgeConfig } from './badge.config';
+import { GetBadgeConfig, provideBadgeConfig } from './badge.component.config';
 import { Component, viewChild } from '@angular/core';
 import { ClassList, Str } from '@tailwind-ng/core';
 
@@ -49,7 +49,7 @@ describe('BadgeComponent', () => {
     const config = GetBadgeConfig();
     const classList = new ClassList();
 
-    classList.setFrom({ b: config.base, s: config[component.size] });
+    classList.set({ b: config.base, s: config[component.size] });
 
     expect(component.classList.base).toEqual(classList.base);
     expect(component.classList.value).toEqual(classList.value);

@@ -15,8 +15,8 @@ export class IconDirective extends IconBase {
 
   protected override onInit(): void {
     this.config$.subscribe((config) => {
-      this.classList.initFrom(config[this.size]);
-      this.classList.setFrom(config.base);
+      this.classList.init(config[this.size]);
+      this.classList.set(config.base);
       if (!config.source[this.key]) {
         console.error(new Error(`Icon with key "${this.key}" does not exists in the icons source config.`));
       } else {

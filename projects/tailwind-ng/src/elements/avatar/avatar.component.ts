@@ -15,7 +15,7 @@ export class AvatarComponent extends AvatarBase {
 
   protected override onInit(): void {
     this.config$.subscribe(config => {
-      this.classList.setFrom({ b: config.base, s: config[this.size] });
+      this.classList.set({ b: config.base, s: config[this.size] });
     });
   }
 }

@@ -77,7 +77,7 @@ describe('ClassList', () => {
     };
     const configArray = Obj.toArray(configObj);
 
-    classList.initFrom(configObj);
+    classList.init(configObj);
 
     expect(classList.base).toEqual(configArray);
     expect(classList.value).toEqual(configArray);
@@ -99,7 +99,7 @@ describe('ClassList', () => {
     };
     const configArray = Obj.toArray(configObj);
 
-    classList.setFrom(configObj);
+    classList.set(configObj);
 
     expect(classList.value).toEqual(configArray);
   });
@@ -119,7 +119,7 @@ describe('ClassList', () => {
       }
     };
     const defaultConfig = Obj.toArray(configObj);
-    classList.setFrom(configObj);
+    classList.set(configObj);
 
     const newConfigObj: ComponentConfig = {
       textColor: 'text-gray-800',
@@ -136,7 +136,7 @@ describe('ClassList', () => {
 
     const newConfig = Obj.toArray(newConfigObj);
 
-    classList.updateFrom(newConfigObj);
+    classList.update(newConfigObj);
 
     defaultConfig.forEach(value => {
       if (value === 'shadow-none') {

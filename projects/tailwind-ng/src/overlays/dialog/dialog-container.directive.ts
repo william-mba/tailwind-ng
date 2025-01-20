@@ -26,7 +26,7 @@ export class DialogContainer extends BaseDirective implements ObservableConfig {
 
   protected override onInit() {
     this.config$.subscribe(config => {
-      this.classList.setFrom(config.container);
+      this.classList.set(config.container);
     });
   }
 }

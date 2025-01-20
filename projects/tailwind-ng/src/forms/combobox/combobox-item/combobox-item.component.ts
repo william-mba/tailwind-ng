@@ -31,7 +31,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
 
   protected override onInit(): void {
     this.config$.subscribe(config => {
-      this.classList.setFrom(config);
+      this.classList.set(config);
     });
 
     // Select the item if it is the default value.

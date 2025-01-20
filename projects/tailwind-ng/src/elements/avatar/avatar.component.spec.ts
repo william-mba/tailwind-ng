@@ -3,7 +3,7 @@ import { ClassList, Str } from '@tailwind-ng/core';
 import { TestBed } from '@angular/core/testing';
 import { AvatarComponent } from './avatar.component';
 import { Component, viewChild } from '@angular/core';
-import { GetAvatarConfig, provideAvatarConfig } from './avatar.config';
+import { GetAvatarConfig, provideAvatarConfig } from './avatar.component.config';
 
 describe('AvatarComponent', () => {
   beforeEach(async () => {
@@ -51,7 +51,7 @@ describe('AvatarComponent', () => {
     const config = GetAvatarConfig();
     const classList = new ClassList();
 
-    classList.setFrom({ b: config.base, s: config[component.size] });
+    classList.set({ b: config.base, s: config[component.size] });
 
     expect(component.classList.base).toEqual(classList.base);
     expect(component.classList.value).toEqual(classList.value);

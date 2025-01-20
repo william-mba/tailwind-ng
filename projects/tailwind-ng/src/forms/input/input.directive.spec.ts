@@ -1,6 +1,6 @@
 import { InputDirective } from './input.directive';
 import { TestBed } from '@angular/core/testing';
-import { GetInputConfig, provideInputConfig } from './input.config';
+import { GetInputConfig, provideInputConfig } from './input.directive.config';
 import { ClassList } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 
@@ -45,6 +45,6 @@ describe('InputDirective', () => {
     const appFixture = TestBed.createComponent(TestAppComponent);
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
-    expect(testApp.input().classList.value).toEqual(new ClassList().setFrom(GetInputConfig()).value);
+    expect(testApp.input().classList.value).toEqual(new ClassList().set(GetInputConfig()).value);
   });
 });

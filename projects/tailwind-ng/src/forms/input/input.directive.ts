@@ -9,7 +9,7 @@ import { InputBase } from '@tailwind-ng/core';
 export class InputDirective extends InputBase {
   protected override onInit(): void {
     this.config$.subscribe(config => {
-      this.classList.setFrom(config);
+      this.classList.set(config);
     });
   }
 }

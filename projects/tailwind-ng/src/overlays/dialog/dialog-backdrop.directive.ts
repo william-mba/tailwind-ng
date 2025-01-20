@@ -11,7 +11,7 @@ export class DialogBackdrop extends BaseDirective implements ObservableConfig {
 
   override onInit() {
     this.config$.subscribe(config => {
-      this.classList.setFrom(config.backdrop);
+      this.classList.set(config.backdrop);
     });
   }
 }

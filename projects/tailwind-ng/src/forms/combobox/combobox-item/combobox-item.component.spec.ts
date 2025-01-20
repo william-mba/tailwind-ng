@@ -3,7 +3,7 @@ import { DropdownComponent } from './../../../elements/dropdown/dropdown.compone
 import { TestBed } from '@angular/core/testing';
 import { ComboboxItemComponent } from './combobox-item.component';
 import { Component, ElementRef, viewChildren } from '@angular/core';
-import { GetComboboxItemConfig, provideComboboxItemConfig } from './combobox-item.config';
+import { GetComboboxItemConfig, provideComboboxItemConfig } from './combobox-item.component.config';
 import { InputDirective } from '../../input/input.directive';
 import { USERS_STUB } from '../combobox.component.spec';
 import { ReactiveFormsModule } from '@angular/forms';

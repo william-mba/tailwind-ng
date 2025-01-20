@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GetButtonGroupConfig, provideButtonGroupConfig } from './button-group.config';
+import { GetButtonGroupConfig, provideButtonGroupConfig } from './button-group.component.config';
 import { ClassList } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
@@ -30,7 +30,7 @@ describe('ButtonGroupComponent', () => {
 
   it('should set classList', () => {
     const classList = new ClassList();
-    classList.setFrom(GetButtonGroupConfig());
+    classList.set(GetButtonGroupConfig());
 
     expect(component.classList.base).toEqual(classList.base);
     expect(component.classList.value).toEqual(classList.value);

@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { By } from '@angular/platform-browser';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { GetDialogConfig, provideDialogConfig } from './dialog.config';
+import { GetDialogConfig, provideDialogConfig } from './dialog.component.config';
 import { DialogComponent } from './dialog.component';
 import { DialogModule } from './dialog.module';
 import { Component, ElementRef, viewChild } from '@angular/core';
@@ -321,7 +321,7 @@ describe('DialogComponent', () => {
       const testComponent = testFixture.componentInstance;
       const container = testComponent.container();
       testFixture.detectChanges();
-      const classList = new ClassList().setFrom(GetDialogConfig().container!);
+      const classList = new ClassList().set(GetDialogConfig().container!);
       expect(container.classList.value).toEqual(classList.value);
     });
 
@@ -392,7 +392,7 @@ describe('DialogComponent', () => {
       const component: TestComponent = fixture.debugElement.componentInstance;
       fixture.detectChanges();
 
-      const classList = new ClassList().setFrom(GetDialogConfig().backdrop!);
+      const classList = new ClassList().set(GetDialogConfig().backdrop!);
       expect(component.backdrop().classList.value).toEqual(classList.value);
     });
 
@@ -433,7 +433,7 @@ describe('DialogComponent', () => {
 
   describe('Scrim', () => {
     it('should set classList', () => {
-      const classList = new ClassList().setFrom(GetDialogConfig().scrim!);
+      const classList = new ClassList().set(GetDialogConfig().scrim!);
 
       TestBed.resetTestingModule();
       TestBed.configureTestingModule({

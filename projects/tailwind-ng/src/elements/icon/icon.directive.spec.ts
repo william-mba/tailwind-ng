@@ -3,7 +3,7 @@ import { Str } from '@tailwind-ng/core';
 import { TestBed } from '@angular/core/testing';
 import { IconDirective } from './icon.directive';
 import { Component, ElementRef } from '@angular/core';
-import { GetIconConfig, provideIconConfig } from './icon.config';
+import { GetIconConfig, provideIconConfig } from './icon.directive.config';
 import { By } from '@angular/platform-browser';
 
 describe('IconDirective', () => {

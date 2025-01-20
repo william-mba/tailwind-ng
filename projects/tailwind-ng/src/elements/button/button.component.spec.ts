@@ -2,7 +2,7 @@
 import { SizeOption, ClassList, Str, ButtonVariant } from '@tailwind-ng/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import { GetButtonConfig, provideButtonConfig } from './button.config';
+import { GetButtonConfig, provideButtonConfig } from './button.component.config';
 import { Component, viewChild } from '@angular/core';
 
 describe('ButtonComponent', () => {
@@ -77,7 +77,7 @@ describe('ButtonComponent', () => {
         const config = GetButtonConfig();
         const classList = new ClassList();
 
-        classList.setFrom({
+        classList.set({
           ...config.primary,
           ...config[component.size]
         });
@@ -178,7 +178,7 @@ describe('ButtonComponent', () => {
       it('should set classList', () => {
         const config = GetButtonConfig();
         const classList = new ClassList();
-        classList.setFrom({
+        classList.set({
           ...config.secondary,
           ...config[component.size]
         });

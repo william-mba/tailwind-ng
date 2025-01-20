@@ -10,7 +10,7 @@ import { Component, ElementRef, viewChild, viewChildren } from '@angular/core';
 import { ComboboxModule } from './combobox.module';
 import { ButtonComponent } from '../../elements/button/button.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { provideIconConfig } from '../../elements/icon/icon.config';
+import { provideIconConfig } from '../../elements/icon/icon.directive.config';
 import { ComboboxItemComponent } from './combobox-item/combobox-item.component';
 
 interface User {

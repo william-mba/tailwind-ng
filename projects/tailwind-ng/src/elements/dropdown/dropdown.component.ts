@@ -15,8 +15,8 @@ export class DropdownComponent extends DropdownBase {
   @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0' };
 
   protected override onInit(): void {
-    this.classList.initFrom(this.position);
-    this.config$.subscribe(config => this.classList.setFrom(config));
+    this.classList.init(this.position);
+    this.config$.subscribe(config => this.classList.set(config));
 
     this.opened.subscribe(() => {
       this.updatePositionIfNeeded();
