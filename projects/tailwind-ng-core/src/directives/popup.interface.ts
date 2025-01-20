@@ -4,7 +4,7 @@ import { BaseActions, BaseState } from "./base.interface";
 /**
  * @ngx-tailwind Popup base state.
  */
-export interface PopupState extends BaseState {
+export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseState<T> {
   readonly id: string;
   /**
    * Whether the component is hovered.
@@ -69,4 +69,4 @@ export interface PopupEvents {
   readonly closed: EventEmitter<void>
 }
 
-export interface Popup extends PopupState, BasicPopupActions, AdvancedPopupActions, PopupEvents { }
+export interface Popup<T extends HTMLElement = HTMLElement> extends PopupState<T>, BasicPopupActions, AdvancedPopupActions, PopupEvents { }

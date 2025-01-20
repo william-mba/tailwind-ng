@@ -1,4 +1,4 @@
-export * from './interfaces';
+export * from './interfaces/index.interface';
 export * from './classlist';
 export * from './config-type-of.type';
 export * from './config-key.type';

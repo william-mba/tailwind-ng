@@ -40,7 +40,6 @@ const DefaultScrimConfig = (): ComponentConfig => {
     zIndex: 'z-50',
     inset: 'inset-0',
     position: 'fixed',
-    size: 'size-fit',
     placeSelf: 'place-self-center',
   }
 }

@@ -1,2 +1,2 @@
 export * from './badge.component';
-export * from './badge.config';
+export * from './badge.component.config';

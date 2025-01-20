@@ -1,4 +1,4 @@
-import { Str, Obj } from "../helpers";
+import { Str, Obj, Type } from "../helpers";
 import { Config } from "../types";
 
 /**
@@ -7,35 +7,23 @@ import { Config } from "../types";
 export interface IClassList {
   readonly value: string[];
   /**
-   * Initializes the class list.
-   * - Resolves class list from given `value` to `this.base` keeping class deletor.
+   * Initializes the class list value.
    */
-  init(value?: string | string[]): IClassList;
+  init<T extends string>(value?: T): IClassList;
+  init<T extends string[]>(value?: T[]): IClassList;
+  init<T extends Config>(value?: T): IClassList;
   /**
-   * Sets a brand new class list.
-   * - Resolves class list from `this.base` to given `value`.
+   * Sets a brand new class list value.
    */
-  set(value: string | string[]): IClassList;
+  set<T extends string>(value: T): IClassList;
+  set<T extends string[]>(value: T[]): IClassList;
+  set<T extends Config>(value: T): IClassList;
   /**
-   * Updates the current class list.
-   * - Resolves class list from given `value` to current `this.value`.
+   * Updates the current class list value.
    */
-  update(value: string | string[]): IClassList;
-  /**
-   * Initializes class list using the specified config object.
-   * - Calls `this.init` method passing the given `config` converted to `string[]`.
-   */
-  initFrom<T extends Config>(config: T): IClassList;
-  /**
-   * Sets class list using config object.
-   * - Calls `this.set` method passing the given `config` converted to `string[]`.
-   */
-  setFrom<T extends Config>(config: T): IClassList;
-  /**
-   * Updates class list using config object.
-   * - Calls `this.update` method passing the given `config` converted to `string[]`.
-   */
-  updateFrom<T extends Config>(config: T): IClassList;
+  update<T extends string>(value: T): IClassList;
+  update<T extends string[]>(value: T[]): IClassList;
+  update<T extends Config>(value: T): IClassList;
   /**
    * Returns the string representation of the class list value.
    */
@@ -71,44 +59,56 @@ export class ClassList implements IClassList {
     this._base = base;
   }
 
-  init(value?: string | string[]): IClassList {
-    if (value && value.length > 0) {
-      if (!Array.isArray(value)) {
-        value = Str.toArray(value);
-      }
-      this._base = Str.resolve([this._base, value], { keepClassDeletor: true });
-    } else {
+  init<T extends string>(value?: T): ClassList;
+  init<T extends string[]>(value?: T[]): ClassList;
+  init<T extends Config>(value?: T): ClassList;
+
+  init<T extends string | string[] | Config>(value: T): ClassList {
+    if (!value) {
       this._base = [];
+    } else {
+      if (Type.isString(value)) {
+        value = Str.toArray(value) as T;
+      } else if (Type.isArray(value)) {
+        value = value as T;
+      } else if (Type.isObject(value)) {
+        value = Obj.toArray(value as Config) as T;
+      }
+      this._base = Str.resolve([this._base, value as string[]], { keepClassDeletor: true });
     }
     return this;
   }
 
-  set(value: string | string[]): IClassList {
-    if (!Array.isArray(value)) {
-      value = Str.toArray(value);
+  set<T extends string>(value: T): ClassList;
+  set<T extends string[]>(value: T[]): ClassList;
+  set<T extends Config>(value: T): ClassList;
+
+  set<T extends string | string[] | Config>(value: T): ClassList {
+    if (Type.isString(value)) {
+      value = Str.toArray(value) as T;
+    } else if (Type.isArray(value)) {
+      value = value as T;
+    } else if (Type.isObject(value)) {
+      value = Obj.toArray(value as Config) as T;
     }
-    this._value = Str.resolve([value, this._base]);
+    this._value = Str.resolve([value as string[], this._base]);
     return this;
   }
 
-  update(value: string | string[]): IClassList {
-    if (!Array.isArray(value)) {
-      value = Str.toArray(value);
+  update<T extends string>(value: T): ClassList;
+  update<T extends string[]>(value: T[]): ClassList;
+  update<T extends Config>(value: T): ClassList;
+
+  update<T extends string | string[] | Config>(value: T): ClassList {
+    if (Type.isString(value)) {
+      value = Str.toArray(value) as T;
+    } else if (Type.isArray(value)) {
+      value = value as T;
+    } else if (Type.isObject(value)) {
+      value = Obj.toArray(value as Config) as T;
     }
-    this._value = Str.resolve([this._value, value]);
+    this._value = Str.resolve([this._value, value as string[]]);
     return this;
-  }
-
-  initFrom<T extends Config>(config: T): IClassList {
-    return this.init(Obj.toArray(config));
-  }
-
-  setFrom<T extends Config>(config: T): IClassList {
-    return this.set(Obj.toArray(config));
-  }
-
-  updateFrom<T extends Config>(config: T) {
-    return this.update(Obj.toArray(config));
   }
 
   toString(): string {

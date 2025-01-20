@@ -1,2 +1,2 @@
 export * from './icon.directive';
-export * from './icon.config';
+export * from './icon.directive.config';

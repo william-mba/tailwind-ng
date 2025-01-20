@@ -490,8 +490,8 @@
     View dialog with left-aligned buttons
   </button>
 
-  <div tw-dialog #dialogWithLeftAlignedButtons (click)="dialogWithLeftAlignedButtons.close()">
-    <tw-dialog-backdrop />
+  <div tw-dialog #dialogWithLeftAlignedButtons [isOpened]="true" isModal="true">
+    <!-- <tw-dialog-backdrop /> -->
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -508,7 +508,7 @@
           </p>
           <!-- Dialog actions -->
           <div class="grid sm:flex gap-4 mt-5">
-            <button tw-button
+            <button tw-button (click)="dialogWithLeftAlignedButtons.close()"
               class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-offset-2 focus:outline-red-600">Deactivate</button>
             <button tw-button class="w-full sm:w-fit" variant="secondary">Cancel</button>
           </div>
@@ -517,8 +517,8 @@
     </div>
   </div>
 
-  <div tw-dialog #dialogWithScrollableContent (click)="dialogWithScrollableContent.close()">
-    <tw-dialog-backdrop />
+  <div tw-dialog #dialogWithScrollableContent>
+    <!-- <tw-dialog-backdrop /> -->
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -612,14 +612,14 @@
       </div>
       <!-- Dialog actions -->
       <div class="flex flex-col gap-4 sm:flex-row-reverse">
-        <button tw-button class="w-full sm:w-fit">Install</button>
+        <button tw-button class="w-full sm:w-fit" (click)="dialogWithScrollableContent.close()">Install</button>
         <button tw-button variant="secondary" class="w-full sm:w-fit">Cancel</button>
       </div>
     </div>
   </div>
 
-  <div tw-dialog #dialogWithWideButtons (click)="dialogWithWideButtons.close()">
-    <tw-dialog-backdrop />
+  <div tw-dialog #dialogWithWideButtons>
+    <!-- <tw-dialog-backdrop /> -->
     <!-- Dialog container -->
     <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
@@ -637,13 +637,13 @@
       </div>
       <!-- Dialog actions -->
       <div class="flex flex-col gap-4 sm:flex-row-reverse">
-        <button tw-button class="w-full">Deactivate</button>
+        <button tw-button class="w-full" (click)="dialogWithWideButtons.close()">Deactivate</button>
         <button tw-button variant="secondary" class="w-full">Cancel</button>
       </div>
     </div>
   </div>
 
-  <div tw-dialog #dialogWithSingleAction (click)="dialogWithSingleAction.close()">
+  <div tw-dialog #dialogWithSingleAction>
     <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container class="sm:max-w-sm">
@@ -661,7 +661,7 @@
         </div>
       </div>
       <!-- Dialog actions -->
-      <button tw-button class="w-full">Go back to dashboard</button>
+      <button tw-button class="w-full" (click)="dialogWithSingleAction.close()">Go back to dashboard</button>
     </div>
   </div>
 
@@ -692,7 +692,7 @@
     </div>
   </div>
 
-  <div tw-dialog #centeredDialogWithBackdrop (click)="centeredDialogWithBackdrop.close()">
+  <div tw-dialog #centeredDialogWithBackdrop>
     <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container class="sm:max-w-fit">
@@ -707,12 +707,12 @@
       </div>
       <!-- Dialog actions -->
       <div class="flex justify-end">
-        <button tw-button class="w-full sm:w-fit">OK</button>
+        <button tw-button class="w-full sm:w-fit" (click)="centeredDialogWithBackdrop.close()">OK</button>
       </div>
     </div>
   </div>
 
-  <div tw-dialog #bottomLeftDialog class="place-self-start self-end" (click)="bottomLeftDialog.close()">
+  <div tw-dialog #bottomLeftDialog class="place-self-start self-end">
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -726,12 +726,12 @@
         </p>
       </div>
       <!-- Dialog actions -->
-      <tw-icon source="heroicons" key="x-mark" class="absolute top-5 right-5 cursor-pointer" />
+      <tw-icon (click)="bottomLeftDialog.close()" source="heroicons" key="x-mark"
+        class="absolute top-5 right-5 cursor-pointer" />
     </div>
   </div>
 
-  <div tw-dialog #bottomRightDialog [autoClose]="true" class="place-self-end self-end"
-    (click)="bottomRightDialog.close()">
+  <div tw-dialog #bottomRightDialog class="place-self-end self-end">
     <!-- Dialog container -->
     <div tw-dialog-container
       class="place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">
@@ -746,7 +746,8 @@
         </p>
       </div>
       <!-- Dialog actions -->
-      <tw-icon source="heroicons" key="x-mark" class="absolute top-5 right-5 cursor-pointer" />
+      <tw-icon (click)="bottomRightDialog.close()" source="heroicons" key="x-mark"
+        class="absolute top-5 right-5 cursor-pointer" />
     </div>
   </div>
 </div>

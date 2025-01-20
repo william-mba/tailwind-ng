@@ -1,2 +1,2 @@
 export * from './button-group.component';
-export * from './button-group.config';
+export * from './button-group.component.config';

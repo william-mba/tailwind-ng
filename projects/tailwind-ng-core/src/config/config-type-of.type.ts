@@ -1,7 +1,7 @@
 import { ComponentConfig } from "../types/component-config.type";
 import { ConfigKey } from "./config-key.type";
 
-import { AvatarConfig, BadgeConfig, ButtonConfig, ComboboxItemConfig, DialogConfig, DropdownConfig, IconConfig, InputConfig, InputRadioConfig, ToggleConfig } from "./interfaces";
+import { AvatarConfig, BadgeConfig, ButtonConfig, ComboboxItemConfig, DialogConfig, DropdownConfig, IconConfig, InputConfig, InputRadioConfig, ToggleConfig } from "./interfaces/index.interface";
 
 /**
  * Returns the config type associated to the specified key.

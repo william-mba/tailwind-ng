@@ -1,2 +1,2 @@
 export * from './dropdown.component';
-export * from './dropdown.config';
+export * from './dropdown.component.config';

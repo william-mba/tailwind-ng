@@ -1,2 +1,2 @@
 export * from './button.component';
-export * from './button.config';
+export * from './button.component.config';

@@ -9,7 +9,7 @@ import { Popup } from './popup.interface';
     '[attr.aria-expanded]': 'isOpened',
   }
 })
-export abstract class PopupDirective extends BaseDirective implements Popup {
+export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
   @Input() isOpened = false;
   @Input() id = this.randomId('popup');
   @Output() toggled = new EventEmitter<boolean>();
@@ -24,7 +24,7 @@ export abstract class PopupDirective extends BaseDirective implements Popup {
     } else {
       this.open();
     }
-    this.toggled.emit(this.isOpened);
+    this.toggled.emit(!!this.isOpened);
   }
 
   open(): void {
@@ -36,8 +36,6 @@ export abstract class PopupDirective extends BaseDirective implements Popup {
     this.isOpened = false;
     this.closed.emit();
   }
-
-
 
   closeAfter(delay: number): void {
     delay = (delay >= 1000 && delay <= 10000) ? delay : 5000;

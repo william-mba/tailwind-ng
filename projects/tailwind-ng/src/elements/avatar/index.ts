@@ -1,2 +1,2 @@
 export * from './avatar.component';
-export * from './avatar.config';
+export * from './avatar.component.config';

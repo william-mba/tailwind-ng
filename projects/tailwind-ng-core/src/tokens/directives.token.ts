@@ -1,5 +1,5 @@
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Directive, forwardRef, inject, Input } from "@angular/core";
+import { DestroyRef, Directive, forwardRef, inject, Input } from "@angular/core";
 import { BaseDirective, PopupDirective } from "../directives";
 import { ReactiveConfig } from "../config";
 import { ObservableConfig } from "../types";
@@ -20,6 +20,7 @@ export abstract class BadgeBase extends BaseDirective implements ObservableConfi
  */
 @Directive({})
 export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implements ObservableConfig {
+  protected destroyRef = inject(DestroyRef);
   @Input() config$ = inject(ReactiveConfig).get('Button').pipe(takeUntilDestroyed());
 }
 
@@ -64,4 +65,7 @@ export abstract class ToggleBase extends BaseDirective implements ObservableConf
 
 // Overlays
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) }] })
-export abstract class DialogBase extends PopupDirective { }
+export abstract class DialogBase extends PopupDirective<HTMLDialogElement> implements ObservableConfig {
+  @Input() config$ = inject(ReactiveConfig).get('Dialog').pipe(takeUntilDestroyed());
+}
+
