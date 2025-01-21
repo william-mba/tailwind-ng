@@ -1,4 +1,4 @@
-name: "@tailwind-ng/core"
+name: "tailwind-ng-core"
 
 trigger:
   paths:
