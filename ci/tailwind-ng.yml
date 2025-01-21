@@ -8,7 +8,6 @@ trigger:
 
 pool: Lab
 
-
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
       - group: tailwind-ng-master
@@ -27,11 +26,6 @@ stages:
         - checkout: self
           clean: false
           persistCredentials: true
-
-        - task: UseNode@1
-          inputs:
-            version: '20.x'
-            checkLatest: true
 
         - script: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f .\Dockerfile.lib.ci .
           displayName: "Run CI"
