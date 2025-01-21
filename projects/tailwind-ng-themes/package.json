@@ -1,6 +1,6 @@
 {
   "name": "@tailwind-ng/themes",
-  "version": "0.10.14",
+  "version": "0.12.0",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -14,14 +14,14 @@
   ],
   "exports": {
     "./default": {
-      "import": "./default/index.css",
-      "require": "./default/index.css",
-      "default": "./default/index.css"
+      "import": "./default/style.css",
+      "require": "./default/style.css",
+      "default": "./default/style.css"
     },
     "./default/min": {
-      "import": "./default/index.min.css",
-      "require": "./default/index.min.css",
-      "default": "./default/index.min.css"
+      "import": "./default/style.min.css",
+      "require": "./default/style.min.css",
+      "default": "./default/style.min.css"
     }
   },
   "repository": {

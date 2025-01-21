@@ -123,7 +123,7 @@
               }
             ],
             "styles": [
-              "projects/tailwind-ng-themes/default/index.css"
+              "projects/tailwind-ng-themes/default/style.css"
             ],
             "scripts": []
           },
@@ -181,7 +181,7 @@
               }
             ],
             "styles": [
-              "projects/tailwind-ng-themes/default/index.css"
+              "projects/tailwind-ng-themes/default/style.css"
             ],
             "scripts": []
           }

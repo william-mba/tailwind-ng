@@ -1,10 +1,10 @@
-import { Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
+import { DestroyRef, Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
 import { BaseState, BaseActions, FocusOptions } from "./base.interface";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config";
 
 /**
- * @ngx-tailwind Base component directive.
+ * @TailwindNG Base component directive.
  */
 @Directive({
   host: {
@@ -15,8 +15,10 @@ import { ClassList } from "../config";
 })
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseState<T>, BaseActions, OnInit {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
-  private readonly _document = inject(DOCUMENT);
+  protected readonly _document = inject(DOCUMENT);
   protected readonly _injector = inject(Injector);
+  protected readonly _destroyRef = inject(DestroyRef);
+
   readonly classList = new ClassList();
   @Input() class?: string;
 

@@ -4,7 +4,7 @@ import { FormControl } from "@angular/forms";
 import { BasicPopupActions, PopupState, PopupEvents } from "@tailwind-ng/core";
 
 /**
- * @ngx-tailwind Combobox's state
+ * @TailwindNG Combobox's state
  */
 export interface ComboboxState extends PopupState {
   /**
@@ -23,7 +23,7 @@ export interface ComboboxState extends PopupState {
 }
 
 /**
- * @ngx-tailwind Combobox's actions
+ * @TailwindNG Combobox's actions
  */
 export interface ComboboxActions extends BasicPopupActions {
   /**
@@ -43,7 +43,7 @@ export interface ComboboxActions extends BasicPopupActions {
 }
 
 /**
- * @ngx-tailwind Combobox's events
+ * @TailwindNG Combobox's events
  */
 export interface ComboboxEvents extends PopupEvents {
   /**

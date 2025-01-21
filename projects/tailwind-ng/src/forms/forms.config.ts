@@ -6,7 +6,7 @@ import { ComboboxItemConfig, InputConfig, InputRadioConfig, ToggleConfig } from 
 import { provideInputRadioConfig } from "./input-radio";
 
 /**
- * @ngx-tailwind Forms configuration interface.
+ * @TailwindNG Forms configuration interface.
  */
 export interface FormsConfig {
   comboboxItem: Partial<ComboboxItemConfig>;

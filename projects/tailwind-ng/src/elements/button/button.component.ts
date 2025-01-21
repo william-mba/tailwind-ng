@@ -2,7 +2,7 @@ import { afterNextRender, ChangeDetectionStrategy, Component, Input, ViewEncapsu
 import { ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, PopupDirective, SizeOption } from '@tailwind-ng/core';
 
 /**
- * @ngx-tailwind Button component
+ * @TailwindNG Button component
  */
 @Component({
   selector: 'tw-button, button[tw-button], button[twButton]',

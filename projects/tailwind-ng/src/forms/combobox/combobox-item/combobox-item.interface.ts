@@ -1,7 +1,7 @@
 import { BaseActions, BaseState } from "@tailwind-ng/core";
 
 /**
- * @ngx-tailwind Combobox Item's state
+ * @TailwindNG Combobox Item's state
  */
 export interface ComboboxItemState extends BaseState {
   value: string;
@@ -9,7 +9,7 @@ export interface ComboboxItemState extends BaseState {
 }
 
 /**
- * @ngx-tailwind Combobox Item's actions
+ * @TailwindNG Combobox Item's actions
  */
 export interface ComboboxItemActions extends BaseActions {
   /**
@@ -19,6 +19,6 @@ export interface ComboboxItemActions extends BaseActions {
 }
 
 /**
- * @ngx-tailwind Combobox Item's interface
+ * @TailwindNG Combobox Item's interface
  */
 export interface ComboboxItem extends ComboboxItemState, ComboboxItemActions { }

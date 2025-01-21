@@ -10,13 +10,13 @@ import { Popup } from './popup.interface';
   }
 })
 export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
+  protected top?: number;
+  protected scrolling?: boolean;
   @Input() isOpened = false;
   @Input() id = this.randomId('popup');
   @Output() toggled = new EventEmitter<boolean>();
   @Output() opened = new EventEmitter<void>();
   @Output() closed = new EventEmitter<void>();
-  protected top?: number;
-  protected scrolling?: boolean;
 
   toggle(): void {
     if (this.isOpened) {
@@ -28,11 +28,13 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   }
 
   open(): void {
+    if (this.isOpened) return;
     this.isOpened = true;
     this.opened.emit();
   }
 
   close(): void {
+    if (!this.isOpened) return;
     this.isOpened = false;
     this.closed.emit();
   }

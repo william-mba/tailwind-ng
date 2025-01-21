@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
-import { AVATAR_CONFIG, BADGE_CONFIG, BUTTON_CONFIG, BUTTON_GROUP_CONFIG, ICON_CONFIG, DROPDOWN_CONFIG, TOGGLE_CONFIG, INPUT_CONFIG, COMBOBOX_ITEM_CONFIG, DIALOG_CONFIG, INPUT_RADIO_CONFIG } from "../tokens/config.token";
+import { AVATAR_CONFIG, BADGE_CONFIG, BUTTON_CONFIG, BUTTON_GROUP_CONFIG, ICON_CONFIG, DROPDOWN_CONFIG, TOGGLE_CONFIG, INPUT_CONFIG, COMBOBOX_ITEM_CONFIG, DIALOG_CONFIG, INPUT_RADIO_CONFIG } from "../injectables/config.token";
 
-/** @ngx-tailwind configuration store */
+/** @TailwindNG configuration store */
 @Injectable({ providedIn: 'root' })
 export class ConfigStore {
   readonly Avatar = inject(AVATAR_CONFIG);

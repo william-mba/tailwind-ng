@@ -50,7 +50,6 @@ jobs:
       name: Publish @beta
       run: |
         cd dist/${{ matrix.project }}
-        pnpm version ${{ vars.BETA_VERSION }}
         pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
         pnpm publish --tag beta --no-git-checks
 
@@ -58,7 +57,6 @@ jobs:
       name: Publish @latest
       run: |
         cd dist/${{ matrix.project }}
-        pnpm version ${{ vars.LATEST_VERSION }}
         pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
         pnpm publish --tag latest --no-git-checks
 
@@ -66,6 +64,5 @@ jobs:
       name: Publish @alpha
       run: |
         cd dist/${{ matrix.project }}
-        pnpm version ${{ vars.ALPHA_VERSION }}
         pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTHTOKEN }}
         pnpm publish --tag alpha --no-git-checks

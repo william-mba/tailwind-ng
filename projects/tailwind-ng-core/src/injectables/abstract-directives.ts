@@ -16,7 +16,7 @@ export abstract class BadgeBase extends BaseDirective implements ObservableConfi
 }
 
 /**
- * @ngx-tailwind Button component base directive.
+ * @TailwindNG Button component base directive.
  */
 @Directive({})
 export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implements ObservableConfig {

@@ -1,4 +1,4 @@
-import { DestroyRef, Directive, inject } from "@angular/core";
+import { Directive } from "@angular/core";
 import { BaseDirective } from "./base.directive";
 
 @Directive({
@@ -10,8 +10,6 @@ import { BaseDirective } from "./base.directive";
   }
 })
 export class OptionDirective extends BaseDirective {
-  private readonly _destroyRef = inject(DestroyRef);
-
   protected override onInit(): void {
     this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
     this.classList.set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');

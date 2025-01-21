@@ -4,7 +4,7 @@ import { FormsConfig, provideFormsConfig } from "./forms";
 import { OverlaysConfig, provideOverlaysConfig } from "./overlays";
 
 /**
- * @ngx-tailwind UI configuration interface.
+ * @TailwindNG UI configuration interface.
  */
 export interface UIConfig {
   elements: Partial<ElementsConfig>;

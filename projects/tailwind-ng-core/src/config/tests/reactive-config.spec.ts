@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ReactiveConfig } from '../reactive-config';
-import { AVATAR_CONFIG } from '../../tokens';
+import { AVATAR_CONFIG } from '../../injectables';
 import { ConfigTypeOf } from '../config-type-of.type';
 
 describe('ReactiveConfig', () => {

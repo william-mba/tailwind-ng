@@ -2,7 +2,7 @@ import { EventEmitter, } from "@angular/core";
 import { BaseActions, BaseState } from "./base.interface";
 
 /**
- * @ngx-tailwind Popup base state.
+ * @TailwindNG Popup base state.
  */
 export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseState<T> {
   readonly id: string;
@@ -17,7 +17,7 @@ export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseSta
 }
 
 /**
- * @ngx-tailwind Basic Popup actions.
+ * @TailwindNG Basic Popup actions.
  */
 export interface BasicPopupActions extends BaseActions {
   /**
@@ -35,7 +35,7 @@ export interface BasicPopupActions extends BaseActions {
 }
 
 /**
- * @ngx-tailwind Advanced popup actions.
+ * @TailwindNG Advanced popup actions.
  */
 export interface AdvancedPopupActions {
   /**
@@ -52,7 +52,7 @@ export interface AdvancedPopupActions {
 }
 
 /**
- * @ngx-tailwind Popup events.
+ * @TailwindNG Popup events.
  */
 export interface PopupEvents {
   /**

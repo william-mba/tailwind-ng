@@ -2,7 +2,7 @@ import { Str, Obj, Type } from "../helpers";
 import { Config } from "../types";
 
 /**
- * @ngx-tailwind Component's class list interface.
+ * @TailwindNG Component's class list interface.
  */
 export interface IClassList {
   readonly value: string[];

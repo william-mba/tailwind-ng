@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   AvatarComponent,
@@ -12,7 +12,6 @@ import {
   InputRadioDirective,
   DialogModule,
   ToggleComponent,
-  DialogBackdrop,
   InputDirective
 } from 'tailwind-ng';
 import { toggleTheme, OptionDirective } from "@tailwind-ng/core";
@@ -40,24 +39,19 @@ type Viewport = 'mobile' | 'tablet' | 'desktop';
     ToggleComponent,
     ButtonGroupComponent,
     DialogModule,
-    DialogBackdrop,
     ReactiveFormsModule,
     OptionDirective
   ],
   templateUrl: './app.component.html',
   styles: [],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   private _formBuilder = inject(NonNullableFormBuilder);
 
   isInvalid = (control: AbstractControl): boolean => control.invalid;
   isTouchedAndInvalid = (control: AbstractControl): boolean => control.touched && control.invalid;
 
   email = this._formBuilder.control('williammba', Validators.email);
-
-  ngOnInit() {
-    toggleTheme();
-  }
 
   viewports = {
     mobile: '375px',

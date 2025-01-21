@@ -6,7 +6,7 @@ import { mergeConfig } from "./config.helper";
 import { ConfigTypeOf } from "./config-type-of.type";
 
 /**
- * @ngx-tailwind Reactive configuration interface.
+ * @TailwindNG Reactive configuration interface.
  */
 export interface IReactiveConfig {
   /** Returns an observable configuration corresponding to the given key. If not setted,
@@ -25,7 +25,7 @@ export interface IReactiveConfig {
   update<K extends ConfigKey>(key: K, ...value: Partial<ConfigTypeOf<K>>[]): IReactiveConfig;
 }
 
-/** @ngx-tailwind Reactive configuration */
+/** @TailwindNG Reactive configuration */
 @Injectable({ providedIn: 'root' })
 export class ReactiveConfig implements IReactiveConfig {
   private readonly _configMap = new Map<ConfigKey, BehaviorSubject<ConfigTypeOf<ConfigKey>>>();

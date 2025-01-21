@@ -267,7 +267,7 @@
 
 <!-- Toggles -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <tw-toggle #toggle [isChecked]="true" />
+  <tw-toggle />
   <tw-toggle class="w-20" />
   <tw-toggle class="w-40" />
 </div>
@@ -276,21 +276,21 @@
   <tw-toggle class="data-checked:bg-" />
   <tw-toggle class="w-20 data-checked:bg-">
     <span
-      class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+      class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
       No
     </span>
     <span
-      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+      class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
       Yes
     </span>
   </tw-toggle>
   <tw-toggle class="w-40 data-checked:bg-">
     <span
-      class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+      class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
       Deactivated
     </span>
     <span
-      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+      class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
       Activated
     </span>
   </tw-toggle>
@@ -299,20 +299,22 @@
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <tw-toggle class="focus:-" />
   <tw-toggle class="w-20 focus:-">
-    <span class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
+    <span
+      class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
       No
     </span>
     <span
-      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
+      class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
       Yes
     </span>
   </tw-toggle>
   <tw-toggle class="w-40 focus:-">
-    <span class="absolute left-0 w-1/2 text-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
+    <span
+      class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
       Deactivated
     </span>
     <span
-      class="absolute right-0 w-1/2 text-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
+      class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
       Activated
     </span>
   </tw-toggle>
@@ -320,35 +322,50 @@
 
 <div class="grid place-items-center p-8">
   <tw-toggle>
-    <tw-icon size="xs" key="close"
-      class="absolute left-0 w-1/2 justify-items-center text-gray-400 in-data-checked:opacity-0 not-in-data-checked:duration-500 transition-opacity" />
-    <tw-icon size="xs" key="check"
-      class="absolute right-0 w-1/2 justify-items-center text-blue-600 not-in-data-checked:opacity-0 in-data-checked:duration-500 transition-opacity" />
+    <span class="absolute left-0 w-1/2 inline-flex justify-center text-gray-500">
+      <tw-icon size="xs" key="close"
+        class="in-data-checked:opacity-0 in-data-checked:duration-0 not-in-data-checked:duration-300 transition-opacity" />
+    </span>
+    <span class="absolute right-0 w-1/2 inline-flex justify-center in-data-checked:text-blue-700">
+      <tw-icon size="xs" key="check"
+        class="not-in-data-checked:opacity-0 not-in-data-checked:duration-0 in-data-checked:duration-300 transition-opacity" />
+    </span>
   </tw-toggle>
 </div>
 
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <tw-toggle class="rounded-md">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-sm shadow"></span>
+  <tw-toggle class="rounded-md before:rounded-sm" />
+  <tw-toggle class="w-20 rounded-md before:rounded-sm">
+    <span
+      class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
+      No
+    </span>
+    <span
+      class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
+      Yes
+    </span>
   </tw-toggle>
-  <tw-toggle class="w-20 rounded-md">
-    <span class="text-xs peer-checked:text-gray-100 left-0"> Yes </span>
-    <span class="text-xs text-gray-500 right-0"> No </span>
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-sm shadow"></span>
-  </tw-toggle>
-  <tw-toggle class="w-40 rounded-md">
-    <span class="text-xs peer-checked:text-gray-100 left-0"> Activated </span>
-    <span class="text-xs text-gray-500 right-0"> Deactivated </span>
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-sm shadow"></span>
+  <tw-toggle class="w-40 rounded-md before:rounded-sm">
+    <span
+      class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-blue-400 font-semibold">
+      Deactivated
+    </span>
+    <span
+      class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-blue-700 in-data-checked:font-semibold">
+      Activated
+    </span>
   </tw-toggle>
 </div>
 
 <div class="grid place-items-center p-8">
-  <tw-toggle #toggle2
-    class="rounded-md data-checked:bg-blue-600 ring-offset-2 has-focus:ring-2 has-focus:ring-blue-600 active:ring-offset-2 active:ring-2 active:ring-blue-600">
-    <span class="peer-checked:translate-x-full duration-100 ease-in-out bg-white left-0 rounded-sm shadow">
-      <tw-icon *ngIf="toggle2.isChecked" class="text-blue-600" size="xs" key="check" />
-      <tw-icon *ngIf="!toggle2.isChecked" class="text-gray-300" size="xs" key="close" />
+  <tw-toggle class="rounded-md before:rounded-sm">
+    <span class="absolute left-0 w-1/2 inline-flex justify-center text-gray-500">
+      <tw-icon size="xs" key="close"
+        class="in-data-checked:opacity-0 in-data-checked:duration-0 not-in-data-checked:duration-300 transition-opacity" />
+    </span>
+    <span class="absolute right-0 w-1/2 inline-flex justify-center in-data-checked:text-blue-700">
+      <tw-icon size="xs" key="check"
+        class="not-in-data-checked:opacity-0 not-in-data-checked:duration-0 in-data-checked:duration-300 transition-opacity" />
     </span>
   </tw-toggle>
 </div>
@@ -490,8 +507,7 @@
     View dialog with left-aligned buttons
   </button>
 
-  <div tw-dialog #dialogWithLeftAlignedButtons [isOpened]="true" isModal="true">
-    <!-- <tw-dialog-backdrop /> -->
+  <div tw-dialog #dialogWithLeftAlignedButtons>
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -518,7 +534,6 @@
   </div>
 
   <div tw-dialog #dialogWithScrollableContent>
-    <!-- <tw-dialog-backdrop /> -->
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -619,7 +634,6 @@
   </div>
 
   <div tw-dialog #dialogWithWideButtons>
-    <!-- <tw-dialog-backdrop /> -->
     <!-- Dialog container -->
     <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
@@ -644,7 +658,6 @@
   </div>
 
   <div tw-dialog #dialogWithSingleAction>
-    <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
@@ -666,7 +679,6 @@
   </div>
 
   <div tw-dialog #dialogWithIcon (click)="dialogWithIcon.close()">
-    <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -693,7 +705,6 @@
   </div>
 
   <div tw-dialog #centeredDialogWithBackdrop>
-    <tw-dialog-backdrop />
     <!-- Dialog container -->
     <div tw-dialog-container class="sm:max-w-fit">
       <!-- Dialog content -->
@@ -712,7 +723,7 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomLeftDialog class="place-self-start self-end">
+  <div tw-dialog #bottomLeftDialog [isModal]="false" [isOpened]="true" class="place-self-start self-end">
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->
@@ -731,7 +742,7 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomRightDialog class="place-self-end self-end">
+  <div tw-dialog #bottomRightDialog [isModal]="false" [autoClose]="true" class="inset- bottom-0 right-0">
     <!-- Dialog container -->
     <div tw-dialog-container
       class="place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">

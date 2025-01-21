@@ -8,7 +8,7 @@ import { Provider } from "@angular/core";
 import { provideButtonGroupConfig } from "./button-group";
 
 /**
- * @ngx-tailwind Elements configuration interface.
+ * @TailwindNG Elements configuration interface.
  */
 export interface ElementsConfig {
   avatar: Partial<AvatarConfig>;

@@ -1,7 +1,7 @@
 import { ClassList } from "../config";
 
 /**
- * @ngx-tailwind Component's base state.
+ * @TailwindNG Component's base state.
  */
 export interface BaseState<T extends HTMLElement = HTMLElement> {
   /**
@@ -37,7 +37,7 @@ export interface BaseState<T extends HTMLElement = HTMLElement> {
 }
 
 /**
- * @ngx-tailwind Component's base actions.
+ * @TailwindNG Component's base actions.
  */
 export interface BaseActions {
   /**

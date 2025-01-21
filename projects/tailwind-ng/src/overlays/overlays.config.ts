@@ -3,7 +3,7 @@ import { Provider } from "@angular/core";
 import { provideDialogConfig } from "./dialog";
 
 /**
- * @ngx-tailwind Overlays configuration interface.
+ * @TailwindNG Overlays configuration interface.
  */
 export interface OverlaysConfig extends Config {
   dialog?: DialogConfig;

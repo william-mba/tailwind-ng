@@ -1,4 +1,4 @@
-import { InjectionTokenFactory } from "../tokens/injection-token.factory";
+import { InjectionTokenFactory } from "./injection-token.factory";
 
 /**
  * Basic cryptography features available in the root EnvironmentInjector.

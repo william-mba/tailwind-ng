@@ -2,24 +2,24 @@ import { OutputEmitterRef } from "@angular/core";
 import { BaseState, BaseActions } from "@tailwind-ng/core";
 
 /**
- * @ngx-tailwind Toggle's state
+ * @TailwindNG Toggle's state
  */
 export interface ToggleState extends BaseState {
   /**
-   * The state of the toggle.
+   * Whether the toggle is checked. Default is `false`.
    */
   readonly isChecked: boolean;
 }
 
 /**
- * @ngx-tailwind Toggle's actions
+ * @TailwindNG Toggle's actions
  */
 export interface ToggleActions extends BaseActions {
   toggle(): void;
 }
 
 /**
- * @ngx-tailwind Toggle's events
+ * @TailwindNG Toggle's events
  */
 export interface ToggleEvents {
   /**

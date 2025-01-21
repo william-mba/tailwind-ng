@@ -23,9 +23,14 @@ export interface DialogState extends PopupState {
    * - If the given delay is outside the range, the default delay will be used.
    */
   displayDuration?: number;
+  /**
+   * Whether the dialog is modal or not.
+   * Default is `true`.
+   */
+  isModal: boolean;
 }
 
 /**
- * @ngx-tailwind Dialog component interface.
+ * @TailwindNG Dialog component interface.
  */
 export interface Dialog extends DialogState, BasicPopupActions, AdvancedPopupActions, PopupEvents { }
