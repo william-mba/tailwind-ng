@@ -6,8 +6,8 @@ trigger:
       - projects/tailwind-ng/src/*
       - ci/tailwind-ng.yml
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: Lab
+
 
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
@@ -33,16 +33,10 @@ stages:
             version: '20.x'
             checkLatest: true
 
-        - script: pnpm install
-          displayName: "Install dependencies"
-        - script: pnpm lint:lib
-          displayName: "Run lint"
-        - script: pnpm build:lib
-          displayName: "Run build"
-        - script: pnpm test:lib:ci
-          displayName: "Run tests"
+        - script: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f .\Dockerfile.lib.ci .
+          displayName: "Run CI"
 
-        - publish: dist/tailwind-ng
+        - publish: artifacts/tailwind-ng
           artifact: drop
           displayName: "Publish artifact"
 
@@ -57,7 +51,7 @@ stages:
           inputs:
             testResultsFormat: "JUnit"
             testResultsFiles: "**/TESTS-*.xml"
-            searchFolder: "$(Build.SourcesDirectory)"
+            searchFolder: "$(Build.SourcesDirectory)/junit"
             mergeTestResults: true
             testRunTitle: "tailwind-ng-tests-$(Build.DefinitionName)-v$(ReleaseVersion)"
 
