@@ -27,7 +27,8 @@ stages:
           clean: false
           persistCredentials: true
 
-        - script: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f .\Dockerfile.lib-core.ci .
+        - script: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f Dockerfile.lib-core.ci .
+          workingDirectory: $(Build.SourcesDirectory)
           displayName: "Run CI"
 
         - publish: artifacts/tailwind-ng-core
