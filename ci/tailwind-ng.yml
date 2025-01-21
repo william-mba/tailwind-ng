@@ -1,0 +1,80 @@
+name: "tailwind-ng"
+
+trigger:
+  paths:
+    include:
+      - projects/tailwind-ng/src/*
+      - ci/tailwind-ng.yml
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+      - group: tailwind-ng-master
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
+      - group: tailwind-ng-next
+  - ${{ else }}:
+      - group: tailwind-ng-dev
+  - name: Patch
+    value: $[counter(variables.MajorMinor, 0)]
+
+stages:
+  - stage: CI
+    jobs:
+    - job: Build_Test_Publish
+      steps:
+        - checkout: self
+          clean: false
+          persistCredentials: true
+
+        - task: UseNode@1
+          inputs:
+            version: '20.x'
+            checkLatest: true
+
+        - script: pnpm install
+          displayName: "Install dependencies"
+        - script: pnpm lint:lib
+          displayName: "Run lint"
+        - script: pnpm build:lib
+          displayName: "Run build"
+        - script: pnpm test:lib:ci
+          displayName: "Run tests"
+
+        - publish: dist/tailwind-ng
+          artifact: drop
+          displayName: "Publish artifact"
+
+        - task: PublishCodeCoverageResults@2
+          displayName: "Publish code coverage"
+          inputs:
+            summaryFileLocation: coverage/tailwind-ng/cobertura.xml"
+            pathToSources: coverage/tailwind-ng"
+
+        - task: PublishTestResults@2
+          displayName: "Publish test results"
+          inputs:
+            testResultsFormat: "JUnit"
+            testResultsFiles: "**/TESTS-*.xml"
+            searchFolder: "$(Build.SourcesDirectory)"
+            mergeTestResults: true
+            testRunTitle: "tailwind-ng-tests-$(Build.DefinitionName)-v$(ReleaseVersion)"
+
+  - stage: CD
+    jobs:
+    - job: Release
+      steps:
+        - checkout: none
+        - bash: rm -rf $(Pipeline.Workspace)/drop
+          displayName: 'Clean up workspace'
+        - download: current
+          artifact: drop
+          displayName: Download artifact
+        - bash: |
+            pnpm config set //registry.npmjs.org/:_authToken=$(authToken)
+            pnpm version $(ReleaseVersion)
+            pnpm publish --tag $(ReleaseTag)
+          displayName: "Release v$(ReleaseVersion)@$(ReleaseTag)"
+          workingDirectory: $(Pipeline.Workspace)/drop
+
