@@ -57,13 +57,18 @@ stages:
         - checkout: none
         - script: rm -rf $(Pipeline.Workspace)/drop
           displayName: 'Cleanup workspace'
+        - task: UseNode@1
+          inputs:
+            version: "20.x"
+            checkLatest: true
+          displayName: "Install Node.js"
         - download: current
           artifact: drop
           displayName: Download artifact
         - script: |
-            pnpm config set //registry.npmjs.org/:_authToken=$(authToken)
-            pnpm version $(ReleaseVersion)
-            pnpm publish --tag $(ReleaseTag)
+            npm config set //registry.npmjs.org/:_authToken=$(authToken)
+            npm version $(ReleaseVersion)
+            npm publish --tag $(ReleaseTag)
           displayName: "Release v$(ReleaseVersion)@$(ReleaseTag)"
           workingDirectory: $(Pipeline.Workspace)/drop
 
