@@ -1,0 +1,42 @@
+{
+  "name": "tailwind-ng",
+  "version": "0.12.1",
+  "author": {
+    "email": "w.mba@outlook.com",
+    "name": "William Mba",
+    "url": "https://github.com/William-Mba"
+  },
+  "description": "Beautiful, fast and reliable Tailwind CSS components for Angular.",
+  "keywords": [
+    "angular",
+    "tailwind css",
+    "web components"
+  ],
+  "exports": {
+    "./theme": {
+      "import": "./themes/default.css",
+      "require": "./themes/default.css",
+      "default": "./themes/default.css"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-Mba/tailwind-ng.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William-Mba/tailwind-ng/issues"
+  },
+  "homepage": "https://www.tailwind-ng.com",
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
