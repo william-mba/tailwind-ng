@@ -1,7 +1,7 @@
 import { ComponentConfig } from "../types/component-config.type";
 import { ConfigKey } from "./config-key.type";
 
-import { AvatarConfig, BadgeConfig, ButtonConfig, ComboboxItemConfig, DialogConfig, DropdownConfig, IconConfig, InputConfig, InputRadioConfig, ToggleConfig } from "./interfaces/index.interface";
+import { AvatarConfig, BadgeConfig, ButtonConfig, CheckboxConfig, ComboboxItemConfig, DialogConfig, DropdownConfig, IconConfig, InputConfig, InputRadioConfig, ToggleConfig } from "./interfaces";
 
 /**
  * Returns the config type associated to the specified key.
@@ -26,4 +26,5 @@ export type ConfigTypeOf<K extends ConfigKey> =
   K extends 'InputRadio' ? InputRadioConfig :
   K extends 'Dialog' ? DialogConfig :
   K extends 'Toggle' ? ToggleConfig :
+  K extends 'Checkbox' ? CheckboxConfig :
   K extends '' ? unknown : never;
