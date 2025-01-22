@@ -50,7 +50,6 @@ stages:
             codeCoverageTool: "Cobertura"
             summaryFileLocation: "coverage/tailwind-ng-core/cobertura.xml"
             pathToSources: "coverage/tailwind-ng-core"
-            reportDirectory: "coverage/tailwind-ng-core"
 
   - stage: CD
     jobs:
