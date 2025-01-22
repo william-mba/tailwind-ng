@@ -11,7 +11,7 @@ High-quality UI components based on Tailwind CSS for Angular.
 <br/>
 <br/>
 
-[![tailwind-ng](https://github.com/william-mba/tailwind-ng/actions/workflows/tailwind-ng.yml/badge.svg)](https://github.com/william-mba/tailwind-ng/actions/workflows/tailwind-ng.yml)
+[![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fci%2Ftailwind-ng?branchName=next&stageName=CI&jobName=Build_Test_Publish)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=10&branchName=next)
 
 </div>
 

@@ -2,4 +2,4 @@
 
 Core infrastructure and tools for [tailwind-ng](https://www.npmjs.com/package/tailwind-ng).
 
-[![@tailwind-ng/core](https://github.com/william-mba/ngx-tailwind/actions/workflows/tailwind-ng-core.yml/badge.svg)](https://github.com/william-mba/ngx-tailwind/actions/workflows/tailwind-ng-core.yml)
+[![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fci%2Ftailwind-ng-core?branchName=next&stageName=CI&jobName=Build_Test_Publish)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=10&branchName=next)
