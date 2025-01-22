@@ -27,7 +27,9 @@ stages:
           clean: false
           persistCredentials: true
 
-        - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng.Dockerfile .
+        - bash: |
+            rm -rf $(Build.SourcesDirectory)/artifacts/tailwind-ng
+            docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng.Dockerfile .
           workingDirectory: $(Build.SourcesDirectory)
           displayName: "Run CI"
 
@@ -51,20 +53,13 @@ stages:
             mergeTestResults: true
             testRunTitle: "$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result"
 
-  - stage: CD
-    jobs:
-    - job: Release
-      steps:
-        - checkout: none
-        - bash: rm -rf $(Pipeline.Workspace)/drop
-          displayName: 'Clean up workspace'
-        - download: current
-          artifact: drop
-          displayName: Download artifact
         - bash: |
             npm config set //registry.npmjs.org/:_authToken=$(authToken)
+            cd $(Build.SourcesDirectory)/projects/tailwind-ng-themes
+            npm version $(ReleaseVersion)
+            npm publish --tag $(ReleaseTag)
+            cd $(Build.SourcesDirectory)/artifacts/tailwind-ng
             npm version $(ReleaseVersion)
             npm publish --tag $(ReleaseTag)
           displayName: "Release v$(ReleaseVersion)@$(ReleaseTag)"
-          workingDirectory: $(Pipeline.Workspace)/drop
 
