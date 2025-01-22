@@ -1,6 +1,7 @@
 export * from './avatar-config.interface';
 export * from './badge-config.interface';
 export * from './button-config.interface';
+export * from './checkbox-config.interface';
 export * from './combobox-item-config.interface';
 export * from './dialog-config.interface';
 export * from './dropdown-config.interface';

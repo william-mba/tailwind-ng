@@ -118,8 +118,8 @@
 <!-- Button group end -->
 
 <!-- Icon Buttons -->
+<!-- Secondary -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <!-- Secondary -->
   <button type="button" tw-button size="xs" fab="true" variant="secondary" class="p-1.5">
     <tw-icon size="xs" key="language" />
   </button>
@@ -136,8 +136,8 @@
     <tw-icon size="xl" key="language" />
   </button>
 </div>
+<!-- Tonal -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <!-- Tonal -->
   <button type="button" tw-button size="xs" fab="true" variant="tonal" class="p-1.5">
     <tw-icon size="xs" key="language" />
   </button>
@@ -154,8 +154,8 @@
     <tw-icon size="xl" key="language" />
   </button>
 </div>
+<!-- Primary -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
-  <!-- Primary -->
   <button type="button" tw-button size="xs" fab="true" class="p-1.5">
     <tw-icon size="xs" key="language" />
   </button>
@@ -369,6 +369,7 @@
     </span>
   </tw-toggle>
 </div>
+<!-- Toggles end -->
 
 <!-- Inputs -->
 <div class="grid gap-8 place-items-center p-8 mb-16">
@@ -431,6 +432,38 @@
   </div>
 </div>
 
+<!-- Checkbox -->
+<div class="grid gap-8 place-items-center p-8 mb-16">
+  <div class="grid text-sm">
+    <p class="font-semibold">Notifications</p>
+    <p class="mt-2">How do you prefer to receive notifications? </p>
+    <div class="grid gap-4 mt-6">
+      <div class="flex items-center gap-4">
+        <div tw-checkbox>
+          <input tw-input type="checkbox" name="email" id="email-notification-cb" />
+          <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+        </div>
+        <label for="email-notification-cb">Email</label>
+      </div>
+      <div class="flex items-center gap-4">
+        <div tw-checkbox>
+          <input tw-input type="checkbox" name="sms" id="sms-cb" />
+          <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+        </div>
+        <label for="sms-cb">Phone (SMS)</label>
+      </div>
+      <div class="flex items-center gap-x-4">
+        <div tw-checkbox>
+          <input tw-input type="checkbox" name="push" id="push-notification-cb" [indeterminate]="true" />
+          <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+          <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
+        </div>
+        <label for="push-notification-cb">Push notification</label>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Comboboxes -->
 <div class="grid sm:grid-cols-2 gap-y-72 sm:gap-6 place-items-center mb-72 w-fit mx-auto">
   <!-- Combobox -->
@@ -446,7 +479,7 @@
       <tw-icon key="chevron-up-down" />
     </button>
     <!-- Dropdown -->
-    <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56 duration-0">
+    <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
       @for (user of users1; track user.name) {
       <div tw-combobox-item #item [value]="user.name">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
@@ -469,7 +502,7 @@
       <tw-icon key="chevron-up-down" />
     </button>
     <!-- Dropdown -->
-    <div tw-dropdown (closed)="reset(2)" class="w-full overflow-y-auto max-h-56 duration-0 focus:border-4">
+    <div tw-dropdown (closed)="reset(2)" class="w-full overflow-y-auto max-h-56 focus:border-4">
       @for (user of users2; track user.name) {
       <div tw-combobox-item #item [value]="user.name" class="focus-visible:bg-blue-600">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
@@ -723,7 +756,7 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomLeftDialog [isModal]="false" class="place-self-start self-end">
+  <div tw-dialog #bottomLeftDialog [isModal]="false" class="inset- bottom-0 left-0">
     <!-- Dialog container -->
     <div tw-dialog-container>
       <!-- Dialog content -->

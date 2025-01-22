@@ -16,7 +16,7 @@ variables:
   - ${{ else }}:
       - group: tailwind-ng-dev
   - name: Patch
-    value: $[counter(variables.MajorMinor, 1)]
+    value: $[counter(variables.MajorMinor, 0)]
 
 stages:
   - stage: CI
@@ -27,7 +27,9 @@ stages:
           clean: false
           persistCredentials: true
 
-        - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
+        - bash: |
+            rm -rf $(Build.SourcesDirectory)/artifacts/tailwind-ng-core
+            docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
           workingDirectory: $(Build.SourcesDirectory)
           displayName: "Run CI"
 
@@ -51,20 +53,10 @@ stages:
             mergeTestResults: true
             testRunTitle: "$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result"
 
-  - stage: CD
-    jobs:
-    - job: Release
-      steps:
-        - checkout: none
-        - bash: rm -rf $(Pipeline.Workspace)/drop
-          displayName: 'Cleanup workspace'
-        - download: current
-          artifact: drop
-          displayName: Download artifact
         - bash: |
             npm config set //registry.npmjs.org/:_authToken=$(authToken)
+            cd $(Build.SourcesDirectory)/artifacts/tailwind-ng-core
             npm version $(ReleaseVersion)
             npm publish --tag $(ReleaseTag)
           displayName: "Release v$(ReleaseVersion)@$(ReleaseTag)"
-          workingDirectory: $(Pipeline.Workspace)/drop
 

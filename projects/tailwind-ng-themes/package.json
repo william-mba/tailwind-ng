@@ -1,6 +1,6 @@
 {
   "name": "@tailwind-ng/themes",
-  "version": "0.12.1",
+  "version": "0.12.6",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
@@ -17,11 +17,6 @@
       "import": "./default/style.css",
       "require": "./default/style.css",
       "default": "./default/style.css"
-    },
-    "./default/min": {
-      "import": "./default/style.min.css",
-      "require": "./default/style.min.css",
-      "default": "./default/style.min.css"
     }
   },
   "repository": {
@@ -32,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/William-Mba/tailwind-ng/issues"
   },
-  "homepage": "https://www.tailwind-ng.com",
+  "homepage": "https://tailwind-ng.com",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"

@@ -12,9 +12,9 @@ const DefaultConfig = (): DropdownConfig => {
     overscroll: 'overscroll-contain',
     transformOrigin: 'origin-top',
     transition: {
-      property: 'transition-all',
-      duration: 'duration-0',
       timing: 'ease-in',
+      duration: 'duration-25',
+      property: 'transition-all',
       behavior: 'transition-discrete'
     },
     fontSize: 'text-sm',
@@ -33,12 +33,17 @@ const DefaultConfig = (): DropdownConfig => {
       colorScheme: 'dark:scheme-dark'
     },
     open: {
+      translate: 'open:translate-y-0',
       scale: 'open:scale-y-100',
       opacity: 'open:opacity-100',
       visibility: 'open:visible',
       cursor: 'open:cursor-pointer',
+      transition: {
+        duration: 'open:duration-100',
+      },
     },
     notOpen: {
+      translate: 'not-open:-translate-y-1',
       scale: 'not-open:scale-y-95',
       opacity: 'not-open:opacity-0',
       visibility: 'not-open:invisible'

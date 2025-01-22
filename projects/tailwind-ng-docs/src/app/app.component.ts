@@ -12,7 +12,8 @@ import {
   InputRadioDirective,
   DialogModule,
   ToggleComponent,
-  InputDirective
+  InputDirective,
+  CheckboxModule
 } from 'tailwind-ng';
 import { toggleTheme, OptionDirective } from "@tailwind-ng/core";
 
@@ -40,7 +41,8 @@ type Viewport = 'mobile' | 'tablet' | 'desktop';
     ButtonGroupComponent,
     DialogModule,
     ReactiveFormsModule,
-    OptionDirective
+    OptionDirective,
+    CheckboxModule
   ],
   templateUrl: './app.component.html',
   styles: [],

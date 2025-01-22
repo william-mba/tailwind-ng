@@ -7,6 +7,7 @@ export interface ElementConfig extends LayoutConfig, ThemeConfig {
   userSelect: UserSelect;
   pointerEvents: PointerEvents;
   appearance: Appearance;
+  is: 'peer' | 'group' | `peer/${string}` | `group/${string}`;
   /**
    * Defines element's children configuration.
    */

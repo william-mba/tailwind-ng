@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://www.tailwind-ng.com/">
+  <a href="https://tailwind-ng.com/">
     <img src="https://ngxtw-assets.pages.dev/ngxtw-logo-doc.png" alt="tailwind-ng" height="120" />
     <h1>Tailwind NG</h1>
   </a>
@@ -29,9 +29,9 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind N
 
 ## Resources
 
-- [Quick start](https://www.tailwind-ng.com/quick-start)
-- [Components](https://www.tailwind-ng.com/components)
-- [Roadmap](https://www.tailwind-ng.com/roadmap)
+- [Quick start](https://tailwind-ng.com/quick-start)
+- [Components](https://tailwind-ng.com/components)
+- [Roadmap](https://tailwind-ng.com/roadmap)
 
 ## Acknowledgements
 

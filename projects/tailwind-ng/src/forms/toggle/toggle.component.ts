@@ -23,9 +23,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   @Output() checked = new OutputEmitterRef<boolean>();
 
   protected override onInit(): void {
-    this.config$.subscribe(config => {
-      this.classList.set(config);
-    });
+    this.config$.subscribe(config => this.classList.set(config));
     this.nativeElement.addEventListener('click', this.toggle.bind(this), { passive: true, capture: true });
     this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), true);
 

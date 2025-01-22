@@ -25,12 +25,10 @@ export class DialogComponent extends DialogBase implements Dialog {
   protected clonedChild!: Element;
 
   protected override onInit(): void {
-    this.config$.subscribe(config => {
-      this.classList.set({
-        s: config.scrim,
-        b: this.isModal ? config.backdrop : {}
-      });
-    });
+    this.config$.subscribe(config => this.classList.set({
+      s: config.scrim, b: this.isModal ? config.backdrop : {}
+    }));
+
     if (this.isOpened) {
       this.onOpen();
     } else {

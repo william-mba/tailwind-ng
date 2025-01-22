@@ -1,3 +1,4 @@
+export * from './checkbox';
 export * from './combobox';
 export * from './input';
 export * from './input-radio';

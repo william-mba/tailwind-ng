@@ -3,15 +3,17 @@ import { BUTTON_GROUP_CONFIG, ComponentConfig, mergeConfig } from "@tailwind-ng/
 
 const DefaultConfig = (): ComponentConfig => {
   return {
+    width: 'w-fit',
+    radius: 'rounded-md',
     display: 'inline-flex',
     boxShadow: 'shadow-sm',
     isolation: 'isolate',
     overflow: 'overflow-hidden',
+    backdropBlur: 'backdrop-blur-xs',
     divideWidth: 'divide-x',
     divideColor: 'divide-gray-300',
     ringWidth: 'ring-1',
     ringColor: 'ring-gray-300',
-    width: 'w-fit',
     dark: {
       ringColor: 'dark:ring-gray-700',
       divideColor: 'dark:divide-gray-700',
@@ -20,11 +22,11 @@ const DefaultConfig = (): ComponentConfig => {
       ringWidth: '*:ring-0',
       fontSize: '*:text-sm',
       radius: '*:rounded-none',
+      backdropBlur: '*:backdrop-blur-none',
       focus: {
         outlineWidth: '*:focus:outline-0',
       }
-    },
-    radius: 'rounded-md'
+    }
   }
 }
 

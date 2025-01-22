@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/William-Mba/tailwind-ng/issues"
   },
-  "homepage": "https://www.tailwind-ng.com",
+  "homepage": "https://tailwind-ng.com",
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0"
