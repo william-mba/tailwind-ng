@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-High-quality UI components based on Tailwind CSS for Angular.
+Beautiful, fast and reliable Tailwind CSS components for Angular.
 <br/>
 <br/>
 <br/>
