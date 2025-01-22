@@ -44,11 +44,12 @@ stages:
             mergeTestResults: true
             testRunTitle: "$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result"
 
-        - task: PublishCodeCoverageResults@2
+        - task: PublishCodeCoverageResults@1
           displayName: "Publish code coverage"
           inputs:
+            codeCoverageTool: "Cobertura"
             summaryFileLocation: "coverage/tailwind-ng-core/cobertura.xml"
-            pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core"
+            pathToSources: "coverage/tailwind-ng-core"
 
   - stage: CD
     jobs:
