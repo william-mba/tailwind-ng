@@ -4,11 +4,13 @@ import { INPUT_CONFIG, mergeConfig, InputConfig } from "@tailwind-ng/core";
 const DefaultConfig = (): InputConfig => {
   return {
     radius: 'rounded-md',
-    borderStyle: 'border-none',
     outlineStyle: 'outline-none',
-    ringWidth: 'ring-1',
-    ringColor: 'ring-gray-300',
     ring: 'ring-inset',
+    ringWidth: 'ring-1',
+    ringColor: 'ring-black/15',
+    dark: {
+      ringColor: 'dark:ring-white/15'
+    },
     fontSize: 'text-sm',
     lineHeight: 'leading-6',
     backdropBlur: 'backdrop-blur-xs',
@@ -16,9 +18,6 @@ const DefaultConfig = (): InputConfig => {
     paddingY: 'py-1.5',
     width: 'w-full',
     bgColor: 'bg-transparent',
-    dark: {
-      ringColor: 'dark:ring-gray-700'
-    },
     focus: {
       radius: 'focus:rounded-md',
       borderColor: 'focus:border-transparent',
@@ -27,11 +26,9 @@ const DefaultConfig = (): InputConfig => {
       ring: 'focus:ring-inset'
     },
     disabled: {
-      opacity: 'disabled:opacity-70',
-      cursor: 'disabled:cursor-not-allowed',
       bgColor: 'disabled:bg-black/5',
       dark: {
-        bgColor: 'disabled:dark:bg-white/10',
+        bgColor: 'disabled:dark:bg-white/5',
       }
     },
     placeholder: {

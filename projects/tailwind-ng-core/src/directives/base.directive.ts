@@ -9,8 +9,9 @@ import { ClassList } from "../config";
 @Directive({
   host: {
     '[attr.class]': 'classList',
-    '[attr.inert]': 'isDisabled ? true : null',
-    '[attr.aria-disabled]': 'isDisabled ? "true" : null',
+    '[attr.inert]': 'isDisabled || null',
+    '[attr.disabled]': 'isDisabled || null',
+    '[attr.aria-disabled]': 'isDisabled || null',
   }
 })
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseState<T>, BaseActions, OnInit {

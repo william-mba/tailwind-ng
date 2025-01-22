@@ -3,20 +3,14 @@ import { INPUT_RADIO_CONFIG, mergeConfig, InputRadioConfig } from "@tailwind-ng/
 
 const DefaultConfig = (): InputRadioConfig => {
   return {
+    size: 'size-4',
     position: 'relative',
     radius: 'rounded-full',
-    size: 'size-4',
     appearance: 'appearance-none',
     borderWidth: 'border-1',
-    borderColor: 'border-gray-300',
+    borderColor: 'border-black/15',
     dark: {
-      borderColor: 'dark:border-gray-700',
-    },
-    before: {
-      position: 'before:absolute',
-      inset: 'before:inset-1',
-      radius: 'before:rounded-full',
-      bgColor: 'before:bg-white'
+      borderColor: 'dark:border-white/15',
     },
     forcedColors: {
       appearance: 'forced-colors:appearance-auto',
@@ -25,10 +19,9 @@ const DefaultConfig = (): InputRadioConfig => {
       }
     },
     disabled: {
-      bgColor: 'disabled:bg-black/15',
-      borderColor: 'disabled:border-transparent',
+      bgColor: 'disabled:bg-black/5',
       dark: {
-        bgColor: 'disabled:dark:bg-white/30'
+        bgColor: 'disabled:dark:bg-white/5'
       }
     },
     focusVisible: {
@@ -36,14 +29,15 @@ const DefaultConfig = (): InputRadioConfig => {
       outlineOffsetWidth: 'focus-visible:outline-offset-2',
       outlineColor: 'focus-visible:outline-blue-600',
     },
-    notChecked: {
-      before: {
-        display: 'not-checked:before:hidden',
-      }
-    },
     checked: {
       borderColor: 'checked:border-blue-600',
       bgColor: 'checked:bg-blue-600',
+      before: {
+        position: 'checked:before:absolute',
+        inset: 'checked:before:inset-1',
+        radius: 'checked:before:rounded-full',
+        bgColor: 'checked:before:bg-white'
+      },
     }
   }
 };

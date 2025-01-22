@@ -11,8 +11,6 @@ import { ButtonGroupBase } from '@tailwind-ng/core';
 })
 export class ButtonGroupComponent extends ButtonGroupBase {
   protected override onInit(): void {
-    this.config$.subscribe((config) => {
-      this.classList.set(config);
-    });
+    this.config$.subscribe((config) => this.classList.set(config));
   }
 }

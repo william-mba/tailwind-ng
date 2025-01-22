@@ -13,8 +13,6 @@ export class BadgeComponent extends BadgeBase {
   @Input() size: SizeOption = 'md';
 
   protected override onInit(): void {
-    this.config$.subscribe(config => {
-      this.classList.set({ b: config.base, s: config[this.size] });
-    });
+    this.config$.subscribe(config => this.classList.set({ b: config.base, s: config[this.size] }));
   }
 }
