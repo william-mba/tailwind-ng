@@ -42,13 +42,13 @@ stages:
             testResultsFiles: "**/TESTS-*.xml"
             searchFolder: "$(Build.SourcesDirectory)/junit"
             mergeTestResults: true
-            testRunTitle: "tests-result-$(Build.DefinitionName)-v$(ReleaseVersion)"
+            testRunTitle: "$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result"
 
         - task: PublishCodeCoverageResults@2
           displayName: "Publish code coverage"
           inputs:
-            summaryFileLocation: $(System.DefaultWorkingDirectory)/**/coverage/tailwind-ng/cobertura.xml"
-            pathToSources: $(System.DefaultWorkingDirectory)/coverage/tailwind-ng/"
+            summaryFileLocation: "$(Build.SourcesDirectory)/coverage/tailwind-ng/cobertura.xml"
+            pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng/"
 
   - stage: CD
     jobs:
