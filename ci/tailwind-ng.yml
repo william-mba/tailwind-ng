@@ -49,7 +49,7 @@ stages:
           inputs:
             codeCoverageTool: "Cobertura"
             summaryFileLocation: "coverage/tailwind-ng/cobertura.xml"
-            pathToSources: "coverage/tailwind-ng"
+            pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng"
 
   - stage: CD
     jobs:
