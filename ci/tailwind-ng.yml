@@ -27,7 +27,7 @@ stages:
           clean: false
           persistCredentials: true
 
-        - script: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f Dockerfile.lib.ci .
+        - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f Dockerfile.lib.ci .
           workingDirectory: $(Build.SourcesDirectory)
           displayName: "Run CI"
 
@@ -44,12 +44,13 @@ stages:
             mergeTestResults: true
             testRunTitle: "$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result"
 
-        - task: PublishCodeCoverageResults@2
+        - task: PublishCodeCoverageResults@1
           displayName: "Publish code coverage"
           inputs:
-            # codeCoverageTool: "Cobertura"
+            codeCoverageTool: "Cobertura"
             summaryFileLocation: "coverage/tailwind-ng/cobertura.xml"
             pathToSources: "coverage/tailwind-ng"
+            reportDirectory: "coverage/tailwind-ng"
 
   - stage: CD
     jobs:
