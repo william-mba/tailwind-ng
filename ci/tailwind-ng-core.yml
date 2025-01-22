@@ -47,8 +47,8 @@ stages:
         - task: PublishCodeCoverageResults@2
           displayName: "Publish code coverage"
           inputs:
-            summaryFileLocation: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core/cobertura.xml"
-            pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core/"
+            summaryFileLocation: "coverage/tailwind-ng-core/cobertura.xml"
+            pathToSources: "coverage/tailwind-ng-core"
 
   - stage: CD
     jobs:
