@@ -1,12 +1,12 @@
 {
   "name": "@tailwind-ng/themes",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "author": {
     "email": "w.mba@outlook.com",
     "name": "William Mba",
     "url": "https://github.com/William-Mba"
   },
-  "description": "Tailwind NG themes library.",
+  "description": "Tailwind NG themes.",
   "keywords": [
     "angular",
     "tailwind css",

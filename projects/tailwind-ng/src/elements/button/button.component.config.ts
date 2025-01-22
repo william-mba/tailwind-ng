@@ -82,7 +82,7 @@ const PrimaryButtonConfig = (): ComponentConfig => {
     },
     focus: {
       border: 'focus:outline',
-      outlineWidth: 'focus:outline-2',
+      outlineWidth: 'focus:outline-1',
       outlineColor: 'focus:outline-blue-600',
       outlineOffsetWidth: 'focus:outline-offset-2'
     },
@@ -117,7 +117,7 @@ const SecondaryButtonConfig = (): ComponentConfig => {
       ringColor: 'focus:ring-gray-400/90',
       border: 'focus:outline',
       ringWidth: 'focus:ring-0',
-      outlineWidth: 'focus:outline-2',
+      outlineWidth: 'focus:outline-1',
       outlineColor: 'focus:outline-gray-500/80',
       dark: {
         ringColor: 'focus:dark:ring-gray-600'
@@ -147,7 +147,7 @@ const TonalButtonConfig = (): ComponentConfig => {
     },
     focus: {
       border: 'focus:outline',
-      outlineWidth: 'focus:outline-2',
+      outlineWidth: 'focus:outline-1',
       outlineColor: 'focus:outline-blue-500/80',
     }
   }
@@ -171,7 +171,7 @@ const TextButtonConfig = (): ComponentConfig => {
     focus: {
       border: 'focus:outline',
       borderStyle: 'focus:border-dotted',
-      outlineWidth: 'focus:outline-2',
+      outlineWidth: 'focus:outline-1',
       outlineColor: 'focus:outline-gray-500/80',
     }
   }

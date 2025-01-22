@@ -19,7 +19,10 @@ const DefaultConfig = (): ComponentConfig => {
     child: {
       ringWidth: '*:ring-0',
       fontSize: '*:text-sm',
-      radius: '*:rounded-none'
+      radius: '*:rounded-none',
+      focus: {
+        outlineWidth: '*:focus:outline-0',
+      }
     },
     radius: 'rounded-md'
   }
