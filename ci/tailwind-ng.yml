@@ -35,12 +35,6 @@ stages:
           artifact: drop
           displayName: "Publish artifact"
 
-        - task: PublishCodeCoverageResults@2
-          displayName: "Publish code coverage"
-          inputs:
-            summaryFileLocation: $(Build.SourcesDirectory)/coverage/tailwind-ng/cobertura.xml"
-            pathToSources: $(Build.SourcesDirectory)/coverage/tailwind-ng"
-
         - task: PublishTestResults@2
           displayName: "Publish test results"
           inputs:
@@ -48,7 +42,13 @@ stages:
             testResultsFiles: "**/TESTS-*.xml"
             searchFolder: "$(Build.SourcesDirectory)/junit"
             mergeTestResults: true
-            testRunTitle: "tailwind-ng-tests-$(Build.DefinitionName)-v$(ReleaseVersion)"
+            testRunTitle: "tests-result-$(Build.DefinitionName)-v$(ReleaseVersion)"
+
+        - task: PublishCodeCoverageResults@2
+          displayName: "Publish code coverage"
+          inputs:
+            summaryFileLocation: $(Build.SourcesDirectory)/coverage/tailwind-ng/cobertura.xml"
+            pathToSources: $(Build.SourcesDirectory)/coverage/tailwind-ng/"
 
   - stage: CD
     jobs:
