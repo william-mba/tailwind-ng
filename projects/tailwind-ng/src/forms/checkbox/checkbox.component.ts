@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, contentChild, ViewEncapsulation } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { BaseDirective, InputCheckboxBase } from "@tailwind-ng/core";
+import { BaseDirective, InputCheckboxBase, KBKey } from "@tailwind-ng/core";
 
 /**
  * @TailwindNG Input checkbox container.
@@ -19,5 +19,34 @@ export class CheckboxComponent extends BaseDirective {
   protected override onInit(): void {
     this.input().config$.pipe(takeUntilDestroyed(this._destroyRef))
       .subscribe(config => this.classList.set(config.container));
+
+    this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), true);
+
+    this._destroyRef.onDestroy(() => {
+      this.nativeElement.removeEventListener('keydown', this.onKeydown.bind(this), true);
+    });
+  }
+
+  protected onKeydown(event: KeyboardEvent): void {
+    if (KBKey.isSpace(event.key)) {
+      event.preventDefault();
+    }
+    if (KBKey.isEnterOrSpace(event.key)) {
+      this.input().nativeElement.click();
+    } else if (KBKey.isNavigation(event.key)) {
+      event.preventDefault();
+      if (KBKey.isArrowDownOrRight(event.key)) {
+        this.focus({
+          behavior: "firstChild",
+          target: this.nativeElement.parentElement?.nextElementSibling?.firstElementChild as HTMLElement
+        });
+      }
+      if (KBKey.isArrowUpOrLeft(event.key)) {
+        this.focus({
+          behavior: "firstChild",
+          target: this.nativeElement.parentElement?.previousElementSibling?.firstElementChild as HTMLElement
+        });
+      }
+    }
   }
 }
