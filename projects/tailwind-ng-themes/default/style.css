@@ -3260,13 +3260,17 @@
     --tw-duration: 50ms;
     transition-duration: 50ms;
   }
-  .duration-75 {
-    --tw-duration: 75ms;
-    transition-duration: 75ms;
-  }
   .duration-100 {
     --tw-duration: 100ms;
     transition-duration: 100ms;
+  }
+  .duration-700 {
+    --tw-duration: 700ms;
+    transition-duration: 700ms;
+  }
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
   }
   .duration-1000 {
     --tw-duration: 1000ms;
@@ -3291,10 +3295,6 @@
   .duration-500 {
     --tw-duration: 500ms;
     transition-duration: 500ms;
-  }
-  .duration-700 {
-    --tw-duration: 700ms;
-    transition-duration: 700ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -4286,22 +4286,6 @@
   .focus-visible\:bg-blue-600 {
     &:focus-visible {
       background-color: var(--color-blue-600);
-    }
-  }
-  .focus-visible\:outline-2 {
-    &:focus-visible {
-      outline-style: var(--tw-outline-style);
-      outline-width: 2px;
-    }
-  }
-  .focus-visible\:outline-offset-2 {
-    &:focus-visible {
-      outline-offset: 2px;
-    }
-  }
-  .focus-visible\:outline-blue-600 {
-    &:focus-visible {
-      outline-color: var(--color-blue-600);
     }
   }
   .active\:bg-blue-600\/25 {

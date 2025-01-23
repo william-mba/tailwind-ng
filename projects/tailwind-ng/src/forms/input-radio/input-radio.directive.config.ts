@@ -24,10 +24,10 @@ const DefaultConfig = (): InputRadioConfig => {
         bgColor: 'disabled:dark:bg-white/5'
       }
     },
-    focusVisible: {
-      outlineWidth: 'focus-visible:outline-2',
-      outlineOffsetWidth: 'focus-visible:outline-offset-2',
-      outlineColor: 'focus-visible:outline-blue-600',
+    focus: {
+      outlineWidth: 'focus:outline-2',
+      outlineOffsetWidth: 'focus:outline-offset-2',
+      outlineColor: 'focus:outline-blue-600',
     },
     checked: {
       borderColor: 'checked:border-blue-600',

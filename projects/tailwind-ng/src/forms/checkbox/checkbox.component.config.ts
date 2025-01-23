@@ -38,10 +38,10 @@ const DefaultConfig = (): CheckboxConfig => {
         borderColor: 'checked:border-blue-600',
         bgColor: 'checked:bg-blue-600',
       },
-      focusVisible: {
-        outlineWidth: 'focus-visible:outline-2',
-        outlineOffsetWidth: 'focus-visible:outline-offset-2',
-        outlineColor: 'focus-visible:outline-blue-600',
+      focus: {
+        outlineWidth: 'focus:outline-2',
+        outlineOffsetWidth: 'focus:outline-offset-2',
+        outlineColor: 'focus:outline-blue-600',
       },
       indeterminate: {
         borderColor: 'indeterminate:border-blue-600',

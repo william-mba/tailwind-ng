@@ -442,15 +442,40 @@
         <div tw-checkbox>
           <input tw-input type="checkbox" name="email" id="email-notification-cb" />
           <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+          <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
         </div>
-        <label for="email-notification-cb">Email</label>
+        <label for="email-notification-cb">Option A</label>
       </div>
       <div class="flex items-center gap-4">
         <div tw-checkbox>
-          <input tw-input type="checkbox" name="sms" id="sms-cb" />
+          <input tw-input #input01="twInputCheckbox" type="checkbox" name="sms" id="sms-cb" />
           <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+          <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
         </div>
-        <label for="sms-cb">Phone (SMS)</label>
+        <label for="sms-cb">Option B</label>
+      </div>
+      <div class="pl-8 grid gap-4">
+        <div class="flex items-center gap-3">
+          <div tw-checkbox>
+            <input tw-input [parent]="input01" type="checkbox" name="sms-child-1" id="sms-cb-child-1" />
+            <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+          </div>
+          <label for="sms-cb-child-1">Option B 1</label>
+        </div>
+        <div class="flex items-center gap-4">
+          <div tw-checkbox>
+            <input tw-input [parent]="input01" type="checkbox" name="sms-child-2" id="sms-cb-child-2" />
+            <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+          </div>
+          <label for="sms-cb-child-2">Option B 2</label>
+        </div>
+        <div class="flex items-center gap-4">
+          <div tw-checkbox>
+            <input tw-input [parent]="input01" type="checkbox" name="sms-child-3" id="sms-cb-child-3" />
+            <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
+          </div>
+          <label for="sms-cb-child-3">Option B 3</label>
+        </div>
       </div>
       <div class="flex items-center gap-x-4">
         <div tw-checkbox>
@@ -458,7 +483,7 @@
           <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
           <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
         </div>
-        <label for="push-notification-cb">Push notification</label>
+        <label for="push-notification-cb">Option C</label>
       </div>
     </div>
   </div>
