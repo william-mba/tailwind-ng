@@ -54,9 +54,7 @@ export class DropdownComponent extends DropdownBase {
     if (!this.isOpened) return;
     if (!this.scrolling) {
       const id = setTimeout(() => {
-        requestAnimationFrame(() => {
-          this.updatePositionIfNeeded();
-        });
+        this.updatePositionIfNeeded();
         clearTimeout(id);
       }, 300);
     }

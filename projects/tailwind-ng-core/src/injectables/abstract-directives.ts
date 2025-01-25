@@ -70,6 +70,6 @@ export abstract class DialogBase extends PopupDirective<HTMLDialogElement> imple
 }
 
 @Directive({})
-export abstract class InputCheckboxBase extends BaseDirective<HTMLInputElement> implements ObservableConfig {
+export abstract class CheckboxBase extends BaseDirective implements ObservableConfig {
   readonly config$ = inject(ReactiveConfig).get('Checkbox').pipe(takeUntilDestroyed());
 }

@@ -327,7 +327,7 @@
         class="in-data-checked:opacity-0 in-data-checked:duration-0 not-in-data-checked:duration-300 transition-opacity" />
     </span>
     <span class="absolute right-0 w-1/2 inline-flex justify-center in-data-checked:text-blue-700">
-      <tw-icon size="xs" key="check"
+      <tw-icon size="xs" key="check-2"
         class="not-in-data-checked:opacity-0 not-in-data-checked:duration-0 in-data-checked:duration-300 transition-opacity" />
     </span>
   </tw-toggle>
@@ -364,7 +364,7 @@
         class="in-data-checked:opacity-0 in-data-checked:duration-0 not-in-data-checked:duration-300 transition-opacity" />
     </span>
     <span class="absolute right-0 w-1/2 inline-flex justify-center in-data-checked:text-blue-700">
-      <tw-icon size="xs" key="check"
+      <tw-icon size="xs" key="check-2"
         class="not-in-data-checked:opacity-0 not-in-data-checked:duration-0 in-data-checked:duration-300 transition-opacity" />
     </span>
   </tw-toggle>
@@ -416,15 +416,15 @@
     <p class="font-semibold">Notifications</p>
     <p class="mt-2">How do you prefer to receive notifications? </p>
     <div class="grid gap-4 mt-6">
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         <input tw-input type="radio" name="notification" id="email-notification" />
         <label for="email-notification">Email</label>
       </div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         <input tw-input type="radio" disabled="" name="notification" id="sms" />
         <label for="sms">Phone (SMS)</label>
       </div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         <input tw-input type="radio" name="notification" id="push-notification" />
         <label for="push-notification">Push notification</label>
       </div>
@@ -435,59 +435,69 @@
 <!-- Checkbox -->
 <div class="grid gap-8 place-items-center p-8 mb-16">
   <div class="grid text-sm">
-    <p class="font-semibold">Notifications</p>
+    <p class="font-semibold">Tasks board</p>
     <p class="mt-2">How do you prefer to receive notifications? </p>
     <div class="grid gap-4 mt-6">
-      <div class="flex items-center gap-4">
-        <div tw-checkbox>
-          <input tw-input type="checkbox" name="email" id="email-notification-cb" />
-          <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
-          <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
+      <tw-checkbox [checked]="true">Task A</tw-checkbox>
+      <tw-checkbox [checked]="task().done.fully" [indeterminate]="!!task().done.partially"
+        (checkedChange)="updateTask(task().name, {fully: $event === true})"
+        (indeterminateChange)="updateTask(task().name, {partially: $event === true})">
+        {{ task().name }}
+        <div class="pl-8 grid gap-4 mt-4">
+          @for (subtask of task().subtasks; track subtask; let i = $index) {
+          <tw-checkbox [checked]="subtask.done.fully" [indeterminate]="!!subtask.done.partially"
+            (checkedChange)="updateTask(subtask.name, {fully: $event === true})">
+            {{ subtask.name}}
+            @if(subtask.subtasks) {
+            <div class="pl-8 grid gap-4 mt-4">
+              @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
+              <tw-checkbox [checked]="subsubtask.done.fully" [indeterminate]="!!subsubtask.done.partially"
+                (checkedChange)="updateTask(subsubtask.name, {fully: $event === true})">
+                {{ subsubtask.name}}
+                @if(subsubtask.subtasks) {
+                <div class="pl-8 grid gap-4 mt-4">
+                  @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
+                  <tw-checkbox [checked]="subsubsubtask.done.fully" [indeterminate]="!!subsubsubtask.done.partially"
+                    (checkedChange)="updateTask(subsubsubtask.name, {fully: $event === true})">
+                    {{ subsubsubtask.name}}
+                  </tw-checkbox>
+                  }
+                </div>
+                }
+              </tw-checkbox>
+              }
+            </div>
+            }
+          </tw-checkbox>
+          }
         </div>
-        <label for="email-notification-cb">Option A</label>
-      </div>
-      <div class="flex items-center gap-4">
-        <div tw-checkbox>
-          <input tw-input #input01="twInputCheckbox" type="checkbox" name="sms" id="sms-cb" />
-          <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
-          <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
-        </div>
-        <label for="sms-cb">Option B</label>
-      </div>
-      <div class="pl-8 grid gap-4">
-        <div class="flex items-center gap-3">
-          <div tw-checkbox>
-            <input tw-input [parent]="input01" type="checkbox" name="sms-child-1" id="sms-cb-child-1" />
-            <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
-          </div>
-          <label for="sms-cb-child-1">Option B 1</label>
-        </div>
-        <div class="flex items-center gap-4">
-          <div tw-checkbox>
-            <input tw-input [parent]="input01" type="checkbox" name="sms-child-2" id="sms-cb-child-2" />
-            <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
-          </div>
-          <label for="sms-cb-child-2">Option B 2</label>
-        </div>
-        <div class="flex items-center gap-4">
-          <div tw-checkbox>
-            <input tw-input [parent]="input01" type="checkbox" name="sms-child-3" id="sms-cb-child-3" />
-            <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
-          </div>
-          <label for="sms-cb-child-3">Option B 3</label>
-        </div>
-      </div>
-      <div class="flex items-center gap-x-4">
-        <div tw-checkbox>
-          <input tw-input type="checkbox" name="push" id="push-notification-cb" [indeterminate]="true" />
-          <tw-icon key="check-thin" size="sm" class="peer-checked:block" />
-          <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
-        </div>
-        <label for="push-notification-cb">Option C</label>
-      </div>
+      </tw-checkbox>
+      <tw-checkbox>Task C</tw-checkbox>
     </div>
   </div>
 </div>
+
+<div class="grid gap-8 place-items-center p-8 mb-16">
+  <div class="grid text-sm">
+    <p class="font-semibold">Notifications</p>
+    <p class="mt-2">How do you prefer to receive notifications? </p>
+    <div class="grid gap-4 mt-6">
+      <tw-checkbox>
+        <span class="font-semibold">Comments</span>
+        <p class="pl-8 text-gray-500">Get notified when someones posts a comment on a posting.</p>
+      </tw-checkbox>
+      <tw-checkbox>
+        <span class="font-semibold">Candidates</span>
+        <p class="pl-8 text-gray-500">Get notified when a candidate applies for a job.</p>
+      </tw-checkbox>
+      <tw-checkbox>
+        <span class="font-semibold">Offers</span>
+        <p class="pl-8 text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
+      </tw-checkbox>
+    </div>
+  </div>
+</div>
+<!-- Checkbox end -->
 
 <!-- Comboboxes -->
 <div class="grid sm:grid-cols-2 gap-y-72 sm:gap-6 place-items-center mb-72 w-fit mx-auto">
@@ -507,7 +517,7 @@
     <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
       @for (user of users1; track user.name) {
       <div tw-combobox-item #item [value]="user.name">
-        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check" />
         <span>{{ user.name }}</span>
       </div>
       }
@@ -530,7 +540,7 @@
     <div tw-dropdown (closed)="reset(2)" class="w-full overflow-y-auto max-h-56 focus:border-4">
       @for (user of users2; track user.name) {
       <div tw-combobox-item #item [value]="user.name" class="focus-visible:bg-blue-600">
-        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check" />
         <span>{{ user.name }}</span>
       </div>
       }
@@ -696,7 +706,7 @@
     <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
-        <tw-icon key="check-thin" class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto" />
+        <tw-icon key="check" class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto" />
         <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
           <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
             Payment successful
@@ -720,7 +730,7 @@
     <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
-        <tw-icon key="check-thin" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
+        <tw-icon key="check" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
         <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
           <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
             Payment successful

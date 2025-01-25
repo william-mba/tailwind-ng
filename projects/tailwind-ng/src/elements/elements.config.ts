@@ -1,4 +1,4 @@
-import { AvatarConfig, BadgeConfig, ButtonConfig, ComponentConfig, DropdownConfig, IconConfig } from "@tailwind-ng/core";
+import { AvatarConfig, BadgeConfig, ButtonConfig, ComponentConfig, DropdownConfig, FullyOptional, IconConfig } from "@tailwind-ng/core";
 import { provideAvatarConfig } from "./avatar";
 import { provideBadgeConfig } from "./badge";
 import { provideButtonConfig } from "./button";
@@ -16,7 +16,7 @@ export interface ElementsConfig {
   button: Partial<ButtonConfig>;
   buttonGroup: Partial<ComponentConfig>;
   dropdown: Partial<DropdownConfig>;
-  icon: Partial<IconConfig>;
+  icon: FullyOptional<IconConfig>;
 }
 
 /**

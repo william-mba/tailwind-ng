@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   AvatarComponent,
@@ -13,7 +13,7 @@ import {
   DialogModule,
   ToggleComponent,
   InputDirective,
-  CheckboxModule
+  CheckboxComponent
 } from 'tailwind-ng';
 import { toggleTheme, OptionDirective } from "@tailwind-ng/core";
 
@@ -23,6 +23,14 @@ interface User {
   status?: 'active' | 'inactive';
 }
 
+export interface Task {
+  name: string;
+  done: {
+    fully: boolean;
+    partially?: boolean;
+  }
+  subtasks?: Task[];
+}
 type Viewport = 'mobile' | 'tablet' | 'desktop';
 
 @Component({
@@ -42,13 +50,122 @@ type Viewport = 'mobile' | 'tablet' | 'desktop';
     DialogModule,
     ReactiveFormsModule,
     OptionDirective,
-    CheckboxModule
+    CheckboxComponent
   ],
   templateUrl: './app.component.html',
   styles: [],
 })
 export class AppComponent {
   private _formBuilder = inject(NonNullableFormBuilder);
+
+  /**
+   * Simple example without recursion.
+   */
+  // readonly task = signal<Task>({
+  //   name: 'Task B',
+  //   done: {
+  //     fully: false,
+  //     partially: false
+  //   },
+  //   subtasks: [
+  //     { name: 'Step 1', done: { fully: false } },
+  //     {
+  //       name: 'Step 2', done: { fully: true }, subtasks: [
+  //         { name: 'Step 2.1', done: { fully: false } },
+  //         { name: 'Step 2.2', done: { fully: false } },
+  //         {
+  //           name: 'Step 2.3', done: { fully: false }, subtasks: [
+  //             { name: 'Step 2.3.1', done: { fully: false } },
+  //             { name: 'Step 2.3.2', done: { fully: false } },
+  //           ]
+  //         },
+  //       ]
+  //     },
+  //     { name: 'Step 3', done: { fully: true } },
+  //   ],
+  // });
+
+  // updateTask(name: string, { fully = false, partially = false }): void {
+  //   this.task.update(task => {
+  //     if (task.name === name) {
+  //       task.done = { fully, partially };
+  //       console.table(task, ['name', 'fully', 'partially']); // TODO: Remove
+  //     } else if (task.subtasks) {
+  //       task.subtasks.map(subtask => {
+  //         if (subtask.name === name) {
+  //           subtask.done = { fully, partially };
+  //           console.table(subtask); // TODO: Remove
+  //         } else if (subtask.subtasks) {
+  //           subtask.subtasks.map(subtask => {
+  //             if (subtask.name === name) {
+  //               subtask.done = { fully, partially };
+  //               console.table(subtask); // TODO: Remove
+  //             } else if (subtask.subtasks) {
+  //               subtask.subtasks.map(subtask => {
+  //                 if (subtask.name === name) {
+  //                   subtask.done = { fully, partially };
+  //                   console.table(subtask); // TODO: Remove
+  //                 }
+  //                 return subtask;
+  //               });
+  //             }
+  //             return subtask;
+  //           });
+  //         }
+  //         return subtask;
+  //       });
+  //     }
+  //     return { ...task };
+  //   });
+  // }
+
+  // Example with recursion but throw an expressionChangedAfterItHasBeenCheckedError
+  // if there is some parent tasks that is updated after the view has been checked.
+  // This occurs when their state are incorrect. For example: one parent with done.fully=true but having a child with done.fully=false.
+  // In this case, the child will make the parent become indeterminate.
+  // To avoid this, data should be fully consistent in the tree.
+
+  readonly task = signal<Task>({
+    name: 'Task B',
+    done: {
+      fully: false,
+      partially: false
+    },
+    subtasks: [
+      { name: 'Step 1', done: { fully: false } },
+      {
+        name: 'Step 2', done: { fully: false }, subtasks: [
+          { name: 'Step 2.1', done: { fully: false } },
+          { name: 'Step 2.2', done: { fully: false } },
+          {
+            name: 'Step 2.3', done: { fully: false }, subtasks: [
+              { name: 'Step 2.3.1', done: { fully: false } },
+              { name: 'Step 2.3.2', done: { fully: false } },
+            ]
+          },
+        ]
+      },
+      { name: 'Step 3', done: { fully: false } },
+    ],
+  });
+
+  updateTask(name: string, { fully = false, partially = false }, task = this.task()): void {
+    if (task.name === name) {
+      task.done = { fully, partially };
+      console.table(task, ['name', 'fully', 'partially']); // TODO: Remove
+    } else if (task.subtasks) {
+      task.subtasks.map(subtask => {
+        if (subtask.name === name) {
+          subtask.done = { fully, partially };
+          console.table(subtask); // TODO: Remove
+        } else if (subtask.subtasks) {
+          return this.updateTask(name, { fully, partially }, subtask);
+        }
+        return subtask;
+      });
+    }
+    task = { ...task };
+  }
 
   isInvalid = (control: AbstractControl): boolean => control.invalid;
   isTouchedAndInvalid = (control: AbstractControl): boolean => control.touched && control.invalid;

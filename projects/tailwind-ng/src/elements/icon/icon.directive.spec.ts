@@ -57,7 +57,7 @@ describe('IconDirective', () => {
       expect(c.md).toEqual(config.md);
       expect(c.lg).toEqual(config.lg);
       expect(c.xl).toEqual(config.xl);
-      expect(c.source).toEqual({});
+      expect(c.source).toEqual(config.source);
     }).unsubscribe();
   });
 

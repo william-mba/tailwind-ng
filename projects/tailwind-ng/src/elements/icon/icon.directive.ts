@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { SizeOption, IconBase } from '@tailwind-ng/core';
+import { SizeOption, IconBase, IconKey } from '@tailwind-ng/core';
 
 @Directive({
   selector: 'tw-icon, [tw-icon], [twIcon]',
@@ -10,7 +10,7 @@ import { SizeOption, IconBase } from '@tailwind-ng/core';
   providers: [{ provide: IconBase, useExisting: IconDirective }]
 })
 export class IconDirective extends IconBase {
-  @Input({ required: true }) key!: string;
+  @Input({ required: true }) key!: IconKey;
   @Input() size: SizeOption = 'md';
 
   protected override onInit(): void {
@@ -18,7 +18,7 @@ export class IconDirective extends IconBase {
       this.classList.init(config[this.size]);
       this.classList.set(config.base);
       if (!config.source[this.key]) {
-        console.error(new Error(`Icon with key "${this.key}" does not exists in the icons source config.`));
+        console.error(`Icon with key "${this.key}" is undefined. Please set it using the config provider.`);
       } else {
         this.nativeElement.insertAdjacentHTML('afterbegin', config.source[this.key]);
       }

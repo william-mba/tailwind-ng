@@ -59,6 +59,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   focus({ target = this.nativeElement, behavior = 'self' }: FocusOptions = {}): HTMLElement | undefined {
     if (this.isDisabled) return;
+    if (!target) return;
 
     if (behavior === 'self') {
       target.focus();
@@ -67,27 +68,27 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
     switch (behavior) {
       case 'nextSibling':
-        target = target.nextElementSibling as HTMLElement;
+        target = target?.nextElementSibling as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.nextElementSibling as HTMLElement;
+          target = target?.nextElementSibling as HTMLElement;
         }
         break;
       case 'previousSibling':
-        target = target.previousElementSibling as HTMLElement;
+        target = target?.previousElementSibling as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.previousElementSibling as HTMLElement;
+          target = target?.previousElementSibling as HTMLElement;
         }
         break;
       case 'firstChild':
-        target = target.firstElementChild as HTMLElement;
+        target = target?.firstElementChild as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.nextElementSibling as HTMLElement;
+          target = target?.nextElementSibling as HTMLElement;
         }
         break;
       case 'lastChild':
-        target = target.lastElementChild as HTMLElement;
+        target = target?.lastElementChild as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.previousElementSibling as HTMLElement;
+          target = target?.previousElementSibling as HTMLElement;
         }
         break;
     }
@@ -98,6 +99,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   private currentVisualFocusedElement?: HTMLElement;
   setVisualfocus({ target = this.nativeElement, behavior = 'self' }: FocusOptions = {}): HTMLElement | undefined {
     if (this.isDisabled) return;
+    if (!target) return;
 
     if (behavior === 'self') {
       if (this.currentVisualFocusedElement) {
@@ -110,27 +112,27 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
     switch (behavior) {
       case 'nextSibling':
-        target = target.nextElementSibling as HTMLElement;
+        target = target?.nextElementSibling as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.nextElementSibling as HTMLElement;
+          target = target?.nextElementSibling as HTMLElement;
         }
         break;
       case 'previousSibling':
-        target = target.previousElementSibling as HTMLElement;
+        target = target?.previousElementSibling as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.previousElementSibling as HTMLElement;
+          target = target?.previousElementSibling as HTMLElement;
         }
         break;
       case 'firstChild':
-        target = target.firstElementChild as HTMLElement;
+        target = target?.firstElementChild as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.nextElementSibling as HTMLElement;
+          target = target?.nextElementSibling as HTMLElement;
         }
         break;
       case 'lastChild':
-        target = target.lastElementChild as HTMLElement;
+        target = target?.lastElementChild as HTMLElement;
         while (target && this.isDisabledElement(target)) {
-          target = target.previousElementSibling as HTMLElement;
+          target = target?.previousElementSibling as HTMLElement;
         }
         break;
     }
