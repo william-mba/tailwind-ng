@@ -12,7 +12,7 @@ const DefaultConfig = (): DropdownConfig => {
     overscroll: 'overscroll-contain',
     transformOrigin: 'origin-top',
     transition: {
-      timing: 'ease-in',
+      timing: 'ease-out',
       duration: 'duration-25',
       property: 'transition-all',
       behavior: 'transition-discrete'
@@ -44,14 +44,14 @@ const DefaultConfig = (): DropdownConfig => {
     },
     notOpen: {
       translate: 'not-open:-translate-y-1',
-      scale: 'not-open:scale-y-95',
+      scale: 'not-open:scale-y-75',
       opacity: 'not-open:opacity-0',
       visibility: 'not-open:invisible'
     },
     starting: {
       open: {
         opacity: 'starting:open:opacity-0',
-        scale: 'starting:open:scale-y-95'
+        scale: 'starting:open:scale-y-75'
       }
     }
   }

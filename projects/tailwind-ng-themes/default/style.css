@@ -3394,17 +3394,21 @@
     --tw-duration: 5ms;
     transition-duration: 5ms;
   }
+  .duration-25 {
+    --tw-duration: 25ms;
+    transition-duration: 25ms;
+  }
   .duration-50 {
     --tw-duration: 50ms;
     transition-duration: 50ms;
   }
-  .duration-75 {
-    --tw-duration: 75ms;
-    transition-duration: 75ms;
-  }
   .duration-100 {
     --tw-duration: 100ms;
     transition-duration: 100ms;
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
   }
   .duration-500 {
     --tw-duration: 500ms;
@@ -3422,17 +3426,13 @@
     --tw-duration: 200ms;
     transition-duration: 200ms;
   }
-  .duration-25 {
-    --tw-duration: 25ms;
-    transition-duration: 25ms;
-  }
-  .duration-300 {
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
-  }
   .duration-700 {
     --tw-duration: 700ms;
     transition-duration: 700ms;
+  }
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -3805,10 +3805,92 @@
       translate: var(--tw-translate-x) var(--tw-translate-y);
     }
   }
+  .not-open\:scale-0 {
+    &:not([open], :popover-open) {
+      --tw-scale-x: 0%;
+      --tw-scale-y: 0%;
+      --tw-scale-z: 0%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-50 {
+    &:not([open], :popover-open) {
+      --tw-scale-x: 50%;
+      --tw-scale-y: 50%;
+      --tw-scale-z: 50%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-75 {
+    &:not([open], :popover-open) {
+      --tw-scale-x: 75%;
+      --tw-scale-y: 75%;
+      --tw-scale-z: 75%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-90 {
+    &:not([open], :popover-open) {
+      --tw-scale-x: 90%;
+      --tw-scale-y: 90%;
+      --tw-scale-z: 90%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-95 {
+    &:not([open], :popover-open) {
+      --tw-scale-x: 95%;
+      --tw-scale-y: 95%;
+      --tw-scale-z: 95%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-100 {
+    &:not([open], :popover-open) {
+      --tw-scale-x: 100%;
+      --tw-scale-y: 100%;
+      --tw-scale-z: 100%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-y-0 {
+    &:not([open], :popover-open) {
+      --tw-scale-y: 0%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-y-75 {
+    &:not([open], :popover-open) {
+      --tw-scale-y: 75%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-y-80 {
+    &:not([open], :popover-open) {
+      --tw-scale-y: 80%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-y-90 {
+    &:not([open], :popover-open) {
+      --tw-scale-y: 90%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
   .not-open\:scale-y-95 {
     &:not([open], :popover-open) {
       --tw-scale-y: 95%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .not-open\:scale-3d {
+    &:not([open], :popover-open) {
+      scale: var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z);
+    }
+  }
+  .not-open\:scale-none {
+    &:not([open], :popover-open) {
+      scale: none;
     }
   }
   .not-open\:opacity-0 {
@@ -5574,6 +5656,14 @@
   .starting\:opacity-0 {
     @starting-style {
       opacity: 0%;
+    }
+  }
+  .starting\:open\:scale-y-75 {
+    @starting-style {
+      &:is([open], :popover-open) {
+        --tw-scale-y: 75%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
     }
   }
   .starting\:open\:scale-y-95 {
