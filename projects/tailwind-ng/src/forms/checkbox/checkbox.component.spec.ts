@@ -27,7 +27,7 @@ fdescribe('CheckboxComponent', () => {
     const component = testApp.component();
     fixture.detectChanges();
 
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c).toEqual(GetCheckboxConfig());
     }).unsubscribe();
   });
@@ -47,7 +47,7 @@ fdescribe('CheckboxComponent', () => {
       const component = testApp.component();
       fixture.detectChanges();
 
-      component.config$.subscribe(c => {
+      component.config.subscribe(c => {
         expect(c).toEqual(GetCheckboxConfig());
       }).unsubscribe();
     });
