@@ -433,32 +433,34 @@
 </div>
 
 <!-- Checkbox -->
+<!-- Task board with nested tasks -->
 <div class="grid gap-8 place-items-center p-8 mb-16">
-  <div class="grid text-sm">
-    <p class="font-semibold">Tasks board</p>
-    <p class="mt-2">How do you prefer to receive notifications? </p>
+  <div class="grid text-sm gap-3 max-w-xs sm:max-w-md">
+    <div class="font-semibold flex gap-x-24 justify-between items-center text-base">
+      Tasks board
+      <button tw-button size="xs" variant="secondary" (click)="saveTasks()">Save</button>
+    </div>
+    <p class="text-gray-500">Open the console (F12) to see task B's changes log.</p>
     <div class="grid gap-4 mt-6">
       <tw-checkbox [checked]="true">Task A</tw-checkbox>
-      <tw-checkbox [checked]="task().done.fully" [indeterminate]="!!task().done.partially"
-        (checkedChange)="updateTask(task().name, {fully: $event === true})"
-        (indeterminateChange)="updateTask(task().name, {partially: $event === true})">
-        {{ task().name }}
-        <div class="pl-8 grid gap-4 mt-4">
-          @for (subtask of task().subtasks; track subtask; let i = $index) {
+      <tw-checkbox [checked]="task.done.fully" [indeterminate]="!!task.done.partially" (changes)="updateTask($event)">
+        {{ task.name }}
+        <div class="pl-8 grid gap-4 mt-4 w-fit">
+          @for (subtask of task.subtasks; track subtask; let i = $index) {
           <tw-checkbox [checked]="subtask.done.fully" [indeterminate]="!!subtask.done.partially"
-            (checkedChange)="updateTask(subtask.name, {fully: $event === true})">
+            (changes)="updateTask($event, subtask)">
             {{ subtask.name}}
             @if(subtask.subtasks) {
-            <div class="pl-8 grid gap-4 mt-4">
+            <div class="pl-8 grid gap-4 mt-4 w-fit">
               @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
               <tw-checkbox [checked]="subsubtask.done.fully" [indeterminate]="!!subsubtask.done.partially"
-                (checkedChange)="updateTask(subsubtask.name, {fully: $event === true})">
+                (changes)="updateTask($event, subsubtask)">
                 {{ subsubtask.name}}
                 @if(subsubtask.subtasks) {
-                <div class="pl-8 grid gap-4 mt-4">
+                <div class="pl-8 grid gap-4 mt-4 w-fit">
                   @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
                   <tw-checkbox [checked]="subsubsubtask.done.fully" [indeterminate]="!!subsubsubtask.done.partially"
-                    (checkedChange)="updateTask(subsubsubtask.name, {fully: $event === true})">
+                    (changes)="updateTask($event, subsubsubtask)">
                     {{ subsubsubtask.name}}
                   </tw-checkbox>
                   }
@@ -477,22 +479,89 @@
   </div>
 </div>
 
+<!-- List with description -->
 <div class="grid gap-8 place-items-center p-8 mb-16">
-  <div class="grid text-sm">
-    <p class="font-semibold">Notifications</p>
-    <p class="mt-2">How do you prefer to receive notifications? </p>
+  <div class="grid text-sm w-full sm:max-w-md">
+    <p class="font-semibold text-base">List with description</p>
     <div class="grid gap-4 mt-6">
       <tw-checkbox>
-        <span class="font-semibold">Comments</span>
-        <p class="pl-8 text-gray-500">Get notified when someones posts a comment on a posting.</p>
+        <span class="font-semibold text-gray-700 dark:text-gray-300">Comments</span>
+        <p class="pl-7 text-gray-500">Get notified when someones posts a comment on a posting.</p>
       </tw-checkbox>
       <tw-checkbox>
-        <span class="font-semibold">Candidates</span>
-        <p class="pl-8 text-gray-500">Get notified when a candidate applies for a job.</p>
+        <span class="font-semibold text-gray-700 dark:text-gray-300">Candidates</span>
+        <p class="pl-7 text-gray-500">Get notified when a candidate applies for a job.</p>
       </tw-checkbox>
       <tw-checkbox>
-        <span class="font-semibold">Offers</span>
-        <p class="pl-8 text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
+        <span class="font-semibold text-gray-700 dark:text-gray-300">Offers</span>
+        <p class="pl-7 text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
+      </tw-checkbox>
+    </div>
+  </div>
+</div>
+
+<!-- List with inline description -->
+<div class="grid gap-8 place-items-center p-8 mb-16">
+  <div class="grid text-sm w-full sm:max-w-md">
+    <p class="font-semibold text-base">List with inline description</p>
+    <div class="grid gap-4 mt-6">
+      <tw-checkbox class="sm:flex gap-1">
+        <span class="font-semibold text-gray-700 dark:text-gray-300">New comments</span>
+        <p class="text-gray-500 pl-7 sm:pl-0">so you always know what's happening</p>
+      </tw-checkbox>
+      <tw-checkbox class="sm:flex gap-1">
+        <span class="font-semibold text-gray-700 dark:text-gray-300">New candidates</span>
+        <p class="text-gray-500 pl-7 sm:pl-0">who apply for any open postings.</p>
+      </tw-checkbox>
+      <tw-checkbox class="sm:flex gap-1">
+        <span class="font-semibold text-gray-700 dark:text-gray-300">Offers</span>
+        <p class="text-gray-500 pl-7 sm:pl-0">when they are accepted or rejected by candidates.</p>
+      </tw-checkbox>
+    </div>
+  </div>
+</div>
+
+<!-- List with checkbox on right -->
+<div class="grid gap-8 place-items-center p-8 mb-16">
+  <div class="grid text-sm w-full sm:max-w-md">
+    <p class="font-semibold text-base">List with checkbox on right</p>
+    <div class="mt-6 *:odd:border-y *:py-4 *:border-gray-300 dark:*:border-gray-700">
+      <tw-checkbox class="flex flex-row-reverse justify-between items-start" id="commentcb">
+        <div>
+          <label for="commentcb" class="font-semibold text-gray-700 dark:text-gray-300">Comments</label>
+          <p class="text-gray-500">Get notified when someones posts a comment on a posting.</p>
+        </div>
+      </tw-checkbox>
+      <tw-checkbox class="flex flex-row-reverse justify-between items-start" id="candidatecb">
+        <div>
+          <label for="candidatecb" class="font-semibold text-gray-700 dark:text-gray-300">Candidates</label>
+          <p class="text-gray-500">Get notified when a candidate applies for a job.</p>
+        </div>
+      </tw-checkbox>
+      <tw-checkbox class="flex flex-row-reverse justify-between items-start" id="offerscb">
+        <div>
+          <label for="offerscb" class="font-semibold text-gray-700 dark:text-gray-300">Offers</label>
+          <p class="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
+        </div>
+      </tw-checkbox>
+    </div>
+  </div>
+</div>
+
+<!-- Simple list with heading -->
+<div class="grid gap-8 place-items-center p-8 mb-16">
+  <div class="grid text-sm min-w-3xs sm:min-w-sm sm:max-w-md">
+    <p class="font-semibold text-base">Simple list with heading</p>
+    <p class="font-bold text-base mt-10 text-gray-700 dark:text-gray-300">Members</p>
+    <div class="mt-6 *:odd:border-y *:py-4 *:border-gray-300 dark:*:border-gray-700">
+      <tw-checkbox class="flex flex-row-reverse justify-between items-center" id="member1">
+        <label for="member1" class="font-semibold text-gray-700 dark:text-gray-300">Jane Doe</label>
+      </tw-checkbox>
+      <tw-checkbox class="flex flex-row-reverse justify-between items-center" id="member2">
+        <label for="member2" class="font-semibold text-gray-700 dark:text-gray-300">Pick Floyd</label>
+      </tw-checkbox>
+      <tw-checkbox class="flex flex-row-reverse justify-between items-center" id="member3">
+        <label for="member3" class="font-semibold text-gray-700 dark:text-gray-300">Marco Polo</label>
       </tw-checkbox>
     </div>
   </div>
@@ -544,6 +613,146 @@
         <span>{{ user.name }}</span>
       </div>
       }
+    </div>
+  </div>
+</div>
+
+<div tw-dialog #tasksSavedDialog [isModal]="false" class="self-end justify-self-end">
+  <!-- Dialog container -->
+  <div tw-dialog-container class="sm:max-w-md">
+    <!-- Dialog content -->
+    <div class="grid gap-3 text-center sm:text-left text-sm text-gray-600 dark:text-gray-400">
+      <details>
+        <summary>
+          {{ task.name}},
+          <span [attr.data-f]="task.done.fully|| null" class="data-f:font-bold"> fully:
+            {{task.done.fully}}</span>,
+          <span [attr.data-p]="task.done.partially|| null" class="data-p:font-bold"> partially:
+            {{!!task.done.partially}}</span>
+        </summary>
+        <ul class="pl-8 mt-4 grid gap-4">
+          @for (subtask of task.subtasks; track subtask; let i = $index) {
+          @if(subtask.subtasks) {
+          <details class="grid gap-4">
+            <summary>
+              {{ subtask.name}},
+              <span [attr.data-f]="subtask.done.fully|| null" class="data-f:font-bold"> fully:
+                {{subtask.done.fully}}</span>,
+              <span [attr.data-p]="subtask.done.partially|| null" class="data-p:font-bold"> partially:
+                {{!!subtask.done.partially}}</span>
+            </summary>
+            <ul class="pl-4 grid gap-4">
+              @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
+              @if(subsubtask.subtasks) {
+              <details class="grid gap-4">
+                <summary>{{ subsubtask.name}},
+                  <span [attr.data-f]="subsubtask.done.fully|| null" class="data-f:font-bold"> fully:
+                    {{subsubtask.done.fully}}</span>,
+                  <span [attr.data-p]="subsubtask.done.partially|| null" class="data-p:font-bold"> partially:
+                    {{!!subsubtask.done.partially}}</span>
+                </summary>
+                <ul class="pl-4 grid gap-4">
+                  @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
+                  <li>{{ subsubsubtask.name}},
+                    <span [attr.data-f]="subsubsubtask.done.fully|| null" class="data-f:font-bold"> fully:
+                      {{subsubsubtask.done.fully}}</span>,
+                    <span [attr.data-p]="subsubsubtask.done.partially|| null" class="data-p:font-bold"> partially:
+                      {{!!subsubsubtask.done.partially}}</span>
+                  </li>
+                  }
+                </ul>
+              </details>
+              }@else {
+              <li> {{ subsubtask.name}},
+                <span [attr.data-f]="subsubtask.done.fully|| null" class="data-f:font-bold"> fully:
+                  {{subsubtask.done.fully}}</span>,
+                <span [attr.data-p]="subsubtask.done.partially|| null" class="data-p:font-bold"> partially:
+                  {{!!subsubtask.done.partially}}</span>
+              </li>
+              }
+              }
+            </ul>
+          </details>
+          }@else{
+          <li>{{ subtask.name}},
+            <span [attr.data-f]="subtask.done.fully|| null" class="data-f:font-bold"> fully:
+              {{subtask.done.fully}}</span>,
+            <span [attr.data-p]="subtask.done.partially|| null" class="data-p:font-bold"> partially:
+              {{!!subtask.done.partially}}</span>
+          </li>
+          }
+          }
+        </ul>
+      </details>
+    </div>
+    <!-- Dialog actions -->
+    <div class="flex justify-end">
+      <button tw-button class="w-full sm:w-fit" (click)="tasksDialog.open()">OK</button>
+    </div>
+
+    <div tw-dialog #tasksDialog [isModal]="false" class="place-self-center">
+      <div tw-dialog-container class="sm:max-w-md">
+        <div class="grid text-sm">
+          <p class="font-semibold flex justify-between items-center text-base">
+            Tasks board
+            <button tw-button size="xs" (click)="centeredDialogWithBackdrop.open()">Save</button>
+          </p>
+          <p class="mt-2">It's great to keep your tasks board updated.</p>
+          <div class="grid gap-4 mt-6">
+            <tw-checkbox [checked]="task.done.fully" [indeterminate]="!!task.done.partially"
+              (changes)="updateTask($event)">
+              {{ task.name }}
+              <div class="pl-8 grid gap-4 mt-4 w-fit">
+                @for (subtask of task.subtasks; track subtask; let i = $index) {
+                <tw-checkbox [checked]="subtask.done.fully" [indeterminate]="!!subtask.done.partially"
+                  (changes)="updateTask($event, subtask)">
+                  {{ subtask.name}}
+                  @if(subtask.subtasks) {
+                  <div class="pl-8 grid gap-4 mt-4 w-fit">
+                    @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
+                    <tw-checkbox [checked]="subsubtask.done.fully" [indeterminate]="!!subsubtask.done.partially"
+                      (changes)="updateTask($event, subsubtask)">
+                      {{ subsubtask.name}}
+                      @if(subsubtask.subtasks) {
+                      <div class="pl-8 grid gap-4 mt-4 w-fit">
+                        @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
+                        <tw-checkbox [checked]="subsubsubtask.done.fully"
+                          [indeterminate]="!!subsubsubtask.done.partially"
+                          (changes)="updateTask($event, subsubsubtask)">
+                          {{ subsubsubtask.name}}
+                        </tw-checkbox>
+                        }
+                      </div>
+                      }
+                    </tw-checkbox>
+                    }
+                  </div>
+                  }
+                </tw-checkbox>
+                }
+              </div>
+            </tw-checkbox>
+          </div>
+        </div>
+        <div tw-dialog #centeredDialogWithBackdrop>
+          <!-- Dialog container -->
+          <div tw-dialog-container class="sm:max-w-fit">
+            <!-- Dialog content -->
+            <div class="grid gap-3 text-center sm:text-left">
+              <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
+                Out of stock
+              </h1>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                The item in your cart is no longer available.
+              </p>
+            </div>
+            <!-- Dialog actions -->
+            <div class="flex justify-end">
+              <button tw-button class="w-full sm:w-fit" (click)="centeredDialogWithBackdrop.close()">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
