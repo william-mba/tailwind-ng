@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { NgIf } from '@angular/common';
 import { IconDirective } from './../../elements/icon/icon.directive';
 import { DropdownComponent } from './../../elements/dropdown/dropdown.component';
-import { InputDirective } from './../input/input.directive';
+import { InputTextDirective } from '../input-text/input-text.directive';
 import { TestBed } from '@angular/core/testing';
 import { ComboboxComponent } from './combobox.component';
 import { Component, ElementRef, viewChild, viewChildren } from '@angular/core';
@@ -142,7 +142,7 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputDirective,
+        InputTextDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
@@ -233,7 +233,7 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputDirective,
+        InputTextDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
@@ -310,7 +310,7 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputDirective,
+        InputTextDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
@@ -432,7 +432,7 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputDirective,
+        InputTextDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent
@@ -551,7 +551,7 @@ describe('ComboboxComponent', () => {
         NgIf,
         ReactiveFormsModule,
         ComboboxModule,
-        InputDirective,
+        InputTextDirective,
         ButtonComponent,
         IconDirective,
         DropdownComponent

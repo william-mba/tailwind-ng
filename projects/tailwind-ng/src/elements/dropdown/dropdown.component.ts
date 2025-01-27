@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, ViewEncapsulation } from '@angular/core';
-import { DropdownBase, OverlayPosition } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { Dropdown, DropdownBase, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dropdown component */
 @Component({
@@ -10,30 +10,20 @@ import { DropdownBase, OverlayPosition } from '@tailwind-ng/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: DropdownBase, useExisting: DropdownComponent }]
 })
-export class DropdownComponent extends DropdownBase {
-  private readonly destroyRef = inject(DestroyRef);
+export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0' };
 
   protected override onInit(): void {
     this.classList.init(this.position);
-    this.config$.subscribe(config => this.classList.set(config));
+    this.config.subscribe(config => this.classList.set(config));
 
-    this.opened.subscribe(() => {
-      this.updatePositionIfNeeded();
-      window.addEventListener('scroll', this.onScroll.bind(this), false);
-    });
-    this.closed.subscribe(() => {
-      window.removeEventListener('scroll', this.onScroll.bind(this), false);
-    });
     if (!this.isDisabled) {
       this.initEventListeners();
     } else {
       this.removeEventListeners();
     }
 
-    this.destroyRef.onDestroy(() => {
-      this.opened.unsubscribe();
-      this.closed.unsubscribe();
+    this._destroyRef.onDestroy(() => {
       this.removeEventListeners();
     });
   }
@@ -48,17 +38,6 @@ export class DropdownComponent extends DropdownBase {
     this.nativeElement.removeEventListener('pointerover', this.onPointerEvent.bind(this), false);
     this.nativeElement.removeEventListener('pointerleave', this.onPointerEvent.bind(this), false);
     this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
-  }
-
-  protected onScroll(): void {
-    if (!this.isOpened) return;
-    if (!this.scrolling) {
-      const id = setTimeout(() => {
-        this.updatePositionIfNeeded();
-        clearTimeout(id);
-      }, 300);
-    }
-    this.scrolling = true;
   }
 
   protected onPointerEvent(event: UIEvent) {
@@ -80,7 +59,6 @@ export class DropdownComponent extends DropdownBase {
   }
 
   protected onKeyboardEvent(event: KeyboardEvent): void {
-    if (!this.isOpened) return;
     if (this.isDisabled) {
       event.preventDefault();
       event.stopImmediatePropagation();

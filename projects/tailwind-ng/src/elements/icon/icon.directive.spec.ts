@@ -32,7 +32,7 @@ describe('IconDirective', () => {
 
   it('should set config', () => {
     // As set earlier, the source should be the same as the config provided
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c).toEqual(config);
     }).unsubscribe();
 
@@ -51,7 +51,7 @@ describe('IconDirective', () => {
     TestBed.runInInjectionContext(() => {
       component = TestBed.inject(IconDirective);
     });
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c.xs).toEqual(config.xs);
       expect(c.sm).toEqual(config.sm);
       expect(c.md).toEqual(config.md);
@@ -62,7 +62,7 @@ describe('IconDirective', () => {
   });
 
   it('should get config', () => {
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c).toEqual(config);
     }).unsubscribe();
   });

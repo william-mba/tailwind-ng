@@ -27,7 +27,7 @@ describe('InputRadioDirective', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    testApp.input().config$.subscribe(c => {
+    testApp.input().config.subscribe(c => {
       expect(c).toEqual(GetInputRadioConfig());
     }).unsubscribe();
   });

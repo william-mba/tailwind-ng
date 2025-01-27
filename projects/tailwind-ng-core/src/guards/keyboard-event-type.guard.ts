@@ -8,8 +8,13 @@ export function isEnterKey(key: string): key is EnterKey {
   return key === 'Enter';
 }
 
+type EscapeKey = 'Escape';
+export function isEscapeKey(key: string): key is EscapeKey {
+  return key === 'Escape';
+}
+
 type EnterOrSpaceKey = EnterKey | SpaceKey;
-export function isEnterOrSpaceKey<K extends string = EnterOrSpaceKey>(key: K): key is K {
+export function isEnterOrSpaceKey(key: EnterOrSpaceKey | string & {}): key is EnterOrSpaceKey {
   return isEnterKey(key) || isSpaceKey(key);
 }
 
@@ -44,9 +49,8 @@ export function isArrowUpOrLeftKey(key: ArrowUpOrLeftKey | string & {}): key is 
 }
 
 type NavigationKey = ArrowUpKey | ArrowDownKey | ArrowLeftKey | ArrowRightKey;
-const NAVIGATION_KEYS = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 export function isNavigationKey(key: NavigationKey | string & {}): key is NavigationKey {
-  return NAVIGATION_KEYS.includes(key);
+  return isArrowDownKey(key) || isArrowUpKey(key) || isArrowLeftKey(key) || isArrowRightKey(key);
 }
 
 /**
@@ -55,6 +59,7 @@ export function isNavigationKey(key: NavigationKey | string & {}): key is Naviga
 export abstract class KBKey {
   static readonly isEnter = isEnterKey;
   static readonly isSpace = isSpaceKey;
+  static readonly isEscape = isEscapeKey;
   static readonly isEnterOrSpace = isEnterOrSpaceKey;
   static readonly isArrowUp = isArrowUpKey;
   static readonly isArrowDown = isArrowDownKey;

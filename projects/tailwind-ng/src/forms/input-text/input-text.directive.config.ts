@@ -1,7 +1,7 @@
 import { Provider } from '@angular/core';
-import { INPUT_CONFIG, mergeConfig, InputConfig } from "@tailwind-ng/core";
+import { INPUT_CONFIG, mergeConfig, InputTextConfig } from "@tailwind-ng/core";
 
-const DefaultConfig = (): InputConfig => {
+const DefaultConfig = (): InputTextConfig => {
   return {
     radius: 'rounded-md',
     outlineStyle: 'outline-none',
@@ -50,14 +50,14 @@ const DefaultConfig = (): InputConfig => {
   }
 };
 
-export const GetInputConfig = (customization?: Partial<InputConfig>): InputConfig => {
+export const GetInputConfig = (customization?: Partial<InputTextConfig>): InputTextConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
 /**
  * Input component config provider
  */
-export function provideInputConfig(customization?: Partial<InputConfig>): Provider {
+export function provideInputConfig(customization?: Partial<InputTextConfig>): Provider {
   return {
     provide: INPUT_CONFIG,
     useValue: GetInputConfig(customization)

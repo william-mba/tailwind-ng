@@ -1,5 +1,5 @@
 import { DestroyRef, Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
-import { BaseState, BaseActions, FocusOptions } from "./base.interface";
+import { BaseState, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config";
 

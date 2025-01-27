@@ -23,7 +23,7 @@ describe('ButtonGroupComponent', () => {
 
   it('should get config', () => {
     const config = GetButtonGroupConfig();
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c).toEqual(config);
     }).unsubscribe();
   });

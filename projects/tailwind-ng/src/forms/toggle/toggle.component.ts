@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, Output, OutputEmitterRef, ViewEncapsulation } from '@angular/core';
-import { Toggle } from './toggle.interface';
-import { ToggleBase } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, output, ViewEncapsulation } from '@angular/core';
+import { Toggle, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -20,10 +19,10 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   private readonly destroyRef = inject(DestroyRef);
   @Input() isChecked = false;
   @Input() tabIndex = 0;
-  @Output() checked = new OutputEmitterRef<boolean>();
+  checked = output<boolean>();
 
   protected override onInit(): void {
-    this.config$.subscribe(config => this.classList.set(config));
+    this.config.subscribe(config => this.classList.set(config));
     this.nativeElement.addEventListener('click', this.toggle.bind(this), { passive: true, capture: true });
     this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), true);
 

@@ -314,7 +314,7 @@ describe('DialogComponent', () => {
     const dialog = testComponent.dialog();
 
     testFixture.detectChanges();
-    dialog.config$.pipe(take(1)).subscribe(config => {
+    dialog.config.pipe(take(1)).subscribe(config => {
       expect(config).toBeTruthy();
       expect(config.scrim).toBeTruthy();
       expect(config.backdrop).toBeTruthy();

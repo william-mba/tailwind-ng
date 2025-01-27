@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, Input, ViewEncapsulation } from '@angular/core';
-import { ComboboxItem } from './combobox-item.interface';
+import { ChangeDetectionStrategy, Component, computed, inject, Input, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
-import { ComboboxItemBase } from '@tailwind-ng/core';
+import { ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -20,7 +19,6 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   @Input({ required: true }) value!: string;
   private readonly combobox = inject(ComboboxComponent, { skipSelf: true });
   private readonly computedValue = computed(() => this.value.toLocaleLowerCase());
-  private readonly destroyRef = inject(DestroyRef);
 
   private get isValueEqualsInputValue() {
     return this.computedValue() === this.combobox.control.value.toLocaleLowerCase();
@@ -30,7 +28,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   }
 
   protected override onInit(): void {
-    this.config$.subscribe(config => {
+    this.config.subscribe(config => {
       this.classList.set(config);
     });
 
@@ -40,7 +38,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     }
 
     // Select the item if the value changed matchs the item value.
-    const valueChanged = this.combobox.valueChanged.subscribe(value => {
+    this.combobox.valueChanged.subscribe(value => {
       if (this.combobox.isMulti) {
         const some = value.split(',').some(x => this.computedValue() === x.trim().toLocaleLowerCase());
         if (!this.isSelected && some) {
@@ -61,8 +59,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
 
     this.nativeElement.addEventListener('click', this.select.bind(this), { passive: true, capture: true });
 
-    this.destroyRef.onDestroy(() => {
-      valueChanged.unsubscribe();
+    this._destroyRef.onDestroy(() => {
       this.nativeElement.removeEventListener('click', this.select.bind(this), true);
     });
   }

@@ -8,5 +8,5 @@ export interface ObservableConfig {
    * - Use the `takeUntilDestroyed` operator to ensure the subscription completes when the component is destroyed.
    * - This behavior is provided by default in the component's specific base class if existing.
    */
-  readonly config$: Observable<ConfigTypeOf<ConfigKey>>;
+  readonly config: Observable<ConfigTypeOf<ConfigKey>>;
 }

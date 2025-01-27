@@ -1,5 +1,5 @@
 import { afterNextRender, Directive, inject } from "@angular/core";
-import { BaseDirective } from '@tailwind-ng/core';
+import { BaseDirective, KBKey } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { take, timer } from "rxjs";
@@ -10,8 +10,8 @@ import { take, timer } from "rxjs";
   host: {
     '[tabindex]': 'isDisabled ? null : -1',
   }
-}) // eslint-disable-next-line @angular-eslint/directive-class-suffix
-export class DialogContainer extends BaseDirective {
+})
+export class DialogContainerDirective extends BaseDirective {
   private readonly dialog = inject(DialogComponent, { skipSelf: true });
 
   constructor() {
@@ -19,12 +19,12 @@ export class DialogContainer extends BaseDirective {
     afterNextRender({
       read: () => {
         this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
-      },
+      }
     })
   }
 
   protected override onInit() {
-    this.dialog.config$.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(config => {
+    this.dialog.config.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(config => {
       this.classList.set(config.container);
     });
     this.dialog.opened.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
@@ -46,9 +46,11 @@ export class DialogContainer extends BaseDirective {
   }
 
   protected onKeyboardEvent(event: KeyboardEvent): void {
-    if (event.key === 'Escape') {
+    if (KBKey.isEscape(event.key)) {
+      event.preventDefault();
+      event.stopPropagation();
       this.dialog.close();
-    } else if (['Enter', ' '].includes(event.key)) {
+    } else if (KBKey.isEnterOrSpace(event.key)) {
       const icon = this.nativeElement.querySelector('tw-icon') as HTMLElement;
       if (icon && icon === this._document.activeElement) {
         event.preventDefault();
@@ -58,7 +60,7 @@ export class DialogContainer extends BaseDirective {
     }
   }
 
-  protected focusPrimaryActionOrDefault() {
+  private focusPrimaryActionOrDefault() {
     timer(this.dialog.animationDuration).pipe(take(1)).subscribe(() => {
       const action = this.nativeElement.querySelector('button[variant=primary]') as HTMLElement;
       if (action) {
@@ -90,12 +92,12 @@ export class DialogContainer extends BaseDirective {
   protected initEventListeners(): void {
     this.nativeElement.addEventListener('pointerover', this.onPointerEvent.bind(this), true);
     this.nativeElement.addEventListener('pointerleave', this.onPointerEvent.bind(this), true);
-    this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), true);
+    this.nativeElement.addEventListener('keyup', this.onKeyboardEvent.bind(this), false);
   }
 
   protected removeEventListeners(): void {
     this.nativeElement.removeEventListener('pointerover', this.onPointerEvent.bind(this), true);
     this.nativeElement.removeEventListener('pointerleave', this.onPointerEvent.bind(this), true);
-    this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), true);
+    this.nativeElement.removeEventListener('keyup', this.onKeyboardEvent.bind(this), false);
   }
 }

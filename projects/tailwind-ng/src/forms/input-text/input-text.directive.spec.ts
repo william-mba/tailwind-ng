@@ -1,6 +1,6 @@
-import { InputDirective } from './input.directive';
+import { InputTextDirective } from './input-text.directive';
 import { TestBed } from '@angular/core/testing';
-import { GetInputConfig, provideInputConfig } from './input.directive.config';
+import { GetInputConfig, provideInputConfig } from './input-text.directive.config';
 import { ClassList } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 
@@ -17,17 +17,17 @@ describe('InputDirective', () => {
     @Component({
       selector: 'tw-test-app',
       standalone: true,
-      imports: [InputDirective],
+      imports: [InputTextDirective],
       template: `<input tw-input type="text" />`
     }) class TestAppComponent {
-      input = viewChild.required(InputDirective);
+      input = viewChild.required(InputTextDirective);
     }
 
     const appFixture = TestBed.createComponent(TestAppComponent);
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    testApp.input().config$.subscribe(c => {
+    testApp.input().config.subscribe(c => {
       expect(c).toEqual(GetInputConfig());
     }).unsubscribe();
   });
@@ -36,10 +36,10 @@ describe('InputDirective', () => {
     @Component({
       selector: 'tw-test-app',
       standalone: true,
-      imports: [InputDirective],
+      imports: [InputTextDirective],
       template: `<input tw-input type="email" />`
     }) class TestAppComponent {
-      input = viewChild.required(InputDirective);
+      input = viewChild.required(InputTextDirective);
     }
 
     const appFixture = TestBed.createComponent(TestAppComponent);

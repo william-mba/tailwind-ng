@@ -1,5 +1,5 @@
 import { EventEmitter, } from "@angular/core";
-import { BaseActions, BaseState } from "./base.interface";
+import { BaseActions, BaseState } from "./base";
 
 /**
  * @TailwindNG Popup base state.
@@ -44,11 +44,7 @@ export interface AdvancedPopupActions {
    * - If the given delay is outside the range, the default delay will be used.
    * @param delay The delay in milliseconds.
    */
-  closeAfter(delay: number): void
-  /**
-   * Updates the position of the component if needed.
-   */
-  updatePositionIfNeeded(): void;
+  closeAfter(delay: number): void;
 }
 
 /**

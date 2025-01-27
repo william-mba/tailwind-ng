@@ -6,6 +6,6 @@ export * from './combobox-item-config.interface';
 export * from './dialog-config.interface';
 export * from './dropdown-config.interface';
 export * from './icon-config.interface';
-export * from './input-config.interface';
+export * from './input-text-config.interface';
 export * from './input-radio-config.interface';
 export * from './toggle-config.interface';

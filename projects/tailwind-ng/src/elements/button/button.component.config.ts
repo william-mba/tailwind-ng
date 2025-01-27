@@ -50,6 +50,7 @@ const ButtonSizeConfig = (): SizeOptions => {
 /** Base button config */
 const ButtonBaseConfig = (): ComponentConfig => {
   return {
+    borderWidth: 'border-0',
     display: 'inline-flex',
     alignItems: 'items-center',
     justifyContent: 'justify-center',
@@ -80,10 +81,10 @@ const PrimaryButtonConfig = (): ComponentConfig => {
     hover: {
       bgColor: 'hover:bg-blue-600/90'
     },
+    outlineWidth: 'outline-0',
+    outlineColor: 'outline-blue-600',
     focus: {
-      border: 'focus:outline',
       outlineWidth: 'focus:outline-1',
-      outlineColor: 'focus:outline-blue-600',
       outlineOffsetWidth: 'focus:outline-offset-2'
     },
     active: {
@@ -96,9 +97,9 @@ const PrimaryButtonConfig = (): ComponentConfig => {
 const SecondaryButtonConfig = (): ComponentConfig => {
   return {
     ...ButtonBaseConfig(),
+    ring: 'ring-inset',
     ringWidth: 'ring-1',
     ringColor: 'ring-gray-300',
-    ring: 'ring-inset',
     bgColor: 'bg-inherit',
     textColor: 'text-gray-800',
     backdropBlur: 'backdrop-blur-xs',
@@ -113,15 +114,11 @@ const SecondaryButtonConfig = (): ComponentConfig => {
         bgColor: 'hover:dark:bg-gray-700/30'
       }
     },
+    outlineWidth: 'outline-0',
+    outlineColor: 'outline-gray-500/80',
     focus: {
-      ringColor: 'focus:ring-gray-400/90',
-      border: 'focus:outline',
       ringWidth: 'focus:ring-0',
       outlineWidth: 'focus:outline-1',
-      outlineColor: 'focus:outline-gray-500/80',
-      dark: {
-        ringColor: 'focus:dark:ring-gray-600'
-      }
     },
     active: {
       bgColor: 'active:bg-gray-300/60',
@@ -145,10 +142,10 @@ const TonalButtonConfig = (): ComponentConfig => {
     active: {
       bgColor: 'active:bg-blue-600/25'
     },
+    outlineWidth: 'outline-0',
+    outlineColor: 'outline-blue-500/80',
     focus: {
-      border: 'focus:outline',
       outlineWidth: 'focus:outline-1',
-      outlineColor: 'focus:outline-blue-500/80',
     }
   }
 }
@@ -168,8 +165,10 @@ const TextButtonConfig = (): ComponentConfig => {
         textColor: 'hover:dark:text-gray-100',
       }
     },
+    active: {
+      outlineWidth: 'active:outline-0'
+    },
     focus: {
-      border: 'focus:outline',
       borderStyle: 'focus:border-dotted',
       outlineWidth: 'focus:outline-1',
       outlineColor: 'focus:outline-gray-500/80',

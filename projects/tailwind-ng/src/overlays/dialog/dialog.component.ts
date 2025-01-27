@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, Input, ViewEncapsulation } from '@angular/core';
-import { DialogBase, ZIndexer } from '@tailwind-ng/core';
-import { Dialog } from './dialog.interface';
+import { Dialog, DialogBase, ZIndexer } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -22,10 +21,10 @@ export class DialogComponent extends DialogBase implements Dialog {
   @Input() autoClose = false;
   @Input() autoFocus = true;
   @Input() isModal = true;
-  protected clonedChild!: Element;
+  private clonedChild!: Element;
 
   protected override onInit(): void {
-    this.config$.subscribe(config => this.classList.set({
+    this.config.subscribe(config => this.classList.set({
       s: config.scrim, b: this.isModal ? config.backdrop : {}
     }));
 
@@ -35,15 +34,21 @@ export class DialogComponent extends DialogBase implements Dialog {
       this.onClose();
     }
   }
-
+  private lastFocusedElement?: HTMLElement;
   override open() {
-    super.open();
-    this.onOpen();
+    if (!this.isOpened) {
+      this.lastFocusedElement = this._document.activeElement as HTMLElement;
+      super.open();
+      this.onOpen();
+    }
   }
 
   override close() {
-    super.close();
-    this.onClose();
+    if (this.isOpened) {
+      super.close();
+      this.onClose();
+      this.lastFocusedElement?.focus({ preventScroll: true });
+    }
   }
 
   protected onOpen() {

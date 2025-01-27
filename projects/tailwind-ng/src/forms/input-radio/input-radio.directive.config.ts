@@ -8,9 +8,9 @@ const DefaultConfig = (): InputRadioConfig => {
     radius: 'rounded-full',
     appearance: 'appearance-none',
     borderWidth: 'border-1',
-    borderColor: 'border-black/15',
+    borderColor: 'border-black/20',
     dark: {
-      borderColor: 'dark:border-white/15',
+      borderColor: 'dark:border-white/20',
     },
     forcedColors: {
       appearance: 'forced-colors:appearance-auto',

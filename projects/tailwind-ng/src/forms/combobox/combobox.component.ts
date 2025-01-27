@@ -1,8 +1,6 @@
-import { ChangeDetectionStrategy, Component, contentChild, DestroyRef, inject, Input, Output, OutputEmitterRef, ViewEncapsulation } from '@angular/core';
-import { ComboboxItem } from './combobox-item/combobox-item.interface';
+import { ChangeDetectionStrategy, Component, contentChild, inject, Input, output, ViewEncapsulation } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { ComboboxBase, DropdownBase, InputBase } from '@tailwind-ng/core';
-import { Combobox } from './combobox.interface';
+import { Combobox, ComboboxBase, ComboboxItem, InputTextBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
@@ -24,15 +22,12 @@ import { Combobox } from './combobox.interface';
   providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }]
 })
 export class ComboboxComponent extends ComboboxBase implements Combobox {
-  private readonly destroyRef = inject(DestroyRef);
-  private input = contentChild.required(InputBase);
+  private input = contentChild.required(InputTextBase);
   private selectionMap = new Map<string, ComboboxItem>();
-  protected activeElement?: HTMLElement;
-  protected dropdown = contentChild.required<DropdownBase>(DropdownBase);
   @Input() isMulti = false;
   @Input() control = inject(NonNullableFormBuilder).control('', Validators.minLength(3));
-  @Output() valueChanged = new OutputEmitterRef<string>();
-  @Output() valueSelected = new OutputEmitterRef<string[]>();
+  valueChanged = output<string>();
+  valueSelected = output<string[]>();
 
   get isValid() {
     const touchedOrDirty = this.control.touched || this.control.dirty;
@@ -42,7 +37,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
   protected override onInit(): void {
     this.classList.set("relative h-max");
 
-    const valueChanges = this.control.valueChanges.subscribe(value => {
+    this.control.valueChanges.subscribe(value => {
       if (!this.isOpened) {
         this.open();
       }
@@ -51,50 +46,42 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
       }
       this.resetActiveElementIfAny();
       this.valueChanged.emit(value);
-
-      setTimeout(() => {
-        this.dropdown().updatePositionIfNeeded();
-      }, 100);
     });
 
-    const valueSelected = this.valueSelected.subscribe(() => {
+    this.valueSelected.subscribe(() => {
       if (this.selectionMap.size === 0) {
         this.reset();
       }
     });
 
-    this.opened.subscribe(() => {
-      this.input().focus();
-      this.input().setVisualfocus();
-      this.dropdown().open();
-    });
-
-    this.closed.subscribe(() => {
-      this.resetActiveElementIfAny();
-      this.dropdown().close();
-    });
-
     this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
     this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
 
-    this.destroyRef.onDestroy(() => {
-      valueChanges.unsubscribe();
-      valueSelected.unsubscribe();
-      this.opened.unsubscribe();
-      this.closed.unsubscribe();
+    this._destroyRef.onDestroy(() => {
       this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
       this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
     });
   }
+  override open(): void {
+    super.open();
+    this.dropdown().open();
+    this.input().focus();
+    this.input().setVisualfocus();
+  }
+  override close(): void {
+    super.close();
+    this.dropdown().close();
+    this.resetActiveElementIfAny();
+  }
 
   protected onBlur(): void {
-    setTimeout(() => {
+    const t = setTimeout(() => {
       if (!this.hasFocus) {
         this.close();
-        this.resetActiveElementIfAny();
         this.input().removeVisualfocus();
       }
-    }, 0);
+      clearTimeout(t);
+    }, 100);
   }
 
   protected onKeyboardEvent(event: KeyboardEvent): void {

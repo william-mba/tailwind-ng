@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { ButtonGroupBase } from '@tailwind-ng/core';
+import { ButtonGroup, ButtonGroupBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]',
@@ -9,8 +9,8 @@ import { ButtonGroupBase } from '@tailwind-ng/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ButtonGroupBase, useExisting: ButtonGroupComponent }]
 })
-export class ButtonGroupComponent extends ButtonGroupBase {
+export class ButtonGroupComponent extends ButtonGroupBase implements ButtonGroup {
   protected override onInit(): void {
-    this.config$.subscribe((config) => this.classList.set(config));
+    this.config.subscribe((config) => this.classList.set(config));
   }
 }

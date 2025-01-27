@@ -64,7 +64,7 @@ describe('AvatarComponent', () => {
 
     fixture.detectChanges();
 
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c).toEqual(config);
     }).unsubscribe();
   });

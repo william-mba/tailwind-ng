@@ -57,7 +57,7 @@ describe('BadgeComponent', () => {
 
   it('should get reactive config', () => {
     const config = GetBadgeConfig();
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c).toEqual(config);
     }).unsubscribe();
   });

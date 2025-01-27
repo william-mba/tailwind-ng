@@ -1,6 +1,6 @@
 import { Directive, Input, Output, EventEmitter } from '@angular/core';
 import { BaseDirective } from './base.directive';
-import { Popup } from './popup.interface';
+import { Popup } from '../interfaces/popup';
 
 @Directive({
   host: {
@@ -10,8 +10,6 @@ import { Popup } from './popup.interface';
   }
 })
 export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
-  protected top?: number;
-  protected scrolling?: boolean;
   @Input() isOpened = false;
   @Input() id = this.randomId('popup');
   @Output() toggled = new EventEmitter<boolean>();
@@ -28,15 +26,17 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   }
 
   open(): void {
-    if (this.isOpened) return;
-    this.isOpened = true;
-    this.opened.emit();
+    if (!this.isOpened) {
+      this.isOpened = true;
+      this.opened.emit();
+    }
   }
 
   close(): void {
-    if (!this.isOpened) return;
-    this.isOpened = false;
-    this.closed.emit();
+    if (this.isOpened) {
+      this.isOpened = false;
+      this.closed.emit();
+    }
   }
 
   closeAfter(delay: number): void {
@@ -47,19 +47,5 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
         clearInterval(id);
       }
     }, delay);
-  }
-
-  updatePositionIfNeeded(): void {
-    if (!this.isOpened) return;
-    if (!this.top) {
-      this.top = this.nativeElement.offsetTop;
-    }
-    this.nativeElement.style.top = `${this.top}px`;
-    const offsetHeight = this.nativeElement.offsetHeight;
-    const boundingTop = this.nativeElement.getBoundingClientRect().top;
-    if (window.innerHeight < offsetHeight + boundingTop) {
-      this.nativeElement.style.top = `-${offsetHeight + 45}px`;
-    }
-    this.scrolling = false;
   }
 }

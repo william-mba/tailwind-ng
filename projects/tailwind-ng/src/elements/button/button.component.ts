@@ -1,5 +1,5 @@
 import { afterNextRender, ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, PopupDirective, SizeOption } from '@tailwind-ng/core';
+import { Button, ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, PopupDirective, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component
@@ -16,7 +16,7 @@ import { ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, Popu
   },
   providers: [{ provide: ButtonBase, useExisting: ButtonComponent }]
 })
-export class ButtonComponent extends ButtonBase {
+export class ButtonComponent extends ButtonBase implements Button {
   @Input() isFab = false;
   @Input() tabIndex = 0;
   @Input() size: SizeOption = 'md';
@@ -38,7 +38,7 @@ export class ButtonComponent extends ButtonBase {
   }
 
   protected override onInit(): void {
-    this.config$.subscribe((config) => {
+    this.config.subscribe((config) => {
       this.classList.set({
         // The order of destructuring is important here.
         // Because we want next object properties value to

@@ -1,10 +1,10 @@
 import { OutputEmitterRef } from "@angular/core";
-import { ComboboxItemState } from "./combobox-item/combobox-item.interface";
+import { ComboboxItem } from "./combobox-item";
 import { FormControl } from "@angular/forms";
-import { BasicPopupActions, PopupState, PopupEvents } from "@tailwind-ng/core";
+import { BasicPopupActions, PopupEvents, PopupState } from "./popup";
 
 /**
- * @TailwindNG Combobox's state
+ * @TailwindNG Combobox component state
  */
 export interface ComboboxState extends PopupState {
   /**
@@ -23,7 +23,7 @@ export interface ComboboxState extends PopupState {
 }
 
 /**
- * @TailwindNG Combobox's actions
+ * @TailwindNG Combobox component actions
  */
 export interface ComboboxActions extends BasicPopupActions {
   /**
@@ -34,16 +34,16 @@ export interface ComboboxActions extends BasicPopupActions {
    * Selects the specified item.
    * @param item The item to select.
    */
-  select(item: ComboboxItemState): void;
+  select(item: ComboboxItem): void;
   /**
    * Returns true if the combobox has the specified item. Otherwise, returns false.
    * @param item The item to check.
    */
-  has(item: ComboboxItemState): boolean;
+  has(item: ComboboxItem): boolean;
 }
 
 /**
- * @TailwindNG Combobox's events
+ * @TailwindNG Combobox component events
  */
 export interface ComboboxEvents extends PopupEvents {
   /**

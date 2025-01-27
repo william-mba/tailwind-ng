@@ -22,10 +22,11 @@ const DefaultConfig = (): ToggleConfig => {
     dark: {
       bgColor: 'dark:bg-gray-900',
     },
+    outlineWidth: 'outline-0',
+    outlineColor: 'outline-blue-600',
     focus: {
       outlineWidth: 'focus:outline-2',
       outlineOffsetWidth: 'focus:outline-offset-2',
-      outlineColor: 'focus:outline-blue-600'
     },
     dataChecked: {
       bgColor: 'data-checked:bg-blue-600',

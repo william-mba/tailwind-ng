@@ -30,7 +30,7 @@ describe('ToggleComponent', () => {
   });
 
   it('should get config', () => {
-    component.config$.subscribe(c => {
+    component.config.subscribe(c => {
       expect(c).toEqual(GetToggleConfig());
     }).unsubscribe();
   });
