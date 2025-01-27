@@ -1,14 +1,14 @@
 import { AvatarConfig, BadgeConfig, ButtonConfig, ComponentConfig, DropdownConfig, FullyOptional, IconConfig } from "@tailwind-ng/core";
-import { provideAvatarConfig } from "./avatar";
-import { provideBadgeConfig } from "./badge";
-import { provideButtonConfig } from "./button";
-import { provideDropdownConfig } from "./dropdown";
-import { provideIconConfig } from "./icon";
+import { provideAvatar } from "./avatar";
+import { provideBadge } from "./badge";
+import { provideButton } from "./button";
+import { provideDropdown } from "./dropdown";
+import { provideIcon } from "./icon";
 import { Provider } from "@angular/core";
-import { provideButtonGroupConfig } from "./button-group";
+import { provideButtonGroup } from "./button-group";
 
 /**
- * @TailwindNG Elements configuration interface.
+ * @TailwindNG UI Elements config interface.
  */
 export interface ElementsConfig {
   avatar: Partial<AvatarConfig>;
@@ -20,15 +20,15 @@ export interface ElementsConfig {
 }
 
 /**
- * Provides the Elements configuration tokens.
+ * @TailwindNG UI Elements config provider.
  */
-export function provideElementsConfig(customization?: Partial<ElementsConfig>): Provider[] {
+export function provideElements(customization?: Partial<ElementsConfig>): Provider[] {
   return [
-    provideAvatarConfig(customization?.avatar),
-    provideBadgeConfig(customization?.badge),
-    provideButtonConfig(customization?.button),
-    provideButtonGroupConfig(customization?.buttonGroup),
-    provideDropdownConfig(customization?.dropdown),
-    provideIconConfig(customization?.icon),
+    provideAvatar(customization?.avatar),
+    provideBadge(customization?.badge),
+    provideButton(customization?.button),
+    provideButtonGroup(customization?.buttonGroup),
+    provideDropdown(customization?.dropdown),
+    provideIcon(customization?.icon),
   ]
 }

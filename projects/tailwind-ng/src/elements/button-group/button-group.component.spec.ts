@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GetButtonGroupConfig, provideButtonGroupConfig } from './button-group.component.config';
+import { GetButtonGroupConfig, provideButtonGroup } from './button-group.component.config';
 import { ClassList } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
@@ -13,7 +13,7 @@ describe('ButtonGroupComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
-        provideButtonGroupConfig()
+        provideButtonGroup()
       ]
     });
     fixture = TestBed.createComponent(ButtonGroupComponent);
@@ -71,7 +71,7 @@ describe('ButtonGroupComponent', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
-        provideButtonGroupConfig({
+        provideButtonGroup({
           ringColor: 'ring-red-600',
           radius: 'rounded-full'
         })

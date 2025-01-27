@@ -1,5 +1,5 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { GetDialogConfig, provideDialogConfig } from './dialog.component.config';
+import { GetDialogConfig, provideDialog } from './dialog.component.config';
 import { DialogComponent } from './dialog.component';
 import { DialogModule } from './dialog.module';
 import { Component, ElementRef, viewChild } from '@angular/core';
@@ -15,7 +15,7 @@ describe('DialogComponent', () => {
             nativeElement: document.createElement('div')
           }
         },
-        provideDialogConfig()
+        provideDialog()
       ]
     });
   });

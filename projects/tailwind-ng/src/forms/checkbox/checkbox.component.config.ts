@@ -37,14 +37,17 @@ const DefaultConfig = (): CheckboxConfig => {
   }
 };
 
+/**
+ * Returns the Checkbox component default config.
+ */
 export const GetCheckboxConfig = (customization?: Partial<CheckboxConfig>): CheckboxConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
 /**
- * Provides the input radio config's token
+ * Provides the Checkbox component config.
  */
-export function provideCheckboxConfig(customization?: Partial<CheckboxConfig>): Provider {
+export function provideCheckbox(customization?: Partial<CheckboxConfig>): Provider {
   return {
     provide: CHECKBOX_CONFIG,
     useValue: GetCheckboxConfig(customization)

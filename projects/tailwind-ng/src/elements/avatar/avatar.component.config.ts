@@ -37,7 +37,7 @@ export const GetAvatarConfig = (customization?: Partial<AvatarConfig>): AvatarCo
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideAvatarConfig(customization?: Partial<AvatarConfig>): Provider {
+export function provideAvatar(customization?: Partial<AvatarConfig>): Provider {
   return {
     provide: AVATAR_CONFIG,
     useValue: GetAvatarConfig(customization)

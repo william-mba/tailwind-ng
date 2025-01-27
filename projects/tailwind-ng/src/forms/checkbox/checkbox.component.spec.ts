@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { GetCheckboxConfig, provideCheckboxConfig } from './checkbox.component.config';
+import { GetCheckboxConfig, provideCheckbox } from './checkbox.component.config';
 import { Component, viewChild } from '@angular/core';
 import { CheckboxComponent } from './checkbox.component';
 
@@ -8,7 +8,7 @@ fdescribe('CheckboxComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
-        provideCheckboxConfig()
+        provideCheckbox()
       ]
     });
   });

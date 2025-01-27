@@ -42,7 +42,7 @@ export const GetButtonGroupConfig = (customization?: Partial<ComponentConfig>): 
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButtonGroupConfig(customization?: Partial<ComponentConfig>): Provider {
+export function provideButtonGroup(customization?: Partial<ComponentConfig>): Provider {
   return {
     provide: BUTTON_GROUP_CONFIG,
     useValue: GetButtonGroupConfig(customization)

@@ -14,7 +14,7 @@ export const DROPDOWN_CONFIG = InjectionTokenFactory.create({}, 'DROPDOWN_CONFIG
 
 export const TOGGLE_CONFIG = InjectionTokenFactory.create({}, 'TOGGLE_CONFIG');
 
-export const INPUT_CONFIG = InjectionTokenFactory.create({}, 'INPUT_CONFIG');
+export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create({}, 'INPUT_TEXT_CONFIG');
 
 export const INPUT_RADIO_CONFIG = InjectionTokenFactory.create({}, 'INPUT_RADIO_CONFIG');
 

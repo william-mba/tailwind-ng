@@ -198,7 +198,7 @@ export const GetButtonConfig = (customization?: Partial<ButtonConfig>): ButtonCo
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButtonConfig(customization?: Partial<ButtonConfig>): Provider {
+export function provideButton(customization?: Partial<ButtonConfig>): Provider {
   return {
     provide: BUTTON_CONFIG,
     useValue: GetButtonConfig(customization)

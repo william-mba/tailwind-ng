@@ -72,7 +72,8 @@ const DefaultConfig = (): DialogConfig => {
   }
 }
 
-/** Dialog config
+/**
+ * @TailwindNG Dialog config
  * @returns  The Popover configuration
  */
 export const GetDialogConfig = (customization?: Partial<DialogConfig>): DialogConfig => {
@@ -80,10 +81,10 @@ export const GetDialogConfig = (customization?: Partial<DialogConfig>): DialogCo
 }
 
 /**
- *  Dialog component config provider
+ * @TailwindNG Dialog config provider
  * @returns The configured provider
  */
-export function provideDialogConfig(customization?: Partial<DialogConfig>): Provider {
+export function provideDialog(customization?: Partial<DialogConfig>): Provider {
   return {
     provide: DIALOG_CONFIG,
     useValue: GetDialogConfig(customization)

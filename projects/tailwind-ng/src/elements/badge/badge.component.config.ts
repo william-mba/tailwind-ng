@@ -40,7 +40,7 @@ export const GetBadgeConfig = (customization?: Partial<BadgeConfig>): BadgeConfi
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideBadgeConfig(customization?: Partial<BadgeConfig>): Provider {
+export function provideBadge(customization?: Partial<BadgeConfig>): Provider {
   return {
     provide: BADGE_CONFIG,
     useValue: GetBadgeConfig(customization)

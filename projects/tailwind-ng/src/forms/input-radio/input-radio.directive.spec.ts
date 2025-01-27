@@ -1,6 +1,6 @@
 import { InputRadioDirective } from './input-radio.directive';
 import { TestBed } from '@angular/core/testing';
-import { GetInputRadioConfig, provideInputRadioConfig } from './input-radio.directive.config';
+import { GetInputRadioConfig, provideInputRadio } from './input-radio.directive.config';
 import { ClassList } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 
@@ -8,7 +8,7 @@ describe('InputRadioDirective', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
-        provideInputRadioConfig()
+        provideInputRadio()
       ]
     });
   });

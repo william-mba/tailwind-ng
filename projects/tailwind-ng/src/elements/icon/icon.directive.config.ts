@@ -44,7 +44,7 @@ export const GetIconConfig = (customization?: FullyOptional<IconConfig>): IconCo
   return !customization ? DefaultConfig() as IconConfig : mergeConfig([DefaultConfig(), customization]) as IconConfig;
 }
 
-export function provideIconConfig(customization?: FullyOptional<IconConfig>): Provider {
+export function provideIcon(customization?: FullyOptional<IconConfig>): Provider {
   return {
     provide: ICON_CONFIG,
     useValue: GetIconConfig(customization)

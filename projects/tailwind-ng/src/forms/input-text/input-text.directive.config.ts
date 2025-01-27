@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { INPUT_CONFIG, mergeConfig, InputTextConfig } from "@tailwind-ng/core";
+import { INPUT_TEXT_CONFIG, mergeConfig, InputTextConfig } from "@tailwind-ng/core";
 
 const DefaultConfig = (): InputTextConfig => {
   return {
@@ -50,16 +50,19 @@ const DefaultConfig = (): InputTextConfig => {
   }
 };
 
+/**
+ * Returns the InputText config.
+ */
 export const GetInputConfig = (customization?: Partial<InputTextConfig>): InputTextConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
 /**
- * Input component config provider
+ * @TailwindNG InputText config provider.
  */
-export function provideInputConfig(customization?: Partial<InputTextConfig>): Provider {
+export function provideInput(customization?: Partial<InputTextConfig>): Provider {
   return {
-    provide: INPUT_CONFIG,
+    provide: INPUT_TEXT_CONFIG,
     useValue: GetInputConfig(customization)
   };
 }

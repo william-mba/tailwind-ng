@@ -54,16 +54,17 @@ const DefaultConfig = (): ToggleConfig => {
   }
 };
 
+/**
+ * Returns the Toggle component default config.
+ */
 export const GetToggleConfig = (customization?: Partial<ToggleConfig>): ToggleConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
 /**
- * Toggle component config provider
- * @param config The custom config
- * @returns The configured provider
+ * Provides the Toggle component config.
  */
-export function provideToggleConfig(customization?: Partial<ToggleConfig>): Provider {
+export function provideToggle(customization?: Partial<ToggleConfig>): Provider {
   return {
     provide: TOGGLE_CONFIG,
     useValue: GetToggleConfig(customization)

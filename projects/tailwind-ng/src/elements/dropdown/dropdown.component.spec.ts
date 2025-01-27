@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DropdownComponent } from './dropdown.component';
-import { provideDropdownConfig } from './dropdown.component.config';
+import { provideDropdown } from './dropdown.component.config';
 
 describe('DropdownComponent', () => {
   let component: DropdownComponent;
@@ -9,7 +9,7 @@ describe('DropdownComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideDropdownConfig(),
+        provideDropdown(),
       ]
     });
 

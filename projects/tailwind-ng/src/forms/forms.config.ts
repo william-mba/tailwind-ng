@@ -1,10 +1,10 @@
 import { Provider } from "@angular/core";
-import { provideComboboxItemConfig } from './combobox';
-import { provideInputConfig } from './input-text';
-import { provideToggleConfig } from './toggle';
+import { provideComboboxItem } from './combobox';
+import { provideInput } from './input-text';
+import { provideToggle } from './toggle';
 import { CheckboxConfig, ComboboxItemConfig, InputTextConfig, InputRadioConfig, ToggleConfig } from "@tailwind-ng/core";
-import { provideInputRadioConfig } from "./input-radio";
-import { provideCheckboxConfig } from "./checkbox";
+import { provideInputRadio } from "./input-radio";
+import { provideCheckbox } from "./checkbox";
 
 /**
  * @TailwindNG Forms configuration interface.
@@ -20,12 +20,12 @@ export interface FormsConfig {
 /**
  * Provides the Forms configuration tokens.
  */
-export function provideFormsConfig(customization?: Partial<FormsConfig>): Provider[] {
+export function provideForms(customization?: Partial<FormsConfig>): Provider[] {
   return [
-    provideComboboxItemConfig(customization?.comboboxItem),
-    provideInputConfig(customization?.input),
-    provideInputRadioConfig(customization?.inputRadio),
-    provideToggleConfig(customization?.toggle),
-    provideCheckboxConfig(customization?.checkbox)
+    provideComboboxItem(customization?.comboboxItem),
+    provideInput(customization?.input),
+    provideInputRadio(customization?.inputRadio),
+    provideToggle(customization?.toggle),
+    provideCheckbox(customization?.checkbox)
   ]
 }

@@ -2,7 +2,7 @@
 import { SizeOption, ClassList, Str, ButtonVariant } from '@tailwind-ng/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import { GetButtonConfig, provideButtonConfig } from './button.component.config';
+import { GetButtonConfig, provideButton } from './button.component.config';
 import { Component, viewChild } from '@angular/core';
 
 describe('ButtonComponent', () => {
@@ -12,7 +12,7 @@ describe('ButtonComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideButtonConfig()
+        provideButton()
       ]
     });
     fixture = TestBed.createComponent(ButtonComponent);
@@ -122,7 +122,7 @@ describe('ButtonComponent', () => {
         TestBed.resetTestingModule();
         TestBed.configureTestingModule({
           providers: [
-            provideButtonConfig({
+            provideButton({
               primary: {
                 gap: 'gap-3',
                 bgColor: 'bg-red-600',
@@ -254,7 +254,7 @@ describe('ButtonComponent', () => {
         TestBed.resetTestingModule();
         TestBed.configureTestingModule({
           providers: [
-            provideButtonConfig(config)
+            provideButton(config)
           ]
         });
 

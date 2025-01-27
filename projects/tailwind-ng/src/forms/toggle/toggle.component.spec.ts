@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToggleComponent } from './toggle.component';
-import { GetToggleConfig, provideToggleConfig } from './toggle.component.config';
+import { GetToggleConfig, provideToggle } from './toggle.component.config';
 import { ClassList } from '@tailwind-ng/core';
 
 describe('ToggleComponent', () => {
@@ -10,7 +10,7 @@ describe('ToggleComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
-        provideToggleConfig()
+        provideToggle()
       ]
     });
     fixture = TestBed.createComponent(ToggleComponent);

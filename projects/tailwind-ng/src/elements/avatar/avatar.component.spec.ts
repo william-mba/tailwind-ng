@@ -3,13 +3,13 @@ import { ClassList, Str } from '@tailwind-ng/core';
 import { TestBed } from '@angular/core/testing';
 import { AvatarComponent } from './avatar.component';
 import { Component, viewChild } from '@angular/core';
-import { GetAvatarConfig, provideAvatarConfig } from './avatar.component.config';
+import { GetAvatarConfig, provideAvatar } from './avatar.component.config';
 
 describe('AvatarComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
-        provideAvatarConfig()
+        provideAvatar()
       ]
     });
   });
@@ -108,7 +108,7 @@ describe('AvatarComponent', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
-        provideAvatarConfig({
+        provideAvatar({
           base: {
             ringWidth: 'ring-2',
             ringColor: 'ring-white',

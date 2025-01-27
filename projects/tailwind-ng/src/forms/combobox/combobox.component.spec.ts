@@ -10,7 +10,7 @@ import { Component, ElementRef, viewChild, viewChildren } from '@angular/core';
 import { ComboboxModule } from './combobox.module';
 import { ButtonComponent } from '../../elements/button/button.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { provideIconConfig } from '../../elements/icon/icon.directive.config';
+import { provideIcon } from '../../elements/icon/icon.directive.config';
 import { ComboboxItemComponent } from './combobox-item/combobox-item.component';
 
 interface User {
@@ -126,7 +126,7 @@ describe('ComboboxComponent', () => {
           provide: ElementRef,
           useValue: { nativeElement: document.createElement('div') }
         },
-        provideIconConfig({
+        provideIcon({
           source: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
@@ -217,7 +217,7 @@ describe('ComboboxComponent', () => {
           provide: ElementRef,
           useValue: { nativeElement: document.createElement('div') }
         },
-        provideIconConfig({
+        provideIcon({
           source: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
@@ -294,7 +294,7 @@ describe('ComboboxComponent', () => {
           provide: ElementRef,
           useValue: { nativeElement: document.createElement('div') }
         },
-        provideIconConfig({
+        provideIcon({
           source: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
@@ -416,7 +416,7 @@ describe('ComboboxComponent', () => {
           provide: ElementRef,
           useValue: { nativeElement: document.createElement('div') }
         },
-        provideIconConfig({
+        provideIcon({
           source: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
@@ -535,7 +535,7 @@ describe('ComboboxComponent', () => {
           provide: ElementRef,
           useValue: { nativeElement: document.createElement('div') }
         },
-        provideIconConfig({
+        provideIcon({
           source: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',

@@ -1,19 +1,19 @@
 import { Config, DialogConfig } from "@tailwind-ng/core";
 import { Provider } from "@angular/core";
-import { provideDialogConfig } from "./dialog";
+import { provideDialog } from "./dialog";
 
 /**
- * @TailwindNG Overlays configuration interface.
+ * @TailwindNG Overlays config interface.
  */
 export interface OverlaysConfig extends Config {
   dialog?: DialogConfig;
 }
 
 /**
- * Provides the Overlays configuration tokens.
+ * @TailwindNG Overlays config provider.
  */
-export function provideOverlaysConfig(customization?: OverlaysConfig): Provider[] {
+export function provideOverlays(customization?: OverlaysConfig): Provider[] {
   return [
-    provideDialogConfig(customization?.dialog)
+    provideDialog(customization?.dialog)
   ]
 }

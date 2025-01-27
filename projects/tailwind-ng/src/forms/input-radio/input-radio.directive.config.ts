@@ -42,14 +42,17 @@ const DefaultConfig = (): InputRadioConfig => {
   }
 };
 
+/**
+ * Gets the default input radio config.
+ */
 export const GetInputRadioConfig = (customization?: Partial<InputRadioConfig>): InputRadioConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
 /**
- * Provides the input radio config's token
+ * Provides the input radio config.
  */
-export function provideInputRadioConfig(customization?: Partial<InputRadioConfig>): Provider {
+export function provideInputRadio(customization?: Partial<InputRadioConfig>): Provider {
   return {
     provide: INPUT_RADIO_CONFIG,
     useValue: GetInputRadioConfig(customization)

@@ -66,7 +66,7 @@ export const GetDropdownConfig = (customization?: Partial<DropdownConfig>): Drop
  * @param config The custom config
  * @returns The config provider
  */
-export function provideDropdownConfig(customization?: Partial<DropdownConfig>): Provider {
+export function provideDropdown(customization?: Partial<DropdownConfig>): Provider {
   return {
     provide: DROPDOWN_CONFIG,
     useValue: GetDropdownConfig(customization)

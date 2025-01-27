@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { BadgeComponent } from './badge.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GetBadgeConfig, provideBadgeConfig } from './badge.component.config';
+import { GetBadgeConfig, provideBadge } from './badge.component.config';
 import { Component, viewChild } from '@angular/core';
 import { ClassList, Str } from '@tailwind-ng/core';
 
@@ -12,7 +12,7 @@ describe('BadgeComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideBadgeConfig()
+        provideBadge()
       ]
     });
     fixture = TestBed.createComponent(BadgeComponent);
@@ -101,7 +101,7 @@ describe('BadgeComponent', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
-        provideBadgeConfig(config)
+        provideBadge(config)
       ]
     });
     const fixture = TestBed.createComponent(BadgeComponent);

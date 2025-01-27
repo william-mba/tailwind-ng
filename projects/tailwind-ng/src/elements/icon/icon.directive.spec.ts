@@ -3,7 +3,7 @@ import { Str } from '@tailwind-ng/core';
 import { TestBed } from '@angular/core/testing';
 import { IconDirective } from './icon.directive';
 import { Component, ElementRef } from '@angular/core';
-import { GetIconConfig, provideIconConfig } from './icon.directive.config';
+import { GetIconConfig, provideIcon } from './icon.directive.config';
 import { By } from '@angular/platform-browser';
 
 describe('IconDirective', () => {
@@ -22,7 +22,7 @@ describe('IconDirective', () => {
           useValue: { nativeElement: document.createElement('tw-icon') }
         },
         IconDirective,
-        provideIconConfig({ source: config.source })
+        provideIcon({ source: config.source })
       ]
     });
     TestBed.runInInjectionContext(() => {
@@ -45,7 +45,7 @@ describe('IconDirective', () => {
           useValue: { nativeElement: document.createElement('tw-icon') }
         },
         IconDirective,
-        provideIconConfig()
+        provideIcon()
       ]
     });
     TestBed.runInInjectionContext(() => {

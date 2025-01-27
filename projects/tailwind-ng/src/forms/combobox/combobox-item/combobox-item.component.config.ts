@@ -35,12 +35,17 @@ const DefaultConfig = (): ComboboxItemConfig => {
     }
   }
 }
-
+/**
+ * Returns the combobox item configuration
+ */
 export const GetComboboxItemConfig = (customization?: Partial<ComboboxItemConfig>): ComboboxItemConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
-export function provideComboboxItemConfig(customization?: Partial<ComboboxItemConfig>): Provider {
+/**
+ * @TailwindNG Combobox Item config provider.
+ */
+export function provideComboboxItem(customization?: Partial<ComboboxItemConfig>): Provider {
   return {
     provide: COMBOBOX_ITEM_CONFIG,
     useValue: GetComboboxItemConfig(customization)

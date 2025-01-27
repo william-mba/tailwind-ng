@@ -1,5 +1,5 @@
 import { Injectable, inject } from "@angular/core";
-import { AVATAR_CONFIG, BADGE_CONFIG, BUTTON_CONFIG, BUTTON_GROUP_CONFIG, ICON_CONFIG, DROPDOWN_CONFIG, TOGGLE_CONFIG, INPUT_CONFIG, COMBOBOX_ITEM_CONFIG, DIALOG_CONFIG, INPUT_RADIO_CONFIG, CHECKBOX_CONFIG } from "../injectables/config.token";
+import { AVATAR_CONFIG, BADGE_CONFIG, BUTTON_CONFIG, BUTTON_GROUP_CONFIG, ICON_CONFIG, DROPDOWN_CONFIG, TOGGLE_CONFIG, INPUT_TEXT_CONFIG, COMBOBOX_ITEM_CONFIG, DIALOG_CONFIG, INPUT_RADIO_CONFIG, CHECKBOX_CONFIG } from "../injectables/config.token";
 
 /** @TailwindNG configuration store */
 @Injectable({ providedIn: 'root' })
@@ -9,7 +9,7 @@ export class ConfigStore {
   readonly Button = inject(BUTTON_CONFIG);
   readonly ButtonGroup = inject(BUTTON_GROUP_CONFIG);
   readonly Dropdown = inject(DROPDOWN_CONFIG);
-  readonly Input = inject(INPUT_CONFIG);
+  readonly Input = inject(INPUT_TEXT_CONFIG);
   readonly InputRadio = inject(INPUT_RADIO_CONFIG);
   readonly Icon = inject(ICON_CONFIG);
   readonly Dialog = inject(DIALOG_CONFIG);

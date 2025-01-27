@@ -1,7 +1,7 @@
 import { Provider } from "@angular/core";
-import { ElementsConfig, provideElementsConfig } from "./elements";
-import { FormsConfig, provideFormsConfig } from "./forms";
-import { OverlaysConfig, provideOverlaysConfig } from "./overlays";
+import { ElementsConfig, provideElements } from "./elements";
+import { FormsConfig, provideForms } from "./forms";
+import { OverlaysConfig, provideOverlays } from "./overlays";
 
 /**
  * @TailwindNG UI configuration interface.
@@ -13,13 +13,12 @@ export interface UIConfig {
 }
 
 /**
- * Provides the UI configuration tokens.
- * @returns An array of config providers
+ * Provides the Tailwind NG UI config with the given customization if any.
  */
-export function provideUIConfig(customization?: Partial<UIConfig>): Provider[] {
+export function provideUI(customization?: Partial<UIConfig>): Provider[] {
   return [
-    provideElementsConfig(customization?.elements),
-    provideFormsConfig(customization?.forms),
-    provideOverlaysConfig(customization?.overlays),
+    provideElements(customization?.elements),
+    provideForms(customization?.forms),
+    provideOverlays(customization?.overlays),
   ]
 }
