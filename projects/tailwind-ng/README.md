@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-Beautiful, fast and reliable Tailwind CSS components for Angular.
+High-quality UI components crafted with Tailwind CSS and Angular.
 <br/>
 <br/>
 <br/>
@@ -17,14 +17,14 @@ Beautiful, fast and reliable Tailwind CSS components for Angular.
 
 ## Motivation
 
-Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind NG** provides a set of **high-quality UI components** based on [Tailwind CSS](https://tailwindcss.com/) for [Angular](https://angular.dev), to help you build great applications at any scale without hassles.
+Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind NG** provides a collection of **high-quality UI components** crafted with [Tailwind CSS](https://tailwindcss.com/) and [Angular](https://angular.dev), to help you build **great Angular applications** at any scale **without hassles**.
 
 ## Why Tailwind NG ?
 
-- **Beautiful**: Expertly-crafted components that look great out of the box.
-- **Lightweight and Fast**: Optimized components for large-scale Angular applications.
-- **Reliable**: Thoughfully-tested to ensure high performance and reliability.
-- **Accessibility**: Accessible components compliant to the [W3C WAI-ARIA standards](https://www.w3.org/TR/wai-aria/).
+- **Beautiful**: Expertly-crafted UI components that look great out of the box.
+- **Fast**: Optimized for large-scale Angular applications.
+- **Reliable**: Thoughfully-tested to ensure consistent performance and reliability.
+- **Accessible**: Out-of-the-box accessibility features compliant with [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards.
 - **Customizable**: Fully-customizable and predictable components to fit your specific needs.
 
 ## Resources
