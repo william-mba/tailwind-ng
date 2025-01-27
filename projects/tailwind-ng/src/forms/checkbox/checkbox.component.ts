@@ -109,9 +109,14 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
 
   protected onMouseup(event: MouseEvent): void {
     event.stopPropagation();
-    const labelText = this.nativeElement.querySelector('label')?.innerText || '';
-    if (event.eventPhase === event.BUBBLING_PHASE && (event.target as HTMLElement).innerText === labelText) {
-      this.toggle('self', event);
+    if (event.eventPhase === event.BUBBLING_PHASE) {
+      const target = event.target as HTMLElement;
+      const label = this.nativeElement.querySelector('label');
+      if (label?.innerText === target?.innerText) {
+        this.toggle('self', event);
+      } else if (label?.querySelector('input')?.id === target?.id) {
+        this.toggle('self', event);
+      }
     }
   }
 
