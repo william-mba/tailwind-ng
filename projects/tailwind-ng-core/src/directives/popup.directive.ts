@@ -1,6 +1,7 @@
-import { Directive, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, Input, Output, EventEmitter, inject } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup } from '../interfaces/popup';
+import { ZIndexer } from '../injectables/z-index.service';
 
 @Directive({
   host: {
@@ -10,6 +11,7 @@ import { Popup } from '../interfaces/popup';
   }
 })
 export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
+  private readonly zIndex = inject(ZIndexer);
   @Input() isOpened = false;
   @Input() id = this.randomId('popup');
   @Output() toggled = new EventEmitter<boolean>();
@@ -28,6 +30,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   open(): void {
     if (!this.isOpened) {
       this.isOpened = true;
+      this.nativeElement.style.zIndex = `${this.zIndex.next}`;
       this.opened.emit();
     }
   }

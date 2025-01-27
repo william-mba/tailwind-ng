@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, Input, ViewEncapsulation } from '@angular/core';
-import { Dialog, DialogBase, ZIndexer } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { Dialog, DialogBase } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -15,7 +15,6 @@ import { Dialog, DialogBase, ZIndexer } from '@tailwind-ng/core';
   providers: [{ provide: DialogBase, useExisting: DialogComponent }]
 })
 export class DialogComponent extends DialogBase implements Dialog {
-  private readonly zIndex = inject(ZIndexer);
   @Input() displayDuration!: number;
   @Input() animationDuration = 500;
   @Input() autoClose = false;
@@ -55,7 +54,6 @@ export class DialogComponent extends DialogBase implements Dialog {
     if (this.clonedChild) {
       this.nativeElement.appendChild(this.clonedChild);
     }
-    this.nativeElement.style.zIndex = `${this.zIndex.next}`;
   }
 
   protected onClose() {
