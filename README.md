@@ -22,7 +22,7 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind N
 ## Why Tailwind NG ?
 
 - **Beautiful**: Expertly-crafted UI components that look great out of the box.
-- **Fast**: Optimized for large-scale Angular applications.
+- **Fast**: Optimized for large-scale and enterprise Angular applications.
 - **Reliable**: Thoughfully-tested to ensure consistent performance and reliability.
 - **Accessible**: Out-of-the-box accessibility features compliant with [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards.
 - **Customizable**: Fully-customizable and predictable components to fit your specific needs.
