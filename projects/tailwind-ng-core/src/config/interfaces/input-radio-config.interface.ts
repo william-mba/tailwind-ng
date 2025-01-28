@@ -1,9 +1,9 @@
 import { ComponentConfig } from "../../types/component-config.type";
-import { Modifier } from "../../types/element-config.type";
+import { Variant } from "../../types/element-config.type";
 
 export interface InputRadioConfig extends ComponentConfig {
-  forcedColors: Modifier<'forced-colors', InputRadioConfig>;
-  checked: Modifier<'checked', InputRadioConfig>;
-  before?: Modifier<'before', InputRadioConfig>;
-  disabled: Modifier<'disabled', InputRadioConfig>;
+  forcedColors: Variant<'forced-colors', InputRadioConfig>;
+  checked: Variant<'checked', InputRadioConfig>;
+  before?: Variant<'before', InputRadioConfig>;
+  disabled: Variant<'disabled', InputRadioConfig>;
 };

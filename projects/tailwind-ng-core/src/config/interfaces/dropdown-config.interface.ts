@@ -1,8 +1,8 @@
 import { ComponentConfig } from "../../types/component-config.type";
-import { Modifier } from "../../types/element-config.type";
+import { Variant } from "../../types/element-config.type";
 
 export interface DropdownConfig extends ComponentConfig {
-  open: Modifier<'open'>
-  notOpen: Modifier<'not-open'>
-  starting: Modifier<'starting', DropdownConfig>
+  open: Variant<'open'>
+  notOpen: Variant<'not-open'>
+  starting: Variant<'starting', DropdownConfig>
 };

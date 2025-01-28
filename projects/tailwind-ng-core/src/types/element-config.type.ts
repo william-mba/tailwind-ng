@@ -11,32 +11,32 @@ export interface ElementConfig extends LayoutConfig, ThemeConfig {
   /**
    * Defines element's children configuration.
    */
-  child: Modifier<'*'>;
+  child: Variant<'*', ElementConfig & DarkThemeConfig>;
   // State modifiers
-  sm: Modifier<'sm', LayoutConfig>;
-  md: Modifier<'md', LayoutConfig>;
-  lg: Modifier<'lg', LayoutConfig>;
+  sm: Variant<'sm', LayoutConfig>;
+  md: Variant<'md', LayoutConfig>;
+  lg: Variant<'lg', LayoutConfig>;
   // State modifiers
-  focus: Modifier<'focus', StateConfig>;
-  hover: Modifier<'hover', StateConfig>;
-  active: Modifier<'active', StateConfig>;
-  disabled: Modifier<'disabled', StateConfig>;
+  focus: Variant<'focus', StateConfig>;
+  hover: Variant<'hover', StateConfig>;
+  active: Variant<'active', StateConfig>;
+  disabled: Variant<'disabled', StateConfig>;
   /** Applied when the element has visual focus.*/
-  dataActive: Modifier<'data-active', StateConfig>;
-  focusVisible: Modifier<'focus-visible', StateConfig>;
+  dataActive: Variant<'data-active', StateConfig>;
+  focusVisible: Variant<'focus-visible', StateConfig>;
 };
 
 export interface DarkThemeConfig {
-  dark: Modifier<'dark', ThemeConfig>;
+  dark: Variant<'dark', ThemeConfig>;
 }
 
 export interface StateConfig extends LayoutConfig, ThemeConfig, DarkThemeConfig { };
 
-
 /**
- * Define config for a special state of an element using the given pseudo-class.
- * @param PseudoClass - The pseudo-class to add on the config. Example: `"hover"`, `"focus"`, `"active"`, etc.
+ * Defines a config's variant that will be applied conditionally when the element will be in the matching state.
+ * @param Tag - The variant's tag. Example: `"hover"`, `"focus"`, `"active"`, etc.
+ * @param Type - The config type to apply the variant on. Default: `ElementConfig`.
  */
-export type Modifier<PseudoClass extends string, Type extends Config = ElementConfig> = {
-  [K in keyof Type]?: `${Type[K] & {}}` extends `${infer X}` ? `${PseudoClass}:${X}` : Modifier<PseudoClass, Type[K]>
+export type Variant<Tag extends string, Type extends Config = ElementConfig> = {
+  [K in keyof Type]?: `${Type[K] & {}}` extends `${infer X}` ? `${Tag}:${X}` : Variant<Tag, Type[K]>
 };
