@@ -4,9 +4,6 @@ import { SizeOption, IconBase, IconKey, Icon } from '@tailwind-ng/core';
 @Directive({
   selector: 'tw-icon, [tw-icon], [twIcon]',
   exportAs: 'twIcon',
-  host: {
-    class: 'inline-block',
-  },
   providers: [{ provide: IconBase, useExisting: IconDirective }]
 })
 export class IconDirective extends IconBase implements Icon {
