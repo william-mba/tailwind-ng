@@ -1,15 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ButtonComponent, ButtonGroupComponent, IconDirective } from 'tailwind-ng';
-import { ReactiveConfig, toggleTheme } from "@tailwind-ng/core";
+import { ReactiveConfig, ThemeHelper } from "@tailwind-ng/core";
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-main',
-  imports: [ButtonComponent, IconDirective, ButtonGroupComponent],
+  imports: [ButtonComponent, IconDirective, ButtonGroupComponent, NgIf],
   templateUrl: './main.component.html',
   styles: ``,
   providers: [ReactiveConfig]
 })
 export class MainComponent implements OnInit {
+  protected readonly theme = ThemeHelper;
   private config = inject(ReactiveConfig);
   ngOnInit(): void {
     this.config
@@ -34,7 +36,7 @@ export class MainComponent implements OnInit {
         radius: 'rounded-full',
         padding: 'p-1',
         alignItems: 'items-center',
-        ringColor: 'ring-indigo-300',
+        ringColor: 'ring-indigo-300/60',
         bgColor: 'bg-indigo-50/5',
         dark: {
           bgColor: 'dark:bg-indigo-950/5',
@@ -51,6 +53,6 @@ export class MainComponent implements OnInit {
       });
   }
   switchTheme() {
-    toggleTheme();
+    this.theme.toggle();
   }
 }

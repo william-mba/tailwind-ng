@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { toggleTheme } from '@tailwind-ng/core';
+import { ThemeHelper } from '@tailwind-ng/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,8 @@ import { toggleTheme } from '@tailwind-ng/core';
   styles: [],
 })
 export class AppComponent implements OnInit {
+  protected readonly theme = ThemeHelper;
   ngOnInit(): void {
-    toggleTheme();
+    this.theme.toggle();
   }
 }
