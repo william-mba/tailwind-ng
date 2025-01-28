@@ -4,6 +4,7 @@ trigger:
   paths:
     include:
       - projects/tailwind-ng/src/*
+      - projects/tailwind-ng-themes/*
       - ci/tailwind-ng.yml
 
 pool: Lab
