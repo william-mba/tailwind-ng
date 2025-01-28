@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ButtonComponent, ButtonGroupComponent, IconDirective, provideButton } from 'tailwind-ng';
+import { ButtonComponent, ButtonGroupComponent, IconDirective } from 'tailwind-ng';
 import { ReactiveConfig, toggleTheme } from "@tailwind-ng/core";
 
 @Component({
