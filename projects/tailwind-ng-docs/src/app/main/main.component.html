@@ -1,0 +1,25 @@
+<div
+  class="fixed -inset-x-96 -inset-y-45 bg-[url(/images/hero-bg.webp)] -z-50 bg-cover bg-right-top animate-pulse-8 backdrop-blur-xs min-h-screen min-w-screen">
+</div>
+<div>
+  <button (click)="switchTheme()" tw-button variant="secondary" size="xs" class="fixed top-2 right-2 rounded-full z-50">
+    Switch theme
+  </button>
+  <section class="relative mt-20 p-3 lg:w-3/4 lg:mx-auto grid">
+    <div>
+      <h1 class="text-5xl text-center lg:text-start lg:mt-28 sm:text-7xl font-semibold font-heading">
+        Tailwind NG
+      </h1>
+      <p class="text-2xl text-center lg:text-start sm:text-3xl font-semibold mt-8">
+        High-quality UI components library
+        <br class="hidden sm:block">
+        crafted with Tailwind CSS and Angular.
+      </p>
+    </div>
+    <menu tw-button-group class="*:nth-[3]:hidden *:nth-[3]:sm:flex mt-16 place-self-center lg:place-self-start">
+      <button tw-button variant="secondary">Get started </button>
+      <button tw-button variant="secondary">Components</button>
+      <button tw-button variant="secondary">GitHub <tw-icon size="xs" key="github" /></button>
+    </menu>
+  </section>
+</div>
