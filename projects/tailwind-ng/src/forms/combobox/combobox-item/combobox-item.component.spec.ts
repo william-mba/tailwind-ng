@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { ComboboxItemComponent } from './combobox-item.component';
 import { Component, ElementRef, viewChildren } from '@angular/core';
 import { GetComboboxItemConfig, provideComboboxItem } from './combobox-item.component.config';
-import { InputTextDirective } from '../../input-text/input-text.directive';
+
 import { USERS_STUB } from '../combobox.component.spec';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -28,13 +28,12 @@ describe('ComboboxItemComponent', () => {
     @Component({
       selector: 'app-test',
       imports: [
-        NgIf,
-        ReactiveFormsModule,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        DropdownComponent
-      ],
+    NgIf,
+    ReactiveFormsModule,
+    ComboboxModule,
+    ButtonComponent,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
         <!-- Input -->
@@ -75,13 +74,12 @@ describe('ComboboxItemComponent', () => {
     @Component({
       selector: 'app-test',
       imports: [
-        NgIf,
-        ReactiveFormsModule,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        DropdownComponent
-      ],
+    NgIf,
+    ReactiveFormsModule,
+    ComboboxModule,
+    ButtonComponent,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
         <!-- Input -->
@@ -127,13 +125,12 @@ describe('ComboboxItemComponent', () => {
     @Component({
       selector: 'app-test',
       imports: [
-        NgIf,
-        ReactiveFormsModule,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        DropdownComponent
-      ],
+    NgIf,
+    ReactiveFormsModule,
+    ComboboxModule,
+    ButtonComponent,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
         <!-- Input -->
