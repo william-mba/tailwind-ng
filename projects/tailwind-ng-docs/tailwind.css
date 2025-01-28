@@ -12,6 +12,6 @@
     background-image: var(--bg-pattern);
   }
   .hero-bg {
-    background-image: url("/images/hero-bg.webp");
+    background-image: url("https://dev.tailwind-ng.com/images/hero-bg.webp");
   }
 }
