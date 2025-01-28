@@ -1,5 +1,5 @@
 import { afterNextRender, ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Button, ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, PopupDirective, SizeOption } from '@tailwind-ng/core';
+import { Button, ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, KBKey, PopupDirective, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component
@@ -85,37 +85,34 @@ export class ButtonComponent extends ButtonBase implements Button {
     });
 
     if (this.popup) {
-      this.nativeElement.addEventListener('click', this.onClick.bind(this), true);
+      this.nativeElement.addEventListener('pointerup', this.onPointerUp.bind(this), false);
     }
-    this.nativeElement.addEventListener('keydown', this.onKeyDown.bind(this), true);
+    this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
 
     this.destroyRef.onDestroy(() => {
       if (this.popup) {
-        this.nativeElement.removeEventListener('click', this.onClick.bind(this), true);
+        this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false);
       }
-      this.nativeElement.removeEventListener('keydown', this.onKeyDown.bind(this), true);
+      this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
     });
   }
 
-  protected onClick(event: MouseEvent): void {
+  protected onPointerUp(event: Event): void {
     if (this.isDisabled) {
-      event.preventDefault();
       event.stopImmediatePropagation();
-      return;
-    }
-    if (this.popup) {
+    } else if (this.popup) {
+      event.stopPropagation();
       this.popup.toggle();
     }
   }
 
-  protected onKeyDown(event: KeyboardEvent): void {
+  protected onKeyup(event: KeyboardEvent): void {
     if (this.isDisabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
-      return;
-    }
-    if (['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].includes(event.key)) {
+    } else if (KBKey.isNavigation(event.key)) {
       event.preventDefault();
+      event.stopPropagation();
     }
     if (this.popup && this.popup instanceof DropdownBase) {
       if (event.key === 'ArrowDown') {
