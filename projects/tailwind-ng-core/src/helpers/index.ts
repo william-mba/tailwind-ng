@@ -1,5 +1,5 @@
-export { Obj } from './object.helper';
-export { Str } from './string.helper';
-export { Type } from './type-check.helper';
-export { benchmark } from './benchmark.helper';
-export { toggleTheme } from './theme.helper';
+export * from './object.helper';
+export * from './string.helper';
+export * from './type-check.helper';
+export * from './benchmark.helper';
+export * from './theme.helper';
