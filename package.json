@@ -14,7 +14,7 @@
     "build:lib": "pnpm build:lib-core && ng build --project tailwind-ng",
     "build:lib-core": "ng build --project tailwind-ng-core",
     "build:all": "pnpm build:lib && pnpm build:lib-docs",
-    "build:css": "npx @tailwindcss/cli -i projects/tailwind-ng-docs/tailwind.css -o projects/tailwind-ng-themes/default/default.css",
+    "build:css": "npx @tailwindcss/cli -i projects/tailwind-ng-docs/tailwind.css -o projects/tailwind-ng-themes/default/style.css",
     "watch:lib": "ng build --watch --project ngx-tailwind",
     "watch:css": "npx @tailwindcss/cli -i projects/tailwind-ng-docs/tailwind.css -o projects/tailwind-ng-themes/default/style.css --watch",
     "publish": "pnpm build:lib && cd dist/ngx-tailwind && npm publish",
