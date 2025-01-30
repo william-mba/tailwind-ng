@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
 import { Dropdown, DropdownBase, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dropdown component */
@@ -8,7 +8,7 @@ import { Dropdown, DropdownBase, OverlayPosition } from '@tailwind-ng/core';
   template: `<ng-content />`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: DropdownBase, useExisting: DropdownComponent }]
+  providers: [{ provide: DropdownBase, useExisting: forwardRef(() => DropdownComponent) }]
 })
 export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0' };
