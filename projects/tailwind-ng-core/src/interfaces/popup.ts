@@ -14,7 +14,17 @@ export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseSta
    * Whether the component is opened.
    */
   readonly isOpened: boolean;
+  /**
+   * Returns the popup's type as a string.
+   * This is different to what we get from the `typeof` operator witch returns `object`.
+   */
+  readonly type: PopupType;
 }
+
+export type PopupType =
+  | 'Combobox'
+  | 'Dropdown'
+  | 'Dialog'
 
 /**
  * @TailwindNG Basic Popup actions.
@@ -66,3 +76,17 @@ export interface PopupEvents {
 }
 
 export interface Popup<T extends HTMLElement = HTMLElement> extends PopupState<T>, BasicPopupActions, AdvancedPopupActions, PopupEvents { }
+
+/**
+ * @TailwindNG Popup widget.
+ */
+export interface PopupWidget {
+  /**
+   * The popup directive reference.
+   */
+  ref: Popup,
+  /**
+   * The action to perform on the popup when its trigger element is clicked.
+   */
+  action: 'close' | 'toggle' | 'ignore'
+};
