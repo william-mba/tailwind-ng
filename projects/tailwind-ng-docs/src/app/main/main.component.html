@@ -1,127 +1,137 @@
 <div
-  class="fixed -inset-x-96 -inset-y-45 hero-bg -z-50 bg-cover bg-right-top animate-pulse-8 backdrop-blur-xs min-h-screen min-w-screen">
-  <div class="fixed -inset-x-96 -inset-y-45 inset-0 hero-bg-pattern opacity-30 dark:opacity-10"></div>
+  class="fixed -inset-x-45 -inset-y-96 hero-bg -z-50 bg-cover bg-right-bottom opacity-5 backdrop-blur-xs animate-pulse-8 rotate-90">
+  <div class="fixed -inset-x-96 -inset-y-45 inset-0 hero-bg-pattern opacity-30"></div>
 </div>
-<div>
-  <section class="relative">
-    <menu tw-button-group
-      class="ring-indigo-300 lg:ring-indigo-100 opacity-80 hover:opacity-100 fixed top-4 right-8 gap-4 z-50">
-      <button (click)="switchTheme()" tw-button variant="secondary" size="xs">
-        <tw-icon key="sun" *ngIf="theme.isDark" />
-        <tw-icon key="moon" *ngIf="!theme.isDark" />
-      </button>
-      <button tw-button variant="secondary" size="xs">
-        <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
-          <tw-icon key="github" />
-        </a>
-      </button>
-    </menu>
-  </section>
-  <section class="relative mt-24 lg:mt-16 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid">
+<section class="relative">
+  <div tw-button-group
+    class="rounded-full *:rounded-full items-center lg:p-1 ring-indigo-300/60 dark:ring-indigo-900/60 lg:ring-indigo-100 opacity-80 hover:opacity-100 fixed top-4 right-8 gap-2 z-50">
+    <button tw-button variant="secondary" size="xs">
+      <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
+        <tw-icon key="github" />
+      </a>
+    </button>
+    <button tw-button variant="secondary" size="xs">
+      <a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
+        <tw-icon key="discord" />
+      </a>
+    </button>
+    <button (click)="switchTheme()" tw-button variant="secondary" size="xs">
+      <tw-icon key="sun" *ngIf="theme.isDark" />
+      <tw-icon key="moon" *ngIf="!theme.isDark" />
+    </button>
+  </div>
+</section>
+<section class="relative mt-24 lg:mt-16 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid">
+  <div>
+    <h1
+      class="opacity-95 hover:opacity-100 text-5xl text-center lg:text-start lg:mt-24 sm:text-7xl font-semibold font-heading">
+      Tailwind NG
+    </h1>
+    <p class="text-2xl text-center lg:text-start sm:text-3xl font-medium lg:font-semibold mt-8">
+      High-quality UI components library
+      <br class="hidden sm:block">
+      crafted with Tailwind CSS and Angular.
+    </p>
+    <p
+      class="opacity-90 hover:opacity-100 text-lg text-center lg:text-start sm:text-xl mt-8 bg-clip-text border-b-2 text-transparent bg-gradient-to-r from-purple-900 to-gray-900 dark:from-yellow-100 dark:via-indigo-300 dark:to-rose-100 via-30% to-50%">
+      To rapidly build great Angular applications at any scale, without hassle.
+    </p>
+  </div>
+  <div class="mt-11 lg:mt-12 place-self-center lg:place-self-start *:rounded-full gap-3 grid *:mx-auto sm:flex">
+    <button tw-button [isFab]="true" size="lg" routerLink="docs" class="bg-indigo-700">Get
+      started
+    </button>
+    <button tw-button variant="secondary" size="lg" routerLink="components"
+      class="focus:outline-indigo-600 hover:- hover:bg-indigo-300/30 hover:dark:bg-indigo-700/30 active:- active:bg-indigo-300/60 active:dark:bg-indigo-700/60 dark:ring-indigo-900/60 ring-indigo-600/60 text-indigo-800">
+      Browse components
+    </button>
+  </div>
+</section>
+<section class="relative mt-10 lg:mt-14 p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
+  <div class="text-lg lg:text-2xl font-light">
+    Built for innovative teams, <br class="xs:hidden">
+    <br class="hidden lg:block"> <span
+      class="font-heading leading-0 font-medium opacity-90 hover:opacity-100 max-sm:text-lg max-md:text-xl text-center lg:text-start mt-8 bg-clip-text border-b-2 text-transparent bg-gradient-to-r via-50% from-pink-900 via-fuchsia-700 to-yellow-800 dark:from-purple-500 dark:via-orange-400 dark:to-rose-200">
+      Tailwind NG
+    </span>levarage <span
+      class="font-medium opacity-90 hover:opacity-100 max-sm:text-lg max-md:text-xl text-center lg:text-start mt-8 bg-clip-text border-b-2 text-transparent bg-gradient-to-r via-50% from-pink-900 via-fuchsia-700 to-yellow-800 dark:from-purple-500 dark:via-orange-400 dark:to-rose-200">
+      the power
+    </span>
+    <br class="hidden lg:block">
+    of TypeScript, Tailwind CSS and Angular
+    <br class="hidden lg:block">
+    to enable you <span
+      class="font-medium opacity-90 hover:opacity-100 max-sm:text-lg max-md:text-xl text-center lg:text-start mt-8 bg-clip-text border-b-2 text-transparent bg-gradient-to-r via-50% from-pink-900 via-fuchsia-700 to-yellow-800 dark:from-purple-500 dark:via-orange-400 dark:to-rose-200">
+      to create stunning UIs,
+    </span> effortlessly.
+  </div>
+</section>
+<section class="relative lg:mt-14 p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
+  <h3 class="text-lg lg:text-lg font-light">
+    Why <span
+      class="font-heading font-semibold opacity-90 hover:opacity-100 text-lg text-center lg:text-start sm:text-xl bg-clip-text border-b-2 text-transparent bg-gradient-to-r via-50% from-pink-900 via-fuchsia-700 to-yellow-700 dark:from-purple-500 dark:via-orange-400 dark:to-rose-200">
+      Tailwind NG
+    </span>?
+  </h3>
+  <div
+    class="dark:text-blue-200 text-gray-800 grid grid-cols-1 gap-4 sm:gap-10 my-4 lg:my-8 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:border *:border-blue-800/15 *:dark:border-blue-100/15 *:rounded-xl *:gap-3 *:grid *:place-content-start *:bg-blue-100/30 *:hover:bg-blue-50/40 *:hover:shadow-xl dark:*:bg-blue-900/30 *:px-4 *:py-3 *:shadow-sm *:dark:hover:bg-blue-800/30">
     <div>
-      <h1
-        class="opacity-95 hover:opacity-100 text-5xl text-center lg:text-start lg:mt-24 sm:text-7xl font-semibold font-heading">
-        Tailwind NG
-      </h1>
-      <p class="text-2xl text-center lg:text-start sm:text-3xl font-medium lg:font-semibold mt-8">
-        A library of high-quality UI components
-        <br class="hidden sm:block">
-        crafted with Tailwind CSS and Angular.
-      </p>
-      <p
-        class="opacity-90 hover:opacity-100 text-lg text-center lg:text-start sm:text-xl mt-8 bg-clip-text border-b-2 text-transparent bg-gradient-to-r from-purple-900 to-gray-900 dark:from-yellow-100 dark:via-indigo-300 dark:to-rose-100 via-30% to-50%">
-        To rapidly build great Angular applications at any scale, without hassle.
-      </p>
-    </div>
-    <menu tw-button-group
-      class="*:first:bg-indigo-50/40 dark:*:first:bg-indigo-50/20 mt-11 lg:mt-12 place-self-center lg:place-self-start">
-      <button tw-button variant="secondary" class="peer">Get
-        started
-      </button>
-      <button tw-button variant="text"
-        class="text-gray-800 peer-hover:hidden peer-hover:opacity-0 transition-all transition-discrete">
-        Browse components
-      </button>
-    </menu>
-  </section>
-  <section class="relative mt-10 lg:mt-14 p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
-    <div class="text-lg lg:text-2xl font-light">
-      Built for the modern web,
-      <br> <span class="font-heading leading-0 font-medium">Tailwind NG </span>levarage <span
-        class="font-medium opacity-90 hover:opacity-100 text-lg text-center lg:text-start sm:text-xl mt-8 bg-clip-text border-b-2 text-transparent bg-gradient-to-r via-50% from-pink-900 via-fuchsia-700 to-yellow-800 dark:from-purple-500 dark:via-orange-400 dark:to-rose-200">
-        the latest features
-      </span>
-      <br class="hidden lg:block">
-      of Tailwind CSS, Angular and TypeScript.
-    </div>
-  </section>
-  <section class="relative lg:mt-14 p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
-    <h3 class="text-lg lg:text-lg font-light">
-      Why <span
-        class="font-heading font-semibold opacity-90 hover:opacity-100 text-lg text-center lg:text-start sm:text-xl bg-clip-text border-b-2 text-transparent bg-gradient-to-r via-50% from-pink-900 via-fuchsia-700 to-yellow-700 dark:from-purple-500 dark:via-orange-400 dark:to-rose-200">
-        Tailwind NG
-      </span>?
-    </h3>
-    <div
-      class="dark:text-blue-200 grid grid-cols-1 gap-4 sm:gap-10 my-4 lg:my-8 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:border *:border-blue-800/15 *:dark:border-blue-100/15 *:rounded-xl *:gap-3 *:grid *:bg-blue-100/30 *:hover:bg-blue-50/40 dark:*:bg-blue-900/30 *:px-4 *:py-3 *:shadow-lg *:dark:hover:bg-blue-800/30 text-gray-800">
-      <div>
-        <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
-          <tw-icon key="sparkles" size="lg" /> Beautiful
-        </span>
-        <p>
-          Expertly-crafted UI components that look great out of the box.
-        </p>
-      </div>
-      <div>
-        <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
-          <tw-icon key="bolt" size="lg" /> Fast
-        </span>
-        <p>
-          Optimized for large-scale and enterprise applications.
-        </p>
-      </div>
-      <div>
-        <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
-          <tw-icon key="beaker" size="lg" /> Reliable
-        </span>
-        <p>
-          Thoughfully-tested to ensure consistent performance and reliability.
-        </p>
-      </div>
-      <div>
-        <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
-          <tw-icon key="accessibility" size="lg" /> Accessible
-        </span>
-        <p>
-          Out-of-the-box accessibility features compliant with
-          <a href="https://www.w3.org/TR/wai-aria/" target="_blank" rel="noopener noreferrer">W3C WAI-ARIA</a>
-          standards.
-        </p>
-      </div>
-      <div>
-        <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
-          <tw-icon key="mix-vertical" size="lg" /> Customizable
-        </span>
-        <p>
-          Fully-customizable and predictable components to fit your specific needs
-        </p>
-      </div>
-      <div>
-        <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
-          <tw-icon key="star" size="lg" /> Unique DX</span>
-        <p>
-          Top-notch developer experience with a rich set of tools for seamless integration.
-        </p>
-      </div>
-    </div>
-
-    <div
-      class="mb-8 border border-blue-800/15 dark:border-blue-100/15 rounded-xl gap-3 grid bg-blue-100/30 hover:bg-blue-50/40 dark:bg-blue-900/30 px-4 py-3 shadow-lg dark:hover:bg-blue-800/30">
       <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
-        <tw-icon key="license" size="lg" /> Free open-source</span>
+        <tw-icon key="sparkles" size="lg" /> Beautiful
+      </span>
       <p>
-        <span class="font-heading">Tailwind NG</span> is free and open-source under the MIT license.
+        Expertly-crafted UI components that look great out of the box.
       </p>
     </div>
-  </section>
-</div>
+    <div>
+      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+        <tw-icon key="bolt" size="lg" /> Fast
+      </span>
+      <p>
+        Optimized for large-scale and enterprise Angular applications.
+      </p>
+    </div>
+    <div>
+      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+        <tw-icon key="beaker" size="lg" /> Reliable
+      </span>
+      <p>
+        Well-tested to ensure consistent performance and reliability.
+      </p>
+    </div>
+    <div>
+      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+        <tw-icon key="accessibility" size="lg" /> Accessible
+      </span>
+      <p>
+        Accessibility features compliant with
+        <a href="https://www.w3.org/TR/wai-aria/" target="_blank" rel="noopener noreferrer">W3C WAI-ARIA</a>
+        standards out of the box.
+      </p>
+    </div>
+    <div>
+      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+        <tw-icon key="mix-vertical" size="lg" /> Customizable
+      </span>
+      <p>
+        Fully-customizable and predictable components to fit your specific needs
+      </p>
+    </div>
+    <div>
+      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+        <tw-icon key="star" size="lg" /> Unique DX</span>
+      <p>
+        Top-notch developer experience with fully-typed and extensible APIs for seamless integration.
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="dark:text-blue-200 text-gray-800 mb-8 border border-blue-800/15 dark:border-blue-100/15 rounded-xl gap-3 grid bg-blue-100/30 hover:bg-blue-50/40 dark:bg-blue-900/30 px-4 py-3 shadow-lg dark:hover:bg-blue-800/30">
+    <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+      <tw-icon key="license" size="lg" /> Free open-source</span>
+    <p>
+      <span class="font-heading">Tailwind NG</span> is free and open-source under the MIT license.
+    </p>
+  </div>
+</section>

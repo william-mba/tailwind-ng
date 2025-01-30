@@ -5,12 +5,11 @@ import { ThemeHelper } from '@tailwind-ng/core';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
+  template: `<router-outlet />`,
   styles: [],
 })
 export class AppComponent implements OnInit {
-  protected readonly theme = ThemeHelper;
   ngOnInit(): void {
-    this.theme.toggle();
+    ThemeHelper.toggle();
   }
 }
