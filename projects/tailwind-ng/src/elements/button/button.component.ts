@@ -1,5 +1,5 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Button, ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBase, KBKey, PopupDirective, SizeOption } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { Button, ButtonBase, ButtonVariant, KBKey, PopupWidget, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component
@@ -13,29 +13,17 @@ import { Button, ButtonBase, ButtonVariant, ComboboxBase, DialogBase, DropdownBa
   host: {
     '[attr.variant]': 'variant',
     '[tabindex]': 'isDisabled ? null : tabIndex',
+    '[attr.aria-expanded]': 'popupExpanded || null',
+    '[attr.aria-haspopup]': 'ariaHasPopup || null',
   },
   providers: [{ provide: ButtonBase, useExisting: ButtonComponent }]
 })
 export class ButtonComponent extends ButtonBase implements Button {
   @Input() isFab = false;
   @Input() tabIndex = 0;
+  @Input() popup?: PopupWidget;
   @Input() size: SizeOption = 'md';
   @Input() variant: ButtonVariant = 'primary';
-  @Input() popup?: PopupDirective;
-
-  constructor() {
-    super();
-    afterNextRender({
-      write: () => {
-        if (this.popup) {
-          this.nativeElement.ariaHasPopup =
-            this.popup instanceof DropdownBase ? 'menu' :
-              this.popup instanceof ComboboxBase ? 'listbox' :
-                this.popup instanceof DialogBase ? 'dialog' : 'true';
-        }
-      }
-    })
-  }
 
   protected override onInit(): void {
     this.config.subscribe((config) => {
@@ -100,9 +88,9 @@ export class ButtonComponent extends ButtonBase implements Button {
   protected onPointerUp(event: Event): void {
     if (this.isDisabled) {
       event.stopImmediatePropagation();
-    } else if (this.popup) {
+    } else if (this.popup && this.popup.action !== 'ignore') {
       event.stopPropagation();
-      this.popup.toggle();
+      this.popup.ref[this.popup.action]();
     }
   }
 
@@ -110,45 +98,60 @@ export class ButtonComponent extends ButtonBase implements Button {
     if (this.isDisabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
-    } else if (KBKey.isNavigation(event.key)) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    if (this.popup && this.popup instanceof DropdownBase) {
-      if (event.key === 'ArrowDown') {
-        if (!this.popup.isOpened) {
-          this.popup.open();
+    } else {
+      if (KBKey.isNavigation(event.key)) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      if (KBKey.isEnterOrSpace(event.key)) {
+        if (this.popup && this.popup.action !== 'ignore') {
+          this.popup.ref[this.popup.action]();
         }
-        const id = setTimeout(() => {
-          this.popup?.focus({ behavior: 'firstChild' });
-          clearTimeout(id);
-        }, 100);
-      } else if (event.key === 'ArrowUp') {
-        if (this.popup.isOpened) {
-          this.popup.close();
-        } else {
-          this.popup.open();
+      }
+      if (this.popup && this.popup.ref.type === 'Dropdown') {
+        if (KBKey.isArrowDown(event.key)) {
+          if (!this.popup.ref.isOpened) {
+            this.popup.ref.open();
+          }
           const id = setTimeout(() => {
-            this.popup?.focus({ behavior: 'lastChild' });
+            this.popup?.ref.focus({ behavior: 'firstChild' });
             clearTimeout(id);
-          }, 100);
+          }, 50);
+        }
+        if (KBKey.isArrowUp(event.key)) {
+          if (this.popup.ref.isOpened) {
+            this.popup.ref.close();
+          } else {
+            this.popup.ref.open();
+            const id = setTimeout(() => {
+              this.popup?.ref.focus({ behavior: 'lastChild' });
+              clearTimeout(id);
+            }, 50);
+          }
+        }
+      } else if (!this.popup || (this.popup && !this.popup.ref.isOpened)) {
+        if (KBKey.isArrowDownOrRight(event.key)) {
+          if (!this.focus({ behavior: 'nextSibling' })) {
+            this.focus({ behavior: 'firstChild', target: this.nativeElement.parentElement as HTMLElement });
+          }
+        }
+        if (KBKey.isArrowUpOrLeft(event.key)) {
+          if (!this.focus({ behavior: 'previousSibling' })) {
+            this.focus({ behavior: 'lastChild', target: this.nativeElement.parentElement as HTMLElement });
+          }
         }
       }
-    } else if (!this.popup || (this.popup && !this.popup.isOpened)) {
-      switch (event.key) {
-        case 'ArrowDown':
-        case 'ArrowRight':
-          if (!this.focus({ behavior: 'nextSibling' }) && this.nativeElement.parentElement) {
-            this.focus({ behavior: 'firstChild', target: this.nativeElement.parentElement });
-          }
-          break;
-        case 'ArrowUp':
-        case 'ArrowLeft':
-          if (!this.focus({ behavior: 'previousSibling' }) && this.nativeElement.parentElement) {
-            this.focus({ behavior: 'lastChild', target: this.nativeElement.parentElement });
-          }
-          break;
-      }
     }
+  }
+
+  protected get popupExpanded(): boolean {
+    return this.popup?.ref.isOpened || false;
+  }
+
+  protected get ariaHasPopup(): string | boolean {
+    if (!this.popup) return false;
+    return this.popup?.ref.type === 'Dropdown' ? 'menu' :
+      this.popup?.ref.type === 'Combobox' ? 'listbox' :
+        this.popup?.ref.type === 'Dialog' ? 'dialog' : true;
   }
 }
