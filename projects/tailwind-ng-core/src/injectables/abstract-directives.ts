@@ -31,7 +31,8 @@ export abstract class ButtonGroupBase extends BaseDirective implements Observabl
 
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DropdownBase) }] })
 export abstract class DropdownBase extends PopupDirective implements ObservableConfig {
-  readonly config = inject(ReactiveConfig).get('Dropdown').pipe(takeUntilDestroyed());
+  readonly type = 'Dropdown';
+  readonly config = inject(ReactiveConfig).get(this.type).pipe(takeUntilDestroyed());
 }
 
 @Directive({})
@@ -47,13 +48,14 @@ export abstract class ComboboxItemBase extends BaseDirective implements Observab
 
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => ComboboxBase) }] })
 export abstract class ComboboxBase extends PopupDirective {
+  readonly type = 'Combobox';
   readonly dropdown = contentChild.required<DropdownBase>(DropdownBase);
   protected activeElement?: HTMLElement;
 }
 
 @Directive({})
 export abstract class InputTextBase extends BaseDirective<HTMLInputElement> implements ObservableConfig {
-  readonly config = inject(ReactiveConfig).get('Input').pipe(takeUntilDestroyed());
+  readonly config = inject(ReactiveConfig).get('InputText').pipe(takeUntilDestroyed());
 }
 
 @Directive({})
@@ -69,7 +71,8 @@ export abstract class ToggleBase extends BaseDirective implements ObservableConf
 // Overlays
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) }] })
 export abstract class DialogBase extends PopupDirective<HTMLDialogElement> implements ObservableConfig {
-  readonly config = inject(ReactiveConfig).get('Dialog').pipe(takeUntilDestroyed());
+  readonly type = 'Dialog';
+  readonly config = inject(ReactiveConfig).get(this.type).pipe(takeUntilDestroyed());
 }
 
 @Directive({})
