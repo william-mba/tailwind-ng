@@ -21,7 +21,7 @@ export type ConfigTypeOf<K extends ConfigKey> =
   K extends 'ComboboxItem' ? ComboboxItemConfig :
   K extends 'Dropdown' ? DropdownConfig :
   K extends 'Icon' ? IconConfig :
-  K extends 'Input' ? InputTextConfig :
+  K extends 'InputText' ? InputTextConfig :
   K extends 'InputRadio' ? InputRadioConfig :
   K extends 'Dialog' ? DialogConfig :
   K extends 'Toggle' ? ToggleConfig :

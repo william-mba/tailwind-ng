@@ -9,7 +9,7 @@ export class ConfigStore {
   readonly Button = inject(BUTTON_CONFIG);
   readonly ButtonGroup = inject(BUTTON_GROUP_CONFIG);
   readonly Dropdown = inject(DROPDOWN_CONFIG);
-  readonly Input = inject(INPUT_TEXT_CONFIG);
+  readonly InputText = inject(INPUT_TEXT_CONFIG);
   readonly InputRadio = inject(INPUT_RADIO_CONFIG);
   readonly Icon = inject(ICON_CONFIG);
   readonly Dialog = inject(DIALOG_CONFIG);
