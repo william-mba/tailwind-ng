@@ -1,6 +1,6 @@
 import { Directive, Input, Output, EventEmitter, inject } from '@angular/core';
 import { BaseDirective } from './base.directive';
-import { Popup } from '../interfaces/popup';
+import { Popup, PopupType } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
 
 @Directive({
@@ -17,6 +17,8 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   @Output() toggled = new EventEmitter<boolean>();
   @Output() opened = new EventEmitter<void>();
   @Output() closed = new EventEmitter<void>();
+
+  abstract readonly type: PopupType;
 
   toggle(): void {
     if (this.isOpened) {
