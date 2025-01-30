@@ -49,6 +49,12 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   ngOnInit(): void {
     this.classList.init(this.class);
+    this.nativeElement.addEventListener('pointerdown', this.onEvent.bind(this), true);
+    this.nativeElement.addEventListener('keydown', this.onEvent.bind(this), true);
+    this._destroyRef.onDestroy(() => {
+      this.nativeElement.removeEventListener('pointerdown', this.onEvent.bind(this), true);
+      this.nativeElement.removeEventListener('keydown', this.onEvent.bind(this), true);
+    });
     this.onInit();
   }
 
@@ -56,6 +62,14 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
    * Init hook.
    */
   protected abstract onInit(): void;
+
+  // A disabled element should not be interactive.
+  private onEvent(event: Event): void {
+    if (this.isDisabled) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }
 
   focus({ target = this.nativeElement, behavior = 'self' }: FocusOptions = {}): HTMLElement | undefined {
     if (this.isDisabled) return;
