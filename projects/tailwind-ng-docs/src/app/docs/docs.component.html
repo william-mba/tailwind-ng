@@ -1,0 +1,262 @@
+<div class="fixed inset-0 opacity-5 animate-pulse-8">
+  <div class="fixed -inset-x-96 -inset-y-45 inset-0 hero-bg-pattern animate-pulse-8"></div>
+</div>
+
+<div>
+  <div class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
+    <!-- Top bar on larger screens -->
+    <div class="bg-white dark:bg-gray-950">
+      <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
+        <!-- Logo and release tag -->
+        <div class="flex gap-4 items-start">
+          <a class="font-heading text-2xl font-medium" aria-label="Home" href="/">
+            Tailwind NG
+          </a>
+          <div class="relative">
+            <button tw-button variant="secondary" size="xs" class="rounded-full"
+              [popup]="{ref: release, action: 'toggle'}" aria-label="Select release tag">
+              {{ releaseTag.active}}
+              <tw-icon key="chevron-down" size="xs" class="text-gray-400" />
+            </button>
+            <ul tw-dropdown #release [position]="{top: 'top-8', left: 'left-0'}"
+              class="dark:bg-gray-950 bg-white min-w-24 py-1 px-1 *:px-2 *:py-1 text-xs rounded-2xl *:rounded-xl *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
+              @for (tag of releaseTag.options; track $index) {
+              <li class="focus:font-semibold" tw-option [popup]="{ref: release, action: 'close'}"
+                (click)="updateTag(tag.label)">
+                {{ tag.label }}
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+        <!-- Options menu larger screen -->
+        <div class="flex items-center gap-6 max-md:hidden">
+          <div class="flex *:rounded-full *:ring-0 items-center gap-2">
+            <button tw-button variant="secondary" size="xs">
+              <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
+                <tw-icon key="github"
+                  class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+              </a>
+            </button>
+            <button tw-button variant="secondary" size="xs">
+              <a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
+                <tw-icon key="discord"
+                  class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+              </a>
+            </button>
+            <button (click)="switchTheme()" tw-button variant="secondary" size="xs">
+              <tw-icon key="sun" *ngIf="theme.isDark"
+                class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+              <tw-icon key="moon" *ngIf="!theme.isDark"
+                class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+            </button>
+          </div>
+        </div>
+        <!-- Options menu on small screens  -->
+        <div class="relative flex items-center gap-6 md:hidden">
+          <button tw-button variant="text" size="xs" class="rounded-xl" [popup]="{ref: optionMenu, action: 'toggle'}">
+            <tw-icon key="more-ver" class="text-gray-500" />
+          </button>
+          <ul tw-dropdown #optionMenu [position]="{top: 'top-10', right: 'right-0'}"
+            class="dark:bg-gray-950 bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-xl *:rounded-full *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
+            <a tw-option [popup]="{ref: optionMenu, action: 'close'}" href="https://github.com/william-mba/tailwind-ng"
+              target="_blank" rel="noopener noreferrer">
+              <tw-icon key="github"
+                class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+            </a>
+            <a tw-option [popup]="{ref: optionMenu, action: 'close'}" href="https://discord.gg/SXNP9pGh" target="_blank"
+              rel="noopener noreferrer">
+              <tw-icon key="discord"
+                class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+            </a>
+            <tw-icon tw-option (click)="switchTheme()" key="sun" *ngIf="theme.isDark"
+              class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+            <tw-icon tw-option (click)="switchTheme()" key="moon" *ngIf="!theme.isDark"
+              class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Secondary top bar / Left nav. trigger on small screens -->
+    <div class="bg-white dark:bg-gray-950 border-t md:hidden border-gray-950/5 dark:border-white/10">
+      <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
+        <div class="flex gap-4 items-center">
+          <tw-icon key="bars-3-center-left" class="text-gray-400" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Left navigation and main content -->
+  <div class="grid grid-cols-10 grid-rows-1 fixed inset-0 pt-13">
+    <!-- Left navigation -->
+    <div
+      class="bg-white dark:bg-gray-950 col-span-2 border-r px-4 py-8 border-gray-950/5 overflow-y-auto dark:border-white/10 relative">
+      <div class="sticky top-13">
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <tw-icon key="home" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/">Home</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="book" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/docs">Documentation</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="cog" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/config">Configuration</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="plugin" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="chip" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="code" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
+          </div>
+          <div class="flex items-center gap-4">
+            <tw-icon key="lightning" class="text-gray-400" />
+            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Main content -->
+    <div class="col-start-3 col-span-full relative">
+    </div>
+  </div>
+</div>
