@@ -1,1 +1,54 @@
-<p>getting-started works!</p>
+<div class="sm:px-12 p-10 lg:w-3/4">
+  <section>
+    <h1 class="font-heading text-3xl">Getting Started</h1>
+    <p>Follow these simple steps to getting started with <tw-icon key="tailwind-ng-logotype" />.</p>
+    <h2 class="font-heading mt-12 mb-3 text-xl">Installation</h2>
+    <p class="mb-3">Install <tw-icon key="tailwind-ng-logotype" /> using your favorite package manager</p>
+    <p class="mb-1.5">npm:</p>
+    <div class="relative">
+      @if (copyRec['npm']) {
+      <tw-icon key="clipboard-document-check" size="lg"
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+      }
+      @else {
+      <tw-icon key="clipboard-document" size="lg" (click)="copy(withNpm, 'npm')"
+        class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+      }
+      <pre
+        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(withNpm)"></code></pre>
+    </div>
+    <p class="mb-1.5">yarn:</p>
+    <div class="relative">
+      @if (copyRec['yarn']) {
+      <tw-icon key="clipboard-document-check" size="lg"
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+      }
+      @else {
+      <tw-icon key="clipboard-document" size="lg" (click)="copy(withYarn, 'yarn')"
+        class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+      }
+      <pre
+        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(withYarn)"></code></pre>
+    </div>
+    <p class="mb-1.5">pnpm:</p>
+    <div class="relative">
+      @if (copyRec['pnpm']) {
+      <tw-icon key="clipboard-document-check" size="lg"
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+      }
+      @else {
+      <tw-icon key="clipboard-document" size="lg" (click)="copy(withYarn, 'pnpm')"
+        class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+      }
+      <pre
+        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(withPnpm)"></code></pre>
+    </div>
+    <h2 class="font-heading mt-12 mb-3 text-xl">Usage</h2>
+    <p class="mb-3">Import the component you need.</p>
+    <pre
+      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(componentsImports)"></code></pre>
+    <p class="mb-3">Add it to your template.</p>
+    <pre
+      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(templateUpdate)"></code></pre>
+  </section>
+</div>

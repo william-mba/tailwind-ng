@@ -1,24 +1,23 @@
-<div class="fixed inset-0 opacity-5 animate-pulse-8">
-  <div class="fixed -inset-x-96 -inset-y-45 inset-0 hero-bg-pattern animate-pulse-8"></div>
-</div>
-
 <div>
+  <!-- Top bar -->
   <div class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
     <!-- Top bar on larger screens -->
     <div class="bg-white dark:bg-gray-950">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <!-- Logo and release tag -->
-        <div class="flex gap-4 items-start">
+        <div class="flex gap-4 items-center">
           <a class="font-heading text-2xl font-medium" aria-label="Home" href="/">
             Tailwind NG
           </a>
+          <tw-badge class="text-amber-600 bg-amber-600/10 rounded-md">Beta</tw-badge>
+          <!-- Release tags -->
+          <!--
           <div class="relative">
             <button tw-button variant="secondary" size="xs" class="rounded-full"
               [popup]="{ref: release, action: 'toggle'}" aria-label="Select release tag">
               {{ releaseTag.active}}
               <tw-icon key="chevron-down" size="xs" class="text-gray-400" />
-            </button>
-            <ul tw-dropdown #release [position]="{top: 'top-8', left: 'left-0'}"
+            </button><ul tw-dropdown #release [position]="{top: 'top-8', left: 'left-0'}"
               class="dark:bg-gray-950 bg-white min-w-24 py-1 px-1 *:px-2 *:py-1 text-xs rounded-2xl *:rounded-xl *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
               @for (tag of releaseTag.options; track $index) {
               <li class="focus:font-semibold" tw-option [popup]="{ref: release, action: 'close'}"
@@ -27,7 +26,7 @@
               </li>
               }
             </ul>
-          </div>
+        </div> -->
         </div>
         <!-- Options menu larger screen -->
         <div class="flex items-center gap-6 max-md:hidden">
@@ -44,15 +43,16 @@
                   class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
               </a>
             </button>
-            <button (click)="switchTheme()" tw-button variant="secondary" size="xs">
-              <tw-icon key="sun" *ngIf="theme.isDark"
+            <button (click)="switchTheme()" tw-button variant="secondary" size="xs" [attr.data-dark]="theme.isDark"
+              class="data-[dark=true]:*:last:hidden data-[dark=false]:*:first:hidden">
+              <tw-icon key="sun"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
-              <tw-icon key="moon" *ngIf="!theme.isDark"
+              <tw-icon key="moon"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
             </button>
           </div>
         </div>
-        <!-- Options menu on small screens  -->
+        <!-- Options menu on mobiles  -->
         <div class="relative flex items-center gap-6 md:hidden">
           <button tw-button variant="text" size="xs" class="rounded-xl" [popup]="{ref: optionMenu, action: 'toggle'}">
             <tw-icon key="more-ver" class="text-gray-500" />
@@ -77,186 +77,147 @@
         </div>
       </div>
     </div>
-    <!-- Secondary top bar / Left nav. trigger on small screens -->
+    <!-- Secondary top bar / Left nav. trigger on mobiles -->
     <div class="bg-white dark:bg-gray-950 border-t md:hidden border-gray-950/5 dark:border-white/10">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <div class="flex gap-4 items-center">
-          <tw-icon key="bars-3-center-left" class="text-gray-400" />
+          <tw-icon key="bars-3-center-left" class="text-gray-400" (click)="toggleNav()" />
         </div>
       </div>
     </div>
   </div>
   <!-- Left navigation and main content -->
-  <div class="grid grid-cols-10 grid-rows-1 fixed inset-0 pt-13">
-    <!-- Left navigation -->
-    <div
-      class="bg-white dark:bg-gray-950 col-span-2 border-r px-4 py-8 border-gray-950/5 overflow-y-auto dark:border-white/10 relative">
-      <div class="sticky top-13">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-4">
-            <tw-icon key="home" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/">Home</a>
+  <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-7 lg:grid-cols-16 grid-rows-1 fixed inset-0 pt-28 md:pt-14">
+    <!-- Left navigation on large screen -->
+    <div class="max-sm:hidden col-start-1 sm:col-end-2 md:col-end-3 lg:col-end-4 overflow-y-auto max-h-screen z-10">
+      <div [attr.data-opened]="isNavOpened"
+        class="bg-white dark:bg-gray-950 font-medium text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
+        @for (item of navItems; track $index) {
+        @switch (item.category) {
+        @case ('documentation') {
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3" [attr.data-active]="isActive(item.route)">
+            <tw-icon key="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
+            <a class="font-semibold text-gray-950 dark:text-gray-300 in-data-[active=true]:text-blue-700 in-data-[active=true]:dark:text-blue-500"
+              [routerLink]="item.route">
+              {{ item.label }}
+            </a>
           </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="book" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/docs">Documentation</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="cog" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/config">Configuration</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="plugin" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/plugins">Plugins</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="chip" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/components">Components</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="code" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/utilities">Utilities</a>
-          </div>
-          <div class="flex items-center gap-4">
-            <tw-icon key="lightning" class="text-gray-400" />
-            <a class="font-medium text-gray-600 dark:text-gray-400" href="/directives">Directives</a>
-          </div>
-
+          <ol
+            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
+            @for (child of item.children; track $index) {
+            <li [routerLink]="child.route" [attr.data-active]="isActive(child.route, item.route)"
+              class="data-[active=true]:border-blue-500 data-[active=true]:text-blue-700 data-[active=true]:dark:text-blue-400">
+              {{ child.label }}
+            </li>
+            }
+          </ol>
         </div>
-
+        }
+        @case ('getting-started') {
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3" [attr.data-active]="isActive(item.route)">
+            <tw-icon key="rocket" class="text-gray-400" />
+            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
+          </div>
+          <ol
+            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
+            @for (child of item.children; track $index) {
+            <li [routerLink]="child.route" [attr.data-active]="isActive(child.route, item.route)">{{ child.label }}</li>
+            }
+          </ol>
+        </div>
+        }
+        @case ('components') {
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3" [attr.data-active]="isActive(item.route)">
+            <tw-icon key="puzzle-piece" class="text-gray-400" />
+            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
+            <tw-badge size="xs" class="rounded-md bg-blue-100 text-blue-800 dark:bg-blue-900/90 dark:text-blue-300">
+              {{ item.children?.length || 0 }}
+            </tw-badge>
+          </div>
+          <ol
+            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
+            @for (child of item.children; track $index) {
+            <li [routerLink]="child.route" [attr.data-active]="isActive(child.route, item.route)"
+              routerLinkActive="text-blue-800">
+              {{ child.label }}</li>
+            }
+          </ol>
+        </div>
+        }
+        }
+        }
       </div>
-
+    </div>
+    <!-- Left navigation on mobile -->
+    <div
+      class="sm:hidden has-data-[opened=false]:-translate-x-full has-data-[opened=false]:sm:translate-x-0 duration-500 fixed inset-0 top-28 overflow-y-auto z-10">
+      <div [attr.data-opened]="isNavOpened"
+        class="bg-white dark:bg-gray-950 font-medium text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
+        @for (item of navItems; track $index) {
+        @switch (item.category) {
+        @case ('documentation') {
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3" [attr.data-active]="isActive(item.route)">
+            <tw-icon key="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
+            <a class="font-semibold text-gray-950 dark:text-gray-300 in-data-[active=true]:text-blue-700 in-data-[active=true]:dark:text-blue-500"
+              [routerLink]="item.route">
+              {{ item.label }}
+            </a>
+          </div>
+          <ol
+            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
+            @for (child of item.children; track $index) {
+            <li [routerLink]="child.route" [attr.data-active]="isActive(child.route, item.route)"
+              class="data-[active=true]:border-blue-500 data-[active=true]:text-blue-700 data-[active=true]:dark:text-blue-400">
+              {{ child.label }}
+            </li>
+            }
+          </ol>
+        </div>
+        }
+        @case ('getting-started') {
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3" [attr.data-active]="isActive(item.route)">
+            <tw-icon key="rocket" class="text-gray-400" />
+            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
+          </div>
+          <ol
+            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
+            @for (child of item.children; track $index) {
+            <li [routerLink]="child.route" [attr.data-active]="isActive(child.route, item.route)">{{ child.label }}</li>
+            }
+          </ol>
+        </div>
+        }
+        @case ('components') {
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3" [attr.data-active]="isActive(item.route)">
+            <tw-icon key="puzzle-piece" class="text-gray-400" />
+            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
+            <tw-badge size="xs" class="rounded-md bg-blue-100 text-blue-800 dark:bg-blue-900/90 dark:text-blue-300">
+              {{ item.children?.length || 0 }}
+            </tw-badge>
+          </div>
+          <ol
+            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
+            @for (child of item.children; track $index) {
+            <li [routerLink]="child.route" [attr.data-active]="isActive(child.route, item.route)"
+              routerLinkActive="text-blue-800">
+              {{ child.label }}</li>
+            }
+          </ol>
+        </div>
+        }
+        }
+        }
+      </div>
     </div>
     <!-- Main content -->
-    <div class="col-start-3 col-span-full relative">
+    <div class="sm:col-start-2 md:col-start-3 lg:col-start-4 col-span-full relative overflow-y-auto max-h-screen">
+      <router-outlet />
     </div>
   </div>
 </div>
