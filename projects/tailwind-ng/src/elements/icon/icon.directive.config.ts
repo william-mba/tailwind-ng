@@ -27,7 +27,7 @@ const DefaultConfig = (): FullyOptional<IconConfig> => {
       display: 'inline-flex',
       focus: {
         border: 'focus:outline',
-        outlineWidth: 'focus:outline-2',
+        outlineWidth: 'focus:outline-1',
         outlineColor: 'focus:outline-gray-500/80',
       }
     },

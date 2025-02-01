@@ -3,6 +3,7 @@ import { DROPDOWN_CONFIG, mergeConfig, DropdownConfig } from "@tailwind-ng/core"
 
 const DefaultConfig = (): DropdownConfig => {
   return {
+    display: 'hidden',
     textAlign: 'text-start',
     paddingY: 'py-1',
     zIndex: 'z-10',
@@ -10,13 +11,6 @@ const DefaultConfig = (): DropdownConfig => {
     userSelect: 'select-none',
     overflow: 'overflow-hidden',
     overscroll: 'overscroll-contain',
-    transformOrigin: 'origin-top',
-    transition: {
-      timing: 'ease-out',
-      duration: 'duration-25',
-      property: 'transition-all',
-      behavior: 'transition-discrete'
-    },
     fontSize: 'text-sm',
     position: 'absolute',
     borderWidth: 'border',
@@ -24,8 +18,8 @@ const DefaultConfig = (): DropdownConfig => {
     borderColor: 'border-gray-200',
     bgColor: 'bg-gray-50',
     boxShadow: 'shadow-lg',
-    display: 'grid',
     colorScheme: 'scheme-light',
+    cursor: 'cursor-pointer',
     dark: {
       bgColor: 'dark:bg-gray-900',
       textColor: 'dark:text-gray-100',
@@ -33,27 +27,27 @@ const DefaultConfig = (): DropdownConfig => {
       colorScheme: 'dark:scheme-dark'
     },
     open: {
-      translate: 'open:translate-y-0',
-      scale: 'open:scale-y-100',
+      display: 'open:grid',
       opacity: 'open:opacity-100',
-      visibility: 'open:visible',
-      cursor: 'open:cursor-pointer',
-      transition: {
-        duration: 'open:duration-100',
-      },
+      translate: 'open:translate-0',
+      scale: 'open:scale-100',
     },
-    notOpen: {
-      translate: 'not-open:-translate-y-1',
-      scale: 'not-open:scale-y-75',
-      opacity: 'not-open:opacity-0',
-      visibility: 'not-open:invisible'
-    },
+    opacity: 'opacity-0',
+    translate: '-translate-y-1',
     starting: {
       open: {
         opacity: 'starting:open:opacity-0',
-        scale: 'starting:open:scale-y-75'
+        scale: 'starting:open:scale-y-90',
+        translate: 'starting:open:-translate-y-3'
       }
-    }
+    },
+    transformOrigin: 'origin-top',
+    transition: {
+      timing: 'ease-out',
+      duration: 'duration-100',
+      property: 'transition-all',
+      behavior: 'transition-discrete'
+    },
   }
 };
 
