@@ -12,7 +12,6 @@ import { PopupControl } from "../interfaces";
   }
 })
 export class OptionDirective extends BaseDirective {
-  readonly type = 'Option';
   @Input() popup?: PopupControl;
 
   protected override onInit(): void {
@@ -41,6 +40,9 @@ export class OptionDirective extends BaseDirective {
       event.stopPropagation();
       if (this.popup && this.popup.action !== 'ignore') {
         this.popup.ref[this.popup.action]();
+        if (!this.isFocused) {
+          this.nativeElement.click();
+        }
       }
     }
   }
