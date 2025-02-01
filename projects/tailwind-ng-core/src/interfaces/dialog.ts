@@ -5,17 +5,12 @@ import { AdvancedPopupActions, BasicPopupActions, PopupEvents, PopupState } from
  */
 export interface Dialog extends PopupState, BasicPopupActions, AdvancedPopupActions, PopupEvents {
   /**
-   * Maximum duration (in milliseconds) of all animations defined on the dialog to complete before removing the dialog in the DOM
-   * - Default is `500` = 500ms
-   */
-  readonly animationDuration: number;
-  /**
    * Whether the dialog should close automatically after the given `displayDuration`.
    * Default is `false`.
    */
   readonly autoClose: boolean;
   /**
-   * Whether to automatically focus the dialog's primary action button after the given `animationDuration` on open.
+   * Whether to automatically focus the dialog's primary action when its open.
    * If no primary action button is found, the dialog's icon (if any), will be focused instead.
    * Default is `true`.
    */

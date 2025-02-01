@@ -2,7 +2,7 @@ import { Observable } from "rxjs";
 import { ButtonConfig, ButtonVariant } from "../config/interfaces";
 import { SizeOption } from "../types/size-options.type";
 import { BaseActions, BaseState } from "./base";
-import { PopupWidget } from "./popup";
+import { PopupControl } from "./popup";
 
 /**
  * @TailwindNG Button component interface.
@@ -13,5 +13,5 @@ export interface Button extends BaseState, BaseActions {
   tabIndex: number;
   isFab: boolean;
   variant: ButtonVariant;
-  popup?: PopupWidget;
+  popup?: PopupControl;
 }

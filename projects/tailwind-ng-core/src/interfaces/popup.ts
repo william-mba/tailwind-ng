@@ -78,9 +78,9 @@ export interface PopupEvents {
 export interface Popup<T extends HTMLElement = HTMLElement> extends PopupState<T>, BasicPopupActions, AdvancedPopupActions, PopupEvents { }
 
 /**
- * @TailwindNG Popup widget.
+ * @TailwindNG Popup control.
  */
-export interface PopupWidget {
+export interface PopupControl {
   /**
    * The popup directive reference.
    */
@@ -88,5 +88,5 @@ export interface PopupWidget {
   /**
    * The action to perform on the popup when its trigger element is clicked.
    */
-  action: 'close' | 'toggle' | 'ignore'
+  action: 'open' | 'close' | 'toggle' | 'ignore'
 };
