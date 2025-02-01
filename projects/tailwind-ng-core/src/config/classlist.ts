@@ -28,6 +28,10 @@ export interface IClassList {
    * Returns the string representation of the class list value.
    */
   toString(): string;
+  /**
+   * Clears the class list value and keeps the base class list defined before initialization.
+   */
+  clear(): IClassList;
 }
 
 export class ClassList implements IClassList {
@@ -113,5 +117,10 @@ export class ClassList implements IClassList {
 
   toString(): string {
     return this.value.join(' ');
+  }
+
+  clear(): ClassList {
+    this._value = [];
+    return this;
   }
 }
