@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 describe('IconDirective', () => {
   let component: IconDirective;
   const config = GetIconConfig({
-    source: {
+    map: {
       'language': 'fake svg',
     }
   });
@@ -22,7 +22,7 @@ describe('IconDirective', () => {
           useValue: { nativeElement: document.createElement('tw-icon') }
         },
         IconDirective,
-        provideIcon({ source: config.source })
+        provideIcon({ map: config.map })
       ]
     });
     TestBed.runInInjectionContext(() => {
@@ -57,7 +57,7 @@ describe('IconDirective', () => {
       expect(c.md).toEqual(config.md);
       expect(c.lg).toEqual(config.lg);
       expect(c.xl).toEqual(config.xl);
-      expect(c.source).toEqual(config.source);
+      expect(c.map).toEqual(config.map);
     }).unsubscribe();
   });
 

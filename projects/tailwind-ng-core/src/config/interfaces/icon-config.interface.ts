@@ -5,7 +5,7 @@ import { Variant } from "../../types/element-config.type";
 
 export interface IconConfig extends Record<SizeOption, Variant<'*', Pick<SizingLayout, 'size'>>> {
   base: ComponentConfig,
-  source: Record<IconName, string>,
+  map: Readonly<Record<IconName, string>>,
 };
 
 export type IconName =

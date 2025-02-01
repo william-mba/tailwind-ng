@@ -127,7 +127,7 @@ describe('ComboboxComponent', () => {
           useValue: { nativeElement: document.createElement('div') }
         },
         provideIcon({
-          source: {
+          map: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'
@@ -218,7 +218,7 @@ describe('ComboboxComponent', () => {
           useValue: { nativeElement: document.createElement('div') }
         },
         provideIcon({
-          source: {
+          map: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'
@@ -295,7 +295,7 @@ describe('ComboboxComponent', () => {
           useValue: { nativeElement: document.createElement('div') }
         },
         provideIcon({
-          source: {
+          map: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'
@@ -417,7 +417,7 @@ describe('ComboboxComponent', () => {
           useValue: { nativeElement: document.createElement('div') }
         },
         provideIcon({
-          source: {
+          map: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'
@@ -536,7 +536,7 @@ describe('ComboboxComponent', () => {
           useValue: { nativeElement: document.createElement('div') }
         },
         provideIcon({
-          source: {
+          map: {
             'check-thin': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'

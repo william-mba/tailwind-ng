@@ -13,8 +13,8 @@ import { IconDirective } from "../../elements";
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
       <input [attr.class]="classList" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null"/>
-      <tw-icon key="minus" size="sm" class="peer-indeterminate:block" />
-      <tw-icon key="check" size="sm" class="peer-checked:block" />
+      <tw-icon name="minus" size="sm" class="peer-indeterminate:block" />
+      <tw-icon name="check" size="sm" class="peer-checked:block" />
     </div>
     <ng-content />
     <ng-content select="span" />
