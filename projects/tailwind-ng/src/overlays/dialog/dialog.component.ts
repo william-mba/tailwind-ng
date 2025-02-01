@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Dialog, DialogBase } from '@tailwind-ng/core';
+import { Dialog, DialogBase, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -15,57 +15,37 @@ import { Dialog, DialogBase } from '@tailwind-ng/core';
   providers: [{ provide: DialogBase, useExisting: DialogComponent }]
 })
 export class DialogComponent extends DialogBase implements Dialog {
+  @Input() position?: OverlayPosition;
   @Input() displayDuration!: number;
-  @Input() animationDuration = 500;
   @Input() autoClose = false;
   @Input() autoFocus = true;
   @Input() isModal = true;
-  private clonedChild!: Element;
 
   protected override onInit(): void {
-    this.config.subscribe(config => this.classList.set({
-      s: config.scrim, b: this.isModal ? config.backdrop : {}
-    }));
-
-    if (this.isOpened) {
-      this.onOpen();
-    } else {
-      this.onClose();
+    if (this.position) {
+      this.classList.init(this.position);
     }
+    this.config.subscribe(config => {
+      this.classList.set({
+        s: config.scrim, b: this.isModal && !this.position ? config.backdrop : {}
+      });
+      if (this.position) {
+        this.classList.update('inset-');
+      }
+    });
   }
   private lastFocusedElement?: HTMLElement;
   override open() {
     if (!this.isOpened) {
       this.lastFocusedElement = this._document.activeElement as HTMLElement;
       super.open();
-      this.onOpen();
     }
   }
 
   override close() {
     if (this.isOpened) {
       super.close();
-      this.onClose();
       this.lastFocusedElement?.focus({ preventScroll: true });
     }
-  }
-
-  protected onOpen() {
-    if (this.clonedChild) {
-      this.nativeElement.appendChild(this.clonedChild);
-    }
-  }
-
-  protected onClose() {
-    if (this.nativeElement.children.length === 1) {
-      this.clonedChild = this.nativeElement.children[0];
-    }
-    // To ensure animations complete before removing the element
-    const id = setTimeout(() => {
-      if (!this.isOpened && this.clonedChild) {
-        this.nativeElement.children[0]?.remove();
-        clearTimeout(id);
-      }
-    }, this.animationDuration);
   }
 }
