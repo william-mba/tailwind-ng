@@ -1,4 +1,4 @@
-import { EventEmitter, } from "@angular/core";
+import { EventEmitter, OutputEmitterRef, } from "@angular/core";
 import { BaseActions, BaseState } from "./base";
 
 /**
@@ -64,15 +64,15 @@ export interface PopupEvents {
   /**
    * Event emitted when the component is toggled.
    */
-  readonly toggled: EventEmitter<boolean>
+  readonly toggled: OutputEmitterRef<boolean>
   /**
    * Event emitted when the component is opened.
    */
-  readonly opened: EventEmitter<void>
+  readonly opened: OutputEmitterRef<void>
   /**
    * Event emitted when the component is closed.
    */
-  readonly closed: EventEmitter<void>
+  readonly closed: OutputEmitterRef<void>
 }
 
 export interface Popup<T extends HTMLElement = HTMLElement> extends PopupState<T>, BasicPopupActions, AdvancedPopupActions, PopupEvents { }

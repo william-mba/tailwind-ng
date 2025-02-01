@@ -1,4 +1,4 @@
-import { Directive, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Directive, Input, inject, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup, PopupType } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
@@ -6,7 +6,7 @@ import { ZIndexer } from '../injectables/z-index.service';
 @Directive({
   host: {
     '[attr.id]': 'id',
-    '[attr.open]': 'isOpened ? "" : null',
+    '[attr.open]': 'isOpened || null',
     '[attr.aria-expanded]': 'isOpened',
   }
 })
@@ -14,9 +14,9 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   private readonly zIndex = inject(ZIndexer);
   @Input() isOpened = false;
   @Input() id = this.randomId('popup');
-  @Output() toggled = new EventEmitter<boolean>();
-  @Output() opened = new EventEmitter<void>();
-  @Output() closed = new EventEmitter<void>();
+  toggled = output<boolean>();
+  opened = output<void>();
+  closed = output<void>();
 
   abstract readonly type: PopupType;
 
@@ -27,7 +27,6 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
       this.open();
     }
     this.toggled.emit(!!this.isOpened);
-    this._changeDetector.markForCheck();
   }
 
   open(): void {
