@@ -1,53 +1,55 @@
 <div class="sm:px-12 p-10 lg:w-3/4">
   <section>
-    <h1 class="font-heading text-3xl">Getting Started</h1>
-    <p>Follow these simple steps to getting started with <tw-icon key="tailwind-ng-logotype" />.</p>
-    <h2 class="font-heading mt-12 mb-3 text-xl">Installation</h2>
-    <p class="mb-3">Install <tw-icon key="tailwind-ng-logotype" /> using your favorite package manager</p>
-    <p class="mb-1.5">npm:</p>
+    <h1 class="font-heading text-3xl mb-3">Getting Started</h1>
+    <p class="text-gray-700 dark:text-gray-300">Simple steps to start using
+      <span class="font-heading text-nowrap">Tailwind NG</span> in your Angular application.
+    </p>
+    <h2 class="font-heading mt-10 mb-3 text-xl">Installation</h2>
+    <p class="mb-3 text-gray-700 dark:text-gray-300">Install <span class="font-heading">Tailwind NG</span> using your
+      favorite package manager.</p>
+    <p class="mb-1.5 text-gray-700 dark:text-gray-300">npm:</p>
     <div class="relative">
       @if (copyRec['npm']) {
-      <tw-icon key="clipboard-document-check" size="lg"
+      <tw-icon name="clipboard-document-check" size="lg"
         class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       @else {
-      <tw-icon key="clipboard-document" size="lg" (click)="copy(npmCode, 'npm')"
+      <tw-icon name="clipboard-document" size="lg" (click)="copy(npmCode, 'npm')"
         class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       <pre
         class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(npmHTML)"></code></pre>
     </div>
-    <p class="mb-1.5">yarn:</p>
+    <p class="mb-1.5 text-gray-700 dark:text-gray-300">yarn:</p>
     <div class="relative">
       @if (copyRec['yarn']) {
-      <tw-icon key="clipboard-document-check" size="lg"
+      <tw-icon name="clipboard-document-check" size="lg"
         class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       @else {
-      <tw-icon key="clipboard-document" size="lg" (click)="copy(yarnCode, 'yarn')"
+      <tw-icon name="clipboard-document" size="lg" (click)="copy(yarnCode, 'yarn')"
         class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       <pre
         class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(yarnHTML)"></code></pre>
     </div>
-    <p class="mb-1.5">pnpm:</p>
+    <p class="mb-1.5 text-gray-700 dark:text-gray-300">pnpm:</p>
     <div class="relative">
       @if (copyRec['pnpm']) {
-      <tw-icon key="clipboard-document-check" size="lg"
+      <tw-icon name="clipboard-document-check" size="lg"
         class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       @else {
-      <tw-icon key="clipboard-document" size="lg" (click)="copy(pnpmCode, 'pnpm')"
+      <tw-icon name="clipboard-document" size="lg" (click)="copy(pnpmCode, 'pnpm')"
         class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       <pre
         class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(pnpmHTML)"></code></pre>
     </div>
     <h2 class="font-heading mt-12 mb-3 text-xl">Usage</h2>
-    <p class="mb-3">Import the component you need.</p>
-    <pre
-      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(componentsImportsHTML)"></code></pre>
-    <p class="mb-3">Add it to your template.</p>
+    <p class="mb-3 text-gray-700 dark:text-gray-300">Import the component you need.</p>
+    <div [innerHTML]="trust(componentsImportsHTML)"></div>
+    <p class="mb-3 text-gray-700 dark:text-gray-300">Update your component's template.</p>
     <pre
       class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(templateUpdateHTML)"></code></pre>
   </section>

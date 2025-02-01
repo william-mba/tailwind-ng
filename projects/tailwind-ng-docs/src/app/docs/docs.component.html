@@ -30,48 +30,50 @@
         </div>
         <!-- Options menu larger screen -->
         <div class="flex items-center gap-6 max-md:hidden">
-          <div class="flex *:rounded-full *:ring-0 items-center gap-2">
+          <div class="flex *:rounded-none *:ring-0 items-center gap-2">
             <button tw-button variant="secondary" size="xs">
               <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
-                <tw-icon key="github"
+                <tw-icon name="github"
                   class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
               </a>
             </button>
             <button tw-button variant="secondary" size="xs">
               <a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
-                <tw-icon key="discord"
+                <tw-icon name="discord"
                   class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
               </a>
             </button>
             <button (click)="switchTheme()" tw-button variant="secondary" size="xs" [attr.data-dark]="theme.isDark"
               class="data-[dark=true]:*:last:hidden data-[dark=false]:*:first:hidden">
-              <tw-icon key="sun"
+              <tw-icon name="sun"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
-              <tw-icon key="moon"
+              <tw-icon name="moon"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
             </button>
           </div>
         </div>
         <!-- Options menu on mobiles  -->
         <div class="relative flex items-center gap-6 md:hidden">
-          <button tw-button variant="text" size="xs" class="rounded-xl" [popup]="{ref: optionMenu, action: 'toggle'}">
-            <tw-icon key="more-ver" class="text-gray-500" />
+          <button tw-button variant="text" size="xs" class="rounded-none" [popup]="{ref: optionMenu, action: 'toggle'}">
+            <tw-icon name="more-ver" class="text-gray-500" />
           </button>
           <ul tw-dropdown #optionMenu [position]="{top: 'top-10', right: 'right-0'}"
-            class="dark:bg-gray-950 bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-xl *:rounded-full *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
-            <a tw-option [popup]="{ref: optionMenu, action: 'close'}" href="https://github.com/william-mba/tailwind-ng"
+            class="dark:bg-gray-950 bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-none *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
+            <a tw-option class="focus:outline-1 focus:outline-gray-500/80"
+              href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
+              <tw-icon name="github"
+                class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+            </a>
+            <a tw-option class="focus:outline-1 focus:outline-gray-500/80" href="https://discord.gg/SXNP9pGh"
               target="_blank" rel="noopener noreferrer">
-              <tw-icon key="github"
+              <tw-icon name="discord"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
             </a>
-            <a tw-option [popup]="{ref: optionMenu, action: 'close'}" href="https://discord.gg/SXNP9pGh" target="_blank"
-              rel="noopener noreferrer">
-              <tw-icon key="discord"
-                class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
-            </a>
-            <tw-icon tw-option (click)="switchTheme()" key="sun" *ngIf="theme.isDark"
+            <tw-icon tw-option [popup]="{ref: optionMenu, action: 'close'}" (click)="switchTheme()" name="sun"
+              *ngIf="theme.isDark"
               class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
-            <tw-icon tw-option (click)="switchTheme()" key="moon" *ngIf="!theme.isDark"
+            <tw-icon tw-option [popup]="{ref: optionMenu, action: 'close'}" (click)="switchTheme()" name="moon"
+              *ngIf="!theme.isDark"
               class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
           </ul>
         </div>
@@ -81,7 +83,7 @@
     <div class="bg-white dark:bg-gray-950 border-t md:hidden border-gray-950/5 dark:border-white/10">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <div class="flex gap-4 items-center">
-          <tw-icon key="bars-3-center-left" class="text-gray-400" (click)="toggleNav()" />
+          <tw-icon name="bars-3-center-left" class="text-gray-400" (click)="toggleNav()" />
         </div>
       </div>
     </div>
@@ -91,13 +93,13 @@
     <!-- Left navigation on large screen -->
     <div class="max-sm:hidden col-start-1 sm:col-end-2 md:col-end-3 lg:col-end-4 overflow-y-auto max-h-screen z-10">
       <div [attr.data-opened]="isNavOpened"
-        class="bg-white dark:bg-gray-950 font-medium text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
+        class="bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
         @for (item of navItems; track $index) {
         @switch (item.category) {
         @case ('documentation') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
-            <tw-icon key="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
+            <tw-icon name="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
             <a class="font-semibold text-gray-950 dark:text-gray-300 in-data-[active=true]:text-blue-700 in-data-[active=true]:dark:text-blue-500"
               [routerLink]="item.route">
               {{ item.label }}
@@ -117,7 +119,7 @@
         @case ('getting-started') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
-            <tw-icon key="rocket" class="text-gray-400" />
+            <tw-icon name="rocket" class="text-gray-400" />
             <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
           </div>
           <ol
@@ -131,7 +133,7 @@
         @case ('components') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
-            <tw-icon key="puzzle-piece" class="text-gray-400" />
+            <tw-icon name="puzzle-piece" class="text-gray-400" />
             <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
             <tw-badge size="xs" class="rounded-md bg-blue-100 text-blue-800 dark:bg-blue-900/90 dark:text-blue-300">
               {{ item.children?.length || 0 }}
@@ -154,13 +156,13 @@
     <div
       class="sm:hidden has-data-[opened=false]:-translate-x-full has-data-[opened=false]:sm:translate-x-0 duration-500 fixed inset-0 top-28 overflow-y-auto z-10">
       <div [attr.data-opened]="isNavOpened"
-        class="bg-white dark:bg-gray-950 font-medium text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
+        class="bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
         @for (item of navItems; track $index) {
         @switch (item.category) {
         @case ('documentation') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
-            <tw-icon key="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
+            <tw-icon name="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
             <a class="font-semibold text-gray-950 dark:text-gray-300 in-data-[active=true]:text-blue-700 in-data-[active=true]:dark:text-blue-500"
               [routerLink]="item.route">
               {{ item.label }}
@@ -180,7 +182,7 @@
         @case ('getting-started') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
-            <tw-icon key="rocket" class="text-gray-400" />
+            <tw-icon name="rocket" class="text-gray-400" />
             <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
           </div>
           <ol
@@ -194,7 +196,7 @@
         @case ('components') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
-            <tw-icon key="puzzle-piece" class="text-gray-400" />
+            <tw-icon name="puzzle-piece" class="text-gray-400" />
             <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
             <tw-badge size="xs" class="rounded-md bg-blue-100 text-blue-800 dark:bg-blue-900/90 dark:text-blue-300">
               {{ item.children?.length || 0 }}

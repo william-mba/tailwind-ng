@@ -104,10 +104,10 @@
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <div tw-button-group>
     <button tw-button size="sm" variant="secondary">
-      <tw-icon size="sm" key="chevron-left" class="text-gray-500" />
+      <tw-icon size="sm" name="chevron-left" class="text-gray-500" />
     </button>
     <button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
-      <tw-icon size="sm" key="chevron-right" class="text-gray-500" />
+      <tw-icon size="sm" name="chevron-right" class="text-gray-500" />
     </button>
   </div>
 </div>
@@ -117,55 +117,55 @@
 <!-- Secondary -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <button type="button" tw-button size="xs" fab="true" variant="secondary" class="p-1.5">
-    <tw-icon size="xs" key="language" />
+    <tw-icon size="xs" name="language" />
   </button>
   <button type="button" tw-button size="sm" fab="true" variant="secondary" class="p-2">
-    <tw-icon size="sm" key="language" />
+    <tw-icon size="sm" name="language" />
   </button>
   <button type="button" tw-button size="md" fab="true" variant="secondary" class="p-2.5">
-    <tw-icon size="md" key="language" />
+    <tw-icon size="md" name="language" />
   </button>
   <button type="button" tw-button size="lg" fab="true" variant="secondary" class="p-3">
-    <tw-icon size="lg" key="language" />
+    <tw-icon size="lg" name="language" />
   </button>
   <button type="button" tw-button size="xl" fab="true" variant="secondary" class="p-3.5">
-    <tw-icon size="xl" key="language" />
+    <tw-icon size="xl" name="language" />
   </button>
 </div>
 <!-- Tonal -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <button type="button" tw-button size="xs" fab="true" variant="tonal" class="p-1.5">
-    <tw-icon size="xs" key="language" />
+    <tw-icon size="xs" name="language" />
   </button>
   <button type="button" tw-button size="sm" fab="true" variant="tonal" class="p-2">
-    <tw-icon size="sm" key="language" />
+    <tw-icon size="sm" name="language" />
   </button>
   <button type="button" tw-button size="md" fab="true" variant="tonal" class="p-2.5">
-    <tw-icon size="md" key="language" />
+    <tw-icon size="md" name="language" />
   </button>
   <button type="button" tw-button size="lg" fab="true" variant="tonal" class="p-3">
-    <tw-icon size="lg" key="language" />
+    <tw-icon size="lg" name="language" />
   </button>
   <button type="button" tw-button size="xl" fab="true" variant="tonal" class="p-3.5">
-    <tw-icon size="xl" key="language" />
+    <tw-icon size="xl" name="language" />
   </button>
 </div>
 <!-- Primary -->
 <div class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8">
   <button type="button" tw-button size="xs" fab="true" class="p-1.5">
-    <tw-icon size="xs" key="language" />
+    <tw-icon size="xs" name="language" />
   </button>
   <button type="button" tw-button size="sm" fab="true" class="p-2">
-    <tw-icon size="sm" key="language" />
+    <tw-icon size="sm" name="language" />
   </button>
   <button type="button" tw-button size="md" fab="true" class="p-2.5">
-    <tw-icon size="md" key="language" />
+    <tw-icon size="md" name="language" />
   </button>
   <button type="button" tw-button size="lg" fab="true" class="p-3">
-    <tw-icon size="lg" key="language" />
+    <tw-icon size="lg" name="language" />
   </button>
   <button type="button" tw-button size="xl" fab="true" class="p-3.5">
-    <tw-icon size="xl" key="language" />
+    <tw-icon size="xl" name="language" />
   </button>
 </div>
 <!-- Icon Buttons end -->
@@ -174,7 +174,7 @@
 <div class="grid place-items-center justify-end sm:flex sm:flex-wrap gap-8 gap-x-36 p-8 mb-96 max-w-6xl mx-auto">
   <div>
     <button tw-button size="sm" variant="secondary" [popup]="{ref: dropdown, action: 'toggle'}">
-      Options <tw-icon key="chevron-down" class="text-gray-500" />
+      Options <tw-icon name="chevron-down" class="text-gray-500" />
     </button>
     <div class="relative">
       <ul tw-dropdown #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2">
@@ -188,7 +188,7 @@
 
   <div>
     <button tw-button size="sm" variant="secondary" [popup]="{ref: dropdown2, action: 'toggle'}">
-      Options <tw-icon key="chevron-down" class="text-gray-500" />
+      Options <tw-icon name="chevron-down" class="text-gray-500" />
     </button>
     <div class="relative">
       <tw-dropdown #dropdown2 (click)="dropdown2.close()"
@@ -214,44 +214,44 @@
 
   <div>
     <button tw-button size="sm" variant="secondary" [popup]="{ref: dropdown3, action: 'toggle'}">
-      Options <tw-icon key="chevron-down" class="text-gray-500" />
+      Options <tw-icon name="chevron-down" class="text-gray-500" />
     </button>
     <div class="relative">
       <tw-dropdown #dropdown3 (click)="dropdown3.close()"
         class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50">
         <ul tw-option class="*:px-3 *:py-2">
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
-            <tw-icon size="sm" class="opacity-50" key="pencil-square" />
+            <tw-icon size="sm" class="opacity-50" name="pencil-square" />
             Edit
           </li>
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
-            <tw-icon size="sm" class="opacity-50" key="document-duplicate" />
+            <tw-icon size="sm" class="opacity-50" name="document-duplicate" />
             Duplicate
           </li>
         </ul>
         <ul tw-option class="*:px-3 *:py-2">
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
-            <tw-icon size="sm" class="opacity-50" key="archive-box" />
+            <tw-icon size="sm" class="opacity-50" name="archive-box" />
             Archive
           </li>
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
-            <tw-icon size="sm" class="opacity-50" key="arrow-right-circle" />
+            <tw-icon size="sm" class="opacity-50" name="arrow-right-circle" />
             Move
           </li>
         </ul>
         <ul tw-option class="*:px-3 *:py-2">
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
-            <tw-icon size="sm" class="opacity-50" key="share" />
+            <tw-icon size="sm" class="opacity-50" name="share" />
             Share
           </li>
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
-            <tw-icon size="sm" class="opacity-50" key="star" />
+            <tw-icon size="sm" class="opacity-50" name="star" />
             Add to favorites
           </li>
         </ul>
         <ul tw-option class="*:px-3 *:py-2">
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
-            <tw-icon size="sm" class="opacity-50" key="strash" />
+            <tw-icon size="sm" class="opacity-50" name="strash" />
             Delete
           </li>
         </ul>
@@ -319,11 +319,11 @@
 <div class="grid place-items-center p-8">
   <tw-toggle>
     <span class="absolute left-0 w-1/2 inline-flex justify-center text-gray-500">
-      <tw-icon size="xs" key="close"
+      <tw-icon size="xs" name="close"
         class="in-data-checked:opacity-0 in-data-checked:duration-0 not-in-data-checked:duration-300 transition-opacity" />
     </span>
     <span class="absolute right-0 w-1/2 inline-flex justify-center in-data-checked:text-blue-700">
-      <tw-icon size="xs" key="check-2"
+      <tw-icon size="xs" name="check-2"
         class="not-in-data-checked:opacity-0 not-in-data-checked:duration-0 in-data-checked:duration-300 transition-opacity" />
     </span>
   </tw-toggle>
@@ -356,11 +356,11 @@
 <div class="grid place-items-center p-8">
   <tw-toggle class="rounded-md before:rounded-sm">
     <span class="absolute left-0 w-1/2 inline-flex justify-center text-gray-500">
-      <tw-icon size="xs" key="close"
+      <tw-icon size="xs" name="close"
         class="in-data-checked:opacity-0 in-data-checked:duration-0 not-in-data-checked:duration-300 transition-opacity" />
     </span>
     <span class="absolute right-0 w-1/2 inline-flex justify-center in-data-checked:text-blue-700">
-      <tw-icon size="xs" key="check-2"
+      <tw-icon size="xs" name="check-2"
         class="not-in-data-checked:opacity-0 not-in-data-checked:duration-0 in-data-checked:duration-300 transition-opacity" />
     </span>
   </tw-toggle>
@@ -397,7 +397,7 @@
       <input tw-input type="email" name="email" id="email" [formControl]="email" class="sm:w-80 pr-10"
         placeholder="you@example.com" />
       <div class="absolute inset-y-0 right-3 flex items-center text-red-600/80">
-        <tw-icon *ngIf="isInvalid(email)" key="exclamation-circle" source="heroicons" />
+        <tw-icon *ngIf="isInvalid(email)" name="exclamation-circle" source="heroicons" />
       </div>
     </div>
     <div *ngIf="isInvalid(email)" class="max-w-xl text-sm mt-2 text-red-600/90 dark:text-red-500/90">
@@ -575,14 +575,14 @@
     <!-- Button -->
     <button tw-button variant="text" size="sm" [popup]="{ref:cbb1, action: 'toggle'}"
       class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="cbb1.isOpened && cbb1.isValid" (click)="cbb1.reset()" size="sm" key="x-mark" />
-      <tw-icon key="chevron-up-down" />
+      <tw-icon *ngIf="cbb1.isOpened && cbb1.isValid" (click)="cbb1.reset()" size="sm" name="x-mark" />
+      <tw-icon name="chevron-up-down" />
     </button>
     <!-- Dropdown -->
     <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
       @for (user of users1; track user.name) {
       <div tw-combobox-item #item [value]="user.name">
-        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check" />
+        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
         <span>{{ user.name }}</span>
       </div>
       }
@@ -598,14 +598,14 @@
     <!-- Button -->
     <button tw-button variant="text" size="sm" [popup]="{ref:cbb2, action: 'toggle'}"
       class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="cbb2.isOpened && cbb2.isValid" (click)="cbb2.reset()" size="sm" key="x-mark" />
-      <tw-icon key="chevron-up-down" />
+      <tw-icon *ngIf="cbb2.isOpened && cbb2.isValid" (click)="cbb2.reset()" size="sm" name="x-mark" />
+      <tw-icon name="chevron-up-down" />
     </button>
     <!-- Dropdown -->
     <div tw-dropdown (closed)="reset(2)" class="w-full overflow-y-auto max-h-56 focus:border-4">
       @for (user of users2; track user.name) {
       <div tw-combobox-item #item [value]="user.name" class="focus-visible:bg-blue-600">
-        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check" />
+        <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
         <span>{{ user.name }}</span>
       </div>
       }
@@ -785,7 +785,7 @@
     <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start">
-        <tw-icon key="exclamation-triangle"
+        <tw-icon name="exclamation-triangle"
           class="text-red-600 bg-red-100 dark:bg-opacity-50 dark:bg-red-900/50 rounded-full p-3 mx-auto" />
         <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
           <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
@@ -911,7 +911,7 @@
     <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
-        <tw-icon key="check" class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto" />
+        <tw-icon name="check" class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto" />
         <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
           <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
             Payment successful
@@ -935,7 +935,7 @@
     <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center">
-        <tw-icon key="check" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
+        <tw-icon name="check" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
         <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
           <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
             Payment successful
@@ -956,7 +956,7 @@
     <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start">
-        <tw-icon key="exclamation-triangle" class="text-red-600 bg-red-400/10 rounded-full p-3 mx-auto" />
+        <tw-icon name="exclamation-triangle" class="text-red-600 bg-red-400/10 rounded-full p-3 mx-auto" />
         <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
           <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
             Deactivate account
@@ -1010,7 +1010,7 @@
         </p>
       </div>
       <!-- Dialog actions -->
-      <tw-icon (click)="bottomLeftDialog.close()" source="heroicons" key="x-mark"
+      <tw-icon (click)="bottomLeftDialog.close()" source="heroicons" name="x-mark"
         class="absolute top-5 right-5 cursor-pointer" />
     </div>
   </div>
@@ -1030,7 +1030,7 @@
         </p>
       </div>
       <!-- Dialog actions -->
-      <tw-icon (click)="bottomRightDialog.close()" source="heroicons" key="x-mark"
+      <tw-icon (click)="bottomRightDialog.close()" source="heroicons" name="x-mark"
         class="absolute top-5 right-5 cursor-pointer" />
     </div>
   </div>
