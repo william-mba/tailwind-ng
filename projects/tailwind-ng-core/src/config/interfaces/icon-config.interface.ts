@@ -5,10 +5,10 @@ import { Variant } from "../../types/element-config.type";
 
 export interface IconConfig extends Record<SizeOption, Variant<'*', Pick<SizingLayout, 'size'>>> {
   base: ComponentConfig,
-  source: Record<IconKey, string>,
+  source: Record<IconName, string>,
 };
 
-export type IconKey =
+export type IconName =
   | string & {}
   | 'minus'
   | 'check'
