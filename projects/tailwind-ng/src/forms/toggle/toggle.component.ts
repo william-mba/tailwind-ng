@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, output, ViewEncapsulation } from '@angular/core';
 import { Toggle, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
@@ -16,20 +16,12 @@ import { Toggle, ToggleBase } from '@tailwind-ng/core';
   providers: [{ provide: ToggleBase, useExisting: ToggleComponent }]
 })
 export class ToggleComponent extends ToggleBase implements Toggle {
-  private readonly destroyRef = inject(DestroyRef);
   @Input() isChecked = false;
   @Input() tabIndex = 0;
   checked = output<boolean>();
 
   protected override onInit(): void {
     this.config.subscribe(config => this.classList.set(config));
-    this.nativeElement.addEventListener('click', this.toggle.bind(this), { passive: true, capture: true });
-    this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), true);
-
-    this.destroyRef.onDestroy(() => {
-      this.nativeElement.removeEventListener('click', this.toggle.bind(this), true);
-      this.nativeElement.removeEventListener('keydown', this.onKeydown.bind(this), true);
-    });
   }
 
   private onKeydown(event: KeyboardEvent): void {
@@ -43,5 +35,17 @@ export class ToggleComponent extends ToggleBase implements Toggle {
     this.focus();
     this.isChecked = !this.isChecked;
     this.checked.emit(this.isChecked);
+  }
+
+  protected override addEventListeners(): void {
+    super.addEventListeners();
+    this.nativeElement.addEventListener('click', this.toggle.bind(this), { passive: true, capture: true });
+    this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), true);
+  }
+
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
+    this.nativeElement.removeEventListener('click', this.toggle.bind(this), true);
+    this.nativeElement.removeEventListener('keydown', this.onKeydown.bind(this), true);
   }
 }

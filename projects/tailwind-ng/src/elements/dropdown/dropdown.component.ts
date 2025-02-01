@@ -16,25 +16,17 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   protected override onInit(): void {
     this.classList.init(this.position);
     this.config.subscribe(config => this.classList.set(config));
-
-    if (!this.isDisabled) {
-      this.initEventListeners();
-    } else {
-      this.removeEventListeners();
-    }
-
-    this._destroyRef.onDestroy(() => {
-      this.removeEventListeners();
-    });
   }
 
-  protected initEventListeners(): void {
+  protected override addEventListeners(): void {
+    super.addEventListeners();
     this.nativeElement.addEventListener('pointerover', this.onPointerEvent.bind(this), false);
     this.nativeElement.addEventListener('pointerleave', this.onPointerEvent.bind(this), false);
     this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
   }
 
-  protected removeEventListeners(): void {
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
     this.nativeElement.removeEventListener('pointerover', this.onPointerEvent.bind(this), false);
     this.nativeElement.removeEventListener('pointerleave', this.onPointerEvent.bind(this), false);
     this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
@@ -62,11 +54,11 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
     if (this.isDisabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
-      return;
-    }
-    if (event.key === 'Escape' || event.key === 'Esc') {
-      event.stopImmediatePropagation();
-      this.close();
+    } else {
+      if (event.key === 'Escape' || event.key === 'Esc') {
+        event.stopImmediatePropagation();
+        this.close();
+      }
     }
   }
 }

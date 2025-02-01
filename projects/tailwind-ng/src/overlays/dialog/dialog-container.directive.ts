@@ -28,16 +28,12 @@ export class DialogContainerDirective extends BaseDirective {
       this.classList.set(config.container);
     });
     this.dialog.opened.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
-      this.initEventListeners();
       if (this.dialog.autoFocus) {
         this.focusPrimaryActionOrDefault();
       }
       if (this.dialog.autoClose) {
         this.dialog.closeAfter(this.dialog.displayDuration);
       }
-    });
-    this.dialog.closed.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
-      this.removeEventListeners();
     });
 
     if (this.dialog.autoClose && this.dialog.isOpened) {
@@ -61,7 +57,7 @@ export class DialogContainerDirective extends BaseDirective {
   }
 
   private focusPrimaryActionOrDefault() {
-    timer(this.dialog.animationDuration).pipe(take(1)).subscribe(() => {
+    timer(this.dialog.displayDuration / 6).pipe(take(1)).subscribe(() => {
       const action = this.nativeElement.querySelector('button[variant=primary]') as HTMLElement;
       if (action) {
         action.focus();
@@ -89,13 +85,15 @@ export class DialogContainerDirective extends BaseDirective {
     }
   }
 
-  protected initEventListeners(): void {
+  protected override addEventListeners(): void {
+    super.addEventListeners();
     this.nativeElement.addEventListener('pointerover', this.onPointerEvent.bind(this), true);
     this.nativeElement.addEventListener('pointerleave', this.onPointerEvent.bind(this), true);
     this.nativeElement.addEventListener('keyup', this.onKeyboardEvent.bind(this), false);
   }
 
-  protected removeEventListeners(): void {
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
     this.nativeElement.removeEventListener('pointerover', this.onPointerEvent.bind(this), true);
     this.nativeElement.removeEventListener('pointerleave', this.onPointerEvent.bind(this), true);
     this.nativeElement.removeEventListener('keyup', this.onKeyboardEvent.bind(this), false);

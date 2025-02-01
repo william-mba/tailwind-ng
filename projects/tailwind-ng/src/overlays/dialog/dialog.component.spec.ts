@@ -241,49 +241,6 @@ describe('DialogComponent', () => {
     expect(dialog.isOpened).toBeFalse();
   }));
 
-  it('should set animation duration', () => {
-    @Component({
-      selector: 'tw-app-test',
-      imports: [
-        DialogModule
-      ],
-      template: `
-        <div tw-dialog #dialog class="place-self-start self-end" (click)="dialog.close()">
-          <!-- Dialog container -->
-          <div tw-dialog-container>
-            <!-- Dialog content -->
-            <div class="grid gap-3 text-center sm:text-left">
-              <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
-                Payment successful
-              </h1>
-              <p class="text-sm text-slate-600 dark:text-slate-400">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </p>
-            </div>
-          </div>
-        </div>
-        `,
-    }) class TestComponent {
-      dialog = viewChild.required(DialogComponent);
-
-      showDialog() {
-        this.dialog().open();
-      }
-
-      closeDialog() {
-        this.dialog().close();
-      }
-    }
-
-    const testFixture = TestBed.createComponent(TestComponent);
-    const testComponent = testFixture.componentInstance;
-    const dialog = testComponent.dialog();
-    dialog.animationDuration = 500;
-    testFixture.detectChanges();
-    expect(dialog.animationDuration).toBe(500);
-  });
-
   it('should get config', () => {
     @Component({
       selector: 'tw-tw-app-test',

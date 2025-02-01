@@ -53,14 +53,6 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
         this.reset();
       }
     });
-
-    this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
-    this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
-
-    this._destroyRef.onDestroy(() => {
-      this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
-      this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
-    });
   }
   override open(): void {
     super.open();
@@ -202,5 +194,17 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     } else {
       this.control.setValue(values[0], { emitEvent: false });
     }
+  }
+
+  protected override addEventListeners(): void {
+    super.addEventListeners();
+    this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
+    this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
+  }
+
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
+    this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
+    this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
   }
 }

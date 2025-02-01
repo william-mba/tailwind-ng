@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Button, ButtonBase, ButtonVariant, KBKey, PopupWidget, SizeOption } from '@tailwind-ng/core';
+import { Button, ButtonBase, ButtonVariant, KBKey, PopupControl, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component
@@ -21,7 +21,7 @@ import { Button, ButtonBase, ButtonVariant, KBKey, PopupWidget, SizeOption } fro
 export class ButtonComponent extends ButtonBase implements Button {
   @Input() isFab = false;
   @Input() tabIndex = 0;
-  @Input() popup?: PopupWidget;
+  @Input() popup?: PopupControl;
   @Input() size: SizeOption = 'md';
   @Input() variant: ButtonVariant = 'primary';
 
@@ -71,18 +71,21 @@ export class ButtonComponent extends ButtonBase implements Button {
         ...this.isFab ? config.fab : {}
       });
     });
+  }
 
+  protected override addEventListeners(): void {
+    super.addEventListeners();
     if (this.popup) {
       this.nativeElement.addEventListener('pointerup', this.onPointerUp.bind(this), false);
     }
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
-
-    this.destroyRef.onDestroy(() => {
-      if (this.popup) {
-        this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false);
-      }
-      this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
-    });
+  }
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
+    if (this.popup) {
+      this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false);
+    }
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
   }
 
   protected onPointerUp(event: Event): void {

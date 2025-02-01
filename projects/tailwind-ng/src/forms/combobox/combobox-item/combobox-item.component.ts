@@ -28,9 +28,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   }
 
   protected override onInit(): void {
-    this.config.subscribe(config => {
-      this.classList.set(config);
-    });
+    this.config.subscribe(config => this.classList.set(config));
 
     // Select the item if it is the default value.
     if (this.isValueEqualsInputValue) {
@@ -56,12 +54,6 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     this.combobox.opened.subscribe(() => {
       if (this.isSelected) this.scrollIntoView();
     });
-
-    this.nativeElement.addEventListener('click', this.select.bind(this), { passive: true, capture: true });
-
-    this._destroyRef.onDestroy(() => {
-      this.nativeElement.removeEventListener('click', this.select.bind(this), true);
-    });
   }
 
   private select(): void {
@@ -70,5 +62,15 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
 
   scrollIntoView(): void {
     this.nativeElement.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest' });
+  }
+
+  protected override addEventListeners(): void {
+    super.addEventListeners();
+    this.nativeElement.addEventListener('click', this.select.bind(this), { passive: true, capture: true });
+  }
+
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
+    this.nativeElement.removeEventListener('click', this.select.bind(this), true);
   }
 }
