@@ -1,12 +1,16 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, inject, Input } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SizeOption, IconBase, IconKey, Icon } from '@tailwind-ng/core';
 
 @Directive({
   selector: 'tw-icon, [tw-icon], [twIcon]',
   exportAs: 'twIcon',
+  host: { '[innerHTML]': 'source' },
   providers: [{ provide: IconBase, useExisting: IconDirective }]
 })
 export class IconDirective extends IconBase implements Icon {
+  private readonly _sanitizer = inject(DomSanitizer);
+  protected source?: SafeHtml;
   @Input({ required: true }) key!: IconKey;
   @Input() size: SizeOption = 'md';
 
@@ -17,7 +21,7 @@ export class IconDirective extends IconBase implements Icon {
       if (!config.source[this.key]) {
         console.error(`Icon with key "${this.key}" is undefined. Please set it using the config provider.`);
       } else {
-        this.nativeElement.insertAdjacentHTML('afterbegin', config.source[this.key]);
+        this.source = this._sanitizer.bypassSecurityTrustHtml(config.source[this.key]);
       }
     });
   }
