@@ -1,4 +1,4 @@
-import { DestroyRef, Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
+import { ChangeDetectorRef, DestroyRef, Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
 import { BaseState, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config";
@@ -8,7 +8,7 @@ import { ClassList } from "../config";
  */
 @Directive({
   host: {
-    '[attr.class]': 'classList',
+    '[class]': 'classList.value',
     '[attr.inert]': 'isDisabled || null',
     '[attr.disabled]': 'isDisabled || null',
     '[attr.aria-disabled]': 'isDisabled || null',
@@ -16,9 +16,11 @@ import { ClassList } from "../config";
 })
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseState<T>, BaseActions, OnInit {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
+  protected readonly _changeDetector = inject(ChangeDetectorRef);
   protected readonly _document = inject(DOCUMENT);
   protected readonly _injector = inject(Injector);
   protected readonly _destroyRef = inject(DestroyRef);
+  protected isInitialized = false;
 
   readonly classList = new ClassList();
   @Input() class?: string;
@@ -33,7 +35,10 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     const newState = (value === '') || value;
     if (this._isDisabled !== newState) {
       this._isDisabled = newState;
-      this.onInit();
+      if (this.isInitialized) {
+        this.onInit();
+        this._changeDetector.markForCheck();
+      }
     }
   }
 
@@ -49,17 +54,16 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   ngOnInit(): void {
     this.classList.init(this.class);
-    this.nativeElement.addEventListener('pointerdown', this.onEvent.bind(this), true);
-    this.nativeElement.addEventListener('keydown', this.onEvent.bind(this), true);
-    this._destroyRef.onDestroy(() => {
-      this.nativeElement.removeEventListener('pointerdown', this.onEvent.bind(this), true);
-      this.nativeElement.removeEventListener('keydown', this.onEvent.bind(this), true);
-    });
     this.onInit();
+    this.addEventListeners();
+    this._destroyRef.onDestroy(() => {
+      this.removeEventListeners();
+    });
+    this.isInitialized = true;
   }
 
   /**
-   * Init hook.
+   * Component's specific init hook.
    */
   protected abstract onInit(): void;
 
@@ -69,6 +73,29 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
       event.preventDefault();
       event.stopImmediatePropagation();
     }
+  }
+
+  /**
+   * Adds event listeners to the component.
+   *
+   * This method is called during the component's initialization.
+   * Override this method to add additional event listeners.
+   * Those listeners will be removed when the component is destroyed.
+   */
+  protected addEventListeners() {
+    this.nativeElement.addEventListener('pointerdown', this.onEvent.bind(this), true);
+    this.nativeElement.addEventListener('keydown', this.onEvent.bind(this), true);
+  }
+
+  /**
+   * Removes event listeners from the component.
+   *
+   * This method is called when the component is destroyed.
+   * Override this method to remove additional event listeners.
+   */
+  protected removeEventListeners() {
+    this.nativeElement.removeEventListener('pointerdown', this.onEvent.bind(this), true);
+    this.nativeElement.removeEventListener('keydown', this.onEvent.bind(this), true);
   }
 
   focus({ target = this.nativeElement, behavior = 'self' }: FocusOptions = {}): HTMLElement | undefined {

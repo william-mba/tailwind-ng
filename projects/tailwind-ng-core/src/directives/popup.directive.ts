@@ -27,6 +27,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
       this.open();
     }
     this.toggled.emit(!!this.isOpened);
+    this._changeDetector.markForCheck();
   }
 
   open(): void {
@@ -34,6 +35,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
       this.isOpened = true;
       this.nativeElement.style.zIndex = `${this.zIndex.next}`;
       this.opened.emit();
+      this._changeDetector.markForCheck();
     }
   }
 
@@ -41,6 +43,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
     if (this.isOpened) {
       this.isOpened = false;
       this.closed.emit();
+      this._changeDetector.markForCheck();
     }
   }
 
