@@ -48,15 +48,6 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
 
   protected override onInit(): void {
     this.config.subscribe(config => this.classList.set(config));
-
-    this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
-    this.nativeElement.addEventListener('mouseup', this.onMouseup.bind(this), false);
-
-    this._destroyRef.onDestroy(() => {
-      this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
-      this.nativeElement.removeEventListener('mouseup', this.onMouseup.bind(this), false);
-    });
-
     if (this.parent) {
       if (!this.parent.children) {
         this.parent.children = [];
@@ -134,5 +125,17 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
         this.focus({ behavior: 'firstChild', target: this.nativeElement.previousElementSibling as HTMLElement });
       }
     }
+  }
+
+  protected override addEventListeners(): void {
+    super.addEventListeners();
+    this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
+    this.nativeElement.addEventListener('mouseup', this.onMouseup.bind(this), false);
+  }
+
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
+    this.nativeElement.removeEventListener('mouseup', this.onMouseup.bind(this), false);
   }
 }
