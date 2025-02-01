@@ -8,9 +8,9 @@ export function isEnterKey(key: string): key is EnterKey {
   return key === 'Enter';
 }
 
-type EscapeKey = 'Escape';
+type EscapeKey = 'Escape' | 'Esc';
 export function isEscapeKey(key: string): key is EscapeKey {
-  return key === 'Escape';
+  return key === 'Escape' || key === 'Esc';
 }
 
 type EnterOrSpaceKey = EnterKey | SpaceKey;
