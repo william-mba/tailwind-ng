@@ -2,7 +2,6 @@ import { afterNextRender, Directive, inject } from "@angular/core";
 import { BaseDirective, KBKey } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
-import { take, timer } from "rxjs";
 
 @Directive({
   selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',
@@ -27,7 +26,7 @@ export class DialogContainerDirective extends BaseDirective {
     this.dialog.config.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(config => {
       this.classList.set(config.container);
     });
-    this.dialog.opened.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
+    this.dialog.opened.subscribe(() => {
       if (this.dialog.autoFocus) {
         this.focusPrimaryActionOrDefault();
       }
@@ -57,14 +56,15 @@ export class DialogContainerDirective extends BaseDirective {
   }
 
   private focusPrimaryActionOrDefault() {
-    timer(this.dialog.displayDuration / 6).pipe(take(1)).subscribe(() => {
+    const id = setTimeout(() => {
       const action = this.nativeElement.querySelector('button[variant=primary]') as HTMLElement;
       if (action) {
         action.focus();
       } else {
         this.focus();
       }
-    });
+      clearTimeout(id);
+    }, 50);
   }
 
   protected onPointerEvent(event: UIEvent) {
