@@ -11,11 +11,11 @@
         class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       @else {
-      <tw-icon key="clipboard-document" size="lg" (click)="copy(withNpm, 'npm')"
+      <tw-icon key="clipboard-document" size="lg" (click)="copy(npmCode, 'npm')"
         class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       <pre
-        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(withNpm)"></code></pre>
+        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(npmHTML)"></code></pre>
     </div>
     <p class="mb-1.5">yarn:</p>
     <div class="relative">
@@ -24,11 +24,11 @@
         class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       @else {
-      <tw-icon key="clipboard-document" size="lg" (click)="copy(withYarn, 'yarn')"
+      <tw-icon key="clipboard-document" size="lg" (click)="copy(yarnCode, 'yarn')"
         class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       <pre
-        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(withYarn)"></code></pre>
+        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(yarnHTML)"></code></pre>
     </div>
     <p class="mb-1.5">pnpm:</p>
     <div class="relative">
@@ -37,18 +37,18 @@
         class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       @else {
-      <tw-icon key="clipboard-document" size="lg" (click)="copy(withYarn, 'pnpm')"
+      <tw-icon key="clipboard-document" size="lg" (click)="copy(pnpmCode, 'pnpm')"
         class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
       }
       <pre
-        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(withPnpm)"></code></pre>
+        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(pnpmHTML)"></code></pre>
     </div>
     <h2 class="font-heading mt-12 mb-3 text-xl">Usage</h2>
     <p class="mb-3">Import the component you need.</p>
     <pre
-      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(componentsImports)"></code></pre>
+      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(componentsImportsHTML)"></code></pre>
     <p class="mb-3">Add it to your template.</p>
     <pre
-      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(templateUpdate)"></code></pre>
+      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(templateUpdateHTML)"></code></pre>
   </section>
 </div>
