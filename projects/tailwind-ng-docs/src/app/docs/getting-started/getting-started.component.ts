@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { DialogModule, IconDirective } from 'tailwind-ng';
 import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
@@ -10,7 +10,7 @@ import { timer } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GettingStartedComponent implements AfterViewInit {
+export class GettingStartedComponent {
   private readonly sanitizer = inject(DomSanitizer);
 
   npmCode = `npm install tailwind-ng`;
@@ -30,10 +30,10 @@ export class GettingStartedComponent implements AfterViewInit {
   templateUpdateHTML = `<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">&lt;!-- my-awesome.component.html --&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">tw-button</span><span style="color:#E6EDF3">&gt;Click me!&lt;/</span><span style="color:#7EE787">tw-button</span><span style="color:#E6EDF3">&gt;</span></span></code></pre>`;
 
-  async ngAfterViewInit(): Promise<void> {
-    const { codeToHtml } = await import('shiki');
-    // this.withNpm = await codeToHtml(this.withNpm, { lang: 'sh', theme: 'github-dark-default' });
-  }
+  // async ngAfterViewInit(): Promise<void> {
+  //   // const { codeToHtml } = await import('shiki');
+  //   // this.withNpm = await codeToHtml(this.withNpm, { lang: 'sh', theme: 'github-dark-default' });
+  // }
 
   protected trust(content: string): string {
     return this.sanitizer.bypassSecurityTrustHtml(content) as string;

@@ -1,4 +1,4 @@
-import { EventEmitter, OutputEmitterRef, } from "@angular/core";
+import { OutputEmitterRef, } from "@angular/core";
 import { BaseActions, BaseState } from "./base";
 
 /**

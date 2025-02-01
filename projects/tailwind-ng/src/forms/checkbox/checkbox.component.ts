@@ -42,11 +42,8 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
   @Input() id = this.randomId();
   changes = output<{ checked: boolean, indeterminate: boolean }>();
 
-  override ngOnInit(): void {
-    this.onInit();
-  }
-
   protected override onInit(): void {
+    this.classList.clear();
     this.config.subscribe(config => this.classList.set(config));
     if (this.parent) {
       if (!this.parent.children) {

@@ -3,7 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SizeOption, IconBase, IconName, Icon } from '@tailwind-ng/core';
 
 @Directive({
-  selector: 'tw-icon',
+  selector: 'tw-icon, [twIcon], [tw-icon]',
   exportAs: 'twIcon',
   host: { '[innerHTML]': 'source' },
   providers: [{ provide: IconBase, useExisting: IconDirective }]

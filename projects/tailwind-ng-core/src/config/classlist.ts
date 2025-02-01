@@ -29,10 +29,15 @@ export interface IClassList {
    */
   toString(): string;
   /**
-   * Clears the class list value and keeps the base class list defined before initialization.
+   * Clears the class list.
+   * @param behavior The behavior to clear the class list. Default is 'all'.
+   * - 'all' clears the class list value and it base.
+   * - 'value' clears the class list value only and keeps the base.
+   * @returns The class list instance.
    */
-  clear(): IClassList;
+  clear(behavior: ClearBehavior): IClassList;
 }
+type ClearBehavior = 'all' | 'value';
 
 export class ClassList implements IClassList {
   private _value!: string[];
@@ -119,7 +124,10 @@ export class ClassList implements IClassList {
     return this.value.join(' ');
   }
 
-  clear(): ClassList {
+  clear(behavior: ClearBehavior = 'all'): ClassList {
+    if (behavior === 'all') {
+      this._base = [];
+    }
     this._value = [];
     return this;
   }
