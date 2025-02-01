@@ -5,7 +5,7 @@ import { Button, ButtonBase, ButtonVariant, KBKey, PopupControl, SizeOption } fr
  * @TailwindNG Button component
  */
 @Component({
-  selector: 'tw-button, button[tw-button], button[twButton]',
+  selector: 'tw-button, [tw-button], [twButton]',
   exportAs: 'twButton',
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,
