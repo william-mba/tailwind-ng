@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { ButtonComponent, DropdownComponent, IconDirective, BadgeComponent } from 'tailwind-ng';
 import { OptionDirective, ThemeHelper } from '@tailwind-ng/core';
 import { NgIf } from '@angular/common';
@@ -9,7 +9,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-docs',
   imports: [NgIf, RouterLink, RouterLinkActive, IconDirective, DropdownComponent, ButtonComponent, OptionDirective, BadgeComponent, RouterOutlet],
   templateUrl: './docs.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DocsComponent {
   isNavOpened = false;
