@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
-import { Dropdown, DropdownBase, OverlayPosition } from '@tailwind-ng/core';
+import { Dropdown, DropdownBase, KBKey, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dropdown component */
 @Component({
@@ -55,7 +55,7 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
       event.preventDefault();
       event.stopImmediatePropagation();
     } else {
-      if (event.key === 'Escape' || event.key === 'Esc') {
+      if (KBKey.isEscape(event.key)) {
         event.stopImmediatePropagation();
         this.close();
       }
