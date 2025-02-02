@@ -13,6 +13,11 @@
     "web components"
   ],
   "exports": {
+    ".": {
+      "import": "./default/style.css",
+      "require": "./default/style.css",
+      "default": "./default/style.css"
+    },
     "./default": {
       "import": "./default/style.css",
       "require": "./default/style.css",

@@ -1,4 +1,6 @@
-import { Routes } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { RouterStateSnapshot, Routes, TitleStrategy } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -10,32 +12,35 @@ export const routes: Routes = [
         loadComponent: () => import('./docs/getting-started/getting-started.component').then(m => m.GettingStartedComponent)
       },
       {
-        path: 'components',
-        loadComponent: () => import('./docs/components/components.component').then(m => m.ComponentsComponent),
-        children: [
-          {
-            path: 'elements',
-            loadComponent: () => import('./docs/elements/elements.component').then(m => m.ElementsComponent)
-          },
-          {
-            path: 'forms',
-            loadComponent: () => import('./docs/forms/forms.component').then(m => m.FormsComponent)
-          },
-          {
-            path: 'overlays',
-            loadComponent: () => import('./docs/overlays/overlays.component').then(m => m.OverlaysComponent)
-          }
-        ]
+        path: 'themes',
+        loadComponent: () => import('./docs/themes/themes.component').then(m => m.ThemesComponent)
       },
+      {
+        path: 'components',
+        loadComponent: () => import('./docs/components/components.component').then(m => m.ComponentsComponent)
+      },
+      {
+        path: 'roadmap',
+        loadComponent: () => import('./docs/roadmap/roadmap.component').then(m => m.RoadmapComponent)
+      },
+      {
+        path: '',
+        redirectTo: 'getting-started',
+        pathMatch: 'full'
+      }
     ]
   },
   {
     path: 'getting-started',
-    redirectTo: 'docs/getting-started'
+    title: 'Getting Started with Tailwind NG',
+    redirectTo: 'docs/getting-started',
+    pathMatch: 'full'
   },
   {
     path: 'components',
-    redirectTo: 'docs/components'
+    title: 'Tailwind NG Components overview',
+    redirectTo: 'docs/components',
+    pathMatch: 'full'
   },
   {
     path: 'lab',
@@ -46,3 +51,27 @@ export const routes: Routes = [
     loadComponent: () => import('./main/main.component').then(m => m.MainComponent)
   }
 ];
+
+@Injectable({ providedIn: 'root' })
+export class AppTitleStrategy extends TitleStrategy {
+  constructor(private readonly title: Title) {
+    super();
+  }
+
+  override updateTitle(routerState: RouterStateSnapshot): void {
+    const title = this.buildTitle(routerState);
+    if (title) {
+      if (title === 'Roadmap') {
+        return this.title.setTitle(
+          `${title} of Tailwind NG`
+        );
+      }
+      return this.title.setTitle(
+        `Tailwind NG ${title} - High-quality ${title} Components built with Tailwind CSS and Angular`
+      );
+    }
+    this.title.setTitle(
+      'Tailwind NG - High-quality UI components for large-scale and enterprise Angular applications'
+    );
+  }
+}

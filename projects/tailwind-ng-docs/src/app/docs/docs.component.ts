@@ -49,7 +49,7 @@ type NavCategory = 'documentation' | 'components' | 'getting-started';
 
 export const NAV_ITEMS: NavItem[] = [
   {
-    label: 'Documentation',
+    label: 'Overview',
     route: '/docs',
     category: 'documentation',
     children: [
@@ -58,31 +58,12 @@ export const NAV_ITEMS: NavItem[] = [
         route: 'getting-started'
       },
       {
+        label: 'Themes',
+        route: 'themes'
+      },
+      {
         label: 'Components',
         route: 'components'
-      },
-      {
-        label: 'Customization',
-        route: 'customization'
-      },
-      {
-        label: 'Roadmap',
-        route: 'roadmap'
-      }
-    ]
-  },
-  {
-    label: 'Getting Started',
-    route: '/getting-started',
-    category: 'getting-started',
-    children: [
-      {
-        label: 'Installation',
-        route: 'installation'
-      },
-      {
-        label: 'Customization',
-        route: 'customization'
       },
       {
         label: 'Roadmap',

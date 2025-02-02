@@ -1,11 +1,12 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { routes } from './app.routes';
+import { provideRouter, TitleStrategy, withComponentInputBinding } from '@angular/router';
+import { AppTitleStrategy, routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideUI } from 'tailwind-ng';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: TitleStrategy, useClass: AppTitleStrategy },
     provideAnimationsAsync(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding()),

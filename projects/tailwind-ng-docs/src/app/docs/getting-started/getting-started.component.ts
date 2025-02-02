@@ -14,9 +14,9 @@ import { RouterLink } from '@angular/router';
 export class GettingStartedComponent {
   private readonly sanitizer = inject(DomSanitizer);
 
-  npmCode = `npm install tailwind-ng`;
-  yarnCode = `yarn add tailwind-ng`;
-  pnpmCode = `pnpm add tailwind-ng`;
+  npmCode = `npm install tailwind-ng @tailwind-ng/core `;
+  yarnCode = `yarn add tailwind-ng @tailwind-ng/core `;
+  pnpmCode = `pnpm add tailwind-ng @tailwind-ng/core `;
   npmHTML = `<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FFA657">npm</span><span style="color:#A5D6FF"> install</span><span style="color:#A5D6FF"> tailwind-ng @tailwind-ng/core </span></span></code></pre>`;
   yarnHTML = `<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FFA657">yarn</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> tailwind-ng @tailwind-ng/core </span></span></code></pre>`;
   pnpmHTML = `<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FFA657">pnpm</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> tailwind-ng @tailwind-ng/core </span></span></code></pre>`;
