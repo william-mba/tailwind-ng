@@ -48,10 +48,9 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
 
   closeAfter(delay: number): void {
     delay = (delay >= 1000 && delay <= 10000) ? delay : 5000;
-    const id = setInterval(() => {
+    setInterval(() => {
       if (!this.isHovered) {
         this.close();
-        clearInterval(id);
       }
     }, delay);
   }
