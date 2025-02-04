@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Dialog, DialogBase, OverlayPosition } from '@tailwind-ng/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ClassList, Dialog, DialogBase, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -7,6 +7,7 @@ import { Dialog, DialogBase, OverlayPosition } from '@tailwind-ng/core';
   exportAs: 'twDialog',
   host: {
     role: 'dialog',
+    '[class]': 'classList.value()',
     '[attr.aria-modal]': 'isModal',
   },
   template: `<ng-content select='tw-dialog-container, [tw-dialog-container], [twDialogContainer]'/>`,
@@ -14,38 +15,59 @@ import { Dialog, DialogBase, OverlayPosition } from '@tailwind-ng/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: DialogBase, useExisting: DialogComponent }]
 })
-export class DialogComponent extends DialogBase implements Dialog {
+export class DialogComponent extends DialogBase implements Dialog, AfterContentInit {
   @Input() position?: OverlayPosition;
   @Input() displayDuration!: number;
   @Input() autoClose = false;
   @Input() autoFocus = true;
   @Input() isModal = true;
+  protected clonedChild!: Element;
 
-  protected override onInit(): void {
-    if (this.position) {
-      this.classList.init(this.position);
-    }
-    this.config.subscribe(config => {
+  protected override async onInit(): Promise<void> {
+    if (!this.classList) {
+      this.classList = new ClassList(this.class);
       this.classList.set({
-        s: config.scrim, b: this.isModal && !this.position ? config.backdrop : {}
+        s: this.config.scrim, b: this.isModal && !this.position ? this.config.backdrop : {}
+      }).then(() => {
+        if (this.position) {
+          this.classList.update('inset-');
+        }
       });
-      if (this.position) {
-        this.classList.update('inset-');
-      }
-    });
+    }
   }
   private lastFocusedElement?: HTMLElement;
-  override open() {
+
+  ngAfterContentInit(): void {
     if (!this.isOpened) {
-      this.lastFocusedElement = this._document.activeElement as HTMLElement;
-      super.open();
+      this.onClose();
     }
+  }
+
+  override open() {
+    this.lastFocusedElement = this._document.activeElement as HTMLElement;
+    if (this.clonedChild) {
+      this.nativeElement.appendChild(this.clonedChild);
+    }
+    super.open();
   }
 
   override close() {
-    if (this.isOpened) {
-      super.close();
-      this.lastFocusedElement?.focus({ preventScroll: true });
+    this.onClose();
+    super.close();
+  }
+
+  protected onClose() {
+    if (this.nativeElement.children.length === 1) {
+      this.clonedChild = this.nativeElement.children[0];
     }
+    // Ensure animations complete
+    const id = setTimeout(() => {
+      if (!this.isOpened && this.clonedChild) {
+        this.nativeElement.children[0]?.remove();
+      }
+      clearTimeout(id);
+    }, 300);
+
+    this.lastFocusedElement?.focus({ preventScroll: true });
   }
 }

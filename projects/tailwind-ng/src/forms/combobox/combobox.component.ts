@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, contentChild, inject, Input, output, ViewEncapsulation } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { Combobox, ComboboxBase, ComboboxItem, InputTextBase } from '@tailwind-ng/core';
+import { ClassList, Combobox, ComboboxBase, ComboboxItem, InputTextBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
   exportAs: 'twCombobox',
   host: {
     role: 'combobox',
+    '[class]': 'classList.value()',
     '[attr.aria-expanded]': 'isOpened',
     '[attr.aria-controls]': 'dropdown().id',
     '[attr.aria-activedescendant]': 'activeElement?.textContent.trim() || null',
@@ -34,9 +35,11 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     return this.control.valid && touchedOrDirty && this.control.value.trim().length >= 3;
   }
 
-  protected override onInit(): void {
-    this.classList.set("relative h-max");
-
+  protected override async onInit(): Promise<void> {
+    if (!this.classList) {
+      this.classList = new ClassList(this.class);
+      this.classList.set("relative h-max");
+    }
     this.control.valueChanges.subscribe(value => {
       if (!this.isOpened) {
         this.open();
@@ -54,25 +57,26 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
       }
     });
   }
+
   override open(): void {
     super.open();
-    this.dropdown().open();
     this.input().focus();
     this.input().setVisualfocus();
+    this.dropdown().open();
   }
+
   override close(): void {
     super.close();
-    this.dropdown().close();
     this.resetActiveElementIfAny();
+    this.dropdown().close();
   }
 
   protected onBlur(): void {
-    const t = setTimeout(() => {
+    setTimeout(() => {
       if (!this.hasFocus) {
         this.close();
         this.input().removeVisualfocus();
       }
-      clearTimeout(t);
     }, 100);
   }
 
@@ -199,12 +203,12 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
   protected override addEventListeners(): void {
     super.addEventListeners();
     this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
-    this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
+    this.nativeElement.addEventListener('keyup', this.onKeyboardEvent.bind(this), false);
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
     this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
-    this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
+    this.nativeElement.removeEventListener('keyup', this.onKeyboardEvent.bind(this), false);
   }
 }

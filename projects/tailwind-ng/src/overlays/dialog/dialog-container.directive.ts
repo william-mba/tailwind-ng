@@ -1,12 +1,12 @@
 import { afterNextRender, Directive, inject } from "@angular/core";
-import { BaseDirective, KBKey } from '@tailwind-ng/core';
+import { BaseDirective, ClassList, KBKey } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Directive({
   selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',
   exportAs: 'twDialogContainer',
   host: {
+    '[class]': 'classList.value()',
     '[tabindex]': 'isDisabled ? null : -1',
   }
 })
@@ -22,10 +22,11 @@ export class DialogContainerDirective extends BaseDirective {
     })
   }
 
-  protected override onInit() {
-    this.dialog.config.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(config => {
-      this.classList.set(config.container);
-    });
+  protected override  async onInit(): Promise<void> {
+    if (!this.classList) {
+      this.classList = new ClassList(this.class);
+      this.classList.set(this.dialog.config.container!);
+    }
     this.dialog.opened.subscribe(() => {
       if (this.dialog.autoFocus) {
         this.focusPrimaryActionOrDefault();
@@ -57,14 +58,9 @@ export class DialogContainerDirective extends BaseDirective {
 
   private focusPrimaryActionOrDefault() {
     const id = setTimeout(() => {
-      const action = this.nativeElement.querySelector('button[variant=primary]') as HTMLElement;
-      if (action) {
-        action.focus();
-      } else {
-        this.focus();
-      }
+      (this.nativeElement.querySelector('button[variant=primary],tw-button[variant=primary]') as HTMLElement)?.focus();
       clearTimeout(id);
-    }, 50);
+    }, 55);
   }
 
   protected onPointerEvent(event: UIEvent) {

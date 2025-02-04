@@ -2,13 +2,13 @@ import { ChangeDetectorRef, DestroyRef, Directive, ElementRef, inject, Injector,
 import { BaseState, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config";
+import { KBKey } from "../guards";
 
 /**
  * @TailwindNG Base component directive.
  */
 @Directive({
   host: {
-    '[class]': 'classList.value',
     '[attr.inert]': 'isDisabled || null',
     '[attr.disabled]': 'isDisabled || null',
     '[attr.aria-disabled]': 'isDisabled || null',
@@ -22,7 +22,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   protected readonly _destroyRef = inject(DestroyRef);
   protected isInitialized = false;
 
-  readonly classList = new ClassList();
+  @Input() classList!: ClassList;
   @Input() class?: string;
 
   private _isDisabled = false;
@@ -52,28 +52,26 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   isHovered = false;
 
-  ngOnInit(): void {
-    this.classList.init(this.class);
-    this.onInit();
-    this.addEventListeners();
-    this._destroyRef.onDestroy(() => {
-      this.removeEventListeners();
-    });
-    this.isInitialized = true;
+  async ngOnInit(): Promise<void> {
+    await this.onInit()
+      .then(() => {
+        this.addEventListeners();
+        this._destroyRef.onDestroy(() => {
+          this.removeEventListeners();
+        });
+      })
+      .then(() => {
+        this.isInitialized = true;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   /**
    * Component's specific init hook.
    */
-  protected abstract onInit(): void;
-
-  // A disabled element should not be interactive.
-  private onEvent(event: Event): void {
-    if (this.isDisabled) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    }
-  }
+  protected abstract onInit(): Promise<void>;
 
   /**
    * Adds event listeners to the component.
@@ -84,7 +82,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
    */
   protected addEventListeners() {
     this.nativeElement.addEventListener('pointerdown', this.onEvent.bind(this), true);
-    this.nativeElement.addEventListener('keydown', this.onEvent.bind(this), true);
+    this.nativeElement.addEventListener('keydown', this.onEvent.bind(this), false);
   }
 
   /**
@@ -95,15 +93,39 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
    */
   protected removeEventListeners() {
     this.nativeElement.removeEventListener('pointerdown', this.onEvent.bind(this), true);
-    this.nativeElement.removeEventListener('keydown', this.onEvent.bind(this), true);
+    this.nativeElement.removeEventListener('keydown', this.onEvent.bind(this), false);
   }
 
-  focus({ target = this.nativeElement, behavior = 'self' }: FocusOptions = {}): HTMLElement | undefined {
+  // A disabled element should not be interactive.
+  private onEvent(event: Event): void {
+    if (this.isDisabled) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+    // Prevent scrolling when using arrow up and down keys.
+    if (KBKey.isKeyboardEvent(event)) {
+      if (KBKey.isArrowUpOrDown(event.key)) {
+        event.preventDefault();
+      }
+      if (KBKey.isSpace(event.key)) {
+        if (this.nativeElement.hasAttribute('tw-combobox') ||
+          ['INPUT', 'TW-COMBOBOX'].includes(this.nativeElement.tagName))
+          return;
+        event.preventDefault();
+      }
+    }
+  }
+
+  focus(options: FocusOptions = {}): HTMLElement | undefined {
     if (this.isDisabled) return;
+    const { behavior = 'self', preventScroll = true } = options;
+    let { target = this.nativeElement } = options;
+
     if (!target) return;
 
     if (behavior === 'self') {
-      target.focus();
+      target.focus({ preventScroll: preventScroll });
       return target;
     }
 
@@ -133,13 +155,17 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
         }
         break;
     }
-    target?.focus();
+    target?.focus({ preventScroll: preventScroll });
     return target;
   }
 
   private currentVisualFocusedElement?: HTMLElement;
-  setVisualfocus({ target = this.nativeElement, behavior = 'self' }: FocusOptions = {}): HTMLElement | undefined {
+  setVisualfocus(options: FocusOptions = {}): HTMLElement | undefined {
     if (this.isDisabled) return;
+
+    const { behavior = 'self' } = options;
+    let { target = this.nativeElement } = options;
+
     if (!target) return;
 
     if (behavior === 'self') {

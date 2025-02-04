@@ -2,20 +2,25 @@ import { Directive, Input } from "@angular/core";
 import { BaseDirective } from "./base.directive";
 import { KBKey } from "../guards";
 import { PopupControl } from "../interfaces";
+import { ClassList } from "../config";
 
 @Directive({
   selector: 'tw-option, [tw-option], [twOption]',
   exportAs: 'twOption',
   host: {
     role: 'option',
+    '[class]': 'classList.value()',
     '[tabindex]': 'isDisabled ? null : 0',
   }
 })
 export class OptionDirective extends BaseDirective {
   @Input() popup?: PopupControl;
 
-  protected override onInit(): void {
-    this.classList.set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
+  protected override async onInit(): Promise<void> {
+    if (!this.classList) {
+      this.classList = new ClassList(this.class);
+      this.classList.set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
+    }
   }
 
   protected override addEventListeners(): void {
@@ -38,7 +43,7 @@ export class OptionDirective extends BaseDirective {
       event.stopImmediatePropagation();
     } else {
       event.stopPropagation();
-      if (this.popup && this.popup.action !== 'ignore') {
+      if (this.popup && this.popup?.ref.isOpened && this.popup.action !== 'ignore') {
         this.popup.ref[this.popup.action]();
         if (!this.isFocused) {
           this.nativeElement.click();
@@ -52,7 +57,7 @@ export class OptionDirective extends BaseDirective {
       event.preventDefault();
       event.stopImmediatePropagation();
     } else {
-      if (KBKey.isNavigation(event.key) || KBKey.isSpace(event.key)) {
+      if (KBKey.isArrowUpOrDown(event.key) || KBKey.isSpace(event.key)) {
         event.preventDefault();
         event.stopPropagation();
       }

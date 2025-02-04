@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, inject, Input, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
-import { ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
+import { ClassList, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
   exportAs: 'twComboboxItem',
   host: {
     role: 'option',
+    '[class]': 'classList.value()',
     '[tabindex]': 'isDisabled ? null : -1',
     '[attr.aria-selected]': 'isSelected || null'
   },
@@ -27,8 +28,11 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     return this.combobox.has(this);
   }
 
-  protected override onInit(): void {
-    this.config.subscribe(config => this.classList.set(config));
+  protected override async onInit(): Promise<void> {
+    if (!this.classList) {
+      this.classList = new ClassList(this.class);
+      this.classList.set(this.config);
+    }
 
     // Select the item if it is the default value.
     if (this.isValueEqualsInputValue) {

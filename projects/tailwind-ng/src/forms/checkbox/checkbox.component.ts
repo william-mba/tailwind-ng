@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CheckboxBase, KBKey } from "@tailwind-ng/core";
+import { Checkbox, CheckboxBase, ClassList, KBKey } from "@tailwind-ng/core";
 import { IconDirective } from "../../elements";
 
 /**
@@ -12,7 +12,7 @@ import { IconDirective } from "../../elements";
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
-      <input [attr.class]="classList" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null"/>
+      <input [class]="classList.value()" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null"/>
       <tw-icon name="minus" size="sm" class="peer-indeterminate:block" />
       <tw-icon name="check" size="sm" class="peer-checked:block" />
     </div>
@@ -22,11 +22,10 @@ import { IconDirective } from "../../elements";
   <ng-content select="div,p,ul,label,tw-checkbox,[tw-checkbox],[twCheckbox]" />
  `,
   host: {
-    // We remove those host element attribute to avoid coillision
+    // We remove host attribute to avoid coillision
     // with the inner input element attributes.
     '[attr.id]': 'null',
     '[attr.name]': 'null',
-    '[attr.class]': 'class',
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,9 +41,16 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
   @Input() id = this.randomId();
   changes = output<{ checked: boolean, indeterminate: boolean }>();
 
-  protected override onInit(): void {
-    this.classList.clear();
-    this.config.subscribe(config => this.classList.set(config));
+  protected override async onInit(): Promise<void> {
+    if (!this.classList) {
+      if (this.parent) {
+        this.config = {};
+        this.classList = this.parent.classList;
+      } else {
+        this.classList = new ClassList();
+        this.classList.set(this.config);
+      }
+    }
     if (this.parent) {
       if (!this.parent.children) {
         this.parent.children = [];

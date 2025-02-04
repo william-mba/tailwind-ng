@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input, output, ViewEncapsulation } from '@angular/core';
-import { Toggle, ToggleBase } from '@tailwind-ng/core';
+import { ClassList, Toggle, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
   exportAs: 'twToggle',
   host: {
     role: 'switch',
+    '[class]': 'classList.value()',
     '[tabindex]': 'isDisabled ? null : tabIndex',
     '[attr.aria-checked]': 'isChecked || null',
     '[attr.data-checked]': 'isChecked || null',
@@ -19,9 +20,11 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   @Input() isChecked = false;
   @Input() tabIndex = 0;
   checked = output<boolean>();
-
-  protected override onInit(): void {
-    this.config.subscribe(config => this.classList.set(config));
+  protected override  async onInit(): Promise<void> {
+    if (!this.classList) {
+      this.classList = new ClassList(this.class);
+      this.classList.set(this.config);
+    }
   }
 
   private onKeydown(event: KeyboardEvent): void {
@@ -40,12 +43,12 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   protected override addEventListeners(): void {
     super.addEventListeners();
     this.nativeElement.addEventListener('click', this.toggle.bind(this), { passive: true, capture: true });
-    this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), true);
+    this.nativeElement.addEventListener('keyup', this.onKeydown.bind(this), true);
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
     this.nativeElement.removeEventListener('click', this.toggle.bind(this), true);
-    this.nativeElement.removeEventListener('keydown', this.onKeydown.bind(this), true);
+    this.nativeElement.removeEventListener('keyup', this.onKeydown.bind(this), true);
   }
 }
