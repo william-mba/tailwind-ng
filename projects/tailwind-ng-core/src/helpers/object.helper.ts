@@ -2,7 +2,7 @@ import { Config } from "../types";
 import { Type } from "./type-check.helper";
 
 /** Returns the object properties values, including properties values of it child objects in a string.*/
-function toString(obj: Config): string {
+function toString(obj: Config, separator = ' '): string {
   /* Given an object with values to extract
 
   1. If the object is undefined, return an empty string
@@ -22,10 +22,10 @@ function toString(obj: Config): string {
       if (res.length === 0) {
         res += value;
       } else {
-        res += ' ' + value;
+        res += separator + value;
       }
     } else if (Type.isObject(value)) {
-      res += ' ' + toString(value);
+      res += separator + toString(value, separator);
     }
   }
   return res;
@@ -55,6 +55,62 @@ function toArray(obj: Config): string[] {
     }
   }
   return res;
+}
+
+function toArrayMemo(fn: (obj: Config) => string[]) {
+  const cache = new Map<string, string[]>();
+  let timerID: number | undefined;
+
+  const stopTimer = () => {
+    clearInterval(timerID);
+    timerID = undefined;
+  };
+  const startTimer = () => {
+    timerID = setInterval(() => {
+      if (cache.size === 0) {
+        stopTimer();
+      } else {
+        cache.clear();
+      }
+    }, 1000 * 60)
+  };
+
+  return function (obj: Config): string[] {
+    const key = JSON.stringify(obj);
+    if (cache.has(key)) return cache.get(key)!;
+    const result = fn(obj);
+    cache.set(key, result);
+    if (!timerID) startTimer();
+    return result;
+  };
+}
+
+function toStringMemo(fn: (obj: Config) => string) {
+  const cache = new Map<string, string>();
+  let timerID: number | undefined;
+
+  const stopTimer = () => {
+    clearInterval(timerID);
+    timerID = undefined;
+  };
+  const startTimer = () => {
+    timerID = setInterval(() => {
+      if (cache.size === 0) {
+        stopTimer();
+      } else {
+        cache.clear();
+      }
+    }, 1000 * 60)
+  };
+
+  return function (obj: Config): string {
+    const key = JSON.stringify(obj);
+    if (cache.has(key)) return cache.get(key)!;
+    const result = fn(obj);
+    cache.set(key, result);
+    if (!timerID) startTimer();
+    return result;
+  };
 }
 
 /** Simply merges objects from source to target.
@@ -132,8 +188,16 @@ function strictMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
  * Object helper class with static methods for object manipulation.
  */
 export abstract class Obj {
-  static readonly toString = toString
-  static readonly toArray = toArray
+
+  /** Returns the object properties values,
+   * including properties values of it child objects in a string.
+   * */
+  static readonly toString = toStringMemo(toString)
+
+  /** Returns the object properties values,
+   * including properties values of it child objects in an array.
+   * */
+  static readonly toArray = toArrayMemo(toArray)
   static readonly merge = {
     /**
      * Merges objects from source to target ignoring empty child objects from source.

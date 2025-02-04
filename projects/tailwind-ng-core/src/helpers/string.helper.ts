@@ -10,7 +10,7 @@ function stringToArray(value: unknown, separator = ' '): string[] {
  * A helper class for string operations.
  */
 export abstract class Str {
-  static readonly resolve = resolve;
+  static readonly resolve = resolveMemo(resolve);
   static readonly toArray = stringToArray;
 }
 
@@ -22,6 +22,39 @@ interface ResolveOptions {
   minStringLength: number;
 }
 
+/**
+ * Returns an array of resolved values from source to target.
+ * The first argument is the target and the rest are source arrays.
+ * The results are cached to improve subsequent calls performance.
+ */
+function resolveMemo(fn: (arg: [...string[][]], options: Partial<ResolveOptions>) => Promise<string[]>) {
+  const cache = new Map<string, Promise<string[]>>();
+  let timerID: number | undefined;
+
+  const stopTimer = () => {
+    clearInterval(timerID);
+    timerID = undefined;
+  };
+  const startTimer = () => {
+    timerID = setInterval(() => {
+      if (cache.size === 0) {
+        stopTimer();
+      } else {
+        cache.clear();
+      }
+    }, 1000 * 60)
+  };
+
+  return function (arg: [...string[][]], options: Partial<ResolveOptions> = {}): Promise<string[]> {
+    const key = JSON.stringify({ arg, options });
+    if (cache.has(key)) return cache.get(key)!;
+    const result = fn(arg, options);
+    cache.set(key, result);
+    if (!timerID) startTimer();
+    return result;
+  };
+}
+
 /** Returns an array of resolved values from source to target.
  *
  * The first argument is the target and the rest are source arrays.
@@ -30,23 +63,26 @@ interface ResolveOptions {
  * @param arg The target and source values to resolve.
  * @param options The options for resolving.
  * */
-function resolve(arg: [...string[][]], { keepClassDeletor = false, minStringLength = 2 }: Partial<ResolveOptions> = {}): string[] {
-
+async function resolve(arg: [...string[][]], options: Partial<ResolveOptions> = {}): Promise<string[]> {
   // eslint-disable-next-line prefer-const
   let [target, ...sources] = arg;
 
-  if (!sources || sources.length === 0) return target;
-  if ((!sources || sources.length === 0) && (!target || target.length === 0)) return [];
+  if (!sources || sources.length === 0) return Promise.resolve(target);
+  if ((!sources || sources.length === 0) && (!target || target.length === 0)) return Promise.resolve([]);
 
   /* Given an array of strings to resolve from source to target
     For each value in source, remove target values that partially or fully match the source value.
     If the source value don't ends by the character '-' (class-deletor), add it to target.
   */
   const temp: string[] = [];
+  const {
+    keepClassDeletor = false,
+    minStringLength = 2
+  } = options;
 
   if (sources.length === 1) {
     for (const className of sources[0]) {
-      if (className.length >= minStringLength!) {
+      if (className.length >= minStringLength) {
         // When the class name is a class-deletor, target values starting with source value should be removed.
         // Ex: bg-red-' remove 'bg-red-*', 'bg-' remove 'bg-*' etc.
         if (className.charAt(className.length - 1) === '-') {
@@ -113,7 +149,7 @@ function resolve(arg: [...string[][]], { keepClassDeletor = false, minStringLeng
   }
   if (sources.length > 1) {
     for (const src of sources) {
-      target = resolve([target, src], { keepClassDeletor, minStringLength });
+      target = await resolve([target, src], { keepClassDeletor, minStringLength });
     }
   }
   return target.concat(temp);
