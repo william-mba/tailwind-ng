@@ -53,16 +53,16 @@ const DefaultConfig = (): InputTextConfig => {
 /**
  * Returns the InputText config.
  */
-export const GetInputConfig = (customization?: Partial<InputTextConfig>): InputTextConfig => {
+export const GetInputTextConfig = (customization?: Partial<InputTextConfig>): InputTextConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 };
 
 /**
  * @TailwindNG InputText config provider.
  */
-export function provideInput(customization?: Partial<InputTextConfig>): Provider {
+export function provideInputText(customization?: Partial<InputTextConfig>): Provider {
   return {
     provide: INPUT_TEXT_CONFIG,
-    useValue: GetInputConfig(customization)
+    useValue: GetInputTextConfig(customization)
   };
 }
