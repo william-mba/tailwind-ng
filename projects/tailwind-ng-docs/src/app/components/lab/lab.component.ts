@@ -13,7 +13,7 @@ import {
   DialogModule,
   ToggleComponent,
   InputTextDirective,
-  CheckboxComponent
+  CheckboxComponent,
 } from 'tailwind-ng';
 import { OptionDirective } from "@tailwind-ng/core";
 
@@ -50,8 +50,7 @@ export interface Task {
     OptionDirective,
     CheckboxComponent
   ],
-  templateUrl: './lab.component.html',
-  styles: ``
+  templateUrl: './lab.component.html'
 })
 export class LabComponent {
   private _formBuilder = inject(NonNullableFormBuilder);
