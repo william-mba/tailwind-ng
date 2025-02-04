@@ -1,6 +1,6 @@
 import { InputTextDirective } from './input-text.directive';
 import { TestBed } from '@angular/core/testing';
-import { GetInputConfig, provideInput } from './input-text.directive.config';
+import { GetInputTextConfig, provideInputText } from './input-text.directive.config';
 import { ClassList } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 
@@ -8,7 +8,7 @@ describe('InputDirective', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
-        provideInput()
+        provideInputText()
       ]
     });
   });
@@ -27,12 +27,10 @@ describe('InputDirective', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    testApp.input().config.subscribe(c => {
-      expect(c).toEqual(GetInputConfig());
-    }).unsubscribe();
+    expect(testApp.input().config).toEqual(GetInputTextConfig());
   });
 
-  it('should set classlist', () => {
+  it('should set classlist', async () => {
     @Component({
       selector: 'tw-test-app',
       standalone: true,
@@ -45,6 +43,8 @@ describe('InputDirective', () => {
     const appFixture = TestBed.createComponent(TestAppComponent);
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
-    expect(testApp.input().classList.value).toEqual(new ClassList().set(GetInputConfig()).value);
+
+    const expected = await new ClassList().set(GetInputTextConfig());
+    expect(testApp.input().classList.value()).toEqual(expected.value());
   });
 });

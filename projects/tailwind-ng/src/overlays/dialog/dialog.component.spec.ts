@@ -3,7 +3,6 @@ import { GetDialogConfig, provideDialog } from './dialog.component.config';
 import { DialogComponent } from './dialog.component';
 import { DialogModule } from './dialog.module';
 import { Component, ElementRef, viewChild } from '@angular/core';
-import { take } from 'rxjs';
 
 describe('DialogComponent', () => {
   beforeEach(() => {
@@ -271,13 +270,12 @@ describe('DialogComponent', () => {
     const dialog = testComponent.dialog();
 
     testFixture.detectChanges();
-    dialog.config.pipe(take(1)).subscribe(config => {
-      expect(config).toBeTruthy();
-      expect(config.scrim).toBeTruthy();
-      expect(config.backdrop).toBeTruthy();
-      expect(config.container).toBeTruthy();
-      expect(config).toEqual(GetDialogConfig());
-    });
+    const config = dialog.config
+    expect(config).toBeTruthy();
+    expect(config.scrim).toBeTruthy();
+    expect(config.backdrop).toBeTruthy();
+    expect(config.container).toBeTruthy();
+    expect(config).toEqual(GetDialogConfig());
   });
 });
 

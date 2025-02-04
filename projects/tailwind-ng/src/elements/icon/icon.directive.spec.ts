@@ -32,9 +32,7 @@ describe('IconDirective', () => {
 
   it('should set config', () => {
     // As set earlier, the source should be the same as the config provided
-    component.config.subscribe(c => {
-      expect(c).toEqual(config);
-    }).unsubscribe();
+    expect(component.config).toEqual(config);
 
     // When no config is provided, the source should be an empty object
     TestBed.resetTestingModule();
@@ -51,20 +49,16 @@ describe('IconDirective', () => {
     TestBed.runInInjectionContext(() => {
       component = TestBed.inject(IconDirective);
     });
-    component.config.subscribe(c => {
-      expect(c.xs).toEqual(config.xs);
-      expect(c.sm).toEqual(config.sm);
-      expect(c.md).toEqual(config.md);
-      expect(c.lg).toEqual(config.lg);
-      expect(c.xl).toEqual(config.xl);
-      expect(c.map).toEqual(config.map);
-    }).unsubscribe();
+    expect(component.config.xs).toEqual(config.xs);
+    expect(component.config.sm).toEqual(config.sm);
+    expect(component.config.md).toEqual(config.md);
+    expect(component.config.lg).toEqual(config.lg);
+    expect(component.config.xl).toEqual(config.xl);
+    expect(component.config.map).toEqual(config.map);
   });
 
   it('should get config', () => {
-    component.config.subscribe(c => {
-      expect(c).toEqual(config);
-    }).unsubscribe();
+    expect(component.config).toEqual(config);
   });
 
   it('should set size', () => {

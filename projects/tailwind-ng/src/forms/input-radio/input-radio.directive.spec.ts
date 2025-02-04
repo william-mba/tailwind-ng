@@ -27,12 +27,10 @@ describe('InputRadioDirective', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    testApp.input().config.subscribe(c => {
-      expect(c).toEqual(GetInputRadioConfig());
-    }).unsubscribe();
+    expect(testApp.input().config).toEqual(GetInputRadioConfig());
   });
 
-  it('should set classlist', () => {
+  it('should set classlist', async () => {
     @Component({
       selector: 'tw-test-app',
       standalone: true,
@@ -45,6 +43,7 @@ describe('InputRadioDirective', () => {
     const appFixture = TestBed.createComponent(TestAppComponent);
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
-    expect(testApp.input().classList.value).toEqual(new ClassList().set(GetInputRadioConfig()).value);
+    const expected = await new ClassList().set(GetInputRadioConfig());
+    expect(testApp.input().classList.value()).toEqual(expected.value());
   });
 });

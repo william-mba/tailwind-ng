@@ -1,12 +1,12 @@
 import { Str } from '../string.helper';
 
 describe('StringHelper', () => {
-  it('should resolve values', () => {
+  it('should resolve values', async () => {
     const source = ['bg-blue-600', 'text-blue-600', 'ring-blue-600', 'ring-2', 'translate-x-0', 'scale-100', 'p-3.5'];
     const target = ['bg-red-100', 'text-red-600', 'text-sm', 'ring-red-600', 'translate-0', 'translate-y-0',
       'ring-inherit', 'ring-inset', 'rounded-md', 'scale-y-100', 'px-3.5', 'py-2'];
 
-    const result = Str.resolve([target, source]);
+    const result = await Str.resolve([target, source]);
 
     source.forEach((value) => {
       expect(result.includes(value)).toBeTrue();
@@ -32,13 +32,13 @@ describe('StringHelper', () => {
     expect(result).toEqual(['bg-red-600', 'bg-blue-600', 'bg-green-600']);
   });
 
-  it('should resolve values considering classes deletor', () => {
+  it('should resolve values considering classes deletor', async () => {
     const defaultValues = [
       'bg-red-100', 'text-red-600', 'text-sm', 'ring-red-600', 'translate-0', 'px-3.5',
       'translate-y-0', 'ring-inherit', 'ring-inset', 'rounded-md', 'scale-y-100', 'py-2'
     ];
     const customValues = ['bg-blue-', 'text-blue-600', 'ring-', 'ring-2', 'translate-', 'scale-100', 'px-'];
-    const result = Str.resolve([defaultValues, customValues]);
+    const result = await Str.resolve([defaultValues, customValues]);
 
     // Default values expectations
     expect(result.includes('bg-red-100')).toBeTrue(); // Should be included as `bg-blue-` is less specific.
@@ -65,13 +65,13 @@ describe('StringHelper', () => {
 
   });
 
-  it('should keep classes deletor in resolved values', () => {
+  it('should keep classes deletor in resolved values', async () => {
     const defaultValues = [
       'bg-red-100', 'text-red-600', 'text-sm', 'ring-red-600', 'translate-0', 'px-3.5',
       'translate-y-0', 'ring-inherit', 'ring-inset', 'rounded-md', 'scale-y-100', 'py-2'
     ];
     const customValues = ['bg-blue-', 'text-blue-600', 'ring-', 'ring-2', 'translate-', 'scale-100', 'px-'];
-    const result = Str.resolve([defaultValues, customValues], { keepClassDeletor: true });
+    const result = await Str.resolve([defaultValues, customValues], { keepClassDeletor: true });
 
     // Default values expectations
     expect(result.includes('bg-red-100')).toBeTrue(); // Should be included as `bg-blue-` is less specific.

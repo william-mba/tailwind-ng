@@ -52,14 +52,12 @@ describe('BadgeComponent', () => {
     classList.set({ b: config.base, s: config[component.size] });
 
     expect(component.classList.base).toEqual(classList.base);
-    expect(component.classList.value).toEqual(classList.value);
+    expect(component.classList.value()).toEqual(classList.value());
   });
 
   it('should get reactive config', () => {
     const config = GetBadgeConfig();
-    component.config.subscribe(c => {
-      expect(c).toEqual(config);
-    }).unsubscribe();
+    expect(component.config).toEqual(config);
   });
 
   it('should set customizations using class attribute', () => {
@@ -83,12 +81,12 @@ describe('BadgeComponent', () => {
     appFixture.detectChanges();
 
     Str.toArray(customizations).forEach(c => {
-      expect(testApp.badge().classList.value.includes(c)).toBeTrue();
+      expect(testApp.badge().classList.value().includes(c)).toBeTrue();
     });
 
-    expect(testApp.badge().classList.value.includes(defaultGap)).toBeFalse();
-    expect(testApp.badge().classList.value.includes(defaultFontSize)).toBeTrue();
-    expect(testApp.badge().classList.value.includes(defaultDisplay)).toBeTrue();
+    expect(testApp.badge().classList.value().includes(defaultGap)).toBeFalse();
+    expect(testApp.badge().classList.value().includes(defaultFontSize)).toBeTrue();
+    expect(testApp.badge().classList.value().includes(defaultDisplay)).toBeTrue();
   });
 
   it('should set customizations using dependency injection', () => {
@@ -108,10 +106,10 @@ describe('BadgeComponent', () => {
     const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    expect(component.classList.value.includes(defaultGap)).toBeFalse();
-    expect(component.classList.value.includes(config.base.gap)).toBeTrue();
-    expect(component.classList.value.includes(config.base.ringWidth)).toBeTrue();
-    expect(component.classList.value.includes(config.base.ringColor)).toBeTrue();
+    expect(component.classList.value().includes(defaultGap)).toBeFalse();
+    expect(component.classList.value().includes(config.base.gap)).toBeTrue();
+    expect(component.classList.value().includes(config.base.ringWidth)).toBeTrue();
+    expect(component.classList.value().includes(config.base.ringColor)).toBeTrue();
   });
 
   it('should update classList', () => {
@@ -121,10 +119,10 @@ describe('BadgeComponent', () => {
     component.classList.update(newClassList);
 
     newClassList.forEach(c => {
-      expect(component.classList.value.includes(c)).toBeTrue();
+      expect(component.classList.value().includes(c)).toBeTrue();
     });
 
-    expect(component.classList.value.includes(defaultGap)).toBeFalse();
+    expect(component.classList.value().includes(defaultGap)).toBeFalse();
   })
 
 });

@@ -23,9 +23,7 @@ describe('ButtonGroupComponent', () => {
 
   it('should get config', () => {
     const config = GetButtonGroupConfig();
-    component.config.subscribe(c => {
-      expect(c).toEqual(config);
-    }).unsubscribe();
+    expect(component.config).toEqual(config);
   });
 
   it('should set classList', () => {
@@ -33,7 +31,7 @@ describe('ButtonGroupComponent', () => {
     classList.set(GetButtonGroupConfig());
 
     expect(component.classList.base).toEqual(classList.base);
-    expect(component.classList.value).toEqual(classList.value);
+    expect(component.classList.value()).toEqual(classList.value());
   });
 
   it('should set customizations using class attribute', () => {
@@ -59,9 +57,9 @@ describe('ButtonGroupComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    expect(testApp.buttonGroup().classList.value.includes('rounded-full')).toBeTrue();
-    expect(testApp.buttonGroup().classList.value.includes(defaultRadius)).toBeFalse();
-    expect(testApp.buttonGroup().classList.value.includes(defaultBoxShadow)).toBeTrue();
+    expect(testApp.buttonGroup().classList.value().includes('rounded-full')).toBeTrue();
+    expect(testApp.buttonGroup().classList.value().includes(defaultRadius)).toBeFalse();
+    expect(testApp.buttonGroup().classList.value().includes(defaultBoxShadow)).toBeTrue();
   });
 
   it('should set customizations using dependency injection', () => {
@@ -97,10 +95,10 @@ describe('ButtonGroupComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    expect(testApp.buttonGroup().classList.value.includes('rounded-full')).toBeTrue();
-    expect(testApp.buttonGroup().classList.value.includes('ring-red-600')).toBeTrue();
-    expect(testApp.buttonGroup().classList.value.includes(defaultRadius)).toBeFalse();
-    expect(testApp.buttonGroup().classList.value.includes(defaultBoxShadow)).toBeTrue();
+    expect(testApp.buttonGroup().classList.value().includes('rounded-full')).toBeTrue();
+    expect(testApp.buttonGroup().classList.value().includes('ring-red-600')).toBeTrue();
+    expect(testApp.buttonGroup().classList.value().includes(defaultRadius)).toBeFalse();
+    expect(testApp.buttonGroup().classList.value().includes(defaultBoxShadow)).toBeTrue();
   });
 });
 

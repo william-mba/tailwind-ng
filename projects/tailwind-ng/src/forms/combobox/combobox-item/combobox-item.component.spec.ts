@@ -28,12 +28,12 @@ describe('ComboboxItemComponent', () => {
     @Component({
       selector: 'app-test',
       imports: [
-    NgIf,
-    ReactiveFormsModule,
-    ComboboxModule,
-    ButtonComponent,
-    DropdownComponent
-],
+        NgIf,
+        ReactiveFormsModule,
+        ComboboxModule,
+        ButtonComponent,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
         <!-- Input -->
@@ -74,12 +74,12 @@ describe('ComboboxItemComponent', () => {
     @Component({
       selector: 'app-test',
       imports: [
-    NgIf,
-    ReactiveFormsModule,
-    ComboboxModule,
-    ButtonComponent,
-    DropdownComponent
-],
+        NgIf,
+        ReactiveFormsModule,
+        ComboboxModule,
+        ButtonComponent,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
         <!-- Input -->
@@ -125,12 +125,12 @@ describe('ComboboxItemComponent', () => {
     @Component({
       selector: 'app-test',
       imports: [
-    NgIf,
-    ReactiveFormsModule,
-    ComboboxModule,
-    ButtonComponent,
-    DropdownComponent
-],
+        NgIf,
+        ReactiveFormsModule,
+        ComboboxModule,
+        ButtonComponent,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
         <!-- Input -->
@@ -165,9 +165,7 @@ describe('ComboboxItemComponent', () => {
     testFixture.detectChanges();
 
     const item = testComponent.comboboxItems()[0];
-    item.config.subscribe(c => {
-      expect(c).toEqual(GetComboboxItemConfig());
-    }).unsubscribe();
+    expect(item.config).toEqual(GetComboboxItemConfig());
   });
 });
 

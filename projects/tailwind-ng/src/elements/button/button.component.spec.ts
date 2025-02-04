@@ -22,9 +22,7 @@ describe('ButtonComponent', () => {
 
   it('should get config', () => {
     const config = GetButtonConfig();
-    component.config.subscribe(c => {
-      expect(c).toEqual(config);
-    }).unsubscribe();
+    expect(component.config).toEqual(config);
   });
 
   it('should set size', () => {
@@ -84,8 +82,8 @@ describe('ButtonComponent', () => {
 
         expect(component.classList.base).toEqual(classList.base);
 
-        classList.value.forEach(c => {
-          expect(component.classList.value.includes(c)).toBeTrue();
+        classList.value().forEach(c => {
+          expect(component.classList.value().includes(c)).toBeTrue();
         });
       });
 
@@ -110,12 +108,12 @@ describe('ButtonComponent', () => {
         appFixture.detectChanges();
 
         Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value.includes(c)).toBeTrue();
+          expect(testApp.button().classList.value().includes(c)).toBeTrue();
         });
 
-        expect(testApp.button().classList.value.includes(defaultGap)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultBgColor)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
       });
 
       it('should set customizations using dependency injection', () => {
@@ -152,12 +150,12 @@ describe('ButtonComponent', () => {
         appFixture.detectChanges();
 
         Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value.includes(c)).toBeTrue();
+          expect(testApp.button().classList.value().includes(c)).toBeTrue();
         });
 
-        expect(testApp.button().classList.value.includes(defaultGap)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultBgColor)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
       });
 
       it('should update classList', () => {
@@ -167,10 +165,10 @@ describe('ButtonComponent', () => {
         component.classList.update(newClassList);
 
         newClassList.forEach(c => {
-          expect(component.classList.value.includes(c)).toBeTrue();
+          expect(component.classList.value().includes(c)).toBeTrue();
         });
 
-        expect(component.classList.value.includes(defaultRadius)).toBeFalse();
+        expect(component.classList.value().includes(defaultRadius)).toBeFalse();
       });
     });
 
@@ -190,8 +188,8 @@ describe('ButtonComponent', () => {
 
         expect(component.classList.base).toEqual(classList.base);
 
-        classList.value.forEach(c => {
-          expect(component.classList.value.includes(c)).toBeTrue();
+        classList.value().forEach(c => {
+          expect(component.classList.value().includes(c)).toBeTrue();
         });
       });
 
@@ -220,14 +218,14 @@ describe('ButtonComponent', () => {
         expect(testApp.button().variant).toBe('secondary');
 
         Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value.includes(c)).toBeTrue();
+          expect(testApp.button().classList.value().includes(c)).toBeTrue();
         });
 
-        expect(testApp.button().classList.value.includes(defaultRing)).toBeTrue();
-        expect(testApp.button().classList.value.includes(defaultRingColor)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultShadow)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultRingWidth)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRing)).toBeTrue();
+        expect(testApp.button().classList.value().includes(defaultRingColor)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultShadow)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRingWidth)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
       });
 
       it('should set customizations using dependency injection', () => {
@@ -263,15 +261,15 @@ describe('ButtonComponent', () => {
         appFixture.detectChanges();
 
         Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value.includes(c)).toBeTrue();
+          expect(testApp.button().classList.value().includes(c)).toBeTrue();
         });
 
         expect(testApp.button().variant).toBe('secondary');
 
-        expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultRingWith)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultRingColor)).toBeFalse();
-        expect(testApp.button().classList.value.includes(defaultRing)).toBeTrue();
+        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRingWith)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRingColor)).toBeFalse();
+        expect(testApp.button().classList.value().includes(defaultRing)).toBeTrue();
       });
 
       it('should update classList', () => {
@@ -288,12 +286,12 @@ describe('ButtonComponent', () => {
         component.classList.update(newClassList);
 
         newClassList.forEach(c => {
-          expect(component.classList.value.includes(c)).toBeTrue();
+          expect(component.classList.value().includes(c)).toBeTrue();
         });
 
-        expect(component.classList.value.includes(defaultRing)).toBeTrue();
-        expect(component.classList.value.includes(defaultRingWidth)).toBeFalse();
-        expect(component.classList.value.includes(defaultRingColor)).toBeFalse();
+        expect(component.classList.value().includes(defaultRing)).toBeTrue();
+        expect(component.classList.value().includes(defaultRingWidth)).toBeFalse();
+        expect(component.classList.value().includes(defaultRingColor)).toBeFalse();
       });
     });
   });

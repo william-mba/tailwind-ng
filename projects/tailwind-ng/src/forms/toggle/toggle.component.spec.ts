@@ -30,12 +30,11 @@ describe('ToggleComponent', () => {
   });
 
   it('should get config', () => {
-    component.config.subscribe(c => {
-      expect(c).toEqual(GetToggleConfig());
-    }).unsubscribe();
+    expect(component.config).toEqual(GetToggleConfig());
   });
 
-  it('should set classlist', () => {
-    expect(component.classList.value).toEqual(new ClassList().set(GetToggleConfig()).value);
+  it('should set classlist', async () => {
+    const expected = await new ClassList().set(GetToggleConfig());
+    expect(component.classList.value()).toEqual(expected.value());
   });
 });
