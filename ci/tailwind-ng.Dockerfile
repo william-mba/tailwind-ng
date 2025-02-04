@@ -5,12 +5,22 @@ RUN apt update && \
   apt clean
 
 FROM base AS setup-node
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash && \
+RUN curl -sL https://deb.nodesource.com/setup_22.x | bash && \
   apt install -y nodejs && \
   apt clean
 
-RUN corepack enable pnpm && \
-  npm add -g @angular/cli
+# Disable corepack
+RUN corepack disable
+
+# Reinstall corepack
+RUN npm install -g corepack
+
+# Enable corepack and use it to enable pnpm
+RUN corepack enable && \
+  corepack prepare pnpm@latest --activate
+
+# Install Angular CLI globally
+RUN npm add -g @angular/cli
 
 FROM setup-node AS install-deps
 
