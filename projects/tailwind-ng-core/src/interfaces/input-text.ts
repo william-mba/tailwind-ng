@@ -1,4 +1,3 @@
-import { Observable } from "rxjs";
 import { InputTextConfig } from "../config/interfaces";
 import { BaseActions, BaseState } from "./base";
 
@@ -13,5 +12,5 @@ import { BaseActions, BaseState } from "./base";
  * - url
  */
 export interface InputText extends BaseState<HTMLInputElement>, BaseActions {
-  config: Observable<InputTextConfig>;
+  config: Partial<InputTextConfig>;
 }

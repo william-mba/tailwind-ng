@@ -1,10 +1,9 @@
-import { Observable } from "rxjs";
 import { BaseActions, BaseState } from "./base";
 import { CheckboxConfig } from "../config/interfaces";
 import { OutputEmitterRef } from "@angular/core";
 
 export interface Checkbox extends BaseState, BaseActions {
-  readonly config: Observable<CheckboxConfig>
+  readonly config: Partial<CheckboxConfig>
   /**
    * Whether the checkbox is checked. default is false
    */

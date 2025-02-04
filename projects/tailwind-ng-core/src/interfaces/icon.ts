@@ -1,4 +1,3 @@
-import { Observable } from "rxjs";
 import { IconConfig, IconName } from "../config/interfaces";
 import { SizeOption } from "../types/size-options.type";
 
@@ -8,5 +7,5 @@ import { SizeOption } from "../types/size-options.type";
 export interface Icon {
   name: IconName;
   size: SizeOption;
-  config: Observable<IconConfig>;
+  config: Partial<IconConfig>;
 }
