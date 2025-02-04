@@ -28,6 +28,10 @@ export function isArrowDownKey(key: ArrowDownKey | string & {}): key is ArrowDow
   return key === 'ArrowDown';
 }
 
+export function isArrowUpOrDownKey(key: ArrowUpKey | ArrowDownKey | string & {}): key is ArrowUpKey | ArrowDownKey {
+  return isArrowUpKey(key) || isArrowDownKey(key);
+}
+
 type ArrowLeftKey = 'ArrowLeft';
 export function isArrowLeftKey(key: ArrowLeftKey | string & {}): key is ArrowLeftKey {
   return key === 'ArrowLeft';
@@ -53,6 +57,10 @@ export function isNavigationKey(key: NavigationKey | string & {}): key is Naviga
   return isArrowDownKey(key) || isArrowUpKey(key) || isArrowLeftKey(key) || isArrowRightKey(key);
 }
 
+export function isKeyboardEvent(event: Event): event is KeyboardEvent {
+  return event instanceof KeyboardEvent && event.key !== undefined;
+}
+
 /**
  * Keyboard event key type guard.
  */
@@ -63,9 +71,11 @@ export abstract class KBKey {
   static readonly isEnterOrSpace = isEnterOrSpaceKey;
   static readonly isArrowUp = isArrowUpKey;
   static readonly isArrowDown = isArrowDownKey;
+  static readonly isArrowUpOrDown = isArrowUpOrDownKey;
   static readonly isArrowLeft = isArrowLeftKey;
   static readonly isArrowRight = isArrowRightKey;
   static readonly isNavigation = isNavigationKey;
   static readonly isArrowDownOrRight = isArrowDownOrRightKey;
   static readonly isArrowUpOrLeft = isArrowUpOrLeftKey;
+  static readonly isKeyboardEvent = isKeyboardEvent;
 }
