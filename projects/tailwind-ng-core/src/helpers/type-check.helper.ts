@@ -24,8 +24,11 @@ function isBoolean(value: unknown): boolean {
   return typeof value === 'boolean';
 }
 
-function isArray(value: unknown): boolean {
-  return Array.isArray(value);
+/**
+ * Returns true if value is an array and has at least one element, otherwise false.
+ */
+function isArray(value: unknown): value is [] {
+  return Array.isArray(value) && value.length > 0;
 }
 
 function isUndefined(value: unknown): boolean {
