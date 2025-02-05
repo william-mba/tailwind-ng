@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.2 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.3 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -382,6 +382,18 @@
     --animate-bounce-2: bounce 2s infinite;
     --animate-bounce-x: bounce-x 1s infinite;
     --bg-hero: url("https://dev.tailwind-ng.com/images/hero-bg.webp");
+    --bg-avatars: url("/images/components/avatars.webp");
+    --bg-badges: url("/images/components/badges.webp");
+    --bg-buttons: url("/images/components/buttons.webp");
+    --bg-button-groups: url("/images/components/button-groups.webp");
+    --bg-checkboxes: url("/images/components/checkboxes.webp");
+    --bg-comboboxes: url("/images/components/comboboxes.webp");
+    --bg-dialogs: url("/images/components/dialogs.webp");
+    --bg-dropdowns: url("/images/components/dropdowns.webp");
+    --bg-icon-buttons: url("/images/components/icon-buttons.webp");
+    --bg-input-groups: url("/images/components/input-groups.webp");
+    --bg-radio-groups: url("/images/components/radio-groups.webp");
+    --bg-toggles: url("/images/components/toggles.webp");
     --bg-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.29'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 }
@@ -2443,9 +2455,6 @@
   .bg-emerald-500 {
     background-color: var(--color-emerald-500);
   }
-  .bg-gray-50 {
-    background-color: var(--color-gray-50);
-  }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
@@ -2517,9 +2526,6 @@
   }
   .bg-orange-600 {
     background-color: var(--color-orange-600);
-  }
-  .bg-orange-600\/10 {
-    background-color: color-mix(in oklab, var(--color-orange-600) 10%, transparent);
   }
   .bg-red-100 {
     background-color: var(--color-red-100);
@@ -2625,11 +2631,47 @@
     --tw-gradient-position: to top right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
+  .bg-\[image\:var\(--bg-avatars\)\] {
+    background-image: var(--bg-avatars);
+  }
+  .bg-\[image\:var\(--bg-badges\)\] {
+    background-image: var(--bg-badges);
+  }
+  .bg-\[image\:var\(--bg-button-groups\)\] {
+    background-image: var(--bg-button-groups);
+  }
+  .bg-\[image\:var\(--bg-buttons\)\] {
+    background-image: var(--bg-buttons);
+  }
+  .bg-\[image\:var\(--bg-checkboxes\)\] {
+    background-image: var(--bg-checkboxes);
+  }
+  .bg-\[image\:var\(--bg-comboboxes\)\] {
+    background-image: var(--bg-comboboxes);
+  }
+  .bg-\[image\:var\(--bg-dialogs\)\] {
+    background-image: var(--bg-dialogs);
+  }
+  .bg-\[image\:var\(--bg-dropdowns\)\] {
+    background-image: var(--bg-dropdowns);
+  }
   .bg-\[image\:var\(--bg-hero\)\] {
     background-image: var(--bg-hero);
   }
+  .bg-\[image\:var\(--bg-icon-buttons\)\] {
+    background-image: var(--bg-icon-buttons);
+  }
+  .bg-\[image\:var\(--bg-input-groups\)\] {
+    background-image: var(--bg-input-groups);
+  }
   .bg-\[image\:var\(--bg-pattern\)\] {
     background-image: var(--bg-pattern);
+  }
+  .bg-\[image\:var\(--bg-radio-groups\)\] {
+    background-image: var(--bg-radio-groups);
+  }
+  .bg-\[image\:var\(--bg-toggles\)\] {
+    background-image: var(--bg-toggles);
   }
   .from-blue-100 {
     --tw-gradient-from: var(--color-blue-100);
@@ -2697,14 +2739,254 @@
   .to-50\% {
     --tw-gradient-to-position: 50%;
   }
+  .bg-contain {
+    background-size: contain;
+  }
   .bg-cover {
     background-size: cover;
+  }
+  .bg-fixed {
+    background-attachment: fixed;
   }
   .bg-clip-text {
     background-clip: text;
   }
+  .bg-\[30px_30px\] {
+    background-position: 30px 30px;
+  }
+  .bg-\[50px_50px\] {
+    background-position: 50px 50px;
+  }
+  .bg-\[100\%_100\%\] {
+    background-position: 100% 100%;
+  }
+  .bg-\[100px_100px\] {
+    background-position: 100px 100px;
+  }
+  .bg-\[100px_400px\] {
+    background-position: 100px 400px;
+  }
+  .bg-\[100px_500px\] {
+    background-position: 100px 500px;
+  }
+  .bg-\[100px_700px\] {
+    background-position: 100px 700px;
+  }
+  .bg-\[150px_100px\] {
+    background-position: 150px 100px;
+  }
+  .bg-\[200px_200px\] {
+    background-position: 200px 200px;
+  }
+  .bg-\[200px_300px\] {
+    background-position: 200px 300px;
+  }
+  .bg-\[200px_400px\] {
+    background-position: 200px 400px;
+  }
+  .bg-\[200px_600px\] {
+    background-position: 200px 600px;
+  }
+  .bg-\[250px_100px\] {
+    background-position: 250px 100px;
+  }
+  .bg-\[300px_200px\] {
+    background-position: 300px 200px;
+  }
+  .bg-\[300px_300px\] {
+    background-position: 300px 300px;
+  }
+  .bg-\[300px_400px\] {
+    background-position: 300px 400px;
+  }
+  .bg-\[300px_500px\] {
+    background-position: 300px 500px;
+  }
+  .bg-\[300px_700px\] {
+    background-position: 300px 700px;
+  }
+  .bg-\[400px_400px\] {
+    background-position: 400px 400px;
+  }
+  .bg-\[400px_500px\] {
+    background-position: 400px 500px;
+  }
+  .bg-\[400px_600px\] {
+    background-position: 400px 600px;
+  }
+  .bg-\[440px_390px\] {
+    background-position: 440px 390px;
+  }
+  .bg-\[450px_100px\] {
+    background-position: 450px 100px;
+  }
+  .bg-\[450px_150px\] {
+    background-position: 450px 150px;
+  }
+  .bg-\[450px_500px\] {
+    background-position: 450px 500px;
+  }
+  .bg-\[480px_350px\] {
+    background-position: 480px 350px;
+  }
+  .bg-\[480px_380px\] {
+    background-position: 480px 380px;
+  }
+  .bg-\[480px_390px\] {
+    background-position: 480px 390px;
+  }
+  .bg-\[490px_390px\] {
+    background-position: 490px 390px;
+  }
+  .bg-\[500px_500px\] {
+    background-position: 500px 500px;
+  }
+  .bg-\[500px_700px\] {
+    background-position: 500px 700px;
+  }
+  .bg-\[510px_390px\] {
+    background-position: 510px 390px;
+  }
+  .bg-\[550px_390px\] {
+    background-position: 550px 390px;
+  }
+  .bg-\[580px_350px\] {
+    background-position: 580px 350px;
+  }
+  .bg-\[580px_450px\] {
+    background-position: 580px 450px;
+  }
+  .bg-\[580px_550px\] {
+    background-position: 580px 550px;
+  }
+  .bg-\[580px_580px\] {
+    background-position: 580px 580px;
+  }
+  .bg-\[580px_590px\] {
+    background-position: 580px 590px;
+  }
+  .bg-\[580px_600px\] {
+    background-position: 580px 600px;
+  }
+  .bg-\[580px_610px\] {
+    background-position: 580px 610px;
+  }
+  .bg-\[600px_400px\] {
+    background-position: 600px 400px;
+  }
+  .bg-\[600px_500px\] {
+    background-position: 600px 500px;
+  }
+  .bg-\[600px_600px\] {
+    background-position: 600px 600px;
+  }
+  .bg-\[600px_650px\] {
+    background-position: 600px 650px;
+  }
+  .bg-\[600px_800px\] {
+    background-position: 600px 800px;
+  }
+  .bg-\[640px_600px\] {
+    background-position: 640px 600px;
+  }
+  .bg-\[650px_250px\] {
+    background-position: 650px 250px;
+  }
+  .bg-\[650px_300px\] {
+    background-position: 650px 300px;
+  }
+  .bg-\[650px_330px\] {
+    background-position: 650px 330px;
+  }
+  .bg-\[650px_340px\] {
+    background-position: 650px 340px;
+  }
+  .bg-\[650px_360px\] {
+    background-position: 650px 360px;
+  }
+  .bg-\[650px_380px\] {
+    background-position: 650px 380px;
+  }
+  .bg-\[650px_410px\] {
+    background-position: 650px 410px;
+  }
+  .bg-\[650px_440px\] {
+    background-position: 650px 440px;
+  }
+  .bg-\[700px_300px\] {
+    background-position: 700px 300px;
+  }
+  .bg-\[700px_400px\] {
+    background-position: 700px 400px;
+  }
+  .bg-\[700px_600px\] {
+    background-position: 700px 600px;
+  }
+  .bg-\[700px_700px\] {
+    background-position: 700px 700px;
+  }
+  .bg-\[700px_750px\] {
+    background-position: 700px 750px;
+  }
+  .bg-\[750px_300px\] {
+    background-position: 750px 300px;
+  }
+  .bg-\[800px_500px\] {
+    background-position: 800px 500px;
+  }
+  .bg-\[800px_600px\] {
+    background-position: 800px 600px;
+  }
+  .bg-\[800px_700px\] {
+    background-position: 800px 700px;
+  }
+  .bg-\[800px_750px\] {
+    background-position: 800px 750px;
+  }
+  .bg-\[800px_800px\] {
+    background-position: 800px 800px;
+  }
+  .bg-\[800px_850px\] {
+    background-position: 800px 850px;
+  }
+  .bg-\[900px_700px\] {
+    background-position: 900px 700px;
+  }
+  .bg-bottom {
+    background-position: bottom;
+  }
+  .bg-center {
+    background-position: center;
+  }
+  .bg-left {
+    background-position: left;
+  }
+  .bg-left-bottom {
+    background-position: left bottom;
+  }
+  .bg-left-top {
+    background-position: left top;
+  }
+  .bg-right {
+    background-position: right;
+  }
+  .bg-right-bottom {
+    background-position: right bottom;
+  }
   .bg-right-top {
     background-position: right top;
+  }
+  .bg-top {
+    background-position: top;
+  }
+  .bg-no-repeat {
+    background-repeat: no-repeat;
+  }
+  .object-cover {
+    object-fit: cover;
+  }
+  .object-fill {
+    object-fit: fill;
   }
   .p-0 {
     padding: calc(var(--spacing) * 0);
@@ -2750,9 +3032,6 @@
   }
   .p-12 {
     padding: calc(var(--spacing) * 12);
-  }
-  .px-0 {
-    padding-inline: calc(var(--spacing) * 0);
   }
   .px-1 {
     padding-inline: calc(var(--spacing) * 1);
@@ -3394,9 +3673,6 @@
   .ring-orange-500\/20 {
     --tw-ring-color: color-mix(in oklab, var(--color-orange-500) 20%, transparent);
   }
-  .ring-orange-600 {
-    --tw-ring-color: var(--color-orange-600);
-  }
   .ring-red-500 {
     --tw-ring-color: var(--color-red-500);
   }
@@ -3429,9 +3705,6 @@
   }
   .ring-yellow-500\/20 {
     --tw-ring-color: color-mix(in oklab, var(--color-yellow-500) 20%, transparent);
-  }
-  .ring-yellow-600 {
-    --tw-ring-color: var(--color-yellow-600);
   }
   .ring-offset-0 {
     --tw-ring-offset-width: 0px;
@@ -3656,14 +3929,6 @@
     --tw-duration: 5ms;
     transition-duration: 5ms;
   }
-  .duration-50 {
-    --tw-duration: 50ms;
-    transition-duration: 50ms;
-  }
-  .duration-75 {
-    --tw-duration: 75ms;
-    transition-duration: 75ms;
-  }
   .duration-100 {
     --tw-duration: 100ms;
     transition-duration: 100ms;
@@ -3684,6 +3949,10 @@
     --tw-duration: 25ms;
     transition-duration: 25ms;
   }
+  .duration-50 {
+    --tw-duration: 50ms;
+    transition-duration: 50ms;
+  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -3695,6 +3964,10 @@
   .duration-700 {
     --tw-duration: 700ms;
     transition-duration: 700ms;
+  }
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -4592,13 +4865,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: inherit;
-      }
-    }
-  }
-  .hover\:bg-orange-600 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-orange-600);
       }
     }
   }
