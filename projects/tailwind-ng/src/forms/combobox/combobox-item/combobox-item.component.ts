@@ -65,7 +65,9 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   }
 
   scrollIntoView(): void {
-    this.nativeElement.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest' });
+    requestIdleCallback(() => {
+      this.nativeElement.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }, { timeout: 1000 });
   }
 
   protected override addEventListeners(): void {
