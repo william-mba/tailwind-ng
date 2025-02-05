@@ -17,8 +17,30 @@
     </button>
   </div>
 </section>
-<section class="relative mt-24 lg:mt-12 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid">
-  <div>
+<section
+  class="relative mt-24 lg:mt-12 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid has-focus:*:first:scale-x-300 has-focus:*:first:scale-y-300 has-focus:*:first:scale-z-300 has-focus:*:first:animate-spin has-focus:*:first:duration-200 has-focus:*:first:*:opacity-0">
+  <div routerLink="components"
+    class="cursor-pointer max-lg:mx-auto lg:absolute lg:left-6/7 xl:left-6/8 lg:top-36 animate-spin-180 lg:my-auto size-24 dark:size-20 lg:size-32 lg:dark:size-28 xl:size-36 xl:dark:size-32 rotate-[0.75_1_0.75_45deg] transform-3d *:backface-visible *:border *:border-blue-100 dark:*:border-gray-600 *:shadow-2xl *:shadow-indigo-100 dark:*:shadow-indigo-300 transition-all duration-300 *:transition-all *:duration-300">
+    <div
+      class="absolute inset-0 translate-z-12 lg:translate-z-16 xl:translate-z-18 rotate-x-0 bg-[image:var(--bg-buttons)] bg-cover bg-center">
+    </div>
+    <div
+      class="absolute inset-0 -translate-z-12 lg:-translate-z-16 xl:-translate-z-18 rotate-y-180 bg-[image:var(--bg-toggles)] bg-cover bg-center opacity-90">
+    </div>
+    <div
+      class="absolute inset-0 translate-x-12 lg:translate-x-16 xl:translate-x-18 rotate-y-90 rotate-z-180 bg-[image:var(--bg-checkboxes)] bg-cover bg-center opacity-90">
+    </div>
+    <div
+      class="absolute inset-0 -translate-x-12 lg:-translate-x-16 xl:-translate-x-18 -rotate-y-90 bg-[image:var(--bg-dropdowns)] bg-cover bg-center">
+    </div>
+    <div
+      class="absolute inset-0 -translate-y-12 lg:-translate-y-16 xl:-translate-y-18 rotate-x-90 rotate-z-180 bg-[image:var(--bg-radio-groups)] bg-cover bg-center opacity-90">
+    </div>
+    <div
+      class="absolute inset-0 translate-y-12 lg:translate-y-16 xl:translate-y-18 -rotate-x-90 bg-[image:var(--bg-icon-buttons)] bg-cover bg-center">
+    </div>
+  </div>
+  <div class="max-lg:mt-16 xl:mt-0">
     <h1
       class="opacity-95 hover:opacity-100 text-5xl text-center lg:text-start lg:mt-24 sm:text-7xl font-semibold font-heading">
       Tailwind NG
@@ -115,7 +137,6 @@
       </p>
     </div>
   </div>
-
   <div
     class="dark:text-blue-200 text-gray-800 mb-8 border border-blue-800/15 dark:border-blue-100/15 gap-3 grid bg-gray-100/30 hover:bg-gray-50/40 dark:bg-gray-900/30 px-4 py-3 shadow-lg hover:shadow-xl dark:hover:bg-gray-800/30">
     <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
