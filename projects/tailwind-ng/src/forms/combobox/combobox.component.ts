@@ -72,12 +72,12 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
   }
 
   protected onBlur(): void {
-    setTimeout(() => {
+    requestIdleCallback(() => {
       if (!this.hasFocus) {
         this.close();
         this.input().removeVisualfocus();
       }
-    }, 50);
+    }, { timeout: 50 });
   }
 
   protected onKeyboardEvent(event: KeyboardEvent): void {
