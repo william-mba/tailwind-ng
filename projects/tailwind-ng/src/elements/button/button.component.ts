@@ -59,9 +59,9 @@ export class ButtonComponent extends ButtonBase implements Button {
       event.stopPropagation();
       this.popup.ref[this.popup.action]();
       if (isDropdown(this.popup.ref) && this.popup.ref.isOpened) {
-        requestIdleCallback(() => {
+        setTimeout(() => {
           this.popup?.ref.focus({ behavior: 'firstChild' });
-        }, { timeout: 50 });
+        }, 50);
       }
     }
   }

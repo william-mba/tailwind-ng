@@ -71,10 +71,10 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   }
 
   protected onBlur(): void {
-    requestIdleCallback(() => {
+    setTimeout(() => {
       if (!this.hasFocus) {
         this.close();
       }
-    }, { timeout: 50 });
+    }, 50);
   }
 }
