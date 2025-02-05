@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Button, ButtonBase, ButtonVariant, ClassList, KBKey, PopupControl, SizeOption } from '@tailwind-ng/core';
+import { Button, ButtonBase, ButtonVariant, ClassList, isDropdown, KBKey, PopupControl, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component
@@ -58,6 +58,11 @@ export class ButtonComponent extends ButtonBase implements Button {
     } else if (this.popup && this.popup.action !== 'ignore') {
       event.stopPropagation();
       this.popup.ref[this.popup.action]();
+      if (isDropdown(this.popup.ref) && this.popup.ref.isOpened) {
+        requestIdleCallback(() => {
+          this.popup?.ref.focus({ behavior: 'firstChild' });
+        });
+      }
     }
   }
 
@@ -75,7 +80,7 @@ export class ButtonComponent extends ButtonBase implements Button {
           this.popup.ref[this.popup.action]();
         }
       }
-      if (this.popup && this.popup.ref.type === 'Dropdown') {
+      if (this.popup && isDropdown(this.popup.ref)) {
         if (KBKey.isArrowDown(event.key)) {
           if (!this.popup.ref.isOpened) {
             this.popup.ref.open();
