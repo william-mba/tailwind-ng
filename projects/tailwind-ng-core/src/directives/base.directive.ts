@@ -234,7 +234,6 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     }, { timeout: 50 });
   }
 
-
   get hasVisualFocus(): boolean {
     return this.nativeElement.hasAttribute('data-active');
   }
