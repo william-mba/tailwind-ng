@@ -53,11 +53,15 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   isHovered = false;
 
   async ngOnInit(): Promise<void> {
-    await this.onInit()
+    this.onInit()
       .then(() => {
         this.addEventListeners();
-        this._destroyRef.onDestroy(() => {
-          this.removeEventListeners();
+      })
+      .then(() => {
+        requestIdleCallback(() => {
+          this._destroyRef.onDestroy(() => {
+            this.removeEventListeners();
+          });
         });
       })
       .then(() => {
@@ -105,13 +109,15 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     }
     // Prevent scrolling when using arrow up and down keys.
     if (KBKey.isKeyboardEvent(event)) {
-      if (KBKey.isArrowUpOrDown(event.key)) {
+      if (KBKey.isNavigation(event.key)) {
         event.preventDefault();
       }
       if (KBKey.isSpace(event.key)) {
+        // Space should not be prevented when the element is an input or a combobox.
         if (this.nativeElement.hasAttribute('tw-combobox') ||
-          ['INPUT', 'TW-COMBOBOX'].includes(this.nativeElement.tagName))
+          ['INPUT', 'TW-COMBOBOX'].includes(this.nativeElement.tagName)) {
           return;
+        }
         event.preventDefault();
       }
     }
