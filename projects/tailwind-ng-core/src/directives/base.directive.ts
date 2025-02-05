@@ -228,10 +228,10 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   }
 
   scrollIntoView(options: ScrollIntoViewOptions = {}): void {
-    requestIdleCallback(() => {
+    setTimeout(() => {
       const { block = 'nearest', inline = 'nearest' } = options;
       this.nativeElement.scrollIntoView({ block: block, inline: inline });
-    }, { timeout: 50 });
+    }, 10);
   }
 
   get hasVisualFocus(): boolean {
