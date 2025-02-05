@@ -58,6 +58,10 @@ export interface BaseActions {
    * Default target is the component's native element.
    */
   removeVisualfocus(target?: HTMLElement): void;
+  /**
+   * Scrolls the element into the view. Making it visible to the user.
+   */
+  scrollIntoView(options: ScrollIntoViewOptions): void;
 }
 
 type FocusBehavior = 'self' | 'nextSibling' | 'previousSibling' | 'firstChild' | 'lastChild';

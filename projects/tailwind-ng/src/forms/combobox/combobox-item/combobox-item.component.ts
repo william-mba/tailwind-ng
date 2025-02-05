@@ -64,12 +64,6 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     this.combobox.select(this);
   }
 
-  scrollIntoView(): void {
-    requestIdleCallback(() => {
-      this.nativeElement.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-    }, { timeout: 1000 });
-  }
-
   protected override addEventListeners(): void {
     super.addEventListeners();
     this.nativeElement.addEventListener('click', this.select.bind(this), { passive: true, capture: true });

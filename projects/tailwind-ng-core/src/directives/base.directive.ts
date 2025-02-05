@@ -221,6 +221,14 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     target.removeAttribute('data-active');
   }
 
+  scrollIntoView(options: ScrollIntoViewOptions = {}): void {
+    requestIdleCallback(() => {
+      const { block = 'nearest', inline = 'nearest' } = options;
+      this.nativeElement.scrollIntoView({ block: block, inline: inline });
+    });
+  }
+
+
   get hasVisualFocus(): boolean {
     return this.nativeElement.hasAttribute('data-active');
   }
