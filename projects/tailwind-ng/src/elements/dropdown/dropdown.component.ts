@@ -15,6 +15,7 @@ import { ClassList, Dropdown, DropdownBase, KBKey, OverlayPosition } from '@tail
 })
 export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0' };
+  @Input() closeOnBlur = false;
 
   protected override async onInit(): Promise<void> {
     if (!this.classList) {
@@ -27,6 +28,9 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   }
   protected override addEventListeners(): void {
     super.addEventListeners();
+    if (this.closeOnBlur) {
+      this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
+    }
     this.nativeElement.addEventListener('pointerover', this.onPointerEvent.bind(this), false);
     this.nativeElement.addEventListener('pointerleave', this.onPointerEvent.bind(this), false);
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
@@ -34,6 +38,9 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
+    if (this.closeOnBlur) {
+      this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
+    }
     this.nativeElement.removeEventListener('pointerover', this.onPointerEvent.bind(this), false);
     this.nativeElement.removeEventListener('pointerleave', this.onPointerEvent.bind(this), false);
     this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
@@ -61,5 +68,13 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
     if (KBKey.isEscape(event.key)) {
       this.close();
     }
+  }
+
+  protected onBlur(): void {
+    requestIdleCallback(() => {
+      if (!this.hasFocus) {
+        this.close();
+      }
+    }, { timeout: 50 });
   }
 }
