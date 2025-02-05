@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-docs',
-  imports: [NgIf, RouterLink, RouterLinkActive, IconDirective, DropdownComponent, ButtonComponent, OptionDirective, BadgeComponent, RouterOutlet],
+  imports: [NgIf, RouterLink, RouterLinkActive, IconDirective, DropdownComponent, ButtonComponent, OptionDirective, RouterOutlet],
   templateUrl: './docs.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
