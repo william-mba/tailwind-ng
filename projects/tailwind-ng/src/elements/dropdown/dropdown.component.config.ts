@@ -16,7 +16,7 @@ const DefaultConfig = (): DropdownConfig => {
     borderWidth: 'border',
     radius: 'rounded-md',
     borderColor: 'border-gray-200',
-    bgColor: 'bg-gray-50',
+    bgColor: 'bg-white',
     boxShadow: 'shadow-lg',
     colorScheme: 'scheme-light',
     cursor: 'cursor-pointer',
