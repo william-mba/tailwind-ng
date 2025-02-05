@@ -22,8 +22,18 @@ export interface Dialog extends PopupState, BasicPopupActions, AdvancedPopupActi
    */
   readonly displayDuration?: number;
   /**
-   * Whether the dialog is modal or not. If `true`, the dialog will be modal and will prevent any interaction with the rest of the page.
+   * Whether the dialog is modal. If `true`, the dialog will be modal and will prevent any interaction with the rest of the page.
    * Default is `true`.
    */
   readonly isModal: boolean;
+}
+
+/**
+ * Checks if the component is a Dialog.
+ * If so, you can safely access the Dialog members inside this block scope.
+ */
+export function isDialog(component: unknown): component is Dialog {
+  return component != undefined && (component as Dialog).type === 'Dialog' &&
+    (component as Dialog).isModal !== undefined &&
+    (component as Dialog).autoClose !== undefined
 }

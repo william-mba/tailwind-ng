@@ -24,3 +24,13 @@ export interface Checkbox extends BaseState, BaseActions {
 }
 
 type EventOrigin = "self" | "parent" | "child"
+
+/**
+ * Checks if the component is a Checkbox.
+ * If so, you can safely access the Checkbox members inside this block scope.
+ */
+export function isCheckbox(component: unknown): component is Checkbox {
+  return component != undefined && (component as Checkbox).checked !== undefined &&
+    (component as Checkbox).indeterminate !== undefined &&
+    (component as Checkbox).toggle !== undefined
+}

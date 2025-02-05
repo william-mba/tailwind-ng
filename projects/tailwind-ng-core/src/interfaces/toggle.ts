@@ -17,3 +17,11 @@ export interface Toggle extends BaseState, BaseActions {
   checked: OutputEmitterRef<boolean>;
 }
 
+/**
+ * Checks if the component is a Toggle.
+ * If so, you can safely access the Toggle members inside this block scope.
+ */
+export function isToggle(component: unknown): component is Toggle {
+  return component != undefined && (component as Toggle).isChecked !== undefined &&
+    (component as Toggle).toggle !== undefined && !("indeterminate" in (component as Toggle));
+}

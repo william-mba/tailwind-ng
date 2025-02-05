@@ -58,3 +58,13 @@ export interface ComboboxEvents extends PopupEvents {
 }
 
 export interface Combobox extends ComboboxState, ComboboxActions, ComboboxEvents { }
+
+/**
+ * Checks if the component is a Combobox.
+ * If so, you can safely access the Combobox members inside this block scope.
+ */
+export function isCombobox(component: unknown): component is Combobox {
+  return component != undefined && (component as Combobox).reset != undefined &&
+    (component as Combobox).select != undefined &&
+    (component as Combobox).isMulti != undefined
+}
