@@ -93,7 +93,7 @@
     <!-- Left navigation on large screen -->
     <div class="max-sm:hidden col-start-1 sm:col-end-2 md:col-end-3 lg:col-end-4 overflow-y-auto max-h-screen z-10">
       <div [attr.data-opened]="isNavOpened"
-        class="bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
+        class="min-h-screen bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
         @for (item of navItems; track $index) {
         @switch (item.category) {
         @case ('documentation') {
@@ -156,7 +156,7 @@
     <div
       class="sm:hidden has-data-[opened=false]:-translate-x-full has-data-[opened=false]:sm:translate-x-0 duration-500 fixed inset-0 top-28 overflow-y-auto z-10">
       <div [attr.data-opened]="isNavOpened"
-        class="bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
+        class="min-h-screen bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
         @for (item of navItems; track $index) {
         @switch (item.category) {
         @case ('documentation') {

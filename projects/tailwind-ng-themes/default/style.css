@@ -1180,6 +1180,9 @@
   .max-h-screen {
     max-height: 100vh;
   }
+  .min-h-screen {
+    min-height: 100vh;
+  }
   .w-0\.5 {
     width: calc(var(--spacing) * 0.5);
   }
@@ -2678,8 +2681,11 @@
   .bg-clip-text {
     background-clip: text;
   }
-  .bg-\[650px_440px\] {
-    background-position: 650px 440px;
+  .bg-\[500px_310px\] {
+    background-position: 500px 310px;
+  }
+  .bg-\[550px_350px\] {
+    background-position: 550px 350px;
   }
   .bg-center {
     background-position: center;
@@ -3583,6 +3589,18 @@
     --tw-duration: 50ms;
     transition-duration: 50ms;
   }
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
+  }
+  .duration-100 {
+    --tw-duration: 100ms;
+    transition-duration: 100ms;
+  }
+  .duration-1000 {
+    --tw-duration: 1000ms;
+    transition-duration: 1000ms;
+  }
   .duration-150 {
     --tw-duration: 150ms;
     transition-duration: 150ms;
@@ -3595,14 +3613,6 @@
     --tw-duration: 25ms;
     transition-duration: 25ms;
   }
-  .duration-75 {
-    --tw-duration: 75ms;
-    transition-duration: 75ms;
-  }
-  .duration-100 {
-    --tw-duration: 100ms;
-    transition-duration: 100ms;
-  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -3614,10 +3624,6 @@
   .duration-700 {
     --tw-duration: 700ms;
     transition-duration: 700ms;
-  }
-  .duration-1000 {
-    --tw-duration: 1000ms;
-    transition-duration: 1000ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -3782,6 +3788,15 @@
   .\*\:gap-6 {
     :is(& > *) {
       gap: calc(var(--spacing) * 6);
+    }
+  }
+  .\*\:\*\:truncate {
+    :is(& > *) {
+      :is(& > *) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
   }
   .\*\:overflow-x-auto {
@@ -5251,11 +5266,6 @@
       gap: calc(var(--spacing) * 8);
     }
   }
-  .sm\:gap-10 {
-    @media (width >= 40rem) {
-      gap: calc(var(--spacing) * 10);
-    }
-  }
   .sm\:px-6 {
     @media (width >= 40rem) {
       padding-inline: calc(var(--spacing) * 6);
@@ -5518,16 +5528,10 @@
       text-align: start;
     }
   }
-  .lg\:text-2xl {
+  .lg\:text-xl {
     @media (width >= 64rem) {
-      font-size: var(--text-2xl);
-      line-height: var(--tw-leading, var(--text-2xl--line-height));
-    }
-  }
-  .lg\:text-lg {
-    @media (width >= 64rem) {
-      font-size: var(--text-lg);
-      line-height: var(--tw-leading, var(--text-lg--line-height));
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
     }
   }
   .lg\:font-semibold {
