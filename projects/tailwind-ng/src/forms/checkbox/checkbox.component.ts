@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CheckboxBase, ClassList, KBKey } from "@tailwind-ng/core";
+import { Checkbox, CheckboxBase, CheckboxIcon, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace } from "@tailwind-ng/core";
 import { IconDirective } from "../../elements";
 
 /**
@@ -13,8 +13,8 @@ import { IconDirective } from "../../elements";
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
       <input [class]="classList.value()" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null"/>
-      <tw-icon name="minus" size="sm" class="peer-indeterminate:block" />
-      <tw-icon name="check" size="sm" class="peer-checked:block" />
+      <tw-icon [name]="icon.onIndeterminate" size="sm" class="peer-indeterminate:block" />
+      <tw-icon [name]="icon.onChecked" size="sm" class="peer-checked:block" />
     </div>
     <ng-content />
     <ng-content select="span" />
@@ -39,6 +39,7 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
   @Input() checked = false;
   @Input() indeterminate = false;
   @Input() id = this.randomId();
+  @Input() icon: CheckboxIcon = { onIndeterminate: 'minus', onChecked: 'check' };
   changes = output<{ checked: boolean, indeterminate: boolean }>();
 
   protected override async onInit(): Promise<void> {
@@ -101,44 +102,39 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
     this.changes.emit({ checked: this.checked, indeterminate: this.indeterminate });
   }
 
-  protected onMouseup(event: MouseEvent): void {
+  protected onPointerUp(event: PointerEvent): void {
     event.stopPropagation();
-    if (event.eventPhase === event.BUBBLING_PHASE) {
-      const target = event.target as HTMLElement;
-      const label = this.nativeElement.querySelector('label');
-      if (label?.innerText === target?.innerText) {
-        this.toggle('self', event);
-      } else if (label?.querySelector('input')?.id === target?.id) {
-        this.toggle('self', event);
-      }
+    const target = event.target as HTMLElement;
+    const label = this.nativeElement.querySelector('label');
+    if (label?.innerText === target?.innerText) {
+      this.toggle('self', event);
+    } else if (label?.querySelector('input')?.id === target?.id) {
+      this.toggle('self', event);
     }
   }
 
   protected onKeyup(event: KeyboardEvent): void {
-    event.preventDefault();
     event.stopPropagation();
-    if (KBKey.isEnterOrSpace(event.key)) {
+    if (isEnterOrSpace(event.key)) {
       this.toggle('self');
     }
-    if (KBKey.isNavigation(event.key)) {
-      if (KBKey.isArrowDownOrRight(event.key)) {
-        this.focus({ behavior: 'firstChild', target: this.nativeElement.nextElementSibling as HTMLElement });
-      }
-      if (KBKey.isArrowUpOrLeft(event.key)) {
-        this.focus({ behavior: 'firstChild', target: this.nativeElement.previousElementSibling as HTMLElement });
-      }
+    if (isArrowDownOrRight(event.key)) {
+      this.focus({ behavior: 'firstChild', target: this.nativeElement.nextElementSibling as HTMLElement });
+    }
+    if (isArrowUpOrLeft(event.key)) {
+      this.focus({ behavior: 'firstChild', target: this.nativeElement.previousElementSibling as HTMLElement });
     }
   }
 
   protected override addEventListeners(): void {
     super.addEventListeners();
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
-    this.nativeElement.addEventListener('mouseup', this.onMouseup.bind(this), false);
+    this.nativeElement.addEventListener('pointerup', this.onPointerUp.bind(this), false);
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
     this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
-    this.nativeElement.removeEventListener('mouseup', this.onMouseup.bind(this), false);
+    this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false);
   }
 }

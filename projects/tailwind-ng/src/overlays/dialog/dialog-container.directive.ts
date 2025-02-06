@@ -1,5 +1,5 @@
 import { afterNextRender, Directive, inject } from "@angular/core";
-import { BaseDirective, ClassList, KBKey } from '@tailwind-ng/core';
+import { BaseDirective, ClassList, isEscape } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
 
 @Directive({
@@ -41,26 +41,17 @@ export class DialogContainerDirective extends BaseDirective {
     }
   }
 
-  protected onKeyboardEvent(event: KeyboardEvent): void {
-    if (KBKey.isEscape(event.key)) {
-      event.preventDefault();
+  protected onKeyup(event: KeyboardEvent): void {
+    if (isEscape(event.key)) {
       event.stopPropagation();
       this.dialog.close();
-    } else if (KBKey.isEnterOrSpace(event.key)) {
-      const icon = this.nativeElement.querySelector('tw-icon') as HTMLElement;
-      if (icon && icon === this._document.activeElement) {
-        event.preventDefault();
-        icon.tabIndex = 0;
-        icon.click();
-      }
     }
   }
 
   private focusPrimaryActionOrDefault() {
-    const id = setTimeout(() => {
+    setTimeout(() => {
       (this.nativeElement.querySelector('button[variant=primary],tw-button[variant=primary]') as HTMLElement)?.focus();
-      clearTimeout(id);
-    }, 55);
+    }, 50);
   }
 
   protected onPointerEvent(event: UIEvent) {
@@ -85,13 +76,13 @@ export class DialogContainerDirective extends BaseDirective {
     super.addEventListeners();
     this.nativeElement.addEventListener('pointerover', this.onPointerEvent.bind(this), true);
     this.nativeElement.addEventListener('pointerleave', this.onPointerEvent.bind(this), true);
-    this.nativeElement.addEventListener('keyup', this.onKeyboardEvent.bind(this), false);
+    this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
     this.nativeElement.removeEventListener('pointerover', this.onPointerEvent.bind(this), true);
     this.nativeElement.removeEventListener('pointerleave', this.onPointerEvent.bind(this), true);
-    this.nativeElement.removeEventListener('keyup', this.onKeyboardEvent.bind(this), false);
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
   }
 }
