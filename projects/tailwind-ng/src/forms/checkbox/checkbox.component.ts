@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CheckboxBase, CheckboxIcon, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace } from "@tailwind-ng/core";
+import { Checkbox, CheckboxBase, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace } from "@tailwind-ng/core";
 import { IconDirective } from "../../elements";
+import { CHECKBOX_ICON } from "./checkbox-icon.token";
 
 /**
  * @TailwindNG Checkbox Component.
@@ -32,6 +33,7 @@ import { IconDirective } from "../../elements";
   providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }]
 })
 export class CheckboxComponent extends CheckboxBase implements Checkbox {
+  protected readonly icon = inject(CHECKBOX_ICON);
   private children?: Checkbox[];
   private readonly parent = inject(CheckboxComponent, {
     optional: true, skipSelf: true, host: true
@@ -39,7 +41,6 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
   @Input() checked = false;
   @Input() indeterminate = false;
   @Input() id = this.randomId();
-  @Input() icon: CheckboxIcon = { onIndeterminate: 'minus', onChecked: 'check' };
   changes = output<{ checked: boolean, indeterminate: boolean }>();
 
   protected override async onInit(): Promise<void> {
