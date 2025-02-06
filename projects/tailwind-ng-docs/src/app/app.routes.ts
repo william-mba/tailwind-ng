@@ -67,11 +67,11 @@ export class AppTitleStrategy extends TitleStrategy {
         );
       }
       return this.title.setTitle(
-        `Tailwind NG ${title} - High-quality ${title} Components built with Tailwind CSS and Angular`
+        `Tailwind NG ${title} - Beautiful, fast and accessible Tailwind CSS ${title} for Angular`
       );
     }
     this.title.setTitle(
-      'Tailwind NG - High-quality UI components for large-scale and enterprise Angular applications'
+      'Tailwind NG - Beautiful, fast and accessible Tailwind CSS components for Angular'
     );
   }
 }

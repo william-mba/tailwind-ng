@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-The best way to quickly integrate <br/> Tailwind CSS components with Angular.
+Beautiful, fast and accessible <br/> Tailwind CSS components for Angular.
 <br/>
 <br/>
 <br/>
