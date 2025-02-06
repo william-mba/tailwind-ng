@@ -12,10 +12,14 @@ import { CHECKBOX_ICON } from "./checkbox-icon.token";
   imports: [IconDirective],
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
-    <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
+    <div class="relative flex size-fit text-white *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
       <input [class]="classList.value()" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null"/>
-      <tw-icon [name]="icon.onIndeterminate" size="sm" class="peer-indeterminate:block" />
-      <tw-icon [name]="icon.onChecked" size="sm" class="peer-checked:block" />
+      @if (indeterminate && !checked) {
+        <tw-icon [name]="icon.onIndeterminate" [size]="icon.size"/>
+      }
+      @if (checked && !indeterminate) {
+        <tw-icon [name]="icon.onChecked" [size]="icon.size"/>
+      }
     </div>
     <ng-content />
     <ng-content select="span" />

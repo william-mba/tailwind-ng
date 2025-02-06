@@ -1,6 +1,7 @@
 import { BaseActions, BaseState } from "./base";
 import { CheckboxConfig } from "../config/interfaces";
 import { OutputEmitterRef } from "@angular/core";
+import { SizeOption } from "../types";
 
 export interface Checkbox extends BaseState, BaseActions {
   readonly config: Partial<CheckboxConfig>
@@ -37,7 +38,11 @@ export interface CheckboxIcon {
    * The name of the icon to display when the checkbox is checked.
    * Default is `'check'`. The icon must be configured. Otherwise, it will not display.
    */
-  onChecked: string
+  onChecked: string,
+  /**
+   * The size of the icon. Default is `'sm'`.
+   */
+  size: SizeOption;
 }
 
 type EventOrigin = "self" | "parent" | "child"
