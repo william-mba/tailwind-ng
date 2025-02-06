@@ -612,11 +612,9 @@
     </div>
   </div>
 </div>
-
+<!--
 <div tw-dialog #tasksSavedDialog [isModal]="false" class="self-end justify-self-end">
-  <!-- Dialog container -->
   <div tw-dialog-container class="sm:max-w-md">
-    <!-- Dialog content -->
     <div class="grid gap-3 text-center sm:text-left text-sm text-gray-600 dark:text-gray-400">
       <details>
         <summary>
@@ -681,7 +679,6 @@
         </ul>
       </details>
     </div>
-    <!-- Dialog actions -->
     <div class="flex justify-end">
       <button tw-button class="w-full sm:w-fit" (click)="tasksDialog.open()">OK</button>
     </div>
@@ -730,32 +727,14 @@
             </tw-checkbox>
           </div>
         </div>
-        <div tw-dialog #centeredDialogWithBackdrop>
-          <!-- Dialog container -->
-          <div tw-dialog-container class="sm:max-w-fit">
-            <!-- Dialog content -->
-            <div class="grid gap-3 text-center sm:text-left">
-              <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
-                Out of stock
-              </h1>
-              <p class="text-sm text-gray-600 dark:text-gray-400">
-                The item in your cart is no longer available.
-              </p>
-            </div>
-            <!-- Dialog actions -->
-            <div class="flex justify-end">
-              <button tw-button class="w-full sm:w-fit" (click)="centeredDialogWithBackdrop.close()">OK</button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="grid gap-6 place-content-center p-8 relative w-fit grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mx-auto">
   <!-- Trigger button -->
-  <button tw-button variant="secondary" [popup]="{ref: centeredDialogWithBackdrop, action: 'toggle'}">
+  <button tw-button variant="secondary" [popup]="{ref:centeredDialogWithBackdrop, action: 'toggle'}">
     View center dialog with backdrop
   </button>
   <button tw-button variant="secondary" [popup]="{ref: bottomLeftDialog, action: 'toggle'}">
@@ -780,6 +759,24 @@
     View dialog with left-aligned buttons
   </button>
 
+  <div tw-dialog #centeredDialogWithBackdrop>
+    <!-- Dialog container -->
+    <div tw-dialog-container class="sm:max-w-fit">
+      <!-- Dialog content -->
+      <div class="grid gap-3 text-center sm:text-left">
+        <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
+          Out of stock
+        </h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          The item in your cart is no longer available.
+        </p>
+      </div>
+      <!-- Dialog actions -->
+      <div class="flex justify-end">
+        <button tw-button class="w-full sm:w-fit" (click)="centeredDialogWithBackdrop.close()">OK</button>
+      </div>
+    </div>
+  </div>
   <div tw-dialog #dialogWithLeftAlignedButtons>
     <!-- Dialog container -->
     <div tw-dialog-container>
