@@ -2,7 +2,7 @@ import { ChangeDetectorRef, DestroyRef, Directive, ElementRef, inject, Injector,
 import { BaseState, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config";
-import { KBKey } from "../guards";
+import { isEnterOrSpace, isKeyboardEvent, isNavigation, isSpace } from "../guards";
 
 /**
  * @TailwindNG Base component directive.
@@ -108,17 +108,16 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
       return;
     }
     // Prevent scrolling when using arrow up and down keys.
-    if (KBKey.isKeyboardEvent(event)) {
-      if (KBKey.isNavigation(event.key)) {
+    if (isKeyboardEvent(event)) {
+      if (isEnterOrSpace(event.key) || isNavigation(event.key)) {
         event.preventDefault();
       }
-      if (KBKey.isSpace(event.key)) {
+      if (isSpace(event.key)) {
         // Space should not be prevented when the element is an input or a combobox.
         if (this.nativeElement.hasAttribute('tw-combobox') ||
           ['INPUT', 'TW-COMBOBOX'].includes(this.nativeElement.tagName)) {
           return;
         }
-        event.preventDefault();
       }
     }
   }

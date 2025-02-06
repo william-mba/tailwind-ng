@@ -1,7 +1,7 @@
 import { Directive, Input } from "@angular/core";
 import { BaseDirective } from "./base.directive";
-import { KBKey } from "../guards";
-import { PopupControl } from "../interfaces";
+import { isArrowDownOrRight, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isSpace } from "../guards";
+import { Popup } from "../interfaces";
 import { ClassList } from "../config";
 
 @Directive({
@@ -14,7 +14,7 @@ import { ClassList } from "../config";
   }
 })
 export class OptionDirective extends BaseDirective {
-  @Input() popup?: PopupControl;
+  @Input() popup?: Popup;
 
   protected override async onInit(): Promise<void> {
     if (!this.classList) {
@@ -26,56 +26,28 @@ export class OptionDirective extends BaseDirective {
   protected override addEventListeners(): void {
     super.addEventListeners();
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
-    if (this.popup) {
-      this.nativeElement.addEventListener('pointerup', this.onPointerUp.bind(this), false);
-    }
   }
   protected override removeEventListeners(): void {
     super.removeEventListeners();
     this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
-    if (this.popup) {
-      this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false);
-    }
-  }
-  private onPointerUp(event: PointerEvent): void {
-    if (this.isDisabled) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    } else {
-      event.stopPropagation();
-      if (this.popup && this.popup?.ref.isOpened && this.popup.action !== 'ignore') {
-        this.popup.ref[this.popup.action]();
-        if (!this.isFocused) {
-          this.nativeElement.click();
-        }
-      }
-    }
   }
 
   protected onKeyup(event: KeyboardEvent): void {
-    if (this.isDisabled) {
+    if (isArrowUpOrDown(event.key) || isSpace(event.key)) {
       event.preventDefault();
-      event.stopImmediatePropagation();
-    } else {
-      if (KBKey.isArrowUpOrDown(event.key) || KBKey.isSpace(event.key)) {
-        event.preventDefault();
-        event.stopPropagation();
+      event.stopPropagation();
+    }
+    if (isEnterOrSpace(event.key)) {
+      this.nativeElement.click();
+    }
+    if (isArrowDownOrRight(event.key)) {
+      if (!this.focus({ behavior: 'nextSibling' })) {
+        this.focus({ behavior: 'nextSibling', target: this.nativeElement.parentElement! });
       }
-      if (KBKey.isEnterOrSpace(event.key)) {
-        this.nativeElement.click();
-        if (this.popup && this.popup.action !== 'ignore') {
-          this.popup.ref[this.popup.action]();
-        }
-      }
-      if (KBKey.isArrowDownOrRight(event.key)) {
-        if (!this.focus({ behavior: 'nextSibling' })) {
-          this.focus({ behavior: 'nextSibling', target: this.nativeElement.parentElement! });
-        }
-      }
-      if (KBKey.isArrowUpOrLeft(event.key)) {
-        if (!this.focus({ behavior: 'previousSibling' })) {
-          this.focus({ behavior: 'previousSibling', target: this.nativeElement.parentElement! });
-        }
+    }
+    if (isArrowUpOrLeft(event.key)) {
+      if (!this.focus({ behavior: 'previousSibling' })) {
+        this.focus({ behavior: 'previousSibling', target: this.nativeElement.parentElement! });
       }
     }
   }
