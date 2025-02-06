@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-A library of high-quality UI components <br/> crafted with Tailwind CSS and Angular.
+The best way to quickly integrate <br/> Tailwind CSS components with Angular.
 <br/>
 <br/>
 <br/>
@@ -16,7 +16,6 @@ A library of high-quality UI components <br/> crafted with Tailwind CSS and Angu
 
 </div>
 <br/>
-
 
 ## Motivation
 
@@ -35,6 +34,7 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind N
 <br/>
 
 ## Packages reference
+
 Tailwind NG is modular and is composed of the following packages:
 
 | Name | Description | Version (latest) | Size (min+zip)     |
@@ -52,7 +52,6 @@ Tailwind NG is made possible thanks to the inspirations from the following proje
 
 - [Tailwind UI](https://tailwindui.com/)
 - [Material Design](https://m3.material.io/)
-
 
 [tailwind-ng-version]: https://badgen.net/npm/v/tailwind-ng
 [tailwind-ng-npm]: https://www.npmjs.com/package/tailwind-ng
