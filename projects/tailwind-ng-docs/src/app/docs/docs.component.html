@@ -30,7 +30,7 @@
         </div>
         <!-- Options menu larger screen -->
         <div class="flex items-center gap-6 max-md:hidden">
-          <div class="flex *:rounded-none *:ring-0 items-center gap-2">
+          <div class="flex *:rounded-md *:ring-0 items-center gap-2">
             <button tw-button variant="secondary" size="xs">
               <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
                 <tw-icon name="github"
@@ -54,11 +54,11 @@
         </div>
         <!-- Options menu on mobiles  -->
         <div class="relative flex items-center gap-6 md:hidden">
-          <button tw-button variant="text" size="xs" class="rounded-none" [popup]="{ref: optionMenu, action: 'toggle'}">
+          <button tw-button variant="text" size="xs" class="rounded-md" [popup]="{ref: optionMenu, action: 'toggle'}">
             <tw-icon name="more-ver" class="text-gray-500" />
           </button>
           <ul tw-dropdown #optionMenu [position]="{top: 'top-10', right: 'right-0'}"
-            class="dark:bg-gray-950 bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-none *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
+            class="dark:bg-gray-950 bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-md *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
             <a tw-option class="focus:outline-1 focus:outline-gray-500/80"
               href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
               <tw-icon name="github"

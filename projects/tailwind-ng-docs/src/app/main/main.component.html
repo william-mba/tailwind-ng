@@ -1,25 +1,25 @@
 <section class="relative">
   <div tw-button-group
-    class="rounded-none *:rounded-none items-center lg:p-1 ring-indigo-300/60 dark:ring-indigo-900/60 lg:ring-indigo-100 opacity-80 hover:opacity-100 fixed top-4 right-8 gap-2 z-50">
-    <button tw-button variant="secondary" size="xs">
+    class="rounded-md *:rounded-md items-center lg:p-1 ring-gray-100 dark:ring-gray-900 opacity-80 hover:opacity-100 fixed top-4 right-8 gap-2 z-50">
+    <button tw-button variant="secondary" size="xs" class="max-sm:size-8">
       <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
-        <tw-icon name="github" />
+        <tw-icon name="github" class="max-sm:size-4" />
       </a>
     </button>
-    <button tw-button variant="secondary" size="xs">
+    <button tw-button variant="secondary" size="xs" class="max-sm:size-8">
       <a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
-        <tw-icon name="discord" />
+        <tw-icon name="discord" class="max-sm:size-4" />
       </a>
     </button>
-    <button (click)="switchTheme()" tw-button variant="secondary" size="xs">
-      <tw-icon name="sun" *ngIf="theme.isDark" />
-      <tw-icon name="moon" *ngIf="!theme.isDark" />
+    <button (click)="switchTheme()" tw-button variant="secondary" size="xs" class="max-sm:size-8 items-start">
+      <tw-icon name="moon" *ngIf="!theme.isDark" class="max-sm:size-4" />
+      <tw-icon name="sun" *ngIf="theme.isDark" class="max-sm:size-4" />
     </button>
   </div>
 </section>
 <section class="relative mt-24 lg:mt-12 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid">
   <div routerLink="components"
-    class="cursor-pointer max-lg:mx-auto lg:absolute lg:left-6/7 xl:left-6/8 lg:top-36 animate-spin-180 lg:my-auto size-24 dark:size-20 lg:size-32 lg:dark:size-28 xl:size-36 xl:dark:size-32 rotate-[0.75_1_0.75_45deg] transform-3d *:backface-visible *:border *:border-blue-100 *:shadow-2xl *:shadow-indigo-100 dark:*:shadow-indigo-300 transition-all duration-300 *:transition-all *:duration-300">
+    class="cursor-pointer max-lg:mx-auto lg:absolute lg:left-6/7 xl:left-6/8 lg:top-36 animate-spin-180 lg:my-auto size-24 dark:size-20 lg:size-32 lg:dark:size-28 xl:size-36 xl:dark:size-32 rotate-[0.75_1_0.75_45deg] transform-3d *:backface-visible *:border *:rounded-md *:border-blue-100 *:shadow-2xl *:shadow-indigo-100 dark:*:shadow-indigo-300 transition-all duration-300 *:transition-all *:duration-300">
     <div
       class="absolute inset-0 translate-z-12 lg:translate-z-16 xl:translate-z-18 rotate-x-0 bg-[image:var(--bg-buttons)] bg-cover bg-center">
     </div>
@@ -40,17 +40,26 @@
     </div>
   </div>
   <div class="max-lg:mt-16 xl:mt-0">
-    <h1
-      class="opacity-95 hover:opacity-100 text-5xl text-center lg:text-start lg:mt-24 sm:text-7xl font-semibold font-heading">
-      Tailwind NG
+    <div
+      class="z-10 text-xl font-semibold font-heading flex items-start gap-2 max-sm:gap-0.5 max-sm:text-base max-sm:items-center max-lg:fixed p-3 py-1.5 rounded-md max-lg:backdrop-blur-md max-lg:top-4 max-sm:left-4 max-lg:left-8">
+      <tw-icon name="tailwind-ng" size="lg" class="max-sm:size-7" /> Tailwind NG
+    </div>
+    <h1 class="max-sm:text-4xl text-5xl text-center lg:text-start lg:mt-24 sm:text-7xl font-extrabold font-heading">
+      Enjoy building
+      <br>
+      a great UI at
+      <br>
+      any scale.
     </h1>
-    <p class="text-2xl text-center lg:text-start sm:text-3xl font-medium lg:font-semibold mt-8">
-      Rapidly build great Angular applications
-      <br class="hidden sm:block">
-      at any scale.
-    </p>
+    <div class="mt-8 text-lg lg:text-xl font-light max-lg:text-center md:max-lg:px-6">
+      A library of beautiful, fast and accessible UI components
+      <br class="hidden lg:block">
+      built on top of TypeScript, Tailwind CSS and Angular,
+      <br class="hidden lg:block">
+      that enable Angular developers to rapidly build great UIs.
+    </div>
   </div>
-  <div class="mt-11 lg:mt-12 place-self-center lg:place-self-start *:rounded-none gap-3 grid *:mx-auto sm:flex">
+  <div class="mt-11 lg:mt-12 place-self-center lg:place-self-start *:rounded-md gap-3 grid *:mx-auto sm:flex">
     <button tw-button [isFab]="true" size="lg" routerLink="/docs/getting-started" class="bg-indigo-700">
       Get started
     </button>
@@ -60,25 +69,16 @@
     </button>
   </div>
 </section>
-<section class="relative mt-8 lg:mt-12 p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
-  <div class="text-lg lg:text-xl font-light">
-    Tailwind NG leverage the power
-    of TypeScript, <br class="hidden lg:block">Tailwind CSS and Angular
-    to help you build beautiful, <br class="hidden lg:block">
-    fast and accessible web applications at any scale, without hassle.
-  </div>
-</section>
 <section class="relative mt-6 lg:mt-14 p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
   <h3 class="text-lg lg:text-xl font-light">
-    Why <span
-      class="font-heading font-semibold opacity-90 hover:opacity-100 text-lg text-center lg:text-start sm:text-xl bg-clip-text border-b-2 text-transparent bg-gradient-to-r via-50% from-pink-900 via-fuchsia-700 to-yellow-700 dark:from-purple-500 dark:via-orange-400 dark:to-rose-200">
+    Why <span class="font-heading text-lg text-center lg:text-start sm:text-xl">
       Tailwind NG
     </span>?
   </h3>
   <div
-    class="dark:text-blue-200 text-gray-800 grid grid-cols-1 gap-4 sm:gap-8 my-4 lg:my-8 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:border *:border-blue-800/15 *:dark:border-blue-100/15 *:gap-3 *:grid *:place-content-start *:bg-gray-100/30 *:hover:bg-gray-50/40 *:hover:shadow-xl dark:*:bg-gray-900/30 *:px-4 *:py-3 *:shadow-sm *:dark:hover:bg-gray-800/30">
+    class="dark:text-gray-200 text-gray-800 grid grid-cols-1 gap-4 sm:gap-8 my-4 lg:my-8 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:rounded-md *:border *:border-gray-200 *:dark:border-gray-800 *:gap-3 *:grid *:place-content-start *:bg-gray-50 dark:*:bg-gray-950 *:px-4 *:py-3 *:shadow-sm">
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
         <tw-icon name="sparkles" size="lg" /> Beautiful
       </span>
       <p>
@@ -86,7 +86,7 @@
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
         <tw-icon name="bolt" size="lg" /> Fast
       </span>
       <p>
@@ -94,7 +94,7 @@
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
         <tw-icon name="beaker" size="lg" /> Reliable
       </span>
       <p>
@@ -102,7 +102,7 @@
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
         <tw-icon name="accessibility" size="lg" /> Accessible
       </span>
       <p>
@@ -112,7 +112,7 @@
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
         <tw-icon name="mix-vertical" size="lg" /> Customizable
       </span>
       <p>
@@ -120,7 +120,7 @@
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
         <tw-icon name="star" size="lg" /> Unique DX</span>
       <p>
         Top-notch developer experience with fully-typed and extensible APIs for seamless integration.
@@ -128,8 +128,8 @@
     </div>
   </div>
   <div
-    class="dark:text-blue-200 text-gray-800 mb-8 border border-blue-800/15 dark:border-blue-100/15 gap-3 grid bg-gray-100/30 hover:bg-gray-50/40 dark:bg-gray-900/30 px-4 py-3 shadow-lg hover:shadow-xl dark:hover:bg-gray-800/30">
-    <span class="font-heading font-semibold text-xl dark:text-blue-100 flex gap-2">
+    class="rounded-md dark:text-gray-200 text-gray-800 mb-8 border border-gray-200 dark:border-gray-800 gap-3 grid bg-gray-50 dark:bg-gray-950 px-4 py-3 shadow-lg">
+    <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
       <tw-icon name="license" size="lg" /> Free open-source</span>
     <p>
       <span class="font-heading">Tailwind NG</span> is free and open-source under the MIT license.
