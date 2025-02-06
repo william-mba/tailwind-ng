@@ -35,6 +35,9 @@ export class ButtonComponent extends ButtonBase implements Button {
         ...this.isFab ? this.config.fab : {}
       });
     }
+    if (this.popup) {
+      this.popup.trigger = this;
+    }
   }
 
   protected override addEventListeners(): void {
@@ -96,16 +99,15 @@ export class ButtonComponent extends ButtonBase implements Button {
           }, 50);
         }
       }
-    } else if (!this.popup || (this.popup && !this.popup.isOpened)) {
-      if (isArrowDownOrRight(event.key)) {
-        if (!this.focus({ behavior: 'nextSibling' })) {
-          this.focus({ behavior: 'firstChild', target: this.nativeElement.parentElement as HTMLElement });
-        }
+    }
+    if (isArrowDownOrRight(event.key)) {
+      if (!this.focus({ behavior: 'nextSibling' })) {
+        this.focus({ behavior: 'firstChild', target: this.nativeElement.parentElement as HTMLElement });
       }
-      if (isArrowUpOrLeft(event.key)) {
-        if (!this.focus({ behavior: 'previousSibling' })) {
-          this.focus({ behavior: 'lastChild', target: this.nativeElement.parentElement as HTMLElement });
-        }
+    }
+    if (isArrowUpOrLeft(event.key)) {
+      if (!this.focus({ behavior: 'previousSibling' })) {
+        this.focus({ behavior: 'lastChild', target: this.nativeElement.parentElement as HTMLElement });
       }
     }
   }

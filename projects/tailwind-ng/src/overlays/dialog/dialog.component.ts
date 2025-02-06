@@ -35,7 +35,6 @@ export class DialogComponent extends DialogBase implements Dialog, AfterContentI
       });
     }
   }
-  private lastFocusedElement?: HTMLElement;
 
   ngAfterContentInit(): void {
     if (!this.isOpened) {
@@ -44,7 +43,6 @@ export class DialogComponent extends DialogBase implements Dialog, AfterContentI
   }
 
   override open() {
-    this.lastFocusedElement = this._document.activeElement as HTMLElement;
     if (this.clonedChild) {
       this.nativeElement.appendChild(this.clonedChild);
     }
@@ -52,22 +50,19 @@ export class DialogComponent extends DialogBase implements Dialog, AfterContentI
   }
 
   override close() {
-    this.onClose();
     super.close();
+    this.onClose();
   }
 
   protected onClose() {
     if (this.nativeElement.children.length === 1) {
       this.clonedChild = this.nativeElement.children[0];
     }
-    // Ensure animations complete
-    const id = setTimeout(() => {
+    // Lets animations complete before removing the dialog in the DOM
+    setTimeout(() => {
       if (!this.isOpened && this.clonedChild) {
         this.nativeElement.children[0]?.remove();
       }
-      clearTimeout(id);
     }, 300);
-
-    this.lastFocusedElement?.focus({ preventScroll: true });
   }
 }

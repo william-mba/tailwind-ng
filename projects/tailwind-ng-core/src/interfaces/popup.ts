@@ -19,6 +19,10 @@ export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseSta
    * This is different to what we get from the `typeof` operator witch returns `object`.
    */
   readonly type: PopupType;
+  /**
+   * The component that triggers the popup if any.
+   */
+  trigger?: BaseActions;
 }
 
 export type PopupType =

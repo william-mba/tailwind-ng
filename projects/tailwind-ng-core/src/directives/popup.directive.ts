@@ -2,6 +2,7 @@ import { Directive, Input, inject, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup, PopupType } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
+import { BaseActions } from '../interfaces';
 
 @Directive({
   host: {
@@ -14,6 +15,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   private readonly zIndex = inject(ZIndexer);
   @Input() isOpened = false;
   @Input() id = this.randomId('popup');
+  @Input() trigger?: BaseActions;
   toggled = output<boolean>();
   opened = output<void>();
   closed = output<void>();
@@ -43,6 +45,9 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
       this.isOpened = false;
       this.closed.emit();
       this._changeDetector.markForCheck();
+      if (this.trigger) {
+        this.trigger.focus();
+      }
     }
   }
 
