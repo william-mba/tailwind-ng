@@ -5687,11 +5687,6 @@
       left: calc(6/8 * 100%);
     }
   }
-  .xl\:left-7\/8 {
-    @media (width >= 80rem) {
-      left: calc(7/8 * 100%);
-    }
-  }
   .xl\:mx-52 {
     @media (width >= 80rem) {
       margin-inline: calc(var(--spacing) * 52);
