@@ -78,7 +78,7 @@ export class ButtonComponent extends ButtonBase implements Button {
       if (KBKey.isEnterOrSpace(event.key)) {
         if (this.popup && this.popup.action !== 'ignore') {
           this.popup.ref[this.popup.action]();
-          if (this.popup && isDropdown(this.popup.ref) && this.popup.ref.isOpened) {
+          if (isDropdown(this.popup.ref) && this.popup.ref.isOpened) {
             setTimeout(() => {
               this.popup?.ref.focus({ behavior: 'firstChild' });
             }, 50);
