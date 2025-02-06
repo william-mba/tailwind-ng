@@ -32,10 +32,10 @@ import { IconDirective } from "../../elements";
   providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }]
 })
 export class CheckboxComponent extends CheckboxBase implements Checkbox {
-  private children?: Checkbox[];
   private readonly parent = inject(CheckboxComponent, {
     optional: true, skipSelf: true, host: true
   });
+  readonly children: Checkbox[] = [];
   @Input() checked = false;
   @Input() indeterminate = false;
   @Input() id = this.randomId();
@@ -52,9 +52,6 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
       }
     }
     if (this.parent) {
-      if (!this.parent.children) {
-        this.parent.children = [];
-      }
       this.parent.children.push(this);
       if (this.parent.checked && (!this.checked || this.indeterminate)) {
         this.toggle();

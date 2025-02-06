@@ -14,6 +14,7 @@ export interface Checkbox extends BaseState, BaseActions {
    */
   readonly indeterminate: boolean
   readonly id: string
+  readonly children: Checkbox[]
   /**
    * Toggles the checkbox from origin. Default origin is `'self'`.
    */
