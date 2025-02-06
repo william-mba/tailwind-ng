@@ -78,6 +78,8 @@ export class ButtonComponent extends ButtonBase implements Button {
       if (KBKey.isEnterOrSpace(event.key)) {
         if (this.popup && this.popup.action !== 'ignore') {
           this.popup.ref[this.popup.action]();
+        } else {
+          this.nativeElement.click();
         }
       }
       if (this.popup && isDropdown(this.popup.ref)) {
