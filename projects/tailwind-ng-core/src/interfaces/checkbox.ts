@@ -21,6 +21,24 @@ export interface Checkbox extends BaseState, BaseActions {
    * Emits when the checkbox state changes.
    */
   readonly changes: OutputEmitterRef<{ checked: boolean, indeterminate: boolean }>
+  /**
+   * The icon to display when the checkbox is indeterminate or checked.
+   * Default is `{ indeterminate: 'minus', checked: 'check' }`
+   */
+  readonly icon: CheckboxIcon
+}
+
+export interface CheckboxIcon {
+  /**
+   * The name of the icon to display when the checkbox is indeterminate.
+   * Default is `'minus'`. The icon must be configured. Otherwise, it will not display.
+   */
+  onIndeterminate: string,
+  /**
+   * The name of the icon to display when the checkbox is checked.
+   * Default is `'check'`. The icon must be configured. Otherwise, it will not display.
+   */
+  onChecked: string
 }
 
 type EventOrigin = "self" | "parent" | "child"
