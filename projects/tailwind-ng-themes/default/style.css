@@ -3635,17 +3635,13 @@
     --tw-duration: 100ms;
     transition-duration: 100ms;
   }
-  .duration-200 {
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
-  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
   }
-  .duration-700 {
-    --tw-duration: 700ms;
-    transition-duration: 700ms;
+  .duration-500 {
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
   }
   .duration-1000 {
     --tw-duration: 1000ms;
@@ -3655,9 +3651,13 @@
     --tw-duration: 150ms;
     transition-duration: 150ms;
   }
-  .duration-500 {
-    --tw-duration: 500ms;
-    transition-duration: 500ms;
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .duration-700 {
+    --tw-duration: 700ms;
+    transition-duration: 700ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -6517,6 +6517,46 @@
         content: var(--tw-content);
         display: none;
       }
+    }
+  }
+  .\[\:checked\=true\]\:border-blue-600 {
+    &:is(:checked=true) {
+      border-color: var(--color-blue-600);
+    }
+  }
+  .\[\:checked\=true\]\:bg-blue-600 {
+    &:is(:checked=true) {
+      background-color: var(--color-blue-600);
+    }
+  }
+  .\[\:indeterminate\=true\]\:border-blue-600 {
+    &:is(:indeterminate=true) {
+      border-color: var(--color-blue-600);
+    }
+  }
+  .\[\:indeterminate\=true\]\:bg-blue-600 {
+    &:is(:indeterminate=true) {
+      background-color: var(--color-blue-600);
+    }
+  }
+  .\[checked\=true\]\:border-blue-600 {
+    &:is(checked=true) {
+      border-color: var(--color-blue-600);
+    }
+  }
+  .\[checked\=true\]\:bg-blue-600 {
+    &:is(checked=true) {
+      background-color: var(--color-blue-600);
+    }
+  }
+  .\[indeterminate\=true\]\:border-blue-600 {
+    &:is(indeterminate=true) {
+      border-color: var(--color-blue-600);
+    }
+  }
+  .\[indeterminate\=true\]\:bg-blue-600 {
+    &:is(indeterminate=true) {
+      background-color: var(--color-blue-600);
     }
   }
 }

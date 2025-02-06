@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
 import { Checkbox, CheckboxBase, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace } from "@tailwind-ng/core";
 import { IconDirective } from "../../elements";
-import { CHECKBOX_ICON } from "./checkbox-icon.token";
 
 /**
  * @TailwindNG Checkbox Component.
@@ -12,14 +11,10 @@ import { CHECKBOX_ICON } from "./checkbox-icon.token";
   imports: [IconDirective],
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
-    <div class="relative flex size-fit text-white *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
+    <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
       <input [class]="classList.value()" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null"/>
-      @if (indeterminate && !checked) {
-        <tw-icon [name]="icon.onIndeterminate" [size]="icon.size"/>
-      }
-      @if (checked && !indeterminate) {
-        <tw-icon [name]="icon.onChecked" [size]="icon.size"/>
-      }
+      <tw-icon name="minus" size="sm" class="peer-indeterminate:block" />
+      <tw-icon name="check" size="sm" class="peer-checked:block" />
     </div>
     <ng-content />
     <ng-content select="span" />
@@ -37,7 +32,6 @@ import { CHECKBOX_ICON } from "./checkbox-icon.token";
   providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }]
 })
 export class CheckboxComponent extends CheckboxBase implements Checkbox {
-  protected readonly icon = inject(CHECKBOX_ICON);
   private children?: Checkbox[];
   private readonly parent = inject(CheckboxComponent, {
     optional: true, skipSelf: true, host: true
