@@ -1,63 +1,60 @@
 <div class="sm:px-12 p-10 xl:w-3/4">
   <section>
-    <h1 class="font-heading text-3xl mb-3">Getting Started</h1>
+    <h1 class="font-heading text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200">Getting Started</h1>
     <p class="text-gray-700 dark:text-gray-300">Simple steps to start using
       <span class="font-heading text-nowrap">Tailwind NG</span> in your Angular application.
     </p>
-    <h2 class="font-heading mt-10 mb-3 text-xl">Installation</h2>
+    <h2 class="font-heading mt-10 mb-3 text-xl font-semibold">Installation</h2>
     <p class="mb-3 text-gray-700 dark:text-gray-300">Install <span class="font-heading">Tailwind NG</span> using your
       favorite package manager.</p>
     <p class="mb-1.5 text-gray-700 dark:text-gray-300">npm:</p>
     <div class="relative">
       @if (copyRec['npm']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(npmCode, 'npm')"
-        class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
-      <pre
-        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(npmHTML)"></code></pre>
+      <div [innerHTML]="trust(npmHTML)"></div>
     </div>
     <p class="mb-1.5 text-gray-700 dark:text-gray-300">yarn:</p>
     <div class="relative">
       @if (copyRec['yarn']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(yarnCode, 'yarn')"
-        class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
-      <pre
-        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(yarnHTML)"></code></pre>
+
+      <div [innerHTML]="trust(yarnHTML)"></div>
     </div>
     <p class="mb-1.5 text-gray-700 dark:text-gray-300">pnpm:</p>
     <div class="relative">
       @if (copyRec['pnpm']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(pnpmCode, 'pnpm')"
-        class="absolute top-3 right-3 text-gray-300 hover:text-gray-100" />
+        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
-      <pre
-        class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(pnpmHTML)"></code></pre>
+
+      <div [innerHTML]="trust(pnpmHTML)"></div>
     </div>
-    <h2 class="font-heading mt-12 mb-3 text-xl">Usage</h2>
+    <h2 class="font-heading mt-12 mb-3 text-xl font-semibold">Usage</h2>
     <p class="mb-3 text-gray-700 dark:text-gray-300">Import the component you need.</p>
     <div [innerHTML]="trust(componentsImportsHTML)"></div>
     <p class="mb-3 text-gray-700 dark:text-gray-300">Update your component's template.</p>
-    <pre
-      class="*:*:bg-gray-950! mb-6"><code class="*:p-3 *:border *:dark:border-gray-800 *:overflow-x-auto" [innerHTML]="trust(templateUpdateHTML)"></code></pre>
-
+    <div [innerHTML]="trust(templateUpdateHTML)"></div>
     <p class="text-gray-700 dark:text-gray-300 mb-6">🎉 Congratulations! 🎉 You're all set.</p>
     <p class="text-gray-700 dark:text-gray-300">Happy hacking!</p>
   </section>
   <section class="grid grid-cols-1 sm:grid-cols-2 *:p-6 *:mt-10 *:w-full *:rounded-md">
-    <button tw-button variant="secondary" routerLink="/docs/themes" class="flex justify-between sm:col-start-2">
+    <button tw-button variant="text" routerLink="/docs/themes" class="justify-end sm:col-start-2">
       Themes <tw-icon name="chevron-right" />
     </button>
   </section>

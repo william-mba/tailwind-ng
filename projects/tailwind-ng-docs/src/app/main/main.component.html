@@ -44,22 +44,23 @@
       class="z-10 text-xl font-semibold font-heading flex items-start gap-2 max-sm:gap-0.5 max-sm:text-base max-sm:items-center max-lg:fixed p-3 py-1.5 rounded-md max-lg:backdrop-blur-md max-lg:top-4 max-sm:left-4 max-lg:left-8">
       <tw-icon name="tailwind-ng" size="lg" class="max-sm:size-7" /> Tailwind NG
     </div>
-    <h1 class="max-sm:text-4xl text-5xl text-center lg:text-start lg:mt-24 sm:text-7xl font-extrabold font-heading">
+    <h1
+      class="text-black dark:text-white max-sm:text-4xl text-5xl text-center lg:text-start lg:mt-20 sm:text-7xl font-extrabold font-heading">
       Enjoy building
       <br>
       a great UI
       <br>
       at any scale.
     </h1>
-    <div class="mt-8 text-lg lg:text-xl font-light max-lg:text-center md:max-lg:px-6">
+    <div class="mt-8 text-lg lg:text-xl font-light max-lg:text-center md:max-lg:px-6 text-gray-600 dark:text-gray-400">
       A library of beautiful, fast and accessible UI components
       <br class="hidden lg:block">
       built on top of TypeScript, Tailwind CSS and Angular,
       <br class="hidden lg:block">
-      that enable Angular developers to rapidly build great UIs.
+      that enables developers to rapidly build great applications.
     </div>
   </div>
-  <div class="mt-11 lg:mt-12 place-self-center lg:place-self-start *:rounded-md gap-3 grid *:mx-auto sm:flex">
+  <div class="my-8 place-self-center lg:place-self-start *:rounded-md gap-3 grid *:mx-auto sm:flex">
     <button tw-button [isFab]="true" size="lg" routerLink="/docs/getting-started" class="bg-indigo-700">
       Get started
     </button>
@@ -69,69 +70,76 @@
     </button>
   </div>
 </section>
-<section class="relative mt-6 lg:mt-14 p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
-  <h3 class="text-lg lg:text-xl font-light">
-    Why <span class="font-heading text-lg text-center lg:text-start sm:text-xl">
-      Tailwind NG
-    </span>?
-  </h3>
+<section class="relative p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0">
   <div
-    class="dark:text-gray-200 text-gray-800 grid grid-cols-1 gap-4 sm:gap-8 my-4 lg:my-8 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:rounded-md *:border *:border-gray-200 *:dark:border-gray-800 *:gap-3 *:grid *:place-content-start *:bg-gray-50 dark:*:bg-gray-950 *:px-4 *:py-3 *:shadow-sm">
+    class="dark:text-gray-200 text-gray-800 grid grid-cols-1 gap-4 sm:gap-8 my-4 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:gap-3 *:grid *:place-content-start">
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
-        <tw-icon name="sparkles" size="lg" /> Beautiful
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
+        <tw-icon name="sparkles" size="lg"
+          class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+        Beautiful
       </span>
-      <p>
+      <p class=" text-gray-600 dark:text-gray-400">
         Expertly-crafted UI components that look great out of the box.
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
-        <tw-icon name="bolt" size="lg" /> Fast
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
+        <tw-icon name="bolt" size="lg"
+          class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" /> Fast
       </span>
-      <p>
+      <p class=" text-gray-600 dark:text-gray-400">
         Optimized for large-scale and enterprise Angular applications.
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
-        <tw-icon name="beaker" size="lg" /> Reliable
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
+        <tw-icon name="accessibility" size="lg"
+          class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+        Accessible
       </span>
-      <p>
-        Well-tested to ensure consistent performance and reliability.
-      </p>
-    </div>
-    <div>
-      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
-        <tw-icon name="accessibility" size="lg" /> Accessible
-      </span>
-      <p>
+      <p class=" text-gray-600 dark:text-gray-400">
         Accessibility features compliant with
         <a href="https://www.w3.org/TR/wai-aria/" target="_blank" rel="noopener noreferrer">W3C WAI-ARIA</a>
         standards out of the box.
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
-        <tw-icon name="mix-vertical" size="lg" /> Customizable
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
+        <tw-icon name="beaker" size="lg"
+          class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+        Reliable
       </span>
-      <p>
+      <p class=" text-gray-600 dark:text-gray-400">
+        Well-tested to ensure consistent performance and reliability.
+      </p>
+    </div>
+    <div>
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
+        <tw-icon name="mix-vertical" size="lg"
+          class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+        Customizable
+      </span>
+      <p class=" text-gray-600 dark:text-gray-400">
         Fully-customizable and predictable components to fit your specific needs
       </p>
     </div>
     <div>
-      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
-        <tw-icon name="star" size="lg" /> Unique DX</span>
-      <p>
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
+        <tw-icon name="star" size="lg"
+          class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" /> Unique
+        DX</span>
+      <p class=" text-gray-600 dark:text-gray-400">
         Top-notch developer experience with fully-typed and extensible APIs for seamless integration.
       </p>
     </div>
   </div>
-  <div
-    class="rounded-md dark:text-gray-200 text-gray-800 mb-8 border border-gray-200 dark:border-gray-800 gap-3 grid bg-gray-50 dark:bg-gray-950 px-4 py-3 shadow-lg">
-    <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2">
-      <tw-icon name="license" size="lg" /> Free open-source</span>
-    <p>
+  <div class="rounded-md dark:text-gray-200 text-gray-800 mb-8 gap-3 grid">
+    <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
+      <tw-icon name="license" size="lg"
+        class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />MIT license
+    </span>
+    <p class="text-gray-600 dark:text-gray-400">
       <span class="font-heading">Tailwind NG</span> is free and open-source under the MIT license.
     </p>
   </div>

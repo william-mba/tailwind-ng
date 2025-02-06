@@ -4,7 +4,7 @@
   --breakpoint-xs: 30rem;
   --font-heading: "Epilogue", system-ui, sans-serif;
   --font-sans: "Inter Tight", system-ui, sans-serif;
-  --animate-pulse-8: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-pulse-8: pulse 9s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-spin-180: spin 180s linear infinite;
   --animate-bounce-2: bounce 2s infinite;
   --animate-bounce-x: bounce-x 1s infinite;
