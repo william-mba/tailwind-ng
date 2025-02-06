@@ -5198,6 +5198,12 @@
       gap: calc(var(--spacing) * 0.5);
     }
   }
+  .max-sm\:text-2xl {
+    @media (width < 40rem) {
+      font-size: var(--text-2xl);
+      line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+  }
   .max-sm\:text-4xl {
     @media (width < 40rem) {
       font-size: var(--text-4xl);
