@@ -2859,9 +2859,6 @@
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
-  .pt-8 {
-    padding-top: calc(var(--spacing) * 8);
-  }
   .pt-9 {
     padding-top: calc(var(--spacing) * 9);
   }
@@ -5683,6 +5680,11 @@
   .lg\:ring-indigo-100 {
     @media (width >= 64rem) {
       --tw-ring-color: var(--color-indigo-100);
+    }
+  }
+  .xl\:left-6\/8 {
+    @media (width >= 80rem) {
+      left: calc(6/8 * 100%);
     }
   }
   .xl\:left-7\/8 {
