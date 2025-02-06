@@ -78,6 +78,11 @@ export class ButtonComponent extends ButtonBase implements Button {
       if (KBKey.isEnterOrSpace(event.key)) {
         if (this.popup && this.popup.action !== 'ignore') {
           this.popup.ref[this.popup.action]();
+          if (this.popup && isDropdown(this.popup.ref) && this.popup.ref.isOpened) {
+            setTimeout(() => {
+              this.popup?.ref.focus({ behavior: 'firstChild' });
+            }, 50);
+          }
         } else {
           this.nativeElement.click();
         }
@@ -87,9 +92,8 @@ export class ButtonComponent extends ButtonBase implements Button {
           if (!this.popup.ref.isOpened) {
             this.popup.ref.open();
           }
-          const id = setTimeout(() => {
+          setTimeout(() => {
             this.popup?.ref.focus({ behavior: 'firstChild' });
-            clearTimeout(id);
           }, 50);
         }
         if (KBKey.isArrowUp(event.key)) {
@@ -97,9 +101,8 @@ export class ButtonComponent extends ButtonBase implements Button {
             this.popup.ref.close();
           } else {
             this.popup.ref.open();
-            const id = setTimeout(() => {
+            setTimeout(() => {
               this.popup?.ref.focus({ behavior: 'lastChild' });
-              clearTimeout(id);
             }, 50);
           }
         }
