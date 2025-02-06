@@ -2,7 +2,7 @@
   <!-- Top bar -->
   <div class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
     <!-- Top bar on larger screens -->
-    <div class="bg-white dark:bg-gray-950">
+    <div class="bg-white dark:bg-black/30">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <!-- Logo and release tag -->
         <div class="flex gap-4 items-center">
@@ -18,7 +18,7 @@
               {{ releaseTag.active}}
               <tw-icon key="chevron-down" size="xs" class="text-gray-400" />
             </button><ul tw-dropdown #release [position]="{top: 'top-8', left: 'left-0'}"
-              class="dark:bg-gray-950 bg-white min-w-24 py-1 px-1 *:px-2 *:py-1 text-xs rounded-2xl *:rounded-xl *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
+              class="dark:bg-black bg-white min-w-24 py-1 px-1 *:px-2 *:py-1 text-xs rounded-2xl *:rounded-xl *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
               @for (tag of releaseTag.options; track $index) {
               <li class="focus:font-semibold" tw-option [popup]="{ref: release, action: 'close'}"
                 (click)="updateTag(tag.label)">
@@ -58,29 +58,29 @@
             <tw-icon name="more-ver" class="text-gray-500" />
           </button>
           <ul tw-dropdown #optionMenu [position]="{top: 'top-10', right: 'right-0'}"
-            class="dark:bg-gray-950 bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-md *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
-            <a tw-option class="focus:outline-1 focus:outline-gray-500/80"
+            class="dark:bg-black bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-md *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
+            <a tw-option class="focus:outline-1 focus:outline-gray-500/80 rounded-sm"
               href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
               <tw-icon name="github"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
             </a>
-            <a tw-option class="focus:outline-1 focus:outline-gray-500/80" href="https://discord.gg/SXNP9pGh"
+            <a tw-option class="focus:outline-1 focus:outline-gray-500/80 rounded-sm" href="https://discord.gg/SXNP9pGh"
               target="_blank" rel="noopener noreferrer">
               <tw-icon name="discord"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
             </a>
             <tw-icon tw-option [popup]="{ref: optionMenu, action: 'close'}" (click)="switchTheme()" name="sun"
               *ngIf="theme.isDark"
-              class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+              class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 rounded-sm" />
             <tw-icon tw-option [popup]="{ref: optionMenu, action: 'close'}" (click)="switchTheme()" name="moon"
               *ngIf="!theme.isDark"
-              class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+              class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200 rounded-sm" />
           </ul>
         </div>
       </div>
     </div>
     <!-- Secondary top bar / Left nav. trigger on mobiles -->
-    <div class="bg-white dark:bg-gray-950 border-t md:hidden border-gray-950/5 dark:border-white/10">
+    <div class="bg-white dark:bg-black/30 border-t md:hidden border-gray-950/5 dark:border-white/10">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <div class="flex gap-4 items-center">
           <tw-icon name="bars-3-center-left" class="text-gray-400" (click)="toggleNav()" />
@@ -93,7 +93,7 @@
     <!-- Left navigation on large screen -->
     <div class="max-sm:hidden col-start-1 sm:col-end-2 md:col-end-3 lg:col-end-4 overflow-y-auto max-h-screen z-10">
       <div [attr.data-opened]="isNavOpened"
-        class="min-h-screen bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
+        class="min-h-screen bg-white dark:bg-black/30 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
         @for (item of navItems; track $index) {
         @switch (item.category) {
         @case ('documentation') {
@@ -156,7 +156,7 @@
     <div
       class="sm:hidden has-data-[opened=false]:-translate-x-full has-data-[opened=false]:sm:translate-x-0 duration-500 fixed inset-0 top-28 overflow-y-auto z-10">
       <div [attr.data-opened]="isNavOpened"
-        class="min-h-screen bg-white dark:bg-gray-950 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
+        class="min-h-screen bg-white dark:bg-black font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
         @for (item of navItems; track $index) {
         @switch (item.category) {
         @case ('documentation') {
