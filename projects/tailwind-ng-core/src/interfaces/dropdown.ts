@@ -1,4 +1,5 @@
 import { DropdownConfig } from "../config/interfaces";
+import { DropdownBase } from "../injectables";
 import { OverlayPosition } from "../types/layout";
 import { Popup } from "./popup";
 
@@ -20,6 +21,5 @@ export interface Dropdown extends Popup {
  * If so, you can safely access the Dropdown members inside this block scope.
  */
 export function isDropdown(component: unknown): component is Dropdown {
-  return component != undefined && (component as Dropdown).type === 'Dropdown' &&
-    (component as Dropdown).closeOnBlur !== undefined;
+  return component instanceof DropdownBase;
 }

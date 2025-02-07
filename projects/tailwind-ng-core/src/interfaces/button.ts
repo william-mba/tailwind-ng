@@ -1,4 +1,5 @@
 import { ButtonConfig, ButtonVariant } from "../config/interfaces";
+import { ButtonBase } from "../injectables";
 import { SizeOption } from "../types/size-options.type";
 import { BaseActions, BaseState } from "./base";
 import { Popup } from "./popup";
@@ -20,13 +21,7 @@ export interface Button extends BaseState, BaseActions {
  * If so, you can have access to the Button members inside this block scope.
  */
 export function isButton(component: unknown): component is Button {
-  return component != undefined && (component as Button).variant !== undefined &&
-    (component as Button).size !== undefined &&
-    (component as Button).isFab !== undefined &&
-    (component as Button).config.primary !== undefined &&
-    (component as Button).config.secondary !== undefined &&
-    (component as Button).config.tonal !== undefined &&
-    (component as Button).config.text !== undefined;
+  return component instanceof ButtonBase;
 }
 
 /**

@@ -1,3 +1,4 @@
+import { DialogBase } from "../injectables";
 import { AdvancedPopupActions, BasicPopupActions, PopupEvents, PopupState } from "./popup";
 
 /**
@@ -33,7 +34,5 @@ export interface Dialog extends PopupState, BasicPopupActions, AdvancedPopupActi
  * If so, you can safely access the Dialog members inside this block scope.
  */
 export function isDialog(component: unknown): component is Dialog {
-  return component != undefined && (component as Dialog).type === 'Dialog' &&
-    (component as Dialog).isModal !== undefined &&
-    (component as Dialog).autoClose !== undefined
+  return component instanceof DialogBase;
 }

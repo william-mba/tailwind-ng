@@ -1,4 +1,5 @@
 import { BadgeConfig } from "../config/interfaces";
+import { BadgeBase } from "../injectables";
 import { SizeOption } from "../types/size-options.type";
 import { BaseActions, BaseState } from "./base";
 
@@ -14,8 +15,5 @@ export interface Badge extends BaseState, BaseActions {
  * If so, you can safely access the Badge members inside this block scope.
  */
 export function isBadge(component: unknown): component is Badge {
-  return component != undefined && (component as Badge).size !== undefined &&
-    (component as Badge).config.base?.display !== undefined &&
-    (component as Badge).config.base?.gap !== undefined &&
-    (component as Badge).config.xs?.padding !== undefined;
+  return component instanceof BadgeBase
 }

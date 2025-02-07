@@ -2,6 +2,7 @@ import { OutputEmitterRef } from "@angular/core";
 import { ComboboxItem } from "./combobox-item";
 import { FormControl } from "@angular/forms";
 import { BasicPopupActions, PopupEvents, PopupState } from "./popup";
+import { ComboboxBase } from "../injectables";
 
 /**
  * @TailwindNG Combobox component state
@@ -64,7 +65,5 @@ export interface Combobox extends ComboboxState, ComboboxActions, ComboboxEvents
  * If so, you can safely access the Combobox members inside this block scope.
  */
 export function isCombobox(component: unknown): component is Combobox {
-  return component != undefined && (component as Combobox).reset != undefined &&
-    (component as Combobox).select != undefined &&
-    (component as Combobox).isMulti != undefined
+  return component instanceof ComboboxBase;
 }

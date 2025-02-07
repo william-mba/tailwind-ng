@@ -1,4 +1,5 @@
 import { IconConfig, IconName } from "../config/interfaces";
+import { IconBase } from "../injectables";
 import { SizeOption } from "../types/size-options.type";
 
 /**
@@ -15,7 +16,5 @@ export interface Icon {
  * If so, you can safely access the Icon members inside this block scope.
  */
 export function isIcon(component: unknown): component is Icon {
-  return component != undefined &&
-    (component as Icon).name !== undefined &&
-    (component as Icon).config.map !== undefined;
+  return component instanceof IconBase;
 }
