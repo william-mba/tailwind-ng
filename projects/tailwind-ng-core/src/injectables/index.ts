@@ -6,6 +6,8 @@ export * from './avatar.token';
 export * from './badge.token';
 export * from './button-group.token';
 export * from './button.token';
+export * from './checkbox-config.token';
+export * from './checkbox-icon.token';
 export * from './checkbox.token';
 export * from './combobox-item.token';
 export * from './combobox.token';

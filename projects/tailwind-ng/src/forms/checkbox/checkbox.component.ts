@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CheckboxBase, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace } from "@tailwind-ng/core";
+import { ChangeDetectionStrategy, Component, forwardRef, inject, ViewEncapsulation } from "@angular/core";
+import { Checkbox, CHECKBOX_ICON, CheckboxBase, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
 import { IconDirective } from "../../elements";
 
 /**
@@ -12,9 +12,9 @@ import { IconDirective } from "../../elements";
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
-      <input [class]="classList.value()" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null"/>
-      <tw-icon name="minus" size="sm" class="peer-indeterminate:block" />
-      <tw-icon name="check" size="sm" class="peer-checked:block" />
+      <input [class]="classList.value()" (change)="onChanges($event)" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null" />
+      <tw-icon [name]="icon.onIndeterminate" [size]="icon.size" class="peer-indeterminate:block" />
+      <tw-icon [name]="icon.onChecked" [size]="icon.size" class="peer-checked:block" />
     </div>
     <ng-content />
     <ng-content select="span" />
@@ -32,14 +32,7 @@ import { IconDirective } from "../../elements";
   providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }]
 })
 export class CheckboxComponent extends CheckboxBase implements Checkbox {
-  private readonly parent = inject(CheckboxComponent, {
-    optional: true, skipSelf: true, host: true
-  });
-  readonly children: Checkbox[] = [];
-  @Input() checked = false;
-  @Input() indeterminate = false;
-  @Input() id = this.randomId();
-  changes = output<{ checked: boolean, indeterminate: boolean }>();
+  protected icon = inject(CHECKBOX_ICON);
 
   protected override async onInit(): Promise<void> {
     if (!this.classList) {
@@ -52,85 +45,62 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
       }
     }
     if (this.parent) {
+      if (!this.parent.children) {
+        this.parent.children = [];
+      }
       this.parent.children.push(this);
       if (this.parent.checked && (!this.checked || this.indeterminate)) {
         this.toggle();
       } else if (this.checked && (!this.parent.checked && !this.parent.indeterminate)) {
-        this.parent.toggle('child');
+        this.parent.toggle({ origin: 'child' });
       }
-    }
-  }
-
-  toggle(origin: 'self' | 'parent' | 'child' = 'self', event?: Event): void {
-    event?.preventDefault();
-    event?.stopPropagation();
-    if (origin === 'self') {
-      this.checked = !this.checked;
-      this.indeterminate = false;
-      if (this.children && this.children.length > 0) {
-        this.children.forEach(c => c.toggle('parent'));
-      }
-      if (this.parent) {
-        this.parent.toggle('child');
-      }
-    }
-    if (origin === 'parent' && this.parent) {
-      this.checked = this.parent.checked;
-      if (this.indeterminate) {
-        this.indeterminate = false;
-      }
-      if (this.children && this.children.length > 0) {
-        this.children.forEach(c => c.toggle('parent'));
-      }
-    }
-    if (origin === 'child' && this.children && this.children.length > 0) {
-      const checkedCount = this.children.filter(c => c.checked).length;
-      this.checked = checkedCount === this.children!.length;
-      this.indeterminate = checkedCount > 0 && (checkedCount < this.children.length);
-      if (this.parent && (this.checked || this.indeterminate)) {
-        this.parent.toggle('child');
-      }
-    }
-    this.emitChanges();
-  }
-
-  private emitChanges(): void {
-    this.changes.emit({ checked: this.checked, indeterminate: this.indeterminate });
-  }
-
-  protected onPointerUp(event: PointerEvent): void {
-    event.stopPropagation();
-    const target = event.target as HTMLElement;
-    const label = this.nativeElement.querySelector('label');
-    if (label?.innerText === target?.innerText) {
-      this.toggle('self', event);
-    } else if (label?.querySelector('input')?.id === target?.id) {
-      this.toggle('self', event);
-    }
-  }
-
-  protected onKeyup(event: KeyboardEvent): void {
-    event.stopPropagation();
-    if (isEnterOrSpace(event.key)) {
-      this.toggle('self');
-    }
-    if (isArrowDownOrRight(event.key)) {
-      this.focus({ behavior: 'firstChild', target: this.nativeElement.nextElementSibling as HTMLElement });
-    }
-    if (isArrowUpOrLeft(event.key)) {
-      this.focus({ behavior: 'firstChild', target: this.nativeElement.previousElementSibling as HTMLElement });
     }
   }
 
   protected override addEventListeners(): void {
     super.addEventListeners();
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
-    this.nativeElement.addEventListener('pointerup', this.onPointerUp.bind(this), false);
+    this.nativeElement.addEventListener('mouseup', this.onMouseup.bind(this), false);
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
     this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
-    this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false);
+    this.nativeElement.removeEventListener('mouseup', this.onMouseup.bind(this), false);
+  }
+
+  protected onMouseup(event: MouseEvent): void {
+    event.stopPropagation();
+    if (isLabelElement(event.target)) {
+      this.toggle();
+    }
+  }
+
+  protected onKeyup(event: KeyboardEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    if (isEnterOrSpace(event.key)) {
+      this.toggle();
+    }
+    if (isNavigation(event.key)) {
+      if (isArrowDownOrRight(event.key)) {
+        this.focus({ behavior: 'firstChild', target: this.nativeElement.nextElementSibling as HTMLElement });
+      }
+      if (isArrowUpOrLeft(event.key)) {
+        this.focus({ behavior: 'firstChild', target: this.nativeElement.previousElementSibling as HTMLElement });
+      }
+    }
+  }
+
+  protected onChanges(event: Event): void {
+    event.stopPropagation();
+    if (!this.isInitialized) return;
+    if (isInputElement(event.target)) {
+      if (event.target.checked !== this.checked) {
+        this.toggle();
+      }
+    }
   }
 }
+
+

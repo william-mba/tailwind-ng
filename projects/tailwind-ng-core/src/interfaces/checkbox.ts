@@ -1,10 +1,13 @@
 import { BaseActions, BaseState } from "./base";
-import { CheckboxConfig } from "../config/interfaces";
 import { OutputEmitterRef } from "@angular/core";
 import { SizeOption } from "../types";
+import { ConfigOf } from "../config";
+import { CheckboxBase } from "../injectables";
 
-export interface Checkbox extends BaseState, BaseActions {
-  readonly config: Partial<CheckboxConfig>
+/**
+ * The mutable state of the checkbox.
+ */
+export interface CheckboxMutableState {
   /**
    * Whether the checkbox is checked. default is false
    */
@@ -13,16 +16,47 @@ export interface Checkbox extends BaseState, BaseActions {
    * Whether the checkbox is indeterminate. default is false
    */
   readonly indeterminate: boolean
-  readonly id: string
-  readonly children: Checkbox[]
   /**
-   * Toggles the checkbox from origin. Default origin is `'self'`.
+   * The checkbox's children if any.
    */
-  toggle(origin?: EventOrigin, event?: Event): void
+  readonly children?: Checkbox[]
+}
+
+export interface CheckboxActions {
+  /**
+   * Toggles the checkbox from origin.
+   * @param options The options for the toggle.
+   * @returns A promise that resolves with the changes.
+   */
+  toggle(options?: CheckboxToggleOptions): Promise<CheckboxMutableState>
+}
+
+export interface CheckboxEvents {
   /**
    * Emits when the checkbox state changes.
    */
-  readonly changes: OutputEmitterRef<{ checked: boolean, indeterminate: boolean }>
+  readonly changes: OutputEmitterRef<CheckboxMutableState>
+}
+
+export interface Checkbox extends
+  BaseState,
+  BaseActions,
+  CheckboxActions,
+  CheckboxEvents,
+  CheckboxMutableState,
+  ConfigOf<'Checkbox'> {
+  readonly id: string
+}
+
+export interface CheckboxToggleOptions {
+  /**
+   * The origin of the event. Default is `'self'`.
+   */
+  origin?: EventOrigin
+  /**
+   * The event that triggered the toggle.
+   */
+  event?: Event
 }
 
 /**
@@ -53,7 +87,5 @@ type EventOrigin = "self" | "parent" | "child"
  * If so, you can safely access the Checkbox members inside this block scope.
  */
 export function isCheckbox(component: unknown): component is Checkbox {
-  return component != undefined && (component as Checkbox).checked !== undefined &&
-    (component as Checkbox).indeterminate !== undefined &&
-    (component as Checkbox).toggle !== undefined
+  return component instanceof CheckboxBase
 }

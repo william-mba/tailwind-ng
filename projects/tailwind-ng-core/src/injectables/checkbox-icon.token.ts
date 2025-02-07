@@ -1,4 +1,5 @@
-import { CheckboxIcon, InjectionTokenFactory } from "@tailwind-ng/core";
+import { CheckboxIcon } from "../interfaces/checkbox";
+import { InjectionTokenFactory } from "./injection-token.factory";
 
 export const CHECKBOX_ICON = InjectionTokenFactory
   .create<CheckboxIcon>({

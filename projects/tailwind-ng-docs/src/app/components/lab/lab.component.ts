@@ -55,6 +55,10 @@ export interface Task {
 export class LabComponent {
   private _formBuilder = inject(NonNullableFormBuilder);
 
+  log(value: any): void {
+    console.log(value);
+  }
+
   // Example with recursion but throw an expressionChangedAfterItHasBeenCheckedError
   // if there is some parent task that is updated after the view has been checked.
   // This may occurs if the task is in an inconsistent state.
