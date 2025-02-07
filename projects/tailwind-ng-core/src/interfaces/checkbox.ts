@@ -1,8 +1,6 @@
 import { BaseActions, BaseState } from "./base";
 import { OutputEmitterRef } from "@angular/core";
-import { SizeOption } from "../types";
-import { ConfigOf } from "../config";
-import { CheckboxBase } from "../injectables";
+import { ConfigOf } from "../config/config-type";
 
 /**
  * The mutable state of the checkbox.
@@ -38,16 +36,7 @@ export interface CheckboxEvents {
   readonly changes: OutputEmitterRef<CheckboxMutableState>
 }
 
-export interface Checkbox extends
-  BaseState,
-  BaseActions,
-  CheckboxActions,
-  CheckboxEvents,
-  CheckboxMutableState,
-  ConfigOf<'Checkbox'> {
-  readonly id: string
-}
-
+type EventOrigin = "self" | "parent" | "child"
 export interface CheckboxToggleOptions {
   /**
    * The origin of the event. Default is `'self'`.
@@ -59,33 +48,13 @@ export interface CheckboxToggleOptions {
   event?: Event
 }
 
-/**
- * The icon to display when the checkbox is indeterminate or checked.
- * Default is `{ indeterminate: 'minus', checked: 'check' }`
- */
-export interface CheckboxIcon {
-  /**
-   * The name of the icon to display when the checkbox is indeterminate.
-   * Default is `'minus'`. The icon must be configured. Otherwise, it will not display.
-   */
-  onIndeterminate: string,
-  /**
-   * The name of the icon to display when the checkbox is checked.
-   * Default is `'check'`. The icon must be configured. Otherwise, it will not display.
-   */
-  onChecked: string,
-  /**
-   * The size of the icon. Default is `'sm'`.
-   */
-  size: SizeOption;
-}
 
-type EventOrigin = "self" | "parent" | "child"
-
-/**
- * Checks if the component is a Checkbox.
- * If so, you can safely access the Checkbox members inside this block scope.
- */
-export function isCheckbox(component: unknown): component is Checkbox {
-  return component instanceof CheckboxBase
+export interface Checkbox extends
+  BaseState,
+  BaseActions,
+  CheckboxActions,
+  CheckboxEvents,
+  CheckboxMutableState,
+  ConfigOf<'Checkbox'> {
+  readonly id: string
 }

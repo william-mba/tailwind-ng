@@ -1,5 +1,17 @@
 import { ComponentConfig } from "../types/component-config.type";
-import { AvatarConfig, BadgeConfig, ButtonConfig, CheckboxConfig, ComboboxItemConfig, DialogConfig, DropdownConfig, IconConfig, InputTextConfig, InputRadioConfig, ToggleConfig } from "./interfaces";
+import {
+  AvatarConfig,
+  BadgeConfig,
+  ButtonConfig,
+  CheckboxConfig,
+  ComboboxItemConfig,
+  DialogConfig,
+  DropdownConfig,
+  IconConfig,
+  InputTextConfig,
+  InputRadioConfig,
+  ToggleConfig
+} from "./interfaces";
 
 type ConfigKey =
   | 'Avatar'

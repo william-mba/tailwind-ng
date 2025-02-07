@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, DestroyRef, Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
 import { BaseState, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
-import { ClassList } from "../config";
+import { ClassList } from "../config/classlist";
 import { isEnterOrSpace, isKeyboardEvent, isNavigation, isSpace } from "../guards";
 
 /**

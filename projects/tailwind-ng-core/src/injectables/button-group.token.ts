@@ -1,5 +1,5 @@
 import { Directive, inject, Input } from "@angular/core";
-import { ConfigOf, ConfigTypeOf } from "../config";
+import { ConfigOf, ConfigTypeOf } from "../config/config-type";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 

@@ -2,7 +2,7 @@ import { Directive, Input, inject, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup, PopupType } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
-import { BaseActions } from '../interfaces';
+import { BaseActions } from '../interfaces/base';
 
 @Directive({
   host: {

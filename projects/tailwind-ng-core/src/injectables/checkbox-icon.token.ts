@@ -1,4 +1,4 @@
-import { CheckboxIcon } from "../interfaces/checkbox";
+import { CheckboxIcon } from "../interfaces/checkbox-icon";
 import { InjectionTokenFactory } from "./injection-token.factory";
 
 export const CHECKBOX_ICON = InjectionTokenFactory

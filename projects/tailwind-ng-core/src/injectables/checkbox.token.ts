@@ -1,8 +1,8 @@
 import { Directive, inject, Input, output } from "@angular/core";
-import { ConfigOf } from "../config";
-import { BaseDirective } from "../directives";
+import { ConfigOf } from "../config/config-type";
+import { BaseDirective } from "../directives/base.directive";
 import { CHECKBOX_CONFIG } from "./checkbox-config.token";
-import { Checkbox, CheckboxActions, CheckboxEvents, CheckboxMutableState, CheckboxToggleOptions } from "../interfaces";
+import { Checkbox, CheckboxActions, CheckboxEvents, CheckboxMutableState, CheckboxToggleOptions } from "../interfaces/checkbox";
 
 @Directive()
 export abstract class CheckboxBase extends BaseDirective implements ConfigOf<'Checkbox'>, CheckboxMutableState, CheckboxActions, CheckboxEvents {
@@ -59,4 +59,12 @@ export abstract class CheckboxBase extends BaseDirective implements ConfigOf<'Ch
       checked: this.checked
     });
   }
+}
+
+/**
+ * Checks if the component is a Checkbox.
+ * If so, you can safely access the Checkbox members inside this block scope.
+ */
+export function isCheckbox(component: unknown): component is Checkbox {
+  return component instanceof CheckboxBase
 }

@@ -1,8 +1,8 @@
 import { Directive, Input } from "@angular/core";
 import { BaseDirective } from "./base.directive";
 import { isArrowDownOrRight, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isSpace } from "../guards";
-import { Popup } from "../interfaces";
-import { ClassList } from "../config";
+import { Popup } from "../interfaces/popup";
+import { ClassList } from "../config/classlist";
 
 @Directive({
   selector: 'tw-option, [tw-option], [twOption]',
