@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { ButtonComponent, DropdownComponent, IconDirective, BadgeComponent } from 'tailwind-ng';
+import { ButtonComponent, DropdownComponent, IconDirective } from 'tailwind-ng';
 import { OptionDirective, ThemeHelper } from '@tailwind-ng/core';
 import { NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
