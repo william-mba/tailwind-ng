@@ -3,7 +3,7 @@ import { BadgeComponent } from './badge.component';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { GetBadgeConfig, provideBadge } from './badge.component.config';
 import { Component, viewChild } from '@angular/core';
-import { ClassList, Str } from '@tailwind-ng/core';
+import { ClassList } from '@tailwind-ng/core';
 
 describe('BadgeComponent', () => {
   const config = GetBadgeConfig();

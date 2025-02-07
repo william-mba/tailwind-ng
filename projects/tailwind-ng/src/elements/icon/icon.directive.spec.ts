@@ -23,6 +23,7 @@ describe('IconDirective', () => {
         },
         {
           provide: ChangeDetectorRef,
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           useValue: { markForCheck: () => { } }
         },
         IconDirective,
