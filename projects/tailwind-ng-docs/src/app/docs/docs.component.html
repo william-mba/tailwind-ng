@@ -16,7 +16,7 @@
             <button tw-button variant="secondary" size="xs" class="rounded-full"
               [popup]="{ref: release, action: 'toggle'}" aria-label="Select release tag">
               {{ releaseTag.active}}
-              <tw-icon key="chevron-down" size="xs" class="text-gray-400" />
+              <tw-icon name="chevron-down" size="xs" class="text-gray-400" />
             </button><ul tw-dropdown #release [position]="{top: 'top-8', left: 'left-0'}"
               class="dark:bg-black bg-white min-w-24 py-1 px-1 *:px-2 *:py-1 text-xs rounded-2xl *:rounded-xl *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
               @for (tag of releaseTag.options; track $index) {

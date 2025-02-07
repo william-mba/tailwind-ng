@@ -4,7 +4,6 @@ import { TestBed } from '@angular/core/testing';
 import { ComboboxItemComponent } from './combobox-item.component';
 import { Component, ElementRef, viewChildren } from '@angular/core';
 import { GetComboboxItemConfig, provideComboboxItem } from './combobox-item.component.config';
-
 import { USERS_STUB } from '../combobox.component.spec';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -46,7 +45,7 @@ describe('ComboboxItemComponent', () => {
         <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
           @for (user of users; track user.name) {
           <div tw-combobox-item #item [value]="user.name">
-            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
             <span>{{ user.name }}</span>
           </div>
           }
@@ -92,7 +91,7 @@ describe('ComboboxItemComponent', () => {
         <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
           @for (user of users; track user.name) {
           <div tw-combobox-item #item [value]="user.name">
-            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
             <span>{{ user.name }}</span>
           </div>
           }
@@ -121,7 +120,6 @@ describe('ComboboxItemComponent', () => {
   });
 
   it('should get config', () => {
-
     @Component({
       selector: 'app-test',
       imports: [
@@ -143,7 +141,7 @@ describe('ComboboxItemComponent', () => {
         <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
           @for (user of users; track user.name) {
           <div tw-combobox-item #item [value]="user.name">
-            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
             <span>{{ user.name }}</span>
           </div>
           }

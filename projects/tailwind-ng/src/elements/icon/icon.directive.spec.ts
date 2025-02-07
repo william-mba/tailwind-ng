@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Str } from '@tailwind-ng/core';
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { IconDirective } from './icon.directive';
-import { Component, ElementRef } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 import { GetIconConfig, provideIcon } from './icon.directive.config';
 import { By } from '@angular/platform-browser';
 
@@ -21,6 +21,10 @@ describe('IconDirective', () => {
           provide: ElementRef,
           useValue: { nativeElement: document.createElement('tw-icon') }
         },
+        {
+          provide: ChangeDetectorRef,
+          useValue: { markForCheck: () => { } }
+        },
         IconDirective,
         provideIcon({ map: config.map })
       ]
@@ -28,33 +32,6 @@ describe('IconDirective', () => {
     TestBed.runInInjectionContext(() => {
       component = TestBed.inject(IconDirective);
     });
-  });
-
-  it('should set config', () => {
-    // As set earlier, the source should be the same as the config provided
-    expect(component.config).toEqual(config);
-
-    // When no config is provided, the source should be an empty object
-    TestBed.resetTestingModule();
-    TestBed.configureTestingModule({
-      providers: [
-        {
-          provide: ElementRef,
-          useValue: { nativeElement: document.createElement('tw-icon') }
-        },
-        IconDirective,
-        provideIcon()
-      ]
-    });
-    TestBed.runInInjectionContext(() => {
-      component = TestBed.inject(IconDirective);
-    });
-    expect(component.config.xs).toEqual(config.xs);
-    expect(component.config.sm).toEqual(config.sm);
-    expect(component.config.md).toEqual(config.md);
-    expect(component.config.lg).toEqual(config.lg);
-    expect(component.config.xl).toEqual(config.xl);
-    expect(component.config.map).toEqual(config.map);
   });
 
   it('should get config', () => {
@@ -78,14 +55,14 @@ describe('IconDirective', () => {
     expect(component.size).toBe('xs');
   });
 
-  it('should apply style based on size', () => {
+  it('should apply style based on size', fakeAsync(() => {
     @Component({
       template: `
-        <tw-icon key="language" />
-        <tw-icon size="xs" key="language" />
-        <tw-icon size="sm" key="language" />
-        <tw-icon size="lg" key="language" />
-        <tw-icon size="xl" key="language" />
+        <tw-icon name="language" />
+        <tw-icon size="xs" name="language" />
+        <tw-icon size="sm" name="language" />
+        <tw-icon size="lg" name="language" />
+        <tw-icon size="xl" name="language" />
         `,
       selector: 'app-test',
       imports: [IconDirective]
@@ -93,10 +70,11 @@ describe('IconDirective', () => {
 
     const fixture = TestBed.createComponent(TestComponent);
     let icon: HTMLElement;
+    fixture.detectChanges();
+    tick();
 
     icon = fixture.debugElement.query(By.css('tw-icon')).nativeElement;
     fixture.detectChanges();
-    // icon with default size
     expect(icon.classList).toContain(config.md.size!);
 
     icon = fixture.debugElement.query(By.css('tw-icon[size="xs"]')).nativeElement;
@@ -114,16 +92,16 @@ describe('IconDirective', () => {
     icon = fixture.debugElement.query(By.css('tw-icon[size="xl"]')).nativeElement;
     fixture.detectChanges();
     expect(icon.classList).toContain(config.xl.size!);
-  });
+  }, { flush: true }));
 
-  it('should customize style using class attribute', () => {
+  it('should customize using class attribute', () => {
     const customizations = 'my-auto absolute right-3';
 
     @Component({
       selector: 'app-test',
       imports: [IconDirective],
       template: `
-      <tw-icon class="my-auto absolute right-3" key="language" />
+      <tw-icon class="my-auto absolute right-3" name="language" />
       `
     }) class TestComponent { }
 

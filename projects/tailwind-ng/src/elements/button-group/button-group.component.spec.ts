@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ButtonGroupComponent } from './button-group.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { GetButtonGroupConfig, provideButtonGroup } from './button-group.component.config';
 import { ClassList } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
@@ -26,15 +26,15 @@ describe('ButtonGroupComponent', () => {
     expect(component.config).toEqual(config);
   });
 
-  it('should set classList', () => {
+  it('should set classList', async () => {
     const classList = new ClassList();
-    classList.set(GetButtonGroupConfig());
+    await classList.set(GetButtonGroupConfig());
 
-    expect(component.classList.base).toEqual(classList.base);
+    expect(component.classList.base()).toEqual([]);
     expect(component.classList.value()).toEqual(classList.value());
   });
 
-  it('should set customizations using class attribute', () => {
+  it('should customize using class attribute', fakeAsync(() => {
     const defaultRadius = GetButtonGroupConfig().radius!;
     const defaultBoxShadow = GetButtonGroupConfig().boxShadow!;
 
@@ -57,29 +57,27 @@ describe('ButtonGroupComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
+    tick();
+
     expect(testApp.buttonGroup().classList.value().includes('rounded-full')).toBeTrue();
     expect(testApp.buttonGroup().classList.value().includes(defaultRadius)).toBeFalse();
     expect(testApp.buttonGroup().classList.value().includes(defaultBoxShadow)).toBeTrue();
-  });
+  }, { flush: true }));
 
-  it('should set customizations using dependency injection', () => {
+  it('should customize using DI', fakeAsync(() => {
     const defaultRadius = GetButtonGroupConfig().radius!;
     const defaultBoxShadow = GetButtonGroupConfig().boxShadow!;
 
-    TestBed.resetTestingModule();
-    TestBed.configureTestingModule({
+    @Component({
+      selector: 'test-app',
+      standalone: true,
+      imports: [ButtonComponent, ButtonGroupComponent],
       providers: [
         provideButtonGroup({
           ringColor: 'ring-red-600',
           radius: 'rounded-full'
         })
-      ]
-    });
-
-    @Component({
-      selector: 'test-app',
-      standalone: true,
-      imports: [ButtonComponent, ButtonGroupComponent],
+      ],
       template: `
         <tw-button-group class="rounded-full">
           <button tw-button variant="secondary">Button A</button>
@@ -95,10 +93,12 @@ describe('ButtonGroupComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
+    tick();
+
     expect(testApp.buttonGroup().classList.value().includes('rounded-full')).toBeTrue();
     expect(testApp.buttonGroup().classList.value().includes('ring-red-600')).toBeTrue();
     expect(testApp.buttonGroup().classList.value().includes(defaultRadius)).toBeFalse();
     expect(testApp.buttonGroup().classList.value().includes(defaultBoxShadow)).toBeTrue();
-  });
+  }, { flush: true }));
 });
 

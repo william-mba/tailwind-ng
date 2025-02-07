@@ -1,4 +1,5 @@
 import { ClassList } from "../config";
+import { Config } from "../types/config.type";
 
 /**
  * @TailwindNG Component's base state.
@@ -9,7 +10,7 @@ export interface BaseState<T extends HTMLElement = HTMLElement> {
    *
    * To get the full list of classes of the element, use `<element>.classList.value()` or `<element>.nativeElement.className` where `<element>` is the component instance ref.
    */
-  readonly class?: string;
+  readonly class?: string | string[] | Config;
   /**
    * The component's class list instance.
    */

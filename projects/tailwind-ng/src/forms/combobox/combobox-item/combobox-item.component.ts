@@ -60,17 +60,17 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     });
   }
 
-  private select(): void {
-    this.combobox.select(this);
+  async select(): Promise<void> {
+    await this.combobox.select(this);
   }
 
   protected override addEventListeners(): void {
     super.addEventListeners();
-    this.nativeElement.addEventListener('click', this.select.bind(this), { passive: true, capture: true });
+    this.nativeElement.addEventListener('click', this.select.bind(this), false);
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
-    this.nativeElement.removeEventListener('click', this.select.bind(this), true);
+    this.nativeElement.removeEventListener('click', this.select.bind(this), false);
   }
 }

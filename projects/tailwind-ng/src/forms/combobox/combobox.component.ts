@@ -133,7 +133,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     return this.selectionMap.has(item.value);
   }
 
-  select(item: ComboboxItem): void {
+  async select(item: ComboboxItem): Promise<void> {
     if (this.isMulti) {
       if (this.has(item)) {
         this.selectionMap.delete(item.value);

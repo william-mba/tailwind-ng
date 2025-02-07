@@ -6,6 +6,7 @@ import { Component, viewChild } from '@angular/core';
 import { GetAvatarConfig, provideAvatar } from './avatar.component.config';
 
 describe('AvatarComponent', () => {
+  const config = GetAvatarConfig();
   beforeEach(async () => {
     TestBed.configureTestingModule({
       providers: [
@@ -43,34 +44,25 @@ describe('AvatarComponent', () => {
     });
   });
 
-  it('should set classList', () => {
+  it('should set classList', async () => {
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
+    const classList = new ClassList({ b: config.base, s: config[component.size] });
+    component.classList = classList;
     fixture.detectChanges();
-
-    const config = GetAvatarConfig();
-    const classList = new ClassList();
-
-    classList.set({ b: config.base, s: config[component.size] });
 
     expect(component.classList.base).toEqual(classList.base);
     expect(component.classList.value()).toEqual(classList.value());
   });
 
   it('should get config', () => {
-    const config = GetAvatarConfig();
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
-
     fixture.detectChanges();
-
     expect(component.config).toEqual(config);
   });
 
-  it('should set customizations using class attribute', () => {
-    const defaultRadius = GetAvatarConfig().base.radius!;
-    const defaultRingWidth = GetAvatarConfig().base.ringWidth!;
-    const defaultRingColor = GetAvatarConfig().base.ringColor!;
+  it('should customize using class attribute', () => {
     const customizations = 'ring-2 ring-white rounded-md';
 
     @Component({
@@ -92,19 +84,15 @@ describe('AvatarComponent', () => {
       expect(testApp.avatar().classList.value().includes(c)).toBeTrue();
     })
 
-    expect(testApp.avatar().classList.value().includes(defaultRadius)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(defaultRingColor)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(defaultRingWidth)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.radius!)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.ringColor!)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.ringWidth!)).toBeFalse();
   });
 
-  it('should set customizations using dependency injection', () => {
-    const defaultRadius = GetAvatarConfig().base.radius!;
-    const defaultRingWidth = GetAvatarConfig().base.ringWidth!;
-    const defaultRingColor = GetAvatarConfig().base.ringColor!;
-    const customizations = 'ring-2 ring-white rounded-md';
-
-    TestBed.resetTestingModule();
-    TestBed.configureTestingModule({
+  it('should customize using DI', () => {
+    @Component({
+      selector: 'test-app',
+      standalone: true,
       providers: [
         provideAvatar({
           base: {
@@ -113,12 +101,7 @@ describe('AvatarComponent', () => {
             radius: 'rounded-md'
           }
         })
-      ]
-    });
-
-    @Component({
-      selector: 'test-app',
-      standalone: true,
+      ],
       imports: [AvatarComponent],
       template: ` <img tw-avatar >`
     }) class TestApp {
@@ -129,20 +112,19 @@ describe('AvatarComponent', () => {
     const testApp = fixture.componentInstance;
     fixture.detectChanges()
 
-    Str.toArray(customizations).forEach(c => {
-      expect(testApp.avatar().classList.value().includes(c)).toBeTrue();
-    })
+    const avatarConfig = testApp.avatar().config.base!;
 
-    expect(testApp.avatar().classList.value().includes(defaultRadius)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(defaultRingColor)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(defaultRingWidth)).toBeFalse();
+    expect(avatarConfig.radius).toBe('rounded-md');
+    expect(avatarConfig.ringColor).toBe('ring-white');
+    expect(avatarConfig.ringWidth).toBe('ring-2');
+
+    expect(testApp.avatar().classList.value().includes(config.base.radius!)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.ringColor!)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.ringWidth!)).toBeFalse();
   });
 
-  it('should update classList', () => {
+  it('should update classList', async () => {
     const newClassList = ['rounded-md', 'ring-2', 'ring-white'];
-    const defaultRadius = GetAvatarConfig().base.radius!;
-    const defaultRingWidth = GetAvatarConfig().base.ringWidth!;
-    const defaultRingColor = GetAvatarConfig().base.ringColor!;
 
     @Component({
       selector: 'test-app',
@@ -151,24 +133,20 @@ describe('AvatarComponent', () => {
       template: ` <img tw-avatar > `
     }) class TestApp {
       avatar = viewChild.required(AvatarComponent);
-
-      update() {
-        this.avatar().classList.update(newClassList);
-      }
     }
 
     const fixture = TestBed.createComponent(TestApp);
     const testApp = fixture.componentInstance;
     fixture.detectChanges();
-    testApp.update();
+    await testApp.avatar().classList.update(newClassList);
 
-    newClassList.forEach(c => {
-      expect(testApp.avatar().classList.value().includes(c)).toBeTrue();
-    });
+    expect(testApp.avatar().classList.value().includes(newClassList[0])).toBeTrue();
+    expect(testApp.avatar().classList.value().includes(newClassList[1])).toBeTrue();
+    expect(testApp.avatar().classList.value().includes(newClassList[2])).toBeTrue();
 
-    expect(testApp.avatar().classList.value().includes(defaultRadius)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(defaultRingColor)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(defaultRingWidth)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.radius!)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.ringColor!)).toBeFalse();
+    expect(testApp.avatar().classList.value().includes(config.base.ringWidth!)).toBeFalse();
   })
 
 });

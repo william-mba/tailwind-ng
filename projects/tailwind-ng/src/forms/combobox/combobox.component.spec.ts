@@ -4,7 +4,7 @@ import { NgIf } from '@angular/common';
 import { IconDirective } from './../../elements/icon/icon.directive';
 import { DropdownComponent } from './../../elements/dropdown/dropdown.component';
 import { InputTextDirective } from '../input-text/input-text.directive';
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ComboboxComponent } from './combobox.component';
 import { Component, ElementRef, viewChild, viewChildren } from '@angular/core';
 import { ComboboxModule } from './combobox.module';
@@ -156,13 +156,13 @@ describe('ComboboxComponent', () => {
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon key="chevron-up-down" />
+            <tw-icon name="chevron-up-down" />
           </button>
           <!-- Dropdown -->
           <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
               <span>{{ user.name }}</span>
             </div>
             }
@@ -205,7 +205,7 @@ describe('ComboboxComponent', () => {
     const items = fixture.debugElement.queryAll(By.css('div[tw-combobox-item]')).map((x) => x.nativeElement);
     expect(items.length).toBe(USERS_STUB().length);
 
-    const checkIcons = fixture.debugElement.queryAll(By.css('tw-icon[key="check-thin"]')).map((x) => x.nativeElement);
+    const checkIcons = fixture.debugElement.queryAll(By.css('tw-icon[name="check-thin"]')).map((x) => x.nativeElement);
     expect(checkIcons.length).toBe(0);
   });
 
@@ -247,13 +247,13 @@ describe('ComboboxComponent', () => {
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon key="chevron-up-down" />
+            <tw-icon name="chevron-up-down" />
           </button>
           <!-- Dropdown -->
           <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
               <span>{{ user.name }}</span>
             </div>
             }
@@ -275,18 +275,17 @@ describe('ComboboxComponent', () => {
     fixture.detectChanges();
 
     const combobox = testComponent.combobox();
-    const toggleIcon = fixture.debugElement.query(By.css('tw-icon[key="chevron-up-down"]')).nativeElement;
 
     expect(combobox.isOpened).toBeFalse();
-    toggleIcon.click();
+    combobox.toggle();
     expect(combobox.isOpened).toBeTrue();
-    toggleIcon.click();
+    combobox.toggle();
     expect(combobox.isOpened).toBeFalse();
-    toggleIcon.click();
+    combobox.toggle();
     expect(combobox.isOpened).toBeTrue();
   });
 
-  it('should handle single selection', () => {
+  it('should handle single selection', fakeAsync(() => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
@@ -324,13 +323,13 @@ describe('ComboboxComponent', () => {
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon key="chevron-up-down" />
+            <tw-icon name="chevron-up-down" />
           </button>
           <!-- Dropdown -->
           <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
               <span>{{ user.name }}</span>
             </div>
             }
@@ -352,12 +351,13 @@ describe('ComboboxComponent', () => {
     const testComponent = fixture.componentInstance;
     fixture.detectChanges();
 
+    tick();
+
     const combobox = testComponent.combobox();
 
     // Combobox is closed by default
     expect(combobox.isOpened).toBeFalse();
-    const toggleIcon: HTMLElement = fixture.debugElement.query(By.css('tw-icon[key="chevron-up-down"]')).nativeElement;
-    toggleIcon.click();
+    combobox.toggle();
 
     // Initial state when combobox is opened for the first time
     expect(combobox.isOpened).toBeTrue();
@@ -406,9 +406,9 @@ describe('ComboboxComponent', () => {
     expect(combobox.control.value).toBe(item1.value);
     expect(input.value).toBe(item1.value);
     expect(combobox.isValid).toBeTrue();
-  });
+  }, { flush: true }));
 
-  it('should handle multiselection', () => {
+  it('should handle multiselection', fakeAsync(() => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
@@ -446,13 +446,13 @@ describe('ComboboxComponent', () => {
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon key="chevron-up-down" />
+            <tw-icon name="chevron-up-down" />
           </button>
           <!-- Dropdown -->
           <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
               <span>{{ user.name }}</span>
             </div>
             }
@@ -478,8 +478,7 @@ describe('ComboboxComponent', () => {
 
     // Combobox is closed by default
     expect(combobox.isOpened).toBeFalse();
-    const toggleIcon: HTMLElement = fixture.debugElement.query(By.css('tw-icon[key="chevron-up-down"]')).nativeElement;
-    toggleIcon.click();
+    combobox.toggle();
 
     // Initial state when combobox is opened for the first time
     expect(combobox.isOpened).toBeTrue();
@@ -499,9 +498,11 @@ describe('ComboboxComponent', () => {
     expect(item1.isSelected).toBeFalse();
     expect(item2.isSelected).toBeFalse();
 
-    item0.nativeElement.click();
-    item1.nativeElement.click();
-    item2.nativeElement.click();
+    item0.select();
+    item1.select();
+    item2.select();
+
+    tick();
 
     // After selections
     expect(item0.isSelected).toBeTrue();
@@ -525,11 +526,12 @@ describe('ComboboxComponent', () => {
     expect(testComponent.valueSelected).toBe(expectedValue);
     expect(combobox.control.value).toBe(expectedValue + ', ');
     expect(input.value).toBe(expectedValue + ', ');
-  });
+  }, { flush: true }));
 
-  it('should reset', () => {
-    TestBed.resetTestingModule();
-    TestBed.configureTestingModule({
+  it('should reset', fakeAsync(() => {
+    @Component({
+      selector: 'app-test',
+      standalone: true,
       providers: [
         {
           provide: ElementRef,
@@ -543,10 +545,6 @@ describe('ComboboxComponent', () => {
           }
         })
       ],
-    });
-
-    @Component({
-      selector: 'app-test',
       imports: [
         NgIf,
         ReactiveFormsModule,
@@ -565,14 +563,14 @@ describe('ComboboxComponent', () => {
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon *ngIf="combobox.isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" key="x-mark" />
-            <tw-icon key="chevron-up-down" />
+            <tw-icon *ngIf="combobox.isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" name="x-mark" />
+            <tw-icon name="chevron-up-down" />
           </button>
           <!-- Dropdown -->
           <div tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" key="check-thin" />
+              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
               <span>{{ user.name }}</span>
             </div>
             }
@@ -593,15 +591,14 @@ describe('ComboboxComponent', () => {
     const fixture = TestBed.createComponent(TestComponent);
     const testComponent = fixture.componentInstance;
     fixture.detectChanges();
+    tick();
 
     const combobox = testComponent.combobox();
-    const toggleIcon: HTMLElement = fixture.nativeElement.querySelector('tw-icon[key="chevron-up-down"]');
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
 
     // Combobox is closed by default
     expect(combobox.isOpened).toBeFalse();
-    toggleIcon.click();
-    fixture.detectChanges();
+    combobox.toggle();
     expect(combobox.isOpened).toBeTrue();
     expect(combobox.isValid).toBeFalse();
 
@@ -614,10 +611,10 @@ describe('ComboboxComponent', () => {
     expect(item1.isSelected).toBeFalse();
     expect(item2.isSelected).toBeFalse();
 
-    item0.nativeElement.click();
-    item1.nativeElement.click();
-    item2.nativeElement.click();
-    fixture.detectChanges();
+    item0.select();
+    item1.select();
+    item2.select();
+    tick();
 
     // After selections
     expect(item0.isSelected).toBeTrue();
@@ -633,10 +630,7 @@ describe('ComboboxComponent', () => {
     // Before reset
     expect(combobox.isOpened).toBeTrue();
     expect(combobox.isValid).toBeTrue();
-    const resetIcon: HTMLElement = fixture.debugElement.query(By.css('tw-icon[key="x-mark"]')).nativeElement;
-
-    resetIcon.click();
-    fixture.detectChanges();
+    combobox.reset();
     expectedValue = '';
 
     // After reset
@@ -646,7 +640,7 @@ describe('ComboboxComponent', () => {
     expect(testComponent.valueSelected).toBe(expectedValue);
     expect(combobox.control.value).toBe(expectedValue);
     expect(input.value).toBe(expectedValue);
-  });
+  }, { flush: true }));
 });
 
 

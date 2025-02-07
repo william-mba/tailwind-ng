@@ -3,6 +3,7 @@ import { BaseState, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config/classlist";
 import { isEnterOrSpace, isKeyboardEvent, isNavigation, isSpace } from "../guards";
+import { Config } from "../types/config.type";
 
 /**
  * @TailwindNG Base component directive.
@@ -23,7 +24,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   protected isInitialized = false;
 
   @Input() classList!: ClassList;
-  @Input() class?: string;
+  @Input() class?: string | string[] | Config;
 
   private _isDisabled = false;
 

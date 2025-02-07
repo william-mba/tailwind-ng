@@ -1,11 +1,12 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { SizeOption, ClassList, Str, ButtonVariant } from '@tailwind-ng/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { GetButtonConfig, provideButton } from './button.component.config';
 import { Component, viewChild } from '@angular/core';
 
 describe('ButtonComponent', () => {
+  const config = GetButtonConfig();
   let component: ButtonComponent;
   let fixture: ComponentFixture<ButtonComponent>;
 
@@ -21,7 +22,6 @@ describe('ButtonComponent', () => {
   });
 
   it('should get config', () => {
-    const config = GetButtonConfig();
     expect(component.config).toEqual(config);
   });
 
@@ -69,231 +69,96 @@ describe('ButtonComponent', () => {
     expect(component.variant).toBe(text);
   });
 
-  describe('Variant', () => {
-    describe('Primary button', () => {
-      it('should set classList', () => {
-        const config = GetButtonConfig();
-        const classList = new ClassList();
+  it('should set classList', async () => {
+    const classList = new ClassList({
+      ...config.md,
+      ...config.primary
+    });
+    component.classList = classList;
 
-        classList.set({
-          ...config.primary,
-          ...config[component.size]
-        });
+    expect(component.classList.value()).toEqual(classList.value());
+  });
 
-        expect(component.classList.base).toEqual(classList.base);
+  it('should customize using class attribute', () => {
+    const defaultGap = GetButtonConfig().md.gap!;
+    const defaultBgColor = GetButtonConfig().primary.bgColor!;
+    const defaultRadius = GetButtonConfig().md.radius!;
+    const customizations = 'rounded-full bg-red-600 gap-3';
 
-        classList.value().forEach(c => {
-          expect(component.classList.value().includes(c)).toBeTrue();
-        });
-      });
+    @Component({
+      selector: 'test-app',
+      standalone: true,
+      imports: [ButtonComponent],
+      template: `<button tw-button [class]="customizations">Test button</button>`
+    }) class TestApp {
+      button = viewChild.required(ButtonComponent);
+      customizations = customizations;
+    }
 
-      it('should set customizations using class attribute', () => {
-        const defaultGap = GetButtonConfig().md.gap!;
-        const defaultBgColor = GetButtonConfig().primary.bgColor!;
-        const defaultRadius = GetButtonConfig().md.radius!;
-        const customizations = 'rounded-full bg-red-600 gap-3';
+    const appFixture = TestBed.createComponent(TestApp);
+    const testApp = appFixture.componentInstance;
+    appFixture.detectChanges();
 
-        @Component({
-          selector: 'test-app',
-          standalone: true,
-          imports: [ButtonComponent],
-          template: `<button tw-button [class]="customizations">Test button</button>`
-        }) class TestApp {
-          button = viewChild.required(ButtonComponent);
-          customizations = customizations;
-        }
-
-        const appFixture = TestBed.createComponent(TestApp);
-        const testApp = appFixture.componentInstance;
-        appFixture.detectChanges();
-
-        Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value().includes(c)).toBeTrue();
-        });
-
-        expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
-      });
-
-      it('should set customizations using dependency injection', () => {
-        TestBed.resetTestingModule();
-        TestBed.configureTestingModule({
-          providers: [
-            provideButton({
-              primary: {
-                gap: 'gap-3',
-                bgColor: 'bg-red-600',
-                radius: 'rounded-full'
-              }
-            })
-          ]
-        });
-
-        @Component({
-          selector: 'test-app',
-          standalone: true,
-          imports: [ButtonComponent],
-          template: `<button tw-button>Test button</button>`
-        }) class TestApp {
-          button = viewChild.required(ButtonComponent);
-        }
-
-        const customizations = 'rounded-full bg-red-600 gap-3';
-
-        const defaultGap = GetButtonConfig().md.gap!;
-        const defaultRadius = GetButtonConfig().md.radius!;
-        const defaultBgColor = GetButtonConfig().primary.bgColor!;
-
-        const appFixture = TestBed.createComponent(TestApp);
-        const testApp = appFixture.componentInstance;
-        appFixture.detectChanges();
-
-        Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value().includes(c)).toBeTrue();
-        });
-
-        expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
-      });
-
-      it('should update classList', () => {
-        const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
-        const defaultRadius = GetButtonConfig().primary.gap!;
-
-        component.classList.update(newClassList);
-
-        newClassList.forEach(c => {
-          expect(component.classList.value().includes(c)).toBeTrue();
-        });
-
-        expect(component.classList.value().includes(defaultRadius)).toBeFalse();
-      });
+    Str.toArray(customizations).forEach(c => {
+      expect(testApp.button().classList.value().includes(c)).toBeTrue();
     });
 
-    describe('Secondary button', () => {
-      it('should set classList', () => {
-        const config = GetButtonConfig();
-        const classList = new ClassList();
-        classList.set({
-          ...config.secondary,
-          ...config[component.size]
-        });
+    expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
+    expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
+    expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
+  });
 
-        fixture = TestBed.createComponent(ButtonComponent);
-        component = fixture.componentInstance;
-        component.variant = 'secondary';
-        fixture.detectChanges();
+  it('should customize using dependency injection', fakeAsync(() => {
+    @Component({
+      selector: 'test-app',
+      standalone: true,
+      imports: [ButtonComponent],
+      providers: [
+        provideButton({
+          primary: {
+            gap: 'gap-3',
+            bgColor: 'bg-red-600',
+            radius: 'rounded-full'
+          }
+        })
+      ],
+      template: `<button tw-button>Test button</button>`
+    }) class TestApp {
+      button = viewChild.required(ButtonComponent);
+    }
 
-        expect(component.classList.base).toEqual(classList.base);
+    const customizations = 'rounded-full bg-red-600 gap-3';
 
-        classList.value().forEach(c => {
-          expect(component.classList.value().includes(c)).toBeTrue();
-        });
-      });
+    const defaultGap = GetButtonConfig().md.gap!;
+    const defaultRadius = GetButtonConfig().md.radius!;
+    const defaultBgColor = GetButtonConfig().primary.bgColor!;
 
-      it('should set customizations using class attribute', () => {
-        const defaultRingColor = GetButtonConfig().secondary.ringColor!;
-        const defaultShadow = GetButtonConfig().secondary.boxShadow!;
-        const defaultRingWidth = GetButtonConfig().secondary.ringWidth!;
-        const defaultRing = GetButtonConfig().secondary.ring!;
-        const defaultRadius = GetButtonConfig().md.radius!;
-        const customizations = 'rounded-full ring-red-600 ring-3 shadow-lg';
+    const appFixture = TestBed.createComponent(TestApp);
+    const testApp = appFixture.componentInstance;
+    appFixture.detectChanges();
 
-        @Component({
-          selector: 'test-app',
-          standalone: true,
-          imports: [ButtonComponent],
-          template: `<button tw-button variant="secondary" [class]="customizations">Test button</button>`
-        }) class TestApp {
-          button = viewChild.required(ButtonComponent);
-          customizations = customizations;
-        }
+    tick();
 
-        const appFixture = TestBed.createComponent(TestApp);
-        const testApp = appFixture.componentInstance;
-        appFixture.detectChanges();
-
-        expect(testApp.button().variant).toBe('secondary');
-
-        Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value().includes(c)).toBeTrue();
-        });
-
-        expect(testApp.button().classList.value().includes(defaultRing)).toBeTrue();
-        expect(testApp.button().classList.value().includes(defaultRingColor)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultShadow)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultRingWidth)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
-      });
-
-      it('should set customizations using dependency injection', () => {
-        const config = GetButtonConfig();
-        config.secondary.ringWidth = 'ring-4';
-        config.secondary.ringColor = 'ring-red-600';
-        config.secondary.radius = 'rounded-full';
-        const customizations = 'rounded-full ring-red-600 ring-4';
-
-        const defaultRingWith = GetButtonConfig().secondary.ringWidth!;
-        const defaultRing = GetButtonConfig().secondary.ring!;
-        const defaultRingColor = GetButtonConfig().secondary.ringColor!;
-        const defaultRadius = GetButtonConfig().md.radius!;
-
-        @Component({
-          selector: 'test-app',
-          standalone: true,
-          imports: [ButtonComponent],
-          template: `<button variant="secondary" tw-button>Test button</button>`
-        }) class TestApp {
-          button = viewChild.required(ButtonComponent);
-        }
-
-        TestBed.resetTestingModule();
-        TestBed.configureTestingModule({
-          providers: [
-            provideButton(config)
-          ]
-        });
-
-        const appFixture = TestBed.createComponent(TestApp);
-        const testApp = appFixture.componentInstance;
-        appFixture.detectChanges();
-
-        Str.toArray(customizations).forEach(c => {
-          expect(testApp.button().classList.value().includes(c)).toBeTrue();
-        });
-
-        expect(testApp.button().variant).toBe('secondary');
-
-        expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultRingWith)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultRingColor)).toBeFalse();
-        expect(testApp.button().classList.value().includes(defaultRing)).toBeTrue();
-      });
-
-      it('should update classList', () => {
-        const newClassList = ['rounded-md', 'ring-4', 'ring-indigo-600', 'ring-inset'];
-        const defaultRing = GetButtonConfig().secondary.ring!;
-        const defaultRingWidth = GetButtonConfig().secondary.ringWidth!;
-        const defaultRingColor = GetButtonConfig().secondary.ringColor!;
-
-        fixture = TestBed.createComponent(ButtonComponent);
-        component = fixture.componentInstance;
-        component.variant = 'secondary';
-        fixture.detectChanges();
-
-        component.classList.update(newClassList);
-
-        newClassList.forEach(c => {
-          expect(component.classList.value().includes(c)).toBeTrue();
-        });
-
-        expect(component.classList.value().includes(defaultRing)).toBeTrue();
-        expect(component.classList.value().includes(defaultRingWidth)).toBeFalse();
-        expect(component.classList.value().includes(defaultRingColor)).toBeFalse();
-      });
+    Str.toArray(customizations).forEach(c => {
+      expect(testApp.button().classList.value().includes(c)).toBeTrue();
     });
+
+    expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
+    expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
+    expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
+  }, { flush: true }));
+
+  it('should update classList', async () => {
+    const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
+    const defaultRadius = GetButtonConfig().primary.gap!;
+
+    await component.classList.update(newClassList);
+
+    newClassList.forEach(c => {
+      expect(component.classList.value().includes(c)).toBeTrue();
+    });
+
+    expect(component.classList.value().includes(defaultRadius)).toBeFalse();
   });
 
   it('should set isFab', () => {

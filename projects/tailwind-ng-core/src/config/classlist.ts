@@ -58,6 +58,7 @@ export class ClassList implements IClassList {
    */
   constructor(base: string | string[] | Config = []) {
     this.base.set(this.valueFrom(base));
+    this.value.set(this.valueFrom(base));
   }
 
   async init<T extends string>(value?: T): Promise<ClassList>;
@@ -106,7 +107,7 @@ export class ClassList implements IClassList {
     } else if (Type.isArray(value)) {
       newValue = value;
     } else if (Type.isObject(value)) {
-      newValue = Obj.toArray(value as Config) as string[];
+      newValue = Obj.toArray(value as Config);
     }
     return newValue;
   }
