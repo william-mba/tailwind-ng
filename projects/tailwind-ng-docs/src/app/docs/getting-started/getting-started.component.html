@@ -1,6 +1,7 @@
 <div class="sm:px-12 p-10 xl:w-3/4">
   <section>
-    <h1 class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200">Getting Started</h1>
+    <h1 class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200">Getting Started
+    </h1>
     <p class="text-gray-700 dark:text-gray-300">Simple steps to start using
       <span class="font-heading text-nowrap">Tailwind NG</span> in your Angular application.
     </p>
@@ -11,11 +12,11 @@
     <div class="relative">
       @if (copyRec['npm']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(npmCode, 'npm')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       <div [innerHTML]="trust(npmHTML)"></div>
     </div>
@@ -23,11 +24,11 @@
     <div class="relative">
       @if (copyRec['yarn']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(yarnCode, 'yarn')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
 
       <div [innerHTML]="trust(yarnHTML)"></div>
@@ -36,11 +37,11 @@
     <div class="relative">
       @if (copyRec['pnpm']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(pnpmCode, 'pnpm')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
 
       <div [innerHTML]="trust(pnpmHTML)"></div>
