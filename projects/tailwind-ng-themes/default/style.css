@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.3 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.4 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -3615,10 +3615,6 @@
     --tw-duration: 100ms;
     transition-duration: 100ms;
   }
-  .duration-200 {
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
-  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -3627,10 +3623,6 @@
     --tw-duration: 500ms;
     transition-duration: 500ms;
   }
-  .duration-700 {
-    --tw-duration: 700ms;
-    transition-duration: 700ms;
-  }
   .duration-1000 {
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
@@ -3638,6 +3630,14 @@
   .duration-150 {
     --tw-duration: 150ms;
     transition-duration: 150ms;
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .duration-700 {
+    --tw-duration: 700ms;
+    transition-duration: 700ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -5905,6 +5905,11 @@
   .dark\:bg-gray-900 {
     &:where(.dark, .dark *) {
       background-color: var(--color-gray-900);
+    }
+  }
+  .dark\:bg-gray-950 {
+    &:where(.dark, .dark *) {
+      background-color: var(--color-gray-950);
     }
   }
   .dark\:bg-inherit {

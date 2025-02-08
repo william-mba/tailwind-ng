@@ -4,29 +4,26 @@
   <div class="grid text-sm gap-3 max-w-xs sm:max-w-md">
     <div class="font-semibold flex gap-x-24 justify-between items-center text-base">
       Tasks board
-      <button tw-button size="xs" variant="secondary" (click)="saveTasks()">Save</button>
+      <button tw-button size="xs" variant="secondary" (click)="saveTasks();tasksSavedDialog.toggle()">Save</button>
     </div>
     <p class="text-gray-500">Open the console (F12) to see task B's changes log.</p>
     <div class="grid gap-4 mt-6">
       <tw-checkbox [checked]="true">Task A</tw-checkbox>
-      <tw-checkbox [checked]="task.done.fully" [indeterminate]="!!task.done.partially" (changes)="updateTask($event)">
+      <tw-checkbox [(checked)]="task.done.fully" [(indeterminate)]="task.done.partially">
         {{ task.name }}
         <div class="pl-8 grid gap-4 mt-4 w-fit">
           @for (subtask of task.subtasks; track subtask; let i = $index) {
-          <tw-checkbox [checked]="subtask.done.fully" [indeterminate]="!!subtask.done.partially"
-            (changes)="updateTask($event, subtask)">
+          <tw-checkbox [(checked)]="subtask.done.fully" [(indeterminate)]="subtask.done.partially">
             {{ subtask.name}}
             @if(subtask.subtasks) {
             <div class="pl-8 grid gap-4 mt-4 w-fit">
               @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
-              <tw-checkbox [checked]="subsubtask.done.fully" [indeterminate]="!!subsubtask.done.partially"
-                (changes)="updateTask($event, subsubtask)">
+              <tw-checkbox [(checked)]="subsubtask.done.fully" [(indeterminate)]="subsubtask.done.partially">
                 {{ subsubtask.name}}
                 @if(subsubtask.subtasks) {
                 <div class="pl-8 grid gap-4 mt-4 w-fit">
                   @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
-                  <tw-checkbox [checked]="subsubsubtask.done.fully" [indeterminate]="!!subsubsubtask.done.partially"
-                    (changes)="updateTask($event, subsubsubtask)">
+                  <tw-checkbox [(checked)]="subsubsubtask.done.fully" [(indeterminate)]="subsubsubtask.done.partially">
                     {{ subsubsubtask.name}}
                   </tw-checkbox>
                   }
@@ -41,6 +38,121 @@
         </div>
       </tw-checkbox>
       <tw-checkbox>Task C</tw-checkbox>
+    </div>
+  </div>
+</div>
+
+<div tw-dialog #tasksSavedDialog [isModal]="false" class="self-end justify-self-end">
+  <div tw-dialog-container class="sm:max-w-md dark:bg-gray-950">
+    <div class="grid gap-3 text-center sm:text-left text-sm text-gray-600 dark:text-gray-100">
+      <details>
+        <summary>
+          {{ task.name}},
+          <span [attr.data-f]="task.done.fully|| null" class="data-f:font-bold"> fully:
+            {{task.done.fully}}</span>,
+          <span [attr.data-p]="task.done.partially|| null" class="data-p:font-bold"> partially:
+            {{task.done.partially}}</span>
+        </summary>
+        <ul class="pl-8 mt-4 grid gap-4">
+          @for (subtask of task.subtasks; track subtask; let i = $index) {
+          @if(subtask.subtasks) {
+          <details class="grid gap-4">
+            <summary>
+              {{ subtask.name}},
+              <span [attr.data-f]="subtask.done.fully|| null" class="data-f:font-bold"> fully:
+                {{subtask.done.fully}}</span>,
+              <span [attr.data-p]="subtask.done.partially|| null" class="data-p:font-bold"> partially:
+                {{subtask.done.partially}}</span>
+            </summary>
+            <ul class="pl-4 grid gap-4">
+              @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
+              @if(subsubtask.subtasks) {
+              <details class="grid gap-4">
+                <summary>{{ subsubtask.name}},
+                  <span [attr.data-f]="subsubtask.done.fully|| null" class="data-f:font-bold"> fully:
+                    {{subsubtask.done.fully}}</span>,
+                  <span [attr.data-p]="subsubtask.done.partially|| null" class="data-p:font-bold"> partially:
+                    {{subsubtask.done.partially}}</span>
+                </summary>
+                <ul class="pl-4 grid gap-4">
+                  @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
+                  <li>{{ subsubsubtask.name}},
+                    <span [attr.data-f]="subsubsubtask.done.fully|| null" class="data-f:font-bold"> fully:
+                      {{subsubsubtask.done.fully}}</span>,
+                    <span [attr.data-p]="subsubsubtask.done.partially|| null" class="data-p:font-bold"> partially:
+                      {{subsubsubtask.done.partially}}</span>
+                  </li>
+                  }
+                </ul>
+              </details>
+              }@else {
+              <li> {{ subsubtask.name}},
+                <span [attr.data-f]="subsubtask.done.fully|| null" class="data-f:font-bold"> fully:
+                  {{subsubtask.done.fully}}</span>,
+                <span [attr.data-p]="subsubtask.done.partially|| null" class="data-p:font-bold"> partially:
+                  {{subsubtask.done.partially}}</span>
+              </li>
+              }
+              }
+            </ul>
+          </details>
+          }@else{
+          <li>{{ subtask.name}},
+            <span [attr.data-f]="subtask.done.fully|| null" class="data-f:font-bold"> fully:
+              {{subtask.done.fully}}</span>,
+            <span [attr.data-p]="subtask.done.partially|| null" class="data-p:font-bold"> partially:
+              {{subtask.done.partially}}</span>
+          </li>
+          }
+          }
+        </ul>
+      </details>
+    </div>
+    <div class="flex justify-end">
+      <button tw-button class="w-full sm:w-fit" (click)="tasksDialog.open()">OK</button>
+    </div>
+
+    <div tw-dialog #tasksDialog [isModal]="false" class="place-self-center">
+      <div tw-dialog-container class="sm:max-w-md">
+        <div class="grid text-sm">
+          <p class="font-semibold flex justify-between items-center text-base">
+            Tasks board
+            <button tw-button size="xs" (click)="centeredDialogWithBackdrop.open()">Save</button>
+          </p>
+          <p class="mt-2">It's great to keep your tasks board updated.</p>
+          <div class="grid gap-4 mt-6">
+            <tw-checkbox [(checked)]="task.done.fully" [(indeterminate)]="task.done.partially">
+              {{ task.name }}
+              <div class="pl-8 grid gap-4 mt-4 w-fit">
+                @for (subtask of task.subtasks; track subtask; let i = $index) {
+                <tw-checkbox [(checked)]="subtask.done.fully" [(indeterminate)]="subtask.done.partially">
+                  {{ subtask.name}}
+                  @if(subtask.subtasks) {
+                  <div class="pl-8 grid gap-4 mt-4 w-fit">
+                    @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
+                    <tw-checkbox [(checked)]="subsubtask.done.fully" [(indeterminate)]="subsubtask.done.partially">
+                      {{ subsubtask.name}}
+                      @if(subsubtask.subtasks) {
+                      <div class="pl-8 grid gap-4 mt-4 w-fit">
+                        @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
+                        <tw-checkbox [(checked)]="subsubsubtask.done.fully"
+                          [(indeterminate)]="subsubsubtask.done.partially">
+                          {{ subsubsubtask.name}}
+                        </tw-checkbox>
+                        }
+                      </div>
+                      }
+                    </tw-checkbox>
+                    }
+                  </div>
+                  }
+                </tw-checkbox>
+                }
+              </div>
+            </tw-checkbox>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -612,125 +724,6 @@
     </div>
   </div>
 </div>
-<!--
-<div tw-dialog #tasksSavedDialog [isModal]="false" class="self-end justify-self-end">
-  <div tw-dialog-container class="sm:max-w-md">
-    <div class="grid gap-3 text-center sm:text-left text-sm text-gray-600 dark:text-gray-400">
-      <details>
-        <summary>
-          {{ task.name}},
-          <span [attr.data-f]="task.done.fully|| null" class="data-f:font-bold"> fully:
-            {{task.done.fully}}</span>,
-          <span [attr.data-p]="task.done.partially|| null" class="data-p:font-bold"> partially:
-            {{!!task.done.partially}}</span>
-        </summary>
-        <ul class="pl-8 mt-4 grid gap-4">
-          @for (subtask of task.subtasks; track subtask; let i = $index) {
-          @if(subtask.subtasks) {
-          <details class="grid gap-4">
-            <summary>
-              {{ subtask.name}},
-              <span [attr.data-f]="subtask.done.fully|| null" class="data-f:font-bold"> fully:
-                {{subtask.done.fully}}</span>,
-              <span [attr.data-p]="subtask.done.partially|| null" class="data-p:font-bold"> partially:
-                {{!!subtask.done.partially}}</span>
-            </summary>
-            <ul class="pl-4 grid gap-4">
-              @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
-              @if(subsubtask.subtasks) {
-              <details class="grid gap-4">
-                <summary>{{ subsubtask.name}},
-                  <span [attr.data-f]="subsubtask.done.fully|| null" class="data-f:font-bold"> fully:
-                    {{subsubtask.done.fully}}</span>,
-                  <span [attr.data-p]="subsubtask.done.partially|| null" class="data-p:font-bold"> partially:
-                    {{!!subsubtask.done.partially}}</span>
-                </summary>
-                <ul class="pl-4 grid gap-4">
-                  @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
-                  <li>{{ subsubsubtask.name}},
-                    <span [attr.data-f]="subsubsubtask.done.fully|| null" class="data-f:font-bold"> fully:
-                      {{subsubsubtask.done.fully}}</span>,
-                    <span [attr.data-p]="subsubsubtask.done.partially|| null" class="data-p:font-bold"> partially:
-                      {{!!subsubsubtask.done.partially}}</span>
-                  </li>
-                  }
-                </ul>
-              </details>
-              }@else {
-              <li> {{ subsubtask.name}},
-                <span [attr.data-f]="subsubtask.done.fully|| null" class="data-f:font-bold"> fully:
-                  {{subsubtask.done.fully}}</span>,
-                <span [attr.data-p]="subsubtask.done.partially|| null" class="data-p:font-bold"> partially:
-                  {{!!subsubtask.done.partially}}</span>
-              </li>
-              }
-              }
-            </ul>
-          </details>
-          }@else{
-          <li>{{ subtask.name}},
-            <span [attr.data-f]="subtask.done.fully|| null" class="data-f:font-bold"> fully:
-              {{subtask.done.fully}}</span>,
-            <span [attr.data-p]="subtask.done.partially|| null" class="data-p:font-bold"> partially:
-              {{!!subtask.done.partially}}</span>
-          </li>
-          }
-          }
-        </ul>
-      </details>
-    </div>
-    <div class="flex justify-end">
-      <button tw-button class="w-full sm:w-fit" (click)="tasksDialog.open()">OK</button>
-    </div>
-
-    <div tw-dialog #tasksDialog [isModal]="false" class="place-self-center">
-      <div tw-dialog-container class="sm:max-w-md">
-        <div class="grid text-sm">
-          <p class="font-semibold flex justify-between items-center text-base">
-            Tasks board
-            <button tw-button size="xs" (click)="centeredDialogWithBackdrop.open()">Save</button>
-          </p>
-          <p class="mt-2">It's great to keep your tasks board updated.</p>
-          <div class="grid gap-4 mt-6">
-            <tw-checkbox [checked]="task.done.fully" [indeterminate]="!!task.done.partially"
-              (changes)="updateTask($event)">
-              {{ task.name }}
-              <div class="pl-8 grid gap-4 mt-4 w-fit">
-                @for (subtask of task.subtasks; track subtask; let i = $index) {
-                <tw-checkbox [checked]="subtask.done.fully" [indeterminate]="!!subtask.done.partially"
-                  (changes)="updateTask($event, subtask)">
-                  {{ subtask.name}}
-                  @if(subtask.subtasks) {
-                  <div class="pl-8 grid gap-4 mt-4 w-fit">
-                    @for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
-                    <tw-checkbox [checked]="subsubtask.done.fully" [indeterminate]="!!subsubtask.done.partially"
-                      (changes)="updateTask($event, subsubtask)">
-                      {{ subsubtask.name}}
-                      @if(subsubtask.subtasks) {
-                      <div class="pl-8 grid gap-4 mt-4 w-fit">
-                        @for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
-                        <tw-checkbox [checked]="subsubsubtask.done.fully"
-                          [indeterminate]="!!subsubsubtask.done.partially"
-                          (changes)="updateTask($event, subsubsubtask)">
-                          {{ subsubsubtask.name}}
-                        </tw-checkbox>
-                        }
-                      </div>
-                      }
-                    </tw-checkbox>
-                    }
-                  </div>
-                  }
-                </tw-checkbox>
-                }
-              </div>
-            </tw-checkbox>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="grid gap-6 place-content-center p-8 relative w-fit grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mx-auto">
   <!-- Trigger button -->
