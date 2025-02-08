@@ -10,7 +10,7 @@ import { InputTextBase, InputText, ClassList } from '@tailwind-ng/core';
   providers: [{ provide: InputTextBase, useExisting: InputTextDirective }]
 })
 export class InputTextDirective extends InputTextBase implements InputText {
-  protected override  async onInit(): Promise<void> {
+  protected override async onInit(): Promise<void> {
     if (!this.classList) {
       this.classList = new ClassList(this.class);
       this.classList.set(this.config);

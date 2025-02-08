@@ -13,7 +13,7 @@ export interface CheckboxMutableState {
   /**
    * Whether the checkbox is indeterminate. default is false
    */
-  readonly indeterminate: boolean
+  readonly indeterminate?: boolean
   /**
    * The checkbox's children if any.
    */
@@ -34,6 +34,14 @@ export interface CheckboxEvents {
    * Emits when the checkbox state changes.
    */
   readonly changes: OutputEmitterRef<CheckboxMutableState>
+  /**
+   * Emits when the checkbox checked state changes.
+   */
+  readonly checkedChange: OutputEmitterRef<boolean>
+  /**
+   * Emits when the checkbox indeterminate state changes.
+   */
+  readonly indeterminateChange: OutputEmitterRef<boolean>
 }
 
 type EventOrigin = "self" | "parent" | "child"

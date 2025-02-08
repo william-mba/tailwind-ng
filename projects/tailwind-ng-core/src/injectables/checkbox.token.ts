@@ -12,11 +12,17 @@ export abstract class CheckboxBase extends BaseDirective implements ConfigOf<'Ch
   });
   children?: Checkbox[];
   @Input() checked = false;
-  @Input() indeterminate = false;
+  @Input() indeterminate?: boolean;
   @Input() id = this.randomId();
+  checkedChange = output<boolean>();
+  indeterminateChange = output<boolean>();
   changes = output<CheckboxMutableState>();
 
   protected emitChanges(): void {
+    this.checkedChange.emit(this.checked);
+    if (this.indeterminate !== undefined) {
+      this.indeterminateChange.emit(this.indeterminate);
+    }
     this.changes.emit({ checked: this.checked, indeterminate: this.indeterminate });
   }
 
