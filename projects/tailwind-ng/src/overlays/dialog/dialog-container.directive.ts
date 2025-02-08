@@ -29,7 +29,7 @@ export class DialogContainerDirective extends BaseDirective {
     }
     this.dialog.opened.subscribe(() => {
       if (this.dialog.autoFocus) {
-        this.focusPrimaryActionOrDefault();
+        this.focusPrimaryAction();
       }
       if (this.dialog.autoClose) {
         this.dialog.closeAfter(this.dialog.displayDuration);
@@ -48,10 +48,10 @@ export class DialogContainerDirective extends BaseDirective {
     }
   }
 
-  private focusPrimaryActionOrDefault() {
+  private focusPrimaryAction() {
     setTimeout(() => {
       (this.nativeElement.querySelector('button[variant=primary],tw-button[variant=primary]') as HTMLElement)?.focus();
-    }, 50);
+    }, 100);
   }
 
   protected onPointerEvent(event: UIEvent) {

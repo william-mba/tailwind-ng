@@ -1,5 +1,5 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { ClassList, Dialog, DialogBase, OverlayPosition } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ClassList, Dialog, DialogBase, isHTMLElement, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -15,13 +15,13 @@ import { ClassList, Dialog, DialogBase, OverlayPosition } from '@tailwind-ng/cor
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: DialogBase, useExisting: DialogComponent }]
 })
-export class DialogComponent extends DialogBase implements Dialog, AfterContentInit {
+export class DialogComponent extends DialogBase implements Dialog {
   @Input() position?: OverlayPosition;
   @Input() displayDuration!: number;
   @Input() autoClose = false;
   @Input() autoFocus = true;
   @Input() isModal = true;
-  protected clonedChild!: Element;
+  protected child!: Element;
 
   protected override async onInit(): Promise<void> {
     if (!this.classList) {
@@ -34,35 +34,44 @@ export class DialogComponent extends DialogBase implements Dialog, AfterContentI
         }
       });
     }
-  }
-
-  ngAfterContentInit(): void {
     if (!this.isOpened) {
-      this.onClose();
+      this.handleClose();
     }
   }
 
   override open() {
-    if (this.clonedChild) {
-      this.nativeElement.appendChild(this.clonedChild);
-    }
+    this.handleOpen();
     super.open();
   }
 
   override close() {
     super.close();
-    this.onClose();
+    this.handleClose();
   }
 
-  protected onClose() {
-    if (this.nativeElement.children.length === 1) {
-      this.clonedChild = this.nativeElement.children[0];
-    }
+  protected handleClose() {
+    this.cloneChild();
     // Lets animations complete before removing the dialog in the DOM
     setTimeout(() => {
-      if (!this.isOpened && this.clonedChild) {
-        this.nativeElement.children[0]?.remove();
-      }
+      this.removeChild();
     }, 300);
+  }
+
+  private cloneChild() {
+    if (!this.child && isHTMLElement(this.nativeElement.firstElementChild)) {
+      this.child = this.nativeElement.firstElementChild;
+    }
+  }
+
+  private removeChild() {
+    if (!this.isOpened && this.child) {
+      this.child.remove();
+    }
+  }
+
+  private handleOpen() {
+    if (this.child) {
+      this.nativeElement.appendChild(this.child);
+    }
   }
 }
