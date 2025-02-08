@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { ButtonComponent, DialogModule, IconDirective, provideButton } from 'tailwind-ng';
 import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
@@ -20,7 +20,15 @@ import { RouterLink } from '@angular/router';
     })
   ]
 })
-export class GettingStartedComponent {
+export class GettingStartedComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
   private readonly sanitizer = inject(DomSanitizer);
 
   npmCode = `npm install tailwind-ng @tailwind-ng/core `;

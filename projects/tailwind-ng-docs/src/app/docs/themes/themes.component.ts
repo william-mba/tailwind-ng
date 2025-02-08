@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { timer } from 'rxjs';
@@ -11,7 +11,15 @@ import { ButtonComponent, DialogModule, IconDirective } from 'tailwind-ng';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './themes.component.html',
 })
-export class ThemesComponent {
+export class ThemesComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    requestIdleCallback(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    });
+  }
   private readonly sanitizer = inject(DomSanitizer);
   themesFromNPMCode = `import '@tailwind-ng/themes/default';`;
   themesFromNPMHTML = `<pre class="shiki github-dark-default border dark:border-gray-800 overflow-x-auto bg-black/90! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> '@tailwind-ng/themes/default';</span></span></code></pre>`;

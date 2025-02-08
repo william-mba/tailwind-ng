@@ -10,23 +10,6 @@
             <tw-icon name="tailwind-ng" size="lg" />
             Tailwind NG
           </a>
-          <!-- Release tags -->
-          <!--
-          <div class="relative">
-            <button tw-button variant="secondary" size="xs" class="rounded-full"
-              [popup]="{ref: release, action: 'toggle'}" aria-label="Select release tag">
-              {{ releaseTag.active}}
-              <tw-icon name="chevron-down" size="xs" class="text-gray-400" />
-            </button><ul tw-dropdown #release [position]="{top: 'top-8', left: 'left-0'}"
-              class="dark:bg-black bg-white min-w-24 py-1 px-1 *:px-2 *:py-1 text-xs rounded-2xl *:rounded-xl *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
-              @for (tag of releaseTag.options; track $index) {
-              <li class="focus:font-semibold" tw-option [popup]="{ref: release, action: 'close'}"
-                (click)="updateTag(tag.label)">
-                {{ tag.label }}
-              </li>
-              }
-            </ul>
-        </div> -->
         </div>
         <!-- Options menu larger screen -->
         <div class="flex items-center gap-6 max-md:hidden">
@@ -95,7 +78,7 @@
         class="min-h-screen bg-white dark:bg-black/30 font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative data-[opened=false]:-translate-x-full data-[opened=false]:sm:translate-x-0 duration-500">
         @for (item of navItems; track $index) {
         @switch (item.category) {
-        @case ('documentation') {
+        @case ('overview') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
             <tw-icon name="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
@@ -115,28 +98,11 @@
           </ol>
         </div>
         }
-        @case ('getting-started') {
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3">
-            <tw-icon name="rocket" class="text-gray-400" />
-            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
-          </div>
-          <ol
-            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
-            @for (child of item.children; track $index) {
-            <li [routerLink]="child.route">{{ child.label }}</li>
-            }
-          </ol>
-        </div>
-        }
         @case ('components') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
             <tw-icon name="puzzle-piece" class="text-gray-400" />
             <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
-            <!-- <tw-badge size="xs" class="rounded-md bg-blue-100 text-blue-800 dark:bg-blue-900/90 dark:text-blue-300">
-              {{ item.children?.length || 0 }}
-            </tw-badge> -->
           </div>
           <ol
             class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
@@ -158,7 +124,7 @@
         class="min-h-screen bg-white dark:bg-black font-medium *:mb-6 text-gray-600 dark:text-gray-400 border-r px-6 pr-4 py-8 border-gray-950/5 dark:border-white/10 relative">
         @for (item of navItems; track $index) {
         @switch (item.category) {
-        @case ('documentation') {
+        @case ('overview') {
         <div class="flex flex-col gap-2">
           <div class="flex items-center gap-3">
             <tw-icon name="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
@@ -174,20 +140,6 @@
               class="data-[active=true]:border-blue-500 data-[active=true]:text-blue-700 data-[active=true]:dark:text-blue-400">
               {{ child.label }}
             </li>
-            }
-          </ol>
-        </div>
-        }
-        @case ('getting-started') {
-        <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3">
-            <tw-icon name="rocket" class="text-gray-400" />
-            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
-          </div>
-          <ol
-            class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
-            @for (child of item.children; track $index) {
-            <li [routerLink]="child.route">{{ child.label }}</li>
             }
           </ol>
         </div>

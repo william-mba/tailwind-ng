@@ -45,13 +45,13 @@ export interface NavItem {
   children?: NavItem[];
 }
 
-type NavCategory = 'documentation' | 'components' | 'getting-started';
+type NavCategory = 'overview' | 'components' | 'getting-started';
 
 export const NAV_ITEMS: NavItem[] = [
   {
     label: 'Overview',
     route: '/docs',
-    category: 'documentation',
+    category: 'overview',
     children: [
       {
         label: 'Getting Started',

@@ -659,9 +659,6 @@
   .top-5 {
     top: calc(var(--spacing) * 5);
   }
-  .top-8 {
-    top: calc(var(--spacing) * 8);
-  }
   .top-10 {
     top: calc(var(--spacing) * 10);
   }
@@ -1238,9 +1235,6 @@
   }
   .min-w-3xs {
     min-width: var(--container-3xs);
-  }
-  .min-w-24 {
-    min-width: calc(var(--spacing) * 24);
   }
   .min-w-52 {
     min-width: calc(var(--spacing) * 52);
@@ -3621,6 +3615,10 @@
     --tw-duration: 100ms;
     transition-duration: 100ms;
   }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -3629,6 +3627,10 @@
     --tw-duration: 500ms;
     transition-duration: 500ms;
   }
+  .duration-700 {
+    --tw-duration: 700ms;
+    transition-duration: 700ms;
+  }
   .duration-1000 {
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
@@ -3636,14 +3638,6 @@
   .duration-150 {
     --tw-duration: 150ms;
     transition-duration: 150ms;
-  }
-  .duration-200 {
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
-  }
-  .duration-700 {
-    --tw-duration: 700ms;
-    transition-duration: 700ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -3840,11 +3834,6 @@
   .\*\:rounded-none {
     :is(& > *) {
       border-radius: 0;
-    }
-  }
-  .\*\:rounded-xl {
-    :is(& > *) {
-      border-radius: var(--radius-xl);
     }
   }
   .\*\:border {
@@ -4697,12 +4686,6 @@
     &:focus {
       --tw-font-weight: var(--font-weight-bold);
       font-weight: var(--font-weight-bold);
-    }
-  }
-  .focus\:font-semibold {
-    &:focus {
-      --tw-font-weight: var(--font-weight-semibold);
-      font-weight: var(--font-weight-semibold);
     }
   }
   .focus\:text-white {

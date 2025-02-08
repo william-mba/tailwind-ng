@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-roadmap',
@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   templateUrl: './roadmap.component.html',
   styles: ``
 })
-export class RoadmapComponent {
+export class RoadmapComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      })
+    }, 500);
+  }
 
 }
