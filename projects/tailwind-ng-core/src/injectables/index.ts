@@ -1,3 +1,4 @@
+export * from './configs/button-config.token';
 export * from './crypto.token';
 export * from './injection-token.factory';
 export * from './window.token';
