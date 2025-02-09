@@ -15,11 +15,6 @@ export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseSta
    */
   readonly isOpened: boolean;
   /**
-   * Returns the popup's type as a string.
-   * This is different to what we get from the `typeof` operator witch returns `object`.
-   */
-  readonly type: PopupType;
-  /**
    * The popup's extra options.
    */
   readonly options?: PopupExtraOptons;
@@ -40,11 +35,6 @@ export interface PopupExtraOptons {
     focusTrigger?: boolean;
   }
 }
-
-export type PopupType =
-  | 'Combobox'
-  | 'Dropdown'
-  | 'Dialog'
 
 /**
  * @TailwindNG Basic Popup actions.

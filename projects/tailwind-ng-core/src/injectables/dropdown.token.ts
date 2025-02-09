@@ -13,7 +13,6 @@ export const DROPDOWN_CONFIG = InjectionTokenFactory.create<Partial<ConfigTypeOf
   providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DropdownBase) }]
 })
 export abstract class DropdownBase extends PopupDirective implements ConfigOf<'Dropdown'> {
-  readonly type = 'Dropdown';
   @Input() config = inject(DROPDOWN_CONFIG);
 }
 

@@ -1,6 +1,6 @@
 import { Directive, Input, inject, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
-import { Popup, PopupExtraOptons, PopupType } from '../interfaces/popup';
+import { Popup, PopupExtraOptons } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
 
 @Directive({
@@ -19,8 +19,6 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   opened = output<void>();
   closed = output<void>();
 
-  abstract readonly type: PopupType;
-
   toggle(): void {
     if (this.isOpened) {
       this.close();
@@ -35,7 +33,6 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
       this.isOpened = true;
       this.nativeElement.style.zIndex = `${this.zIndex.next}`;
       this.opened.emit();
-      this._changeDetector.markForCheck();
     }
   }
 
@@ -48,7 +45,6 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
         const { focusTrigger } = this.options.afterClosing;
         if (trigger && focusTrigger) trigger.focus();
       }
-      this._changeDetector.markForCheck();
     }
   }
 

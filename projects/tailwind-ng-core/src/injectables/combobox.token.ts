@@ -24,7 +24,6 @@ export function isCombobox(component: unknown): component is Combobox {
   ]
 })
 export abstract class ComboboxBase extends PopupDirective {
-  readonly type = 'Combobox';
   protected activeElement?: HTMLElement;
   @Input() override id = this.randomId('combobox');
 }

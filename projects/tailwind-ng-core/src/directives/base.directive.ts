@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, DestroyRef, Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
+import { Directive, ElementRef, inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { BaseStates, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config/classlist";
@@ -15,12 +15,9 @@ import { Config } from "../types/config.type";
     '[attr.aria-disabled]': 'isDisabled || null',
   }
 })
-export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseStates<T>, BaseActions, OnInit {
+export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseStates<T>, BaseActions, OnInit, OnDestroy {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
-  protected readonly _changeDetector = inject(ChangeDetectorRef);
   protected readonly _document = inject(DOCUMENT);
-  protected readonly _injector = inject(Injector);
-  protected readonly _destroyRef = inject(DestroyRef);
   protected isInitialized = false;
 
   @Input() classList!: ClassList;
@@ -38,7 +35,6 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
       this._isDisabled = newState;
       if (this.isInitialized) {
         this.onInit();
-        this._changeDetector.markForCheck();
       }
     }
   }
@@ -57,14 +53,15 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     this.onInit()
       .then(() => {
         this.addEventListeners();
-        this._destroyRef.onDestroy(
-          this.removeEventListeners.bind(this)
-        );
         this.isInitialized = true;
       })
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.removeEventListeners.bind(this)
   }
 
   /**

@@ -8,7 +8,6 @@ export const DIALOG_CONFIG = InjectionTokenFactory.create<Partial<ConfigTypeOf<'
 
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) }] })
 export abstract class DialogBase extends PopupDirective<HTMLDialogElement> implements ConfigOf<'Dialog'> {
-  readonly type = 'Dialog';
   @Input() config = inject(DIALOG_CONFIG);
 }
 
