@@ -12,7 +12,7 @@ import { IconDirective } from "../../elements";
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
-      <input [class]="classList.value()" (change)="onChanges($event)" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null" />
+      <input [class]="classList.value()" (change)="onChanges($event)" (keyup)="onKeyup($event)" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null" />
       <tw-icon [name]="icon.onIndeterminate" [size]="icon.size" class="peer-indeterminate:block" />
       <tw-icon [name]="icon.onChecked" [size]="icon.size" class="peer-checked:block" />
     </div>
@@ -131,7 +131,7 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
   }
 
   protected onKeyup(event: KeyboardEvent): void {
-    event.preventDefault();
+    if (event.eventPhase !== Event.BUBBLING_PHASE) return;
     event.stopPropagation();
     if (isEnterOrSpace(event.key)) {
       this.toggle();
