@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CHECKBOX_ICON, CheckboxBase, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
+import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
+import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableStates, CheckboxToggleOptions, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
 import { IconDirective } from "../../elements";
 
 /**
@@ -33,6 +33,60 @@ import { IconDirective } from "../../elements";
 })
 export class CheckboxComponent extends CheckboxBase implements Checkbox {
   protected icon = inject(CHECKBOX_ICON);
+  protected readonly parent = inject(CheckboxComponent, {
+    optional: true, skipSelf: true, host: true
+  });
+  children?: Checkbox[];
+  @Input() checked = false;
+  @Input() indeterminate?: boolean;
+  @Input() id = this.randomId('checkbox');
+  checkedChange = output<boolean>();
+  indeterminateChange = output<boolean>();
+  changes = output<CheckboxMutableStates>();
+
+  protected emitChanges(): void {
+    this.checkedChange.emit(this.checked);
+    if (this.indeterminate !== undefined) {
+      this.indeterminateChange.emit(this.indeterminate);
+    }
+    this.changes.emit({ checked: this.checked, indeterminate: this.indeterminate });
+  }
+
+  toggle(options: CheckboxToggleOptions = {}): Promise<CheckboxMutableStates> {
+    options.event?.stopPropagation();
+    const { origin = 'self' } = options;
+
+    if (origin === 'self') {
+      this.checked = !this.checked;
+      this.indeterminate = false;
+      if (this.parent) {
+        this.parent.toggle({ origin: 'child' });
+      }
+      if (this.children) {
+        Promise.all(this.children.map(c => c.toggle({ origin: 'parent' })));
+      }
+    }
+    if (origin === 'parent' && this.parent) {
+      this.checked = this.parent.checked;
+      this.indeterminate = false;
+      if (this.children) {
+        Promise.all(this.children.map(c => c.toggle({ origin: 'parent' })));
+      }
+    }
+    if (origin === 'child' && this.children) {
+      const checkedCount = this.children.filter(c => c.checked).length;
+      this.checked = checkedCount === this.children!.length;
+      this.indeterminate = checkedCount > 0 && (checkedCount < this.children.length);
+      if (this.parent && (this.checked || this.indeterminate)) {
+        this.parent.toggle({ origin: 'child' });
+      }
+    }
+    this.emitChanges();
+    return Promise.resolve<CheckboxMutableStates>({
+      indeterminate: this.indeterminate,
+      checked: this.checked
+    });
+  }
 
   protected override async onInit(): Promise<void> {
     if (!this.classList) {

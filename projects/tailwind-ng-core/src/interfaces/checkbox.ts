@@ -1,11 +1,11 @@
-import { BaseActions, BaseState } from "./base";
+import { ConfigOf } from "../config/config-of";
+import { BaseActions, BaseStates } from "./base";
 import { OutputEmitterRef } from "@angular/core";
-import { ConfigOf } from "../config/config-type";
 
 /**
- * The mutable state of the checkbox.
+ * The mutable states of the checkbox.
  */
-export interface CheckboxMutableState {
+export interface CheckboxMutableStates {
   /**
    * Whether the checkbox is checked. default is false
    */
@@ -26,14 +26,14 @@ export interface CheckboxActions {
    * @param options The options for the toggle.
    * @returns A promise that resolves with the changes.
    */
-  toggle(options?: CheckboxToggleOptions): Promise<CheckboxMutableState>
+  toggle(options?: CheckboxToggleOptions): Promise<CheckboxMutableStates>
 }
 
 export interface CheckboxEvents {
   /**
    * Emits when the checkbox state changes.
    */
-  readonly changes: OutputEmitterRef<CheckboxMutableState>
+  readonly changes: OutputEmitterRef<CheckboxMutableStates>
   /**
    * Emits when the checkbox checked state changes.
    */
@@ -58,11 +58,11 @@ export interface CheckboxToggleOptions {
 
 
 export interface Checkbox extends
-  BaseState,
+  BaseStates,
   BaseActions,
   CheckboxActions,
   CheckboxEvents,
-  CheckboxMutableState,
+  CheckboxMutableStates,
   ConfigOf<'Checkbox'> {
   readonly id: string
 }
