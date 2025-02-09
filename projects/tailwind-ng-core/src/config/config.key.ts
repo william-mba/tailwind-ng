@@ -1,0 +1,13 @@
+export type ConfigKey =
+  | 'Avatar'
+  | 'Badge'
+  | 'Button'
+  | 'ButtonGroup'
+  | 'ComboboxItem'
+  | 'Dropdown'
+  | 'Icon'
+  | 'InputText'
+  | 'InputRadio'
+  | 'Dialog'
+  | 'Toggle'
+  | 'Checkbox'
