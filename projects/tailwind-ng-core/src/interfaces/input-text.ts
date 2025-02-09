@@ -1,5 +1,5 @@
-import { InputTextConfig } from "../config/interfaces";
-import { BaseActions, BaseState } from "./base";
+import { InputTextConfig } from "../config/interfaces/input-text-config.interface";
+import { BaseActions, BaseStates } from "./base";
 
 /**
  * @TailwindNG Input component interface.
@@ -11,6 +11,6 @@ import { BaseActions, BaseState } from "./base";
  * - tel
  * - url
  */
-export interface InputText extends BaseState<HTMLInputElement>, BaseActions {
+export interface InputText extends BaseStates<HTMLInputElement>, BaseActions {
   config: Partial<InputTextConfig>;
 }
