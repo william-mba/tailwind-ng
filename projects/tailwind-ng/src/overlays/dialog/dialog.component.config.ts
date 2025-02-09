@@ -25,9 +25,10 @@ const DefaultConfig = (): DialogConfig => {
       padding: 'p-4',
       inset: 'inset-0',
       position: 'fixed',
-      placeContent: 'place-content-end',
+      alignContent: 'content-end',
+      justifyContent: 'justify-center',
       sm: {
-        placeContent: 'sm:place-content-center'
+        alignContent: 'sm:content-center',
       }
     },
     container: {

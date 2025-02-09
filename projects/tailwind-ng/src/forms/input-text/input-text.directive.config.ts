@@ -43,9 +43,9 @@ const DefaultConfig = (): InputTextConfig => {
         ringColor: 'invalid:focus:ring-red-600/60'
       }
     },
-    dataActive: {
-      ringColor: 'data-active:ring-indigo-600',
-      ringWidth: 'data-active:ring-2',
+    dataVisualFocused: {
+      ringColor: 'data-visual-focused:ring-indigo-600',
+      ringWidth: 'data-visual-focused:ring-2',
     }
   }
 };

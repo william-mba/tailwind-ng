@@ -176,9 +176,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
     if (behavior === 'self') {
       if (this.currentVisualFocusedElement) {
-        this.currentVisualFocusedElement.removeAttribute('data-active');
+        this.currentVisualFocusedElement.removeAttribute('data-visual-focused');
       }
-      target.setAttribute('data-active', '');
+      target.setAttribute('data-visual-focused', '');
       this.currentVisualFocusedElement = target;
       return target;
     }
@@ -210,10 +210,10 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
         break;
     }
     if (this.currentVisualFocusedElement) {
-      this.currentVisualFocusedElement.removeAttribute('data-active');
+      this.currentVisualFocusedElement.removeAttribute('data-visual-focused');
     }
     if (target) {
-      target.setAttribute('data-active', '');
+      target.setAttribute('data-visual-focused', '');
       target.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest' });
     }
     this.currentVisualFocusedElement = target;
@@ -224,7 +224,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     if (target === this.currentVisualFocusedElement) {
       this.currentVisualFocusedElement = undefined;
     }
-    target.removeAttribute('data-active');
+    target.removeAttribute('data-visual-focused');
   }
 
   scrollIntoView(options: ScrollIntoViewOptions = {}): void {
@@ -235,7 +235,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   }
 
   get hasVisualFocus(): boolean {
-    return this.nativeElement.hasAttribute('data-active');
+    return this.nativeElement.hasAttribute('data-visual-focused');
   }
 
   private isDisabledElement(element: HTMLElement): boolean {

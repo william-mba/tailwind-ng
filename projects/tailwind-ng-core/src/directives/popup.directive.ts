@@ -43,20 +43,26 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   close(): void {
     if (this.isOpened) {
       this.isOpened = false;
-      this.closed.emit();
-      this._changeDetector.markForCheck();
       if (this.trigger) {
         this.trigger.focus();
       }
+      this.closed.emit();
+      this._changeDetector.markForCheck();
     }
   }
 
-  closeAfter(delay: number): void {
-    delay = (delay >= 1000 && delay <= 10000) ? delay : 5000;
+  closeAfter(delay: number = 2000): void {
+    if (isAcceptableDelay(delay)) {
+      delay = delay;
+    };
     setInterval(() => {
       if (!this.isHovered) {
         this.close();
       }
     }, delay);
   }
+}
+
+function isAcceptableDelay(delay: number): boolean {
+  return delay >= 1000 && delay <= (1000 * 10);
 }

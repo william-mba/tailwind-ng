@@ -83,9 +83,9 @@ const PrimaryButtonConfig = (): ComponentConfig => {
     },
     outlineWidth: 'outline-0',
     outlineColor: 'outline-blue-600',
+    outlineOffsetWidth: 'outline-offset-2',
     focus: {
       outlineWidth: 'focus:outline-1',
-      outlineOffsetWidth: 'focus:outline-offset-2'
     },
     active: {
       bgColor: 'active:bg-blue-700/90'
@@ -189,8 +189,9 @@ const DefaultConfig = (): ButtonConfig => {
   }
 }
 
-export const GetButtonConfig = (customization?: Partial<ButtonConfig>): ButtonConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
+export const GetButtonConfig = (customization?: Partial<ButtonConfig>, options: CustomizationOptions = {}): ButtonConfig => {
+  const { strict = false } = options;
+  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization], { strict });
 }
 
 /**
@@ -198,9 +199,17 @@ export const GetButtonConfig = (customization?: Partial<ButtonConfig>): ButtonCo
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButton(customization?: Partial<ButtonConfig>): Provider {
+export function provideButton(customization?: Partial<ButtonConfig>, options: CustomizationOptions = {}): Provider {
   return {
     provide: BUTTON_CONFIG,
-    useValue: GetButtonConfig(customization)
+    useValue: GetButtonConfig(customization, options)
   }
 };
+
+export interface CustomizationOptions {
+  /**
+   * Whether to strictly merge configs. By default it's false and empty objects are ignored during the merge process.
+   * If set to true, setting a value like `{}` will result in corresponding properties in the default config being overridden.
+   */
+  strict?: boolean;
+}

@@ -32,12 +32,12 @@ export class DialogContainerDirective extends BaseDirective {
         this.focusPrimaryAction();
       }
       if (this.dialog.autoClose) {
-        this.dialog.closeAfter(this.dialog.displayDuration);
+        this.dialog.closeAfter(this.dialog.displayDelay);
       }
     });
 
     if (this.dialog.autoClose && this.dialog.isOpened) {
-      this.dialog.closeAfter(this.dialog.displayDuration);
+      this.dialog.closeAfter(this.dialog.displayDelay);
     }
   }
 

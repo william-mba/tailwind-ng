@@ -17,11 +17,11 @@ export interface Dialog extends PopupState, BasicPopupActions, AdvancedPopupActi
    */
   readonly autoFocus: boolean;
   /**
-   * Duration (in milliseconds) to display the dialog before it auto closes. Only applicable if `autoClose` is `true`.
-   * - Range: Minimum = 1000ms; Maximum = 10000ms; Default = 5000ms (5 seconds).
-   * - If the given delay is outside the range, the default delay will be used.
+   * The delay to display the dialog before it auto closes. Only applicable if `autoClose` is `true`.
+   * - Range in milliseconds: `[min: 1000, max: 10000]`; Default is `2000`.
+   * - If the given delay is outside this range, the default delay will be used.
    */
-  readonly displayDuration?: number;
+  readonly displayDelay?: number;
   /**
    * Whether the dialog is modal. If `true`, the dialog will be modal and will prevent any interaction with the rest of the page.
    * Default is `true`.

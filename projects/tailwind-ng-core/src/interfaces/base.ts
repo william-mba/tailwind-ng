@@ -48,7 +48,7 @@ export interface BaseActions {
   focus(options?: FocusOptions): HTMLElement | undefined;
 
   /**
-   * Sets visual focus by adding `data-active` attribute on target element using the given behavior. If the element cannot be visual focused, nothing is done.
+   * Sets visual focus by adding `data-visual-focused` attribute on target element using the given behavior. If the element cannot be visual focused, nothing is done.
    * - The visual focus appearance should be defined in the component's style config.
    * @returns The visual focused element. Otherwise, undefined.
    */

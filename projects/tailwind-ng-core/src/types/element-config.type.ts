@@ -22,7 +22,7 @@ export interface ElementConfig extends LayoutConfig, ThemeConfig {
   active: Variant<'active', StateConfig>;
   disabled: Variant<'disabled', StateConfig>;
   /** Applied when the element has visual focus.*/
-  dataActive: Variant<'data-active', StateConfig>;
+  dataVisualFocused: Variant<'data-visual-focused', StateConfig>;
   focusVisible: Variant<'focus-visible', StateConfig>;
 };
 

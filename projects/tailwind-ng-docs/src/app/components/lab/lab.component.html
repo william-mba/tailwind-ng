@@ -112,8 +112,8 @@
       <button tw-button class="w-full sm:w-fit" (click)="tasksDialog.open()">OK</button>
     </div>
 
-    <div tw-dialog #tasksDialog [isModal]="false" class="place-self-center">
-      <div tw-dialog-container class="sm:max-w-md">
+    <div tw-dialog #tasksDialog [isModal]="false">
+      <div tw-dialog-container>
         <div class="grid text-sm">
           <p class="font-semibold flex justify-between items-center text-base">
             Tasks board
@@ -716,7 +716,7 @@
     <!-- Dropdown -->
     <div tw-dropdown (closed)="reset(2)" class="w-full overflow-y-auto max-h-56 focus:border-4">
       @for (user of users2; track user.name) {
-      <div tw-combobox-item #item [value]="user.name" class="focus-visible:bg-blue-600">
+      <div tw-combobox-item #item [value]="user.name">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
         <span>{{ user.name }}</span>
       </div>
@@ -757,7 +757,7 @@
 
   <div tw-dialog #centeredDialogWithBackdrop>
     <!-- Dialog container -->
-    <div tw-dialog-container class="sm:max-w-fit">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
@@ -791,7 +791,7 @@
           <!-- Dialog actions -->
           <div class="grid sm:flex gap-4 mt-5">
             <button tw-button (click)="dialogWithLeftAlignedButtons.close()"
-              class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-offset-2 focus:outline-red-600">Deactivate</button>
+              class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600">Deactivate</button>
             <button tw-button class="w-full sm:w-fit" variant="secondary">Cancel</button>
           </div>
         </div>
@@ -964,7 +964,7 @@
       <!-- Dialog actions -->
       <div class="flex justify-items-end flex-col gap-4 sm:flex-row-reverse">
         <button tw-button
-          class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 focus:outline-offset-2 active:bg-red-700/90 focus:outline-red-600/90">Deactivate</button>
+          class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600/90">Deactivate</button>
         <button tw-button class="w-full sm:w-fit" variant="secondary">Cancel</button>
       </div>
     </div>
@@ -972,7 +972,7 @@
 
   <div tw-dialog #centeredDialogWithBackdrop>
     <!-- Dialog container -->
-    <div tw-dialog-container class="sm:max-w-fit">
+    <div tw-dialog-container>
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
@@ -989,9 +989,9 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomLeftDialog [isModal]="false" class="inset- bottom-0 left-0">
+  <div tw-dialog #bottomLeftDialog [isModal]="false" [position]="{ bottom: 'bottom-0', left: 'left-0' }">
     <!-- Dialog container -->
-    <div tw-dialog-container>
+    <div tw-dialog-container class="sm:max-w-sm">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
@@ -1008,10 +1008,11 @@
     </div>
   </div>
 
-  <div tw-dialog #bottomRightDialog [isModal]="false" [autoClose]="true" class="inset- bottom-0 right-0">
+  <div tw-dialog #bottomRightDialog [isModal]="false" [autoClose]="true"
+    [position]="{ bottom: 'bottom-0', right: 'right-0' }">
     <!-- Dialog container -->
     <div tw-dialog-container
-      class="place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">
+      class="sm:max-w-sm place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left">
         <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">

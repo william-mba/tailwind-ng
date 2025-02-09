@@ -149,7 +149,7 @@ describe('DialogComponent', () => {
     const testComponent = testFixture.componentInstance;
     const dialog = testComponent.dialog();
     dialog.autoClose = true;
-    dialog.displayDuration = duration;
+    dialog.displayDelay = duration;
     testFixture.detectChanges();
 
     spyOn(dialog, 'closeAfter').and.callThrough();
@@ -157,7 +157,7 @@ describe('DialogComponent', () => {
 
     expect(dialog.autoClose).toBeTrue();
     expect(dialog.isOpened).toBeFalse();
-    expect(dialog.displayDuration).toBe(duration);
+    expect(dialog.displayDelay).toBe(duration);
 
     testComponent.showDialog();
     expect(dialog.isOpened).toBeTrue();
@@ -213,7 +213,7 @@ describe('DialogComponent', () => {
     const testFixture = TestBed.createComponent(TestComponent);
     const testComponent = testFixture.componentInstance;
     const dialog = testComponent.dialog();
-    dialog.displayDuration = duration;
+    dialog.displayDelay = duration;
     testFixture.detectChanges();
 
 
@@ -222,7 +222,7 @@ describe('DialogComponent', () => {
 
     expect(dialog.autoClose).toBeFalse();
     expect(dialog.isOpened).toBeFalse();
-    expect(dialog.displayDuration).toBe(duration);
+    expect(dialog.displayDelay).toBe(duration);
 
     testComponent.showDialog();
     expect(dialog.isOpened).toBeTrue();

@@ -13,7 +13,7 @@ export abstract class CheckboxBase extends BaseDirective implements ConfigOf<'Ch
   children?: Checkbox[];
   @Input() checked = false;
   @Input() indeterminate?: boolean;
-  @Input() id = this.randomId();
+  @Input() id = this.randomId('checkbox');
   checkedChange = output<boolean>();
   indeterminateChange = output<boolean>();
   changes = output<CheckboxMutableState>();
@@ -32,9 +32,7 @@ export abstract class CheckboxBase extends BaseDirective implements ConfigOf<'Ch
 
     if (origin === 'self') {
       this.checked = !this.checked;
-      if (this.indeterminate) {
-        this.indeterminate = false;
-      }
+      this.indeterminate = false;
       if (this.parent) {
         this.parent.toggle({ origin: 'child' });
       }
@@ -44,9 +42,7 @@ export abstract class CheckboxBase extends BaseDirective implements ConfigOf<'Ch
     }
     if (origin === 'parent' && this.parent) {
       this.checked = this.parent.checked;
-      if (this.indeterminate) {
-        this.indeterminate = false;
-      }
+      this.indeterminate = false;
       if (this.children) {
         Promise.all(this.children.map(c => c.toggle({ origin: 'parent' })));
       }

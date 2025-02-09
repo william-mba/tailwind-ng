@@ -17,11 +17,10 @@ import { ClassList, Dialog, DialogBase, isHTMLElement, OverlayPosition } from '@
 })
 export class DialogComponent extends DialogBase implements Dialog {
   @Input() position?: OverlayPosition;
-  @Input() displayDuration!: number;
+  @Input() displayDelay?: number;
   @Input() autoClose = false;
   @Input() autoFocus = true;
   @Input() isModal = true;
-  protected child!: Element;
 
   protected override async onInit(): Promise<void> {
     if (!this.classList) {
@@ -30,7 +29,7 @@ export class DialogComponent extends DialogBase implements Dialog {
         s: this.config.scrim, b: this.isModal && !this.position ? this.config.backdrop : {}
       }).then(() => {
         if (this.position) {
-          this.classList.update('inset-');
+          this.classList.update({ i: 'inset-', ...this.position });
         }
       });
     }
@@ -56,6 +55,8 @@ export class DialogComponent extends DialogBase implements Dialog {
       this.removeChild();
     }, 300);
   }
+
+  protected child!: Element;
 
   private cloneChild() {
     if (!this.child && isHTMLElement(this.nativeElement.firstElementChild)) {
