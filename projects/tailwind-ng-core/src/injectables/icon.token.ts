@@ -1,9 +1,18 @@
 import { Directive, inject, Input } from "@angular/core";
-import { ConfigOf, ConfigTypeOf } from "../config";
+import { ConfigOf, IconConfig } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
+import { Icon } from "../interfaces/icon";
 
-export const ICON_CONFIG = InjectionTokenFactory.create<Partial<ConfigTypeOf<'Icon'>>>({}, 'ICON_CONFIG');
+/**
+ * Checks if the component is an Icon.
+ * If so, you can safely access the Icon members inside this block scope.
+ */
+export function isIcon(component: unknown): component is Icon {
+  return component instanceof IconBase;
+}
+
+export const ICON_CONFIG = InjectionTokenFactory.create<Partial<IconConfig>>({}, 'ICON_CONFIG');
 
 @Directive({})
 export abstract class IconBase extends BaseDirective implements ConfigOf<'Icon'> {

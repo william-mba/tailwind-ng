@@ -1,10 +1,20 @@
 import { Directive, inject, Input } from "@angular/core";
-import { ConfigTypeOf } from "../config/config-type-of";
 import { ConfigOf } from "../config/config-of";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
+import { Badge } from "../interfaces/badge";
+import { BadgeConfig } from "../config";
 
-export const BADGE_CONFIG = InjectionTokenFactory.create<Partial<ConfigTypeOf<'Badge'>>>({}, 'BADGE_CONFIG');
+/**
+ * Checks if the component is a Badge.
+ * If so, you can safely access the Badge members inside this block scope.
+ */
+export function isBadge(component: unknown): component is Badge {
+  return component instanceof BadgeBase
+}
+
+
+export const BADGE_CONFIG = InjectionTokenFactory.create<Partial<BadgeConfig>>({}, 'BADGE_CONFIG');
 
 @Directive({})
 export abstract class BadgeBase extends BaseDirective implements ConfigOf<'Badge'> {
