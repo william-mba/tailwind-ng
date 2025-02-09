@@ -51,9 +51,9 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
     }
   }
 
-  closeAfter(delay: number = 2000): void {
-    if (isAcceptableDelay(delay)) {
-      delay = delay;
+  closeAfter(delay = 2000): void {
+    if (!isAcceptableDelay(delay)) {
+      delay = 2000;
     };
     setInterval(() => {
       if (!this.isHovered) {

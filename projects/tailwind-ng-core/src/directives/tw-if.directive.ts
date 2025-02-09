@@ -6,6 +6,7 @@ import { Directive, inject, Input, TemplateRef, ViewContainerRef } from "@angula
  * Useful to allow Tailwind CSS animations to complete before removing the component in the view.
  */
 @Directive({ selector: '[twIf]' })
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class TwIf {
   private readonly templateRef = inject(TemplateRef);
   private readonly viewContainerRef = inject(ViewContainerRef);
