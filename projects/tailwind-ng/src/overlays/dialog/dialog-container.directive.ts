@@ -1,4 +1,4 @@
-import { afterNextRender, Directive, inject } from "@angular/core";
+import { Directive, inject } from "@angular/core";
 import { BaseDirective, ClassList, isEscape } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
 
@@ -13,15 +13,6 @@ import { DialogComponent } from "./dialog.component";
 export class DialogContainerDirective extends BaseDirective {
   private readonly dialog = inject(DialogComponent, { skipSelf: true });
 
-  constructor() {
-    super();
-    afterNextRender({
-      read: () => {
-        this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
-      }
-    })
-  }
-
   protected override  async onInit(): Promise<void> {
     if (!this.classList) {
       this.classList = new ClassList(this.class);
@@ -35,10 +26,12 @@ export class DialogContainerDirective extends BaseDirective {
         this.dialog.closeAfter(this.dialog.displayDelay);
       }
     });
-
     if (this.dialog.autoClose && this.dialog.isOpened) {
       this.dialog.closeAfter(this.dialog.displayDelay);
     }
+    requestIdleCallback(() => {
+      this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
+    });
   }
 
   protected onKeyup(event: KeyboardEvent): void {

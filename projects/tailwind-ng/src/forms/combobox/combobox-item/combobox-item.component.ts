@@ -9,7 +9,8 @@ import { ClassList, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
     role: 'option',
     '[class]': 'classList.value()',
     '[tabindex]': 'isDisabled ? null : -1',
-    '[attr.aria-selected]': 'isSelected || null'
+    '[attr.aria-selected]': 'isSelected',
+    '[attr.data-selected]': 'isSelected || null'
   },
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,

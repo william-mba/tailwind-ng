@@ -1,9 +1,9 @@
-import { BaseActions, BaseState } from "./base";
+import { BaseActions, BaseStates } from "./base";
 
 /**
  * @TailwindNG Combobox Item component interface.
  */
-export interface ComboboxItem extends BaseState, BaseActions {
+export interface ComboboxItem extends BaseStates, BaseActions {
   readonly value: string;
   /**
    * Returns true if the item is selected. Otherwise, returns false.

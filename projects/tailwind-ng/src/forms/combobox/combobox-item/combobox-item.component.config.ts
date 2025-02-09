@@ -16,16 +16,16 @@ const DefaultConfig = (): ComboboxItemConfig => {
       bgColor: 'hover:bg-blue-600',
       fontWeight: 'hover:font-bold'
     },
-    dataSelected: {
-      textColor: 'data-selected:text-white',
-      bgColor: 'data-selected:bg-blue-600',
-      fontWeight: 'data-selected:font-bold'
-    },
     focus: {
       textColor: 'focus:text-white',
       bgColor: 'focus:bg-blue-700',
       fontWeight: 'focus:font-bold',
       outlineWidth: 'focus:outline-0',
+    },
+    dataSelected: {
+      textColor: 'data-selected:text-white',
+      bgColor: 'data-selected:bg-blue-600',
+      fontWeight: 'data-selected:font-bold'
     },
     dataVisualFocused: {
       textColor: 'data-visual-focused:text-white',

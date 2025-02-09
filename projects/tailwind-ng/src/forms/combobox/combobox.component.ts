@@ -1,16 +1,13 @@
 import { ChangeDetectionStrategy, Component, contentChild, inject, Input, output, ViewEncapsulation } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { ClassList, Combobox, ComboboxBase, ComboboxItem, InputTextBase } from '@tailwind-ng/core';
+import { ClassList, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
   exportAs: 'twCombobox',
   host: {
-    role: 'combobox',
     '[class]': 'classList.value()',
-    '[attr.aria-expanded]': 'isOpened',
     '[attr.aria-controls]': 'dropdown().id',
-    '[attr.aria-activedescendant]': 'activeElement?.textContent.trim() || null',
   },
   template: `<ng-content select="label" />
   <div class="relative">
@@ -23,8 +20,10 @@ import { ClassList, Combobox, ComboboxBase, ComboboxItem, InputTextBase } from '
   providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }]
 })
 export class ComboboxComponent extends ComboboxBase implements Combobox {
-  private input = contentChild.required(InputTextBase);
   private selectionMap = new Map<string, ComboboxItem>();
+  protected readonly dropdown = contentChild.required(DropdownBase);
+  protected readonly input = contentChild.required(InputTextBase);
+  @Input() override id = this.randomId('combobox');
   @Input() isMulti = false;
   @Input() control = inject(NonNullableFormBuilder).control('', Validators.minLength(3));
   valueChanged = output<string>();
@@ -33,6 +32,35 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
   get isValid() {
     const touchedOrDirty = this.control.touched || this.control.dirty;
     return this.control.valid && touchedOrDirty && this.control.value.trim().length >= 3;
+  }
+
+  override open(): void {
+    super.open();
+    this.input().focus();
+    this.input().setVisualfocus();
+    this.dropdown().open();
+  }
+
+  override close(): void {
+    super.close();
+    this.resetActiveElementIfAny();
+    this.dropdown().close();
+  }
+
+  protected onBlur(): void {
+    setTimeout(() => {
+      if (!this.hasFocus) {
+        this.close();
+        this.input().removeVisualfocus();
+      }
+    }, 50);
+  }
+
+  private resetActiveElementIfAny() {
+    if (this.activeElement) {
+      this.removeVisualfocus(this.activeElement);
+      this.activeElement = undefined;
+    }
   }
 
   protected override async onInit(): Promise<void> {
@@ -58,75 +86,51 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     });
   }
 
-  override open(): void {
-    super.open();
-    this.input().focus();
-    this.input().setVisualfocus();
-    this.dropdown().open();
-  }
-
-  override close(): void {
-    super.close();
-    this.resetActiveElementIfAny();
-    this.dropdown().close();
-  }
-
-  protected onBlur(): void {
-    setTimeout(() => {
-      if (!this.hasFocus) {
+  protected onKeyup(event: KeyboardEvent): void {
+    event.stopPropagation();
+    if (!isEscape(event.key) && !this.isOpened) {
+      this.open();
+    } else if (isEscape(event.key)) {
+      if (this.isOpened) {
         this.close();
-        this.input().removeVisualfocus();
-      }
-    }, 50);
-  }
-
-  protected onKeyboardEvent(event: KeyboardEvent): void {
-    if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    if (!this.isOpened) {
-      if (event.key !== 'Escape') {
-        this.open();
-      } else if (event.key === 'Escape') {
+      } else {
         this.reset();
-        if (this.isOpened) {
-          this.close();
-        }
       }
-    } else {
-      if (event.key === 'Escape') {
-        this.close();
-      }
-    }
-    if (!this.activeElement) {
-      switch (event.key) {
-        case 'ArrowDown':
-          this.activeElement = this.dropdown().setVisualfocus({ behavior: 'firstChild' });
-          break;
-        case 'ArrowUp':
+    } else if (isArrowUpOrDown(event.key)) {
+      if (isArrowUp(event.key)) {
+        if (!this.activeElement) {
           this.activeElement = this.dropdown().setVisualfocus({ behavior: 'lastChild' });
-          break;
-      }
-    } else {
-      switch (event.key) {
-        case 'ArrowDown':
-          this.activeElement = this.dropdown().setVisualfocus({ behavior: 'nextSibling', target: this.activeElement });
-          if (!this.activeElement) {
-            this.activeElement = this.dropdown().setVisualfocus({ behavior: 'firstChild' });
-          }
-          break;
-        case 'ArrowUp':
+        } else {
           this.activeElement = this.dropdown().setVisualfocus({ behavior: 'previousSibling', target: this.activeElement });
           if (!this.activeElement) {
             this.activeElement = this.dropdown().setVisualfocus({ behavior: 'lastChild' });
           }
-          break;
-        case 'Enter':
-          this.activeElement?.click();
-          break;
+        }
+      } else {
+        if (!this.activeElement) {
+          this.activeElement = this.dropdown().setVisualfocus({ behavior: 'firstChild' });
+        } else {
+          this.activeElement = this.dropdown().setVisualfocus({ behavior: 'nextSibling', target: this.activeElement });
+          if (!this.activeElement) {
+            this.activeElement = this.dropdown().setVisualfocus({ behavior: 'firstChild' });
+          }
+        }
       }
+    } else if (isEnterOrSpace(event.key) && this.activeElement) {
+      this.activeElement.click();
     }
+  }
+
+  protected override addEventListeners(): void {
+    super.addEventListeners();
+    this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
+    this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
+  }
+
+  protected override removeEventListeners(): void {
+    super.removeEventListeners();
+    this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
   }
 
   has(item: ComboboxItem): boolean {
@@ -151,13 +155,6 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     this.control.markAsDirty();
     this.control.markAsTouched();
     this.emitSelection();
-  }
-
-  private resetActiveElementIfAny() {
-    if (this.activeElement) {
-      this.removeVisualfocus(this.activeElement);
-      this.activeElement = undefined;
-    }
   }
 
   reset(): void {
@@ -198,17 +195,5 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     } else {
       this.control.setValue(values[0], { emitEvent: false });
     }
-  }
-
-  protected override addEventListeners(): void {
-    super.addEventListeners();
-    this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
-    this.nativeElement.addEventListener('keyup', this.onKeyboardEvent.bind(this), false);
-  }
-
-  protected override removeEventListeners(): void {
-    super.removeEventListeners();
-    this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
-    this.nativeElement.removeEventListener('keyup', this.onKeyboardEvent.bind(this), false);
   }
 }
