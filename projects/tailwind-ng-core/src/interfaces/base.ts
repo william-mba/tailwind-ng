@@ -4,7 +4,7 @@ import { Config } from "../types/config.type";
 /**
  * @TailwindNG Component's base state.
  */
-export interface BaseState<T extends HTMLElement = HTMLElement> {
+export interface BaseStates<T extends HTMLElement = HTMLElement> {
   /**
    * A space-separated list of classes to customize the element.
    *

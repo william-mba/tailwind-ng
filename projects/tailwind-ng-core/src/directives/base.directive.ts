@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, DestroyRef, Directive, ElementRef, inject, Injector, Input, OnInit } from "@angular/core";
-import { BaseState, BaseActions, FocusOptions } from "../interfaces/base";
+import { BaseStates, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config/classlist";
 import { isEnterOrSpace, isKeyboardEvent, isNavigation, isSpace } from "../guards";
@@ -15,7 +15,7 @@ import { Config } from "../types/config.type";
     '[attr.aria-disabled]': 'isDisabled || null',
   }
 })
-export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseState<T>, BaseActions, OnInit {
+export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseStates<T>, BaseActions, OnInit {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
   protected readonly _changeDetector = inject(ChangeDetectorRef);
   protected readonly _document = inject(DOCUMENT);
@@ -57,15 +57,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     this.onInit()
       .then(() => {
         this.addEventListeners();
-      })
-      .then(() => {
-        requestIdleCallback(() => {
-          this._destroyRef.onDestroy(() => {
-            this.removeEventListeners();
-          });
-        });
-      })
-      .then(() => {
+        this._destroyRef.onDestroy(
+          this.removeEventListeners.bind(this)
+        );
         this.isInitialized = true;
       })
       .catch((error) => {
