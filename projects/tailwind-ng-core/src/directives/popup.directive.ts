@@ -1,8 +1,7 @@
 import { Directive, Input, inject, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
-import { Popup, PopupType } from '../interfaces/popup';
+import { Popup, PopupExtraOptons, PopupType } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
-import { BaseActions } from '../interfaces/base';
 
 @Directive({
   host: {
@@ -15,7 +14,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   private readonly zIndex = inject(ZIndexer);
   @Input() isOpened = false;
   @Input() id = this.randomId('popup');
-  @Input() trigger?: BaseActions;
+  @Input() options?: PopupExtraOptons;
   toggled = output<boolean>();
   opened = output<void>();
   closed = output<void>();
@@ -43,16 +42,18 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   close(): void {
     if (this.isOpened) {
       this.isOpened = false;
-      if (this.trigger) {
-        this.trigger.focus();
-      }
       this.closed.emit();
+      if (this.options) {
+        const { trigger } = this.options;
+        const { focusTrigger } = this.options.afterClosing;
+        if (trigger && focusTrigger) trigger.focus();
+      }
       this._changeDetector.markForCheck();
     }
   }
 
-  closeAfter(delay = 2000): void {
-    if (!isAcceptableDelay(delay)) {
+  closeAfter(delay?: number): void {
+    if (!isAcceptableDelay(delay || 0)) {
       delay = 2000;
     };
     setInterval(() => {

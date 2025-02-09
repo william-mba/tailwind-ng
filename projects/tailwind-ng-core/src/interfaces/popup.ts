@@ -1,10 +1,10 @@
 import { OutputEmitterRef, } from "@angular/core";
-import { BaseActions, BaseState } from "./base";
+import { BaseActions, BaseStates } from "./base";
 
 /**
  * @TailwindNG Popup base state.
  */
-export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseState<T> {
+export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseStates<T> {
   readonly id: string;
   /**
    * Whether the component is hovered.
@@ -20,9 +20,25 @@ export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseSta
    */
   readonly type: PopupType;
   /**
-   * The component that triggers the popup if any.
+   * The popup's extra options.
+   */
+  readonly options?: PopupExtraOptons;
+}
+
+export interface PopupExtraOptons {
+  /**
+   * The popup's trigger.
    */
   trigger?: BaseActions;
+  /**
+   * The popup's after closing options.
+   */
+  afterClosing: {
+    /**
+     * Whether to focus the trigger after closing the popup.
+     */
+    focusTrigger?: boolean;
+  }
 }
 
 export type PopupType =
@@ -53,9 +69,9 @@ export interface BasicPopupActions extends BaseActions {
  */
 export interface AdvancedPopupActions {
   /**
-   * Closes the component after the specified delay (in milliseconds).
-   * - Delay range: Minimum = 1000ms; Maximum = 10000ms; Default = 5000ms (5 seconds).
-   * - If the given delay is outside the range, the default delay will be used.
+   * Closes the component after the given delay in milliseconds without `ms` suffix.
+   * - Acceptable delay is between `[1000, 10_000]`. The default value is `2000`.
+   * - If the given delay is out of range, the default value is used.
    * @param delay The delay in milliseconds.
    */
   closeAfter(delay: number): void;

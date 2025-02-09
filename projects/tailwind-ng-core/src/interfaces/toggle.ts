@@ -1,8 +1,8 @@
 import { OutputEmitterRef } from "@angular/core";
-import { BaseActions, BaseState } from "./base";
-import { ToggleBase } from "../injectables";
+import { BaseActions, BaseStates } from "./base";
+import { ToggleBase } from "../injectables/toggle.token";
 
-export interface Toggle extends BaseState, BaseActions {
+export interface Toggle extends BaseStates, BaseActions {
   readonly tabIndex: number;
   /**
    * Whether the toggle is checked. Default is `false`.
