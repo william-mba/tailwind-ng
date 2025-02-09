@@ -1,19 +1,34 @@
-import { ButtonConfig, ButtonVariant } from "../config/interfaces";
-import { ButtonBase } from "../injectables";
+import { ButtonConfig, ButtonVariant } from "../config/interfaces/button-config.interface";
+import { ButtonBase } from "../injectables/button.token";
 import { SizeOption } from "../types/size-options.type";
-import { BaseActions, BaseState } from "./base";
+import { BaseActions, BaseStates } from "./base";
 import { Popup } from "./popup";
+
+/**
+ * @TailwindNG Button component immutable states.
+ */
+export interface ButtonImmutableStates {
+  readonly config: Partial<ButtonConfig>;
+  readonly popup?: Popup;
+}
+
+/**
+ * @TailwindNG Button component mutable states.
+ */
+export interface ButtonMutableStates {
+  size: SizeOption;
+  isFab: boolean;
+  tabIndex: number;
+  variant: ButtonVariant;
+}
 
 /**
  * @TailwindNG Button component interface.
  */
-export interface Button extends BaseState, BaseActions {
-  config: Partial<ButtonConfig>;
+export interface Button extends BaseStates, BaseActions, ButtonImmutableStates, ButtonMutableStates {
   size: SizeOption;
-  tabIndex: number;
   isFab: boolean;
   variant: ButtonVariant;
-  popup?: Popup;
 }
 
 /**

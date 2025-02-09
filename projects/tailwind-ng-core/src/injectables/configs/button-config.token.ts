@@ -1,5 +1,4 @@
-import { ConfigTypeOf } from "@tailwind-ng/core";
+import { ButtonConfig } from "@tailwind-ng/core";
 import { InjectionTokenFactory } from "../injection-token.factory";
 
-export const BUTTON_CONFIG = InjectionTokenFactory.
-  create<Partial<ConfigTypeOf<'Button'>>>({}, 'BUTTON_CONFIG');
+export const BUTTON_CONFIG = InjectionTokenFactory.create<Partial<ButtonConfig>>({}, 'BUTTON_CONFIG');
