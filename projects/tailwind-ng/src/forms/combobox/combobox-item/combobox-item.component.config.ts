@@ -16,10 +16,10 @@ const DefaultConfig = (): ComboboxItemConfig => {
       bgColor: 'hover:bg-blue-600',
       fontWeight: 'hover:font-bold'
     },
-    ariaSelected: {
-      textColor: 'aria-selected:text-white',
-      bgColor: 'aria-selected:bg-blue-600',
-      fontWeight: 'aria-selected:font-bold'
+    dataSelected: {
+      textColor: 'data-selected:text-white',
+      bgColor: 'data-selected:bg-blue-600',
+      fontWeight: 'data-selected:font-bold'
     },
     focus: {
       textColor: 'focus:text-white',
@@ -27,11 +27,11 @@ const DefaultConfig = (): ComboboxItemConfig => {
       fontWeight: 'focus:font-bold',
       outlineWidth: 'focus:outline-0',
     },
-    dataActive: {
-      textColor: 'data-active:text-white',
-      bgColor: 'data-active:bg-blue-700',
-      fontWeight: 'data-active:font-bold',
-      outlineWidth: 'data-active:outline-0',
+    dataVisualFocused: {
+      textColor: 'data-visual-focused:text-white',
+      bgColor: 'data-visual-focused:bg-blue-700',
+      fontWeight: 'data-visual-focused:font-bold',
+      outlineWidth: 'data-visual-focused:outline-0',
     }
   }
 }
