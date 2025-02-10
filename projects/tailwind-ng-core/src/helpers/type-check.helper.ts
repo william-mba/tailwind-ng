@@ -1,6 +1,6 @@
 import { Config } from "../types/config.type";
 
-/** Returns true if value is an object, otherwise false */
+
 function isObject(value: unknown): value is object {
   return typeof value === 'object' && !Array.isArray(value);
 }
@@ -13,11 +13,11 @@ function isEmptyConfigObject(value: unknown): value is Config {
   return isObject(value) && isEmptyObject(value);
 }
 
-/** Returns true if value is an empty object, otherwise false */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 function isEmptyObject(value: unknown): value is {} {
   return isObject(value) && Object.keys(value || {}).length === 0;
 }
-
+// eslint-disable-next-line  @typescript-eslint/no-unsafe-function-type
 function isFunction(value: unknown): value is Function {
   return typeof value === 'function';
 }

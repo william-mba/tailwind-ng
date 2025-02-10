@@ -47,7 +47,7 @@ export interface IClassList {
   with(value: string | string[] | Config, behavior: ResolveBehavior): Promise<string>;
 }
 type ClearBehavior = 'all' | 'value';
-type ResolveBehavior = {
+interface ResolveBehavior {
   /**
    * Whether to resolve using the base value.
    */

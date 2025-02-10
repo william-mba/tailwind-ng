@@ -1,21 +1,16 @@
-import { computed, Directive, inject, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { SizeOption, IconBase, IconName, Icon, ClassList } from '@tailwind-ng/core';
+import { Directive, Input } from '@angular/core';
+import { SizeOption, IconBase, Icon, ClassList } from '@tailwind-ng/core';
 
 @Directive({
   selector: 'tw-icon, [twIcon], [tw-icon]',
   exportAs: 'twIcon',
   host: {
-    '[class]': 'classList.value()',
-    '[innerHTML]': 'icon()'
+    '[class]': 'classList.value()'
   },
   providers: [{ provide: IconBase, useExisting: IconDirective }]
 })
 export class IconDirective extends IconBase implements Icon {
-  private _sanitizer = inject(DomSanitizer);
   @Input() size: SizeOption = 'md';
-  @Input({ required: true }) name!: IconName;
-  icon = computed(() => this._sanitizer.bypassSecurityTrustHtml(this.config.map![this.name] || ''));
 
   protected override async onInit(): Promise<void> {
     if (!this.classList) {
