@@ -38,8 +38,25 @@ export interface IClassList {
    * @returns The class list instance.
    */
   clear(behavior: ClearBehavior): Promise<IClassList>;
+  /**
+   * Takes a value and resolves it with the class list without altering it current value or base.
+   * @param value The value to resolve.
+   * @param behavior The behavior to resolve the class list. By default the current value is used.
+   * @returns The resolved class list value.
+   */
+  with(value: string | string[] | Config, behavior: ResolveBehavior): Promise<string>;
 }
 type ClearBehavior = 'all' | 'value';
+type ResolveBehavior = {
+  /**
+   * Whether to resolve using the base value.
+   */
+  useBase?: boolean,
+  /**
+   * Whether to resolve using the current classlit value.
+   */
+  useValue?: boolean
+};
 
 export class ClassList implements IClassList {
   /**
@@ -57,15 +74,15 @@ export class ClassList implements IClassList {
    * @param base The custom class list to merge with the default class list's value.
    */
   constructor(base: string | string[] | Config = []) {
-    this.base.set(this.valueFrom(base));
-    this.value.set(this.valueFrom(base));
+    this.base.set(valueFrom(base));
+    this.value.set(valueFrom(base));
   }
 
   async init<T extends string>(value?: T): Promise<ClassList>;
   async init<T extends string[]>(value?: T[]): Promise<ClassList>;
   async init<T extends Config>(value?: T): Promise<ClassList>;
   async init<T extends string | string[] | Config>(value: T): Promise<ClassList> {
-    Str.resolve([this.base(), this.valueFrom(value)], { keepClassDeletor: true })
+    Str.resolve([this.base(), valueFrom(value)], { keepClassDeletor: true })
       .then((result) => this.base.set(result));
     return this;
   }
@@ -74,7 +91,7 @@ export class ClassList implements IClassList {
   async set<T extends string[]>(value: T[]): Promise<ClassList>;
   async set<T extends Config>(value: T): Promise<ClassList>;
   async set<T extends string | string[] | Config>(value: T): Promise<ClassList> {
-    Str.resolve([this.valueFrom(value), this.base()])
+    Str.resolve([valueFrom(value), this.base()])
       .then((result) => this.value.set(result));
     return this;
   }
@@ -83,7 +100,7 @@ export class ClassList implements IClassList {
   async update<T extends string[]>(value: T[]): Promise<ClassList>;
   async update<T extends Config>(value: T): Promise<ClassList>;
   async update<T extends string | string[] | Config>(value: T): Promise<ClassList> {
-    Str.resolve([this.value(), this.valueFrom(value)])
+    Str.resolve([this.value(), valueFrom(value)])
       .then((result) => this.value.set(result));
     return this;
   }
@@ -100,16 +117,27 @@ export class ClassList implements IClassList {
     return this;
   }
 
-  private valueFrom<T extends string | string[] | Config>(value: T): string[] {
-    let newValue: string[] = [];
-    if (Type.isString(value)) {
-      newValue = Str.toArray(value);
-    } else if (Type.isArray(value)) {
-      newValue = value;
-    } else if (Type.isObject(value)) {
-      newValue = Obj.toArray(value as Config);
+  async with(value?: string | string[] | Config, behavior: ResolveBehavior = {}): Promise<string> {
+    const { useBase } = behavior;
+    value = valueFrom(value);
+    if (!value || value.length < MIN_CLASS_NAMES) return this.value().join(' ');
+    if (useBase) {
+      return Str.resolve([this.base(), valueFrom(value)]).then(res => res.join(' '));
     }
-    return newValue;
+    return Str.resolve([this.value(), valueFrom(value)]).then(res => res.join(' '));
   }
+}
 
+const MIN_CLASS_NAMES = 1;
+export function valueFrom<T extends string | string[] | Config>(value?: T): string[] {
+  let newValue: string[] = [];
+  if (!value) return newValue;
+  if (Type.isString(value)) {
+    newValue = Str.toArray(value);
+  } else if (Type.isArray(value)) {
+    newValue = value;
+  } else if (Type.isObject(value)) {
+    newValue = Obj.toArray(value);
+  }
+  return newValue;
 }

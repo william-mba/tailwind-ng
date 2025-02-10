@@ -45,7 +45,7 @@ function toArray(obj: Config): string[] {
   */
   const res: string[] = [];
 
-  if (!Type.isObject(obj)) return res;
+  if (!Type.isObject(obj) || Type.isEmptyObject(obj)) return res;
 
   for (const value of Object.values(obj)) {
     if (Type.isString(value)) {
@@ -140,8 +140,12 @@ function simpleMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
     for (const k in obj) {
       if (Type.isString(obj[k])) {
         Object.assign(target, { [k]: obj[k] });
-      } else if (obj[k] && Type.isObject(obj[k])) {
-        simpleMerge(target[k] as Config, obj[k]);
+      } else if (Type.isConfigObject(obj[k])) {
+        if (!target[k]) {
+          Object.assign(target, { [k]: obj[k] });
+        } else if (Type.isConfigObject(target[k])) {
+          simpleMerge(target[k], obj[k]);
+        }
       }
     }
   }
@@ -170,14 +174,16 @@ function strictMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
 
   const [target, ...source] = arg;
 
-  for (const obj of source) {
-    if (Type.isEmptyObject(obj)) return obj as T;
+  if (!target) return {} as T;
 
+  for (const obj of source) {
     for (const k in obj) {
-      if (Type.isObject(target[k])) {
-        Object.assign(target, { [k]: strictMerge(target[k] as Config, obj[k] as Config) });
-      } else {
+      if (Type.isString(obj[k])) {
         Object.assign(target, { [k]: obj[k] });
+      } else if (Type.isEmptyConfigObject(obj[k])) {
+        Object.assign(target, { [k]: obj[k] });
+      } else if (Type.isConfigObject(obj[k]) && Type.isConfigObject(target[k])) {
+        strictMerge(target[k], obj[k]);
       }
     }
   }
