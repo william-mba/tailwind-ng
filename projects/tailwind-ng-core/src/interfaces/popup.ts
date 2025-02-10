@@ -1,4 +1,4 @@
-import { OutputEmitterRef, } from "@angular/core";
+import { ModelSignal, OutputEmitterRef, } from "@angular/core";
 import { BaseActions, BaseStates } from "./base";
 
 /**
@@ -13,7 +13,7 @@ export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseSta
   /**
    * Whether the component is opened.
    */
-  readonly isOpened: boolean;
+  readonly isOpened: ModelSignal<boolean>;
   /**
    * The popup's extra options.
    */
