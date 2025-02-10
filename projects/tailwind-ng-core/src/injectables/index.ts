@@ -16,4 +16,5 @@ export * from './dropdown.token';
 export * from './icon.token';
 export * from './input-radio.token';
 export * from './input-text.token';
+export * from './theme.service';
 export * from './toggle.token';

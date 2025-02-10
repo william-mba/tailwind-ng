@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ThemeHelper } from '@tailwind-ng/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { ThemeService } from '@tailwind-ng/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -14,8 +14,8 @@ import { RouterOutlet } from '@angular/router';
   <router-outlet />`
 })
 export class AppComponent implements OnInit {
-  protected readonly theme = ThemeHelper;
+  protected readonly theme = inject(ThemeService);
   ngOnInit(): void {
-    ThemeHelper.init();
+    this.theme.init();
   }
 }

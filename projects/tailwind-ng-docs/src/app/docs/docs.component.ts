@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { ButtonComponent, DropdownComponent, IconDirective } from 'tailwind-ng';
-import { OptionDirective, ThemeHelper } from '@tailwind-ng/core';
+import { OptionDirective, ThemeService } from '@tailwind-ng/core';
 import { NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -30,7 +30,7 @@ export class DocsComponent {
   updateTag(value: string) {
     this.releaseTag.active = value;
   }
-  protected readonly theme = ThemeHelper;
+  protected readonly theme = inject(ThemeService);
   switchTheme() {
     this.theme.toggle();
   }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ThemeHelper } from '@tailwind-ng/core';
+import { Component, inject } from '@angular/core';
+import { ThemeService } from '@tailwind-ng/core';
 import { NgIf } from '@angular/common';
 import { ButtonComponent, ButtonGroupComponent, IconDirective } from 'tailwind-ng';
 import { RouterLink } from '@angular/router';
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './main.component.html'
 })
 export class MainComponent {
-  protected readonly theme = ThemeHelper;
+  protected readonly theme = inject(ThemeService);
   switchTheme() {
     this.theme.toggle();
   }
