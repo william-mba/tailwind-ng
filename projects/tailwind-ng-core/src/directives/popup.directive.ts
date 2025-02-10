@@ -1,4 +1,3 @@
-import { timer } from 'rxjs';
 import { Directive, Input, inject, model, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup, PopupExtraOptons } from '../interfaces/popup';

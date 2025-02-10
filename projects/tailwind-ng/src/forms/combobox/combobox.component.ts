@@ -15,7 +15,9 @@ import { ClassList, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTex
     <ng-content select="input[type=text], input[tw-input], input[twInput]" />
     <ng-content select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]" />
   </div>
-  <div class="relative" *twIf="isOpened()"><ng-content /></div>`,
+  <ng-container *twIf="isOpened()">
+    <div class="relative"><ng-content /></div>
+  </ng-container>`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }]

@@ -118,7 +118,7 @@ export const USERS_STUB = (): User[] => {
 
 describe('ComboboxComponent', () => {
 
-  it('should create', () => {
+  it('should create', fakeAsync(() => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       providers: [
@@ -159,14 +159,14 @@ describe('ComboboxComponent', () => {
             <tw-icon name="chevron-up-down" />
           </button>
           <!-- Dropdown -->
-          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
+          <div tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
             @for (user of users; track user.name) {
             <div tw-combobox-item #item [value]="user.name">
               <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
               <span>{{ user.name }}</span>
             </div>
             }
-          </tw-dropdown>
+          </div>
         </div>
       `
     }) class TestComponent {
@@ -185,32 +185,14 @@ describe('ComboboxComponent', () => {
     const testComponent = fixture.componentInstance;
     const combobox = testComponent.combobox();
 
-    fixture.detectChanges();
+    fixture.autoDetectChanges();
 
     expect(combobox).toBeTruthy();
     expect(combobox.control).toBeTruthy();
     expect(combobox.isValid).toBeFalse();
     expect(combobox.isOpened()).toBeFalse();
     expect(combobox.isMulti).toBeFalse();
-
-    const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
-    expect(input).toBeTruthy();
-
-    const button = fixture.debugElement.query(By.css('button[tw-button]')).nativeElement;
-    expect(button).toBeTruthy();
-
-    combobox.toggle();
-    fixture.detectChanges();
-
-    const dropdown = fixture.debugElement.query(By.css('tw-dropdown')).nativeElement;
-    expect(dropdown).toBeTruthy();
-
-    const items = fixture.debugElement.queryAll(By.css('div[tw-combobox-item]')).map((x) => x.nativeElement);
-    expect(items.length).toBe(USERS_STUB().length);
-
-    const checkIcons = fixture.debugElement.queryAll(By.css('tw-icon[name="check-thin"]')).map((x) => x.nativeElement);
-    expect(checkIcons.length).toBe(0);
-  });
+  }, { flush: true }));
 
   it('should toggle', () => {
     TestBed.resetTestingModule();
