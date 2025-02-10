@@ -24,19 +24,19 @@ export class TwIf {
     }
   }
 
+  private _shouldDisplay = false;
+
   /**
    * The condition that determines whether the component should be rendered or not.
    */
   @Input() set twIf(condition: boolean) {
-    if (condition) {
+    this._shouldDisplay = condition;
+    // Only render the component if the condition is true and
+    // the component is not already rendered.
+    if (this._shouldDisplay && !this.timer) {
       this.viewContainerRef.createEmbeddedView(this.templateRef);
     } else {
-      if (!this.timer) {
-        this.deferRemoval();
-      } else {
-        clearTimeout(this.timer);
-        this.deferRemoval();
-      }
+      this.deferRemoval();
     }
   }
 
@@ -44,8 +44,16 @@ export class TwIf {
   private timer: number | null = null;
 
   private deferRemoval() {
+    // Nothing should be done if there is already a removal scheduled.
+    if (this.timer) return;
     this.timer = setTimeout(() => {
-      this.viewContainerRef.clear();
+      // Only remove the component if the condition is still false.
+      // This is to avoid removing a component that was supposed
+      // to be removed at the time of the removal schedule but
+      // it condition become true before the end of the removal delay.
+      if (!this._shouldDisplay) {
+        this.viewContainerRef.clear();
+      }
       this.timer = null;
     }, this.delay);
   }

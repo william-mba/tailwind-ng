@@ -1,3 +1,4 @@
+import { timer } from 'rxjs';
 import { Directive, Input, inject, model, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup, PopupExtraOptons } from '../interfaces/popup';
@@ -48,13 +49,18 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
     }
   }
 
+  private timer: number | null = null;
+
   closeAfter(delay?: number): void {
     if (!isAcceptableDelay(delay || 0)) {
       delay = 2000;
     };
-    setInterval(() => {
+    if (this.timer) return;
+    this.timer = setInterval(() => {
       if (!this.isHovered) {
         this.close();
+        clearInterval(this.timer!);
+        this.timer = null;
       }
     }, delay);
   }
