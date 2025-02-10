@@ -687,7 +687,7 @@
     <!-- Button -->
     <button tw-button variant="text" size="sm" (click)="cbb1.toggle()" [popup]="cbb1"
       class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="cbb1.isOpened && cbb1.isValid" (click)="cbb1.reset()" size="sm" name="x-mark" />
+      <tw-icon *ngIf="cbb1.isOpened() && cbb1.isValid" (click)="cbb1.reset()" size="sm" name="x-mark" />
       <tw-icon name="chevron-up-down" />
     </button>
     <!-- Dropdown -->
@@ -710,7 +710,7 @@
     <!-- Button -->
     <button tw-button variant="text" size="sm" (click)="cbb2.toggle()" [popup]="cbb2"
       class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="cbb2.isOpened && cbb2.isValid" (click)="cbb2.reset()" size="sm" name="x-mark" />
+      <tw-icon *ngIf="cbb2.isOpened() && cbb2.isValid" (click)="cbb2.reset()" size="sm" name="x-mark" />
       <tw-icon name="chevron-up-down" />
     </button>
     <!-- Dropdown -->
