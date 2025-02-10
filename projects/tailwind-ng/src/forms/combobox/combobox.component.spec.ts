@@ -190,7 +190,7 @@ describe('ComboboxComponent', () => {
     expect(combobox).toBeTruthy();
     expect(combobox.control).toBeTruthy();
     expect(combobox.isValid).toBeFalse();
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     expect(combobox.isMulti).toBeFalse();
 
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
@@ -198,6 +198,9 @@ describe('ComboboxComponent', () => {
 
     const button = fixture.debugElement.query(By.css('button[tw-button]')).nativeElement;
     expect(button).toBeTruthy();
+
+    combobox.toggle();
+    fixture.detectChanges();
 
     const dropdown = fixture.debugElement.query(By.css('tw-dropdown')).nativeElement;
     expect(dropdown).toBeTruthy();
@@ -276,13 +279,13 @@ describe('ComboboxComponent', () => {
 
     const combobox = testComponent.combobox();
 
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     combobox.toggle();
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
     combobox.toggle();
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     combobox.toggle();
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
   });
 
   it('should handle single selection', fakeAsync(() => {
@@ -356,11 +359,11 @@ describe('ComboboxComponent', () => {
     const combobox = testComponent.combobox();
 
     // Combobox is closed by default
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     combobox.toggle();
 
     // Initial state when combobox is opened for the first time
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
     expect(combobox.isValid).toBeFalse();
     expect(testComponent.valueSelected).toBe('');
     expect(combobox.control.value).toBe('');
@@ -377,7 +380,7 @@ describe('ComboboxComponent', () => {
     expect(testComponent.valueSelected).toBe(item0.value);
     expect(combobox.control.value).toBe(item0.value);
     expect(input.value).toBe(item0.value);
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     expect(combobox.isValid).toBeTrue();
 
     // Second selection
@@ -390,7 +393,7 @@ describe('ComboboxComponent', () => {
     expect(testComponent.valueSelected).toBe(item1.value);
     expect(combobox.control.value).toBe(item1.value);
     expect(input.value).toBe(item1.value);
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     expect(combobox.isValid).toBeTrue();
 
     // first item selected should be unselected after second selection
@@ -477,11 +480,11 @@ describe('ComboboxComponent', () => {
     const combobox = testComponent.combobox();
 
     // Combobox is closed by default
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     combobox.toggle();
 
     // Initial state when combobox is opened for the first time
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
     expect(combobox.isValid).toBeFalse();
     expect(combobox.isMulti).toBeTrue();
     expect(testComponent.valueSelected).toBe('');
@@ -516,7 +519,7 @@ describe('ComboboxComponent', () => {
     expect(input.value).toBe(expectedValue + ', ');
 
     // Combobox should remain opened
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
     expect(combobox.isValid).toBeTrue();
 
     // Selected item should be unselected when clicking on it again
@@ -563,7 +566,7 @@ describe('ComboboxComponent', () => {
           <!-- Button -->
           <button tw-button variant="text" size="sm" [popup]="combobox"
             class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon *ngIf="combobox.isOpened && combobox.isValid" (click)="combobox.reset()" size="sm" name="x-mark" />
+            <tw-icon *ngIf="combobox.isOpened() && combobox.isValid" (click)="combobox.reset()" size="sm" name="x-mark" />
             <tw-icon name="chevron-up-down" />
           </button>
           <!-- Dropdown -->
@@ -597,9 +600,9 @@ describe('ComboboxComponent', () => {
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
 
     // Combobox is closed by default
-    expect(combobox.isOpened).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
     combobox.toggle();
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
     expect(combobox.isValid).toBeFalse();
 
     const item0 = testComponent.comboboxItems()[0];
@@ -628,7 +631,7 @@ describe('ComboboxComponent', () => {
     expect(input.value).toBe(expectedValue + ', ');
 
     // Before reset
-    expect(combobox.isOpened).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
     expect(combobox.isValid).toBeTrue();
     combobox.reset();
     expectedValue = '';
