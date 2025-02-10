@@ -63,7 +63,7 @@ export const NAV_ITEMS: NavItem[] = [
       },
       {
         label: 'Components',
-        route: 'components'
+        route: 'components-overview'
       },
       {
         label: 'Roadmap',
@@ -73,7 +73,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'Components',
-    route: '/components',
+    route: 'components',
     category: 'components',
     children: [
       {

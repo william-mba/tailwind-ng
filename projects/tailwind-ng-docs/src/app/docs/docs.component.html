@@ -80,37 +80,40 @@
         @switch (item.category) {
         @case ('overview') {
         <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3">
-            <tw-icon name="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
-            <a class="font-semibold text-gray-950 dark:text-gray-300 in-data-[active=true]:text-blue-700 in-data-[active=true]:dark:text-blue-500"
-              [routerLink]="item.route">
+          <div class="flex items-center gap-3 text-gray-950 dark:text-gray-300">
+            <tw-icon name="book-open" class="text-gray-400" />
+            <a class="font-semibold" [routerLink]="item.route">
               {{ item.label }}
             </a>
           </div>
-          <ol
+          <ul
             class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
             @for (child of item.children; track $index) {
-            <li [routerLink]="child.route"
-              class="data-[active=true]:border-blue-500 data-[active=true]:text-blue-700 data-[active=true]:dark:text-blue-400">
+            <li [routerLink]="child.route" routerLinkActive="text-blue-700"
+              routerLinkActive="text-blue-700 border-blue-700!">
               {{ child.label }}
             </li>
             }
-          </ol>
+          </ul>
         </div>
         }
         @case ('components') {
         <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3" [routerLink]="item.route" ariaCurrentWhenActive="page"
+            routerLinkActive="*:text-blue-600!">
             <tw-icon name="puzzle-piece" class="text-gray-400" />
-            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
+            <a class="font-semibold text-gray-950 dark:text-gray-300">
+              {{ item.label }}
+            </a>
           </div>
-          <ol
+          <ul
             class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
             @for (child of item.children; track $index) {
-            <li [routerLink]="child.route" routerLinkActive="text-blue-800">
+            <li [routerLink]="item.route + '/' + child.route" ariaCurrentWhenActive="page"
+              routerLinkActive="text-blue-700 border-blue-700!">
               {{ child.label }}</li>
             }
-          </ol>
+          </ul>
         </div>
         }
         }
@@ -126,18 +129,17 @@
         @switch (item.category) {
         @case ('overview') {
         <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3">
-            <tw-icon name="book-open" class="text-gray-400 in-data-[active=true]:text-blue-500" />
-            <a class="font-semibold text-gray-950 dark:text-gray-300 in-data-[active=true]:text-blue-700 in-data-[active=true]:dark:text-blue-500"
-              [routerLink]="item.route">
+          <div class="flex items-center gap-3 text-gray-950 dark:text-gray-300">
+            <tw-icon name="book-open" class="text-gray-400" />
+            <a class="font-semibold" [routerLink]="item.route">
               {{ item.label }}
             </a>
           </div>
           <ol
             class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
             @for (child of item.children; track $index) {
-            <li [routerLink]="child.route"
-              class="data-[active=true]:border-blue-500 data-[active=true]:text-blue-700 data-[active=true]:dark:text-blue-400">
+            <li [routerLink]="item.route + '/' + child.route" ariaCurrentWhenActive="page"
+              routerLinkActive="text-blue-700 border-blue-700!">
               {{ child.label }}
             </li>
             }
@@ -146,9 +148,10 @@
         }
         @case ('components') {
         <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3" [routerLink]="item.route" ariaCurrentWhenActive="page"
+            routerLinkActive="*:text-blue-600!">
             <tw-icon name="puzzle-piece" class="text-gray-400" />
-            <a class="font-semibold text-gray-950 dark:text-gray-300" [routerLink]="item.route">{{ item.label }}</a>
+            <a class="font-semibold text-gray-950 dark:text-gray-300">{{ item.label }}</a>
             <!-- <tw-badge size="xs" class="rounded-md bg-blue-100 text-blue-800 dark:bg-blue-900/90 dark:text-blue-300">
               {{ item.children?.length || 0 }}
             </tw-badge> -->
@@ -156,7 +159,8 @@
           <ol
             class="ml-2 grid *:pl-6 *:py-1 *:border-l *:dark:border-gray-800 *:hover:dark:border-gray-500 *:cursor-pointer  *:border-gray-300 *:hover:border-gray-500 *:hover:text-gray-800 *:hover:dark:text-gray-200">
             @for (child of item.children; track $index) {
-            <li [routerLink]="child.route" routerLinkActive="text-blue-800">
+            <li [routerLink]="item.route + '/' + child.route" ariaCurrentWhenActive="page"
+              routerLinkActive="text-blue-700 border-blue-700!">
               {{ child.label }}</li>
             }
           </ol>

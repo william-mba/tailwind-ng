@@ -1,22 +1,12 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { TwButton, TwDialogModule, TwIcon } from 'tailwind-ng';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-components',
-  imports: [TwIcon, TwDialogModule, TwButton, RouterLink],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterOutlet],
   templateUrl: './components.component.html',
+  styles: ``
 })
-export class ComponentsComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      })
-    }, 500);
-  }
+export class ComponentsComponent {
 
 }

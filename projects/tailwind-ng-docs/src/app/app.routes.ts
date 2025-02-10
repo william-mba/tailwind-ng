@@ -18,14 +18,85 @@ export const routes: Routes = [
         loadComponent: () => import('./docs/themes/themes.component').then(m => m.ThemesComponent)
       },
       {
-        path: 'components',
+        path: 'components-overview',
         title: 'Components overview',
-        loadComponent: () => import('./docs/components/components.component').then(m => m.ComponentsComponent)
+        loadComponent: () => import('./docs/components-overview/components-overview.component').then(m => m.ComponentsOverviewComponent)
       },
       {
         path: 'roadmap',
         title: 'Roadmap',
         loadComponent: () => import('./docs/roadmap/roadmap.component').then(m => m.RoadmapComponent)
+      },
+      {
+        path: 'components',
+        loadComponent: () => import('./docs/components/components.component').then(m => m.ComponentsComponent),
+        children: [
+          {
+            path: 'avatars',
+            title: 'Avatars',
+            loadComponent: () => import('./docs/components/avatars/avatars.component').then(m => m.AvatarsComponent)
+          },
+          {
+            path: 'badges',
+            title: 'Badges',
+            loadComponent: () => import('./docs/components/badges/badges.component').then(m => m.BadgesComponent)
+          },
+          {
+            path: 'buttons',
+            title: 'Buttons',
+            loadComponent: () => import('./docs/components/buttons/buttons.component').then(m => m.ButtonsComponent)
+          },
+          {
+            path: 'button-groups',
+            title: 'Button Groups',
+            loadComponent: () => import('./docs/components/button-groups/button-groups.component').then(m => m.ButtonGroupsComponent)
+          },
+          {
+            path: 'checkboxes',
+            title: 'Checkboxes',
+            loadComponent: () => import('./docs/components/checkboxes/checkboxes.component').then(m => m.CheckboxesComponent)
+          },
+          {
+            path: 'comboboxes',
+            title: 'Comboboxes',
+            loadComponent: () => import('./docs/components/comboboxes/comboboxes.component').then(m => m.ComboboxesComponent)
+          },
+          {
+            path: 'dialogs',
+            title: 'Dialogs',
+            loadComponent: () => import('./docs/components/dialogs/dialogs.component').then(m => m.DialogsComponent)
+          },
+          {
+            path: 'dropdowns',
+            title: 'Dropdowns',
+            loadComponent: () => import('./docs/components/dropdowns/dropdowns.component').then(m => m.DropdownsComponent)
+          },
+          {
+            path: 'icons',
+            title: 'Icons',
+            loadComponent: () => import('./docs/components/icons/icons.component').then(m => m.IconsComponent)
+          },
+          {
+            path: 'input-groups',
+            title: 'Input Groups',
+            loadComponent: () => import('./docs/components/input-groups/input-groups.component').then(m => m.InputGroupsComponent)
+          },
+          {
+            path: 'radio-groups',
+            title: 'Radio Groups',
+            loadComponent: () => import('./docs/components/radio-groups/radio-groups.component').then(m => m.RadioGroupsComponent)
+          },
+          {
+            path: 'toggles',
+            title: 'Toggles',
+            loadComponent: () => import('./docs/components/toggles/toggles.component').then(m => m.TogglesComponent)
+          },
+          {
+            path: '',
+            redirectTo: 'avatars',
+            pathMatch: 'full'
+          },
+        ]
       },
       {
         path: '',
@@ -42,6 +113,11 @@ export const routes: Routes = [
   {
     path: 'components',
     redirectTo: 'docs/components',
+    pathMatch: 'full'
+  },
+  {
+    path: 'components-overview',
+    redirectTo: 'docs/components-overview',
     pathMatch: 'full'
   },
   {
