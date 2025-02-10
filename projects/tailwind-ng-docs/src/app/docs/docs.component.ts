@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
-import { ButtonComponent, DropdownComponent, IconDirective } from 'tailwind-ng';
+import { TwButton, TwDropdown, TwIcon } from 'tailwind-ng';
 import { OptionDirective, ThemeService } from '@tailwind-ng/core';
 import { NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-docs',
-  imports: [NgIf, RouterLink, RouterLinkActive, IconDirective, DropdownComponent, ButtonComponent, OptionDirective, RouterOutlet],
+  imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, OptionDirective, RouterOutlet],
   templateUrl: './docs.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush

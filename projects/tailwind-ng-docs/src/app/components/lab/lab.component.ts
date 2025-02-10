@@ -2,18 +2,18 @@ import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
-  AvatarComponent,
-  BadgeComponent,
-  ButtonComponent,
-  ButtonGroupComponent,
-  ComboboxModule,
-  DropdownComponent,
-  IconDirective,
-  InputRadioDirective,
-  DialogModule,
-  ToggleComponent,
-  InputTextDirective,
-  CheckboxComponent,
+  TwAvatar,
+  TwBadge,
+  TwButton,
+  TwButtonGroup,
+  TwComboboxModule,
+  TwDropdown,
+  TwIcon,
+  TwInputRadio,
+  TwDialogModule,
+  TwToggle,
+  TwInputText,
+  TwCheckbox,
 } from 'tailwind-ng';
 import { OptionDirective } from "@tailwind-ng/core";
 
@@ -35,20 +35,20 @@ export interface Task {
   selector: 'app-lab',
   imports: [
     NgIf,
-    AvatarComponent,
-    BadgeComponent,
-    ButtonComponent,
-    ComboboxModule,
-    DropdownComponent,
-    IconDirective,
-    InputTextDirective,
-    InputRadioDirective,
-    ToggleComponent,
-    ButtonGroupComponent,
-    DialogModule,
+    TwAvatar,
+    TwBadge,
+    TwButton,
+    TwComboboxModule,
+    TwDropdown,
+    TwIcon,
+    TwInputText,
+    TwInputRadio,
+    TwToggle,
+    TwButtonGroup,
+    TwDialogModule,
     ReactiveFormsModule,
     OptionDirective,
-    CheckboxComponent
+    TwCheckbox
   ],
   templateUrl: './lab.component.html'
 })

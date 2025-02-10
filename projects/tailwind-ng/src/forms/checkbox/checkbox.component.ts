@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
 import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableStates, CheckboxToggleOptions, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
-import { IconDirective } from "../../elements";
+import { TwIcon } from "../../elements";
 
 /**
  * @TailwindNG Checkbox Component.
@@ -8,7 +8,7 @@ import { IconDirective } from "../../elements";
 @Component({
   selector: 'tw-checkbox, [tw-checkbox], [twCheckbox]',
   exportAs: 'twCheckbox',
-  imports: [IconDirective],
+  imports: [TwIcon],
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">

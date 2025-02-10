@@ -1,9 +1,9 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { IconDirective } from 'tailwind-ng';
+import { TwIcon } from 'tailwind-ng';
 
 @Component({
   selector: 'app-roadmap',
-  imports: [IconDirective],
+  imports: [TwIcon],
   templateUrl: './roadmap.component.html',
   styles: ``
 })

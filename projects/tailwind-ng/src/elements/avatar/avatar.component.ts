@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { AvatarBase, SizeOption, Avatar, ClassList } from '@tailwind-ng/core';
 
-/**Avatar element*/
+/**
+ * @TailwindNG Avatar Component
+ */
 @Component({
   selector: 'tw-avatar, [tw-avatar], [twAvatar]',
   exportAs: 'twAvatar',

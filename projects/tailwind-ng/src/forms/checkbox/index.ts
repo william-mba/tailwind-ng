@@ -1,2 +1,2 @@
 export * from './checkbox.component.config';
-export * from './checkbox.component';
+export { CheckboxComponent as TwCheckbox } from './checkbox.component';

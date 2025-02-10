@@ -1,2 +1,2 @@
-export * from './dropdown.component';
+export { DropdownComponent as TwDropdown } from './dropdown.component';
 export * from './dropdown.component.config';

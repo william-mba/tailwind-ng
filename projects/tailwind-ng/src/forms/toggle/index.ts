@@ -1,2 +1,2 @@
-export * from './toggle.component';
+export { ToggleComponent as TwToggle } from './toggle.component';
 export * from './toggle.component.config';

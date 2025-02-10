@@ -1,2 +1,2 @@
-export * from './button.component';
+export { ButtonComponent as TwButton } from './button.component';
 export * from './button.component.config';
