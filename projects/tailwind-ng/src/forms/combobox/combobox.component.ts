@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, contentChild, inject, Input, output, ViewEncapsulation } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { ClassList, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape } from '@tailwind-ng/core';
+import { ClassList, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape, TwIf } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
@@ -9,12 +9,13 @@ import { ClassList, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTex
     '[class]': 'classList.value()',
     '[attr.aria-controls]': 'dropdown().id',
   },
+  imports: [TwIf],
   template: `<ng-content select="label" />
   <div class="relative">
     <ng-content select="input[type=text], input[tw-input], input[twInput]" />
     <ng-content select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]" />
   </div>
-  <div class="relative"><ng-content /></div>`,
+  <div class="relative" *twIf="isOpened()"><ng-content /></div>`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }]
@@ -69,7 +70,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
       this.classList.set("relative h-max");
     }
     this.control.valueChanges.subscribe(value => {
-      if (!this.isOpened) {
+      if (!this.isOpened()) {
         this.open();
       }
       if (value.length === 0) {
@@ -88,10 +89,10 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
 
   protected onKeyup(event: KeyboardEvent): void {
     event.stopPropagation();
-    if (!isEscape(event.key) && !this.isOpened) {
+    if (!isEscape(event.key) && !this.isOpened()) {
       this.open();
     } else if (isEscape(event.key)) {
-      if (this.isOpened) {
+      if (this.isOpened()) {
         this.close();
       } else {
         this.reset();
@@ -162,7 +163,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
       this.selectionMap.clear();
       this.updateControlValue();
       this.emitSelection();
-      if (!this.isOpened) {
+      if (!this.isOpened()) {
         this.open();
       }
     }
