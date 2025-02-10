@@ -26,7 +26,7 @@ export class DialogContainerDirective extends BaseDirective {
         this.dialog.closeAfter(this.dialog.displayDelay);
       }
     });
-    if (this.dialog.autoClose && this.dialog.isOpened) {
+    if (this.dialog.autoClose && this.dialog.isOpened()) {
       this.dialog.closeAfter(this.dialog.displayDelay);
     }
     requestIdleCallback(() => {
