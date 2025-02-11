@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { TwButton, TwIcon } from 'tailwind-ng';
 
 @Component({
   selector: 'app-avatars',
-  imports: [],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TwButton, TwIcon],
   templateUrl: './avatars.component.html',
   styles: ``
 })

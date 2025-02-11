@@ -33,8 +33,35 @@ export const routes: Routes = [
         children: [
           {
             path: 'avatars',
-            title: 'Avatars',
-            loadComponent: () => import('./docs/components/avatars/avatars.component').then(m => m.AvatarsComponent)
+            title: 'Avatars Components',
+            loadComponent: () => import('./docs/components/avatars/avatars.component').then(m => m.AvatarsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Avatars Components Preview',
+                loadComponent: () => import('./docs/components/avatars/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'setup',
+                title: 'Avatars Components Setup',
+                loadComponent: () => import('./docs/components/avatars/setup/setup.component').then(m => m.SetupComponent)
+              },
+              {
+                path: 'api',
+                title: 'Avatars Components API',
+                loadComponent: () => import('./docs/components/avatars/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Avatars Components Customization',
+                loadComponent: () => import('./docs/components/avatars/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'badges',
