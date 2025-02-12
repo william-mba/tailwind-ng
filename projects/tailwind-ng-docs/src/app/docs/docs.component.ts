@@ -58,7 +58,7 @@ export const NAV_ITEMS: NavItem[] = [
         route: 'getting-started'
       },
       {
-        label: 'Premade Themes',
+        label: 'Prebuilt Themes',
         route: 'themes'
       },
       {

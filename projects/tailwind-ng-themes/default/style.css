@@ -2488,6 +2488,9 @@
   .bg-emerald-500 {
     background-color: var(--color-emerald-500);
   }
+  .bg-gray-50 {
+    background-color: var(--color-gray-50);
+  }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
@@ -3908,11 +3911,6 @@
   .\*\:border-neutral-300 {
     :is(& > *) {
       border-color: var(--color-neutral-300);
-    }
-  }
-  .\*\:border-slate-200 {
-    :is(& > *) {
-      border-color: var(--color-slate-200);
     }
   }
   .\*\:border-slate-300 {
@@ -5984,6 +5982,11 @@
       background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
     }
   }
+  .dark\:bg-black\/60 {
+    &:where(.dark, .dark *) {
+      background-color: color-mix(in oklab, var(--color-black) 60%, transparent);
+    }
+  }
   .dark\:bg-blue-700 {
     &:where(.dark, .dark *) {
       background-color: var(--color-blue-700);
@@ -6237,13 +6240,6 @@
     :is(& > *) {
       &:where(.dark, .dark *) {
         border-color: var(--color-slate-700);
-      }
-    }
-  }
-  .\*\:dark\:border-slate-800 {
-    :is(& > *) {
-      &:where(.dark, .dark *) {
-        border-color: var(--color-slate-800);
       }
     }
   }
