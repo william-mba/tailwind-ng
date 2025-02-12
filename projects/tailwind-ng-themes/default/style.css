@@ -5216,6 +5216,16 @@
       gap: calc(var(--spacing) * 0.5);
     }
   }
+  .max-sm\:px-2 {
+    @media (width < 40rem) {
+      padding-inline: calc(var(--spacing) * 2);
+    }
+  }
+  .max-sm\:px-5 {
+    @media (width < 40rem) {
+      padding-inline: calc(var(--spacing) * 5);
+    }
+  }
   .max-sm\:text-2xl {
     @media (width < 40rem) {
       font-size: var(--text-2xl);
