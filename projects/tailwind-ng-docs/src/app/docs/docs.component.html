@@ -99,8 +99,7 @@
         }
         @case ('components') {
         <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3" [routerLink]="item.route" ariaCurrentWhenActive="page"
-            routerLinkActive="*:text-blue-600!">
+          <div class="flex items-center gap-3" [routerLink]="item.route">
             <tw-icon name="puzzle-piece" class="text-gray-400" />
             <a class="font-semibold text-gray-950 dark:text-gray-300">
               {{ item.label }}
@@ -148,8 +147,7 @@
         }
         @case ('components') {
         <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-3" [routerLink]="item.route" ariaCurrentWhenActive="page"
-            routerLinkActive="*:text-blue-600!" (click)="toggleNav()">
+          <div class="flex items-center gap-3" [routerLink]="item.route" (click)="toggleNav()">
             <tw-icon name="puzzle-piece" class="text-gray-400" />
             <a class="font-semibold text-gray-950 dark:text-gray-300">{{ item.label }}</a>
           </div>
