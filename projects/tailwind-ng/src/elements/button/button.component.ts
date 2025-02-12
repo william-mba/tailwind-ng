@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { Button, ButtonBase, ButtonVariant, ClassList, isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isDropdown, isEnterOrSpace, isEscape, isTab, SizeOption } from '@tailwind-ng/core';
+import { Button, ButtonBase, ButtonVariant, classlist, isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isDropdown, isEnterOrSpace, isEscape, isTab, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component
@@ -30,7 +30,7 @@ export class ButtonComponent extends ButtonBase implements Button {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
+      this.classList = classlist(this.class)
         .set({
           ...this.config[this.size],
           ...this.config[this.variant],

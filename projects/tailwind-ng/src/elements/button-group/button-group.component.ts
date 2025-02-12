@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { ButtonGroup, ButtonGroupBase, ClassList } from '@tailwind-ng/core';
+import { ButtonGroup, ButtonGroupBase, classlist } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]',
@@ -15,8 +15,7 @@ import { ButtonGroup, ButtonGroupBase, ClassList } from '@tailwind-ng/core';
 export class ButtonGroupComponent extends ButtonGroupBase implements ButtonGroup {
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
-        .set(this.config);
+      this.classList = classlist(this.class).set(this.config);
     }
   }
 }

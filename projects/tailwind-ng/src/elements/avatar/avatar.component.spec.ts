@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ClassList, Str } from '@tailwind-ng/core';
+import { classlist, Str } from '@tailwind-ng/core';
 import { TestBed } from '@angular/core/testing';
 import { AvatarComponent } from './avatar.component';
 import { Component, viewChild } from '@angular/core';
@@ -47,7 +47,7 @@ describe('AvatarComponent', () => {
   it('should set classList', async () => {
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
-    const classList = new ClassList({ b: config.base, s: config[component.size] });
+    const classList = classlist({ b: config.base, s: config[component.size] });
     component.classList = classList;
     fixture.detectChanges();
 

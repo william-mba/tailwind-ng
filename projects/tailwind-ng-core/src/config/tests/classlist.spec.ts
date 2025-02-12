@@ -1,32 +1,27 @@
-import { ClassList } from '../classlist';
+import { ClassList, classlist } from '../classlist';
 import { ComponentConfig } from '../../types';
 import { Obj } from '../../helpers';
 
 describe('ClassList', () => {
   let classList: ClassList;
 
-  beforeEach(() => {
-    classList = new ClassList();
+  it('should init value', () => {
+    const initialValue = ['rounded-md', 'bg-blue-600', 'px-4', 'py-2', 'text-white'];
+    classList = classlist(initialValue);
+    expect(classList.base()).toEqual(initialValue);
   });
 
-  it('should init value', async () => {
+  it('should set value', () => {
     const value = ['rounded-full', 'p-4'];
-    await classList.init(value);
-    expect(classList.base()).toEqual(value);
-  });
-
-  it('should set value', async () => {
-    const value = ['rounded-full', 'p-4'];
-    await classList.set(value);
+    classList = classlist().set(value);
     expect(classList.value()).toEqual(value);
   });
 
-  it('should merge value', async () => {
+  it('should merge value', () => {
     const customValue = ['rounded-full', 'p-4', 'bg-red-600'];
     const defaultValue = ['rounded-md', 'bg-blue-600', 'px-4', 'py-2', 'text-white'];
 
-    await classList.init(customValue);
-    await classList.set(defaultValue);
+    classList = classlist(customValue).set(defaultValue);
 
     // Value should includes all custom classes
     expect(classList.value().includes(customValue[0])).toBeTrue();
@@ -41,13 +36,13 @@ describe('ClassList', () => {
     expect(classList.value().includes(defaultValue[4])).toBeTrue();
   });
 
-  it('should update value', async () => {
+  it('should update value', () => {
     const defaultValue = ['rounded-md', 'bg-blue-600', 'px-4', 'py-2', 'text-white'];
 
-    await classList.set(defaultValue);
+    classList = classlist(defaultValue);
 
     const newValue = ['rounded-lg', 'bg-red-600', 'p-3'];
-    await classList.update(newValue);
+    classList.update(newValue);
 
     expect(classList.value().includes(newValue[0])).toBeTrue();
     expect(classList.value().includes(newValue[1])).toBeTrue();
@@ -60,7 +55,7 @@ describe('ClassList', () => {
     expect(classList.value().includes(defaultValue[4])).toBeTrue();
   });
 
-  it('should init value from config object', async () => {
+  it('should init value from config object', () => {
     const configObj: ComponentConfig = {
       boxShadow: 'shadow-none',
       textColor: 'text-gray-700',
@@ -75,13 +70,12 @@ describe('ClassList', () => {
       }
     };
     const configArray = Obj.toArray(configObj);
-
-    await classList.init(configObj);
+    classList = classlist(configObj);
 
     expect(classList.base()).toEqual(configArray);
   });
 
-  it('should set value from config object', async () => {
+  it('should set value from config object', () => {
     const configObj: ComponentConfig = {
       boxShadow: 'shadow-none',
       textColor: 'text-gray-700',
@@ -97,12 +91,12 @@ describe('ClassList', () => {
     };
     const configArray = Obj.toArray(configObj);
 
-    await classList.set(configObj);
+    classList = classlist(configObj);
 
     expect(classList.value()).toEqual(configArray);
   });
 
-  it('should update value from config object', async () => {
+  it('should update value from config object', () => {
     const configObj: ComponentConfig = {
       boxShadow: 'shadow-none',
       textColor: 'text-gray-700',
@@ -117,7 +111,7 @@ describe('ClassList', () => {
       }
     };
     const defaultConfig = Obj.toArray(configObj);
-    await classList.set(configObj);
+    classList = classlist(configObj);
 
     const newConfigObj: ComponentConfig = {
       textColor: 'text-gray-800',
@@ -134,7 +128,7 @@ describe('ClassList', () => {
 
     const newConfig = Obj.toArray(newConfigObj);
 
-    await classList.update(newConfigObj);
+    classList.update(newConfigObj);
 
     defaultConfig.forEach(value => {
       if (value === 'shadow-none') {

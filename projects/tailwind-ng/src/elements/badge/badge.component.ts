@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { SizeOption, BadgeBase, Badge, ClassList } from '@tailwind-ng/core';
+import { SizeOption, BadgeBase, Badge, classlist } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-badge, [tw-badge], [twBadge]',
@@ -17,7 +17,7 @@ export class BadgeComponent extends BadgeBase implements Badge {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
+      this.classList = classlist(this.class)
         .set({ b: this.config.base, s: this.config[this.size] })
     }
   }

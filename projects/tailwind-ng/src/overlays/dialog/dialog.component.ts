@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { ClassList, Dialog, DialogBase, OverlayPosition, TwIf } from '@tailwind-ng/core';
+import { classlist, Dialog, DialogBase, OverlayPosition, TwIf } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -28,7 +28,7 @@ export class DialogComponent extends DialogBase implements Dialog {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
+      this.classList = classlist(this.class)
         .set({
           s: this.config.scrim,
           b: this.isModal && !this.position ? this.config.backdrop : {}

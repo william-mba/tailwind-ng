@@ -50,14 +50,14 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   isHovered = false;
 
   ngOnInit(): void {
-    queueMicrotask(this.buildStyle.bind(this));
+    this.buildStyle();
     queueMicrotask(this.addEventListeners.bind(this));
     this.isInitialized = true;
   }
 
   ngOnDestroy(): void {
     if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(this.removeEventListeners.bind(this));
+      requestIdleCallback(this.removeEventListeners.bind(this));
     } else {
       queueMicrotask(this.removeEventListeners.bind(this));
     }

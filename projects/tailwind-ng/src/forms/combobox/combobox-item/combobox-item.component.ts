@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, inject, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
-import { ClassList, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
+import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -17,7 +17,7 @@ import { ClassList, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ComboboxItemBase, useExisting: ComboboxItemComponent }]
 })
-export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxItem {
+export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxItem, OnInit {
   @Input({ required: true }) value!: string;
   private readonly combobox = inject(ComboboxComponent, { skipSelf: true });
   private readonly computedValue = computed(() => this.value.toLocaleLowerCase());
@@ -25,6 +25,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   private get isValueEqualsInputValue() {
     return this.computedValue() === this.combobox.control.value.toLocaleLowerCase();
   }
+
   get isSelected(): boolean {
     return this.combobox.has(this);
   }
@@ -64,8 +65,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
-        .set(this.config);
+      this.classList = classlist(this.class).set(this.config);
     }
   }
 

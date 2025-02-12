@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, output, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableStates, CheckboxToggleOptions, ClassList, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
+import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, OnInit, output, ViewEncapsulation } from "@angular/core";
+import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableStates, CheckboxToggleOptions, classlist, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
 import { TwIcon } from "../../elements";
 
 /**
@@ -31,7 +31,7 @@ import { TwIcon } from "../../elements";
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }]
 })
-export class CheckboxComponent extends CheckboxBase implements Checkbox {
+export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit {
   protected icon = inject(CHECKBOX_ICON);
   protected readonly parent = inject(CheckboxComponent, {
     optional: true, skipSelf: true, host: true
@@ -94,10 +94,13 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
         this.config = {};
         this.classList = this.parent.classList;
       } else {
-        this.classList = new ClassList(this.class)
-          .set(this.config);
+        this.classList = classlist(this.class).set(this.config);
       }
     }
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
     if (this.parent) {
       if (!this.parent.children) {
         this.parent.children = [];

@@ -57,58 +57,50 @@ function toArray(obj: Config): string[] {
   return res;
 }
 
-function toArrayMemo(fn: (obj: Config) => string[]) {
+function toArrayMemo(fn: (obj: Config, key?: string) => string[]) {
   const cache = new Map<string, string[]>();
-  let timerID: number | undefined;
+  let cleanupScheduled = false;
 
-  const stopTimer = () => {
-    clearInterval(timerID);
-    timerID = undefined;
-  };
-  const startTimer = () => {
-    timerID = setInterval(() => {
-      if (cache.size === 0) {
-        stopTimer();
-      } else {
-        cache.clear();
-      }
-    }, 1000 * 60)
+  const scheduleCleanupIfNeeded = () => {
+    if (cleanupScheduled) return;
+    window.addEventListener('load', () => {
+      cache.clear();
+    }, { once: true, capture: true, passive: true });
+    cleanupScheduled = true;
   };
 
-  return function (obj: Config): string[] {
-    const key = JSON.stringify(obj);
+  return function (obj: Config, key?: string): string[] {
+    if (!key) {
+      key = JSON.stringify(obj);
+    }
     if (cache.has(key)) return cache.get(key)!;
     const result = fn(obj);
     cache.set(key, result);
-    if (!timerID) startTimer();
+    scheduleCleanupIfNeeded();
     return result;
   };
 }
 
-function toStringMemo(fn: (obj: Config) => string) {
+function toStringMemo(fn: (obj: Config, key?: string) => string) {
   const cache = new Map<string, string>();
-  let timerID: number | undefined;
+  let cleanupScheduled = false;
 
-  const stopTimer = () => {
-    clearInterval(timerID);
-    timerID = undefined;
-  };
-  const startTimer = () => {
-    timerID = setInterval(() => {
-      if (cache.size === 0) {
-        stopTimer();
-      } else {
-        cache.clear();
-      }
-    }, 1000 * 60)
+  const scheduleCleanupIfNeeded = () => {
+    if (cleanupScheduled) return;
+    window.addEventListener('load', () => {
+      cache.clear();
+    }, { once: true, capture: true, passive: true });
+    cleanupScheduled = true;
   };
 
-  return function (obj: Config): string {
-    const key = JSON.stringify(obj);
+  return function (obj: Config, key?: string): string {
+    if (!key) {
+      key = JSON.stringify(obj);
+    }
     if (cache.has(key)) return cache.get(key)!;
     const result = fn(obj);
     cache.set(key, result);
-    if (!timerID) startTimer();
+    scheduleCleanupIfNeeded();
     return result;
   };
 }

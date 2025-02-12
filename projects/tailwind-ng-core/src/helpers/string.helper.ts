@@ -16,10 +16,14 @@ export abstract class Str {
 
 interface ResolveOptions {
   /** Whether to keep the class-deletor in the target array. */
-  keepClassDeletor: boolean;
+  keepClassDeletor?: boolean;
   /** The minimum string length. Default is 2.
    */
-  minStringLength: number;
+  minStringLength?: number;
+  /**
+   * The key used to cache the resolved values.
+   */
+  key?: string;
 }
 
 /**
@@ -27,31 +31,27 @@ interface ResolveOptions {
  * The first argument is the target and the rest are source arrays.
  * The results are cached to improve subsequent calls performance.
  */
-function resolveMemo(fn: (arg: [...string[][]], options: Partial<ResolveOptions>) => string[]) {
+function resolveMemo(fn: (arg: [...string[][]], options: ResolveOptions) => string[]) {
   const cache = new Map<string, string[]>();
-  let timerID: number | undefined = undefined;
+  let cleanupScheduled = false;
 
-  const stopTimer = () => {
-    clearInterval(timerID);
-    timerID = undefined;
-  };
-  const startTimer = () => {
-    timerID = setInterval(() => {
-      if (cache.size === 0) {
-        stopTimer();
-      } else {
-        cache.clear();
-      }
-      // Clear cache every 5 seconds
-    }, 1000 * 5)
+  const scheduleCleanupIfNeeded = () => {
+    if (cleanupScheduled) return;
+    window.addEventListener('load', () => {
+      cache.clear();
+    }, { once: true, capture: true, passive: true });
+    cleanupScheduled = true;
   };
 
-  return function (arg: [...string[][]], options: Partial<ResolveOptions> = {}): string[] {
-    const key = JSON.stringify({ arg, options });
+  return function (arg: [...string[][]], options: ResolveOptions = {}): string[] {
+    let { key } = options;
+    if (!key) {
+      key = JSON.stringify({ arg, options });
+    }
     if (cache.has(key)) return cache.get(key)!;
     const result = fn(arg, options);
     cache.set(key, result);
-    if (!timerID) startTimer();
+    scheduleCleanupIfNeeded();
     return result;
   };
 }
@@ -64,7 +64,7 @@ function resolveMemo(fn: (arg: [...string[][]], options: Partial<ResolveOptions>
  * @param arg The target and source values to resolve.
  * @param options The options for resolving.
  * */
-function resolve(arg: [...string[][]], options: Partial<ResolveOptions> = {}): string[] {
+function resolve(arg: [...string[][]], options: ResolveOptions): string[] {
   // eslint-disable-next-line prefer-const
   let [target, ...sources] = arg;
 

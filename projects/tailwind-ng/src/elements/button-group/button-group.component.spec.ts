@@ -2,7 +2,7 @@
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { GetButtonGroupConfig, provideButtonGroup } from './button-group.component.config';
-import { ClassList } from '@tailwind-ng/core';
+import { classlist } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 
@@ -26,9 +26,8 @@ describe('ButtonGroupComponent', () => {
     expect(component.config).toEqual(config);
   });
 
-  it('should set classList', async () => {
-    const classList = new ClassList();
-    await classList.set(GetButtonGroupConfig());
+  it('should set classList', () => {
+    const classList = classlist(GetButtonGroupConfig());
 
     expect(component.classList.base()).toEqual([]);
     expect(component.classList.value()).toEqual(classList.value());

@@ -1,5 +1,5 @@
 import { ClassList } from "../config";
-import { Config } from "../types/config.type";
+import { Config } from "../types";
 
 /**
  * @TailwindNG Component's base state.

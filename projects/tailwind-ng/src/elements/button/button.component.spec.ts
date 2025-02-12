@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { SizeOption, ClassList, Str, ButtonVariant } from '@tailwind-ng/core';
+import { SizeOption, classlist, Str, ButtonVariant } from '@tailwind-ng/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { GetButtonConfig, provideButton } from './button.component.config';
@@ -70,7 +70,7 @@ describe('ButtonComponent', () => {
   });
 
   it('should set classList', async () => {
-    const classList = new ClassList({
+    const classList = classlist({
       ...config.md,
       ...config.primary
     });

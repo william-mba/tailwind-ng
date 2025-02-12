@@ -9,12 +9,6 @@ export interface IClassList {
   readonly base: Signal<string[]>;
   readonly value: Signal<string[]>;
   /**
-   * Initializes the class list value.
-   */
-  init<T extends string>(value?: T): IClassList;
-  init<T extends string[]>(value?: T[]): IClassList;
-  init<T extends Config>(value?: T): IClassList;
-  /**
    * Sets a brand new class list value.
    */
   set<T extends string>(value: T): IClassList;
@@ -73,17 +67,12 @@ export class ClassList implements IClassList {
    * Creates a new instance of the class list.
    * @param base The custom class list to merge with the default class list's value.
    */
+  // The classlist should be initiliazed only with a string or string array
+  // and not with a config object to keep the base value as short as possible.
+  // This make future updates to the classlist value even faster.
   constructor(base: string | string[] | Config = []) {
-    this.base.set(arrayFrom(base));
+    this.base.set(Str.resolve([this.base(), arrayFrom(base)], { keepClassDeletor: true }));
     this.value.set(arrayFrom(base));
-  }
-
-  init<T extends string>(value?: T): ClassList;
-  init<T extends string[]>(value?: T[]): ClassList;
-  init<T extends Config>(value?: T): ClassList;
-  init<T extends string | string[] | Config>(value: T): ClassList {
-    this.base.set(Str.resolve([this.base(), arrayFrom(value)], { keepClassDeletor: true }));
-    return this;
   }
 
   set<T extends string>(value: T): ClassList;
@@ -98,7 +87,7 @@ export class ClassList implements IClassList {
   update<T extends string[]>(value: T[]): ClassList;
   update<T extends Config>(value: T): ClassList;
   update<T extends string | string[] | Config>(value: T): ClassList {
-    this.value.set(Str.resolve([this.value(), arrayFrom(value)]));
+    this.value.set(Str.resolve([this.value(), arrayFrom(value)]));;
     return this;
   }
 
@@ -126,15 +115,22 @@ export class ClassList implements IClassList {
 }
 
 const MIN_CLASS_NAMES = 1;
-export function arrayFrom<T extends string | string[] | Config>(value?: T): string[] {
+
+function arrayFrom(value?: string | string[] | Config): string[] {
   let newValue: string[] = [];
-  if (!value) return newValue;
   if (Type.isString(value)) {
     newValue = Str.toArray(value);
   } else if (Type.isArray(value)) {
     newValue = value;
-  } else if (Type.isObject(value)) {
+  } else if (Type.isConfigObject(value)) {
     newValue = Obj.toArray(value);
   }
   return newValue;
+}
+
+/**
+ * Creates a class list that can be used to set, update and merge Tailwind CSS class names for a component.
+ */
+export function classlist(initialValue?: string | string[] | Config): ClassList {
+  return new ClassList(initialValue);
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { AvatarBase, SizeOption, Avatar, ClassList } from '@tailwind-ng/core';
+import { AvatarBase, SizeOption, Avatar, classlist } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Avatar Component
@@ -20,7 +20,7 @@ export class AvatarComponent extends AvatarBase implements Avatar {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
+      this.classList = classlist(this.class)
         .set({ b: this.config.base, s: this.config[this.size] })
     }
   }

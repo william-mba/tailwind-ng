@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
-import { ClassList, Dropdown, DropdownBase, isEscape, OverlayPosition } from '@tailwind-ng/core';
+import { classlist, Dropdown, DropdownBase, isEscape, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dropdown component */
 @Component({
@@ -19,9 +19,8 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
-        .init(this.position)
-        .set(this.config);
+      this.classList = classlist(this.class)
+        .set({ ...this.config, ...this.position });
     }
   }
   protected override addEventListeners(): void {

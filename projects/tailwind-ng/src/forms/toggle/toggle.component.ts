@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, output, ViewEncapsulation } from '@angular/core';
-import { ClassList, Toggle, ToggleBase } from '@tailwind-ng/core';
+import { classlist, Toggle, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -22,7 +22,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   checked = output<boolean>();
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class).set(this.config);
+      this.classList = classlist(this.class).set(this.config);
     }
   }
 

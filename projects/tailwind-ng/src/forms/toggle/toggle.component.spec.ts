@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToggleComponent } from './toggle.component';
 import { GetToggleConfig, provideToggle } from './toggle.component.config';
-import { ClassList } from '@tailwind-ng/core';
+import { classlist } from '@tailwind-ng/core';
 
 describe('ToggleComponent', () => {
   let component: ToggleComponent;
   let fixture: ComponentFixture<ToggleComponent>;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         provideToggle()
@@ -33,8 +33,8 @@ describe('ToggleComponent', () => {
     expect(component.config).toEqual(GetToggleConfig());
   });
 
-  it('should set classlist', async () => {
-    const expected = await new ClassList().set(GetToggleConfig());
+  it('should set classlist', () => {
+    const expected = classlist(GetToggleConfig());
     expect(component.classList.value()).toEqual(expected.value());
   });
 });

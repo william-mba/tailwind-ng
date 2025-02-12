@@ -1,5 +1,5 @@
-import { Directive, inject } from "@angular/core";
-import { BaseDirective, ClassList, isEscape } from '@tailwind-ng/core';
+import { Directive, inject, OnInit } from "@angular/core";
+import { BaseDirective, classlist, isEscape } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
 
 @Directive({
@@ -10,12 +10,12 @@ import { DialogComponent } from "./dialog.component";
     '[tabindex]': 'isDisabled ? null : -1',
   }
 })
-export class DialogContainerDirective extends BaseDirective {
+export class DialogContainerDirective extends BaseDirective implements OnInit {
   private readonly dialog = inject(DialogComponent, { skipSelf: true });
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
+      this.classList = classlist(this.class)
         .set(this.dialog.config.container!);
     }
   }
