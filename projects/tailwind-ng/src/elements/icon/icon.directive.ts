@@ -12,11 +12,11 @@ import { SizeOption, IconBase, Icon, ClassList } from '@tailwind-ng/core';
 export class IconDirective extends IconBase implements Icon {
   @Input() size: SizeOption = 'md';
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.init(this.config[this.size])
-        .then(() => this.classList.set(this.config));
+      this.classList = new ClassList(this.class)
+        .init(this.config[this.size])
+        .set(this.config);
     }
   }
 }

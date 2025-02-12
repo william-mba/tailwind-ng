@@ -34,7 +34,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     if (this._isDisabled !== newState) {
       this._isDisabled = newState;
       if (this.isInitialized) {
-        this.onInit();
+        this.buildStyle();
       }
     }
   }
@@ -49,25 +49,24 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   isHovered = false;
 
-  async ngOnInit(): Promise<void> {
-    this.onInit()
-      .then(() => {
-        this.addEventListeners();
-        this.isInitialized = true;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  ngOnInit(): void {
+    queueMicrotask(this.buildStyle.bind(this));
+    queueMicrotask(this.addEventListeners.bind(this));
+    this.isInitialized = true;
   }
 
   ngOnDestroy(): void {
-    this.removeEventListeners.bind(this)
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(this.removeEventListeners.bind(this));
+    } else {
+      queueMicrotask(this.removeEventListeners.bind(this));
+    }
   }
 
   /**
-   * Component's specific init hook.
+   * Builds the component's style.
    */
-  protected abstract onInit(): Promise<void>;
+  protected abstract buildStyle(): void;
 
   /**
    * Adds event listeners to the component.

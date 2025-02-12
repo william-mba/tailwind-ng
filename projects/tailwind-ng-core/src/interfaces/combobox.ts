@@ -34,7 +34,7 @@ export interface ComboboxActions extends BasicPopupActions {
    * Selects the specified item.
    * @param item The item to select.
    */
-  select(item: ComboboxItem): Promise<void>;
+  select(item: ComboboxItem): void;
   /**
    * Returns true if the combobox has the specified item. Otherwise, returns false.
    * @param item The item to check.

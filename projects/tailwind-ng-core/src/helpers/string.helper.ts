@@ -27,9 +27,9 @@ interface ResolveOptions {
  * The first argument is the target and the rest are source arrays.
  * The results are cached to improve subsequent calls performance.
  */
-function resolveMemo(fn: (arg: [...string[][]], options: Partial<ResolveOptions>) => Promise<string[]>) {
-  const cache = new Map<string, Promise<string[]>>();
-  let timerID: number | undefined;
+function resolveMemo(fn: (arg: [...string[][]], options: Partial<ResolveOptions>) => string[]) {
+  const cache = new Map<string, string[]>();
+  let timerID: number | undefined = undefined;
 
   const stopTimer = () => {
     clearInterval(timerID);
@@ -42,10 +42,11 @@ function resolveMemo(fn: (arg: [...string[][]], options: Partial<ResolveOptions>
       } else {
         cache.clear();
       }
-    }, 1000 * 60)
+      // Clear cache every 5 seconds
+    }, 1000 * 5)
   };
 
-  return function (arg: [...string[][]], options: Partial<ResolveOptions> = {}): Promise<string[]> {
+  return function (arg: [...string[][]], options: Partial<ResolveOptions> = {}): string[] {
     const key = JSON.stringify({ arg, options });
     if (cache.has(key)) return cache.get(key)!;
     const result = fn(arg, options);
@@ -63,12 +64,12 @@ function resolveMemo(fn: (arg: [...string[][]], options: Partial<ResolveOptions>
  * @param arg The target and source values to resolve.
  * @param options The options for resolving.
  * */
-async function resolve(arg: [...string[][]], options: Partial<ResolveOptions> = {}): Promise<string[]> {
+function resolve(arg: [...string[][]], options: Partial<ResolveOptions> = {}): string[] {
   // eslint-disable-next-line prefer-const
   let [target, ...sources] = arg;
 
-  if (!sources || sources.length === 0) return Promise.resolve(target);
-  if ((!sources || sources.length === 0) && (!target || target.length === 0)) return Promise.resolve([]);
+  if (!sources || sources.length === 0) return target;
+  if ((!sources || sources.length === 0) && (!target || target.length === 0)) return [];
 
   /* Given an array of strings to resolve from source to target
     For each value in source, remove target values that partially or fully match the source value.
@@ -149,7 +150,7 @@ async function resolve(arg: [...string[][]], options: Partial<ResolveOptions> = 
   }
   if (sources.length > 1) {
     for (const src of sources) {
-      target = await resolve([target, src], { keepClassDeletor, minStringLength });
+      target = resolve([target, src], { keepClassDeletor, minStringLength });
     }
   }
   return target.concat(temp);

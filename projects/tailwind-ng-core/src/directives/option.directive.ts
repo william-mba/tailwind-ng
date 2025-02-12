@@ -16,10 +16,10 @@ import { ClassList } from "../config/classlist";
 export class OptionDirective extends BaseDirective {
   @Input() popup?: Popup;
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
+      this.classList = new ClassList(this.class)
+        .set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
     }
   }
 

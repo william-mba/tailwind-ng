@@ -17,13 +17,11 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0' };
   @Input() closeOnBlur = false;
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.init(this.position)
-        .then(() => {
-          this.classList.set(this.config);
-        });
+      this.classList = new ClassList(this.class)
+        .init(this.position)
+        .set(this.config);
     }
   }
   protected override addEventListeners(): void {

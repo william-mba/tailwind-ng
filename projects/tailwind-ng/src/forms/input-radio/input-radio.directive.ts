@@ -10,10 +10,9 @@ import { ClassList, InputRadio, InputRadioBase } from '@tailwind-ng/core';
   providers: [{ provide: InputRadioBase, useExisting: InputRadioDirective }]
 })
 export class InputRadioDirective extends InputRadioBase implements InputRadio {
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set(this.config);
+      this.classList = new ClassList(this.class).set(this.config);
     }
   }
 }

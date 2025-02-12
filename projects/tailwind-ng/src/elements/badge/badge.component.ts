@@ -15,10 +15,10 @@ import { SizeOption, BadgeBase, Badge, ClassList } from '@tailwind-ng/core';
 export class BadgeComponent extends BadgeBase implements Badge {
   @Input() size: SizeOption = 'md';
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set({ b: this.config.base, s: this.config[this.size] })
+      this.classList = new ClassList(this.class)
+        .set({ b: this.config.base, s: this.config[this.size] })
     }
   }
 }

@@ -29,11 +29,8 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     return this.combobox.has(this);
   }
 
-  protected override async onInit(): Promise<void> {
-    if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set(this.config);
-    }
+  override ngOnInit(): void {
+    super.ngOnInit();
 
     // Select the item if it is the default value.
     if (this.isValueEqualsInputValue) {
@@ -61,8 +58,15 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     });
   }
 
-  async select(): Promise<void> {
-    await this.combobox.select(this);
+  select(): void {
+    this.combobox.select(this);
+  }
+
+  protected override buildStyle(): void {
+    if (!this.classList) {
+      this.classList = new ClassList(this.class)
+        .set(this.config);
+    }
   }
 
   protected override addEventListeners(): void {

@@ -13,11 +13,15 @@ import { DialogComponent } from "./dialog.component";
 export class DialogContainerDirective extends BaseDirective {
   private readonly dialog = inject(DialogComponent, { skipSelf: true });
 
-  protected override  async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set(this.dialog.config.container!);
+      this.classList = new ClassList(this.class)
+        .set(this.dialog.config.container!);
     }
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
     this.dialog.opened.subscribe(() => {
       if (this.dialog.autoFocus) {
         this.focusPrimaryAction();
@@ -29,9 +33,13 @@ export class DialogContainerDirective extends BaseDirective {
     if (this.dialog.autoClose && this.dialog.isOpened()) {
       this.dialog.closeAfter(this.dialog.displayDelay);
     }
-    requestIdleCallback(() => {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
+      });
+    } else {
       this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
-    });
+    }
   }
 
   protected onKeyup(event: KeyboardEvent): void {

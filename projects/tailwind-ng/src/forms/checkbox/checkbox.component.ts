@@ -88,14 +88,14 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox {
     });
   }
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
       if (this.parent) {
         this.config = {};
         this.classList = this.parent.classList;
       } else {
-        this.classList = new ClassList();
-        this.classList.set(this.config);
+        this.classList = new ClassList(this.class)
+          .set(this.config);
       }
     }
     if (this.parent) {

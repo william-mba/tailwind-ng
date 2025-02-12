@@ -26,16 +26,16 @@ export class DialogComponent extends DialogBase implements Dialog {
   @Input() autoFocus = true;
   @Input() isModal = true;
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set({
-        s: this.config.scrim, b: this.isModal && !this.position ? this.config.backdrop : {}
-      }).then(() => {
-        if (this.position) {
-          this.classList.update({ i: 'inset-', ...this.position });
-        }
-      });
+      this.classList = new ClassList(this.class)
+        .set({
+          s: this.config.scrim,
+          b: this.isModal && !this.position ? this.config.backdrop : {}
+        })
+    }
+    if (this.position) {
+      this.classList.update({ i: 'inset-', ...this.position });
     }
   }
 }

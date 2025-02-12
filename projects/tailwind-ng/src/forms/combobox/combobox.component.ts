@@ -66,7 +66,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     }
   }
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
       this.classList = new ClassList(this.class);
       this.classList.set("relative h-max");
@@ -140,7 +140,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
     return this.selectionMap.has(item.value);
   }
 
-  async select(item: ComboboxItem): Promise<void> {
+  select(item: ComboboxItem): void {
     if (this.isMulti) {
       if (this.has(item)) {
         this.selectionMap.delete(item.value);

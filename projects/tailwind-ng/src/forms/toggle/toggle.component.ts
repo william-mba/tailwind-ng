@@ -20,10 +20,9 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   @Input() isChecked = false;
   @Input() tabIndex = 0;
   checked = output<boolean>();
-  protected override  async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set(this.config);
+      this.classList = new ClassList(this.class).set(this.config);
     }
   }
 

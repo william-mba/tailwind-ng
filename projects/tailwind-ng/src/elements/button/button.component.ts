@@ -28,14 +28,14 @@ export class ButtonComponent extends ButtonBase implements Button {
     return this.popup?.isOpened() || false;
   }
 
-  protected override async onInit(): Promise<void> {
+  protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class);
-      this.classList.set({
-        ...this.config[this.size],
-        ...this.config[this.variant],
-        ...this.isFab ? this.config.fab : {}
-      });
+      this.classList = new ClassList(this.class)
+        .set({
+          ...this.config[this.size],
+          ...this.config[this.variant],
+          ...this.isFab ? this.config.fab : {}
+        });
     }
   }
 

@@ -16,28 +16,26 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
   @Input() config = inject(BUTTON_CONFIG);
   @Input() popup?: Popup;
 
-  override async ngOnInit(): Promise<void> {
-    super.ngOnInit()
-      .then(() => {
-        if (this.popup) {
-          requestIdleCallback(() => {
-            if (isDropdown(this.popup)) {
-              this.nativeElement.setAttribute('aria-haspopup', 'menu');
-            } else if (isDialog(this.popup)) {
-              this.nativeElement.setAttribute('aria-haspopup', 'dialog');
-            } else if (isCombobox(this.popup)) {
-              this.nativeElement.setAttribute('aria-haspopup', 'listbox');
-            } else {
-              this.nativeElement.setAttribute('aria-haspopup', 'true');
-            }
-          });
-          const { options } = this.popup;
-          if (options) {
-            options.trigger = this;
-            options.afterClosing.focusTrigger = true;
-          }
+  override ngOnInit(): void {
+    super.ngOnInit();
+    if (this.popup) {
+      queueMicrotask(() => {
+        if (isDropdown(this.popup)) {
+          this.nativeElement.setAttribute('aria-haspopup', 'menu');
+        } else if (isDialog(this.popup)) {
+          this.nativeElement.setAttribute('aria-haspopup', 'dialog');
+        } else if (isCombobox(this.popup)) {
+          this.nativeElement.setAttribute('aria-haspopup', 'listbox');
+        } else {
+          this.nativeElement.setAttribute('aria-haspopup', 'true');
         }
       });
+      const { options } = this.popup;
+      if (options) {
+        options.trigger = this;
+        options.afterClosing.focusTrigger = true;
+      }
+    }
   }
 }
 

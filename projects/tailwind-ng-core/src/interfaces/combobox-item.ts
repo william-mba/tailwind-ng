@@ -13,5 +13,5 @@ export interface ComboboxItem extends BaseStates, BaseActions {
    * Scrolls the element's ancestor (combobox) such that the item is visible to the user.
    */
   scrollIntoView(): void;
-  select(): Promise<void>;
+  select(): void;
 }
