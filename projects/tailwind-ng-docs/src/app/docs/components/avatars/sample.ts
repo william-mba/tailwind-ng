@@ -1,17 +1,12 @@
-export const PREVIEW = {
-  quick_start_guide: `// Import from ngxtw
-import { AvatarComponent } from 'ngxtw';
+export const SAMPLE = {
+  quick_start_guide: `import { TwAvatar } from 'tailwind-ng';
 
 @Component({
   standalone: true,
-  imports: [
-    AvatarComponent // Add to your component's imports
-    ...
-  ],
-  // Use in your component's template
+  imports: [ TwAvatar ],
   template: \`<img tw-avatar size="md" class="ring-2 ring-white" alt="" src=...\`
 })
-export class ExampleComponent { ... }`,
+export class MyAwesomeComponent { ... }`,
   html_template_customization: `<img tw-avatar size="xs" class="rounded-lg" ... />`,
   component_instance_customization: `// Import from ngxtw
 import { Avatar } from 'ngxtw';
