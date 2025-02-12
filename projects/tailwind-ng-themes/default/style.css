@@ -917,6 +917,9 @@
   .my-8 {
     margin-block: calc(var(--spacing) * 8);
   }
+  .my-10 {
+    margin-block: calc(var(--spacing) * 10);
+  }
   .my-16 {
     margin-block: calc(var(--spacing) * 16);
   }
@@ -982,6 +985,9 @@
   }
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
+  }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
   }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
@@ -3632,25 +3638,9 @@
     --tw-duration: 50ms;
     transition-duration: 50ms;
   }
-  .duration-700 {
-    --tw-duration: 700ms;
-    transition-duration: 700ms;
-  }
-  .duration-75 {
-    --tw-duration: 75ms;
-    transition-duration: 75ms;
-  }
   .duration-100 {
     --tw-duration: 100ms;
     transition-duration: 100ms;
-  }
-  .duration-1000 {
-    --tw-duration: 1000ms;
-    transition-duration: 1000ms;
-  }
-  .duration-150 {
-    --tw-duration: 150ms;
-    transition-duration: 150ms;
   }
   .duration-200 {
     --tw-duration: 200ms;
@@ -3660,9 +3650,25 @@
     --tw-duration: 300ms;
     transition-duration: 300ms;
   }
+  .duration-1000 {
+    --tw-duration: 1000ms;
+    transition-duration: 1000ms;
+  }
+  .duration-150 {
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+  }
   .duration-500 {
     --tw-duration: 500ms;
     transition-duration: 500ms;
+  }
+  .duration-700 {
+    --tw-duration: 700ms;
+    transition-duration: 700ms;
+  }
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -3902,6 +3908,11 @@
   .\*\:border-neutral-300 {
     :is(& > *) {
       border-color: var(--color-neutral-300);
+    }
+  }
+  .\*\:border-slate-200 {
+    :is(& > *) {
+      border-color: var(--color-slate-200);
     }
   }
   .\*\:border-slate-300 {
@@ -5145,6 +5156,11 @@
       margin-top: calc(var(--spacing) * 16);
     }
   }
+  .max-lg\:px-10 {
+    @media (width < 64rem) {
+      padding-inline: calc(var(--spacing) * 10);
+    }
+  }
   .max-lg\:text-center {
     @media (width < 64rem) {
       text-align: center;
@@ -5373,6 +5389,11 @@
   .sm\:px-6 {
     @media (width >= 40rem) {
       padding-inline: calc(var(--spacing) * 6);
+    }
+  }
+  .sm\:px-8 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 8);
     }
   }
   .sm\:px-12 {
@@ -5781,6 +5802,11 @@
   .xl\:grid-cols-3 {
     @media (width >= 80rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .xl\:px-14 {
+    @media (width >= 80rem) {
+      padding-inline: calc(var(--spacing) * 14);
     }
   }
   .\32 xl\:grid-cols-3 {
@@ -6201,6 +6227,13 @@
     :is(& > *) {
       &:where(.dark, .dark *) {
         border-color: var(--color-slate-700);
+      }
+    }
+  }
+  .\*\:dark\:border-slate-800 {
+    :is(& > *) {
+      &:where(.dark, .dark *) {
+        border-color: var(--color-slate-800);
       }
     }
   }

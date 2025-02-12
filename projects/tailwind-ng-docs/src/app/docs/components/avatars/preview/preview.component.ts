@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { TwAvatar, TwBadge, TwButton, TwIcon } from 'tailwind-ng';
 
 @Component({
   selector: 'app-preview',
-  imports: [],
+  imports: [TwBadge, TwAvatar, TwIcon, TwButton],
   templateUrl: './preview.component.html',
   styles: ``
 })
