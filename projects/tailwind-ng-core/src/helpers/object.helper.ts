@@ -57,54 +57,6 @@ function toArray(obj: Config): string[] {
   return res;
 }
 
-function toArrayMemo(fn: (obj: Config, key?: string) => string[]) {
-  const cache = new Map<string, string[]>();
-  let cleanupScheduled = false;
-
-  const scheduleCleanupIfNeeded = () => {
-    if (cleanupScheduled) return;
-    window.addEventListener('load', () => {
-      cache.clear();
-    }, { once: true, capture: true, passive: true });
-    cleanupScheduled = true;
-  };
-
-  return function (obj: Config, key?: string): string[] {
-    if (!key) {
-      key = JSON.stringify(obj);
-    }
-    if (cache.has(key)) return cache.get(key)!;
-    const result = fn(obj);
-    cache.set(key, result);
-    scheduleCleanupIfNeeded();
-    return result;
-  };
-}
-
-function toStringMemo(fn: (obj: Config, key?: string) => string) {
-  const cache = new Map<string, string>();
-  let cleanupScheduled = false;
-
-  const scheduleCleanupIfNeeded = () => {
-    if (cleanupScheduled) return;
-    window.addEventListener('load', () => {
-      cache.clear();
-    }, { once: true, capture: true, passive: true });
-    cleanupScheduled = true;
-  };
-
-  return function (obj: Config, key?: string): string {
-    if (!key) {
-      key = JSON.stringify(obj);
-    }
-    if (cache.has(key)) return cache.get(key)!;
-    const result = fn(obj);
-    cache.set(key, result);
-    scheduleCleanupIfNeeded();
-    return result;
-  };
-}
-
 /** Simply merges objects from source to target.
  * @NOTE Empty child objet(s) of source are ignored during the merge.
  * @param target - The target object to update
@@ -190,12 +142,12 @@ export abstract class Obj {
   /** Returns the object properties values,
    * including properties values of it child objects in a string.
    * */
-  static readonly toString = toStringMemo(toString)
+  static readonly toString = toString
 
   /** Returns the object properties values,
    * including properties values of it child objects in an array.
    * */
-  static readonly toArray = toArrayMemo(toArray)
+  static readonly toArray = toArray
   static readonly merge = {
     /**
      * Merges objects from source to target ignoring empty child objects from source.

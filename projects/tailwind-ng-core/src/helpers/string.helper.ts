@@ -10,7 +10,7 @@ function stringToArray(value: unknown, separator = ' '): string[] {
  * A helper class for string operations.
  */
 export abstract class Str {
-  static readonly resolve = resolveMemo(resolve);
+  static readonly resolve = memoizeResolve(resolve);
   static readonly toArray = stringToArray;
 }
 
@@ -31,12 +31,11 @@ interface ResolveOptions {
  * The first argument is the target and the rest are source arrays.
  * The results are cached to improve subsequent calls performance.
  */
-function resolveMemo(fn: (arg: [...string[][]], options: ResolveOptions) => string[]) {
+function memoizeResolve(fn: (arg: [...string[][]], options: ResolveOptions) => string[]) {
   const cache = new Map<string, string[]>();
   let cleanupScheduled = false;
 
-  const scheduleCleanupIfNeeded = () => {
-    if (cleanupScheduled) return;
+  const scheduleCleanup = () => {
     window.addEventListener('load', () => {
       cache.clear();
     }, { once: true, capture: true, passive: true });
@@ -44,16 +43,40 @@ function resolveMemo(fn: (arg: [...string[][]], options: ResolveOptions) => stri
   };
 
   return function (arg: [...string[][]], options: ResolveOptions = {}): string[] {
-    let { key } = options;
-    if (!key) {
-      key = JSON.stringify({ arg, options });
-    }
+    const key = generateKey(arg, options);
     if (cache.has(key)) return cache.get(key)!;
     const result = fn(arg, options);
     cache.set(key, result);
-    scheduleCleanupIfNeeded();
+    if (!cleanupScheduled)
+      scheduleCleanup();
     return result;
   };
+}
+
+/** A variation of the DJB2 hash algorithm to generate a hash value for a given string.
+* @see http://www.cse.yorku.ca/~oz/hash.html
+*/
+export function hashString(str: string): number {
+  let hash = 5381;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 33) ^ str.charCodeAt(i);
+  }
+  return hash >>> 0;
+}
+
+function stringify(arg: [...string[][]], options: ResolveOptions): string {
+  const { key } = options;
+  if (key) return key;
+
+  const targetString = arg[0].toString();
+  const sourcesString = arg.slice(1).map(source => source.toString()).toString();
+  const optionsString = Object.values(options).toString();
+
+  return `${targetString}|${sourcesString}|${optionsString}`;
+}
+
+function generateKey(arg: [...string[][]], options: ResolveOptions): string {
+  return hashString(stringify(arg, options)).toString();
 }
 
 /** Returns an array of resolved values from source to target.
