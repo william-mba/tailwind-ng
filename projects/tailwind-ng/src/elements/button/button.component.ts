@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, model } from '@angular/core';
 import { Button, ButtonBase, ButtonVariant, classlist, isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isDropdown, isEnterOrSpace, isEscape, isTab, SizeOption } from '@tailwind-ng/core';
 
 /**
@@ -10,7 +10,7 @@ import { Button, ButtonBase, ButtonVariant, classlist, isArrowDown, isArrowDownO
   host: {
     '[class]': 'classList.value()',
     '[attr.variant]': 'variant',
-    '[tabindex]': 'isDisabled ? null : tabIndex',
+    '[tabindex]': 'disabled ? null : tabIndex',
     '[attr.aria-expanded]': 'isPopupExpanded || null',
   },
   template: '<ng-content />',
@@ -19,9 +19,9 @@ import { Button, ButtonBase, ButtonVariant, classlist, isArrowDown, isArrowDownO
   providers: [{ provide: ButtonBase, useExisting: ButtonComponent }]
 })
 export class ButtonComponent extends ButtonBase implements Button {
-  @Input() isFab = false;
-  @Input() size: SizeOption = 'md';
-  @Input() variant: ButtonVariant = 'primary';
+  isFab = model(false);
+  size = model<SizeOption>('md');
+  variant = model<ButtonVariant>('primary');
   @Input() tabIndex = 0;
 
   protected get isPopupExpanded(): boolean {
@@ -30,11 +30,11 @@ export class ButtonComponent extends ButtonBase implements Button {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = classlist(this.class)
+      this.classList = classlist(this.class())
         .set({
-          ...this.config[this.size],
-          ...this.config[this.variant],
-          ...this.isFab ? this.config.fab : {}
+          ...this.config[this.size()],
+          ...this.config[this.variant()],
+          ...this.isFab() ? this.config.fab : {}
         });
     }
   }

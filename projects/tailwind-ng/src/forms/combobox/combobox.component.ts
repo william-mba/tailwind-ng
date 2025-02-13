@@ -67,7 +67,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
   }
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class).set("relative h-max");
+    this.classList = classlist(this.class()).set("relative h-max");
     this.control.valueChanges.subscribe(value => {
       if (!this.isOpened()) {
         this.open();

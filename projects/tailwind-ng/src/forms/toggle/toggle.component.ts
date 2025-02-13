@@ -7,7 +7,7 @@ import { classlist, Toggle, ToggleBase } from '@tailwind-ng/core';
   host: {
     role: 'switch',
     '[class]': 'classList.value()',
-    '[tabindex]': 'isDisabled ? null : tabIndex',
+    '[tabindex]': 'disabled ? null : tabIndex',
     '[attr.aria-checked]': 'isChecked || null',
     '[attr.data-checked]': 'isChecked || null',
   },
@@ -22,7 +22,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   checked = output<boolean>();
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class).set(this.config);
+    this.classList = classlist(this.class()).set(this.config);
   }
 
   private onKeydown(event: KeyboardEvent): void {

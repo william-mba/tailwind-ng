@@ -18,7 +18,7 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() closeOnBlur = false;
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class).set({ ...this.config, ...this.position });
+    this.classList = classlist(this.class()).set({ ...this.config, ...this.position });
   }
   protected override addEventListeners(): void {
     super.addEventListeners();
@@ -41,7 +41,7 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   }
 
   protected onPointerEvent(event: UIEvent) {
-    if (this.isDisabled) {
+    if (this.disabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
       return;

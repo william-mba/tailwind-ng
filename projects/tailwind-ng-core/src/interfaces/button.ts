@@ -1,3 +1,4 @@
+import { ModelSignal } from "@angular/core";
 import { ButtonVariant } from "../config/interfaces/button-config.interface";
 import { SizeOption } from "../types/size-options.type";
 import { BaseActions, BaseStates } from "./base";
@@ -14,17 +15,13 @@ export interface ButtonImmutableStates {
  * @TailwindNG Button component mutable states.
  */
 export interface ButtonMutableStates {
-  size: SizeOption;
-  isFab: boolean;
+  size: ModelSignal<SizeOption>;
+  isFab: ModelSignal<boolean>;
   tabIndex: number;
-  variant: ButtonVariant;
+  variant: ModelSignal<ButtonVariant>;
 }
 
 /**
  * @TailwindNG Button component interface.
  */
-export interface Button extends BaseStates, BaseActions, ButtonImmutableStates, ButtonMutableStates {
-  size: SizeOption;
-  isFab: boolean;
-  variant: ButtonVariant;
-}
+export interface Button extends BaseStates, BaseActions, ButtonImmutableStates, ButtonMutableStates { }

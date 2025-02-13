@@ -1,25 +1,155 @@
-<section class="my-10 text-gray-700 dark:text-gray-300 font-semibold">
-  <table class="table-fixed w-full text-left">
-    <thead>
-      <tr>
-        <th class="table-cell py-4 pl-4">Properties</th>
-        <th class="table-cell py-4 pl-4">Description</th>
-      </tr>
-    </thead>
-    <tbody
-      class="bg-gray-50 dark:bg-black/70 border border-gray-950/5 dark:border-white/10 divide-y divide-gray-950/5 dark:divide-white/10">
-      <tr>
-        <td class="table-cell py-4 pl-4">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-        <td class="table-cell py-4 pl-4">Malcolm Lockyer</td>
-      </tr>
-      <tr>
-        <td class="table-cell py-4 pl-4">Witchy Woman</td>
-        <td class="table-cell py-4 pl-4">The Eagles</td>
-      </tr>
-      <tr>
-        <td class="table-cell py-4 pl-4">Shining Star</td>
-        <td class="table-cell py-4 pl-4">Earth, Wind, and Fire</td>
-      </tr>
-    </tbody>
-  </table>
+<section class="grid gap-8 my-10 text-gray-700 dark:text-gray-300">
+  <details open>
+    <summary>Properties</summary>
+    <div class="px-4">
+      <table class="table-fixed w-full text-left text-balance">
+        <thead>
+          <tr>
+            <th class="table-cell p-4 font-semibold">Name</th>
+            <th class="hidden sm:table-cell overflow-x-auto p-4 font-semibold">Description</th>
+          </tr>
+        </thead>
+        <tbody
+          class="bg-gray-50 dark:bg-black/70 border border-gray-950/5 dark:border-white/10 divide-y divide-gray-950/5 dark:divide-white/10">
+          <tr>
+            <td class="table-cell p-4">
+              <code>{{"size = model\<SizeOption\>('md')"}}</code>
+            </td>
+            <td class="hidden sm:table-cell overflow-x-auto p-4">The size of the component.</td>
+          </tr>
+        </tbody>
+      </table>
+      <details class="mt-8">
+        <summary class="text-gray-500 dark:text-gray-400">Inherited properties</summary>
+        <table class="table-fixed w-full text-left text-balance">
+          <thead>
+            <tr>
+              <th class="table-cell p-4 font-semibold">Name</th>
+              <th class="hidden sm:table-cell overflow-x-auto p-4 font-semibold">Description</th>
+            </tr>
+          </thead>
+          <tbody
+            class="bg-gray-50 dark:bg-black/70 border border-gray-950/5 dark:border-white/10 divide-y divide-gray-950/5 dark:divide-white/10">
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"class = input\<string | string[] | Config | undefined\>(undefined)"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">
+                A property to customize the component's style. <br>
+                To get the final class list value, you can use:
+                <ul>
+                  <li><code>{{"\<componentRef\>.classList.value()"}}</code> or</li>
+                  <li><code>{{"\<componentRef\>.nativeElement.className"}}</code></li>
+                </ul>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{'classList: ClassList'}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">The component's classList instance.</td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"@Input({ alias: 'disabled' })"}}</code><br>
+                <code>{{"disabled: boolean (getter)"}}</code><br>
+                <code>{{"disabled(value: boolean | '') (setter)"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">Whether the component is disabled. Default it's
+                <code>false</code>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"isFocused: boolean (getter)"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">Whether the component is focused.</td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"isHovered = false"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">Whether the component is hovered.</td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"hasFocus: boolean (getter)"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">Whether the component or one of its descendant has
+                focus.</td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"hasVisualFocus: boolean (getter)"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">Whether the component has visual focus.
+                <p class="text-sm">A component can be visual focused without being focused.
+                  This property is mainly used by some accessibility features.</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"nativeElement: HTMLElement"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">A reference to the component's native element.</td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+  </details>
+  <details open>
+    <summary>Methods</summary>
+    <div class="px-4">
+      <details class="mt-8">
+        <summary class="text-gray-500 dark:text-gray-400">Inherited methods</summary>
+        <table class="table-fixed w-full text-left text-balance">
+          <thead>
+            <tr>
+              <th class="table-cell p-4 font-semibold">Name</th>
+              <th class="hidden sm:table-cell overflow-x-auto p-4 font-semibold">Description</th>
+            </tr>
+          </thead>
+          <tbody
+            class="bg-gray-50 dark:bg-black/70 border border-gray-950/5 dark:border-white/10 divide-y divide-gray-950/5 dark:divide-white/10">
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"focus(options?: FocusOptions): HTMLElement | undefined"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">
+                Focuses an element and return it.
+                If it cannot be focused, nothing is done and <code>undefined</code> is returned.
+              </td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"setVisualfocus(options: FocusOptions): HTMLElement | undefined"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">
+                Sets visual focus on an element and return it.
+                If it cannot be visual focused, nothing is done and <code>undefined</code> is returned.
+                Visual focus is set by adding the <code>data-visual-focused</code> attribute on that element.
+              </td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"removeVisualfocus(target?: HTMLElement): void"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">
+                Removes visual focus on the target element.
+                Default target is the component's native element.
+              </td>
+            </tr>
+            <tr>
+              <td class="table-cell p-4">
+                <code>{{"scrollIntoView(options: ScrollIntoViewOptions): void"}}</code>
+              </td>
+              <td class="hidden sm:table-cell overflow-x-auto p-4">
+                Scrolls the element into the view if needed. Making it visible to the user.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+  </details>
 </section>

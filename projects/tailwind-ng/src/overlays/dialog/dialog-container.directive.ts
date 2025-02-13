@@ -7,7 +7,7 @@ import { DialogComponent } from "./dialog.component";
   exportAs: 'twDialogContainer',
   host: {
     '[class]': 'classList.value()',
-    '[tabindex]': 'isDisabled ? null : -1',
+    '[tabindex]': 'disabled ? null : -1',
   }
 })
 export class DialogContainerDirective extends BaseDirective implements OnInit {
@@ -15,7 +15,7 @@ export class DialogContainerDirective extends BaseDirective implements OnInit {
   protected config = inject(DIALOG_CONFIG).container;
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class).set(this.config!);
+    this.classList = classlist(this.class()).set(this.config!);
   }
 
   override ngOnInit(): void {
@@ -54,7 +54,7 @@ export class DialogContainerDirective extends BaseDirective implements OnInit {
   }
 
   protected onPointerEvent(event: UIEvent) {
-    if (this.isDisabled) {
+    if (this.disabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
       return;

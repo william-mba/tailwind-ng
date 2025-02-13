@@ -27,27 +27,27 @@ describe('AvatarComponent', () => {
       const sm = 'sm';
       const xs = 'xs';
 
-      component.size = xl;
-      expect(component.size).toBe(xl);
+      component.size.set(xl);
+      expect(component.size()).toBe(xl);
 
-      component.size = lg;
-      expect(component.size).toBe(lg);
+      component.size.set(lg);
+      expect(component.size()).toBe(lg);
 
-      component.size = md;
-      expect(component.size).toBe(md);
+      component.size.set(md);
+      expect(component.size()).toBe(md);
 
-      component.size = sm;
-      expect(component.size).toBe(sm);
+      component.size.set(sm);
+      expect(component.size()).toBe(sm);
 
-      component.size = xs;
-      expect(component.size).toBe(xs);
+      component.size.set(xs);
+      expect(component.size()).toBe(xs);
     });
   });
 
   it('should set classList', () => {
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
-    const classList = classlist({ b: config.base, s: config[component.size] });
+    const classList = classlist({ b: config.base, s: config[component.size()] });
 
     fixture.detectChanges();
 

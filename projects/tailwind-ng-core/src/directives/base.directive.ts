@@ -1,4 +1,4 @@
-import { Directive, ElementRef, inject, Input, OnDestroy, OnInit } from "@angular/core";
+import { Directive, ElementRef, inject, input, Input, OnDestroy, OnInit } from "@angular/core";
 import { BaseStates, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config/classlist";
@@ -10,9 +10,9 @@ import { Config } from "../types/config.type";
  */
 @Directive({
   host: {
-    '[attr.inert]': 'isDisabled || null',
-    '[attr.disabled]': 'isDisabled || null',
-    '[attr.aria-disabled]': 'isDisabled || null',
+    '[attr.inert]': 'disabled || null',
+    '[attr.disabled]': 'disabled || null',
+    '[attr.aria-disabled]': 'disabled || null',
   }
 })
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseStates<T>, BaseActions, OnInit, OnDestroy {
@@ -21,15 +21,12 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   protected isInitialized = false;
 
   classList!: ClassList;
-  @Input() class?: string | string[] | Config;
+  class = input<string | string[] | Config | undefined>(undefined);
 
   private _isDisabled = false;
 
-  @Input({ alias: 'disabled' })
-  get isDisabled(): boolean {
-    return this._isDisabled;
-  };
-  set isDisabled(value: boolean | '') {
+  @Input()
+  set disabled(value: boolean | '') {
     const newState = (value === '') || value;
     if (this._isDisabled !== newState) {
       this._isDisabled = newState;
@@ -38,6 +35,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
       }
     }
   }
+  get disabled(): boolean {
+    return this._isDisabled;
+  };
 
   get isFocused(): boolean {
     return this.nativeElement === this._document.activeElement;
@@ -93,7 +93,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   // A disabled element should not be interactive.
   private onEvent(event: Event): void {
-    if (this.isDisabled) {
+    if (this.disabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
       return;
@@ -114,7 +114,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   }
 
   focus(options: FocusOptions = {}): HTMLElement | undefined {
-    if (this.isDisabled) return;
+    if (this.disabled) return;
     const { behavior = 'self', preventScroll = true } = options;
     let { target = this.nativeElement } = options;
 
@@ -157,7 +157,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   private currentVisualFocusedElement?: HTMLElement;
   setVisualfocus(options: FocusOptions = {}): HTMLElement | undefined {
-    if (this.isDisabled) return;
+    if (this.disabled) return;
 
     const { behavior = 'self' } = options;
     let { target = this.nativeElement } = options;
@@ -236,6 +236,6 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
    * Generates a basic random ID.
    */
   protected randomId(prefix = 'tw'): string {
-    return `${prefix}-${Math.random().toString(4).substring(2, 10)}`;
+    return `${prefix}-${(Math.random()).toString(16)}`;
   }
 }

@@ -10,7 +10,7 @@ import { ClassList } from "../config/classlist";
   host: {
     role: 'option',
     '[class]': 'classList.value()',
-    '[tabindex]': 'isDisabled ? null : 0',
+    '[tabindex]': 'disabled ? null : 0',
   }
 })
 export class OptionDirective extends BaseDirective {
@@ -18,7 +18,7 @@ export class OptionDirective extends BaseDirective {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class)
+      this.classList = new ClassList(this.class())
         .set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
     }
   }

@@ -52,7 +52,7 @@ export function isButton(component: unknown): component is Button {
  * If so, you can safely access the Button members inside this block scope.
  */
 export function isPrimaryButton(component: unknown): component is Button {
-  return isButton(component) && component.variant === 'primary';
+  return isButton(component) && component.variant() === 'primary';
 }
 
 /**
@@ -60,7 +60,7 @@ export function isPrimaryButton(component: unknown): component is Button {
  * If so, you can safely access the Button members inside this block scope.
  */
 export function isSecondaryButton(component: unknown): component is Button {
-  return isButton(component) && component.variant === 'secondary';
+  return isButton(component) && component.variant() === 'secondary';
 }
 
 /**
@@ -68,7 +68,7 @@ export function isSecondaryButton(component: unknown): component is Button {
  * If so, you can safely access the Button members inside this block scope.
  */
 export function isTonalButton(component: unknown): component is Button {
-  return isButton(component) && component.variant === 'tonal';
+  return isButton(component) && component.variant() === 'tonal';
 }
 
 /**
@@ -76,5 +76,5 @@ export function isTonalButton(component: unknown): component is Button {
  * If so, you can safely access the Button members inside this block scope.
  */
 export function isTextButton(component: unknown): component is Button {
-  return isButton(component) && component.variant === 'text';
+  return isButton(component) && component.variant() === 'text';
 }

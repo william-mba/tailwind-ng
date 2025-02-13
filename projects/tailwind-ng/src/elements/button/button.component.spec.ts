@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { SizeOption, classlist, Str, ButtonVariant } from '@tailwind-ng/core';
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { classlist, Str } from '@tailwind-ng/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { GetButtonConfig, provideButton } from './button.component.config';
 import { Component, viewChild } from '@angular/core';
@@ -23,46 +23,34 @@ describe('ButtonComponent', () => {
 
   it('should set size', () => {
     TestBed.runInInjectionContext(() => {
-      const xl: SizeOption = 'xl';
-      const lg: SizeOption = 'lg';
-      const md: SizeOption = 'md';
-      const sm: SizeOption = 'sm';
-      const xs: SizeOption = 'xs';
+      component.size.set('xl');
+      expect(component.size()).toBe('xl');
 
-      component.size = xl;
-      expect(component.size).toBe(xl);
+      component.size.set('lg');
+      expect(component.size()).toBe('lg');
 
-      component.size = lg;
-      expect(component.size).toBe(lg);
+      component.size.set('md');
+      expect(component.size()).toBe('md');
 
-      component.size = md;
-      expect(component.size).toBe(md);
+      component.size.set('sm');
+      expect(component.size()).toBe('sm');
 
-      component.size = sm;
-      expect(component.size).toBe(sm);
-
-      component.size = xs;
-      expect(component.size).toBe(xs);
+      component.size.set('xs');
+      expect(component.size()).toBe('xs');
     });
   });
 
   it('should set variant', () => {
-    const primary: ButtonVariant = 'primary';
-    const secondary: ButtonVariant = 'secondary';
-    const tonal: ButtonVariant = 'tonal';
-    const text: ButtonVariant = 'text';
+    expect(component.variant()).toBe('primary');
 
-    component.variant = primary;
-    expect(component.variant).toBe(primary);
+    component.variant.set('secondary');
+    expect(component.variant()).toBe('secondary');
 
-    component.variant = secondary;
-    expect(component.variant).toBe(secondary);
+    component.variant.set('text');
+    expect(component.variant()).toBe('text');
 
-    component.variant = tonal;
-    expect(component.variant).toBe(tonal);
-
-    component.variant = text;
-    expect(component.variant).toBe(text);
+    component.variant.set('tonal');
+    expect(component.variant()).toBe('tonal');
   });
 
   it('should set classList', () => {
@@ -104,7 +92,7 @@ describe('ButtonComponent', () => {
     expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
   });
 
-  it('should customize using dependency injection', fakeAsync(() => {
+  it('should customize using dependency injection', () => {
     @Component({
       selector: 'test-app',
       standalone: true,
@@ -133,8 +121,6 @@ describe('ButtonComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    tick();
-
     Str.toArray(customizations).forEach(c => {
       expect(testApp.button().classList.value().includes(c)).toBeTrue();
     });
@@ -142,7 +128,7 @@ describe('ButtonComponent', () => {
     expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
     expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
     expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
-  }, { flush: true }));
+  });
 
   it('should update classList', () => {
     const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
@@ -158,9 +144,9 @@ describe('ButtonComponent', () => {
   });
 
   it('should set isFab', () => {
-    expect(component.isFab).toBeFalse();
-    component.isFab = true;
-    expect(component.isFab).toBeTrue();
+    expect(component.isFab()).toBeFalse();
+    component.isFab.set(true);
+    expect(component.isFab()).toBeTrue();
   });
 
 });

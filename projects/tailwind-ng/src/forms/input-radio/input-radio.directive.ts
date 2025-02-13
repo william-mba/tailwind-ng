@@ -11,6 +11,6 @@ import { classlist, InputRadio, InputRadioBase } from '@tailwind-ng/core';
 })
 export class InputRadioDirective extends InputRadioBase implements InputRadio {
   protected override buildStyle(): void {
-    this.classList = classlist(this.class).set(this.config);
+    this.classList = classlist(this.class()).set(this.config);
   }
 }

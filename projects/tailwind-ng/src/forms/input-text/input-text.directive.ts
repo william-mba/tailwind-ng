@@ -11,6 +11,6 @@ import { InputTextBase, InputText, classlist } from '@tailwind-ng/core';
 })
 export class InputTextDirective extends InputTextBase implements InputText {
   protected override buildStyle(): void {
-    this.classList = classlist(this.class).set(this.config);
+    this.classList = classlist(this.class()).set(this.config);
   }
 }

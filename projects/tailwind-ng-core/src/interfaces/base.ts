@@ -1,3 +1,4 @@
+import { InputSignal } from "@angular/core";
 import { ClassList } from "../config";
 import { Config } from "../types";
 
@@ -6,11 +7,13 @@ import { Config } from "../types";
  */
 export interface BaseStates<T extends HTMLElement = HTMLElement> {
   /**
-   * A space-separated list of classes to customize the element.
+   * A property to customize the component's style.
    *
-   * To get the full list of classes of the element, use `<element>.classList.value()` or `<element>.nativeElement.className` where `<element>` is the component instance ref.
+   * Get the final class list value using:
+   * - `<componentRef>.classList.value()` or
+   * - `<componentRef>.nativeElement.className`.
    */
-  readonly class?: string | string[] | Config;
+  readonly class: InputSignal<string | string[] | Config | undefined>;
   /**
    * The component's class list instance.
    */
@@ -22,19 +25,23 @@ export interface BaseStates<T extends HTMLElement = HTMLElement> {
   /**
    * Whether the component is disabled.
    */
-  readonly isDisabled: boolean;
+  readonly disabled: boolean;
   /**
    * Whether the component is focused.
    */
   readonly isFocused: boolean;
   /**
-   * Whether the component or one of its children has focus.
+   * Whether the component or one of its descendant has focus.
    */
   readonly hasFocus: boolean;
   /**
    * Whether the component has visual focus.
    */
   readonly hasVisualFocus: boolean;
+  /**
+   * Whether the component is hovered.
+   */
+  readonly isHovered: boolean;
 }
 
 /**
@@ -42,15 +49,16 @@ export interface BaseStates<T extends HTMLElement = HTMLElement> {
  */
 export interface BaseActions {
   /**
-   * Focuses element based on the given options. If a component cannot be focused, nothing is done.
-   * @returns The focused element. Otherwise, undefined.
+   * Focuses an element and return it.
+   * If it cannot be focused, nothing is done and `undefined` is returned.
    */
   focus(options?: FocusOptions): HTMLElement | undefined;
 
   /**
-   * Sets visual focus by adding `data-visual-focused` attribute on target element using the given behavior. If the element cannot be visual focused, nothing is done.
-   * - The visual focus appearance should be defined in the component's style config.
-   * @returns The visual focused element. Otherwise, undefined.
+   * Sets visual focus on an element and return it.
+   * If it cannot be visual focused, nothing is done and `undefined` is returned.
+   * Visual focus is set by adding the `data-visual-focused` attribute on that element.
+   * @NOTE The visual focus appearance should be defined in the component's style/config.
    */
   setVisualfocus(options: FocusOptions): HTMLElement | undefined;
   /**
