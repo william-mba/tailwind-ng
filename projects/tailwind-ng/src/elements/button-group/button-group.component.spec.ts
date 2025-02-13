@@ -10,7 +10,7 @@ describe('ButtonGroupComponent', () => {
   let component: ButtonGroupComponent;
   let fixture: ComponentFixture<ButtonGroupComponent>;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         provideButtonGroup()
@@ -19,11 +19,6 @@ describe('ButtonGroupComponent', () => {
     fixture = TestBed.createComponent(ButtonGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should get config', () => {
-    const config = GetButtonGroupConfig();
-    expect(component.config).toEqual(config);
   });
 
   it('should set classList', () => {

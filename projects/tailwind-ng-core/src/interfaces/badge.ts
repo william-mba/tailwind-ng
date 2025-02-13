@@ -1,4 +1,3 @@
-import { BadgeConfig } from "../config/interfaces/badge-config.interface";
 import { SizeOption } from "../types/size-options.type";
 import { BaseActions, BaseStates } from "./base";
 

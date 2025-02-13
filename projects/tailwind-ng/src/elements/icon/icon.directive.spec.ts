@@ -35,10 +35,6 @@ describe('IconDirective', () => {
     });
   });
 
-  it('should get config', () => {
-    expect(component.config).toEqual(config);
-  });
-
   it('should set size', () => {
     component.size = 'xl';
     expect(component.size).toBe('xl');

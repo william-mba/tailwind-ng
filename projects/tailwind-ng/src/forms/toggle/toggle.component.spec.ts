@@ -29,10 +29,6 @@ describe('ToggleComponent', () => {
     expect(component.isChecked).toBeTrue();
   });
 
-  it('should get config', () => {
-    expect(component.config).toEqual(GetToggleConfig());
-  });
-
   it('should set classlist', () => {
     const expected = classlist(GetToggleConfig());
     expect(component.classList.value()).toEqual(expected.value());

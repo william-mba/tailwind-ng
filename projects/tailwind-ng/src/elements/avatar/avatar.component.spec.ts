@@ -7,7 +7,7 @@ import { GetAvatarConfig, provideAvatar } from './avatar.component.config';
 
 describe('AvatarComponent', () => {
   const config = GetAvatarConfig();
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         provideAvatar()
@@ -44,22 +44,14 @@ describe('AvatarComponent', () => {
     });
   });
 
-  it('should set classList', async () => {
+  it('should set classList', () => {
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
     const classList = classlist({ b: config.base, s: config[component.size] });
-    component.classList = classList;
+
     fixture.detectChanges();
 
-    expect(component.classList.base).toEqual(classList.base);
     expect(component.classList.value()).toEqual(classList.value());
-  });
-
-  it('should get config', () => {
-    const fixture = TestBed.createComponent(AvatarComponent);
-    const component = fixture.componentInstance;
-    fixture.detectChanges();
-    expect(component.config).toEqual(config);
   });
 
   it('should customize using class attribute', () => {
@@ -110,20 +102,19 @@ describe('AvatarComponent', () => {
 
     const fixture = TestBed.createComponent(TestApp);
     const testApp = fixture.componentInstance;
-    fixture.detectChanges()
+    const avatar = testApp.avatar();
+    fixture.detectChanges();
 
-    const avatarConfig = testApp.avatar().config.base!;
+    expect(avatar.classList.value().includes('ring-2')).toBeTrue();
+    expect(avatar.classList.value().includes('ring-white')).toBeTrue();
+    expect(avatar.classList.value().includes('rounded-md')).toBeTrue();
 
-    expect(avatarConfig.radius).toBe('rounded-md');
-    expect(avatarConfig.ringColor).toBe('ring-white');
-    expect(avatarConfig.ringWidth).toBe('ring-2');
-
-    expect(testApp.avatar().classList.value().includes(config.base.radius!)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(config.base.ringColor!)).toBeFalse();
-    expect(testApp.avatar().classList.value().includes(config.base.ringWidth!)).toBeFalse();
+    expect(avatar.classList.value().includes(config.base.radius!)).toBeFalse();
+    expect(avatar.classList.value().includes(config.base.ringColor!)).toBeFalse();
+    expect(avatar.classList.value().includes(config.base.ringWidth!)).toBeFalse();
   });
 
-  it('should update classList', async () => {
+  it('should update classList', () => {
     const newClassList = ['rounded-md', 'ring-2', 'ring-white'];
 
     @Component({
@@ -138,7 +129,7 @@ describe('AvatarComponent', () => {
     const fixture = TestBed.createComponent(TestApp);
     const testApp = fixture.componentInstance;
     fixture.detectChanges();
-    await testApp.avatar().classList.update(newClassList);
+    testApp.avatar().classList.update(newClassList);
 
     expect(testApp.avatar().classList.value().includes(newClassList[0])).toBeTrue();
     expect(testApp.avatar().classList.value().includes(newClassList[1])).toBeTrue();

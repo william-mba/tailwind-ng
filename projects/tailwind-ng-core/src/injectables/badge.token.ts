@@ -1,8 +1,8 @@
-import { Directive, inject, Input } from "@angular/core";
+import { Directive, inject } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Badge } from "../interfaces/badge";
-import { BadgeConfig, ConfigTypeOf } from "../config";
+import { ConfigTypeOf } from "../config";
 
 /**
  * Checks if the component is a Badge.

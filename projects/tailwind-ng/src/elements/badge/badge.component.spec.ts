@@ -53,10 +53,6 @@ describe('BadgeComponent', () => {
     expect(component.classList.value()).toEqual(classList.value());
   });
 
-  it('should get config', () => {
-    expect(component.config).toEqual(config);
-  });
-
   it('should customize using class attribute', () => {
     const customConfig = GetBadgeConfig();
     customConfig.base.gap = 'gap-2';

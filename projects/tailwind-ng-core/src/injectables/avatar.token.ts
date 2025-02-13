@@ -1,4 +1,4 @@
-import { Directive, inject, Input } from "@angular/core";
+import { Directive, inject } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Avatar } from "../interfaces/avatar";

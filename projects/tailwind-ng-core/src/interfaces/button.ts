@@ -1,4 +1,4 @@
-import { ButtonConfig, ButtonVariant } from "../config/interfaces/button-config.interface";
+import { ButtonVariant } from "../config/interfaces/button-config.interface";
 import { SizeOption } from "../types/size-options.type";
 import { BaseActions, BaseStates } from "./base";
 import { Popup } from "./popup";

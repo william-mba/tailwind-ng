@@ -1,5 +1,5 @@
 import { Directive, inject, Input, OnInit } from "@angular/core";
-import { ConfigTypeOf, IconConfig, IconName } from "../config";
+import { ConfigTypeOf, IconName } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Icon } from "../interfaces/icon";

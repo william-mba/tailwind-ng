@@ -6,11 +6,11 @@ describe('QuickStartComponent', () => {
   let component: QuickStartComponent;
   let fixture: ComponentFixture<QuickStartComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [QuickStartComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(QuickStartComponent);
     component = fixture.componentInstance;

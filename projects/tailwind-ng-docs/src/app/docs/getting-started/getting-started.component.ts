@@ -49,8 +49,8 @@ export class GettingStartedComponent implements AfterViewInit {
 <span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">tw-button</span><span style="color:#E6EDF3">&gt;Click me!&lt;/</span><span style="color:#7EE787">tw-button</span><span style="color:#E6EDF3">&gt;</span></span></code></pre>`;
 
   // async ngAfterViewInit(): Promise<void> {
-  //   // const { codeToHtml } = await import('shiki');
-  //   // this.withNpm = await codeToHtml(this.withNpm, { lang: 'sh', theme: 'github-dark-default' });
+  //   // const { codeToHtml } = import('shiki');
+  //   // this.withNpm = codeToHtml(this.withNpm, { lang: 'sh', theme: 'github-dark-default' });
   // }
 
   protected trust(content: string): string {

@@ -1,5 +1,5 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { GetDialogConfig, provideDialog } from './dialog.component.config';
+import { provideDialog } from './dialog.component.config';
 import { DialogComponent } from './dialog.component';
 import { DialogModule } from './dialog.module';
 import { Component, ElementRef, viewChild } from '@angular/core';
@@ -239,43 +239,5 @@ describe('DialogComponent', () => {
     expect(dialog.close).toHaveBeenCalledTimes(1);
     expect(dialog.isOpened()).toBeFalse();
   }));
-
-  it('should get config', () => {
-    @Component({
-      selector: 'tw-tw-app-test',
-      imports: [DialogModule],
-      template: `
-        <div tw-dialog #dialog>
-          <!-- Dialog container -->
-          <div tw-dialog-container>
-            <!-- Dialog content -->
-            <div class="grid gap-3 text-center sm:text-left">
-              <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
-                Payment successful
-              </h1>
-              <p class="text-sm text-slate-600 dark:text-slate-400">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </p>
-            </div>
-          </div>
-        </div>
-        `,
-    }) class TestComponent {
-      dialog = viewChild.required(DialogComponent);
-    }
-
-    const testFixture = TestBed.createComponent(TestComponent);
-    const testComponent = testFixture.componentInstance;
-    const dialog = testComponent.dialog();
-
-    testFixture.detectChanges();
-    const config = dialog.config
-    expect(config).toBeTruthy();
-    expect(config.scrim).toBeTruthy();
-    expect(config.backdrop).toBeTruthy();
-    expect(config.container).toBeTruthy();
-    expect(config).toEqual(GetDialogConfig());
-  });
 });
 

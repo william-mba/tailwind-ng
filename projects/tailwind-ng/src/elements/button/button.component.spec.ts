@@ -21,10 +21,6 @@ describe('ButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should get config', () => {
-    expect(component.config).toEqual(config);
-  });
-
   it('should set size', () => {
     TestBed.runInInjectionContext(() => {
       const xl: SizeOption = 'xl';
@@ -69,7 +65,7 @@ describe('ButtonComponent', () => {
     expect(component.variant).toBe(text);
   });
 
-  it('should set classList', async () => {
+  it('should set classList', () => {
     const classList = classlist({
       ...config.md,
       ...config.primary
@@ -148,11 +144,11 @@ describe('ButtonComponent', () => {
     expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
   }, { flush: true }));
 
-  it('should update classList', async () => {
+  it('should update classList', () => {
     const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
     const defaultRadius = GetButtonConfig().primary.gap!;
 
-    await component.classList.update(newClassList);
+    component.classList.update(newClassList);
 
     newClassList.forEach(c => {
       expect(component.classList.value().includes(c)).toBeTrue();

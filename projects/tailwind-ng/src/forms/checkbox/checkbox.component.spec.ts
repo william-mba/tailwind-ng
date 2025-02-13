@@ -3,9 +3,10 @@ import { GetCheckboxConfig, provideCheckbox } from './checkbox.component.config'
 import { Component, viewChild } from '@angular/core';
 import { CheckboxComponent } from './checkbox.component';
 import { provideIcon } from 'tailwind-ng';
+import { classlist } from '@tailwind-ng/core';
 
 describe('CheckboxComponent', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         provideCheckbox(),
@@ -14,7 +15,9 @@ describe('CheckboxComponent', () => {
     });
   });
 
-  it('should get config', () => {
+  it('should set classlit', () => {
+    const classlit = classlist(GetCheckboxConfig());
+
     @Component({
       selector: 'tw-test-app',
       standalone: true,
@@ -28,6 +31,6 @@ describe('CheckboxComponent', () => {
     const component = testApp.component();
     fixture.detectChanges();
 
-    expect(component.config).toEqual(GetCheckboxConfig());
+    expect(component.classList.value()).toEqual(classlit.value());
   });
 });

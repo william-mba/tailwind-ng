@@ -1,4 +1,4 @@
-import { Directive, forwardRef, inject, Input } from "@angular/core";
+import { Directive, forwardRef, inject } from "@angular/core";
 import { ConfigTypeOf } from "../config";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
