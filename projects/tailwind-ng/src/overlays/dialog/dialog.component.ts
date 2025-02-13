@@ -27,13 +27,9 @@ export class DialogComponent extends DialogBase implements Dialog {
   @Input() isModal = true;
 
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class)
-        .set({
-          s: this.config.scrim,
-          b: this.isModal && !this.position ? this.config.backdrop : {}
-        })
-    }
+    this.classList = classlist(this.class).set({
+      s: this.config.scrim, b: this.isModal && !this.position ? this.config.backdrop : {}
+    })
     if (this.position) {
       this.classList.update({ i: 'inset-', ...this.position });
     }

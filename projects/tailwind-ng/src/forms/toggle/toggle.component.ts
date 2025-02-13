@@ -20,10 +20,9 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   @Input() isChecked = false;
   @Input() tabIndex = 0;
   checked = output<boolean>();
+
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class).set(this.config);
-    }
+    this.classList = classlist(this.class).set(this.config);
   }
 
   private onKeydown(event: KeyboardEvent): void {

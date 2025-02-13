@@ -64,9 +64,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   }
 
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class).set(this.config);
-    }
+    this.classList = classlist(this.class).set(this.config);
   }
 
   protected override addEventListeners(): void {
