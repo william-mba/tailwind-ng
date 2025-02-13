@@ -13,7 +13,7 @@ export interface BaseStates<T extends HTMLElement = HTMLElement> {
    * - `<componentRef>.classList.value()` or
    * - `<componentRef>.nativeElement.className`.
    */
-  readonly class: InputSignal<string | string[] | Config | undefined>;
+  readonly class: InputSignal<string | string[] | Config | undefined | null>;
   /**
    * The component's class list instance.
    */

@@ -21,7 +21,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   protected isInitialized = false;
 
   classList!: ClassList;
-  class = input<string | string[] | Config | undefined>(undefined);
+  class = input<string | string[] | Config | undefined | null>(null);
 
   private _isDisabled = false;
 

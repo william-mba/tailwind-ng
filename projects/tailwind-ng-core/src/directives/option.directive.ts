@@ -2,7 +2,7 @@ import { Directive, Input } from "@angular/core";
 import { BaseDirective } from "./base.directive";
 import { isArrowDownOrRight, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isSpace } from "../guards";
 import { Popup } from "../interfaces/popup";
-import { ClassList } from "../config/classlist";
+import { classlist, ClassList } from "../config/classlist";
 
 @Directive({
   selector: 'tw-option, [tw-option], [twOption]',
@@ -18,7 +18,7 @@ export class OptionDirective extends BaseDirective {
 
   protected override buildStyle(): void {
     if (!this.classList) {
-      this.classList = new ClassList(this.class())
+      this.classList = classlist(this.class())
         .set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
     }
   }
