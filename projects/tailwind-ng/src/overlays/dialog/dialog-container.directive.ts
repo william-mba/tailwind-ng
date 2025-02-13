@@ -1,5 +1,5 @@
 import { Directive, inject, OnInit } from "@angular/core";
-import { BaseDirective, classlist, isEscape } from '@tailwind-ng/core';
+import { BaseDirective, classlist, DIALOG_CONFIG, isEscape } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
 
 @Directive({
@@ -12,12 +12,10 @@ import { DialogComponent } from "./dialog.component";
 })
 export class DialogContainerDirective extends BaseDirective implements OnInit {
   private readonly dialog = inject(DialogComponent, { skipSelf: true });
+  protected config = inject(DIALOG_CONFIG).container;
 
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class)
-        .set(this.dialog.config.container!);
-    }
+    this.classList = classlist(this.class).set(this.config!);
   }
 
   override ngOnInit(): void {

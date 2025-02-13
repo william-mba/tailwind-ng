@@ -6,6 +6,5 @@ import { BaseActions, BaseStates } from "./base";
  * @TailwindNG Badge component interface.
  */
 export interface Badge extends BaseStates, BaseActions {
-  config: Partial<BadgeConfig>;
   size: SizeOption
 }

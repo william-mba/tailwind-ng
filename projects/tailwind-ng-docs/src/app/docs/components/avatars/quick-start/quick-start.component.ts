@@ -22,6 +22,11 @@ export class QuickStartComponent {
 <span class="line absolute inset-x-0 border-l-8 border-white/15 bg-white/10 dark:bg-white/5"><span style="color:#E6EDF3"> &lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"sm"</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"ring-2 ring-white"</span><span style="color:#79C0FF"> alt</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">""</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
 <span class="line"></span>
 <span class="line"></span></code></pre>`;
+  // templateUpdateHTML = `<pre class="shiki github-dark-default border border-gray-950/5 dark:border-white/10 overflow-x-auto bg-black/90! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span class="line"><span style="color:#8B949E">&lt;!-- my-awesome.component.html --&gt;</span></span></span>
+  // <span class="line"></span>
+  // <span class="line absolute inset-x-0 border-l-8 border-white/15 bg-white/10 dark:bg-white/5"><span style="color:#E6EDF3"> &lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"sm"</span><span style="color:#79C0FF"> alt</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">""</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
+  // <span class="line"></span>
+  // <span class="line"></span></code></pre>`;
 
   // async ngAfterViewInit(): Promise<void> {
   // codeToHtml(`<!-- my-awesome.component.html -->

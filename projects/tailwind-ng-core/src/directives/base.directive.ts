@@ -20,7 +20,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   protected readonly _document = inject(DOCUMENT);
   protected isInitialized = false;
 
-  @Input() classList!: ClassList;
+  classList!: ClassList;
   @Input() class?: string | string[] | Config;
 
   private _isDisabled = false;

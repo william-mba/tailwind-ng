@@ -860,27 +860,6 @@
       max-width: 96rem;
     }
   }
-  .container\! {
-    width: 100% !important;
-    @media (width >= 30rem) {
-      max-width: 30rem !important;
-    }
-    @media (width >= 40rem) {
-      max-width: 40rem !important;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem !important;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem !important;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem !important;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem !important;
-    }
-  }
   .-m-px {
     margin: -1px;
   }
@@ -1277,6 +1256,9 @@
   }
   .table-auto {
     table-layout: auto;
+  }
+  .table-fixed {
+    table-layout: fixed;
   }
   .origin-bottom {
     transform-origin: bottom;
@@ -1915,6 +1897,11 @@
   .divide-gray-300 {
     :where(& > :not(:last-child)) {
       border-color: var(--color-gray-300);
+    }
+  }
+  .divide-gray-950\/5 {
+    :where(& > :not(:last-child)) {
+      border-color: color-mix(in oklab, var(--color-gray-950) 5%, transparent);
     }
   }
   .divide-lime-200 {
@@ -3656,10 +3643,6 @@
     --tw-duration: 50ms;
     transition-duration: 50ms;
   }
-  .duration-75 {
-    --tw-duration: 75ms;
-    transition-duration: 75ms;
-  }
   .duration-100 {
     --tw-duration: 100ms;
     transition-duration: 100ms;
@@ -3687,6 +3670,10 @@
   .duration-700 {
     --tw-duration: 700ms;
     transition-duration: 700ms;
+  }
+  .duration-75 {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -5909,6 +5896,13 @@
     &:where(.dark, .dark *) {
       :where(& > :not(:last-child)) {
         border-color: var(--color-rose-700);
+      }
+    }
+  }
+  .dark\:divide-white\/10 {
+    &:where(.dark, .dark *) {
+      :where(& > :not(:last-child)) {
+        border-color: color-mix(in oklab, var(--color-white) 10%, transparent);
       }
     }
   }

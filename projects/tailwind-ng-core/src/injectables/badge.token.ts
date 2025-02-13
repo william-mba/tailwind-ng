@@ -1,9 +1,8 @@
 import { Directive, inject, Input } from "@angular/core";
-import { ConfigOf } from "../config/config-of";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Badge } from "../interfaces/badge";
-import { BadgeConfig } from "../config";
+import { BadgeConfig, ConfigTypeOf } from "../config";
 
 /**
  * Checks if the component is a Badge.
@@ -14,9 +13,9 @@ export function isBadge(component: unknown): component is Badge {
 }
 
 
-export const BADGE_CONFIG = InjectionTokenFactory.create<Partial<BadgeConfig>>({}, 'BADGE_CONFIG');
+export const BADGE_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Badge'>>({}, 'BADGE_CONFIG');
 
 @Directive({})
-export abstract class BadgeBase extends BaseDirective implements ConfigOf<'Badge'> {
-  @Input() config = inject(BADGE_CONFIG);
+export abstract class BadgeBase extends BaseDirective {
+  protected config = inject(BADGE_CONFIG);
 }

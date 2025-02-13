@@ -2,18 +2,17 @@ import { Directive, inject, Input, OnInit } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { Popup } from "../interfaces/popup";
 import { Button, ButtonImmutableStates } from "../interfaces";
-import { ConfigOf } from "../config/config-of";
 import { isDropdown } from "./dropdown.token";
 import { isDialog } from "./dialog.token";
 import { isCombobox } from "./combobox.token";
 import { InjectionTokenFactory } from "./injection-token.factory";
-import { ButtonConfig } from "../config/interfaces";
+import { ConfigTypeOf } from "../config";
 
-export const BUTTON_CONFIG = InjectionTokenFactory.create<Partial<ButtonConfig>>({}, 'BUTTON_CONFIG');
+export const BUTTON_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Button'>>({}, 'BUTTON_CONFIG');
 
 @Directive()
-export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implements ConfigOf<'Button'>, ButtonImmutableStates, OnInit {
-  @Input() config = inject(BUTTON_CONFIG);
+export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implements ButtonImmutableStates, OnInit {
+  protected config = inject(BUTTON_CONFIG);
   @Input() popup?: Popup;
 
   override ngOnInit(): void {

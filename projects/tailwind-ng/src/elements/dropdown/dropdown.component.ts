@@ -18,10 +18,7 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() closeOnBlur = false;
 
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class)
-        .set({ ...this.config, ...this.position });
-    }
+    this.classList = classlist(this.class).set({ ...this.config, ...this.position });
   }
   protected override addEventListeners(): void {
     super.addEventListeners();

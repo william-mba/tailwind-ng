@@ -1,100 +1,25 @@
-<!-- Properties -->
-<table class="table-auto table text-start w-full">
-  <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <th class="sm:w-96">Properties</th>
-      <th class="p-3">Description</th>
-    </tr>
-  </thead>
-  <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
-    <!-- Base properties -->
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>{{"@Input({"}} <br>
-              <span class="p-3"></span>{{"transform: stringToArray,"}} <br>
-              {{"}) class: ClassName[] = []"}}
-            </code></pre>
-      </td>
-      <td>
-        <p>The initial class list setted before the avatar initialization.</p>
-      </td>
-    </tr>
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>{{"classList: ClassList = new ClassList()"}}</code></pre>
-      </td>
-      <td>
-        <p>A reference to the class list instance of the avatar.</p>
-      </td>
-    </tr>
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>{{'nativeElement: HTMLElement'}} </code></pre>
-      </td>
-      <td>
-        <p>A reference to the native element of the avatar inside of a view.</p>
-      </td>
-    </tr>
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>{{"@Input({ transform: booleanAttribute })"}}</code></pre><br>
-        <pre><code>disabled: boolean = false</code></pre>
-      </td>
-      <td>
-        <p>Whether the avatar is disabled.</p>
-      </td>
-    </tr>
-    <!-- Component specific properties -->
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>{{"@Input() size: SizeOption = 'md'"}} </code></pre>
-      </td>
-      <td>
-        <p>The size of the avatar.</p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<!-- Methods -->
-<table class="table-auto table text-start w-full">
-  <thead class="border-b *:*:pb-3 border-black/15 dark:border-white/15">
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <th class="sm:w-96">Methods</th>
-      <th class="p-3">Description</th>
-    </tr>
-  </thead>
-  <tbody class="*:border-b *:*:py-3 *:border-black/15 *:dark:border-white/15">
-    <!-- Base methods -->
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>disable(): void</code></pre>
-      </td>
-      <td>
-        <p>
-          Disables the avatar.
-        </p>
-      </td>
-    </tr>
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>enable(): void</code></pre>
-      </td>
-      <td>
-        <p>
-          Enables the avatar.
-        </p>
-      </td>
-    </tr>
-    <!-- Component specific methods -->
-    <tr class="*:text-start last:*:pl-6 last:*:hidden last:*:sm:table-cell">
-      <td>
-        <pre><code>setSize(value: SizeOption): void</code></pre>
-      </td>
-      <td>
-        <p>
-          Sets the size of the avatar.
-        </p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<section class="my-10 text-gray-700 dark:text-gray-300 font-semibold">
+  <table class="table-fixed w-full text-left">
+    <thead>
+      <tr>
+        <th class="table-cell py-4 pl-4">Properties</th>
+        <th class="table-cell py-4 pl-4">Description</th>
+      </tr>
+    </thead>
+    <tbody
+      class="bg-gray-50 dark:bg-black/70 border border-gray-950/5 dark:border-white/10 divide-y divide-gray-950/5 dark:divide-white/10">
+      <tr>
+        <td class="table-cell py-4 pl-4">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+        <td class="table-cell py-4 pl-4">Malcolm Lockyer</td>
+      </tr>
+      <tr>
+        <td class="table-cell py-4 pl-4">Witchy Woman</td>
+        <td class="table-cell py-4 pl-4">The Eagles</td>
+      </tr>
+      <tr>
+        <td class="table-cell py-4 pl-4">Shining Star</td>
+        <td class="table-cell py-4 pl-4">Earth, Wind, and Fire</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

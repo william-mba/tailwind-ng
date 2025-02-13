@@ -1,4 +1,4 @@
-import { IconConfig, IconName } from "../config/interfaces/icon-config.interface";
+import { IconName } from "../config/interfaces/icon-config.interface";
 import { SizeOption } from "../types/size-options.type";
 
 /**
@@ -7,5 +7,4 @@ import { SizeOption } from "../types/size-options.type";
 export interface Icon {
   name: IconName;
   size: SizeOption;
-  config: Partial<IconConfig>;
 }

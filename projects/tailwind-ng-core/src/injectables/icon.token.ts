@@ -1,5 +1,5 @@
 import { Directive, inject, Input, OnInit } from "@angular/core";
-import { ConfigOf, IconConfig, IconName } from "../config";
+import { ConfigTypeOf, IconConfig, IconName } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Icon } from "../interfaces/icon";
@@ -12,18 +12,18 @@ export function isIcon(component: unknown): component is Icon {
   return component instanceof IconBase;
 }
 
-export const ICON_CONFIG = InjectionTokenFactory.create<Partial<IconConfig>>({}, 'ICON_CONFIG');
+export const ICON_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Icon'>>({}, 'ICON_CONFIG');
 
 @Directive({})
-export abstract class IconBase extends BaseDirective implements ConfigOf<'Icon'>, OnInit {
-  @Input() config = inject(ICON_CONFIG);
+export abstract class IconBase extends BaseDirective implements OnInit {
+  protected config = inject(ICON_CONFIG);
   @Input({ required: true }) name!: IconName;
 
-  override async ngOnInit(): Promise<void> {
+  override ngOnInit(): void {
+    super.ngOnInit();
     if (this.config.map) {
       this.nativeElement.innerHTML = this.config.map[this.name];
     }
-    super.ngOnInit();
   }
 }
 

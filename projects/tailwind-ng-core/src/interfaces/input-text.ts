@@ -1,4 +1,3 @@
-import { InputTextConfig } from "../config/interfaces/input-text-config.interface";
 import { BaseActions, BaseStates } from "./base";
 
 /**
@@ -11,6 +10,4 @@ import { BaseActions, BaseStates } from "./base";
  * - tel
  * - url
  */
-export interface InputText extends BaseStates<HTMLInputElement>, BaseActions {
-  config: Partial<InputTextConfig>;
-}
+export interface InputText extends BaseStates<HTMLInputElement>, BaseActions { }

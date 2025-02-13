@@ -1,9 +1,8 @@
 import { Directive, inject, Input } from "@angular/core";
-import { ConfigOf } from "../config/config-of";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Avatar } from "../interfaces/avatar";
-import { AvatarConfig } from "../config";
+import { ConfigTypeOf } from "../config";
 
 /**
  * Checks if the component is an Avatar.
@@ -13,9 +12,9 @@ export function isAvatar(component: unknown): component is Avatar {
   return component instanceof AvatarBase
 }
 
-export const AVATAR_CONFIG = InjectionTokenFactory.create<Partial<AvatarConfig>>({}, 'AVATAR_CONFIG');
+export const AVATAR_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Avatar'>>({}, 'AVATAR_CONFIG');
 
 @Directive({})
-export abstract class AvatarBase extends BaseDirective implements ConfigOf<'Avatar'> {
-  @Input() config = inject(AVATAR_CONFIG);
+export abstract class AvatarBase extends BaseDirective {
+  protected config = inject(AVATAR_CONFIG);
 }

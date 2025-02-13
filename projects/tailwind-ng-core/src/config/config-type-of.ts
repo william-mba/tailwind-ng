@@ -13,7 +13,10 @@ import { InputTextConfig } from "./interfaces/input-text-config.interface";
 import { ToggleConfig } from "./interfaces/toggle-config.interface";
 
 /**
- * Returns the config type associated to the specified key.
+ * Returns the config type of `K`.
+ * @param K The config key.
+ * @param X The type of config to return. Default is `'Partial<InferredType>'`.
+ * @returns The config type of `K`.
  * @example
  * ```ts
  * // using type alias
@@ -23,16 +26,16 @@ import { ToggleConfig } from "./interfaces/toggle-config.interface";
  * interface AvatarConfig extends ConfigTypeOf<'Avatar'> {};
  * ```
  */
-export type ConfigTypeOf<K extends ConfigKey = ConfigKey> =
-  K extends 'Avatar' ? AvatarConfig :
-  K extends 'Badge' ? BadgeConfig :
-  K extends 'Button' ? ButtonConfig :
-  K extends 'ButtonGroup' ? ComponentConfig :
-  K extends 'ComboboxItem' ? ComboboxItemConfig :
-  K extends 'Dropdown' ? DropdownConfig :
-  K extends 'Icon' ? IconConfig :
-  K extends 'InputText' ? InputTextConfig :
-  K extends 'InputRadio' ? InputRadioConfig :
-  K extends 'Dialog' ? DialogConfig :
-  K extends 'Toggle' ? ToggleConfig :
-  K extends 'Checkbox' ? CheckboxConfig : never;
+export type ConfigTypeOf<K extends ConfigKey = ConfigKey, X extends 'Full' | 'Partial' = 'Partial'> =
+  K extends 'Avatar' ? X extends 'Full' ? AvatarConfig : Partial<AvatarConfig> :
+  K extends 'Badge' ? X extends 'Full' ? BadgeConfig : Partial<BadgeConfig> :
+  K extends 'Button' ? X extends 'Full' ? ButtonConfig : Partial<ButtonConfig> :
+  K extends 'ButtonGroup' ? X extends 'Full' ? ComponentConfig : Partial<ComponentConfig> :
+  K extends 'ComboboxItem' ? X extends 'Full' ? ComboboxItemConfig : Partial<ComboboxItemConfig> :
+  K extends 'Dropdown' ? X extends 'Full' ? DropdownConfig : Partial<DropdownConfig> :
+  K extends 'Icon' ? X extends 'Full' ? IconConfig : Partial<IconConfig> :
+  K extends 'InputText' ? X extends 'Full' ? InputTextConfig : Partial<InputTextConfig> :
+  K extends 'InputRadio' ? X extends 'Full' ? InputRadioConfig : Partial<InputRadioConfig> :
+  K extends 'Dialog' ? X extends 'Full' ? DialogConfig : Partial<DialogConfig> :
+  K extends 'Toggle' ? X extends 'Full' ? ToggleConfig : Partial<ToggleConfig> :
+  K extends 'Checkbox' ? X extends 'Full' ? CheckboxConfig : Partial<CheckboxConfig> : never;

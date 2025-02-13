@@ -20,24 +20,20 @@ interface ResolveOptions {
   /** The minimum string length. Default is 2.
    */
   minStringLength?: number;
-  /**
-   * The key used to cache the resolved values.
-   */
-  key?: string;
 }
 
 /**
- * Returns an array of resolved values from source to target.
- * The first argument is the target and the rest are source arrays.
- * The results are cached to improve subsequent calls performance.
+ * A memoized version of the resolve function.
+ * @param fn The resolve function.
  */
 function memoizeResolve(fn: (arg: [...string[][]], options: ResolveOptions) => string[]) {
   const cache = new Map<string, string[]>();
   let cleanupScheduled = false;
 
   const scheduleCleanup = () => {
-    window.addEventListener('load', () => {
+    window.addEventListener('pointerup', () => {
       cache.clear();
+      cleanupScheduled = false;
     }, { once: true, capture: true, passive: true });
     cleanupScheduled = true;
   };
@@ -47,8 +43,7 @@ function memoizeResolve(fn: (arg: [...string[][]], options: ResolveOptions) => s
     if (cache.has(key)) return cache.get(key)!;
     const result = fn(arg, options);
     cache.set(key, result);
-    if (!cleanupScheduled)
-      scheduleCleanup();
+    if (!cleanupScheduled) scheduleCleanup();
     return result;
   };
 }
@@ -64,15 +59,12 @@ export function hashString(str: string): number {
   return hash >>> 0;
 }
 
+/** Returns a string representation of the arguments and options.
+ * @param arg The arguments to stringify.
+ * @param options The options to stringify.
+ */
 function stringify(arg: [...string[][]], options: ResolveOptions): string {
-  const { key } = options;
-  if (key) return key;
-
-  const targetString = arg[0].toString();
-  const sourcesString = arg.slice(1).map(source => source.toString()).toString();
-  const optionsString = Object.values(options).toString();
-
-  return `${targetString}|${sourcesString}|${optionsString}`;
+  return `${arg[0].toString()}|${arg.slice(1).map(source => source.toString()).toString()}|${Object.values(options).toString()}`;
 }
 
 function generateKey(arg: [...string[][]], options: ResolveOptions): string {

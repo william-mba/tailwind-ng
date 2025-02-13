@@ -14,8 +14,6 @@ import { ButtonGroup, ButtonGroupBase, classlist } from '@tailwind-ng/core';
 })
 export class ButtonGroupComponent extends ButtonGroupBase implements ButtonGroup {
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class).set(this.config);
-    }
+    this.classList = classlist(this.class).set(this.config);
   }
 }

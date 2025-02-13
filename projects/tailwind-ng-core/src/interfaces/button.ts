@@ -7,7 +7,6 @@ import { Popup } from "./popup";
  * @TailwindNG Button component immutable states.
  */
 export interface ButtonImmutableStates {
-  readonly config: Partial<ButtonConfig>;
   readonly popup?: Popup;
 }
 

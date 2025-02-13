@@ -16,8 +16,6 @@ export class BadgeComponent extends BadgeBase implements Badge {
   @Input() size: SizeOption = 'md';
 
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class).set({ ...this.config.base, ...this.config[this.size] })
-    }
+    this.classList = classlist(this.class).set({ ...this.config.base, ...this.config[this.size] })
   }
 }

@@ -1,10 +1,10 @@
 import { Directive, forwardRef, inject, Input } from "@angular/core";
-import { ConfigOf, ConfigTypeOf } from "../config";
+import { ConfigTypeOf } from "../config";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Dropdown } from "../interfaces/dropdown";
 
-export const DROPDOWN_CONFIG = InjectionTokenFactory.create<Partial<ConfigTypeOf<'Dropdown'>>>({}, 'DROPDOWN_CONFIG');
+export const DROPDOWN_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Dropdown'>>({}, 'DROPDOWN_CONFIG');
 
 @Directive({
   host: {
@@ -12,10 +12,9 @@ export const DROPDOWN_CONFIG = InjectionTokenFactory.create<Partial<ConfigTypeOf
   },
   providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DropdownBase) }]
 })
-export abstract class DropdownBase extends PopupDirective implements ConfigOf<'Dropdown'> {
-  @Input() config = inject(DROPDOWN_CONFIG);
+export abstract class DropdownBase extends PopupDirective {
+  protected config = inject(DROPDOWN_CONFIG);
 }
-
 
 /**
  * Checks if the component is a Dropdown.

@@ -52,6 +52,30 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
     this.changes.emit({ checked: this.checked, indeterminate: this.indeterminate });
   }
 
+  protected override buildStyle(): void {
+    if (this.parent) {
+      this.config = {};
+      this.classList = this.parent.classList;
+    } else {
+      this.classList = classlist(this.class).set(this.config);
+    }
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    if (this.parent) {
+      if (!this.parent.children) {
+        this.parent.children = [];
+      }
+      this.parent.children.push(this);
+      if (this.parent.checked && (!this.checked || this.indeterminate)) {
+        this.toggle();
+      } else if (this.checked && (!this.parent.checked && !this.parent.indeterminate)) {
+        this.parent.toggle({ origin: 'child' });
+      }
+    }
+  }
+
   toggle(options: CheckboxToggleOptions = {}): Promise<CheckboxMutableStates> {
     options.event?.stopPropagation();
     const { origin = 'self' } = options;
@@ -86,32 +110,6 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
       indeterminate: this.indeterminate,
       checked: this.checked
     });
-  }
-
-  protected override buildStyle(): void {
-    if (!this.classList) {
-      if (this.parent) {
-        this.config = {};
-        this.classList = this.parent.classList;
-      } else {
-        this.classList = classlist(this.class).set(this.config);
-      }
-    }
-  }
-
-  override ngOnInit(): void {
-    super.ngOnInit();
-    if (this.parent) {
-      if (!this.parent.children) {
-        this.parent.children = [];
-      }
-      this.parent.children.push(this);
-      if (this.parent.checked && (!this.checked || this.indeterminate)) {
-        this.toggle();
-      } else if (this.checked && (!this.parent.checked && !this.parent.indeterminate)) {
-        this.parent.toggle({ origin: 'child' });
-      }
-    }
   }
 
   protected override addEventListeners(): void {
