@@ -131,7 +131,7 @@ function arrayFrom(value?: string | string[] | Config): string[] {
 /**
  * Creates a class list that can be used to set, update and merge Tailwind CSS class names for a component.
  */
-export function classlist(initialValue: string | string[] | Config | undefined | null): ClassList {
+export function classlist(initialValue: string | string[] | Config | null = null): ClassList {
   if (Type.isUndefined(initialValue) || initialValue === null) {
     return new ClassList();
   }
