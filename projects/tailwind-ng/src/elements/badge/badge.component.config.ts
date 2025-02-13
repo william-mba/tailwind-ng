@@ -8,25 +8,28 @@ const DefaultConfig = (): BadgeConfig => {
       gap: 'gap-1',
       alignItems: 'items-center',
       justifyContent: 'justify-center',
-      paddingX: 'px-1.5',
-      paddingY: 'py-0.5',
       fontSize: 'text-xs',
       fontWeight: 'font-medium'
     },
     xs: {
-      padding: 'p-0.5'
+      paddingX: 'px-1.5',
+      paddingY: 'py-0.5',
     },
     sm: {
-      padding: 'p-1'
+      paddingX: 'px-1.5',
+      paddingY: 'py-1'
     },
     md: {
-      padding: 'p-1.5'
+      paddingX: 'px-2',
+      paddingY: 'py-1.5'
     },
     lg: {
-      padding: 'p-2'
+      paddingX: 'px-2.5',
+      paddingY: 'py-2'
     },
     xl: {
-      padding: 'p-2.5'
+      paddingX: 'px-3',
+      paddingY: 'py-2.5'
     },
   }
 }
