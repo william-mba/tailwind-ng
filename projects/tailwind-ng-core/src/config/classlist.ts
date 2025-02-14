@@ -6,7 +6,13 @@ import { Config } from "../types";
  * @TailwindNG Component's class list interface.
  */
 export interface IClassList {
+  /**
+   * The initial (custom) class list value.
+   */
   readonly base: Signal<string[]>;
+  /**
+   * The current class list value.
+   */
   readonly value: Signal<string[]>;
   /**
    * Sets a brand new class list value.
@@ -53,14 +59,7 @@ interface ResolveBehavior {
 };
 
 export class ClassList implements IClassList {
-  /**
-   * The current class list value.
-   */
-  value = signal<string[]>([])
-
-  /**
-  * The custom class list to merge with the default class list's value.
-  */
+  value = signal<string[]>([]);
   base = signal<string[]>([]);
 
   /**
