@@ -9,7 +9,7 @@ import { Button, ButtonBase, ButtonVariant, classlist, isArrowDown, isArrowDownO
   exportAs: 'twButton',
   host: {
     '[class]': 'classList.value()',
-    '[attr.variant]': 'variant',
+    '[attr.variant]': 'variant()',
     '[tabindex]': 'disabled ? null : tabIndex',
     '[attr.aria-expanded]': 'isPopupExpanded || null',
   },
@@ -29,14 +29,11 @@ export class ButtonComponent extends ButtonBase implements Button {
   }
 
   protected override buildStyle(): void {
-    if (!this.classList) {
-      this.classList = classlist(this.class())
-        .set({
-          ...this.config[this.size()],
-          ...this.config[this.variant()],
-          ...this.isFab() ? this.config.fab : {}
-        });
-    }
+    this.classList = classlist(this.class()).set({
+      ...this.config[this.size()],
+      ...this.config[this.variant()],
+      ...this.isFab() ? this.config.fab : {}
+    });
   }
 
   protected onPointerUp(event: Event): void {
