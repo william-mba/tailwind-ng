@@ -42,9 +42,9 @@ export const routes: Routes = [
                 loadComponent: () => import('./docs/components/avatars/preview/preview.component').then(m => m.PreviewComponent)
               },
               {
-                path: 'quick-start',
-                title: 'Avatars Components Quick Start Guide',
-                loadComponent: () => import('./docs/components/avatars/quick-start/quick-start.component').then(m => m.QuickStartComponent)
+                path: 'usage',
+                title: 'Avatars Components Usage',
+                loadComponent: () => import('./docs/components/avatars/usage/usage.component').then(m => m.UsageComponent)
               },
               {
                 path: 'api',
