@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
+// import { codeToHtml } from 'shiki';
 
 @Component({
   selector: 'app-usage',
@@ -29,23 +30,33 @@ export class UsageComponent {
 <span class="line"></span>
 <span class="line"><span style="color:#8B949E">&lt;!-- avatar with placeholder initials --&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">tw-avatar</span><span style="color:#E6EDF3">&gt; TW &lt;/</span><span style="color:#7EE787">tw-avatar</span><span style="color:#E6EDF3">&gt;</span></span>
-<code><span class="line"></span>
+<span class="line"></span>
 <span class="line"><span style="color:#8B949E">&lt;!-- avatar with top notification --&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"relative"</span><span style="color:#E6EDF3">&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">  &lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"sm"</span><span style="color:#79C0FF"> alt</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">""</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">  &lt;</span><span style="color:#7EE787">tw-badge</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"sm"</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"absolute top-0 right-0 ..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">&lt;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">&lt;!-- avatar group stacked bottom to top --&gt;</span></span>
+<span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"flex -space-x-1"</span><span style="color:#E6EDF3">&gt;</span></span>
+<span class="line"><span style="color:#E6EDF3">  &lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"lg"</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"ring-2 ring-white"</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
+<span class="line"><span style="color:#E6EDF3">  &lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"lg"</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"ring-2 ring-white"</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
+<span class="line"><span style="color:#E6EDF3">  &lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"lg"</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"ring-2 ring-white"</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
+<span class="line"><span style="color:#E6EDF3">  &lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> size</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"lg"</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"ring-2 ring-white"</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
+<span class="line"><span style="color:#E6EDF3">&lt;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">  </span></span></code></pre>`;
 
-  // async ngAfterViewInit(): Promise<void> {
-  //       codeToHtml(`
-  //   <div class="relative">
-  //     <img tw-avatar size="sm" alt="" src="..." />
-  //     <tw-badge size="sm" class="absolute top-0 right-0 ..." />
-  //   </div>
-  //     `, { lang: 'html', theme: 'github-dark-default' })
-  //         .then((html) => this.templateUpdateHTML = html);
-  // }
+  //   async ngAfterViewInit(): Promise<void> {
+  //     codeToHtml(`<!-- avatar group stacked bottom to top -->
+  // <div class="flex -space-x-1">
+  //   <img tw-avatar size="lg" class="ring-2 ring-white" src="..." />
+  //   <img tw-avatar size="lg" class="ring-2 ring-white" src="..." />
+  //   <img tw-avatar size="lg" class="ring-2 ring-white" src="..." />
+  //   <img tw-avatar size="lg" class="ring-2 ring-white" src="..." />
+  // </div>
+  //       `, { lang: 'html', theme: 'github-dark-default' })
+  //       .then((html) => this.templateUpdateHTML = html);
+  //   }
 
   protected trust(content: string): string {
     return this.sanitizer.bypassSecurityTrustHtml(content) as string;

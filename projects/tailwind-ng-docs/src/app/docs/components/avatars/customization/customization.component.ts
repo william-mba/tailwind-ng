@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
-// import { codeToHtml } from 'shiki';
 
 @Component({
   selector: 'app-customization',
@@ -37,11 +36,6 @@ export class CustomizationComponent {
 <span class="line"><span style="color:#8B949E">&lt;!-- avatar with placeholder initials --&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">tw-avatar</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span class="bg-blue-400/20" style="color:#A5D6FF">"text-lg text-slate-50 bg-slate-400"</span><span style="color:#E6EDF3">&gt; TW &lt;/</span><span style="color:#7EE787">tw-avatar</span><span style="color:#E6EDF3">&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">  </span></span></code></pre>`;
-
-  // async ngAfterViewInit(): Promise<void> {
-  //   codeToHtml(this.configProviders, { lang: 'typescript', theme: 'github-dark-default' })
-  //     .then((html) => this.configProviders = html);
-  // }
 
   protected trust(content: string): string {
     return this.sanitizer.bypassSecurityTrustHtml(content) as string;
