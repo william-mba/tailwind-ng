@@ -3,6 +3,7 @@ export * from './badge';
 export * from './base';
 export * from './button-group';
 export * from './button';
+export * from './checkbox-icon';
 export * from './checkbox';
 export * from './combobox-item';
 export * from './combobox';
