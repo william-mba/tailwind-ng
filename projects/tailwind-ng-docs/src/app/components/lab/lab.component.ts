@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, InputSignal } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   TwAvatar,
@@ -15,7 +15,7 @@ import {
   TwInputText,
   TwCheckbox,
 } from 'tailwind-ng';
-import { TwOption } from "@tailwind-ng/core";
+import { isCombobox, Popup, TwOption } from "@tailwind-ng/core";
 
 interface User {
   image?: string;
@@ -290,7 +290,7 @@ export class LabComponent {
     }
   }
 
-  reset(id = 1): void {
+  reset(id = 1, popup?: Popup): void {
     setTimeout(() => {
       switch (id) {
         case 1:
@@ -307,9 +307,17 @@ export class LabComponent {
           break
       }
     }, 100);
+
+    if (isCombobox(popup)) {
+      popup.reset();
+    }
   }
 
   saveValue(value: string | string[]): void {
     console.log('Value:', value);
+  }
+
+  logItems(items: { value: InputSignal<string> }[]): void {
+    console.log('items:', items.map(x => x.value()));
   }
 }
