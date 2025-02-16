@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
 import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
@@ -19,7 +19,6 @@ import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 })
 export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxItem, OnInit {
   value = input.required<string>();
-  selected = output<ComboboxItem>();
   private readonly _combobox = inject(ComboboxComponent, { skipSelf: true, host: true });
   private readonly _value = computed(() => this.value().toLocaleLowerCase());
 
@@ -30,26 +29,28 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   override ngOnInit(): void {
     super.ngOnInit();
 
-    // Select the item if it is the default value.
-    if (this._value() === this._combobox.input().value.toLocaleLowerCase()) {
-      this.select();
-    }
-
     // Select the item if the value changed matchs the item value.
-    this._combobox.input().changes.subscribe(value => {
-      if (!this.isSelected && this._value() === value.toLocaleLowerCase()) {
-        this.select();
-      }
+    this._combobox.input().valueChange.subscribe(value => {
+      this.selectIfNeeded(value);
     });
 
     this._combobox.opened.subscribe((opened) => {
-      if (opened && this.isSelected) this.scrollIntoView();
+      this.selectIfNeeded();
+      queueMicrotask(() => {
+        if (opened && this.isSelected) this.scrollIntoView();
+      });
     });
+  }
+
+  private selectIfNeeded(value = this._combobox.input().value): void {
+    if (!this._combobox.opened() || this.isSelected) return;
+    if (this._value() === value.toLocaleLowerCase()) {
+      this.select();
+    }
   }
 
   select(): void {
     this._combobox.select(this);
-    this.selected.emit(this);
   }
 
   protected override buildStyle(): void {

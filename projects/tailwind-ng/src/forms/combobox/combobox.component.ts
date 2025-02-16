@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, contentChild, input, OnInit, ViewEncapsulation } from '@angular/core';
-import { classlist, Combobox, ComboboxBase, ComboboxItem, ComboboxMode, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape, TwIf } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, contentChild, model, OnInit, output, ViewEncapsulation } from '@angular/core';
+import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape, SelectionMode, TwIf } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
@@ -22,10 +22,11 @@ import { classlist, Combobox, ComboboxBase, ComboboxItem, ComboboxMode, Dropdown
   providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }]
 })
 export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit {
-  private _selection = new WeakMap<ComboboxItem, ComboboxItem>();
   readonly dropdown = contentChild.required(DropdownBase);
   readonly input = contentChild.required(InputTextBase);
-  readonly selectionMode = input<ComboboxMode>('single');
+  selected = output<ComboboxItem[]>();
+  selectionMode = model<SelectionMode>('single');
+  private _map = new Map<string, ComboboxItem>();
 
   override ngOnInit(): void {
     super.ngOnInit();
@@ -33,10 +34,6 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
       if (!this.opened()) {
         this.open();
       }
-      if (this.input().isEmpty) {
-        this.resetSelection();
-      }
-      this.resetActiveElementIfAny();
     });
   }
 
@@ -49,15 +46,19 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 
   override close(): void {
     super.close();
-    this.resetActiveElementIfAny();
     this.dropdown().close();
+    this.resetActiveElementIfAny();
+    this.selected.emit([...this._map.values()]);
+    if (this.selectionMode() === 'single' && this._map.size > 0) {
+      this.input().value = [...this._map.values()][0].value();
+    }
   }
 
   protected onBlur(): void {
     requestAnimationFrame(() => {
       if (!this.hasFocus) {
-        this.close();
         this.input().removeVisualfocus();
+        if (this.opened()) this.close();
       }
     });
   }
@@ -103,6 +104,10 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
           }
         }
       }
+      const activeContent = this.activeElement?.textContent?.trim();
+      if (activeContent && activeContent.length > 0) {
+        this.input().value = activeContent;
+      }
     } else if (isEnterOrSpace(event.key) && this.activeElement) {
       this.activeElement.click();
     }
@@ -121,34 +126,30 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   }
 
   has(item: ComboboxItem): boolean {
-    return this._selection.has(item);
+    return this._map.has(item.value());
   }
 
   select(item: ComboboxItem): void {
-    if (this.selectionMode() === 'multiple') {
-      if (this.has(item)) {
-        this._selection.delete(item);
-      } else {
-        this._selection.set(item, item);
-      }
-    } else {
-      if (!this.has(item)) {
-        this.resetSelection();
-        this._selection.set(item, item);
-      }
+    if (this.selectionMode() === 'single') {
+      this._map.clear();
+      this._map.set(item.value(), item);
       this.input().value = item.value();
       this.close();
+    } else {
+      if (this.has(item)) {
+        this._map.delete(item.value());
+      } else {
+        this._map.set(item.value(), item);
+      }
+      this.activeElement = this.dropdown().setVisualfocus({ target: item.nativeElement });
     }
     this.input().focus();
-    this.resetActiveElementIfAny();
   }
 
   reset(): void {
-    this.resetSelection();
+    this._map.clear();
     this.input().clear();
-  }
-
-  private resetSelection() {
-    this._selection = new WeakMap<ComboboxItem, ComboboxItem>();
+    this.input().focus();
+    this.resetActiveElementIfAny();
   }
 }

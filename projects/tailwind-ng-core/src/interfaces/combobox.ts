@@ -1,4 +1,4 @@
-import { InputSignal, Signal } from "@angular/core";
+import { ModelSignal, OutputEmitterRef, Signal } from "@angular/core";
 import { ComboboxItem } from "./combobox-item";
 import { BasicPopupActions, Popup, PopupState } from "./popup";
 import { InputText } from "./input-text";
@@ -10,12 +10,12 @@ export interface ComboboxState extends PopupState {
   readonly input: Signal<InputText>;
   readonly dropdown: Signal<Popup>;
   /**
-   *  The combobox's selection mode.
+   * The combobox's selection mode. Default is 'single'.
    */
-  readonly selectionMode: InputSignal<ComboboxMode>;
+  readonly selectionMode: ModelSignal<SelectionMode>;
 }
 
-export type ComboboxMode = 'single' | 'multiple';
+export type SelectionMode = 'single' | 'multiple';
 
 /**
  * @TailwindNG Combobox component actions
@@ -37,4 +37,9 @@ export interface ComboboxActions extends BasicPopupActions {
   has(item: ComboboxItem): boolean;
 }
 
-export interface Combobox extends ComboboxState, ComboboxActions { }
+export interface Combobox extends ComboboxState, ComboboxActions {
+  /**
+   * Emits the latest selected item when combobox's selection changes.
+   */
+  readonly selected: OutputEmitterRef<ComboboxItem[]>;
+}
