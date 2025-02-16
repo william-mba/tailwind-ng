@@ -4,7 +4,7 @@ import { timer } from 'rxjs';
 // import { codeToHtml } from 'shiki';
 
 @Component({
-  selector: 'app-usage',
+  selector: 'app-avatars-usage',
   imports: [],
   templateUrl: './usage.component.html',
   styles: ``

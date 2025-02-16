@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-avatars-api',
+  selector: 'app-badges-api',
   imports: [],
   templateUrl: './api.component.html',
   styles: ``

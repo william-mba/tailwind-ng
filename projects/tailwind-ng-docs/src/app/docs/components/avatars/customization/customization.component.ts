@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
 
 @Component({
-  selector: 'app-customization',
+  selector: 'app-avatars-customization',
   imports: [],
   templateUrl: './customization.component.html',
   styles: ``

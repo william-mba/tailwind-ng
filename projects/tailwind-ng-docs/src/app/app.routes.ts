@@ -66,7 +66,34 @@ export const routes: Routes = [
           {
             path: 'badges',
             title: 'Badges',
-            loadComponent: () => import('./docs/components/badges/badges.component').then(m => m.BadgesComponent)
+            loadComponent: () => import('./docs/components/badges/badges.component').then(m => m.BadgesComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Avatars Components Preview',
+                loadComponent: () => import('./docs/components/badges/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Avatars Components Usage',
+                loadComponent: () => import('./docs/components/badges/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Avatars Components API',
+                loadComponent: () => import('./docs/components/badges/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Avatars Components Customization',
+                loadComponent: () => import('./docs/components/badges/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'buttons',
