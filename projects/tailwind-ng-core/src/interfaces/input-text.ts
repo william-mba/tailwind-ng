@@ -1,3 +1,4 @@
+import { OutputEmitterRef } from "@angular/core";
 import { BaseActions, BaseStates } from "./base";
 
 /**
@@ -10,4 +11,26 @@ import { BaseActions, BaseStates } from "./base";
  * - tel
  * - url
  */
-export interface InputText extends BaseStates<HTMLInputElement>, BaseActions { }
+export interface InputText extends BaseStates<HTMLInputElement>, BaseActions {
+  /**
+   * The input's value.
+   */
+  readonly value: string;
+  /**
+   * Whether the input is valid.
+   */
+  readonly isValid: boolean;
+  /**
+   * Whether the input is empty.
+   */
+  readonly isEmpty: boolean;
+  /**
+   * Emits the input's value when it changes.
+   */
+  readonly valueChange: OutputEmitterRef<string>;
+  /**
+   * Emits the input's value when it changes.
+   */
+  readonly changes: OutputEmitterRef<string>;
+  clear(): void;
+}

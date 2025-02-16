@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { TwButton, TwDropdown, TwIcon } from 'tailwind-ng';
-import { OptionDirective, ThemeService } from '@tailwind-ng/core';
+import { TwOption, ThemeService } from '@tailwind-ng/core';
 import { NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-docs',
-  imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, OptionDirective, RouterOutlet],
+  imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, TwOption, RouterOutlet],
   templateUrl: './docs.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -77,51 +77,51 @@ export const NAV_ITEMS: NavItem[] = [
     category: 'components',
     children: [
       {
-        label: 'Avatar',
+        label: 'Avatars',
         route: 'avatars'
       },
       {
-        label: 'Badge',
+        label: 'Badges',
         route: 'badges'
       },
       {
-        label: 'Button',
+        label: 'Buttons',
         route: 'buttons'
       },
       {
-        label: 'Button Group',
+        label: 'Button Groups',
         route: 'button-groups'
       },
       {
-        label: 'Checkbox',
+        label: 'Checkboxes',
         route: 'checkboxes'
       },
       {
-        label: 'Combobox',
+        label: 'Comboboxes',
         route: 'comboboxes'
       },
       {
-        label: 'Dialog',
+        label: 'Dialogs',
         route: 'dialogs'
       },
       {
-        label: 'Dropdown',
+        label: 'Dropdowns',
         route: 'dropdowns'
       },
       {
-        label: 'Icon',
+        label: 'Icons',
         route: 'icons'
       },
       {
-        label: 'Input Group',
+        label: 'Input Groups',
         route: 'input-groups'
       },
       {
-        label: 'Radio Group',
+        label: 'Radio Groups',
         route: 'radio-groups'
       },
       {
-        label: 'Toggle',
+        label: 'Toggles',
         route: 'toggles'
       }
     ]

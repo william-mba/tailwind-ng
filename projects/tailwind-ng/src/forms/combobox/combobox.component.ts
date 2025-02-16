@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, contentChild, inject, Input, output, ViewEncapsulation } from '@angular/core';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape, TwIf } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, contentChild, input, OnInit, ViewEncapsulation } from '@angular/core';
+import { classlist, Combobox, ComboboxBase, ComboboxItem, ComboboxMode, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape, TwIf } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
@@ -15,26 +14,30 @@ import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTex
     <ng-content select="input[type=text], input[tw-input], input[twInput]" />
     <ng-content select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]" />
   </div>
-  <ng-container *twIf="isOpened()">
+  <ng-container *twIf="opened()">
     <div class="relative"><ng-content /></div>
   </ng-container>`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }]
 })
-export class ComboboxComponent extends ComboboxBase implements Combobox {
-  private selectionMap = new Map<string, ComboboxItem>();
-  protected readonly dropdown = contentChild.required(DropdownBase);
-  protected readonly input = contentChild.required(InputTextBase);
-  @Input() override id = this.randomId('combobox');
-  @Input() isMulti = false;
-  @Input() control = inject(NonNullableFormBuilder).control('', Validators.minLength(3));
-  valueChanged = output<string>();
-  valueSelected = output<string[]>();
+export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit {
+  private _selection = new WeakMap<ComboboxItem, ComboboxItem>();
+  readonly dropdown = contentChild.required(DropdownBase);
+  readonly input = contentChild.required(InputTextBase);
+  readonly selectionMode = input<ComboboxMode>('single');
 
-  get isValid() {
-    const touchedOrDirty = this.control.touched || this.control.dirty;
-    return this.control.valid && touchedOrDirty && this.control.value.trim().length >= 3;
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.input().changes.subscribe(() => {
+      if (!this.opened()) {
+        this.open();
+      }
+      if (this.input().isEmpty) {
+        this.resetSelection();
+      }
+      this.resetActiveElementIfAny();
+    });
   }
 
   override open(): void {
@@ -51,12 +54,12 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
   }
 
   protected onBlur(): void {
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       if (!this.hasFocus) {
         this.close();
         this.input().removeVisualfocus();
       }
-    }, 50);
+    });
   }
 
   private resetActiveElementIfAny() {
@@ -68,30 +71,14 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
 
   protected override buildStyle(): void {
     this.classList = classlist(this.class()).set("relative h-max");
-    this.control.valueChanges.subscribe(value => {
-      if (!this.isOpened()) {
-        this.open();
-      }
-      if (value.length === 0) {
-        this.reset();
-      }
-      this.resetActiveElementIfAny();
-      this.valueChanged.emit(value);
-    });
-
-    this.valueSelected.subscribe(() => {
-      if (this.selectionMap.size === 0) {
-        this.reset();
-      }
-    });
   }
 
   protected onKeyup(event: KeyboardEvent): void {
     event.stopPropagation();
-    if (!isEscape(event.key) && !this.isOpened()) {
+    if (!isEscape(event.key) && !this.opened()) {
       this.open();
     } else if (isEscape(event.key)) {
-      if (this.isOpened()) {
+      if (this.opened()) {
         this.close();
       } else {
         this.reset();
@@ -134,66 +121,34 @@ export class ComboboxComponent extends ComboboxBase implements Combobox {
   }
 
   has(item: ComboboxItem): boolean {
-    return this.selectionMap.has(item.value);
+    return this._selection.has(item);
   }
 
   select(item: ComboboxItem): void {
-    if (this.isMulti) {
+    if (this.selectionMode() === 'multiple') {
       if (this.has(item)) {
-        this.selectionMap.delete(item.value);
+        this._selection.delete(item);
       } else {
-        this.selectionMap.set(item.value, item);
+        this._selection.set(item, item);
       }
     } else {
       if (!this.has(item)) {
-        this.selectionMap.clear();
-        this.selectionMap.set(item.value, item);
+        this.resetSelection();
+        this._selection.set(item, item);
       }
+      this.input().value = item.value();
       this.close();
     }
-    this.updateControlValue();
-    this.control.markAsDirty();
-    this.control.markAsTouched();
-    this.emitSelection();
+    this.input().focus();
+    this.resetActiveElementIfAny();
   }
 
   reset(): void {
-    if (this.selectionMap.size >= 1) {
-      this.selectionMap.clear();
-      this.updateControlValue();
-      this.emitSelection();
-      if (!this.isOpened()) {
-        this.open();
-      }
-    }
+    this.resetSelection();
+    this.input().clear();
   }
 
-  private emitSelection() {
-    if (this.selectionMap.size === 0) {
-      this.valueSelected.emit([]);
-    } else {
-      const selection: string[] = [];
-      this.selectionMap.forEach(item => selection.push(item.value));
-      this.valueSelected.emit(selection);
-    }
-    if (!this.input().isFocused) {
-      this.input().focus();
-    }
-  }
-
-  private updateControlValue() {
-    if (this.selectionMap.size === 0) {
-      this.control.reset('', { emitEvent: false });
-      return;
-    };
-
-    const values: string[] = [];
-    this.selectionMap.forEach(item => values.push(item.value));
-
-    if (this.isMulti) {
-      this.control.setValue(values.join(', ') + ', ', { emitEvent: false });
-    } else {
-      this.control.setValue(values[0], { emitEvent: false });
-    }
+  private resetSelection() {
+    this._selection = new WeakMap<ComboboxItem, ComboboxItem>();
   }
 }

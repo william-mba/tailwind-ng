@@ -12,7 +12,7 @@ import { classlist, Dialog, DialogBase, OverlayPosition, TwIf } from '@tailwind-
   },
   imports: [TwIf],
   template: `
-  <ng-container *twIf="isOpened()">
+  <ng-container *twIf="opened()">
       <ng-content select='tw-dialog-container, [tw-dialog-container], [twDialogContainer]'/>
   </ng-container>`,
   encapsulation: ViewEncapsulation.None,

@@ -1,4 +1,4 @@
-import { ModelSignal, OutputEmitterRef, } from "@angular/core";
+import { ModelSignal } from "@angular/core";
 import { BaseActions, BaseStates } from "./base";
 
 /**
@@ -10,10 +10,6 @@ export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseSta
    * Whether the component is hovered.
    */
   readonly isHovered: boolean;
-  /**
-   * Whether the component is opened.
-   */
-  readonly isOpened: ModelSignal<boolean>;
   /**
    * The popup's extra options.
    */
@@ -67,22 +63,9 @@ export interface AdvancedPopupActions {
   closeAfter(delay: number): void;
 }
 
-/**
- * @TailwindNG Popup events.
- */
-export interface PopupEvents {
+export interface Popup<T extends HTMLElement = HTMLElement> extends PopupState<T>, BasicPopupActions, AdvancedPopupActions {
   /**
-   * Event emitted when the component is toggled.
+   * A signal that indicates whether the popup is opened. Emits `true` when the popup opens and `false` when it closes.
    */
-  readonly toggled: OutputEmitterRef<boolean>
-  /**
-   * Event emitted when the component is opened.
-   */
-  readonly opened: OutputEmitterRef<void>
-  /**
-   * Event emitted when the component is closed.
-   */
-  readonly closed: OutputEmitterRef<void>
+  readonly opened: ModelSignal<boolean>;
 }
-
-export interface Popup<T extends HTMLElement = HTMLElement> extends PopupState<T>, BasicPopupActions, AdvancedPopupActions, PopupEvents { }

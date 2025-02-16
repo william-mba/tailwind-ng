@@ -38,22 +38,22 @@ export const routes: Routes = [
             children: [
               {
                 path: 'preview',
-                title: 'Avatars Components Preview',
+                title: 'Avatars Preview',
                 loadComponent: () => import('./docs/components/avatars/preview/preview.component').then(m => m.PreviewComponent)
               },
               {
                 path: 'usage',
-                title: 'Avatars Components Usage',
+                title: 'Avatars Usage',
                 loadComponent: () => import('./docs/components/avatars/usage/usage.component').then(m => m.UsageComponent)
               },
               {
                 path: 'api',
-                title: 'Avatars Components API',
+                title: 'Avatars API',
                 loadComponent: () => import('./docs/components/avatars/api/api.component').then(m => m.ApiComponent)
               },
               {
                 path: 'customization',
-                title: 'Avatars Components Customization',
+                title: 'Avatars Customization',
                 loadComponent: () => import('./docs/components/avatars/customization/customization.component').then(m => m.CustomizationComponent)
               },
               {
@@ -70,22 +70,22 @@ export const routes: Routes = [
             children: [
               {
                 path: 'preview',
-                title: 'Avatars Components Preview',
+                title: 'Badges Preview',
                 loadComponent: () => import('./docs/components/badges/preview/preview.component').then(m => m.PreviewComponent)
               },
               {
                 path: 'usage',
-                title: 'Avatars Components Usage',
+                title: 'Badges Usage',
                 loadComponent: () => import('./docs/components/badges/usage/usage.component').then(m => m.UsageComponent)
               },
               {
                 path: 'api',
-                title: 'Avatars Components API',
+                title: 'Badges API',
                 loadComponent: () => import('./docs/components/badges/api/api.component').then(m => m.ApiComponent)
               },
               {
                 path: 'customization',
-                title: 'Avatars Components Customization',
+                title: 'Badges Customization',
                 loadComponent: () => import('./docs/components/badges/customization/customization.component').then(m => m.CustomizationComponent)
               },
               {
@@ -98,52 +98,322 @@ export const routes: Routes = [
           {
             path: 'buttons',
             title: 'Buttons',
-            loadComponent: () => import('./docs/components/buttons/buttons.component').then(m => m.ButtonsComponent)
+            loadComponent: () => import('./docs/components/buttons/buttons.component').then(m => m.ButtonsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Buttons Preview',
+                loadComponent: () => import('./docs/components/buttons/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Buttons Usage',
+                loadComponent: () => import('./docs/components/buttons/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Buttons API',
+                loadComponent: () => import('./docs/components/buttons/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Buttons Customization',
+                loadComponent: () => import('./docs/components/buttons/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'button-groups',
             title: 'Button Groups',
-            loadComponent: () => import('./docs/components/button-groups/button-groups.component').then(m => m.ButtonGroupsComponent)
+            loadComponent: () => import('./docs/components/button-groups/button-groups.component').then(m => m.ButtonGroupsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Button Groups Preview',
+                loadComponent: () => import('./docs/components/button-groups/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Button Groups Usage',
+                loadComponent: () => import('./docs/components/button-groups/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Button Groups API',
+                loadComponent: () => import('./docs/components/button-groups/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Button Groups Customization',
+                loadComponent: () => import('./docs/components/button-groups/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'checkboxes',
             title: 'Checkboxes',
-            loadComponent: () => import('./docs/components/checkboxes/checkboxes.component').then(m => m.CheckboxesComponent)
+            loadComponent: () => import('./docs/components/checkboxes/checkboxes.component').then(m => m.CheckboxesComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Checkboxes Preview',
+                loadComponent: () => import('./docs/components/checkboxes/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Checkboxes Usage',
+                loadComponent: () => import('./docs/components/checkboxes/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Checkboxes API',
+                loadComponent: () => import('./docs/components/checkboxes/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Checkboxes Customization',
+                loadComponent: () => import('./docs/components/checkboxes/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'comboboxes',
             title: 'Comboboxes',
-            loadComponent: () => import('./docs/components/comboboxes/comboboxes.component').then(m => m.ComboboxesComponent)
+            loadComponent: () => import('./docs/components/comboboxes/comboboxes.component').then(m => m.ComboboxesComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Comboboxes Preview',
+                loadComponent: () => import('./docs/components/comboboxes/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Comboboxes Usage',
+                loadComponent: () => import('./docs/components/comboboxes/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Comboboxes API',
+                loadComponent: () => import('./docs/components/comboboxes/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Comboboxes Customization',
+                loadComponent: () => import('./docs/components/comboboxes/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'dialogs',
             title: 'Dialogs',
-            loadComponent: () => import('./docs/components/dialogs/dialogs.component').then(m => m.DialogsComponent)
+            loadComponent: () => import('./docs/components/dialogs/dialogs.component').then(m => m.DialogsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Dialogs Preview',
+                loadComponent: () => import('./docs/components/dialogs/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Dialogs Usage',
+                loadComponent: () => import('./docs/components/dialogs/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Dialogs API',
+                loadComponent: () => import('./docs/components/dialogs/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Dialogs Customization',
+                loadComponent: () => import('./docs/components/dialogs/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'dropdowns',
             title: 'Dropdowns',
-            loadComponent: () => import('./docs/components/dropdowns/dropdowns.component').then(m => m.DropdownsComponent)
+            loadComponent: () => import('./docs/components/dropdowns/dropdowns.component').then(m => m.DropdownsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Dropdowns Preview',
+                loadComponent: () => import('./docs/components/dropdowns/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Dropdowns Usage',
+                loadComponent: () => import('./docs/components/dropdowns/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Dropdowns API',
+                loadComponent: () => import('./docs/components/dropdowns/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Dropdowns Customization',
+                loadComponent: () => import('./docs/components/dropdowns/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'icons',
             title: 'Icons',
-            loadComponent: () => import('./docs/components/icons/icons.component').then(m => m.IconsComponent)
+            loadComponent: () => import('./docs/components/icons/icons.component').then(m => m.IconsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Icons Preview',
+                loadComponent: () => import('./docs/components/icons/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Icons Usage',
+                loadComponent: () => import('./docs/components/icons/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Icons API',
+                loadComponent: () => import('./docs/components/icons/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Icons Customization',
+                loadComponent: () => import('./docs/components/icons/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'input-groups',
             title: 'Input Groups',
-            loadComponent: () => import('./docs/components/input-groups/input-groups.component').then(m => m.InputGroupsComponent)
+            loadComponent: () => import('./docs/components/input-groups/input-groups.component').then(m => m.InputGroupsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Input Groups Preview',
+                loadComponent: () => import('./docs/components/input-groups/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Input Groups Usage',
+                loadComponent: () => import('./docs/components/input-groups/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Input Groups API',
+                loadComponent: () => import('./docs/components/input-groups/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Input Groups Customization',
+                loadComponent: () => import('./docs/components/input-groups/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'radio-groups',
             title: 'Radio Groups',
-            loadComponent: () => import('./docs/components/radio-groups/radio-groups.component').then(m => m.RadioGroupsComponent)
+            loadComponent: () => import('./docs/components/radio-groups/radio-groups.component').then(m => m.RadioGroupsComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Radio Groups Preview',
+                loadComponent: () => import('./docs/components/radio-groups/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Radio Groups Usage',
+                loadComponent: () => import('./docs/components/radio-groups/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Radio Groups API',
+                loadComponent: () => import('./docs/components/radio-groups/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Radio Groups Customization',
+                loadComponent: () => import('./docs/components/radio-groups/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: 'toggles',
             title: 'Toggles',
-            loadComponent: () => import('./docs/components/toggles/toggles.component').then(m => m.TogglesComponent)
+            loadComponent: () => import('./docs/components/toggles/toggles.component').then(m => m.TogglesComponent),
+            children: [
+              {
+                path: 'preview',
+                title: 'Toggles Preview',
+                loadComponent: () => import('./docs/components/toggles/preview/preview.component').then(m => m.PreviewComponent)
+              },
+              {
+                path: 'usage',
+                title: 'Toggles Usage',
+                loadComponent: () => import('./docs/components/toggles/usage/usage.component').then(m => m.UsageComponent)
+              },
+              {
+                path: 'api',
+                title: 'Toggles API',
+                loadComponent: () => import('./docs/components/toggles/api/api.component').then(m => m.ApiComponent)
+              },
+              {
+                path: 'customization',
+                title: 'Toggles Customization',
+                loadComponent: () => import('./docs/components/toggles/customization/customization.component').then(m => m.CustomizationComponent)
+              },
+              {
+                path: '',
+                redirectTo: 'preview',
+                pathMatch: 'full'
+              }
+            ]
           },
           {
             path: '',

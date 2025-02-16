@@ -21,7 +21,7 @@ const DefaultConfig = (): DropdownConfig => {
     colorScheme: 'scheme-light',
     cursor: 'cursor-pointer',
     dark: {
-      bgColor: 'dark:bg-gray-900',
+      bgColor: 'dark:bg-gray-800',
       textColor: 'dark:text-gray-100',
       borderColor: 'dark:border-gray-800',
       colorScheme: 'dark:scheme-dark'

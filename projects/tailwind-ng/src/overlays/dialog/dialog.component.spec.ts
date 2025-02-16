@@ -59,7 +59,7 @@ describe('DialogComponent', () => {
     testFixture.detectChanges();
 
     expect(testComponent.dialog()).toBeTruthy();
-    expect(testComponent.dialog().isOpened()).toBeFalse();
+    expect(testComponent.dialog().opened()).toBeFalse();
   });
 
   it('should open/close', () => {
@@ -102,11 +102,11 @@ describe('DialogComponent', () => {
     const testComponent = testFixture.componentInstance;
     testFixture.detectChanges();
 
-    expect(testComponent.dialog().isOpened()).toBeFalse();
+    expect(testComponent.dialog().opened()).toBeFalse();
     testComponent.showDialog();
-    expect(testComponent.dialog().isOpened()).toBeTrue();
+    expect(testComponent.dialog().opened()).toBeTrue();
     testComponent.closeDialog();
-    expect(testComponent.dialog().isOpened()).toBeFalse();
+    expect(testComponent.dialog().opened()).toBeFalse();
   });
 
   it('should auto close after given display duration', fakeAsync(() => {
@@ -156,17 +156,17 @@ describe('DialogComponent', () => {
     spyOn(dialog, 'close').and.callThrough();
 
     expect(dialog.autoClose).toBeTrue();
-    expect(dialog.isOpened()).toBeFalse();
+    expect(dialog.opened()).toBeFalse();
     expect(dialog.displayDelay).toBe(duration);
 
     testComponent.showDialog();
-    expect(dialog.isOpened()).toBeTrue();
+    expect(dialog.opened()).toBeTrue();
 
     tick(duration / 2);
-    expect(dialog.isOpened()).toBeTrue();
+    expect(dialog.opened()).toBeTrue();
 
     tick(duration / 2);
-    expect(dialog.isOpened()).toBeFalse();
+    expect(dialog.opened()).toBeFalse();
     expect(dialog.closeAfter).toHaveBeenCalled();
     expect(dialog.closeAfter).toHaveBeenCalledWith(duration);
     expect(dialog.closeAfter).toHaveBeenCalledTimes(1);
@@ -221,23 +221,23 @@ describe('DialogComponent', () => {
     spyOn(dialog, 'close').and.callThrough();
 
     expect(dialog.autoClose).toBeFalse();
-    expect(dialog.isOpened()).toBeFalse();
+    expect(dialog.opened()).toBeFalse();
     expect(dialog.displayDelay).toBe(duration);
 
     testComponent.showDialog();
-    expect(dialog.isOpened()).toBeTrue();
+    expect(dialog.opened()).toBeTrue();
 
     tick(duration / 2);
-    expect(dialog.isOpened()).toBeTrue();
+    expect(dialog.opened()).toBeTrue();
 
     tick(duration / 2);
-    expect(dialog.isOpened()).toBeTrue();
+    expect(dialog.opened()).toBeTrue();
     expect(dialog.closeAfter).not.toHaveBeenCalled();
     expect(dialog.close).not.toHaveBeenCalled();
 
     testComponent.closeDialog();
     expect(dialog.close).toHaveBeenCalledTimes(1);
-    expect(dialog.isOpened()).toBeFalse();
+    expect(dialog.opened()).toBeFalse();
   }));
 });
 

@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
-import { classlist, Dropdown, DropdownBase, isEscape, OverlayPosition } from '@tailwind-ng/core';
+import { classlist, Dropdown, DropdownBase, isEscape, OverlayPosition, TwIf } from '@tailwind-ng/core';
 
 /** Dropdown component */
 @Component({
   selector: 'tw-dropdown, [tw-dropdown], [twDropdown]',
   exportAs: 'twDropdown',
-  template: `<ng-content />`,
+  template: `<ng-container *twIf="opened()"><ng-content /></ng-container>`,
+  imports: [TwIf],
   host: {
     '[class]': 'classList.value()',
   },

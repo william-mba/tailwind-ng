@@ -59,7 +59,6 @@ const ButtonBaseConfig = (): ComponentConfig => {
     userSelect: 'select-none',
     cursor: 'cursor-pointer',
     width: 'w-fit',
-    height: 'h-fit',
     lineHeight: 'leading-none',
     disabled: {
       opacity: 'disabled:opacity-50',

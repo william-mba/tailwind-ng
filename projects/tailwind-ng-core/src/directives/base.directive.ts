@@ -2,7 +2,7 @@ import { Directive, ElementRef, inject, input, Input, OnDestroy, OnInit } from "
 import { BaseStates, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config/classlist";
-import { isEnterOrSpace, isKeyboardEvent, isNavigation, isSpace } from "../guards";
+import { isEnterOrSpace, isKeyboardEvent, isNavigation } from "../guards";
 import { Config } from "../types/config.type";
 
 /**
@@ -92,24 +92,15 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   }
 
   // A disabled element should not be interactive.
-  private onEvent(event: Event): void {
+  protected onEvent(event: Event): void {
     if (this.disabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
       return;
     }
     // Prevent scrolling when using arrow up and down keys.
-    if (isKeyboardEvent(event)) {
-      if (isEnterOrSpace(event.key) || isNavigation(event.key)) {
-        event.preventDefault();
-      }
-      if (isSpace(event.key)) {
-        // Space should not be prevented when the element is an input or a combobox.
-        if (this.nativeElement.hasAttribute('tw-combobox') ||
-          ['INPUT', 'TW-COMBOBOX'].includes(this.nativeElement.tagName)) {
-          return;
-        }
-      }
+    if (isKeyboardEvent(event) && (isEnterOrSpace(event.key) || isNavigation(event.key))) {
+      event.preventDefault();
     }
   }
 

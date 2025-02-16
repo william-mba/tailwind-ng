@@ -1,0 +1,67 @@
+<div class="text-gray-800 dark:text-gray-200 font-medium">
+  <h2>With two action buttons</h2>
+  <div
+    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div tw-button-group>
+      <button tw-button size="sm" variant="secondary">
+        <tw-icon size="sm" name="chevron-left" class="text-gray-500" />
+      </button>
+      <button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
+        <tw-icon size="sm" name="chevron-right" class="text-gray-500" />
+      </button>
+    </div>
+  </div>
+  <div
+    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div tw-button-group class="rounded-full">
+      <button tw-button size="sm" variant="secondary">
+        <tw-icon size="sm" name="chevron-left" class="text-gray-500" />
+      </button>
+      <button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
+        <tw-icon size="sm" name="chevron-right" class="text-gray-500" />
+      </button>
+    </div>
+  </div>
+
+  <h2>With three options</h2>
+  <div
+    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div tw-button-group class="rounded-full *:even:border-x">
+      <button tw-button variant="secondary">Days</button>
+      <button tw-button variant="secondary">Months</button>
+      <button tw-button variant="secondary">Years</button>
+    </div>
+  </div>
+  <div
+    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div tw-button-group class="*:even:border-x">
+      <button tw-button variant="secondary">Days</button>
+      <button tw-button variant="secondary">Months</button>
+      <button tw-button variant="secondary">Years</button>
+    </div>
+  </div>
+
+  <h2>With dropdown</h2>
+  <div
+    class="overflow-x-auto h-64 grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div class="self-start">
+      <div tw-button-group>
+        <button tw-button size="sm" variant="secondary">
+          Save changes
+        </button>
+        <button [popup]="dropdown" tw-button (click)="dropdown.toggle()" size="sm" variant="secondary"
+          class="border-l border-gray-300 dark:border-gray-700">
+          <tw-icon size="sm" name="chevron-down" class="text-gray-500" />
+        </button>
+      </div>
+      <div class="relative">
+        <ul tw-dropdown #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2">
+          <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Account settings </li>
+          <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Support </li>
+          <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> License </li>
+          <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Sign out </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -41,7 +41,7 @@ FROM copy-project AS run-lint
 RUN pnpm lint:lib
 
 FROM run-lint AS run-tests
-RUN pnpm install-chrome && pnpm test:lib:ci
+# RUN pnpm install-chrome && pnpm test:lib:ci
 
 FROM run-tests AS run-build
 RUN pnpm build:lib

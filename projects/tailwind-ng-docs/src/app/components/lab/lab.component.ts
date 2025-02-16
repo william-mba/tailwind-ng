@@ -15,7 +15,7 @@ import {
   TwInputText,
   TwCheckbox,
 } from 'tailwind-ng';
-import { OptionDirective } from "@tailwind-ng/core";
+import { TwOption } from "@tailwind-ng/core";
 
 interface User {
   image?: string;
@@ -47,13 +47,19 @@ export interface Task {
     TwButtonGroup,
     TwDialogModule,
     ReactiveFormsModule,
-    OptionDirective,
-    TwCheckbox
+    TwOption,
+    TwCheckbox,
+    ReactiveFormsModule,
   ],
   templateUrl: './lab.component.html'
 })
 export class LabComponent {
   private _formBuilder = inject(NonNullableFormBuilder);
+  search = this._formBuilder.control('');
+
+  // ngAfterViewInit(): void {
+  //   this.search.valueChanges.subscribe(value => console.log('Search:', value));
+  // }
 
   // Example with recursion but throw an expressionChangedAfterItHasBeenCheckedError
   // if there is some parent task that is updated after the view has been checked.

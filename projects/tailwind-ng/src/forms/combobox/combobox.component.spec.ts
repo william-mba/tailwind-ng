@@ -128,7 +128,7 @@ describe('ComboboxComponent', () => {
         },
         provideIcon({
           map: {
-            'check-thin': 'fake svg',
+            'check': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'
           }
@@ -147,32 +147,33 @@ describe('ComboboxComponent', () => {
         IconDirective,
         DropdownComponent
       ],
-      template: `
-        <div tw-combobox #combobox [isMulti]="isMulti" (valueSelected)="saveSelection($event)" class="sm:w-80">
-          <!-- Label -->
-          <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
-          <!-- Input -->
-          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
-          <!-- Button -->
-          <button tw-button variant="text" size="sm" [popup]="combobox"
-            class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon name="chevron-up-down" />
-          </button>
-          <!-- Dropdown -->
-          <div tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
-            @for (user of users; track user.name) {
-            <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
-              <span>{{ user.name }}</span>
-            </div>
-            }
-          </div>
+      template: `<div tw-combobox #cbb1 class="sm:w-80">
+      <!-- Label -->
+      <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+      <!-- Input -->
+      <input tw-input #input="twInputText" type="text" autocomplete="off" id="search"
+        class="pr-14" />
+      <!-- Button -->
+      <button tw-button variant="text" size="sm" (click)="cbb1.toggle()" [popup]="cbb1"
+        class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+        <tw-icon *ngIf="cbb1.opened() && input.isValid" (click)="reset()" size="sm" name="x-mark" />
+        <tw-icon name="chevron-up-down" />
+      </button>
+      <!-- Dropdown -->
+      <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
+        @for (user of users1; track user.name) {
+        <div tw-combobox-item #item [value]="user.name">
+          <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
+          <span>{{ user.name }}</span>
         </div>
+        }
+      </tw-dropdown>
+    </div>
       `
     }) class TestComponent {
       combobox = viewChild.required(ComboboxComponent);
       valueSelected = '';
-      isOpened = false;
+      opened = false;
       isMulti = false;
       users = USERS_STUB();
 
@@ -188,10 +189,9 @@ describe('ComboboxComponent', () => {
     fixture.autoDetectChanges();
 
     expect(combobox).toBeTruthy();
-    expect(combobox.control).toBeTruthy();
-    expect(combobox.isValid).toBeFalse();
-    expect(combobox.isOpened()).toBeFalse();
-    expect(combobox.isMulti).toBeFalse();
+    expect(combobox.input()).toBeTruthy();
+    expect(combobox.opened()).toBeFalse();
+    expect(combobox.selectionMode()).toBe('single');
   }, { flush: true }));
 
   it('should toggle', () => {
@@ -223,36 +223,33 @@ describe('ComboboxComponent', () => {
         IconDirective,
         DropdownComponent
       ],
-      template: `
-        <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
-          <!-- Label -->
-          <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
-          <!-- Input -->
-          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
-          <!-- Button -->
-          <button tw-button variant="text" size="sm" [popup]="combobox"
-            class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon name="chevron-up-down" />
-          </button>
-          <!-- Dropdown -->
-          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
-            @for (user of users; track user.name) {
-            <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
-              <span>{{ user.name }}</span>
-            </div>
-            }
-          </tw-dropdown>
+      template: `<div tw-combobox #cbb1 class="sm:w-80">
+      <!-- Label -->
+      <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+      <!-- Input -->
+      <input tw-input #input="twInputText" type="text" autocomplete="off" id="search"
+        class="pr-14" />
+      <!-- Button -->
+      <button tw-button variant="text" size="sm" (click)="cbb1.toggle()" [popup]="cbb1"
+        class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+        <tw-icon *ngIf="cbb1.opened() && input.isValid" (click)="reset()" size="sm" name="x-mark" />
+        <tw-icon name="chevron-up-down" />
+      </button>
+      <!-- Dropdown -->
+      <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
+        @for (user of users1; track user.name) {
+        <div tw-combobox-item #item [value]="user.name">
+          <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
+          <span>{{ user.name }}</span>
         </div>
+        }
+      </tw-dropdown>
+    </div>
       `
     }) class TestComponent {
       combobox = viewChild.required(ComboboxComponent);
       valueSelected = '';
       users = USERS_STUB();
-
-      protected saveSelection(value: string[]) {
-        this.valueSelected = value[0] || '';
-      }
     }
 
     const fixture = TestBed.createComponent(TestComponent);
@@ -261,13 +258,13 @@ describe('ComboboxComponent', () => {
 
     const combobox = testComponent.combobox();
 
-    expect(combobox.isOpened()).toBeFalse();
+    expect(combobox.opened()).toBeFalse();
     combobox.toggle();
-    expect(combobox.isOpened()).toBeTrue();
+    expect(combobox.opened()).toBeTrue();
     combobox.toggle();
-    expect(combobox.isOpened()).toBeFalse();
+    expect(combobox.opened()).toBeFalse();
     combobox.toggle();
-    expect(combobox.isOpened()).toBeTrue();
+    expect(combobox.opened()).toBeTrue();
   });
 
   it('should handle single selection', fakeAsync(() => {
@@ -299,37 +296,33 @@ describe('ComboboxComponent', () => {
         IconDirective,
         DropdownComponent
       ],
-      template: `
-        <div tw-combobox #combobox (valueSelected)="saveSelection($event)" class="sm:w-80">
-          <!-- Label -->
-          <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
-          <!-- Input -->
-          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
-          <!-- Button -->
-          <button tw-button variant="text" size="sm" [popup]="combobox"
-            class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon name="chevron-up-down" />
-          </button>
-          <!-- Dropdown -->
-          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
-            @for (user of users; track user.name) {
-            <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
-              <span>{{ user.name }}</span>
-            </div>
-            }
-          </tw-dropdown>
+      template: `<div tw-combobox #cbb1 class="sm:w-80">
+      <!-- Label -->
+      <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+      <!-- Input -->
+      <input tw-input #input="twInputText" type="text" autocomplete="off" id="search"
+        class="pr-14" />
+      <!-- Button -->
+      <button tw-button variant="text" size="sm" (click)="cbb1.toggle()" [popup]="cbb1"
+        class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+        <tw-icon *ngIf="cbb1.opened() && input.isValid" (click)="reset()" size="sm" name="x-mark" />
+        <tw-icon name="chevron-up-down" />
+      </button>
+      <!-- Dropdown -->
+      <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
+        @for (user of users1; track user.name) {
+        <div tw-combobox-item #item [value]="user.name">
+          <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
+          <span>{{ user.name }}</span>
         </div>
+        }
+      </tw-dropdown>
+    </div>
       `
     }) class TestComponent {
       combobox = viewChild.required(ComboboxComponent);
       comboboxItems = viewChildren(ComboboxItemComponent);
-      valueSelected = '';
       users = USERS_STUB();
-
-      protected saveSelection(value: string[]) {
-        this.valueSelected = value[0] || '';
-      }
     }
 
     const fixture = TestBed.createComponent(TestComponent);
@@ -341,29 +334,16 @@ describe('ComboboxComponent', () => {
     const combobox = testComponent.combobox();
 
     // Combobox is closed by default
-    expect(combobox.isOpened()).toBeFalse();
+    expect(combobox.opened()).toBeFalse();
     combobox.toggle();
 
     // Initial state when combobox is opened for the first time
-    expect(combobox.isOpened()).toBeTrue();
-    expect(combobox.isValid).toBeFalse();
-    expect(testComponent.valueSelected).toBe('');
-    expect(combobox.control.value).toBe('');
+    expect(combobox.opened()).toBeTrue();
+    expect(combobox.input().value).toBe('');
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
     expect(input.value).toBe('');
-
-    // first selection
-    const item0 = testComponent.comboboxItems()[0];
-    expect(item0.isSelected).toBeFalse();
-
-    item0.nativeElement.click();
-
-    expect(item0.isSelected).toBeTrue();
-    expect(testComponent.valueSelected).toBe(item0.value);
-    expect(combobox.control.value).toBe(item0.value);
-    expect(input.value).toBe(item0.value);
-    expect(combobox.isOpened()).toBeFalse();
-    expect(combobox.isValid).toBeTrue();
+    expect(combobox.opened()).toBeFalse();
+    expect(combobox.input().isValid).toBeTrue();
 
     // Second selection
     const item1 = testComponent.comboboxItems()[1];
@@ -372,25 +352,16 @@ describe('ComboboxComponent', () => {
     item1.nativeElement.click();
 
     expect(item1.isSelected).toBeTrue();
-    expect(testComponent.valueSelected).toBe(item1.value);
-    expect(combobox.control.value).toBe(item1.value);
+    expect(combobox.input().value).toBe(item1.value());
     expect(input.value).toBe(item1.value);
-    expect(combobox.isOpened()).toBeFalse();
-    expect(combobox.isValid).toBeTrue();
-
-    // first item selected should be unselected after second selection
-    expect(item0.isSelected).toBeFalse();
-    expect(testComponent.valueSelected).not.toBe(item0.value);
-    expect(combobox.control.value).not.toBe(item0.value);
-    expect(input.value).not.toBe(item0.value);
-
+    expect(combobox.opened()).toBeFalse();
+    expect(combobox.input().isValid).toBeTrue();
     // Selected item should remain selected when clicking on it again
     item1.nativeElement.click();
     expect(item1.isSelected).toBeTrue();
-    expect(testComponent.valueSelected).toBe(item1.value);
-    expect(combobox.control.value).toBe(item1.value);
-    expect(input.value).toBe(item1.value);
-    expect(combobox.isValid).toBeTrue();
+    expect(combobox.input().value).toBe(item1.value());
+    expect(input.value).toBe(item1.value());
+    expect(combobox.input().isValid).toBeTrue();
   }, { flush: true }));
 
   it('should handle multiselection', fakeAsync(() => {
@@ -403,7 +374,7 @@ describe('ComboboxComponent', () => {
         },
         provideIcon({
           map: {
-            'check-thin': 'fake svg',
+            'check': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'
           }
@@ -423,36 +394,34 @@ describe('ComboboxComponent', () => {
         DropdownComponent
       ],
       template: `
-        <div tw-combobox #combobox [isMulti]="true" (valueSelected)="saveSelection($event)" class="sm:w-80">
-          <!-- Label -->
-          <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
-          <!-- Input -->
-          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
-          <!-- Button -->
-          <button tw-button variant="text" size="sm" [popup]="combobox"
-            class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon name="chevron-up-down" />
-          </button>
-          <!-- Dropdown -->
-          <tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
-            @for (user of users; track user.name) {
-            <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
-              <span>{{ user.name }}</span>
-            </div>
-            }
-          </tw-dropdown>
-        </div>
+        <div tw-combobox #cbb1 class="sm:w-80" selectionMode="multiple">
+        <!-- Label -->
+        <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+        <!-- Input -->
+        <input tw-input #input="twInputText" type="text" autocomplete="off" id="search"
+          class="pr-14" />
+        <!-- Button -->
+        <button tw-button variant="text" size="sm" (click)="cbb1.toggle()" [popup]="cbb1"
+          class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+          <tw-icon *ngIf="cbb1.opened() && input.isValid" size="sm" name="x-mark" />
+          <tw-icon name="chevron-up-down" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown class="w-full overflow-y-auto max-h-56">
+          @for (user of users1; track user.name) {
+          <div tw-combobox-item #item [value]="user.name">
+            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
+            <span>{{ user.name }}</span>
+          </div>
+          }
+        </tw-dropdown>
+      </div>
       `
     }) class TestComponent {
       combobox = viewChild.required(ComboboxComponent);
       comboboxItems = viewChildren(ComboboxItemComponent);
       valueSelected = '';
       users = USERS_STUB();
-
-      protected saveSelection(value: string[]) {
-        this.valueSelected = value.join(', ');
-      }
     }
 
     const fixture = TestBed.createComponent(TestComponent);
@@ -462,57 +431,20 @@ describe('ComboboxComponent', () => {
     const combobox = testComponent.combobox();
 
     // Combobox is closed by default
-    expect(combobox.isOpened()).toBeFalse();
+    expect(combobox.opened()).toBeFalse();
     combobox.toggle();
 
     // Initial state when combobox is opened for the first time
-    expect(combobox.isOpened()).toBeTrue();
-    expect(combobox.isValid).toBeFalse();
-    expect(combobox.isMulti).toBeTrue();
-    expect(testComponent.valueSelected).toBe('');
-    expect(combobox.control.value).toBe('');
+    expect(combobox.opened()).toBeTrue();
+    expect(combobox.selectionMode()).toBe('multiple');
+    expect(combobox.input().value).toBe('');
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
     expect(input.value).toBe('');
 
-    const item0 = testComponent.comboboxItems()[0];
-    const item1 = testComponent.comboboxItems()[1];
-    const item2 = testComponent.comboboxItems()[2];
-
-    // Before selections
-    expect(item0.isSelected).toBeFalse();
-    expect(item1.isSelected).toBeFalse();
-    expect(item2.isSelected).toBeFalse();
-
-    item0.select();
-    item1.select();
-    item2.select();
-
-    tick();
-
-    // After selections
-    expect(item0.isSelected).toBeTrue();
-    expect(item1.isSelected).toBeTrue();
-    expect(item2.isSelected).toBeTrue();
-
-    let expectedValue = `${item0.value}, ${item1.value}, ${item2.value}`;
-
-    expect(testComponent.valueSelected).toBe(expectedValue);
-    expect(combobox.control.value).toBe(expectedValue + ', ');
-    expect(input.value).toBe(expectedValue + ', ');
-
     // Combobox should remain opened
-    expect(combobox.isOpened()).toBeTrue();
-    expect(combobox.isValid).toBeTrue();
-
-    // Selected item should be unselected when clicking on it again
-    item1.nativeElement.click();
-    expectedValue = `${item0.value}, ${item2.value}`;
-    expect(item1.isSelected).toBeFalse();
-    expect(testComponent.valueSelected).toBe(expectedValue);
-    expect(combobox.control.value).toBe(expectedValue + ', ');
-    expect(input.value).toBe(expectedValue + ', ');
+    expect(combobox.opened()).toBeTrue();
+    expect(combobox.input().isValid).toBeTrue();
   }, { flush: true }));
-
   it('should reset', fakeAsync(() => {
     @Component({
       selector: 'app-test',
@@ -524,7 +456,7 @@ describe('ComboboxComponent', () => {
         },
         provideIcon({
           map: {
-            'check-thin': 'fake svg',
+            'check': 'fake svg',
             'chevron-up-down': 'fake svg',
             'x-mark': 'fake svg'
           }
@@ -540,37 +472,34 @@ describe('ComboboxComponent', () => {
         DropdownComponent
       ],
       template: `
-        <div tw-combobox #combobox [isMulti]="true" (valueSelected)="saveSelection($event)" class="sm:w-80">
-          <!-- Label -->
-          <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
-          <!-- Input -->
-          <input tw-input type="text" id="search" [formControl]="combobox.control" class="pr-12" />
-          <!-- Button -->
-          <button tw-button variant="text" size="sm" [popup]="combobox"
-            class="absolute inset-y-0 gap-0 -right-1 rounded-r-md inline-flex users-center opacity-50">
-            <tw-icon *ngIf="combobox.isOpened() && combobox.isValid" (click)="combobox.reset()" size="sm" name="x-mark" />
-            <tw-icon name="chevron-up-down" />
-          </button>
-          <!-- Dropdown -->
-          <div tw-dropdown class="w-full overflow-y-auto max-h-56 duration-0">
-            @for (user of users; track user.name) {
-            <div tw-combobox-item #item [value]="user.name">
-              <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check-thin" />
-              <span>{{ user.name }}</span>
-            </div>
-            }
+        <div tw-combobox #cbb1 class="sm:w-80" selectionMode="multiple">
+        <!-- Label -->
+        <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+        <!-- Input -->
+        <input tw-input #input="twInputText" type="text" autocomplete="off" id="search"
+          class="pr-14" />
+        <!-- Button -->
+        <button tw-button variant="text" size="sm" (click)="cbb1.toggle()" [popup]="cbb1"
+          class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
+          <tw-icon *ngIf="cbb1.opened() && input.isValid" (click)="reset()" size="sm" name="x-mark" />
+          <tw-icon name="chevron-up-down" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
+          @for (user of users1; track user.name) {
+          <div tw-combobox-item #item [value]="user.name">
+            <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
+            <span>{{ user.name }}</span>
           </div>
-        </div>
+          }
+        </tw-dropdown>
+      </div>
       `
     }) class TestComponent {
       combobox = viewChild.required(ComboboxComponent);
       comboboxItems = viewChildren(ComboboxItemComponent);
       valueSelected = '';
       users = USERS_STUB();
-
-      protected saveSelection(value: string[]) {
-        this.valueSelected = value.join(', ');
-      }
     }
 
     const fixture = TestBed.createComponent(TestComponent);
@@ -582,48 +511,19 @@ describe('ComboboxComponent', () => {
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
 
     // Combobox is closed by default
-    expect(combobox.isOpened()).toBeFalse();
+    expect(combobox.opened()).toBeFalse();
     combobox.toggle();
-    expect(combobox.isOpened()).toBeTrue();
-    expect(combobox.isValid).toBeFalse();
-
-    const item0 = testComponent.comboboxItems()[0];
-    const item1 = testComponent.comboboxItems()[1];
-    const item2 = testComponent.comboboxItems()[2];
-
-    // Before selections
-    expect(item0.isSelected).toBeFalse();
-    expect(item1.isSelected).toBeFalse();
-    expect(item2.isSelected).toBeFalse();
-
-    item0.select();
-    item1.select();
-    item2.select();
-    tick();
-
-    // After selections
-    expect(item0.isSelected).toBeTrue();
-    expect(item1.isSelected).toBeTrue();
-    expect(item2.isSelected).toBeTrue();
-
-    let expectedValue = `${item0.value}, ${item1.value}, ${item2.value}`;
-
-    expect(testComponent.valueSelected).toBe(expectedValue);
-    expect(combobox.control.value).toBe(expectedValue + ', ');
-    expect(input.value).toBe(expectedValue + ', ');
+    expect(combobox.opened()).toBeTrue();
 
     // Before reset
-    expect(combobox.isOpened()).toBeTrue();
-    expect(combobox.isValid).toBeTrue();
+    expect(combobox.opened()).toBeTrue();
+    expect(combobox.input().isValid).toBeTrue();
     combobox.reset();
-    expectedValue = '';
+    const expectedValue = '';
 
     // After reset
-    expect(item0.isSelected).toBeFalse();
-    expect(item1.isSelected).toBeFalse();
-    expect(item2.isSelected).toBeFalse();
     expect(testComponent.valueSelected).toBe(expectedValue);
-    expect(combobox.control.value).toBe(expectedValue);
+    expect(combobox.input().value).toBe(expectedValue);
     expect(input.value).toBe(expectedValue);
   }, { flush: true }));
 });

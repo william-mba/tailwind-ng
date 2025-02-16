@@ -13,7 +13,7 @@ export function isCombobox(component: unknown): component is Combobox {
 @Directive({
   host: {
     role: 'combobox',
-    '[attr.aria-expanded]': 'isOpened',
+    '[attr.aria-expanded]': 'opened',
     '[attr.aria-activedescendant]': 'activeElement?.textContent || null',
   },
   providers: [
@@ -26,4 +26,13 @@ export function isCombobox(component: unknown): component is Combobox {
 export abstract class ComboboxBase extends PopupDirective {
   protected activeElement?: HTMLElement;
   @Input() override id = this.randomId('combobox');
+
+  // Override to disable default keyboard event preventions.
+  protected override onEvent(event: Event): void {
+    if (this.disabled) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+  }
 }

@@ -691,21 +691,22 @@
 <!-- Comboboxes -->
 <div class="grid sm:grid-cols-2 gap-y-72 sm:gap-6 place-items-center mb-72 w-fit mx-auto">
   <!-- Combobox -->
-  <div tw-combobox #cbb1 (valueSelected)="saveValue($event)" (valueChanged)="filter($event)" class="sm:w-80">
+  <div tw-combobox #cbb1 class="sm:w-80">
     <!-- Label -->
     <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input type="text" autocomplete="off" id="search" [formControl]="cbb1.control" class="pr-14" />
+    <input tw-input #input="twInputText" (changes)="filter($event)" type="text" autocomplete="off" id="search"
+      class="pr-14" />
     <!-- Button -->
     <button tw-button variant="text" size="sm" (click)="cbb1.toggle()" [popup]="cbb1"
       class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="cbb1.isOpened() && cbb1.isValid" (click)="cbb1.reset()" size="sm" name="x-mark" />
+      <tw-icon *ngIf="cbb1.opened() && input.isValid" (click)="reset()" size="sm" name="x-mark" />
       <tw-icon name="chevron-up-down" />
     </button>
     <!-- Dropdown -->
     <tw-dropdown (closed)="reset()" class="w-full overflow-y-auto max-h-56">
       @for (user of users1; track user.name) {
-      <div tw-combobox-item #item [value]="user.name">
+      <div tw-combobox-item #item [value]="user.name" (selected)="saveValue($event.value())">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
         <span>{{ user.name }}</span>
       </div>
@@ -713,22 +714,22 @@
     </tw-dropdown>
   </div>
   <!-- Combobox -->
-  <div tw-combobox #cbb2 (valueSelected)="saveValue($event)" [isMulti]="true" (valueChanged)="filter($event, 2)"
-    class="sm:w-80">
+  <div tw-combobox #cbb2 selectionMode="multiple" class="sm:w-80">
     <!-- Label -->
     <label for="search-2" class="block text-sm mb-2 font-medium"> Quick search </label>
     <!-- Input -->
-    <input tw-input type="text" autocomplete="off" id="search-2" [formControl]="cbb2.control" class="pr-14" />
+    <input tw-input #input2="twInputText" (changes)="filter($event,2)" type="text" autocomplete="off" id="search-2"
+      class="pr-14" />
     <!-- Button -->
     <button tw-button variant="text" size="sm" (click)="cbb2.toggle()" [popup]="cbb2"
       class="focus:- absolute inset-y-0 gap-0.5 px-2 right-0 rounded-r-md opacity-50">
-      <tw-icon *ngIf="cbb2.isOpened() && cbb2.isValid" (click)="cbb2.reset()" size="sm" name="x-mark" />
+      <tw-icon *ngIf="cbb2.opened() && input2.isValid" (click)="reset(2)" size="sm" name="x-mark" />
       <tw-icon name="chevron-up-down" />
     </button>
     <!-- Dropdown -->
     <div tw-dropdown (closed)="reset(2)" class="w-full overflow-y-auto max-h-56 focus:border-4">
       @for (user of users2; track user.name) {
-      <div tw-combobox-item #item [value]="user.name">
+      <div tw-combobox-item #item [value]="user.name" (selected)="saveValue($event.value())">
         <tw-icon *ngIf="item.isSelected" class="my-auto absolute right-3" name="check" />
         <span>{{ user.name }}</span>
       </div>

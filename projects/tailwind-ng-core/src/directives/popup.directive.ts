@@ -1,4 +1,4 @@
-import { Directive, Input, inject, model, output } from '@angular/core';
+import { Directive, Input, inject, model } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup, PopupExtraOptons } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
@@ -6,40 +6,34 @@ import { ZIndexer } from '../injectables/z-index.service';
 @Directive({
   host: {
     '[attr.id]': 'id',
-    '[attr.open]': 'isOpened() || null',
-    '[attr.aria-expanded]': 'isOpened()',
+    '[attr.open]': 'opened() || null',
+    '[attr.aria-expanded]': 'opened()',
   }
 })
 export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
   private readonly zIndex = inject(ZIndexer);
-  isOpened = model(false);
   @Input() id = this.randomId('popup');
   @Input() options?: PopupExtraOptons;
-  toggled = output<boolean>();
-  opened = output<void>();
-  closed = output<void>();
+  opened = model(false);
 
   toggle(): void {
-    if (this.isOpened()) {
+    if (this.opened()) {
       this.close();
     } else {
       this.open();
     }
-    this.toggled.emit(!!this.isOpened());
   }
 
   open(): void {
-    if (!this.isOpened()) {
-      this.isOpened.set(true);
+    if (!this.opened()) {
+      this.opened.set(true);
       this.nativeElement.style.zIndex = `${this.zIndex.next}`;
-      this.opened.emit();
     }
   }
 
   close(): void {
-    if (this.isOpened()) {
-      this.isOpened.set(false);
-      this.closed.emit();
+    if (this.opened()) {
+      this.opened.set(false);
       if (this.options) {
         const { trigger } = this.options;
         const { focusTrigger } = this.options.afterClosing;

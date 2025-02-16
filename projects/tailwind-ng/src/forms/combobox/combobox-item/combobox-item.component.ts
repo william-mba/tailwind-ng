@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, output, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
 import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
@@ -18,49 +18,38 @@ import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
   providers: [{ provide: ComboboxItemBase, useExisting: ComboboxItemComponent }]
 })
 export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxItem, OnInit {
-  @Input({ required: true }) value!: string;
-  private readonly combobox = inject(ComboboxComponent, { skipSelf: true });
-  private readonly computedValue = computed(() => this.value.toLocaleLowerCase());
-
-  private get isValueEqualsInputValue() {
-    return this.computedValue() === this.combobox.control.value.toLocaleLowerCase();
-  }
+  value = input.required<string>();
+  selected = output<ComboboxItem>();
+  private readonly _combobox = inject(ComboboxComponent, { skipSelf: true, host: true });
+  private readonly _value = computed(() => this.value().toLocaleLowerCase());
 
   get isSelected(): boolean {
-    return this.combobox.has(this);
+    return this._combobox.has(this);
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
 
     // Select the item if it is the default value.
-    if (this.isValueEqualsInputValue) {
+    if (this._value() === this._combobox.input().value.toLocaleLowerCase()) {
       this.select();
     }
 
     // Select the item if the value changed matchs the item value.
-    this.combobox.valueChanged.subscribe(value => {
-      if (this.combobox.isMulti) {
-        const some = value.split(',').some(x => this.computedValue() === x.trim().toLocaleLowerCase());
-        if (!this.isSelected && some) {
-          this.select();
-        } else if (this.isSelected && !some) {
-          this.select();
-        }
-      } else {
-        if (!this.isSelected && this.isValueEqualsInputValue) {
-          this.select();
-        }
+    this._combobox.input().changes.subscribe(value => {
+      if (!this.isSelected && this._value() === value.toLocaleLowerCase()) {
+        this.select();
       }
     });
 
-    this.combobox.opened.subscribe(() => {
-      if (this.isSelected) this.scrollIntoView();
+    this._combobox.opened.subscribe((opened) => {
+      if (opened && this.isSelected) this.scrollIntoView();
     });
   }
 
   select(): void {
-    this.combobox.select(this);
+    this._combobox.select(this);
+    this.selected.emit(this);
   }
 
   protected override buildStyle(): void {

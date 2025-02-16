@@ -1,26 +1,21 @@
-import { OutputEmitterRef } from "@angular/core";
+import { InputSignal, Signal } from "@angular/core";
 import { ComboboxItem } from "./combobox-item";
-import { FormControl } from "@angular/forms";
-import { BasicPopupActions, PopupEvents, PopupState } from "./popup";
+import { BasicPopupActions, Popup, PopupState } from "./popup";
+import { InputText } from "./input-text";
 
 /**
  * @TailwindNG Combobox component state
  */
 export interface ComboboxState extends PopupState {
+  readonly input: Signal<InputText>;
+  readonly dropdown: Signal<Popup>;
   /**
-   * Returns true if the combobox is valid. Otherwise, returns false.
-   * - A combobox is valid if it control is valid and touched or dirty.
+   *  The combobox's selection mode.
    */
-  readonly isValid: boolean;
-  /**
-   * Whether the combobox is in multi-selection mode.
-   */
-  readonly isMulti: boolean;
-  /**
-   * The form control instance of the input element.
-   */
-  readonly control: FormControl<string>;
+  readonly selectionMode: InputSignal<ComboboxMode>;
 }
+
+export type ComboboxMode = 'single' | 'multiple';
 
 /**
  * @TailwindNG Combobox component actions
@@ -42,19 +37,4 @@ export interface ComboboxActions extends BasicPopupActions {
   has(item: ComboboxItem): boolean;
 }
 
-/**
- * @TailwindNG Combobox component events
- */
-export interface ComboboxEvents extends PopupEvents {
-  /**
-   * Event that emits the selected item(s) when a selection occurs.
-   * Emits an empty array if no item is selected.
-   */
-  readonly valueSelected: OutputEmitterRef<string[]>;
-  /**
-   * Event that emits the combobox value when it changes.
-   */
-  readonly valueChanged: OutputEmitterRef<string>;
-}
-
-export interface Combobox extends ComboboxState, ComboboxActions, ComboboxEvents { }
+export interface Combobox extends ComboboxState, ComboboxActions { }
