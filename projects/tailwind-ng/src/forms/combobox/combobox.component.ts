@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, contentChild, model, OnInit, output, ViewEncapsulation } from '@angular/core';
-import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isEscape, isNavigation, SelectMode, TwIf } from '@tailwind-ng/core';
+import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUpOrLeft, isEnterOrSpace, isEscape, isNavigation, SelectMode, TwIf } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',

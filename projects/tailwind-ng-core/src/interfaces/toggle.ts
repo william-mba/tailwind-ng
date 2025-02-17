@@ -1,4 +1,4 @@
-import { ModelSignal, OutputEmitterRef } from "@angular/core";
+import { ModelSignal } from "@angular/core";
 import { BaseActions, BaseStates } from "./base";
 
 export interface Toggle extends BaseStates, BaseActions {
