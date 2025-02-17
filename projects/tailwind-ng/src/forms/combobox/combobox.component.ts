@@ -134,6 +134,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 
   select(item: ComboboxItem): void {
     if (this.selectMode() === 'single') {
+      this._map.forEach(item => item.deselect());
       this._map.clear();
       this._map.set(item.value(), item);
       this.input().value = item.value();
