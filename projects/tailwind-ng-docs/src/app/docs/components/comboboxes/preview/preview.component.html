@@ -1,96 +1,256 @@
 <div class="text-gray-800 dark:text-gray-200 font-medium">
-  <h2>Flat</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <tw-badge size="xs" class="text-orange-500 bg-orange-500/10">Badge</tw-badge>
-    <tw-badge size="xs" class="text-indigo-500 bg-indigo-500/10">Badge</tw-badge>
-    <tw-badge size="xs" class="text-rose-500 bg-rose-500/10">Badge</tw-badge>
-    <tw-badge size="xs" class="text-yellow-500 bg-yellow-500/10">Badge</tw-badge>
-    <tw-badge size="xs" class="text-gray-500 bg-gray-500/10">Badge</tw-badge>
+  <div class="mb-8 text-sm grid gap-2">
+    <div class="flex gap-2 items-start sm:items-center">
+      <tw-icon name="accessibility" class="rounded-full border p-1 self-start" />
+      Accessibility features: Inspired by the combobox pattern from the
+      <a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/" target="_blank" rel="noopener noreferrer"
+        class="text-indigo-900 dark:text-indigo-300 after:content-['_↗']">
+        ARIA Authoring Practices Guide (APG)
+      </a>
+    </div>
+    <ul class="text-gray-600 dark:text-gray-400 pl-4 list-inside list-disc">
+      <li> When the dropdown is opened, press Espace/Esc key to close it.</li>
+      <li> When the dropdown is closed, press Espace/Esc key to reset selection and clear text field.</li>
+      <li> When the dropdown is opened, press Up/Down arrow keys to navigate through the list.</li>
+      <li> When the dropdown is opened, press Enter/Space key to select the focused item.</li>
+    </ul>
   </div>
 
-  <h2>With border</h2>
+  <div class="sm:flex justify-between mb-3">
+    <h2>Simple</h2>
+    <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
+      Selection mode
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode()" (click)="toggleMode()">
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
   <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <tw-badge size="xs" class="text-orange-500 bg-orange-500/10 ring-orange-500/20 ring-1">Badge</tw-badge>
-    <tw-badge size="xs" class="text-indigo-500 bg-indigo-500/10 ring-indigo-500/20 ring-1">Badge</tw-badge>
-    <tw-badge size="xs" class="text-rose-500 bg-rose-500/10 ring-rose-500/20 ring-1">Badge</tw-badge>
-    <tw-badge size="xs" class="text-yellow-500 bg-yellow-500/10 ring-yellow-500/20 ring-1">Badge</tw-badge>
-    <tw-badge size="xs" class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1">Badge</tw-badge>
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div class="grid gap-y-64">
+      <!-- Combobox -->
+      <div tw-combobox [selectMode]="selectMode()" #cbb1 class="sm:w-80" (selected)="logItems($event)">
+        <!-- Label -->
+        <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
+        <!-- Input -->
+        <input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
+        <!-- Button -->
+        <button tw-button variant="text" size="sm" [popup]="cbb1"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
+          @if (cbb1.opened()) {
+          <tw-icon (click)="reset(1, cbb1)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+          @for (user of users1; track user.name) {
+          <div tw-combobox-item #item [value]="user.name">
+            @if (item.selected()) {
+            <tw-icon class="my-auto absolute right-3" name="check" />
+            }
+            <span>{{ user.name }}</span>
+          </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-80"> Selected: {{ selections[1] | json}}</p>
+    </div>
   </div>
 
-  <h2>With leading icon</h2>
+  <div class="sm:flex justify-between mb-3">
+    <h2>With check on left</h2>
+  </div>
   <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <tw-badge size="xs" class="text-orange-500 bg-orange-500/10">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-indigo-500 bg-indigo-500/10">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-rose-500 bg-rose-500/10">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-yellow-500 bg-yellow-500/10">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-gray-500 bg-gray-500/10">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div class="grid gap-y-64">
+      <!-- Combobox -->
+      <div tw-combobox [selectMode]="selectMode()" #cb2 class="sm:w-80" (selected)="logItems($event, 2)">
+        <!-- Label -->
+        <label for="search2" class="block text-sm mb-2 font-medium"> Quick search </label>
+        <!-- Input -->
+        <input tw-input (changes)="filter($event,2)" type="text" autocomplete="off" id="search2" class="pr-14" />
+        <!-- Button -->
+        <button tw-button variant="text" size="sm" [popup]="cb2"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
+          @if (cb2.opened()) {
+          <tw-icon (click)="reset(2, cb2)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cb2.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+          @for (user of users2; track user.name) {
+          <div tw-combobox-item #item [value]="user.name">
+            @if (item.selected()) {
+            <tw-icon class="my-auto absolute left-3" name="check" />
+            }
+            <span class="pl-6">{{ user.name }}</span>
+          </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-80"> Selected: {{ selections[2] | json}}</p>
+    </div>
   </div>
 
-  <h2>With leading icon and border</h2>
+  <div class="hidden sm:flex justify-between mb-3">
+    <h2>With grid layout</h2>
+    <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
+      Selection mode
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode()" (click)="toggleMode()">
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
   <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <tw-badge size="xs" class="text-orange-500 bg-orange-500/10 ring-orange-500/20 ring-1">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-indigo-500 bg-indigo-500/10 ring-indigo-500/20 ring-1">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-rose-500 bg-rose-500/10 ring-rose-500/20 ring-1">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-yellow-500 bg-yellow-500/10 ring-yellow-500/20 ring-1">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
-    <tw-badge size="xs" class="text-gray-500 bg-gray-500/10 ring-gray-500/20 ring-1">
-      <tw-icon name="dot" size="xs" />
-      Badge
-    </tw-badge>
+    class="hidden lg:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div class="grid gap-y-64">
+      <!-- Combobox -->
+      <div tw-combobox [selectMode]="selectMode()" #cb5 class="lg:w-2xl 2xl:w-3xl text-center"
+        (selected)="logItems($event, 5)">
+        <!-- Label -->
+        <label for="search5" class="block text-sm mb-4 font-medium"> Quick search </label>
+        <!-- Input -->
+        <input tw-input (changes)="filter($event,5)" type="text" autocomplete="off" id="search5"
+          class="pr-14 rounded-full" />
+        <!-- Button -->
+        <button tw-button variant="text" size="sm" [popup]="cb5"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
+          @if (cb5.opened()) {
+          <tw-icon (click)="reset(5, cb5)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="search" (click)="cb5.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown (closed)="reset()" class="max-h-fit grid-cols-3 gap-2 min-w-full rounded-4xl p-3">
+          @for (user of users5; track user.name) {
+          <div tw-combobox-item #item [value]="user.name" class="inline-flex rounded-full">
+            @switch (user.status) {
+            @case ('active') {
+            <tw-icon class="my-auto absolute left-3 text-green-500" name="dot" size="sm" />
+            }
+            @case ('inactive') {
+            <tw-icon class="my-auto absolute left-3 text-gray-300 dark:text-gray-700" name="dot" size="sm" />
+            }
+            }
+            @if (item.selected()) {
+            <tw-icon class="my-auto absolute right-3" name="check" />
+            }
+            <span class="pl-6 text-sm text-nowrap">{{ user.name }}</span>
+          </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-full"> Selected: {{ selections[5] | json}}</p>
+    </div>
   </div>
 
-  <h2>With action</h2>
+  <div class="sm:flex justify-between mb-3">
+    <h2>With image</h2>
+  </div>
   <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <tw-badge size="xs" class="text-orange-500 bg-orange-500/10">
-      Badge
-      <tw-icon name="x-mark" size="xs" class="cursor-pointer hover:bg-inherit hover:bg-opacity-20" />
-    </tw-badge>
-    <tw-badge size="xs" class="text-indigo-500 bg-indigo-500/10">
-      Badge
-      <tw-icon name="x-mark" size="xs" class="cursor-pointer hover:bg-inherit hover:bg-opacity-20" />
-    </tw-badge>
-    <tw-badge size="xs" class="text-rose-500 bg-rose-500/10">
-      Badge
-      <tw-icon name="x-mark" size="xs" class="cursor-pointer hover:bg-inherit hover:bg-opacity-20" />
-    </tw-badge>
-    <tw-badge size="xs" class="text-yellow-500 bg-yellow-500/10">
-      Badge
-      <tw-icon name="x-mark" size="xs" class="cursor-pointer hover:bg-inherit hover:bg-opacity-20" />
-    </tw-badge>
-    <tw-badge size="xs" class="text-gray-500 bg-gray-500/10">
-      Badge
-      <tw-icon name="x-mark" size="xs" class="cursor-pointer hover:bg-inherit hover:bg-opacity-20" />
-    </tw-badge>
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div class="grid gap-y-64">
+      <!-- Combobox -->
+      <div tw-combobox [selectMode]="selectMode()" #cb3 class="sm:w-80" (selected)="logItems($event, 3)">
+        <!-- Label -->
+        <label for="search3" class="block text-sm mb-2 font-medium"> Quick search </label>
+        <!-- Input -->
+        <input tw-input (changes)="filter($event,3)" type="text" autocomplete="off" id="search3" class="pr-14" />
+        <!-- Button -->
+        <button tw-button variant="text" size="sm" [popup]="cb3"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
+          @if (cb3.opened()) {
+          <tw-icon (click)="reset(3, cb3)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cb3.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+          @for (user of users3; track user.name) {
+          <div tw-combobox-item #item [value]="user.name">
+            <img tw-avatar size="xs" alt="" class="my-auto absolute left-0" [src]="user.image">
+            @if (item.selected()) {
+            <tw-icon class="my-auto absolute right-3" name="check" />
+            }
+            <span class="pl-3">{{ user.name }}</span>
+          </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-80"> Selected: {{ selections[3] | json}}</p>
+    </div>
+  </div>
+
+  <div class="sm:flex justify-between mb-3">
+    <h2>With status indicator</h2>
+    <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
+      Selection mode
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode()" (click)="toggleMode()">
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
+  <div
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div class="grid gap-y-64">
+      <!-- Combobox -->
+      <div tw-combobox [selectMode]="selectMode()" #cb4 class="sm:w-80" (selected)="logItems($event, 4)">
+        <!-- Label -->
+        <label for="search4" class="block text-sm mb-2 font-medium"> Quick search </label>
+        <!-- Input -->
+        <input tw-input (changes)="filter($event,4)" type="text" autocomplete="off" id="search4" class="pr-14" />
+        <!-- Button -->
+        <button tw-button variant="text" size="sm" [popup]="cb4"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
+          @if (cb4.opened()) {
+          <tw-icon (click)="reset(4, cb4)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cb4.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+          @for (user of users4; track user.name) {
+          <div tw-combobox-item #item [value]="user.name">
+            @switch (user.status) {
+            @case ('active') {
+            <tw-icon class="my-auto absolute left-3 text-green-500" name="dot" size="sm" />
+            }
+            @case ('inactive') {
+            <tw-icon class="my-auto absolute left-3 text-gray-300 dark:text-gray-700" name="dot" size="sm" />
+            }
+            }
+            @if (item.selected()) {
+            <tw-icon class="my-auto absolute right-3" name="check" />
+            }
+            <span class="pl-6">{{ user.name }}</span>
+          </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-80"> Selected: {{ selections[4] | json}}</p>
+    </div>
   </div>
 </div>

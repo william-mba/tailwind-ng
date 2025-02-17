@@ -2,10 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component, inject, InputSignal } from '@angular/core';
 import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
-  TwAvatar,
-  TwBadge,
   TwButton,
-  TwButtonGroup,
   TwComboboxModule,
   TwDropdown,
   TwIcon,
@@ -35,8 +32,6 @@ export interface Task {
   selector: 'app-lab',
   imports: [
     NgIf,
-    TwAvatar,
-    TwBadge,
     TwButton,
     TwComboboxModule,
     TwDropdown,
@@ -44,7 +39,6 @@ export interface Task {
     TwInputText,
     TwInputRadio,
     TwToggle,
-    TwButtonGroup,
     TwDialogModule,
     ReactiveFormsModule,
     TwOption,
