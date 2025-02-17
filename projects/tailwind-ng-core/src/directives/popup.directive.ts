@@ -36,8 +36,8 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
       this.opened.set(false);
       if (this.options) {
         const { trigger } = this.options;
-        const { focusTrigger } = this.options.afterClosing;
-        if (trigger && focusTrigger) trigger.focus();
+        const { focusTriggerOnClose } = this.options;
+        if (trigger && focusTriggerOnClose) trigger.focus();
       }
     }
   }

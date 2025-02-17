@@ -22,14 +22,9 @@ export interface PopupExtraOptons {
    */
   trigger?: BaseActions;
   /**
-   * The popup's after closing options.
+   * Whether to focus the trigger when the popup closes.
    */
-  afterClosing: {
-    /**
-     * Whether to focus the trigger after closing the popup.
-     */
-    focusTrigger?: boolean;
-  }
+  focusTriggerOnClose?: boolean;
 }
 
 /**

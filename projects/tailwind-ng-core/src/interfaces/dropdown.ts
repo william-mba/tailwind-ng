@@ -1,5 +1,5 @@
 import { OverlayPosition } from "../types/layout";
-import { Popup } from "./popup";
+import { Popup, PopupExtraOptons } from "./popup";
 
 /**
  * @TailwindNG Dropdown component interface.
@@ -7,8 +7,13 @@ import { Popup } from "./popup";
 export interface Dropdown extends Popup {
   position: OverlayPosition;
   /**
-   * Whether to close the dropdown when the user clicks outside of it.
-   * Default it's `false`.
+   * The options for the dropdown.
    */
-  closeOnBlur: boolean;
+  options?: DropdownOptions;
+}
+export interface DropdownOptions extends PopupExtraOptons {
+  /**
+   * Close the dropdown when the user clicks outside of it.
+   */
+  closeOnBlur?: boolean;
 }

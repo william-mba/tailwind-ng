@@ -1,4 +1,4 @@
-import { InputSignal } from "@angular/core";
+import { InputSignal, ModelSignal } from "@angular/core";
 import { BaseActions, BaseStates } from "./base";
 
 /**
@@ -7,8 +7,16 @@ import { BaseActions, BaseStates } from "./base";
 export interface ComboboxItem extends BaseStates, BaseActions {
   readonly value: InputSignal<string>;
   /**
-   * Returns true if the item is selected. Otherwise, returns false.
+   * Selects the item.
    */
-  readonly isSelected: boolean;
   select(): void;
+  /**
+   * Deselects the item.
+   */
+  deselect(): void;
+  /**
+   * Whether the item is selected.
+   * Emits true when the item is selected and false when it is not.
+   */
+  selected: ModelSignal<boolean>;
 }

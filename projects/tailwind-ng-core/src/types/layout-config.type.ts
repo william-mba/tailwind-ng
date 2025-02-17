@@ -6,7 +6,7 @@ import { FontSize, FontWeight, LineHeight, TextAlign, TextWrap, VerticalAlign } 
 import { Height, Width, Size, MinHeight, MaxHeight, MinWidth, MaxWidth } from './sizing';
 import { Transition, TwAnimation } from './transitions-animations';
 import { Scale, TransformOrigin, TwTranslate } from './transforms';
-import { Cursor } from './interactivity';
+import { Cursor, WillChange } from './interactivity';
 
 export interface TypographyLayout {
   // Typography
@@ -105,6 +105,11 @@ export interface FlexAndGridLayout {
 export interface LayoutConfig extends TypographyLayout, SizingLayout, SpacingLayout, DisplayLayout, BorderLayout, FlexAndGridLayout {
   // Interactivity
   cursor: Cursor;
+  /**
+   * Utilities for optimizing upcoming animations of elements that are expected to change.
+   * @see https://tailwindcss.com/docs/will-change#optimizing-with-will-change
+   */
+  willChange: WillChange;
   // Transforms
   scale: Scale;
   translate: TwTranslate;

@@ -9,7 +9,7 @@ const DefaultConfig = (): DropdownConfig => {
     zIndex: 'z-10',
     minWidth: 'min-w-52',
     userSelect: 'select-none',
-    overflow: 'overflow-hidden',
+    overflow: 'overflow-y-auto',
     overscroll: 'overscroll-contain',
     fontSize: 'text-sm',
     position: 'absolute',
@@ -18,13 +18,11 @@ const DefaultConfig = (): DropdownConfig => {
     borderColor: 'border-gray-200',
     bgColor: 'bg-white',
     boxShadow: 'shadow-lg',
-    colorScheme: 'scheme-light',
     cursor: 'cursor-pointer',
     dark: {
-      bgColor: 'dark:bg-gray-800',
+      bgColor: 'dark:bg-gray-950',
       textColor: 'dark:text-gray-100',
       borderColor: 'dark:border-gray-800',
-      colorScheme: 'dark:scheme-dark'
     },
     open: {
       display: 'open:grid',
@@ -42,9 +40,10 @@ const DefaultConfig = (): DropdownConfig => {
       }
     },
     transformOrigin: 'origin-top',
+    willChange: 'will-change-auto',
     transition: {
       timing: 'ease-out',
-      duration: 'duration-100',
+      duration: 'duration-25',
       property: 'transition-all',
       behavior: 'transition-discrete'
     },

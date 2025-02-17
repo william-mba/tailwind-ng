@@ -3,6 +3,7 @@ import { DIALOG_CONFIG, DialogConfig, mergeConfig, ComponentConfig } from '@tail
 
 const BaseConfig = (): ComponentConfig => {
   return {
+    willChange: 'will-change-auto',
     transition: {
       property: 'transition-all',
       behavior: 'transition-discrete',

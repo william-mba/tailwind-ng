@@ -19,7 +19,6 @@ const DefaultConfig = (): InputTextConfig => {
     width: 'w-full',
     bgColor: 'bg-transparent',
     focus: {
-      radius: 'focus:rounded-md',
       borderColor: 'focus:border-transparent',
       ringColor: 'focus:ring-indigo-600',
       ringWidth: 'focus:ring-2',

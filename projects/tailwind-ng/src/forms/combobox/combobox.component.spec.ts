@@ -191,7 +191,7 @@ describe('ComboboxComponent', () => {
     expect(combobox).toBeTruthy();
     expect(combobox.input()).toBeTruthy();
     expect(combobox.opened()).toBeFalse();
-    expect(combobox.selectionMode()).toBe('single');
+    expect(combobox.selectMode()).toBe('single');
   }, { flush: true }));
 
   it('should toggle', () => {
@@ -347,18 +347,18 @@ describe('ComboboxComponent', () => {
 
     // Second selection
     const item1 = testComponent.comboboxItems()[1];
-    expect(item1.isSelected).toBeFalse();
+    expect(item1.isInsideCombobox).toBeFalse();
 
     item1.nativeElement.click();
 
-    expect(item1.isSelected).toBeTrue();
+    expect(item1.isInsideCombobox).toBeTrue();
     expect(combobox.input().value).toBe(item1.value());
     expect(input.value).toBe(item1.value);
     expect(combobox.opened()).toBeFalse();
     expect(combobox.input().isValid).toBeTrue();
     // Selected item should remain selected when clicking on it again
     item1.nativeElement.click();
-    expect(item1.isSelected).toBeTrue();
+    expect(item1.isInsideCombobox).toBeTrue();
     expect(combobox.input().value).toBe(item1.value());
     expect(input.value).toBe(item1.value());
     expect(combobox.input().isValid).toBeTrue();
@@ -436,7 +436,7 @@ describe('ComboboxComponent', () => {
 
     // Initial state when combobox is opened for the first time
     expect(combobox.opened()).toBeTrue();
-    expect(combobox.selectionMode()).toBe('multiple');
+    expect(combobox.selectMode()).toBe('multiple');
     expect(combobox.input().value).toBe('');
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
     expect(input.value).toBe('');

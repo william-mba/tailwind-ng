@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, model, OnInit, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
 import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
@@ -9,8 +9,8 @@ import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
     role: 'option',
     '[class]': 'classList.value()',
     '[tabindex]': 'disabled ? null : -1',
-    '[attr.aria-selected]': 'isSelected',
-    '[attr.data-selected]': 'isSelected || null'
+    '[attr.aria-selected]': 'selected()',
+    '[attr.data-selected]': 'selected() || null'
   },
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,
@@ -19,12 +19,9 @@ import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 })
 export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxItem, OnInit {
   value = input.required<string>();
+  selected = model<boolean>(false);
   private readonly _combobox = inject(ComboboxComponent, { skipSelf: true, host: true });
   private readonly _value = computed(() => this.value().toLocaleLowerCase());
-
-  get isSelected(): boolean {
-    return this._combobox.has(this);
-  }
 
   override ngOnInit(): void {
     super.ngOnInit();
@@ -37,13 +34,17 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     this._combobox.opened.subscribe((opened) => {
       this.selectIfNeeded();
       queueMicrotask(() => {
-        if (opened && this.isSelected) this.scrollIntoView();
+        if (opened && this.isInsideCombobox) this.scrollIntoView();
       });
     });
+
+    if (this.selected()) {
+      this.select();
+    }
   }
 
   private selectIfNeeded(value = this._combobox.input().value): void {
-    if (!this._combobox.opened() || this.isSelected) return;
+    if (!this._combobox.opened() || this.isInsideCombobox) return;
     if (this._value() === value.toLocaleLowerCase()) {
       this.select();
     }
@@ -51,6 +52,25 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
 
   select(): void {
     this._combobox.select(this);
+    requestAnimationFrame(() => {
+      if (this.isInsideCombobox) {
+        this.selected.set(true);
+      } else {
+        this.selected.set(false);
+      }
+    })
+  }
+  deselect(): void {
+    requestAnimationFrame(() => {
+      this.selected.set(false);
+    });
+    if (this.isInsideCombobox) {
+      this._combobox.deselect(this);
+    }
+  }
+
+  private get isInsideCombobox(): boolean {
+    return this._combobox.has(this);
   }
 
   protected override buildStyle(): void {

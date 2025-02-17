@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, contentChild, model, OnInit, output, ViewEncapsulation } from '@angular/core';
-import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isEnterOrSpace, isEscape, SelectionMode, TwIf } from '@tailwind-ng/core';
+import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isEscape, isNavigation, SelectMode, TwIf } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
@@ -25,7 +25,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   readonly dropdown = contentChild.required(DropdownBase);
   readonly input = contentChild.required(InputTextBase);
   selected = output<ComboboxItem[]>();
-  selectionMode = model<SelectionMode>('single');
+  selectMode = model<SelectMode>('single');
   private _map = new Map<string, ComboboxItem>();
 
   override ngOnInit(): void {
@@ -39,9 +39,9 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 
   override open(): void {
     super.open();
+    this.dropdown().open();
     this.input().focus();
     this.input().setVisualfocus();
-    this.dropdown().open();
   }
 
   override close(): void {
@@ -49,8 +49,11 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     this.dropdown().close();
     this.resetActiveElementIfAny();
     this.selected.emit([...this._map.values()]);
-    if (this.selectionMode() === 'single' && this._map.size > 0) {
+    if (this.selectMode() === 'single' && this._map.size > 0) {
       this.input().value = [...this._map.values()][0].value();
+    }
+    if (this.hasFocus) {
+      this.input().focus();
     }
   }
 
@@ -84,8 +87,8 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
       } else {
         this.reset();
       }
-    } else if (isArrowUpOrDown(event.key)) {
-      if (isArrowUp(event.key)) {
+    } else if (isNavigation(event.key)) {
+      if (isArrowUpOrLeft(event.key)) {
         if (!this.activeElement) {
           this.activeElement = this.dropdown().setVisualfocus({ behavior: 'lastChild' });
         } else {
@@ -130,7 +133,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   }
 
   select(item: ComboboxItem): void {
-    if (this.selectionMode() === 'single') {
+    if (this.selectMode() === 'single') {
       this._map.clear();
       this._map.set(item.value(), item);
       this.input().value = item.value();
@@ -145,11 +148,16 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     }
     this.input().focus();
   }
+  deselect(item: ComboboxItem): void {
+    this._map.delete(item.value());
+  }
 
   reset(): void {
+    this._map.forEach(item => item.deselect());
     this._map.clear();
     this.input().clear();
     this.input().focus();
     this.resetActiveElementIfAny();
+    this.selected.emit([]);
   }
 }

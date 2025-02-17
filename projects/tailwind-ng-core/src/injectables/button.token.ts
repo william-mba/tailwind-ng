@@ -32,7 +32,7 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
       const { options } = this.popup;
       if (options) {
         options.trigger = this;
-        options.afterClosing.focusTrigger = true;
+        options.focusTriggerOnClose = true;
       }
     }
   }

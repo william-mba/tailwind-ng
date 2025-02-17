@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, model, ViewEncapsulation } from '@angular/core';
 import { classlist, Toggle, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
@@ -8,8 +8,8 @@ import { classlist, Toggle, ToggleBase } from '@tailwind-ng/core';
     role: 'switch',
     '[class]': 'classList.value()',
     '[tabindex]': 'disabled ? null : tabIndex',
-    '[attr.aria-checked]': 'isChecked || null',
-    '[attr.data-checked]': 'isChecked || null',
+    '[attr.aria-checked]': 'checked() || null',
+    '[attr.data-checked]': 'checked() || null',
   },
   template: `<ng-content />`,
   encapsulation: ViewEncapsulation.None,
@@ -17,9 +17,8 @@ import { classlist, Toggle, ToggleBase } from '@tailwind-ng/core';
   providers: [{ provide: ToggleBase, useExisting: ToggleComponent }]
 })
 export class ToggleComponent extends ToggleBase implements Toggle {
-  @Input() isChecked = false;
   @Input() tabIndex = 0;
-  checked = output<boolean>();
+  checked = model<boolean>(false);
 
   protected override buildStyle(): void {
     this.classList = classlist(this.class()).set(this.config);
@@ -34,8 +33,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
 
   toggle(): void {
     this.focus();
-    this.isChecked = !this.isChecked;
-    this.checked.emit(this.isChecked);
+    this.checked.update((checked) => !checked);
   }
 
   protected override addEventListeners(): void {
