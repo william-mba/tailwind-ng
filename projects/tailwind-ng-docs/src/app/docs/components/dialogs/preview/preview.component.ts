@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TwBadge, TwIcon } from 'tailwind-ng';
+import { TwButton, TwDialogModule, TwIcon } from 'tailwind-ng';
 
 @Component({
   selector: 'app-dialogs-preview',
-  imports: [TwBadge, TwIcon],
+  imports: [TwIcon, TwDialogModule, TwButton],
   templateUrl: './preview.component.html',
   styles: ``
 })
