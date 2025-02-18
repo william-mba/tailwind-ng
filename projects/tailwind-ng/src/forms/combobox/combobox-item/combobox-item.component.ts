@@ -36,7 +36,9 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
           if (!this._combobox.selectedValues.has(this.value())) {
             this.selected.set(false);
           } else {
-            this.scrollIntoView();
+            setTimeout(() => {
+              this.scrollIntoView();
+            })
           }
         }
       })
