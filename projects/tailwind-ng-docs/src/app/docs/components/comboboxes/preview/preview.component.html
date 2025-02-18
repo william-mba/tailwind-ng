@@ -36,7 +36,7 @@
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectMode]="selectMode()" #cbb1 class="sm:w-80" (selected)="logItems($event)">
+      <div tw-combobox [selectionMode]="selectionMode()" #cbb1 class="sm:w-80" [(selectedValues)]="selections[1]">
         <!-- Label -->
         <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -61,7 +61,7 @@
           }
         </tw-dropdown>
       </div>
-      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[1] | json}}</p>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[1] | string }}</p>
     </div>
   </div>
 
@@ -72,7 +72,7 @@
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectMode]="selectMode()" #cb2 class="sm:w-80" (selected)="logItems($event, 2)">
+      <div tw-combobox [selectionMode]="selectionMode()" #cb2 class="sm:w-80" [(selectedValues)]="selections[2]">
         <!-- Label -->
         <label for="search2" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -97,7 +97,7 @@
           }
         </tw-dropdown>
       </div>
-      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[2] | json}}</p>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[2] | string }}</p>
     </div>
   </div>
 
@@ -119,10 +119,10 @@
   </div>
   <div
     class="hidden lg:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div class="grid gap-y-8">
+    <div class="grid gap-y-8 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectMode]="selectMode()" #cb5 class="lg:w-2xl 2xl:w-3xl text-center mb-96"
-        (selected)="logItems($event, 5)">
+      <div tw-combobox [selectionMode]="selectionMode()" #cb5 class="lg:w-2xl 2xl:w-3xl text-center mb-96"
+        [(selectedValues)]="selections[5]">
         <!-- Label -->
         <label for="search5" class="block text-sm mb-4 font-medium"> Quick search </label>
         <!-- Input -->
@@ -156,7 +156,7 @@
           }
         </tw-dropdown>
       </div>
-      <p class="text-sm text-balance text-center max-w-full"> {{ selections[5] | json}}</p>
+      <p class="text-sm text-balance text-center max-w-full"> {{ selections[5] | string }}</p>
     </div>
   </div>
 
@@ -167,7 +167,7 @@
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectMode]="selectMode()" #cb3 class="sm:w-80" (selected)="logItems($event, 3)">
+      <div tw-combobox [selectionMode]="selectionMode()" #cb3 class="sm:w-80" [(selectedValues)]="selections[3]">
         <!-- Label -->
         <label for="search3" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -193,7 +193,7 @@
           }
         </tw-dropdown>
       </div>
-      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[3] | json}}</p>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[3] | string }}</p>
     </div>
   </div>
 
@@ -217,7 +217,7 @@
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectMode]="selectMode()" #cb4 class="sm:w-80" (selected)="logItems($event, 4)">
+      <div tw-combobox [selectionMode]="selectionMode()" #cb4 class="sm:w-80" [(selectedValues)]="selections[4]">
         <!-- Label -->
         <label for="search4" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -250,7 +250,7 @@
           }
         </tw-dropdown>
       </div>
-      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[4] | json}}</p>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center"> {{ selections[4] | string }}</p>
     </div>
   </div>
 </div>

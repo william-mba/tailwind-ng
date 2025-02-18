@@ -195,7 +195,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     }
     if (target) {
       target.setAttribute('data-visual-focused', '');
-      target.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest' });
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest' });
+      });
     }
     this.currentVisualFocusedElement = target;
     return target;
@@ -209,10 +211,10 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   }
 
   scrollIntoView(options: ScrollIntoViewOptions = {}): void {
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const { block = 'nearest', inline = 'nearest' } = options;
       this.nativeElement.scrollIntoView({ block: block, inline: inline });
-    }, 10);
+    });
   }
 
   get hasVisualFocus(): boolean {

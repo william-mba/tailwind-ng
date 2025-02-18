@@ -191,7 +191,7 @@ describe('ComboboxComponent', () => {
     expect(combobox).toBeTruthy();
     expect(combobox.input()).toBeTruthy();
     expect(combobox.opened()).toBeFalse();
-    expect(combobox.selectMode()).toBe('single');
+    expect(combobox.selectionMode()).toBe('single');
   }, { flush: true }));
 
   it('should toggle', () => {
@@ -436,7 +436,7 @@ describe('ComboboxComponent', () => {
 
     // Initial state when combobox is opened for the first time
     expect(combobox.opened()).toBeTrue();
-    expect(combobox.selectMode()).toBe('multiple');
+    expect(combobox.selectionMode()).toBe('multiple');
     expect(combobox.input().value).toBe('');
     const input = fixture.debugElement.query(By.css('input[tw-input]')).nativeElement;
     expect(input.value).toBe('');

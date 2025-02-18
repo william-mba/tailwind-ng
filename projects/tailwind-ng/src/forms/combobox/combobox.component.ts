@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, contentChild, model, OnInit, output, ViewEncapsulation } from '@angular/core';
-import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isArrowUpOrLeft, isEnterOrSpace, isEscape, isNavigation, SelectMode, TwIf } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, contentChild, Input, OnInit, output, ViewEncapsulation } from '@angular/core';
+import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEnter, isEscape, ComboboxSelectionMode, TwIf, isArrowUpOrDown, isArrowUp } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
@@ -24,9 +24,10 @@ import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTex
 export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit {
   readonly dropdown = contentChild.required(DropdownBase);
   readonly input = contentChild.required(InputTextBase);
-  selected = output<ComboboxItem[]>();
-  selectMode = model<SelectMode>('single');
-  private _map = new Map<string, ComboboxItem>();
+  readonly resetted = output<void>();
+  @Input() selectionMode: ComboboxSelectionMode = 'single';
+  @Input() selectedValues = new Set<string>();
+  readonly selectedValuesChange = output<Set<string>>();
 
   override ngOnInit(): void {
     super.ngOnInit();
@@ -48,13 +49,15 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     super.close();
     this.dropdown().close();
     this.resetActiveElementIfAny();
-    this.selected.emit([...this._map.values()]);
-    if (this.selectMode() === 'single' && this._map.size > 0) {
-      this.input().value = [...this._map.values()][0].value();
+    // if the selection mode is single and there is only one selected value,
+    // we set the input value to it
+    if (this.selectionMode === 'single' && this.selectedValues.size > 0) {
+      this.input().value = [...this.selectedValues.values()][0];
     }
     if (this.hasFocus) {
       this.input().focus();
     }
+    this.selectedValuesChange.emit(this.selectedValues);
   }
 
   protected onBlur(): void {
@@ -77,8 +80,9 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     this.classList = classlist(this.class()).set("relative h-max");
   }
 
-  protected onKeyup(event: KeyboardEvent): void {
-    event.stopPropagation();
+  // we use keydown as it allows users to navigate up and down continuously
+  protected override onKeydown(event: KeyboardEvent): void {
+    super.onKeydown(event);
     if (!isEscape(event.key) && !this.opened()) {
       this.open();
     } else if (isEscape(event.key)) {
@@ -87,8 +91,8 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
       } else {
         this.reset();
       }
-    } else if (isNavigation(event.key)) {
-      if (isArrowUpOrLeft(event.key)) {
+    } else if (isArrowUpOrDown(event.key)) {
+      if (isArrowUp(event.key)) {
         if (!this.activeElement) {
           this.activeElement = this.dropdown().setVisualfocus({ behavior: 'lastChild' });
         } else {
@@ -111,7 +115,8 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
       if (activeContent && activeContent.length > 0) {
         this.input().value = activeContent;
       }
-    } else if (isEnterOrSpace(event.key) && this.activeElement) {
+    } // we use enter and not space as space should move the cursor in the input field
+    else if (isEnter(event.key) && this.activeElement) {
       this.activeElement.click();
     }
   }
@@ -119,46 +124,23 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   protected override addEventListeners(): void {
     super.addEventListeners();
     this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true);
-    this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners();
     this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
-    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
   }
 
-  has(item: ComboboxItem): boolean {
-    return this._map.has(item.value());
-  }
-
-  select(item: ComboboxItem): void {
-    if (this.selectMode() === 'single') {
-      this._map.forEach(item => item.deselect());
-      this._map.clear();
-      this._map.set(item.value(), item);
-      this.input().value = item.value();
-      this.close();
-    } else {
-      if (this.has(item)) {
-        this._map.delete(item.value());
-      } else {
-        this._map.set(item.value(), item);
-      }
-      this.activeElement = this.dropdown().setVisualfocus({ target: item.nativeElement });
-    }
-    this.input().focus();
-  }
-  deselect(item: ComboboxItem): void {
-    this._map.delete(item.value());
+  setActiveItem(item: ComboboxItem): void {
+    this.activeElement = item.nativeElement;
   }
 
   reset(): void {
-    this._map.forEach(item => item.deselect());
-    this._map.clear();
     this.input().clear();
     this.input().focus();
     this.resetActiveElementIfAny();
-    this.selected.emit([]);
+    this.selectedValues.clear();
+    this.selectedValuesChange.emit(this.selectedValues);
+    this.resetted.emit();
   }
 }

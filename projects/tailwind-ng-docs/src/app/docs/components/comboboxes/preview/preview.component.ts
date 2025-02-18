@@ -1,5 +1,5 @@
-import { JsonPipe } from '@angular/common';
-import { Component, computed, InputSignal, signal } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { isCombobox, Popup } from '@tailwind-ng/core';
 import { TwAvatar, TwButton, TwComboboxModule, TwDropdown, TwIcon, TwInputText, TwToggle } from 'tailwind-ng';
 
@@ -9,20 +9,28 @@ interface User {
   status?: 'active' | 'inactive';
 }
 
+@Pipe({ name: 'string', pure: false })
+export class StringPipe implements PipeTransform {
+
+  transform(value: Set<string>): string {
+    return `[ ${[...value].join(', ')} ] (${value.size})`;
+  }
+}
+
 @Component({
   selector: 'app-comboboxes-preview',
-  imports: [TwIcon, TwComboboxModule, TwDropdown, TwButton, TwInputText, TwAvatar, TwToggle, JsonPipe],
+  imports: [TwIcon, TwComboboxModule, TwDropdown, TwButton, TwInputText, TwAvatar, TwToggle, StringPipe],
   templateUrl: './preview.component.html',
   styles: ``
 })
 export class PreviewComponent {
 
-  selectMode = signal<'single' | 'multi'>('multi');
+  selectionMode = signal<'single' | 'multi'>('multi');
 
-  isSingleMode = computed(() => this.selectMode() === 'single');
+  isSingleMode = computed(() => this.selectionMode() === 'single');
 
   protected toggleMode(): void {
-    this.selectMode.update(mode => mode === 'single' ? 'multi' : 'single');
+    this.selectionMode.update(mode => mode === 'single' ? 'multi' : 'single');
   }
 
   get _users(): User[] {
@@ -203,9 +211,11 @@ export class PreviewComponent {
     }
   }
 
-  selections: Record<number, string[]> = {};
-
-  logItems(items: { value: InputSignal<string> }[], id = 1): void {
-    this.selections[id] = items.map(x => x.value());
-  }
+  selections: Record<number, Set<string>> = {
+    1: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
+    2: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
+    3: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
+    4: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
+    5: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
+  };
 }

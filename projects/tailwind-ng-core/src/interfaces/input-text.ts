@@ -17,6 +17,10 @@ export interface InputText extends BaseStates<HTMLInputElement>, BaseActions {
    */
   readonly value: string;
   /**
+   * The input's normalized value.
+   */
+  readonly normalizedValue: string;
+  /**
    * Whether the input is valid.
    */
   readonly isValid: boolean;

@@ -26,6 +26,9 @@ export abstract class InputTextBase extends BaseDirective<HTMLInputElement> impl
   get isEmpty(): boolean {
     return this.value.trim().length === 0;
   }
+  get normalizedValue(): string {
+    return this.value.trim().toLocaleLowerCase();
+  }
 
   valueChange = output<string>();
 

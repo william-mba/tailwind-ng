@@ -1,4 +1,4 @@
-import { ModelSignal, OutputEmitterRef, Signal } from "@angular/core";
+import { OutputEmitterRef, Signal } from "@angular/core";
 import { ComboboxItem } from "./combobox-item";
 import { BasicPopupActions, Popup, PopupState } from "./popup";
 import { InputText } from "./input-text";
@@ -7,15 +7,25 @@ import { InputText } from "./input-text";
  * @TailwindNG Combobox component state
  */
 export interface ComboboxState extends PopupState {
+  /**
+   * The combobox's input text.
+   */
   readonly input: Signal<InputText>;
+  /**
+   * The combobox's dropdown.
+   */
   readonly dropdown: Signal<Popup>;
   /**
    * The combobox's selection mode. Default is 'single'.
    */
-  readonly selectMode: ModelSignal<SelectMode>;
+  readonly selectionMode: ComboboxSelectionMode;
+  /**
+   * The combobox's selected values.
+   */
+  readonly selectedValues: Set<string>;
 }
 
-export type SelectMode = 'single' | 'multi';
+export type ComboboxSelectionMode = 'single' | 'multi';
 
 /**
  * @TailwindNG Combobox component actions
@@ -26,25 +36,19 @@ export interface ComboboxActions extends BasicPopupActions {
    */
   reset(): void;
   /**
-   * Selects the specified item.
-   * @param item The item to select.
+   * Sets the combobox's active item.
+   * @param item The item to set as active.
    */
-  select(item: ComboboxItem): void;
-  /**
-   * Deselects the specified item.
-   * @param item The item to deselect.
-   */
-  deselect(item: ComboboxItem): void;
-  /**
-   * Returns true if the combobox has the specified item. Otherwise, returns false.
-   * @param item The item to check.
-   */
-  has(item: ComboboxItem): boolean;
+  setActiveItem(item: ComboboxItem): void;
 }
 
 export interface Combobox extends ComboboxState, ComboboxActions {
   /**
-   * Emits the latest selected item when combobox's selection changes.
+   * Emits the combobox's current selected values.
    */
-  readonly selected: OutputEmitterRef<ComboboxItem[]>;
+  readonly selectedValuesChange: OutputEmitterRef<Set<string>>;
+  /**
+   * Emits when the combobox is reset.
+   */
+  readonly resetted: OutputEmitterRef<void>;
 }
