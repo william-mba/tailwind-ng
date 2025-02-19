@@ -1,9 +1,8 @@
 import { Provider } from '@angular/core';
-import { DIALOG_CONFIG, DialogConfig, mergeConfig, ComponentConfig } from '@tailwind-ng/core';
+import { DIALOG_CONFIG, mergeConfig, ComponentConfig, ConfigTypeOf } from '@tailwind-ng/core';
 
 const BaseConfig = (): ComponentConfig => {
   return {
-    willChange: 'will-change-auto',
     transition: {
       property: 'transition-all',
       behavior: 'transition-discrete',
@@ -12,7 +11,7 @@ const BaseConfig = (): ComponentConfig => {
   }
 };
 
-const DefaultConfig = (): DialogConfig => {
+const DefaultConfig = (): ConfigTypeOf<'Dialog'> => {
   return {
     scrim: {
       ...BaseConfig(),
@@ -59,17 +58,6 @@ const DefaultConfig = (): DialogConfig => {
       sm: {
         maxWidth: 'sm:max-w-md'
       }
-    },
-    backdrop: {
-      bgColor: 'bg-black/15',
-      dark: {
-        bgColor: 'dark:bg-white/15',
-      },
-      backdropBlur: 'backdrop-blur-xs',
-      backdropOpacity: 'backdrop-opacity-0',
-      open: {
-        backdropOpacity: 'open:backdrop-opacity-100',
-      },
     }
   }
 }
@@ -78,7 +66,7 @@ const DefaultConfig = (): DialogConfig => {
  * @TailwindNG Dialog config
  * @returns  The Popover configuration
  */
-export const GetDialogConfig = (customization?: Partial<DialogConfig>): DialogConfig => {
+export const GetDialogConfig = (customization?: ConfigTypeOf<'Dialog'>): ConfigTypeOf<'Dialog'> => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -86,7 +74,7 @@ export const GetDialogConfig = (customization?: Partial<DialogConfig>): DialogCo
  * @TailwindNG Dialog config provider
  * @returns The configured provider
  */
-export function provideDialog(customization?: Partial<DialogConfig>): Provider {
+export function provideDialog(customization?: ConfigTypeOf<'Dialog'>): Provider {
   return {
     provide: DIALOG_CONFIG,
     useValue: GetDialogConfig(customization)

@@ -51,7 +51,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   ngOnInit(): void {
     this.buildStyle();
-    queueMicrotask(this.addEventListeners.bind(this));
+    this.addEventListeners();
     this.isInitialized = true;
   }
 

@@ -1,12 +1,12 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
-import { TwButton, TwDialogModule, TwIcon, provideButton } from 'tailwind-ng';
+import { TwButton, TwDialog, TwIcon, provideButton } from 'tailwind-ng';
 import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-getting-started',
-  imports: [TwIcon, TwDialogModule, TwButton, RouterLink],
+  imports: [TwIcon, TwDialog, TwButton, RouterLink],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './getting-started.component.html',

@@ -3,7 +3,8 @@ import { InjectionTokenFactory } from "./injection-token.factory";
 
 
 /**
- * @TailwindNG ZIndexSeed - Injection token to provide z-index seed value
+ * @TailwindNG Z-Index Seed
+ * @returns The z-index seed value. Default is 50.
  */
 export const Z_INDEX_SEED = InjectionTokenFactory.create(50, 'Z_INDEX_SEED');
 

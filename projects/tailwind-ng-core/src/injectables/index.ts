@@ -3,6 +3,7 @@ export * from './injection-token.factory';
 export * from './window.token';
 export * from './z-index.service';
 export * from './avatar.token';
+export * from './backdrop.token';
 export * from './badge.token';
 export * from './button-group.token';
 export * from './button.token';

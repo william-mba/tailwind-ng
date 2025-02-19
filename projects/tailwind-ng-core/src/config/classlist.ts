@@ -74,6 +74,7 @@ export class ClassList implements IClassList {
     this.value.set(arrayFrom(base));
   }
 
+  set<T = undefined | null>(value: T): ClassList;
   set<T extends string>(value: T): ClassList;
   set<T extends string[]>(value: T[]): ClassList;
   set<T extends Config>(value: T): ClassList;
@@ -82,6 +83,7 @@ export class ClassList implements IClassList {
     return this;
   }
 
+  update<T = undefined | null>(value: T): ClassList;
   update<T extends string>(value: T): ClassList;
   update<T extends string[]>(value: T[]): ClassList;
   update<T extends Config>(value: T): ClassList;
@@ -102,7 +104,7 @@ export class ClassList implements IClassList {
     return this;
   }
 
-  with(value?: string | string[] | Config, behavior: ResolveBehavior = {}): string {
+  with(value?: string | string[] | Config | undefined | null, behavior: ResolveBehavior = {}): string {
     const { useBase } = behavior;
     value = arrayFrom(value);
     if (!value || value.length < MIN_CLASS_NAMES) return this.value().join(' ');
@@ -115,8 +117,11 @@ export class ClassList implements IClassList {
 
 const MIN_CLASS_NAMES = 1;
 
-function arrayFrom(value?: string | string[] | Config): string[] {
+function arrayFrom(value: string | string[] | Config | undefined | null = null): string[] {
   let newValue: string[] = [];
+  if (Type.isUndefined(value) || value === null) {
+    return newValue;
+  }
   if (Type.isString(value)) {
     newValue = Str.toArray(value);
   } else if (Type.isArray(value)) {
@@ -130,7 +135,7 @@ function arrayFrom(value?: string | string[] | Config): string[] {
 /**
  * Creates a class list that can be used to set, update and merge Tailwind CSS class names for a component.
  */
-export function classlist(initialValue: string | string[] | Config | null = null): ClassList {
+export function classlist(initialValue: string | string[] | Config | undefined | null = null): ClassList {
   if (Type.isUndefined(initialValue) || initialValue === null) {
     return new ClassList();
   }

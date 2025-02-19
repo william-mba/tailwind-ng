@@ -13,7 +13,8 @@ import { classlist, Dialog, DialogBase, OverlayPosition, TwIf } from '@tailwind-
   imports: [TwIf],
   template: `
   <ng-container *twIf="opened()">
-      <ng-content select='tw-dialog-container, [tw-dialog-container], [twDialogContainer]'/>
+    <ng-content select='tw-backdrop, [tw-backdrop], [twBackdrop]'/>
+    <ng-content select='tw-dialog-container, [tw-dialog-container], [twDialogContainer]'/>
   </ng-container>`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,9 +28,7 @@ export class DialogComponent extends DialogBase implements Dialog {
   @Input() isModal = true;
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set({
-      s: this.config.scrim, b: this.isModal && !this.position ? this.config.backdrop : {}
-    })
+    this.classList = classlist(this.class()).set(this.config.scrim)
     if (this.position) {
       this.classList.update({ i: 'inset-', ...this.position });
     }

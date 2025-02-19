@@ -5,9 +5,6 @@ export interface DialogConfig {
   scrim: ComponentConfig & {
     open: Variant<'open'>;
   };
-  backdrop: ComponentConfig & {
-    open: Variant<'open'>;
-  };
   container: ComponentConfig & {
     inOpen: Variant<'in-open'>;
     starting: Variant<'starting'>;

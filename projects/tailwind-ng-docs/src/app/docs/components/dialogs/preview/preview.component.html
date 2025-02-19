@@ -1,39 +1,39 @@
 <div class="text-gray-800 dark:text-gray-200 font-medium">
   <div
     class="overflow-x-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <button tw-button variant="secondary" (click)="centeredDialogWithBackdrop.toggle()"
-      [popup]="centeredDialogWithBackdrop">
+    <button tw-button variant="secondary" (click)="dialog01.toggle()"
+      [popup]="dialog01">
       View center dialog with backdrop
     </button>
-    <button tw-button variant="secondary" (click)="bottomLeftDialog.toggle()" [popup]="bottomLeftDialog">
+    <button tw-button variant="secondary" (click)="dialog02.toggle()" [popup]="dialog02">
       View bottom-left notification dialog
     </button>
-    <button tw-button variant="secondary" (click)="bottomRightDialog.toggle()" [popup]="bottomRightDialog">
+    <button tw-button variant="secondary" (click)="dialog03.toggle()" [popup]="dialog03">
       View bottom-right notification dialog
     </button>
-    <button tw-button variant="secondary" (click)="dialogWithIcon.toggle()" [popup]="dialogWithIcon">
+    <button tw-button variant="secondary" (click)="dialog08.toggle()" [popup]="dialog08">
       View dialog with icon
     </button>
-    <button tw-button variant="secondary" (click)="dialogWithSingleAction.toggle()" [popup]="dialogWithSingleAction">
+    <button tw-button variant="secondary" (click)="dialog07.toggle()" [popup]="dialog07">
       View dialog with single action
     </button>
-    <button tw-button variant="secondary" (click)="dialogWithWideButtons.toggle()" [popup]="dialogWithWideButtons">
+    <button tw-button variant="secondary" (click)="dialog06.toggle()" [popup]="dialog06">
       View dialog with wide buttons
     </button>
-    <button tw-button variant="secondary" (click)="dialogWithScrollableContent.toggle()"
-      [popup]="dialogWithScrollableContent">
+    <button tw-button variant="secondary" (click)="dialog05.toggle()"
+      [popup]="dialog05">
       View dialog with scrollable content
     </button>
-    <button tw-button variant="secondary" (click)="dialogWithLeftAlignedButtons.toggle()"
-      [popup]="dialogWithLeftAlignedButtons">
+    <button tw-button variant="secondary" (click)="dialog04.toggle()"
+      [popup]="dialog04">
       View dialog with left-aligned buttons
     </button>
   </div>
 </div>
 
-
-
-<div tw-dialog #centeredDialogWithBackdrop>
+<!-- centered Dialog With Backdrop -->
+<div tw-dialog #dialog01>
+  <tw-backdrop />
   <!-- Dialog container -->
   <div tw-dialog-container>
     <!-- Dialog content -->
@@ -47,11 +47,52 @@
     </div>
     <!-- Dialog actions -->
     <div class="flex justify-end">
-      <button tw-button class="w-full sm:w-fit" (click)="centeredDialogWithBackdrop.close()">OK</button>
+      <button tw-button class="w-full sm:w-fit" (click)="dialog01.close()">OK</button>
     </div>
   </div>
 </div>
-<div tw-dialog #dialogWithLeftAlignedButtons>
+<!-- bottom Left Dialog -->
+<div tw-dialog #dialog02 [isModal]="false" [position]="{ bottom: 'bottom-0', left: 'left-0' }">
+  <!-- Dialog container -->
+  <div tw-dialog-container class="sm:max-w-sm">
+    <!-- Dialog content -->
+    <div class="grid gap-3 text-center sm:text-left">
+      <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
+        Payment successful
+      </h1>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </p>
+    </div>
+    <!-- Dialog actions -->
+    <tw-icon (click)="dialog02.close()" source="heroicons" name="x-mark"
+      class="absolute top-5 right-5 cursor-pointer" />
+  </div>
+</div>
+<!-- bottom Right Dialog -->
+<div tw-dialog #dialog03 [isModal]="false" [autoClose]="true"
+  [position]="{ bottom: 'bottom-0', right: 'right-0' }">
+  <!-- Dialog container -->
+  <div tw-dialog-container
+    class="sm:max-w-sm place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">
+    <!-- Dialog content -->
+    <div class="grid gap-3 text-center sm:text-left">
+      <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
+        Payment successful
+      </h1>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      </p>
+    </div>
+    <!-- Dialog actions -->
+    <tw-icon (click)="dialog03.close()" source="heroicons" name="x-mark"
+      class="absolute top-5 right-5 cursor-pointer" />
+  </div>
+</div>
+<!-- dialog With Left Aligned Buttons -->
+<div tw-dialog #dialog04>
   <!-- Dialog container -->
   <div tw-dialog-container>
     <!-- Dialog content -->
@@ -68,7 +109,7 @@
         </p>
         <!-- Dialog actions -->
         <div class="grid sm:flex gap-4 mt-5">
-          <button tw-button (click)="dialogWithLeftAlignedButtons.close()"
+          <button tw-button (click)="dialog04.close()"
             class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600">Deactivate</button>
           <button tw-button class="w-full sm:w-fit" variant="secondary">Cancel</button>
         </div>
@@ -76,8 +117,9 @@
     </div>
   </div>
 </div>
-
-<div tw-dialog #dialogWithScrollableContent>
+<!-- dialog With Scrollable Content -->
+<div tw-dialog #dialog05>
+  <tw-backdrop />
   <!-- Dialog container -->
   <div tw-dialog-container>
     <!-- Dialog content -->
@@ -171,13 +213,14 @@
     </div>
     <!-- Dialog actions -->
     <div class="flex flex-col gap-4 sm:flex-row-reverse">
-      <button tw-button class="w-full sm:w-fit" (click)="dialogWithScrollableContent.close()">Install</button>
+      <button tw-button class="w-full sm:w-fit" (click)="dialog05.close()">Install</button>
       <button tw-button variant="secondary" class="w-full sm:w-fit">Cancel</button>
     </div>
   </div>
 </div>
-
-<div tw-dialog #dialogWithWideButtons>
+<!-- dialog With Wide Buttons -->
+<div tw-dialog #dialog06>
+  <tw-backdrop class="backdrop-" />
   <!-- Dialog container -->
   <div tw-dialog-container class="sm:max-w-sm">
     <!-- Dialog content -->
@@ -195,13 +238,13 @@
     </div>
     <!-- Dialog actions -->
     <div class="flex flex-col gap-4 sm:flex-row-reverse">
-      <button tw-button class="w-full" (click)="dialogWithWideButtons.close()">Deactivate</button>
+      <button tw-button class="w-full" (click)="dialog06.close()">Deactivate</button>
       <button tw-button variant="secondary" class="w-full">Cancel</button>
     </div>
   </div>
 </div>
-
-<div tw-dialog #dialogWithSingleAction>
+<!-- dialog With Single Action -->
+<div tw-dialog #dialog07>
   <!-- Dialog container -->
   <div tw-dialog-container class="sm:max-w-sm">
     <!-- Dialog content -->
@@ -218,11 +261,11 @@
       </div>
     </div>
     <!-- Dialog actions -->
-    <button tw-button class="w-full" (click)="dialogWithSingleAction.close()">Go back to dashboard</button>
+    <button tw-button class="w-full" (click)="dialog07.close()">Go back to dashboard</button>
   </div>
 </div>
-
-<div tw-dialog #dialogWithIcon (click)="dialogWithIcon.close()">
+<!-- dialog With Icon -->
+<div tw-dialog #dialog08 (click)="dialog08.close()">
   <!-- Dialog container -->
   <div tw-dialog-container>
     <!-- Dialog content -->
@@ -245,64 +288,5 @@
         class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600/90">Deactivate</button>
       <button tw-button class="w-full sm:w-fit" variant="secondary">Cancel</button>
     </div>
-  </div>
-</div>
-
-<div tw-dialog #centeredDialogWithBackdrop>
-  <!-- Dialog container -->
-  <div tw-dialog-container>
-    <!-- Dialog content -->
-    <div class="grid gap-3 text-center sm:text-left">
-      <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
-        Out of stock
-      </h1>
-      <p class="text-sm text-gray-600 dark:text-gray-400">
-        The item in your cart is no longer available.
-      </p>
-    </div>
-    <!-- Dialog actions -->
-    <div class="flex justify-end">
-      <button tw-button class="w-full sm:w-fit" (click)="centeredDialogWithBackdrop.close()">OK</button>
-    </div>
-  </div>
-</div>
-
-<div tw-dialog #bottomLeftDialog [isModal]="false" [position]="{ bottom: 'bottom-0', left: 'left-0' }">
-  <!-- Dialog container -->
-  <div tw-dialog-container class="sm:max-w-sm">
-    <!-- Dialog content -->
-    <div class="grid gap-3 text-center sm:text-left">
-      <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
-        Payment successful
-      </h1>
-      <p class="text-sm text-slate-600 dark:text-slate-400">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-    </div>
-    <!-- Dialog actions -->
-    <tw-icon (click)="bottomLeftDialog.close()" source="heroicons" name="x-mark"
-      class="absolute top-5 right-5 cursor-pointer" />
-  </div>
-</div>
-
-<div tw-dialog #bottomRightDialog [isModal]="false" [autoClose]="true"
-  [position]="{ bottom: 'bottom-0', right: 'right-0' }">
-  <!-- Dialog container -->
-  <div tw-dialog-container
-    class="sm:max-w-sm place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">
-    <!-- Dialog content -->
-    <div class="grid gap-3 text-center sm:text-left">
-      <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
-        Payment successful
-      </h1>
-      <p class="text-sm text-slate-600 dark:text-slate-400">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequatur amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-    </div>
-    <!-- Dialog actions -->
-    <tw-icon (click)="bottomRightDialog.close()" source="heroicons" name="x-mark"
-      class="absolute top-5 right-5 cursor-pointer" />
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { ComponentConfig } from "../types/component-config.type";
 import { ConfigKey } from "./config.key";
+import { BackdropConfig } from "./interfaces";
 import { AvatarConfig } from "./interfaces/avatar-config.interface";
 import { BadgeConfig } from "./interfaces/badge-config.interface";
 import { ButtonConfig } from "./interfaces/button-config.interface";
@@ -38,4 +39,5 @@ export type ConfigTypeOf<K extends ConfigKey = ConfigKey, X extends 'Full' | 'Pa
   K extends 'InputRadio' ? X extends 'Full' ? InputRadioConfig : Partial<InputRadioConfig> :
   K extends 'Dialog' ? X extends 'Full' ? DialogConfig : Partial<DialogConfig> :
   K extends 'Toggle' ? X extends 'Full' ? ToggleConfig : Partial<ToggleConfig> :
+  K extends 'Backdrop' ? X extends 'Full' ? BackdropConfig : Partial<BackdropConfig> :
   K extends 'Checkbox' ? X extends 'Full' ? CheckboxConfig : Partial<CheckboxConfig> : never;

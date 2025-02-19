@@ -2,11 +2,11 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, inject, ViewEncapsul
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { timer } from 'rxjs';
-import { TwButton, TwDialogModule, TwIcon } from 'tailwind-ng';
+import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
 
 @Component({
   selector: 'app-themes',
-  imports: [TwIcon, TwDialogModule, TwButton, RouterLink],
+  imports: [TwIcon, TwDialog, TwButton, RouterLink],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './themes.component.html',

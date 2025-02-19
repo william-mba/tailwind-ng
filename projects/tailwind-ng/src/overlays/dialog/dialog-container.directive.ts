@@ -1,5 +1,5 @@
-import { Directive, inject, OnInit } from "@angular/core";
-import { BaseDirective, classlist, DIALOG_CONFIG, isEscape } from '@tailwind-ng/core';
+import { Directive, inject, Input, OnInit } from "@angular/core";
+import { BaseDirective, classlist, DIALOG_CONFIG, isEscape, ZIndexer } from '@tailwind-ng/core';
 import { DialogComponent } from "./dialog.component";
 
 @Directive({
@@ -8,11 +8,13 @@ import { DialogComponent } from "./dialog.component";
   host: {
     '[class]': 'classList.value()',
     '[tabindex]': 'disabled ? null : -1',
+    '[style.zIndex]': 'zIndex',
   }
 })
 export class DialogContainerDirective extends BaseDirective implements OnInit {
-  private readonly dialog = inject(DialogComponent, { skipSelf: true });
+  private readonly dialog = inject(DialogComponent, { skipSelf: true, host: true });
   protected config = inject(DIALOG_CONFIG).container;
+   @Input() zIndex = inject(ZIndexer).next;
 
   protected override buildStyle(): void {
     this.classList = classlist(this.class()).set(this.config!);

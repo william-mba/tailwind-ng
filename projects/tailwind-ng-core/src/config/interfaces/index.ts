@@ -1,4 +1,5 @@
 export * from './avatar-config.interface';
+export * from './backdrop-config.interface';
 export * from './badge-config.interface';
 export * from './button-config.interface';
 export * from './checkbox-config.interface';

@@ -1,10 +1,10 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TwButton, TwDialogModule, TwIcon } from 'tailwind-ng';
+import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
 
 @Component({
   selector: 'app-components',
-  imports: [TwIcon, TwDialogModule, TwButton, RouterLink],
+  imports: [TwIcon, TwDialog, TwButton, RouterLink],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './components-overview.component.html',
