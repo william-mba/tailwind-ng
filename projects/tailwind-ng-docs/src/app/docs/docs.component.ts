@@ -1,35 +1,48 @@
-import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { TwButton, TwDropdown, TwIcon } from 'tailwind-ng';
 import { TwOption, ThemeService } from '@tailwind-ng/core';
-import { NgIf } from '@angular/common';
+import { DOCUMENT, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-docs',
   imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, TwOption, RouterOutlet],
-  templateUrl: './docs.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './docs.component.html'
 })
 export class DocsComponent {
-  isNavOpened = false;
+  navOpened = signal(true);
+  private maxSm = 640;
+  private isMobile = false;
+  private _document = inject(DOCUMENT);
+  private readonly _resizeObserver = new ResizeObserver((entries) => {
+    requestAnimationFrame(() => {
+      for (const entry of entries) {
+        let width;
+        if (entry.contentBoxSize[0]) {
+          width = entry.contentBoxSize[0].inlineSize;
+        } else {
+          width = entry.contentRect.width;
+        }
+        this.isMobile = width <= this.maxSm;
+        if (this.isMobile) {
+          this.navOpened.set(false);
+        } else {
+          this.navOpened.set(true);
+        }
+      }
+    });
+  })
+  private readonly _destroyRef = inject(DestroyRef);
+  constructor() {
+    this._resizeObserver.observe(this._document.body);
+    this._destroyRef.onDestroy(() => this._resizeObserver.disconnect());
+  }
+
   toggleNav() {
-    this.isNavOpened = !this.isNavOpened;
+    this.navOpened.update(current => !current);
   }
 
-  releaseTag = {
-    active: 'latest',
-    options: [
-      { value: 'latest', label: 'Latest' },
-      { value: 'next', label: 'Next' },
-      { value: 'dev', label: 'Dev' },
-    ]
-  };
-
-  updateTag(value: string) {
-    this.releaseTag.active = value;
-  }
   protected readonly theme = inject(ThemeService);
   switchTheme() {
     this.theme.toggle();
