@@ -7,15 +7,18 @@ import { ZIndexer } from '../injectables/z-index.service';
   host: {
     '[attr.id]': 'id',
     '[attr.open]': 'opened() || null',
-    '[attr.aria-expanded]': 'opened()',
-    '[style.zIndex]': 'zIndex',
+    '[attr.aria-expanded]': 'opened()'
   }
 })
 export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
-  @Input() zIndex = inject(ZIndexer).next;
+  private readonly _zIndex = inject(ZIndexer);
   @Input() id = this.randomId('popup');
   @Input() options?: PopupExtraOptons;
   opened = model(false);
+
+  protected get zIndex(): string {
+    return `${this._zIndex.next}`;
+  }
 
   toggle(): void {
     if (this.opened()) {
@@ -27,18 +30,24 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
 
   open(): void {
     if (!this.opened()) {
-      this.opened.set(true);
+      requestAnimationFrame(() => {
+        this.opened.set(true);
+        this.nativeElement.style.zIndex = this.zIndex;
+      });
     }
   }
 
   close(): void {
     if (this.opened()) {
-      this.opened.set(false);
-      if (this.options) {
-        const { trigger } = this.options;
-        const { focusTriggerOnClose } = this.options;
-        if (trigger && focusTriggerOnClose) trigger.focus();
-      }
+      requestAnimationFrame(() => {
+        this.opened.set(false);
+        this.nativeElement.style.zIndex = '';
+        if (this.options) {
+          const { trigger } = this.options;
+          const { focusTriggerOnClose } = this.options;
+          if (trigger && focusTriggerOnClose) trigger.focus();
+        }
+      });
     }
   }
 

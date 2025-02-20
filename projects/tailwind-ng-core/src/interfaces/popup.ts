@@ -6,7 +6,6 @@ import { BaseActions, BaseStates } from "./base";
  */
 export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseStates<T> {
   readonly id: string;
-  readonly zIndex: number;
   /**
    * Whether the component is hovered.
    */
