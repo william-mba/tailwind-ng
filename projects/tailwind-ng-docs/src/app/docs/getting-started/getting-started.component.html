@@ -10,41 +10,39 @@
       favorite package manager.</p>
     <p class="mb-1.5 text-gray-700 dark:text-gray-300">npm:</p>
     <div class="relative">
+      <div [innerHTML]="trust(npmHTML)"></div>
       @if (copyRec['npm']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(npmCode, 'npm')"
-        class="z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
-      <div [innerHTML]="trust(npmHTML)"></div>
     </div>
     <p class="mb-1.5 text-gray-700 dark:text-gray-300">yarn:</p>
     <div class="relative">
+      <div [innerHTML]="trust(yarnHTML)"></div>
       @if (copyRec['yarn']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(yarnCode, 'yarn')"
-        class="z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
-
-      <div [innerHTML]="trust(yarnHTML)"></div>
     </div>
     <p class="mb-1.5 text-gray-700 dark:text-gray-300">pnpm:</p>
     <div class="relative">
+      <div [innerHTML]="trust(pnpmHTML)"></div>
       @if (copyRec['pnpm']) {
       <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
       @else {
       <tw-icon name="clipboard-document" size="lg" (click)="copy(pnpmCode, 'pnpm')"
-        class="z-10 absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
+        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
       }
-
-      <div [innerHTML]="trust(pnpmHTML)"></div>
     </div>
     <h2 class="font-heading mt-12 mb-3 text-xl font-semibold">Usage</h2>
     <p class="mb-3 text-gray-700 dark:text-gray-300">Import a component and the UI provider.</p>
