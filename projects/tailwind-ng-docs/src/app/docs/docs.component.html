@@ -12,7 +12,7 @@
           </a>
         </div>
         <!-- Options menu on large screens -->
-        <div class="flex items-center gap-6 max-md:hidden">
+        <div class="flex items-center gap-6 max-lg:hidden">
           <div class="flex *:rounded-md *:ring-0 items-center gap-2">
             <button tw-button variant="secondary" size="xs">
               <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
@@ -36,7 +36,7 @@
           </div>
         </div>
         <!-- Options menu on small screens  -->
-        <div class="relative flex items-center gap-6 md:hidden">
+        <div class="relative flex items-center gap-6 lg:hidden">
           <button tw-button variant="text" size="xs" class="rounded-md" (click)="optionMenu.toggle()"
             [popup]="optionMenu">
             <tw-icon name="more-ver" class="text-gray-500" />
@@ -62,7 +62,7 @@
       </div>
     </div>
     <!-- Secondary top bar / Left nav. trigger on small screens -->
-    <div class="bg-white dark:bg-black border-t md:hidden border-gray-950/10 dark:border-white/10">
+    <div class="bg-white dark:bg-black border-t lg:hidden border-gray-950/10 dark:border-white/10">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <div class="flex gap-4 items-center">
           <tw-icon name="bars-3-center-left" class="text-gray-400" (click)="toggleNav()" />
@@ -71,11 +71,10 @@
     </div>
   </div>
   <!-- Left navigation and main content -->
-  <div
-    class="absolute inset-0 mt-28.5 md:mt-14.25 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-7 lg:grid-cols-16 grid-rows-1">
+  <div class="absolute inset-0 mt-28.5 lg:mt-14.25 flex gap-0">
     <!-- Left navigation -->
     <div [attr.data-open]="navOpened()||null"
-      class="col-start-1 sm:col-end-2 md:col-end-3 lg:col-end-4 overflow-y-auto max-h-screen z-10">
+      class="lg:w-3/12 xl:w-2/12 z-10 max-md:absolute max-md:inset-0 -translate-x-full data-open:translate-x-0 overflow-y-auto max-h-screen transition-all duration-200 bg-white dark:bg-black">
       <div
         class="min-h-screen dark:bg-black *:mb-6 border-r px-6 pr-4 py-8 border-gray-950/10 dark:border-white/10 relative duration-500">
         @for (item of navItems; track $index) {
@@ -122,8 +121,8 @@
       </div>
     </div>
     <!-- Main content -->
-    <div [attr.data-open]="navOpened()||null"
-      class="max-sm:data-open:hidden sm:col-start-2 md:col-start-3 lg:col-start-4 col-span-full relative overflow-y-auto max-h-screen bg-white dark:bg-black transition-all duration-500">
+    <div
+      class="lg:w-9/12 xl:w-10/12 max-lg:absolute max-lg:inset-0 overflow-y-auto max-h-screen transition-colors duration-200 bg-white dark:bg-black">
       <router-outlet />
     </div>
   </div>

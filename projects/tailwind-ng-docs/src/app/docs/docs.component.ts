@@ -1,6 +1,6 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { TwButton, TwDropdown, TwIcon } from 'tailwind-ng';
-import { TwOption, ThemeService } from '@tailwind-ng/core';
+import { TwOption, ThemeService, isTab } from '@tailwind-ng/core';
 import { DOCUMENT, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -12,23 +12,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class DocsComponent {
   navOpened = signal(true);
-  private maxSm = 640;
-  private isMobile = false;
+  private _isSmallScreen = false;
+  private _clientWidth = signal(window.innerWidth);
   private _document = inject(DOCUMENT);
   private readonly _resizeObserver = new ResizeObserver((entries) => {
     requestAnimationFrame(() => {
       for (const entry of entries) {
-        let width;
         if (entry.contentBoxSize[0]) {
-          width = entry.contentBoxSize[0].inlineSize;
+          this._clientWidth.set(entry.contentBoxSize[0].inlineSize);
         } else {
-          width = entry.contentRect.width;
-        }
-        this.isMobile = width <= this.maxSm;
-        if (this.isMobile) {
-          this.navOpened.set(false);
-        } else {
-          this.navOpened.set(true);
+          this._clientWidth.set(entry.contentRect.width);
         }
       }
     });
@@ -37,9 +30,19 @@ export class DocsComponent {
   constructor() {
     this._resizeObserver.observe(this._document.body);
     this._destroyRef.onDestroy(() => this._resizeObserver.disconnect());
+
+    effect(() => {
+      this._isSmallScreen = this._clientWidth() <= 1024;
+      if (this._isSmallScreen) {
+        this.navOpened.set(false);
+      } else {
+        this.navOpened.set(true);
+      }
+    });
   }
 
   toggleNav() {
+    if (!this._isSmallScreen) return;
     this.navOpened.update(current => !current);
   }
 
