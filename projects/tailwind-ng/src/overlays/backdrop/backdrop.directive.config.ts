@@ -1,5 +1,5 @@
 import { Provider } from "@angular/core";
-import { BACKDROP_CONFIG, BackdropConfig, ConfigTypeOf, mergeConfig } from "@tailwind-ng/core";
+import { BACKDROP_CONFIG, BackdropConfig, mergeConfig } from "@tailwind-ng/core";
 
 const DefaultConfig = (): BackdropConfig => {
   return {
@@ -21,7 +21,7 @@ const DefaultConfig = (): BackdropConfig => {
  * @TailwindNG Backdrop config
  * @returns  The Popover configuration
  */
-export const GetBackdropConfig = (customization?: ConfigTypeOf<'Backdrop'>): BackdropConfig => {
+export const GetBackdropConfig = (customization?: Partial<BackdropConfig>): BackdropConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -29,7 +29,7 @@ export const GetBackdropConfig = (customization?: ConfigTypeOf<'Backdrop'>): Bac
  * @TailwindNG Backdrop config provider
  * @returns The configured provider
  */
-export function provideBackdrop(customization?: ConfigTypeOf<'Backdrop'>): Provider {
+export function provideBackdrop(customization?: Partial<BackdropConfig>): Provider {
   return {
     provide: BACKDROP_CONFIG,
     useValue: GetBackdropConfig(customization)

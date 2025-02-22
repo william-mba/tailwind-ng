@@ -1,10 +1,10 @@
 import { Directive, forwardRef, inject } from "@angular/core";
-import { ConfigTypeOf } from "../config";
+import { DialogConfig } from "../config";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Dialog } from "../interfaces/dialog";
 
-export const DIALOG_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Dialog'>>({}, 'DIALOG_CONFIG');
+export const DIALOG_CONFIG = InjectionTokenFactory.create<Partial<DialogConfig>>({}, 'DIALOG_CONFIG');
 
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) }] })
 export abstract class DialogBase extends PopupDirective<HTMLDialogElement> {

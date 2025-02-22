@@ -26,8 +26,8 @@
     "lint": "ng lint",
     "deps:check:core": "pnpx dpdm --tree false --ext .ts projects/tailwind-ng-core/src/* --exclude ^@angular/core$",
     "deps:check:ui": "pnpx dpdm --tree false --ext .ts projects/tailwind-ng/src/* --exclude ^@angular/core$",
-    "deps:check:app": "pnpx dpdm --tree false --ext .ts projects/tailwind-ng-docs/src/* --exclude ^@angular/core$",
-    "deps:check:all": "pnpm deps:check:core && pnpm deps:check:ui && pnpm deps:check:app",
+    "deps:check:docs": "pnpx dpdm --tree false --ext .ts projects/tailwind-ng-docs/src/* --exclude ^@angular/core$",
+    "deps:check:all": "pnpm deps:check:core && pnpm deps:check:ui && pnpm deps:check:docs",
     "checkup": "pnpm deps:check:all && pnpm cleanup && pnpm lint:all && pnpm build:all && pnpm test:all:ci",
     "cleanup": "ng generate @angular/core:cleanup-unused-imports",
     "install-chrome": "pnpx puppeteer browsers install chrome@131.0.6778.204"

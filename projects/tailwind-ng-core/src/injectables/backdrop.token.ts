@@ -1,10 +1,10 @@
 import { Directive, inject, Input } from "@angular/core";
-import { ConfigTypeOf } from "../config";
+import { BackdropConfig } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Z_INDEX_SEED } from "./z-index.service";
 
-export const BACKDROP_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Backdrop'>>({}, 'DIALOG_CONFIG');
+export const BACKDROP_CONFIG = InjectionTokenFactory.create<Partial<BackdropConfig>>({}, 'DIALOG_CONFIG');
 
 @Directive({
   host: {

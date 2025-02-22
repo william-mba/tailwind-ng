@@ -1,10 +1,10 @@
 import { Directive, forwardRef, inject } from "@angular/core";
-import { ConfigTypeOf } from "../config";
+import { DropdownConfig } from "../config";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Dropdown } from "../interfaces/dropdown";
 
-export const DROPDOWN_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Dropdown'>>({}, 'DROPDOWN_CONFIG');
+export const DROPDOWN_CONFIG = InjectionTokenFactory.create<Partial<DropdownConfig>>({}, 'DROPDOWN_CONFIG');
 
 @Directive({
   host: {

@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { DIALOG_CONFIG, mergeConfig, ComponentConfig, ConfigTypeOf } from '@tailwind-ng/core';
+import { DIALOG_CONFIG, mergeConfig, ComponentConfig, DialogConfig } from '@tailwind-ng/core';
 
 const BaseConfig = (): ComponentConfig => {
   return {
@@ -11,7 +11,7 @@ const BaseConfig = (): ComponentConfig => {
   }
 };
 
-const DefaultConfig = (): ConfigTypeOf<'Dialog'> => {
+const DefaultConfig = (): DialogConfig => {
   return {
     scrim: {
       ...BaseConfig(),
@@ -66,7 +66,7 @@ const DefaultConfig = (): ConfigTypeOf<'Dialog'> => {
  * @TailwindNG Dialog config
  * @returns  The Popover configuration
  */
-export const GetDialogConfig = (customization?: ConfigTypeOf<'Dialog'>): ConfigTypeOf<'Dialog'> => {
+export const GetDialogConfig = (customization?: Partial<DialogConfig>): DialogConfig => {
   return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
 }
 
@@ -74,7 +74,7 @@ export const GetDialogConfig = (customization?: ConfigTypeOf<'Dialog'>): ConfigT
  * @TailwindNG Dialog config provider
  * @returns The configured provider
  */
-export function provideDialog(customization?: ConfigTypeOf<'Dialog'>): Provider {
+export function provideDialog(customization?: Partial<DialogConfig>): Provider {
   return {
     provide: DIALOG_CONFIG,
     useValue: GetDialogConfig(customization)

@@ -1,10 +1,10 @@
 import { Directive, inject, Input, output } from "@angular/core";
-import { ConfigTypeOf } from "../config";
+import { InputTextConfig } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { InputText } from "../interfaces";
 
-export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'InputText'>>({}, 'INPUT_TEXT_CONFIG');
+export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create<Partial<InputTextConfig>>({}, 'INPUT_TEXT_CONFIG');
 
 export function isInputText(component: unknown): component is InputText {
   return component instanceof InputTextBase;

@@ -1,3 +1,4 @@
+import { FullyOptional } from "../types";
 import { ComponentConfig } from "../types/component-config.type";
 import { ConfigKey } from "./config.key";
 import { BackdropConfig } from "./interfaces";
@@ -34,7 +35,7 @@ export type ConfigTypeOf<K extends ConfigKey = ConfigKey, X extends 'Full' | 'Pa
   K extends 'ButtonGroup' ? X extends 'Full' ? ComponentConfig : Partial<ComponentConfig> :
   K extends 'ComboboxItem' ? X extends 'Full' ? ComboboxItemConfig : Partial<ComboboxItemConfig> :
   K extends 'Dropdown' ? X extends 'Full' ? DropdownConfig : Partial<DropdownConfig> :
-  K extends 'Icon' ? X extends 'Full' ? IconConfig : Partial<IconConfig> :
+  K extends 'Icon' ? X extends 'Full' ? IconConfig : FullyOptional<IconConfig> :
   K extends 'InputText' ? X extends 'Full' ? InputTextConfig : Partial<InputTextConfig> :
   K extends 'InputRadio' ? X extends 'Full' ? InputRadioConfig : Partial<InputRadioConfig> :
   K extends 'Dialog' ? X extends 'Full' ? DialogConfig : Partial<DialogConfig> :

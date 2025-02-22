@@ -1,5 +1,5 @@
 import { Directive, inject } from "@angular/core";
-import { ConfigTypeOf } from "../config";
+import { ToggleConfig } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Toggle } from "../interfaces/toggle";
@@ -12,7 +12,7 @@ export function isToggle(component: unknown): component is Toggle {
   return component instanceof ToggleBase;
 }
 
-export const TOGGLE_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Toggle'>>({}, 'TOGGLE_CONFIG');
+export const TOGGLE_CONFIG = InjectionTokenFactory.create<Partial<ToggleConfig>>({}, 'TOGGLE_CONFIG');
 
 @Directive({})
 export abstract class ToggleBase extends BaseDirective {
