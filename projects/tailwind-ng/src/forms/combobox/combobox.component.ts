@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, contentChild, Input, OnInit, output, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, contentChild, Input, model, OnInit, output, ViewEncapsulation } from '@angular/core';
 import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEnter, isEscape, ComboboxSelectionMode, TwIf, isArrowUpOrDown, isArrowUp } from '@tailwind-ng/core';
 
 @Component({
@@ -26,8 +26,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   readonly input = contentChild.required(InputTextBase);
   readonly resetted = output<void>();
   @Input() selectionMode: ComboboxSelectionMode = 'single';
-  @Input() selectedValues = new Set<string>();
-  readonly selectedValuesChange = output<Set<string>>();
+  readonly selectedValues = model(new Set<string>());
 
   override ngOnInit(): void {
     super.ngOnInit();
@@ -43,6 +42,10 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     this.dropdown().open();
     this.input().focus();
     this.input().setVisualfocus();
+
+    requestAnimationFrame(() => {
+      this.activeElement = this.dropdown().setVisualfocus({ behavior: 'firstChild' });
+    })
   }
 
   override close(): void {
@@ -51,13 +54,12 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     this.resetActiveElementIfAny();
     // if the selection mode is single and there is only one selected value,
     // we set the input value to it
-    if (this.selectionMode === 'single' && this.selectedValues.size > 0) {
-      this.input().value = [...this.selectedValues.values()][0];
+    if (this.selectionMode === 'single' && this.selectedValues().size > 0) {
+      this.input().value = [...this.selectedValues().values()][0];
     }
     if (this.hasFocus) {
       this.input().focus();
     }
-    this.selectedValuesChange.emit(this.selectedValues);
   }
 
   protected onBlur(): void {
@@ -139,8 +141,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     this.input().clear();
     this.input().focus();
     this.resetActiveElementIfAny();
-    this.selectedValues.clear();
-    this.selectedValuesChange.emit(this.selectedValues);
+    this.selectedValues().clear();
     this.resetted.emit();
   }
 }

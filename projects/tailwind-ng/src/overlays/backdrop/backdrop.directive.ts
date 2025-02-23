@@ -16,11 +16,10 @@ export class BackdropDirective extends BackdropBase {
   override ngOnInit(): void {
     super.ngOnInit();
     this.opened = true;
-  }
 
-  override ngOnDestroy(): void {
-    super.ngOnDestroy();
-    this.opened = false;
+    this._destroyRef.onDestroy(() => {
+      this.opened = false;
+    });
   }
 
   protected override buildStyle(): void {
