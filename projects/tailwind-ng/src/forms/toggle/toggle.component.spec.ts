@@ -18,15 +18,15 @@ describe('ToggleComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should set isChecked', () => {
-    component.isChecked = true;
-    expect(component.isChecked).toBeTrue();
+  it('should set checked()', () => {
+    component.checked.set(true);
+    expect(component.checked()).toBeTrue();
   });
 
   it('should toggle', () => {
-    expect(component.isChecked).toBeFalse();
+    expect(component.checked()).toBeFalse();
     component.toggle();
-    expect(component.isChecked).toBeTrue();
+    expect(component.checked()).toBeTrue();
   });
 
   it('should set classlist', () => {
