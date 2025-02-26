@@ -50,4 +50,3 @@ FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/junit/tailwind-ng/. /junit/tailwind-ng/
 COPY --from=run-tests /_work/coverage/tailwind-ng/. /coverage/tailwind-ng/
 COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/tailwind-ng/
-COPY --from=copy-project /_work/projects/tailwind-ng/. /projects/tailwind-ng/

@@ -43,7 +43,6 @@ stages:
             codeCoverageTool: "Cobertura"
             summaryFileLocation: "coverage/tailwind-ng-core/cobertura.xml"
             pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core"
-            reportDirectory: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core"
 
         - task: PublishTestResults@2
           displayName: "Publish test results"
