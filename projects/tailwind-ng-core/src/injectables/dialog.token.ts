@@ -1,4 +1,4 @@
-import { Directive, forwardRef, inject, Input } from "@angular/core";
+import { Directive, forwardRef, inject, Input, OnInit } from "@angular/core";
 import { DialogConfig } from "../config";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
@@ -7,7 +7,7 @@ import { Dialog } from "../interfaces/dialog";
 export const DIALOG_CONFIG = InjectionTokenFactory.create<Partial<DialogConfig>>({}, 'DIALOG_CONFIG');
 
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) }] })
-export abstract class DialogBase extends PopupDirective<HTMLDialogElement> {
+export abstract class DialogBase extends PopupDirective<HTMLDialogElement> implements OnInit {
   protected config = inject(DIALOG_CONFIG);
   @Input() displayDelay?: number;
   @Input() autoClose = false;

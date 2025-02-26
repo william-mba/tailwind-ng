@@ -1,6 +1,6 @@
 import { Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { TwButton, TwDropdown, TwIcon } from 'tailwind-ng';
-import { TwOption, ThemeService, isTab } from '@tailwind-ng/core';
+import { TwOption, ThemeService } from '@tailwind-ng/core';
 import { DOCUMENT, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink, RouterLinkActive } from '@angular/router';

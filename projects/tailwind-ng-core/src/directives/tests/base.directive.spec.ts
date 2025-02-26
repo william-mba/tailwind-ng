@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/directive-selector */
 import { By } from '@angular/platform-browser';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Component, Directive, ElementRef } from "@angular/core";

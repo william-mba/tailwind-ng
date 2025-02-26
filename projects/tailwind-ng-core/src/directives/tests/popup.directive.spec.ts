@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/directive-selector, @angular-eslint/directive-class-suffix */
 import { computed, Directive, ElementRef } from "@angular/core";
 import { classlist } from '../../config/classlist';
 import { PopupDirective } from '../popup.directive';

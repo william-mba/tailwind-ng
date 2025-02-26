@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector */
-import { NgIf } from '@angular/common';
+
 import { IconDirective } from './../../elements/icon/icon.directive';
 import { DropdownComponent } from './../../elements/dropdown/dropdown.component';
 import { InputTextDirective } from '../input-text/input-text.directive';
@@ -133,13 +133,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -227,13 +226,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -321,13 +319,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -417,13 +414,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -511,13 +507,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -607,13 +602,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -711,13 +705,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -812,13 +805,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -916,13 +908,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -1026,13 +1017,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -1148,13 +1138,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-        NgIf,
-        ComboboxModule,
-        InputTextDirective,
-        ButtonComponent,
-        IconDirective,
-        DropdownComponent
-      ],
+    ComboboxModule,
+    InputTextDirective,
+    ButtonComponent,
+    IconDirective,
+    DropdownComponent
+],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
