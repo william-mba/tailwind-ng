@@ -38,7 +38,7 @@ module.exports = function (config) {
     },
     reporters: ['progress', 'kjhtml', 'junit'],
     junitReporter: {
-      outputDir: '../../junit'
+      outputDir: '../../junit/tailwind-ng-docs'
     },
     port: 9874,
     colors: true,
