@@ -31,10 +31,11 @@ function memoizeResolve(fn: (arg: [...string[][]], options: ResolveOptions) => s
   let cleanupScheduled = false;
 
   const scheduleCleanup = () => {
-    window.addEventListener('pointerup', () => {
+    if (cleanupScheduled) return;
+    setTimeout(() => {
       cache.clear();
       cleanupScheduled = false;
-    }, { once: true, capture: true, passive: true });
+    }, 1000 * 60 * 5); // 5 minutes
     cleanupScheduled = true;
   };
 

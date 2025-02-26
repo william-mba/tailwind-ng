@@ -1,4 +1,4 @@
-import { Directive, inject } from "@angular/core";
+import { DestroyRef, Directive, inject } from "@angular/core";
 import { ComboboxItemConfig } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
@@ -8,4 +8,5 @@ export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create<Partial<Combobo
 @Directive({})
 export abstract class ComboboxItemBase extends BaseDirective {
   protected config = inject(COMBOBOX_ITEM_CONFIG);
+  protected readonly _destroyRef = inject(DestroyRef);
 }

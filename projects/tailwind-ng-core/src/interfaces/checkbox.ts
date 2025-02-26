@@ -1,5 +1,5 @@
 
-import { BaseActions, BaseStates } from "./base";
+import { BaseActions, BaseProps } from "./base";
 import { OutputEmitterRef } from "@angular/core";
 
 /**
@@ -57,6 +57,6 @@ export interface CheckboxToggleOptions {
 }
 
 
-export interface Checkbox extends BaseStates, BaseActions, CheckboxActions, CheckboxEvents, CheckboxMutableStates {
+export interface Checkbox extends BaseProps, BaseActions, CheckboxActions, CheckboxEvents, CheckboxMutableStates {
   readonly id: string
 }

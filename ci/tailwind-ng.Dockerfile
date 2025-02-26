@@ -41,12 +41,12 @@ FROM copy-project AS run-lint
 RUN pnpm lint:lib
 
 FROM run-lint AS run-tests
-# RUN pnpm install-chrome && pnpm test:lib:ci
+RUN pnpm install-chrome && pnpm test:lib:ci
 
 FROM run-tests AS run-build
 RUN pnpm build:lib
 
 FROM scratch AS extract-artifacts
-# COPY --from=run-tests /_work/junit/. /junit/
-# COPY --from=run-tests /_work/coverage/. /coverage/
+COPY --from=run-tests /_work/junit/tailwind-ng/. /junit/tailwind-ng/
+COPY --from=run-tests /_work/coverage/tailwind-ng/. /coverage/tailwind-ng/
 COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/tailwind-ng/

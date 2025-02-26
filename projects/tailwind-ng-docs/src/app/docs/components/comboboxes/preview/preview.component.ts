@@ -1,6 +1,6 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, WritableSignal } from '@angular/core';
 import { Component, computed, signal } from '@angular/core';
-import { isCombobox, Popup } from '@tailwind-ng/core';
+import { ComboboxSelectionMode, isCombobox, Popup } from '@tailwind-ng/core';
 import { TwAvatar, TwButton, TwComboboxModule, TwDropdown, TwIcon, TwInputText, TwToggle } from 'tailwind-ng';
 
 interface User {
@@ -25,12 +25,18 @@ export class StringPipe implements PipeTransform {
 })
 export class PreviewComponent {
 
-  selectionMode = signal<'single' | 'multi'>('multi');
+  selectionMode: Record<number, WritableSignal<ComboboxSelectionMode>> = {
+    1: signal('single'),
+    2: signal('single'),
+    3: signal('multi'),
+    4: signal('multi'),
+    5: signal('multi'),
+  };
 
-  isSingleMode = computed(() => this.selectionMode() === 'single');
+  isSingleMode = (id = 1) => computed(() => this.selectionMode[id]() === 'single');
 
-  protected toggleMode(): void {
-    this.selectionMode.update(mode => mode === 'single' ? 'multi' : 'single');
+  protected toggleMode(id = 1): void {
+    this.selectionMode[id].update(mode => mode === 'single' ? 'multi' : 'single');
   }
 
   get _users(): User[] {
@@ -212,10 +218,10 @@ export class PreviewComponent {
   }
 
   selections: Record<number, Set<string>> = {
-    1: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
-    2: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
-    3: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
-    4: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
-    5: new Set(['James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
+    1: new Set(['Elizabeth Martinez']),
+    2: new Set(['Courtney Henry']),
+    3: new Set<string>(['Tom Cook', 'Elizabeth Martinez', 'Courtney Henry']),
+    4: new Set(['Tom Cook', 'James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
+    5: new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']),
   };
 }

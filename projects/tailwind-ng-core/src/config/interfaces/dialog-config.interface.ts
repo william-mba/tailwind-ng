@@ -9,4 +9,5 @@ export interface DialogConfig {
     inOpen: Variant<'in-open'>;
     starting: Variant<'starting'>;
   };
+  backdrop: Variant<'open', ComponentConfig>;
 }

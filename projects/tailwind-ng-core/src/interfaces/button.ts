@@ -1,7 +1,7 @@
 import { ModelSignal } from "@angular/core";
 import { ButtonVariant } from "../config/interfaces/button-config.interface";
 import { SizeOption } from "../types/size-options.type";
-import { BaseActions, BaseStates } from "./base";
+import { BaseActions, BaseProps } from "./base";
 import { Popup } from "./popup";
 
 /**
@@ -24,4 +24,4 @@ export interface ButtonMutableStates {
 /**
  * @TailwindNG Button component interface.
  */
-export interface Button extends BaseStates, BaseActions, ButtonImmutableStates, ButtonMutableStates { }
+export interface Button extends BaseProps, BaseActions, ButtonImmutableStates, ButtonMutableStates { }

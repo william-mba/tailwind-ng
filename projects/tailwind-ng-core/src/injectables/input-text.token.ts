@@ -60,12 +60,8 @@ export abstract class InputTextBase extends BaseDirective<HTMLInputElement> impl
     this.nativeElement.removeEventListener('input', this.onInput.bind(this), false);
   }
 
-  // Override to disable default keyboard event preventions.
-  protected override onEvent(event: Event): void {
-    if (this.disabled) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      return;
-    }
+  // Override default keyboard event preventions.
+  protected override onKeyboardEvent(event: Event): void {
+    this.preventInteractionIfDisabled(event);
   }
 }

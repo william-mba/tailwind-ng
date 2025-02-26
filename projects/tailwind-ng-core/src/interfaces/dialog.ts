@@ -1,9 +1,9 @@
-import { AdvancedPopupActions, BasicPopupActions, PopupState } from "./popup";
+import { PopupAdvancedActions, PopupBaseActions, PopupProps } from "./popup";
 
 /**
  * @TailwindNG Dialog component interface.
  */
-export interface Dialog extends PopupState, BasicPopupActions, AdvancedPopupActions {
+export interface Dialog extends PopupProps, PopupBaseActions, PopupAdvancedActions {
   /**
    * Whether the dialog should close automatically after the given `displayDuration`.
    * Default is `false`.

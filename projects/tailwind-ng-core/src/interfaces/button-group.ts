@@ -1,6 +1,6 @@
-import { BaseActions, BaseStates } from "./base";
+import { BaseActions, BaseProps } from "./base";
 
 /**
  * @TailwindNG Button Group component interface.
  */
-export interface ButtonGroup extends BaseStates, BaseActions { }
+export interface ButtonGroup extends BaseProps, BaseActions { }

@@ -3,9 +3,11 @@ import { provideRouter, TitleStrategy, withComponentInputBinding } from '@angula
 import { AppTitleStrategy, routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideUI } from 'tailwind-ng';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     { provide: TitleStrategy, useClass: AppTitleStrategy },
     provideAnimationsAsync(),
     provideZoneChangeDetection({ eventCoalescing: true }),

@@ -1,5 +1,5 @@
 import { OutputEmitterRef } from "@angular/core";
-import { BaseActions, BaseStates } from "./base";
+import { BaseActions, BaseProps } from "./base";
 
 /**
  * @TailwindNG Input component interface.
@@ -11,7 +11,7 @@ import { BaseActions, BaseStates } from "./base";
  * - tel
  * - url
  */
-export interface InputText extends BaseStates<HTMLInputElement>, BaseActions {
+export interface InputText extends BaseProps<HTMLInputElement>, BaseActions {
   /**
    * The input's value.
    */

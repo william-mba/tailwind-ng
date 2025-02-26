@@ -25,19 +25,15 @@ export function isCombobox(component: unknown): component is Combobox {
   ]
 })
 export abstract class ComboboxBase extends PopupDirective {
-  protected activeElement?: HTMLElement;
+  activeElement?: HTMLElement;
   @Input() override id = this.randomId('combobox');
 
-  // Override to disable default keyboard event preventions.
-  protected override onEvent(event: Event): void {
-    if (this.disabled) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      return;
-    }
+  // Override default keyboard event prevention.
+  protected override onKeyboardEvent(event: Event): void {
+    this.preventInteractionIfDisabled(event);
   }
 
-  // prevent the cursor to move inside the input when pressing the arrow up key.
+  // prevent the cursor to move left inside the input when pressing the arrow up key.
   protected onKeydown(event: KeyboardEvent): void {
     if (isArrowUp(event.key)) {
       event.preventDefault();

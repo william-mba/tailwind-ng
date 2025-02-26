@@ -1,17 +1,16 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { BadgeComponent } from './badge.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { GetBadgeConfig, provideBadge } from './badge.component.config';
 import { Component, viewChild } from '@angular/core';
 import { classlist } from '@tailwind-ng/core';
 
 describe('BadgeComponent', () => {
   const config = GetBadgeConfig();
-  const classList = classlist().set({ b: config.base, s: config.md });
   let component: BadgeComponent;
   let fixture: ComponentFixture<BadgeComponent>;
 
-  beforeEach(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       providers: [
         provideBadge()
@@ -19,9 +18,9 @@ describe('BadgeComponent', () => {
     });
     fixture = TestBed.createComponent(BadgeComponent);
     component = fixture.componentInstance;
-    component.classList = classList;
+    component.classList = classlist().set({ b: config.base, s: config.md });
     fixture.detectChanges();
-  });
+  }));
 
   it('should set size', () => {
     TestBed.runInInjectionContext(() => {
@@ -49,6 +48,7 @@ describe('BadgeComponent', () => {
   });
 
   it('should set classList', () => {
+    const classList = classlist().set({ b: config.base, s: config.md });
     expect(component.classList.base()).toEqual(classList.base());
     expect(component.classList.value()).toEqual(classList.value());
   });

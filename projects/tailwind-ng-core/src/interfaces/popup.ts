@@ -1,15 +1,11 @@
 import { ModelSignal } from "@angular/core";
-import { BaseActions, BaseStates } from "./base";
+import { BaseActions, BaseProps } from "./base";
 
 /**
- * @TailwindNG Popup base state.
+ * @TailwindNG Popup base props.
  */
-export interface PopupState<T extends HTMLElement = HTMLElement> extends BaseStates<T> {
+export interface PopupProps<T extends HTMLElement = HTMLElement> extends BaseProps<T> {
   readonly id: string;
-  /**
-   * Whether the component is hovered.
-   */
-  readonly isHovered: boolean;
   /**
    * The popup's extra options.
    */
@@ -28,9 +24,9 @@ export interface PopupExtraOptons {
 }
 
 /**
- * @TailwindNG Basic Popup actions.
+ * @TailwindNG Popup basic actions.
  */
-export interface BasicPopupActions extends BaseActions {
+export interface PopupBaseActions extends BaseActions {
   /**
    * Toggles the component.
    */
@@ -46,9 +42,9 @@ export interface BasicPopupActions extends BaseActions {
 }
 
 /**
- * @TailwindNG Advanced popup actions.
+ * @TailwindNG Popup advanced actions.
  */
-export interface AdvancedPopupActions {
+export interface PopupAdvancedActions {
   /**
    * Closes the component after the given delay in milliseconds without `ms` suffix.
    * - Acceptable delay is between `[1000, 10_000]`. The default value is `2000`.
@@ -58,7 +54,7 @@ export interface AdvancedPopupActions {
   closeAfter(delay: number): void;
 }
 
-export interface Popup<T extends HTMLElement = HTMLElement> extends PopupState<T>, BasicPopupActions, AdvancedPopupActions {
+export interface Popup<T extends HTMLElement = HTMLElement> extends PopupProps<T>, PopupBaseActions, PopupAdvancedActions {
   /**
    * A signal that indicates whether the popup is opened. Emits `true` when the popup opens and `false` when it closes.
    */

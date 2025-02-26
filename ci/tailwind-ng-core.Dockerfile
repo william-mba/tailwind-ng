@@ -46,6 +46,6 @@ FROM run-tests AS run-build
 RUN pnpm build:lib-core
 
 FROM scratch AS extract-artifacts
-COPY --from=run-tests /_work/junit/. /junit/
-COPY --from=run-tests /_work/coverage/. /coverage/
+COPY --from=run-tests /_work/junit/tailwind-ng-core/. /junit/tailwind-ng-core/
+COPY --from=run-tests /_work/coverage/tailwind-ng-core/. /coverage/tailwind-ng-core/
 COPY --from=run-build /_work/dist/tailwind-ng-core/. /artifacts/tailwind-ng-core/

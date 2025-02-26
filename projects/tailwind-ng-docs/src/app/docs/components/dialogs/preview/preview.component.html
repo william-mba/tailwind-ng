@@ -1,8 +1,7 @@
 <div class="text-gray-800 dark:text-gray-200 font-medium">
   <div
     class="overflow-x-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <button tw-button variant="secondary" (click)="dialog01.toggle()"
-      [popup]="dialog01">
+    <button tw-button variant="secondary" (click)="dialog01.toggle()" [popup]="dialog01">
       View center dialog with backdrop
     </button>
     <button tw-button variant="secondary" (click)="dialog02.toggle()" [popup]="dialog02">
@@ -20,12 +19,10 @@
     <button tw-button variant="secondary" (click)="dialog06.toggle()" [popup]="dialog06">
       View dialog with wide buttons
     </button>
-    <button tw-button variant="secondary" (click)="dialog05.toggle()"
-      [popup]="dialog05">
+    <button tw-button variant="secondary" (click)="dialog05.toggle()" [popup]="dialog05">
       View dialog with scrollable content
     </button>
-    <button tw-button variant="secondary" (click)="dialog04.toggle()"
-      [popup]="dialog04">
+    <button tw-button variant="secondary" (click)="dialog04.toggle()" [popup]="dialog04">
       View dialog with left-aligned buttons
     </button>
   </div>
@@ -33,7 +30,6 @@
 
 <!-- centered Dialog With Backdrop -->
 <div tw-dialog #dialog01>
-  <tw-backdrop />
   <!-- Dialog container -->
   <div tw-dialog-container>
     <!-- Dialog content -->
@@ -70,9 +66,9 @@
       class="absolute top-5 right-5 cursor-pointer" />
   </div>
 </div>
+
 <!-- bottom Right Dialog -->
-<div tw-dialog #dialog03 [isModal]="false" [autoClose]="true"
-  [position]="{ bottom: 'bottom-0', right: 'right-0' }">
+<div tw-dialog #dialog03 [isModal]="false" [autoClose]="true" [position]="{ bottom: 'bottom-0', right: 'right-0' }">
   <!-- Dialog container -->
   <div tw-dialog-container
     class="sm:max-w-sm place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">
@@ -119,7 +115,6 @@
 </div>
 <!-- dialog With Scrollable Content -->
 <div tw-dialog #dialog05>
-  <tw-backdrop />
   <!-- Dialog container -->
   <div tw-dialog-container>
     <!-- Dialog content -->
@@ -220,7 +215,6 @@
 </div>
 <!-- dialog With Wide Buttons -->
 <div tw-dialog #dialog06>
-  <tw-backdrop class="backdrop-" />
   <!-- Dialog container -->
   <div tw-dialog-container class="sm:max-w-sm">
     <!-- Dialog content -->

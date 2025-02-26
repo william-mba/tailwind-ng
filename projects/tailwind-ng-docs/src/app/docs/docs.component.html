@@ -6,7 +6,7 @@
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <!-- Logo and release tag -->
         <div class="flex gap-4 items-center">
-          <a class="font-heading text-xl font-medium flex gap-2" aria-label="Home" href="/">
+          <a class="font-heading text-xl font-medium flex gap-2" aria-label="Home" routerLink="/">
             <tw-icon name="tailwind-ng" size="lg" />
             Tailwind NG
           </a>
@@ -74,7 +74,7 @@
   <div class="absolute inset-0 mt-28.5 lg:mt-14.25 flex gap-0">
     <!-- Left navigation -->
     <div [attr.data-open]="navOpened()||null"
-      class="lg:w-3/12 xl:w-2/12 z-10 max-md:absolute max-md:inset-0 -translate-x-full data-open:translate-x-0 overflow-y-auto max-h-screen transition-all duration-200 bg-white dark:bg-black">
+      class="lg:w-3/12 xl:w-2/12 z-10 max-md:z-50 max-md:absolute max-md:inset-0 -translate-x-full data-open:translate-x-0 overflow-y-auto max-h-screen transition-all duration-200 bg-white dark:bg-black">
       <div
         class="min-h-screen dark:bg-black *:mb-6 border-r px-6 pr-4 py-8 border-gray-950/10 dark:border-white/10 relative duration-500">
         @for (item of navItems; track $index) {

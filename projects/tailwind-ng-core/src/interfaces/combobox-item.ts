@@ -1,10 +1,10 @@
 import { InputSignal, ModelSignal } from "@angular/core";
-import { BaseActions, BaseStates } from "./base";
+import { BaseActions, BaseProps } from "./base";
 
 /**
  * @TailwindNG Combobox Item component interface.
  */
-export interface ComboboxItem extends BaseStates, BaseActions {
+export interface ComboboxItem extends BaseProps, BaseActions {
   readonly value: InputSignal<string>;
   /**
    * Selects the item.

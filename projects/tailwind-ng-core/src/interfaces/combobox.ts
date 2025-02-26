@@ -1,12 +1,12 @@
-import { OutputEmitterRef, Signal } from "@angular/core";
+import { ModelSignal, OutputEmitterRef, Signal } from "@angular/core";
 import { ComboboxItem } from "./combobox-item";
-import { BasicPopupActions, Popup, PopupState } from "./popup";
+import { PopupBaseActions, Popup, PopupProps } from "./popup";
 import { InputText } from "./input-text";
 
 /**
  * @TailwindNG Combobox component state
  */
-export interface ComboboxState extends PopupState {
+export interface ComboboxState extends PopupProps {
   /**
    * The combobox's input text.
    */
@@ -22,7 +22,11 @@ export interface ComboboxState extends PopupState {
   /**
    * The combobox's selected values.
    */
-  readonly selectedValues: Set<string>;
+  readonly selectedValues: ModelSignal<Set<string>>;
+  /**
+   * The combobox's active element.
+   */
+  readonly activeElement?: HTMLElement;
 }
 
 export type ComboboxSelectionMode = 'single' | 'multi';
@@ -30,7 +34,7 @@ export type ComboboxSelectionMode = 'single' | 'multi';
 /**
  * @TailwindNG Combobox component actions
  */
-export interface ComboboxActions extends BasicPopupActions {
+export interface ComboboxActions extends PopupBaseActions {
   /**
    * Resets the combobox.
    */
@@ -43,10 +47,6 @@ export interface ComboboxActions extends BasicPopupActions {
 }
 
 export interface Combobox extends ComboboxState, ComboboxActions {
-  /**
-   * Emits the combobox's current selected values.
-   */
-  readonly selectedValuesChange: OutputEmitterRef<Set<string>>;
   /**
    * Emits when the combobox is reset.
    */

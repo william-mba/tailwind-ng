@@ -1,8 +1,8 @@
 import { Directive, ElementRef, inject, input, Input, OnDestroy, OnInit } from "@angular/core";
-import { BaseStates, BaseActions, FocusOptions } from "../interfaces/base";
+import { BaseProps, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { ClassList } from "../config/classlist";
-import { isEnterOrSpace, isKeyboardEvent, isNavigation } from "../guards";
+import { isEnterOrSpace, isNavigation } from "../guards";
 import { Config } from "../types/config.type";
 
 /**
@@ -10,12 +10,11 @@ import { Config } from "../types/config.type";
  */
 @Directive({
   host: {
-    '[attr.inert]': 'disabled || null',
     '[attr.disabled]': 'disabled || null',
     '[attr.aria-disabled]': 'disabled || null',
   }
 })
-export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseStates<T>, BaseActions, OnInit, OnDestroy {
+export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseProps<T>, BaseActions, OnInit, OnDestroy {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
   protected readonly _document = inject(DOCUMENT);
   protected isInitialized = false;
@@ -76,8 +75,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
    * Those listeners will be removed when the component is destroyed.
    */
   protected addEventListeners() {
-    this.nativeElement.addEventListener('pointerdown', this.onEvent.bind(this), true);
-    this.nativeElement.addEventListener('keydown', this.onEvent.bind(this), false);
+    this.nativeElement.addEventListener('click', this.preventInteractionIfDisabled.bind(this), true);
+    this.nativeElement.addEventListener('pointerdown', this.preventInteractionIfDisabled.bind(this), true);
+    this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
   }
 
   /**
@@ -87,19 +87,22 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
    * Override this method to remove additional event listeners.
    */
   protected removeEventListeners() {
-    this.nativeElement.removeEventListener('pointerdown', this.onEvent.bind(this), true);
-    this.nativeElement.removeEventListener('keydown', this.onEvent.bind(this), false);
+    this.nativeElement.removeEventListener('click', this.preventInteractionIfDisabled.bind(this), true);
+    this.nativeElement.removeEventListener('pointerdown', this.preventInteractionIfDisabled.bind(this), true);
+    this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
   }
 
   // A disabled element should not be interactive.
-  protected onEvent(event: Event): void {
+  protected preventInteractionIfDisabled(event: Event): void {
     if (this.disabled) {
       event.preventDefault();
       event.stopImmediatePropagation();
-      return;
     }
+  }
+
+  protected onKeyboardEvent(event: KeyboardEvent): void {
     // Prevent scrolling when using arrow up and down keys.
-    if (isKeyboardEvent(event) && (isEnterOrSpace(event.key) || isNavigation(event.key))) {
+    if (isEnterOrSpace(event.key) || isNavigation(event.key)) {
       event.preventDefault();
     }
   }

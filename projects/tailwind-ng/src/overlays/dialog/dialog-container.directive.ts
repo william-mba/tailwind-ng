@@ -1,74 +1,38 @@
-import { Directive, inject, Input, OnInit } from "@angular/core";
-import { BaseDirective, classlist, DIALOG_CONFIG, isEscape, ZIndexer } from '@tailwind-ng/core';
-import { DialogComponent } from "./dialog.component";
+import { Directive, inject, OnInit } from "@angular/core";
+import { BaseDirective, classlist, DIALOG_CONFIG, DialogBase, isEscape } from '@tailwind-ng/core';
 
 @Directive({
   selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',
   exportAs: 'twDialogContainer',
   host: {
     '[class]': 'classList.value()',
-    '[tabindex]': 'disabled ? null : -1',
-    '[style.zIndex]': 'zIndex',
+    '[tabindex]': 'disabled ? null : -1'
   }
 })
 export class DialogContainerDirective extends BaseDirective implements OnInit {
-  private readonly dialog = inject(DialogComponent, { skipSelf: true, host: true });
+  private readonly _dialog = inject(DialogBase, { skipSelf: true, host: true });
   protected config = inject(DIALOG_CONFIG).container;
-   @Input() zIndex = inject(ZIndexer).next;
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set(this.config!);
-  }
-
-  override ngOnInit(): void {
-    super.ngOnInit();
-    this.dialog.opened.subscribe(() => {
-      if (this.dialog.autoFocus) {
-        this.focusPrimaryAction();
-      }
-      if (this.dialog.autoClose) {
-        this.dialog.closeAfter(this.dialog.displayDelay);
-      }
-    });
-    if (this.dialog.autoClose && this.dialog.opened()) {
-      this.dialog.closeAfter(this.dialog.displayDelay);
-    }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
-      });
-    } else {
-      this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
-    }
+    this.classList = classlist(this.class()).set(this.config);
   }
 
   protected onKeyup(event: KeyboardEvent): void {
     if (isEscape(event.key)) {
       event.stopPropagation();
-      this.dialog.close();
+      this._dialog.close();
     }
-  }
-
-  private focusPrimaryAction() {
-    setTimeout(() => {
-      (this.nativeElement.querySelector('button[variant=primary],tw-button[variant=primary]') as HTMLElement)?.focus();
-    }, 100);
   }
 
   protected onPointerEvent(event: UIEvent) {
-    if (this.disabled) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      return;
-    }
     switch (event.type) {
       case 'pointerover':
         if (this.isHovered) return;
-        this.dialog.isHovered = this.isHovered = true;
+        this._dialog.isHovered = this.isHovered = true;
         break;
       case 'pointerleave':
         if (!this.isHovered) return;
-        this.dialog.isHovered = this.isHovered = false;
+        this._dialog.isHovered = this.isHovered = false;
         break;
     }
   }

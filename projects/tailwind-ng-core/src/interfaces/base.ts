@@ -3,9 +3,9 @@ import { ClassList } from "../config";
 import { Config } from "../types";
 
 /**
- * @TailwindNG Component's base state.
+ * @TailwindNG Component's base props.
  */
-export interface BaseStates<T extends HTMLElement = HTMLElement> {
+export interface BaseProps<T extends HTMLElement = HTMLElement> {
   /**
    * A property to customize the component's style.
    *

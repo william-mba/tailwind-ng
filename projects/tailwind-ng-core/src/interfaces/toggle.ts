@@ -1,7 +1,7 @@
 import { ModelSignal } from "@angular/core";
-import { BaseActions, BaseStates } from "./base";
+import { BaseActions, BaseProps } from "./base";
 
-export interface Toggle extends BaseStates, BaseActions {
+export interface Toggle extends BaseProps, BaseActions {
   readonly tabIndex: number;
   /**
    * Toggles the toggle's state.

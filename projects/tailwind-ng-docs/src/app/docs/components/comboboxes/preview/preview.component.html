@@ -20,7 +20,7 @@
     <h2>Simple</h2>
     <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
       Selection mode
-      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode()" (click)="toggleMode()">
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode()()" (click)="toggleMode()">
         <span
           class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
           Multi
@@ -36,7 +36,8 @@
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectionMode]="selectionMode()" #cbb1 class="sm:w-80" [(selectedValues)]="selections[1]">
+      <div tw-combobox [opened]="true" [selectionMode]="selectionMode[1]()" #cbb1 class="sm:w-80"
+        [(selectedValues)]="selections[1]">
         <!-- Label -->
         <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -50,7 +51,7 @@
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
         </button>
         <!-- Dropdown -->
-        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+        <tw-dropdown [opened]="true" (closed)="reset()" class="w-full max-h-56">
           @for (user of users1; track user.name) {
           <div tw-combobox-item #item [value]="user.name">
             @if (item.selected()) {
@@ -67,12 +68,26 @@
 
   <div class="sm:flex justify-between mb-3">
     <h2>With check on left</h2>
+    <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
+      Selection mode
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode(2)()" (click)="toggleMode(2)">
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+          Single
+        </span>
+      </tw-toggle>
+    </span>
   </div>
   <div
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectionMode]="selectionMode()" #cb2 class="sm:w-80" [(selectedValues)]="selections[2]">
+      <div tw-combobox [opened]="true" [selectionMode]="selectionMode[2]()" #cb2 class="sm:w-80"
+        [(selectedValues)]="selections[2]">
         <!-- Label -->
         <label for="search2" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -86,7 +101,7 @@
           <tw-icon name="chevron-up-down" (click)="cb2.toggle()" />
         </button>
         <!-- Dropdown -->
-        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+        <tw-dropdown [opened]="true" (closed)="reset()" class="w-full max-h-56">
           @for (user of users2; track user.name) {
           <div tw-combobox-item #item [value]="user.name">
             @if (item.selected()) {
@@ -105,7 +120,7 @@
     <h2>With grid layout</h2>
     <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
       Selection mode
-      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode()" (click)="toggleMode()">
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode(5)()" (click)="toggleMode(5)">
         <span
           class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
           Multi
@@ -121,8 +136,8 @@
     class="hidden lg:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-8 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectionMode]="selectionMode()" #cb5 class="lg:w-2xl 2xl:w-3xl text-center mb-96"
-        [(selectedValues)]="selections[5]">
+      <div tw-combobox [opened]="true" [selectionMode]="selectionMode[5]()" #cb5
+        class="lg:w-2xl 2xl:w-3xl text-center mb-96" [(selectedValues)]="selections[5]">
         <!-- Label -->
         <label for="search5" class="block text-sm mb-4 font-medium"> Quick search </label>
         <!-- Input -->
@@ -137,7 +152,7 @@
           <tw-icon name="search" (click)="cb5.toggle()" />
         </button>
         <!-- Dropdown -->
-        <tw-dropdown (closed)="reset()" class="max-h-fit grid-cols-3 gap-2 min-w-full rounded-4xl p-3">
+        <tw-dropdown [opened]="true" (closed)="reset()" class="max-h-fit grid-cols-3 gap-2 min-w-full rounded-4xl p-3">
           @for (user of users5; track user.name) {
           <div tw-combobox-item #item [value]="user.name" class="inline-flex rounded-full">
             @switch (user.status) {
@@ -162,12 +177,26 @@
 
   <div class="sm:flex justify-between mb-3">
     <h2>With image</h2>
+    <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
+      Selection mode
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode(3)()" (click)="toggleMode(3)">
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold">
+          Single
+        </span>
+      </tw-toggle>
+    </span>
   </div>
   <div
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectionMode]="selectionMode()" #cb3 class="sm:w-80" [(selectedValues)]="selections[3]">
+      <div tw-combobox [opened]="true" [selectionMode]="selectionMode[3]()" #cb3 class="sm:w-80"
+        [(selectedValues)]="selections[3]">
         <!-- Label -->
         <label for="search3" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -181,7 +210,7 @@
           <tw-icon name="chevron-up-down" (click)="cb3.toggle()" />
         </button>
         <!-- Dropdown -->
-        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+        <tw-dropdown [opened]="true" (closed)="reset()" class="w-full max-h-56">
           @for (user of users3; track user.name) {
           <div tw-combobox-item #item [value]="user.name">
             <img tw-avatar size="xs" alt="" class="my-auto absolute left-0" [src]="user.image">
@@ -201,7 +230,7 @@
     <h2>With status indicator</h2>
     <span class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end">
       Selection mode
-      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode()" (click)="toggleMode()">
+      <tw-toggle class="data-checked:bg- w-30" [checked]="isSingleMode(4)()" (click)="toggleMode(4)">
         <span
           class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold">
           Multi
@@ -217,7 +246,8 @@
     class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="grid gap-y-64 justify-items-center">
       <!-- Combobox -->
-      <div tw-combobox [selectionMode]="selectionMode()" #cb4 class="sm:w-80" [(selectedValues)]="selections[4]">
+      <div tw-combobox [opened]="true" [selectionMode]="selectionMode[4]()" #cb4 class="sm:w-80"
+        [(selectedValues)]="selections[4]">
         <!-- Label -->
         <label for="search4" class="block text-sm mb-2 font-medium"> Quick search </label>
         <!-- Input -->
@@ -231,7 +261,7 @@
           <tw-icon name="chevron-up-down" (click)="cb4.toggle()" />
         </button>
         <!-- Dropdown -->
-        <tw-dropdown (closed)="reset()" class="w-full max-h-56">
+        <tw-dropdown [opened]="true" (closed)="reset()" class="w-full max-h-56">
           @for (user of users4; track user.name) {
           <div tw-combobox-item #item [value]="user.name">
             @switch (user.status) {

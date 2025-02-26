@@ -1,4 +1,4 @@
-import { Directive, forwardRef, inject } from "@angular/core";
+import { Directive, forwardRef, inject, Input } from "@angular/core";
 import { DialogConfig } from "../config";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
@@ -9,6 +9,48 @@ export const DIALOG_CONFIG = InjectionTokenFactory.create<Partial<DialogConfig>>
 @Directive({ providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) }] })
 export abstract class DialogBase extends PopupDirective<HTMLDialogElement> {
   protected config = inject(DIALOG_CONFIG);
+  @Input() displayDelay?: number;
+  @Input() autoClose = false;
+  @Input() autoFocus = true;
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.opened.subscribe((isOpened) => {
+      if (isOpened) {
+        if (this.autoFocus) {
+          this.focusPrimaryAction();
+        }
+        if (this.autoClose) {
+          this.closeAfter(this.displayDelay);
+        }
+        if (!this.nativeElement.ariaLabel) {
+          requestIdleCallback(() => {
+            this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
+            if (!this.nativeElement.ariaLabel) {
+              this.nativeElement.ariaLabel = this.nativeElement.querySelector('h2')?.textContent?.trim() || null;
+            }
+            if (!this.nativeElement.ariaLabel) {
+              this.nativeElement.ariaLabel = this.nativeElement.querySelector('h3')?.textContent?.trim() || null;
+            }
+          });
+        }
+      }
+    });
+  }
+
+  private primaryAction: HTMLElement | null = null;
+  private primaryActionQueried = false;
+  protected focusPrimaryAction() {
+    if (this.primaryAction) {
+      setTimeout(() => this.primaryAction?.focus(), 100);
+    } else if (!this.primaryAction && !this.primaryActionQueried) {
+      this.primaryActionQueried = true;
+      setTimeout(() => {
+        this.primaryAction = this.nativeElement.querySelector('button[variant=primary],tw-button[variant=primary]') as HTMLElement;
+        this.primaryAction?.focus();
+      }, 100);
+    }
+  }
 }
 
 /**

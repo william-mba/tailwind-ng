@@ -13,6 +13,13 @@ const BaseConfig = (): ComponentConfig => {
 
 const DefaultConfig = (): DialogConfig => {
   return {
+    backdrop: {
+      backdropBlur: 'open:backdrop-blur-xs',
+      bgColor: 'open:bg-neutral-500/50',
+      dark: {
+        bgColor: 'open:dark:bg-gray-500/50',
+      }
+    },
     scrim: {
       ...BaseConfig(),
       display: 'grid',
