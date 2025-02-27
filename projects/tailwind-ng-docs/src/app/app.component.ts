@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ThemeService } from '@tailwind-ng/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -7,9 +7,6 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   template: `<router-outlet />`
 })
-export class AppComponent implements OnInit {
-  protected readonly theme = inject(ThemeService);
-  ngOnInit(): void {
-    this.theme.init();
-  }
+export class AppComponent {
+  protected readonly theme = inject(ThemeService).init();
 }

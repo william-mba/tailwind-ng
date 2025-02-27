@@ -26,12 +26,15 @@
                   class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
               </a>
             </button>
-            <button (click)="switchTheme()" tw-button variant="secondary" size="xs" [attr.data-dark]="theme.isDark"
-              class="data-[dark=true]:*:last:hidden data-[dark=false]:*:first:hidden">
+            <button (click)="switchTheme()" tw-button variant="secondary" size="xs">
+              @if (theme.isDark()) {
               <tw-icon name="sun"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+              }
+              @else {
               <tw-icon name="moon"
                 class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+              }
             </button>
           </div>
         </div>
@@ -41,7 +44,7 @@
             [popup]="optionMenu">
             <tw-icon name="more-ver" class="text-gray-500" />
           </button>
-          <ul tw-dropdown [options]="{closeOnBlur:true}" #optionMenu [position]="{top: 'top-10', right: 'right-0'}"
+          <ul tw-dropdown [closeOnBlur]="true" #optionMenu [position]="{top: 'top-10', right: 'right-0'}"
             class="dark:bg-black bg-white min-w-fit py-1 px-1 *:px-2 *:py-1 text-xs rounded-md *:text-gray-700 *:font-medium *:dark:text-gray-200 *:text-nowrap">
             <a tw-option class="focus:outline-1 focus:outline-gray-500/80 rounded-sm"
               href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
