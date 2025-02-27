@@ -16,15 +16,13 @@ export class DocsComponent {
   private _clientWidth = signal(window.innerWidth);
   private _document = inject(DOCUMENT);
   private readonly _resizeObserver = new ResizeObserver((entries) => {
-    requestAnimationFrame(() => {
-      for (const entry of entries) {
-        if (entry.contentBoxSize[0]) {
-          this._clientWidth.set(entry.contentBoxSize[0].inlineSize);
-        } else {
-          this._clientWidth.set(entry.contentRect.width);
-        }
+    for (const entry of entries) {
+      if (entry.contentBoxSize[0]) {
+        this._clientWidth.set(entry.contentBoxSize[0].inlineSize);
+      } else {
+        this._clientWidth.set(entry.contentRect.width);
       }
-    });
+    }
   })
   private readonly _destroyRef = inject(DestroyRef);
   constructor() {

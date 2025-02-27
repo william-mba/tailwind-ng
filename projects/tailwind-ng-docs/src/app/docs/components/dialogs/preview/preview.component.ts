@@ -1,9 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dialogs-preview',
-  templateUrl: './preview.component.html'
+  templateUrl: './preview.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreviewComponent {
   sanitizer = inject(DomSanitizer);
