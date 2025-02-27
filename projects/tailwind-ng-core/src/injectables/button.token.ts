@@ -18,7 +18,7 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
   override ngOnInit(): void {
     super.ngOnInit();
     if (this.popup) {
-      queueMicrotask(() => {
+      requestIdleCallback(() => {
         if (isDropdown(this.popup)) {
           this.nativeElement.setAttribute('aria-haspopup', 'menu');
         } else if (isDialog(this.popup)) {
@@ -29,11 +29,6 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
           this.nativeElement.setAttribute('aria-haspopup', 'true');
         }
       });
-      const { options } = this.popup;
-      if (options) {
-        options.trigger = this;
-        options.focusTriggerOnClose = true;
-      }
     }
   }
 }
