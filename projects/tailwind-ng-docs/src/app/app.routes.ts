@@ -4,6 +4,42 @@ import { RouterStateSnapshot, Routes, TitleStrategy } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: 'dialogs-p01',
+    title: 'Dialogs Preview',
+    pathMatch: 'full',
+    loadComponent: () => import('./docs/components/dialogs/preview/p01/p01.component').then(m => m.P01Component)
+  },
+  {
+    path: 'dialogs-p02',
+    title: 'Dialogs Preview',
+    pathMatch: 'full',
+    loadComponent: () => import('./docs/components/dialogs/preview/p02/p02.component').then(m => m.P02Component)
+  },
+  {
+    path: 'dialogs-p03',
+    title: 'Dialogs Preview',
+    pathMatch: 'full',
+    loadComponent: () => import('./docs/components/dialogs/preview/p03/p03.component').then(m => m.P03Component)
+  },
+  {
+    path: 'dialogs-p04',
+    title: 'Dialogs Preview',
+    pathMatch: 'full',
+    loadComponent: () => import('./docs/components/dialogs/preview/p04/p04.component').then(m => m.P04Component)
+  },
+  {
+    path: 'dialogs-p05',
+    title: 'Dialogs Preview',
+    pathMatch: 'full',
+    loadComponent: () => import('./docs/components/dialogs/preview/p05/p05.component').then(m => m.P05Component)
+  },
+  {
+    path: 'dialogs-p06',
+    title: 'Dialogs Preview',
+    pathMatch: 'full',
+    loadComponent: () => import('./docs/components/dialogs/preview/p06/p06.component').then(m => m.P06Component)
+  },
+  {
     path: 'docs',
     loadComponent: () => import('./docs/docs.component').then(m => m.DocsComponent),
     children: [
@@ -447,36 +483,6 @@ export const routes: Routes = [
   {
     path: 'lab',
     loadComponent: () => import('./components/lab/lab.component').then(m => m.LabComponent)
-  },
-  {
-    path: 'dialogs-p01',
-    title: 'Dialogs Preview',
-    loadComponent: () => import('./docs/components/dialogs/preview/p01/p01.component').then(m => m.P01Component)
-  },
-  {
-    path: 'dialogs-p02',
-    title: 'Dialogs Preview',
-    loadComponent: () => import('./docs/components/dialogs/preview/p02/p02.component').then(m => m.P02Component)
-  },
-  {
-    path: 'dialogs-p03',
-    title: 'Dialogs Preview',
-    loadComponent: () => import('./docs/components/dialogs/preview/p03/p03.component').then(m => m.P03Component)
-  },
-  {
-    path: 'dialogs-p04',
-    title: 'Dialogs Preview',
-    loadComponent: () => import('./docs/components/dialogs/preview/p04/p04.component').then(m => m.P04Component)
-  },
-  {
-    path: 'dialogs-p05',
-    title: 'Dialogs Preview',
-    loadComponent: () => import('./docs/components/dialogs/preview/p05/p05.component').then(m => m.P05Component)
-  },
-  {
-    path: 'dialogs-p06',
-    title: 'Dialogs Preview',
-    loadComponent: () => import('./docs/components/dialogs/preview/p06/p06.component').then(m => m.P06Component)
   },
   {
     path: '',

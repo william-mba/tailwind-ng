@@ -42,7 +42,7 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
 export class P03Component {
   dialog = viewChild.required(DialogBase);
   opened = signal(true);
-  protected readonly theme = inject(ThemeService).init({ key: 'theme-p03' });
+  protected readonly theme = inject(ThemeService);
   switchTheme() {
     this.theme.toggle();
   }

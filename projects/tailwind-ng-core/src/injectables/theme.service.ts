@@ -21,17 +21,17 @@ export class ThemeService {
    * If there is no previous theme preference, the default theme will be used.
    * @param theme The theme to initialize. If setted, this will override previous user's theme preference.
    */
-  init(opts: { theme?: 'default' | 'dark', key: 'theme' | string & {} } = { theme: 'default', key: 'theme' }): ThemeService {
+  init(opts: { theme?: 'default' | 'dark', key: 'theme' | string & {} } = { theme: 'default', key: 'theme' }): void {
     const { theme, key } = opts;
     this.key = key;
-    if (this.initialized) return this;
+    if (this.initialized) return;
     if (theme === 'dark' && !this._isDark) {
       this.toggle();
     } else if (localStorage.getItem(key) === 'dark' && !this._isDark) {
       this.toggle();
     }
     this.initialized = true;
-    return this;
+    return;
   }
   isDark = signal(false);
   /**

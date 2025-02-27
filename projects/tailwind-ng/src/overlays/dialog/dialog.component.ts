@@ -8,7 +8,6 @@ import { classlist, Dialog, DialogBase, TwIf, OverlayPosition } from '@tailwind-
   imports: [TwIf],
   host: {
     role: 'dialog',
-    '[class]': 'classList.value()',
     '[attr.aria-modal]': 'isModal',
   },
   template: `<ng-container *twIf="opened()"><ng-content /></ng-container>`,
@@ -19,6 +18,7 @@ import { classlist, Dialog, DialogBase, TwIf, OverlayPosition } from '@tailwind-
 export class DialogComponent extends DialogBase implements Dialog {
   @Input() position?: OverlayPosition;
   @Input() isModal = true;
+
   protected override buildStyle(): void {
     this.classList = classlist(this.class()).set({
       ...this.config.scrim, ...this.isModal ? this.config.backdrop : {}

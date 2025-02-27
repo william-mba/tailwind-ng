@@ -5,9 +5,6 @@ import { SizeOption, BadgeBase, Badge, classlist } from '@tailwind-ng/core';
   selector: 'tw-badge, [tw-badge], [twBadge]',
   exportAs: 'twBadge',
   template: '<ng-content />',
-  host: {
-    '[class]': 'classList.value()',
-  },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: BadgeBase, useExisting: BadgeComponent }]

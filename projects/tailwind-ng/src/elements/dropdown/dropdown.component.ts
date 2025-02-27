@@ -7,9 +7,6 @@ import { classlist, Dropdown, DropdownBase, isEscape, OverlayPosition, TwIf } fr
   exportAs: 'twDropdown',
   template: `<ng-container *twIf="opened()"><ng-content /></ng-container>`,
   imports: [TwIf],
-  host: {
-    '[class]': 'classList.value()',
-  },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: DropdownBase, useExisting: forwardRef(() => DropdownComponent) }]

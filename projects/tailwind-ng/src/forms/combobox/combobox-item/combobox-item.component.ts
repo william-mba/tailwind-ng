@@ -7,7 +7,6 @@ import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
   exportAs: 'twComboboxItem',
   host: {
     role: 'option',
-    '[class]': 'classList.value()',
     '[tabindex]': 'disabled ? null : -1',
     '[attr.aria-selected]': 'selected()',
     '[attr.data-selected]': 'selected() || null'

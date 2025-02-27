@@ -1,4 +1,4 @@
-import { Directive, inject, Input, OnInit } from "@angular/core";
+import { Directive, effect, inject, Input, OnInit } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { Popup } from "../interfaces/popup";
 import { Button, ButtonImmutableStates } from "../interfaces";
@@ -14,6 +14,13 @@ export const BUTTON_CONFIG = InjectionTokenFactory.create<ConfigTypeOf<'Button'>
 export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implements ButtonImmutableStates, OnInit {
   protected config = inject(BUTTON_CONFIG);
   @Input() popup?: Popup;
+
+  constructor() {
+    super();
+    effect(() => {
+      this.nativeElement.classList.add(...this.classList.value());
+    });
+  }
 
   override ngOnInit(): void {
     super.ngOnInit();

@@ -1,4 +1,4 @@
-import { Directive, inject } from "@angular/core";
+import { Directive, effect, inject } from "@angular/core";
 import { BaseDirective } from "../directives/base.directive";
 import { CheckboxConfig } from "../config";
 import { InjectionTokenFactory } from "./injection-token.factory";

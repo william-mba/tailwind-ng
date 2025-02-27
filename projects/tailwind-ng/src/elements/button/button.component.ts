@@ -8,7 +8,6 @@ import { Button, ButtonBase, ButtonVariant, classlist, isArrowDown, isArrowDownO
   selector: 'tw-button, [tw-button], [twButton]',
   exportAs: 'twButton',
   host: {
-    '[class]': 'classList.value()',
     '[attr.variant]': 'variant()',
     '[tabindex]': 'disabled ? null : tabIndex',
     '[attr.aria-expanded]': 'isPopupExpanded || null',

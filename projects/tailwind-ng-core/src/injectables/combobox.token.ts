@@ -1,4 +1,4 @@
-import { Directive, forwardRef, Input } from "@angular/core";
+import { Directive, effect, forwardRef, Input } from "@angular/core";
 import { PopupDirective } from "../directives";
 import { Combobox } from "../interfaces/combobox";
 import { isArrowUp } from "../guards";
@@ -27,6 +27,13 @@ export function isCombobox(component: unknown): component is Combobox {
 export abstract class ComboboxBase extends PopupDirective {
   activeElement?: HTMLElement;
   @Input() override id = this.randomId('combobox');
+
+  constructor() {
+    super();
+    effect(() => {
+      this.nativeElement.classList.add(...this.classList.value());
+    });
+  }
 
   // Override default keyboard event prevention.
   protected override onKeyboardEvent(event: Event): void {
