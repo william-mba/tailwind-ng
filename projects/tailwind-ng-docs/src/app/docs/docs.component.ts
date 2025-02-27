@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { TwButton, TwDropdown, TwIcon } from 'tailwind-ng';
 import { TwOption, ThemeService } from '@tailwind-ng/core';
 import { DOCUMENT, NgIf } from '@angular/common';
@@ -10,7 +10,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, TwOption, RouterOutlet],
   templateUrl: './docs.component.html'
 })
-export class DocsComponent {
+export class DocsComponent implements AfterViewInit {
   navOpened = signal(true);
   private _isSmallScreen = false;
   private _clientWidth = signal(window.innerWidth);
@@ -25,9 +25,13 @@ export class DocsComponent {
     }
   })
   private readonly _destroyRef = inject(DestroyRef);
+  protected readonly theme = inject(ThemeService);
+  switchTheme() {
+    this.theme.toggle();
+  }
   constructor() {
     this._resizeObserver.observe(this._document.body);
-    this._destroyRef.onDestroy(() => this._resizeObserver.disconnect());
+    this._destroyRef.onDestroy(this._resizeObserver.disconnect.bind(this._resizeObserver));
 
     effect(() => {
       this._isSmallScreen = this._clientWidth() <= 1024;
@@ -39,14 +43,14 @@ export class DocsComponent {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.toggleNav();
+    this.toggleNav();
+  }
+
   toggleNav() {
     if (!this._isSmallScreen) return;
     this.navOpened.update(current => !current);
-  }
-
-  protected readonly theme = inject(ThemeService);
-  switchTheme() {
-    this.theme.toggle();
   }
   protected readonly navItems = NAV_ITEMS;
 }
