@@ -12,9 +12,13 @@ export abstract class DialogBase extends PopupDirective<HTMLDialogElement> imple
   @Input() displayDelay?: number;
   @Input() autoClose = false;
   @Input() autoFocus = true;
+  @Input() override restoreFocus = true;
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if (this.autoClose) {
+      this.restoreFocus = false;
+    }
     this.opened.subscribe((isOpened) => {
       if (isOpened) {
         if (this.autoFocus) {

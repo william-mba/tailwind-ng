@@ -6,21 +6,10 @@ import { BaseActions, BaseProps } from "./base";
  */
 export interface PopupProps<T extends HTMLElement = HTMLElement> extends BaseProps<T> {
   readonly id: string;
-  /**
-   * The popup's extra options.
-   */
-  readonly options?: PopupExtraOptons;
+  readonly restoreFocus?: boolean | PopupTrigger;
 }
-
-export interface PopupExtraOptons {
-  /**
-   * The popup's trigger.
-   */
-  trigger?: BaseActions;
-  /**
-   * Whether to focus the trigger when the popup closes.
-   */
-  focusTriggerOnClose?: boolean;
+export interface PopupTrigger {
+  focus(): unknown;
 }
 
 /**

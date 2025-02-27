@@ -1,7 +1,8 @@
 import { Directive, Input, inject, model } from '@angular/core';
 import { BaseDirective } from './base.directive';
-import { Popup, PopupExtraOptons } from '../interfaces/popup';
+import { Popup, PopupTrigger } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
+import { isObject } from '../helpers';
 
 @Directive({
   host: {
@@ -13,7 +14,7 @@ import { ZIndexer } from '../injectables/z-index.service';
 export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
   private readonly _zIndex = inject(ZIndexer);
   @Input() id = this.randomId('popup');
-  @Input() options?: PopupExtraOptons;
+  @Input() restoreFocus: boolean | PopupTrigger = false;
   opened = model(false);
 
   protected get zIndex(): string {
@@ -28,8 +29,17 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
     }
   }
 
+  private trigger: unknown = null;
+
   open(): void {
     if (!this.opened()) {
+      if (this.restoreFocus && !this.trigger) {
+        if (isObject(this.restoreFocus) && 'focus' in this.restoreFocus) {
+          this.trigger = this.restoreFocus;
+        } else {
+          this.trigger = this._document.activeElement as HTMLElement;
+        }
+      }
       requestAnimationFrame(() => {
         this.opened.set(true);
         this.nativeElement.style.zIndex = this.zIndex;
@@ -39,14 +49,12 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
 
   close(): void {
     if (this.opened()) {
+      if (this.restoreFocus && this.trigger) {
+        (this.trigger as PopupTrigger).focus();
+      }
       requestAnimationFrame(() => {
         this.opened.set(false);
         this.nativeElement.style.zIndex = '';
-        if (this.options) {
-          const { trigger } = this.options;
-          const { focusTriggerOnClose } = this.options;
-          if (trigger && focusTriggerOnClose) trigger.focus();
-        }
       });
     }
   }
