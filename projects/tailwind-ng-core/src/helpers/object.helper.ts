@@ -1,5 +1,5 @@
 import { Config } from "../types";
-import { Type } from "./type-check.helper";
+import { isConfigObject, isEmptyConfigObject, isEmptyObject, isObject, isString } from "./type-check.helper";
 
 /** Returns the object properties values, including properties values of it child objects in a string.*/
 function toString(obj: Config, separator = ' '): string {
@@ -15,16 +15,16 @@ function toString(obj: Config, separator = ' '): string {
   */
   let res = '';
 
-  if (!Type.isObject(obj)) return res;
+  if (!isObject(obj)) return res;
 
   for (const value of Object.values(obj)) {
-    if (Type.isString(value)) {
+    if (isString(value)) {
       if (res.length === 0) {
         res += value;
       } else {
         res += separator + value;
       }
-    } else if (Type.isObject(value)) {
+    } else if (isObject(value)) {
       res += separator + toString(value, separator);
     }
   }
@@ -45,12 +45,12 @@ function toArray(obj: Config): string[] {
   */
   const res: string[] = [];
 
-  if (!Type.isObject(obj) || Type.isEmptyObject(obj)) return res;
+  if (!isObject(obj) || isEmptyObject(obj)) return res;
 
   for (const value of Object.values(obj)) {
-    if (Type.isString(value)) {
+    if (isString(value)) {
       res.push(value);
-    } else if (Type.isObject(value)) {
+    } else if (isObject(value)) {
       res.push(...toArray(value));
     }
   }
@@ -82,12 +82,12 @@ function simpleMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
 
   for (const obj of source) {
     for (const k in obj) {
-      if (Type.isString(obj[k])) {
+      if (isString(obj[k])) {
         Object.assign(target, { [k]: obj[k] });
-      } else if (Type.isConfigObject(obj[k])) {
+      } else if (isConfigObject(obj[k])) {
         if (!target[k]) {
           Object.assign(target, { [k]: obj[k] });
-        } else if (Type.isConfigObject(target[k])) {
+        } else if (isConfigObject(target[k])) {
           simpleMerge(target[k], obj[k]);
         }
       }
@@ -122,11 +122,11 @@ function strictMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
 
   for (const obj of source) {
     for (const k in obj) {
-      if (Type.isString(obj[k])) {
+      if (isString(obj[k])) {
         Object.assign(target, { [k]: obj[k] });
-      } else if (Type.isEmptyConfigObject(obj[k])) {
+      } else if (isEmptyConfigObject(obj[k])) {
         Object.assign(target, { [k]: obj[k] });
-      } else if (Type.isConfigObject(obj[k]) && Type.isConfigObject(target[k])) {
+      } else if (isConfigObject(obj[k]) && isConfigObject(target[k])) {
         strictMerge(target[k], obj[k]);
       }
     }

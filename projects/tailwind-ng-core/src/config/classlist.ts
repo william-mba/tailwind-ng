@@ -1,5 +1,5 @@
 import { signal, Signal } from "@angular/core";
-import { Str, Obj, Type } from "../helpers";
+import { Str, Obj, isConfigObject, isString, isArray, isUndefined, isUndefinedOrNull } from "../helpers";
 import { Config } from "../types";
 
 /**
@@ -119,14 +119,14 @@ const MIN_CLASS_NAMES = 1;
 
 function arrayFrom(value: string | string[] | Config | undefined | null = null): string[] {
   let newValue: string[] = [];
-  if (Type.isUndefined(value) || value === null) {
+  if (isUndefinedOrNull(value)) {
     return newValue;
   }
-  if (Type.isString(value)) {
+  if (isString(value)) {
     newValue = Str.toArray(value);
-  } else if (Type.isArray(value)) {
+  } else if (isArray(value)) {
     newValue = value;
-  } else if (Type.isConfigObject(value)) {
+  } else if (isConfigObject(value)) {
     newValue = Obj.toArray(value);
   }
   return newValue;
@@ -136,7 +136,7 @@ function arrayFrom(value: string | string[] | Config | undefined | null = null):
  * Creates a class list that can be used to set, update and merge Tailwind CSS class names for a component.
  */
 export function classlist(initialValue: string | string[] | Config | undefined | null = null): ClassList {
-  if (Type.isUndefined(initialValue) || initialValue === null) {
+  if (isUndefined(initialValue) || initialValue === null) {
     return new ClassList();
   }
   return new ClassList(initialValue);

@@ -1,9 +1,9 @@
-import { Type } from "./type-check.helper";
+import { isString } from "./type-check.helper";
 
 /** Transfroms string value to an array then returns it.
  * Returns an empty array if value is undefined. */
 function stringToArray(value: unknown, separator = ' '): string[] {
-  return Type.isString(value) ? (value as string).split(separator) : [];
+  return isString(value) ? (value as string).split(separator) : [];
 }
 
 /**
