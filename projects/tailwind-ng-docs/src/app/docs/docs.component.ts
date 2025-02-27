@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, DestroyRef, effect, inject, signal } from '@angular/core';
+import { Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { TwButton, TwDropdown, TwIcon } from 'tailwind-ng';
 import { TwOption, ThemeService } from '@tailwind-ng/core';
 import { DOCUMENT, NgIf } from '@angular/common';
@@ -10,7 +10,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, TwOption, RouterOutlet],
   templateUrl: './docs.component.html'
 })
-export class DocsComponent implements AfterViewInit {
+export class DocsComponent {
   navOpened = signal(true);
   private _isSmallScreen = false;
   private _clientWidth = signal(window.innerWidth);
@@ -41,11 +41,6 @@ export class DocsComponent implements AfterViewInit {
         this.navOpened.set(true);
       }
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.toggleNav();
-    this.toggleNav();
   }
 
   toggleNav() {
