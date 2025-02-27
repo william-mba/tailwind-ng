@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal, ViewEncapsulation } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component, signal, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-dialogs-preview',
@@ -8,19 +7,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreviewComponent {
-  sanitizer = inject(DomSanitizer);
-  p01 = 'dialogs-p01';
-  p02 = 'dialogs-p02';
-  p03 = 'dialogs-p03';
-  p04 = 'dialogs-p04';
-  p05 = 'dialogs-p05';
-  p06 = 'dialogs-p06';
-  p07 = 'dialogs-p07';
-
-  sanitize(url: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
-
   opened = {
     1: signal(false),
     2: signal(false),
