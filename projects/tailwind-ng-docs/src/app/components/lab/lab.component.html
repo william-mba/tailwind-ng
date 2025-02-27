@@ -134,7 +134,7 @@
       Options <tw-icon name="chevron-down" class="text-gray-500" />
     </button>
     <div class="relative">
-      <tw-dropdown #dropdown2 (click)="dropdown2.close()" [options]="{closeOnBlur: true}"
+      <tw-dropdown #dropdown2 (click)="dropdown2.close()" [closeOnBlur]="true"
         class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50">
         <ul tw-option class="*:px-4 *:py-2">
           <li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Edit</li>

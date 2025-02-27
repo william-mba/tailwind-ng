@@ -67,8 +67,7 @@
         </button>
       </div>
       <div class="relative">
-        <ul tw-dropdown #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2" [opened]="true"
-          [options]="{closeOnBlur: true}">
+        <ul tw-dropdown #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2" [opened]="true" [closeOnBlur]="true">
           <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Save and schedule </li>
           <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Save and publish </li>
           <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Export PDF </li>
