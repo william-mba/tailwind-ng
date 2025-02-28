@@ -46,7 +46,9 @@ export class DocsComponent {
 
   protected readonly theme = inject(ThemeService);
   switchTheme() {
-    this.theme.toggle();
+    requestAnimationFrame(() => {
+      this.theme.toggle();
+    });
   }
   protected readonly navItems = NAV_ITEMS;
 }

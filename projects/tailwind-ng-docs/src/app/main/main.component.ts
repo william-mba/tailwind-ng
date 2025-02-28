@@ -12,6 +12,8 @@ import { RouterLink } from '@angular/router';
 export class MainComponent {
   protected readonly theme = inject(ThemeService);
   switchTheme() {
-    this.theme.toggle();
+    requestAnimationFrame(() => {
+      this.theme.toggle();
+    });
   }
 }
