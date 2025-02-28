@@ -7,7 +7,7 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
   imports: [TwIcon, TwDialog, TwButton],
   template: `
   <button (click)="switchTheme()" tw-button variant="text" size="xs" class="fixed top-4 right-4 z-100 text-gray-700 dark:text-gray-300">
-    @if (theme.isDark) {
+    @if (isDark()) {
      On dark <tw-icon name="moon" size="sm" />
     }
     @else {
@@ -38,8 +38,10 @@ export class P01Component {
   dialog = viewChild.required(DialogBase);
   opened = signal(true);
   protected readonly theme = inject(ThemeService);
+  isDark = signal(this.theme.isDark);
   switchTheme() {
     this.theme.toggle();
+    this.isDark.set(this.theme.isDark);
   }
 
   constructor() {
