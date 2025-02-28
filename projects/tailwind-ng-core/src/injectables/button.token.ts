@@ -18,15 +18,17 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
   override ngOnInit(): void {
     super.ngOnInit();
     if (this.popup) {
-      if (isDropdown(this.popup)) {
-        this.nativeElement.setAttribute('aria-haspopup', 'menu');
-      } else if (isDialog(this.popup)) {
-        this.nativeElement.setAttribute('aria-haspopup', 'dialog');
-      } else if (isCombobox(this.popup)) {
-        this.nativeElement.setAttribute('aria-haspopup', 'listbox');
-      } else {
-        this.nativeElement.setAttribute('aria-haspopup', 'true');
-      }
+      queueMicrotask(() => {
+        if (isDropdown(this.popup)) {
+          this.nativeElement.setAttribute('aria-haspopup', 'menu');
+        } else if (isDialog(this.popup)) {
+          this.nativeElement.setAttribute('aria-haspopup', 'dialog');
+        } else if (isCombobox(this.popup)) {
+          this.nativeElement.setAttribute('aria-haspopup', 'listbox');
+        } else {
+          this.nativeElement.setAttribute('aria-haspopup', 'true');
+        }
+      });
     }
   }
 }
