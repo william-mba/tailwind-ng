@@ -35,7 +35,7 @@ function memoizeResolve(fn: (arg: [...string[][]], options: ResolveOptions) => s
     setTimeout(() => {
       cache.clear();
       cleanupScheduled = false;
-    }, 5000)
+    }, 1000 * 60) // 1 minute
     cleanupScheduled = true;
   };
 
