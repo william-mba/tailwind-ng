@@ -7,14 +7,14 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
   imports: [TwIcon, TwDialog, TwButton],
   template: `
   <button (click)="switchTheme()" tw-button variant="text" size="xs" class="fixed top-4 right-4 z-100 text-gray-700 dark:text-gray-300">
-    @if (theme.isDark()) {
+    @if (theme.isDark) {
     On dark  <tw-icon name="moon" size="sm" />
     }
     @else {
     On light  <tw-icon name="sun" size="sm" />
     }
   </button>
-  <div tw-dialog #dialog [(opened)]="opened">
+  <div tw-dialog #dialog [(isOpened)]="opened">
     <div tw-dialog-container (click)="dialog.close()">
       <!-- Dialog content -->
       <div class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start">

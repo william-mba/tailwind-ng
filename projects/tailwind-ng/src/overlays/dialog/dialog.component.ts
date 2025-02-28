@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { classlist, Dialog, DialogBase, TwIf, OverlayPosition } from '@tailwind-ng/core';
+import { Dialog, DialogBase, TwIf, OverlayPosition } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -8,10 +8,10 @@ import { classlist, Dialog, DialogBase, TwIf, OverlayPosition } from '@tailwind-
   imports: [TwIf],
   host: {
     role: 'dialog',
-    '[class]': 'classList.value()',
     '[attr.aria-modal]': 'isModal',
+    '[class]': 'classList.value()',
   },
-  template: `<ng-container *twIf="opened()"><ng-content /></ng-container>`,
+  template: `<ng-container *twIf="isOpened()"><ng-content /></ng-container>`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: DialogBase, useExisting: DialogComponent }]
@@ -19,10 +19,9 @@ import { classlist, Dialog, DialogBase, TwIf, OverlayPosition } from '@tailwind-
 export class DialogComponent extends DialogBase implements Dialog {
   @Input() position?: OverlayPosition;
   @Input() isModal = true;
+
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set({
-      ...this.config.scrim, ...this.isModal ? this.config.backdrop : {}
-    })
+    this.classList.set({ ...this.config.scrim, ...this.isModal ? this.config.backdrop : {} })
     if (this.position) {
       this.classList.update({ i: 'inset-', ...this.position });
     }

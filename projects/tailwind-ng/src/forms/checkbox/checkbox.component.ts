@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, OnInit, output, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableStates, CheckboxToggleOptions, classlist, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
+import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableStates, CheckboxToggleOptions, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
 import { TwIcon } from "../../elements";
 
 /**
@@ -57,7 +57,7 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
       this.config = {};
       this.classList = this.parent.classList;
     } else {
-      this.classList = classlist(this.class()).set(this.config);
+      this.classList.set(this.config);
     }
   }
 

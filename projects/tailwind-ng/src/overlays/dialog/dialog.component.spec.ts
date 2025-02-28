@@ -59,9 +59,9 @@ describe('DialogComponent', () => {
 
     testComponent.show();
     tick(500);
-    expect(testComponent.dialog().opened()).toBeTrue();
+    expect(testComponent.dialog().isOpened()).toBeTrue();
     tick(1000);
-    expect(testComponent.dialog().opened()).toBeFalse();
+    expect(testComponent.dialog().isOpened()).toBeFalse();
   }, { flush: true }));
 });
 

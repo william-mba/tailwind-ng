@@ -1,12 +1,12 @@
 import { Directive, inject, OnInit } from "@angular/core";
-import { BaseDirective, classlist, DIALOG_CONFIG, DialogBase, isEscape } from '@tailwind-ng/core';
+import { BaseDirective, DIALOG_CONFIG, DialogBase, isEscape } from '@tailwind-ng/core';
 
 @Directive({
   selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',
   exportAs: 'twDialogContainer',
   host: {
+    '[tabindex]': 'disabled ? null : -1',
     '[class]': 'classList.value()',
-    '[tabindex]': 'disabled ? null : -1'
   }
 })
 export class DialogContainerDirective extends BaseDirective implements OnInit {
@@ -14,7 +14,7 @@ export class DialogContainerDirective extends BaseDirective implements OnInit {
   protected config = inject(DIALOG_CONFIG).container;
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set(this.config);
+    this.classList.set(this.config);
   }
 
   protected onKeyup(event: KeyboardEvent): void {

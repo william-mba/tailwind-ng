@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, model } from '@angular/core';
-import { Button, ButtonBase, ButtonVariant, classlist, isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isDropdown, isEnterOrSpace, isEscape, isTab, SizeOption } from '@tailwind-ng/core';
+import { Button, ButtonBase, ButtonVariant, isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isDropdown, isEnterOrSpace, isEscape, isTab, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component
@@ -25,11 +25,11 @@ export class ButtonComponent extends ButtonBase implements Button {
   @Input() tabIndex = 0;
 
   protected get isPopupExpanded(): boolean {
-    return this.popup?.opened() || false;
+    return this.popup?.isOpened() || false;
   }
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set({
+    this.classList.set({
       ...this.config[this.size()],
       ...this.config[this.variant()],
       ...this.isFab() ? this.config.fab : {}
@@ -40,7 +40,7 @@ export class ButtonComponent extends ButtonBase implements Button {
     event.stopPropagation();
     if (isDropdown(this.popup)) {
       setTimeout(() => {
-        if (this.popup?.opened()) {
+        if (this.popup?.isOpened()) {
           this.popup?.focus({ behavior: 'firstChild' });
         }
       }, 100);
@@ -55,21 +55,21 @@ export class ButtonComponent extends ButtonBase implements Button {
       event.preventDefault();
     } else if (isEnterOrSpace(event.key)) {
       this.nativeElement.click();
-      if (isDropdown(this.popup) && this.popup.opened()) {
+      if (isDropdown(this.popup) && this.popup.isOpened()) {
         setTimeout(() => {
           this.popup?.focus({ behavior: 'firstChild' });
         }, 50);
       }
     } else if (isArrowUpOrDown(event.key) && isDropdown(this.popup)) {
       if (isArrowDown(event.key)) {
-        if (!this.popup.opened()) {
+        if (!this.popup.isOpened()) {
           this.popup.open();
         }
         setTimeout(() => {
           this.popup?.focus({ behavior: 'firstChild' });
         }, 50);
       } else if (isArrowUp(event.key)) {
-        if (this.popup.opened()) {
+        if (this.popup.isOpened()) {
           this.popup.close();
         } else {
           this.popup.open();

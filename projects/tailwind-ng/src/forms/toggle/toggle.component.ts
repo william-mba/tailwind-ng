@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, model, ViewEncapsulation } from '@angular/core';
-import { classlist, Toggle, ToggleBase } from '@tailwind-ng/core';
+import { Toggle, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -21,7 +21,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   checked = model<boolean>(false);
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set(this.config);
+    this.classList.set(this.config);
   }
 
   private onKeydown(event: KeyboardEvent): void {

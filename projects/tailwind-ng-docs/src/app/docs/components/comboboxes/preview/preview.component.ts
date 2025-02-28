@@ -220,7 +220,7 @@ export class PreviewComponent {
   selections: Record<number, Set<string>> = {
     1: new Set(['Elizabeth Martinez']),
     2: new Set(['Courtney Henry']),
-    3: new Set<string>(['Tom Cook', 'Elizabeth Martinez', 'Courtney Henry']),
+    3: new Set(['Tom Cook', 'Elizabeth Martinez', 'Courtney Henry']),
     4: new Set(['Tom Cook', 'James Williams', 'Charles Thomas', 'Leonard Krasner', 'Patricia Brown', 'Barbara Garcia']),
     5: new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']),
   };

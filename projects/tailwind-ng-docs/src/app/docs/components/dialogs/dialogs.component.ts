@@ -5,8 +5,7 @@ import { TwButton, TwIcon } from 'tailwind-ng';
 @Component({
   selector: 'app-dialogs',
   imports: [RouterOutlet, RouterLink, RouterLinkActive, TwButton, TwIcon],
-  templateUrl: './dialogs.component.html',
-  styles: ``
+  templateUrl: './dialogs.component.html'
 })
 export class DialogsComponent {
 

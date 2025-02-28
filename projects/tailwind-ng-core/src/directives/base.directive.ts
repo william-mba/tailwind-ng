@@ -1,7 +1,7 @@
 import { Directive, ElementRef, inject, input, Input, OnDestroy, OnInit } from "@angular/core";
 import { BaseProps, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
-import { ClassList } from "../config/classlist";
+import { classlist } from "../config/classlist";
 import { isEnterOrSpace, isNavigation } from "../guards";
 import { Config } from "../types/config.type";
 
@@ -19,7 +19,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   protected readonly _document = inject(DOCUMENT);
   protected isInitialized = false;
 
-  classList!: ClassList;
+  classList = classlist();
   class = input<string | string[] | Config | undefined | null>(null);
 
   private _isDisabled = false;
@@ -49,6 +49,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   isHovered = false;
 
   ngOnInit(): void {
+    this.classList.init(this.class());
     this.buildStyle();
     this.addEventListeners();
     this.isInitialized = true;

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, model, OnInit, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
-import { classlist, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
+import { ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -27,9 +27,9 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     super.ngOnInit();
     this._combobox.input().valueChange.subscribe(this.selectIfNeeded.bind(this));
     const subs: { unsubscribe(): void }[] = [];
-    subs.push(this._combobox.opened.subscribe((opened) => {
+    subs.push(this._combobox.opened.subscribe(() => {
       this.selectIfNeeded();
-      if (opened && this.selected()) {
+      if (this.selected()) {
         if (!this._combobox.selectedValues().has(this.value())) {
           this.selected.set(false);
         } else {
@@ -70,6 +70,9 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   }
 
   select(): void {
+    if (!this._combobox.input().hasVisualFocus) {
+      this._combobox.input().setVisualfocus();
+    }
     this._combobox.input().focus();
     this._combobox.setActiveItem(this);
     if (this._combobox.selectionMode === 'single') {
@@ -99,7 +102,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   }
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set(this.config);
+    this.classList.set(this.config);
   }
 
   protected override addEventListeners(): void {

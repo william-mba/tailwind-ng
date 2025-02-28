@@ -1,4 +1,4 @@
-import { Directive, Input, inject, model } from '@angular/core';
+import { Directive, Input, inject, model, output } from '@angular/core';
 import { BaseDirective } from './base.directive';
 import { Popup, PopupTrigger } from '../interfaces/popup';
 import { ZIndexer } from '../injectables/z-index.service';
@@ -7,22 +7,24 @@ import { isObject } from '../helpers';
 @Directive({
   host: {
     '[attr.id]': 'id',
-    '[attr.open]': 'opened() || null',
-    '[attr.aria-expanded]': 'opened()'
+    '[attr.open]': 'isOpened() || null',
+    '[attr.aria-expanded]': 'isOpened()'
   }
 })
 export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
   private readonly _zIndex = inject(ZIndexer);
   @Input() id = this.randomId('popup');
   @Input() restoreFocus: boolean | PopupTrigger = false;
-  opened = model(false);
+  readonly isOpened = model(false);
+  readonly opened = output<Popup>();
+  readonly closed = output<Popup>();
 
   protected get zIndex(): string {
     return `${this._zIndex.next}`;
   }
 
   toggle(): void {
-    if (this.opened()) {
+    if (this.isOpened()) {
       this.close();
     } else {
       this.open();
@@ -32,7 +34,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
   private trigger: unknown = null;
 
   open(): void {
-    if (!this.opened()) {
+    if (!this.isOpened()) {
       if (this.restoreFocus && !this.trigger) {
         if (isObject(this.restoreFocus) && 'focus' in this.restoreFocus) {
           this.trigger = this.restoreFocus;
@@ -41,20 +43,22 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
         }
       }
       requestAnimationFrame(() => {
-        this.opened.set(true);
+        this.isOpened.set(true);
         this.nativeElement.style.zIndex = this.zIndex;
+        this.opened.emit(this);
       });
     }
   }
 
   close(): void {
-    if (this.opened()) {
+    if (this.isOpened()) {
       if (this.restoreFocus && this.trigger) {
         (this.trigger as PopupTrigger).focus();
       }
       requestAnimationFrame(() => {
-        this.opened.set(false);
+        this.isOpened.set(false);
         this.nativeElement.style.zIndex = '';
+        this.closed.emit(this);
       });
     }
   }

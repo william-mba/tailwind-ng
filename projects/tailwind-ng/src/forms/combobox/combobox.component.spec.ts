@@ -133,12 +133,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -148,7 +148,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -226,12 +226,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -241,7 +241,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -319,12 +319,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -334,7 +334,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -414,12 +414,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -429,7 +429,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -507,12 +507,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -522,7 +522,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -602,12 +602,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -617,7 +617,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -674,7 +674,7 @@ describe('ComboboxComponent', () => {
     fixture.detectChanges();
 
     expect(combobox.activeElement).toBeFalsy();
-    expect(combobox.opened()).toBeFalse();
+    expect(combobox.isOpened()).toBeFalse();
 
     combobox.open();
     fixture.detectChanges();
@@ -684,7 +684,7 @@ describe('ComboboxComponent', () => {
     fixture.detectChanges();
     tick(500);
 
-    expect(combobox.opened()).toBeTrue();
+    expect(combobox.isOpened()).toBeTrue();
     expect(combobox.activeElement).toEqual(item.nativeElement);
   }, { flush: true }));
 
@@ -705,12 +705,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -720,7 +720,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -805,12 +805,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -820,7 +820,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -908,12 +908,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -923,7 +923,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -1017,12 +1017,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -1032,7 +1032,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
@@ -1138,12 +1138,12 @@ describe('ComboboxComponent', () => {
         })
       ],
       imports: [
-    ComboboxModule,
-    InputTextDirective,
-    ButtonComponent,
-    IconDirective,
-    DropdownComponent
-],
+        ComboboxModule,
+        InputTextDirective,
+        ButtonComponent,
+        IconDirective,
+        DropdownComponent
+      ],
       template: `
       <div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
         <!-- Label -->
@@ -1153,7 +1153,7 @@ describe('ComboboxComponent', () => {
         <!-- Button -->
         <button tw-button variant="text" size="sm" [popup]="cbb1"
           class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
-          @if (cbb1.opened()) {
+          @if (cbb1.isOpened()) {
           <tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
           }
           <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />

@@ -57,8 +57,8 @@ describe('BaseDirective', () => {
     });
 
     it('should set classlist', () => {
-      expect(directive.classList).toBeUndefined();
-      directive.classList = classlist('class1 class2 class3');
+      expect(directive.classList).toBeTruthy();
+      directive.classList.set('class1 class2 class3');
       expect(directive.classList.value()).toEqual(['class1', 'class2', 'class3']);
     });
 

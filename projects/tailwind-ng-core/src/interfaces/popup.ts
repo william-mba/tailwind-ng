@@ -1,4 +1,4 @@
-import { ModelSignal } from "@angular/core";
+import { ModelSignal, OutputEmitterRef } from "@angular/core";
 import { BaseActions, BaseProps } from "./base";
 
 /**
@@ -7,6 +7,7 @@ import { BaseActions, BaseProps } from "./base";
 export interface PopupProps<T extends HTMLElement = HTMLElement> extends BaseProps<T> {
   readonly id: string;
   readonly restoreFocus?: boolean | PopupTrigger;
+  readonly isOpened: ModelSignal<boolean>
 }
 export interface PopupTrigger {
   focus(): unknown;
@@ -47,5 +48,9 @@ export interface Popup<T extends HTMLElement = HTMLElement> extends PopupProps<T
   /**
    * A signal that indicates whether the popup is opened. Emits `true` when the popup opens and `false` when it closes.
    */
-  readonly opened: ModelSignal<boolean>;
+  readonly opened: OutputEmitterRef<Popup>;
+  /**
+   * Event emiited when the popup closes.
+   */
+  readonly closed: OutputEmitterRef<Popup>;
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, contentChild, Input, model, OnInit, output, ViewEncapsulation } from '@angular/core';
-import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEnter, isEscape, ComboboxSelectionMode, TwIf, isArrowUpOrDown, isArrowUp } from '@tailwind-ng/core';
+import { Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEnter, isEscape, ComboboxSelectionMode, TwIf, isArrowUpOrDown, isArrowUp } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
@@ -14,7 +14,7 @@ import { classlist, Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTex
     <ng-content select="input[type=text], input[tw-input], input[twInput]" />
     <ng-content select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]" />
   </div>
-  <ng-container *twIf="opened()">
+  <ng-container *twIf="isOpened()">
     <div class="relative"><ng-content /></div>
   </ng-container>`,
   encapsulation: ViewEncapsulation.None,
@@ -31,7 +31,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   override ngOnInit(): void {
     super.ngOnInit();
     this.input().changes.subscribe(() => {
-      if (!this.opened()) {
+      if (!this.isOpened()) {
         this.open();
       }
     });
@@ -66,7 +66,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     requestAnimationFrame(() => {
       if (!this.hasFocus) {
         this.input().removeVisualfocus();
-        if (this.opened()) this.close();
+        if (this.isOpened()) this.close();
       }
     });
   }
@@ -79,16 +79,16 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   }
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set("relative h-max");
+    this.classList.set("relative h-max");
   }
 
   // we use keydown as it allows users to navigate up and down continuously
   protected override onKeydown(event: KeyboardEvent): void {
     super.onKeydown(event);
-    if (!isEscape(event.key) && !this.opened()) {
+    if (!isEscape(event.key) && !this.isOpened()) {
       this.open();
     } else if (isEscape(event.key)) {
-      if (this.opened()) {
+      if (this.isOpened()) {
         this.close();
       } else {
         this.reset();

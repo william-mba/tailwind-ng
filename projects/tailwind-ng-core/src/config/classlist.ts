@@ -17,6 +17,12 @@ export interface IClassList {
   /**
    * Sets a brand new class list value.
    */
+  init<T extends string>(value: T): IClassList;
+  init<T extends string[]>(value: T[]): IClassList;
+  init<T extends Config>(value: T): IClassList;
+  /**
+   * Sets a brand new class list value.
+   */
   set<T extends string>(value: T): IClassList;
   set<T extends string[]>(value: T[]): IClassList;
   set<T extends Config>(value: T): IClassList;
@@ -70,8 +76,20 @@ export class ClassList implements IClassList {
   // and not with a config object to keep the base value as short as possible.
   // This make future updates to the classlist value even faster.
   constructor(base: string | string[] | Config = []) {
-    this.base.set(Str.resolve([this.base(), arrayFrom(base)], { keepClassDeletor: true }));
-    this.value.set(arrayFrom(base));
+    const value = arrayFrom(base);
+    if (value.length > 0) {
+      this.base.set(Str.resolve([this.base(), value], { keepClassDeletor: true }));
+      this.value.set(value);
+    }
+  }
+
+  init<T = undefined | null>(value: T): ClassList;
+  init<T extends string>(value: T): ClassList;
+  init<T extends string[]>(value: T[]): ClassList;
+  init<T extends Config>(value: T): ClassList;
+  init<T extends string | string[] | Config>(value: T): ClassList {
+    this.base.set(Str.resolve([this.base(), arrayFrom(value)], { keepClassDeletor: true }));
+    return this;
   }
 
   set<T = undefined | null>(value: T): ClassList;

@@ -17,8 +17,8 @@
       </a>
     </button>
     <button (click)="switchTheme()" tw-button variant="secondary" size="xs" class="max-sm:size-8 items-start">
-      <tw-icon name="moon" *ngIf="!theme.isDark()" class="max-sm:size-4" />
-      <tw-icon name="sun" *ngIf="theme.isDark()" class="max-sm:size-4" />
+      <tw-icon name="moon" *ngIf="!theme.isDark" class="max-sm:size-4" />
+      <tw-icon name="sun" *ngIf="theme.isDark" class="max-sm:size-4" />
     </button>
   </div>
 </section>

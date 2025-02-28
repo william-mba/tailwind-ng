@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { classlist, InputRadio, InputRadioBase } from '@tailwind-ng/core';
+import { InputRadio, InputRadioBase } from '@tailwind-ng/core';
 
 @Directive({
   selector: 'input[type="radio"][tw-input], input[type="radio"][twInput]',
@@ -11,6 +11,6 @@ import { classlist, InputRadio, InputRadioBase } from '@tailwind-ng/core';
 })
 export class InputRadioDirective extends InputRadioBase implements InputRadio {
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set(this.config);
+    this.classList.set(this.config);
   }
 }
