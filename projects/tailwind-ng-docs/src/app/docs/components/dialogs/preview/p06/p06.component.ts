@@ -85,8 +85,10 @@ export class P06Component {
   protected readonly theme = inject(ThemeService);
   isDark = signal(this.theme.isDark);
   switchTheme() {
-    this.theme.toggle();
-    this.isDark.set(this.theme.isDark);
+    requestAnimationFrame(() => {
+      this.theme.toggle();
+      this.isDark.set(this.theme.isDark);
+    });
   }
 
 
