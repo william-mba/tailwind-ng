@@ -32,10 +32,10 @@ function memoizeResolve(fn: (arg: [...string[][]], options: ResolveOptions) => s
 
   const scheduleCleanup = () => {
     if (cleanupScheduled) return;
-    window.addEventListener('scroll', () => {
+    setTimeout(() => {
       cache.clear();
       cleanupScheduled = false;
-    }, { once: true, capture: true, passive: true });
+    }, 5000)
     cleanupScheduled = true;
   };
 
