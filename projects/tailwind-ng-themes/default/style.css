@@ -704,6 +704,9 @@
   .right-3 {
     right: calc(var(--spacing) * 3);
   }
+  .right-4 {
+    right: calc(var(--spacing) * 4);
+  }
   .right-5 {
     right: calc(var(--spacing) * 5);
   }
@@ -814,6 +817,9 @@
   }
   .z-50 {
     z-index: 50;
+  }
+  .z-100 {
+    z-index: 100;
   }
   .z-\[1\] {
     z-index: 1;
@@ -1142,6 +1148,9 @@
   }
   .h-\[500px\] {
     height: 500px;
+  }
+  .h-\[600px\] {
+    height: 600px;
   }
   .h-\[1117px\] {
     height: 1117px;
