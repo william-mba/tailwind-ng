@@ -1,4 +1,4 @@
-import { Directive, ElementRef, inject, input, Input, OnDestroy, OnInit } from "@angular/core";
+import { afterNextRender, Directive, ElementRef, inject, input, Input, OnDestroy, OnInit } from "@angular/core";
 import { BaseProps, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { classlist } from "../config/classlist";
@@ -49,8 +49,6 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   isHovered = false;
 
   ngOnInit(): void {
-    this.classList.init(this.class());
-    this.buildStyle();
     this.addEventListeners();
     this.isInitialized = true;
   }

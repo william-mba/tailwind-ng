@@ -5,7 +5,7 @@ import { Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEn
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
   exportAs: 'twCombobox',
   host: {
-    '[class]': 'classList.value()',
+    // '[class]': 'classList.value()',
     '[attr.aria-controls]': 'dropdown().id',
   },
   imports: [TwIf],

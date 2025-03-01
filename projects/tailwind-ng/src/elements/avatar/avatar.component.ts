@@ -8,7 +8,7 @@ import { AvatarBase, SizeOption, Avatar } from '@tailwind-ng/core';
   selector: 'tw-avatar, [tw-avatar], [twAvatar]',
   exportAs: 'twAvatar',
   host: {
-    '[class]': 'classList.value()',
+    // '[class]': 'classList.value()',
   },
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,

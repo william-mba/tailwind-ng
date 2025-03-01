@@ -1,4 +1,4 @@
-import { Directive, inject, Input, OnInit } from "@angular/core";
+import { afterNextRender, Directive, inject, Input, OnInit } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { Popup } from "../interfaces/popup";
 import { Button, ButtonImmutableStates } from "../interfaces";
@@ -15,21 +15,27 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
   protected config = inject(BUTTON_CONFIG);
   @Input() popup?: Popup;
 
-  override ngOnInit(): void {
-    super.ngOnInit();
-    if (this.popup) {
-      queueMicrotask(() => {
-        if (isDropdown(this.popup)) {
-          this.nativeElement.setAttribute('aria-haspopup', 'menu');
-        } else if (isDialog(this.popup)) {
-          this.nativeElement.setAttribute('aria-haspopup', 'dialog');
-        } else if (isCombobox(this.popup)) {
-          this.nativeElement.setAttribute('aria-haspopup', 'listbox');
-        } else {
-          this.nativeElement.setAttribute('aria-haspopup', 'true');
+  constructor() {
+    super();
+    afterNextRender({
+      write: () => {
+        this.classList.init(this.class());
+        this.buildStyle();
+        this.nativeElement.className = this.classList.toString();
+        // this.nativeElement.classList.add(...this.classList.value());
+        if (this.popup) {
+          if (isDropdown(this.popup)) {
+            this.nativeElement.setAttribute('aria-haspopup', 'menu');
+          } else if (isDialog(this.popup)) {
+            this.nativeElement.setAttribute('aria-haspopup', 'dialog');
+          } else if (isCombobox(this.popup)) {
+            this.nativeElement.setAttribute('aria-haspopup', 'listbox');
+          } else {
+            this.nativeElement.setAttribute('aria-haspopup', 'true');
+          }
         }
-      });
-    }
+      }
+    })
   }
 }
 

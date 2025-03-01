@@ -1,4 +1,4 @@
-import { Directive, inject } from "@angular/core";
+import { afterNextRender, Directive, ElementRef, inject, Signal } from "@angular/core";
 import { BaseDirective } from "../directives/base.directive";
 import { CheckboxConfig } from "../config";
 import { InjectionTokenFactory } from "./injection-token.factory";
@@ -18,6 +18,18 @@ export const CHECKBOX_ICON = InjectionTokenFactory
 @Directive()
 export abstract class CheckboxBase extends BaseDirective {
   protected config = inject(CHECKBOX_CONFIG);
+  protected abstract inputRef: Signal<ElementRef<HTMLInputElement>>
+
+  constructor() {
+    super();
+    afterNextRender({
+      write: () => {
+        this.classList.init(this.class());
+        this.buildStyle();
+        this.inputRef().nativeElement.className = this.classList.toString();
+      }
+    })
+  }
 }
 
 /**

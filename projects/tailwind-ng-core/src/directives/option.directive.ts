@@ -9,7 +9,7 @@ import { classlist } from "../config/classlist";
   exportAs: 'twOption',
   host: {
     role: 'option',
-    '[class]': 'classList.value()',
+    // '[class]': 'classList.value()',
     '[tabindex]': 'disabled ? null : 0',
   }
 })

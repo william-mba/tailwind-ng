@@ -1,4 +1,4 @@
-import { Directive, inject } from "@angular/core";
+import { afterNextRender, Directive, inject } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Avatar } from "../interfaces/avatar";
@@ -17,4 +17,16 @@ export const AVATAR_CONFIG = InjectionTokenFactory.create<Partial<AvatarConfig>>
 @Directive({})
 export abstract class AvatarBase extends BaseDirective {
   protected config = inject(AVATAR_CONFIG);
+
+  constructor() {
+    super();
+    afterNextRender({
+      write: () => {
+        this.classList.init(this.class());
+        this.buildStyle();
+        this.nativeElement.className = this.classList.toString();
+        // this.nativeElement.classList.add(...this.classList.value());
+      }
+    })
+  }
 }

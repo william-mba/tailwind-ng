@@ -1,4 +1,4 @@
-import { Directive, forwardRef, inject } from "@angular/core";
+import { afterNextRender, Directive, forwardRef, inject } from "@angular/core";
 import { DropdownConfig } from "../config";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
@@ -14,6 +14,18 @@ export const DROPDOWN_CONFIG = InjectionTokenFactory.create<Partial<DropdownConf
 })
 export abstract class DropdownBase extends PopupDirective {
   protected config = inject(DROPDOWN_CONFIG);
+
+  constructor() {
+    super();
+    afterNextRender({
+      write: () => {
+        this.classList.init(this.class());
+        this.buildStyle();
+        this.nativeElement.className = this.classList.toString();
+        // this.nativeElement.classList.add(...this.classList.value());
+      }
+    })
+  }
 }
 
 /**

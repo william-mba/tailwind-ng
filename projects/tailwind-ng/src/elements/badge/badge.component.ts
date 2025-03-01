@@ -5,7 +5,7 @@ import { SizeOption, BadgeBase, Badge } from '@tailwind-ng/core';
   selector: 'tw-badge, [tw-badge], [twBadge]',
   exportAs: 'twBadge',
   host: {
-    '[class]': 'classList.value()',
+    // '[class]': 'classList.value()',
   },
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,

@@ -1,4 +1,4 @@
-import { Directive, inject } from "@angular/core";
+import { afterNextRender, Directive, inject } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
 import { Badge } from "../interfaces/badge";
@@ -18,4 +18,16 @@ export const BADGE_CONFIG = InjectionTokenFactory.create<Partial<BadgeConfig>>({
 @Directive({})
 export abstract class BadgeBase extends BaseDirective {
   protected config = inject(BADGE_CONFIG);
+
+  constructor() {
+    super();
+    afterNextRender({
+      write: () => {
+        this.classList.init(this.class());
+        this.buildStyle();
+        this.nativeElement.className = this.classList.toString();
+        // this.nativeElement.classList.add(...this.classList.value());
+      }
+    })
+  }
 }

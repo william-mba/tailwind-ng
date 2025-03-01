@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, OnInit, output, ViewEncapsulation } from "@angular/core";
+import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, forwardRef, inject, Input, OnInit, output, viewChild, ViewEncapsulation } from "@angular/core";
 import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableStates, CheckboxToggleOptions, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
 import { TwIcon } from "../../elements";
 
@@ -12,7 +12,7 @@ import { TwIcon } from "../../elements";
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
-      <input [class]="classList.value()" (change)="onChanges($event)" (keyup)="onKeyup($event)" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null" />
+      <input #inputRef (change)="onChanges($event)" (keyup)="onKeyup($event)" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null" />
       <tw-icon [name]="icon.onIndeterminate" [size]="icon.size" class="peer-indeterminate:block" />
       <tw-icon [name]="icon.onChecked" [size]="icon.size" class="peer-checked:block" />
     </div>
@@ -32,7 +32,8 @@ import { TwIcon } from "../../elements";
   providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }]
 })
 export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit {
-  protected icon = inject(CHECKBOX_ICON);
+  protected readonly inputRef = viewChild.required<ElementRef<HTMLInputElement>>('inputRef');
+  protected readonly icon = inject(CHECKBOX_ICON);
   protected readonly parent = inject(CheckboxComponent, {
     optional: true, skipSelf: true, host: true
   });

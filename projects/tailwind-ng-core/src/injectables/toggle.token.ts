@@ -1,4 +1,4 @@
-import { Directive, inject } from "@angular/core";
+import { afterNextRender, Directive, inject } from "@angular/core";
 import { ToggleConfig } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
@@ -17,4 +17,16 @@ export const TOGGLE_CONFIG = InjectionTokenFactory.create<Partial<ToggleConfig>>
 @Directive({})
 export abstract class ToggleBase extends BaseDirective {
   protected config = inject(TOGGLE_CONFIG);
+
+  constructor() {
+    super();
+    afterNextRender({
+      write: () => {
+        this.classList.init(this.class());
+        this.buildStyle();
+        this.nativeElement.className = this.classList.toString();
+        // this.nativeElement.classList.add(...this.classList.value());
+      }
+    })
+  }
 }
