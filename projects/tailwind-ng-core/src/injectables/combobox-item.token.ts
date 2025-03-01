@@ -16,9 +16,7 @@ export abstract class ComboboxItemBase extends BaseDirective {
       write: () => {
         this.classList.init(this.class());
         this.buildStyle();
-        effect(() => {
-          this.nativeElement.className = this.classList.toString();
-        })
+        this.nativeElement.className = this.classList.toString();
         // this.nativeElement.classList.add(...this.classList.value());
       }
     })
