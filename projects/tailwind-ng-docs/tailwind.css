@@ -8,19 +8,19 @@
   --animate-spin-180: spin 180s linear infinite;
   --animate-bounce-2: bounce 2s infinite;
   --animate-bounce-x: bounce-x 1s infinite;
-  --bg-hero: url("https://tailwind-ng.com/images/hero-bg.webp");
-  --bg-avatars: url("https://tailwind-ng.com/images/components/avatars.webp");
-  --bg-badges: url("https://tailwind-ng.com/images/components/badges.webp");
-  --bg-buttons: url("https://tailwind-ng.com/images/components/buttons.webp");
-  --bg-button-groups: url("https://tailwind-ng.com/images/components/button-groups.webp");
-  --bg-checkboxes: url("https://tailwind-ng.com/images/components/checkboxes.webp");
-  --bg-comboboxes: url("https://tailwind-ng.com/images/components/comboboxes.webp");
-  --bg-dialogs: url("https://tailwind-ng.com/images/components/dialogs.webp");
-  --bg-dropdowns: url("https://tailwind-ng.com/images/components/dropdowns.webp");
-  --bg-icon-buttons: url("https://tailwind-ng.com/images/components/icon-buttons.webp");
-  --bg-input-groups: url("https://tailwind-ng.com/images/components/input-groups.webp");
-  --bg-radio-groups: url("https://tailwind-ng.com/images/components/radio-groups.webp");
-  --bg-toggles: url("https://tailwind-ng.com/images/components/toggles.webp");
+  --bg-hero: url("/images/hero-bg.webp");
+  --bg-avatars: url("/images/components/avatars.webp");
+  --bg-badges: url("/images/components/badges.webp");
+  --bg-buttons: url("/images/components/buttons.webp");
+  --bg-button-groups: url("/images/components/button-groups.webp");
+  --bg-checkboxes: url("/images/components/checkboxes.webp");
+  --bg-comboboxes: url("/images/components/comboboxes.webp");
+  --bg-dialogs: url("/images/components/dialogs.webp");
+  --bg-dropdowns: url("/images/components/dropdowns.webp");
+  --bg-icon-buttons: url("/images/components/icon-buttons.webp");
+  --bg-input-groups: url("/images/components/input-groups.webp");
+  --bg-radio-groups: url("/images/components/radio-groups.webp");
+  --bg-toggles: url("/images/components/toggles.webp");
   --bg-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.29'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 
   @keyframes bounce-x {
@@ -40,7 +40,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('https://tailwind-ng.com/fonts/epilogue-100-900-normal.woff2') format('woff2');
+  src: url('/fonts/epilogue-100-900-normal.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin */
@@ -49,7 +49,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url('https://tailwind-ng.com/fonts/intertight-100-900-normal.woff2') format('woff2');
+  src: url('/fonts/intertight-100-900-normal.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin */
@@ -58,7 +58,7 @@
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url('https://tailwind-ng.com/fonts/intertight-100-900-italic.woff2') format('woff2');
+  src: url('/fonts/intertight-100-900-italic.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* vietnamese */
