@@ -31,6 +31,6 @@ describe('CheckboxComponent', () => {
     const component = testApp.component();
     fixture.detectChanges();
 
-    expect(component.classList.value()).toEqual(classlit.value());
+    expect(component.classList.value).toEqual(classlit.value);
   });
 });

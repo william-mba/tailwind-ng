@@ -41,7 +41,7 @@ describe('BaseDirective', () => {
 
   describe('props', () => {
     it('should set class', () => {
-      expect(directive.class()).toBeNull();
+      expect(directive.class).toBeNull();
 
       @Component({
         selector: 'test-component',
@@ -53,13 +53,13 @@ describe('BaseDirective', () => {
       directive = fixture.debugElement.query(By.directive(FakeDirective)).injector.get(FakeDirective);
       fixture.detectChanges();
 
-      expect(directive.class()).toBe('class1 class2 class3');
+      expect(directive.class).toBe('class1 class2 class3');
     });
 
     it('should set classlist', () => {
       expect(directive.classList).toBeTruthy();
       directive.classList.set('class1 class2 class3');
-      expect(directive.classList.value()).toEqual(['class1', 'class2', 'class3']);
+      expect(directive.classList.value).toEqual(['class1', 'class2', 'class3']);
     });
 
     it('should get nativeElement', () => {
@@ -67,41 +67,41 @@ describe('BaseDirective', () => {
     });
 
     it('should set disableable', () => {
-      expect(directive.disabled).toBeFalsy();
+      expect(directive.disabled).toBeFalse();
       directive.disabled = true;
-      expect(directive.disabled).toBeTruthy();
+      expect(directive.disabled).toBeTrue();
     });
 
   })
 
   describe('actions', () => {
     it('should focus', () => {
-      expect(directive.isFocused).toBeFalsy();
+      expect(directive.isFocused).toBeFalse();
       directive.nativeElement.focus();
-      expect(directive.isFocused).toBeTruthy();
+      expect(directive.isFocused).toBeTrue();
     });
 
     it('should add/remove visual focus', () => {
-      expect(directive.hasVisualFocus).toBeFalsy();
+      expect(directive.hasVisualFocus).toBeFalse();
       directive.setVisualfocus();
-      expect(directive.hasVisualFocus).toBeTruthy();
+      expect(directive.hasVisualFocus).toBeTrue();
       directive.removeVisualfocus();
-      expect(directive.hasVisualFocus).toBeFalsy();
+      expect(directive.hasVisualFocus).toBeFalse();
     });
 
     it('should set whether it is hovered', () => {
-      expect(directive.isHovered).toBeFalsy();
+      expect(directive.isHovered).toBeFalse();
       directive.isHovered = true;
-      expect(directive.isHovered).toBeTruthy();
+      expect(directive.isHovered).toBeTrue();
     });
 
     it('should scroll into view', fakeAsync(() => {
       spyOn(directive.nativeElement, 'scrollIntoView');
       directive.scrollIntoView();
-      tick(100);
+      tick(50);
       expect(directive.nativeElement.scrollIntoView).toHaveBeenCalled();
       expect(directive.nativeElement.scrollIntoView).toHaveBeenCalledTimes(1);
-      expect(directive.nativeElement.scrollIntoView).toHaveBeenCalledWith({ block: 'nearest', inline: 'nearest' });
+      expect(directive.nativeElement.scrollIntoView).toHaveBeenCalledWith({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
     }, { flush: true }));
   })
 });

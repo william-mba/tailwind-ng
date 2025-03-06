@@ -60,7 +60,7 @@ describe('ButtonComponent', () => {
     });
     component.classList = classList;
 
-    expect(component.classList.value()).toEqual(classList.value());
+    expect(component.classList.value).toEqual(classList.value);
   });
 
   it('should customize using class attribute', () => {
@@ -84,12 +84,12 @@ describe('ButtonComponent', () => {
     appFixture.detectChanges();
 
     Str.toArray(customizations).forEach(c => {
-      expect(testApp.button().classList.value().includes(c)).toBeTrue();
+      expect(testApp.button().classList.value.includes(c)).toBeTrue();
     });
 
-    expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
-    expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
-    expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
+    expect(testApp.button().classList.value.includes(defaultGap)).toBeFalse();
+    expect(testApp.button().classList.value.includes(defaultBgColor)).toBeFalse();
+    expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
   });
 
   it('should customize using dependency injection', () => {
@@ -122,12 +122,12 @@ describe('ButtonComponent', () => {
     appFixture.detectChanges();
 
     Str.toArray(customizations).forEach(c => {
-      expect(testApp.button().classList.value().includes(c)).toBeTrue();
+      expect(testApp.button().classList.value.includes(c)).toBeTrue();
     });
 
-    expect(testApp.button().classList.value().includes(defaultGap)).toBeFalse();
-    expect(testApp.button().classList.value().includes(defaultBgColor)).toBeFalse();
-    expect(testApp.button().classList.value().includes(defaultRadius)).toBeFalse();
+    expect(testApp.button().classList.value.includes(defaultGap)).toBeFalse();
+    expect(testApp.button().classList.value.includes(defaultBgColor)).toBeFalse();
+    expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
   });
 
   it('should update classList', () => {
@@ -137,10 +137,10 @@ describe('ButtonComponent', () => {
     component.classList.update(newClassList);
 
     newClassList.forEach(c => {
-      expect(component.classList.value().includes(c)).toBeTrue();
+      expect(component.classList.value.includes(c)).toBeTrue();
     });
 
-    expect(component.classList.value().includes(defaultRadius)).toBeFalse();
+    expect(component.classList.value.includes(defaultRadius)).toBeFalse();
   });
 
   it('should set isFab', () => {

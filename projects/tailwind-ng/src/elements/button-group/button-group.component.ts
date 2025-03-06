@@ -5,7 +5,7 @@ import { ButtonGroup, ButtonGroupBase } from '@tailwind-ng/core';
   selector: 'tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]',
   exportAs: 'twButtonGroup',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   },
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,

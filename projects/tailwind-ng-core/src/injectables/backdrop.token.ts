@@ -5,7 +5,7 @@ import { InjectionTokenFactory } from "./injection-token.factory";
 
 export const BACKDROP_CONFIG = InjectionTokenFactory.create<Partial<BackdropConfig>>({}, 'DIALOG_CONFIG');
 
-@Directive({})
+@Directive()
 export abstract class BackdropBase extends BaseDirective {
   protected config = inject(BACKDROP_CONFIG);
 }

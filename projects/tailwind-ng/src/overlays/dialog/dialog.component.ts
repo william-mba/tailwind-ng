@@ -9,7 +9,7 @@ import { Dialog, DialogBase, TwIf, OverlayPosition } from '@tailwind-ng/core';
   host: {
     role: 'dialog',
     '[attr.aria-modal]': 'isModal',
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   },
   template: `<ng-container *twIf="isOpened()"><ng-content /></ng-container>`,
   encapsulation: ViewEncapsulation.None,

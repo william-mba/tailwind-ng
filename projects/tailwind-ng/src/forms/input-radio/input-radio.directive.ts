@@ -5,7 +5,7 @@ import { InputRadio, InputRadioBase } from '@tailwind-ng/core';
   selector: 'input[type="radio"][tw-input], input[type="radio"][twInput]',
   exportAs: 'twInputRadio',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   },
   providers: [{ provide: InputRadioBase, useExisting: InputRadioDirective }]
 })

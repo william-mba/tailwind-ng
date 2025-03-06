@@ -5,7 +5,7 @@ import { SizeOption, IconBase, Icon } from '@tailwind-ng/core';
   selector: 'tw-icon, [twIcon], [tw-icon]',
   exportAs: 'twIcon',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   },
   providers: [{ provide: IconBase, useExisting: IconDirective }]
 })

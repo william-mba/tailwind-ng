@@ -6,7 +6,7 @@ import { Dropdown, DropdownBase, isEscape, OverlayPosition, TwIf } from '@tailwi
   selector: 'tw-dropdown, [tw-dropdown], [twDropdown]',
   exportAs: 'twDropdown',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   },
   template: `<ng-container *twIf="isOpened()"><ng-content /></ng-container>`,
   imports: [TwIf],

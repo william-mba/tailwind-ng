@@ -10,7 +10,7 @@ export function isInputText(component: unknown): component is InputText {
   return component instanceof InputTextBase;
 }
 
-@Directive({})
+@Directive()
 export abstract class InputTextBase extends BaseDirective<HTMLInputElement> implements InputText {
   protected config = inject(INPUT_TEXT_CONFIG);
 

@@ -28,6 +28,6 @@ describe('InputDirective', () => {
     appFixture.detectChanges();
 
     const expected = classlist().set(GetInputTextConfig());
-    expect(testApp.input().classList.value()).toEqual(expected.value());
+    expect(testApp.input().classList.value).toEqual(expected.value);
   });
 });

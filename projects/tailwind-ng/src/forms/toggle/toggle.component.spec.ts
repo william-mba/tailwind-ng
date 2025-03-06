@@ -31,6 +31,6 @@ describe('ToggleComponent', () => {
 
   it('should set classlist', () => {
     const expected = classlist(GetToggleConfig());
-    expect(component.classList.value()).toEqual(expected.value());
+    expect(component.classList.value).toEqual(expected.value);
   });
 });

@@ -26,7 +26,7 @@ export interface CheckboxActions {
    * @param options The options for the toggle.
    * @returns A promise that resolves with the changes.
    */
-  toggle(options?: CheckboxToggleOptions): Promise<CheckboxMutableStates>
+  toggle(options?: CheckboxToggleOptions): void
 }
 
 export interface CheckboxEvents {

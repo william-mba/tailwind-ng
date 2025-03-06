@@ -5,7 +5,7 @@ import { Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEn
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
   exportAs: 'twCombobox',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
     '[attr.aria-controls]': 'dropdown().id',
   },
   imports: [TwIf],
@@ -42,10 +42,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
     this.dropdown().open();
     this.input().focus();
     this.input().setVisualfocus();
-
-    requestAnimationFrame(() => {
-      this.activeElement = this.dropdown().setVisualfocus({ behavior: 'firstChild' });
-    })
+    this.activeElement = this.dropdown().setVisualfocus({ behavior: 'firstChild' });
   }
 
   override close(): void {

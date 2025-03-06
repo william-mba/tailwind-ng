@@ -9,7 +9,7 @@ import { classlist } from "../config/classlist";
   exportAs: 'twOption',
   host: {
     role: 'option',
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
     '[tabindex]': 'disabled ? null : 0',
   }
 })
@@ -17,7 +17,7 @@ export class OptionDirective extends BaseDirective {
   @Input() popup?: Popup;
 
   protected override buildStyle(): void {
-    this.classList = classlist(this.class()).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
+    this.classList = classlist(this.class).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
   }
 
   protected override addEventListeners(): void {

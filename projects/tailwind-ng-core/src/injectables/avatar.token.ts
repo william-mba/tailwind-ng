@@ -14,7 +14,7 @@ export function isAvatar(component: unknown): component is Avatar {
 
 export const AVATAR_CONFIG = InjectionTokenFactory.create<Partial<AvatarConfig>>({}, 'AVATAR_CONFIG');
 
-@Directive({})
+@Directive()
 export abstract class AvatarBase extends BaseDirective {
   protected config = inject(AVATAR_CONFIG);
 }

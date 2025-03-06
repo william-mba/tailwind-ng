@@ -8,13 +8,13 @@ describe('ClassList', () => {
   it('should init value', () => {
     const initialValue = ['rounded-md', 'bg-blue-600', 'px-4', 'py-2', 'text-white'];
     classList = classlist(initialValue);
-    expect(classList.base()).toEqual(initialValue);
+    expect(classList.base).toEqual(initialValue);
   });
 
   it('should set value', () => {
     const value = ['rounded-full', 'p-4'];
     classList = classlist().set(value);
-    expect(classList.value()).toEqual(value);
+    expect(classList.value).toEqual(value);
   });
 
   it('should merge value', () => {
@@ -24,16 +24,16 @@ describe('ClassList', () => {
     classList = classlist(customValue).set(defaultValue);
 
     // Value should includes all custom classes
-    expect(classList.value().includes(customValue[0])).toBeTrue();
-    expect(classList.value().includes(customValue[1])).toBeTrue();
-    expect(classList.value().includes(customValue[2])).toBeTrue();
+    expect(classList.value.includes(customValue[0])).toBeTrue();
+    expect(classList.value.includes(customValue[1])).toBeTrue();
+    expect(classList.value.includes(customValue[2])).toBeTrue();
 
     // Value should not includes default classes overridden by custom classes
-    expect(classList.value().includes(defaultValue[0])).toBeFalse();
-    expect(classList.value().includes(defaultValue[1])).toBeFalse();
-    expect(classList.value().includes(defaultValue[2])).toBeFalse();
-    expect(classList.value().includes(defaultValue[3])).toBeFalse();
-    expect(classList.value().includes(defaultValue[4])).toBeTrue();
+    expect(classList.value.includes(defaultValue[0])).toBeFalse();
+    expect(classList.value.includes(defaultValue[1])).toBeFalse();
+    expect(classList.value.includes(defaultValue[2])).toBeFalse();
+    expect(classList.value.includes(defaultValue[3])).toBeFalse();
+    expect(classList.value.includes(defaultValue[4])).toBeTrue();
   });
 
   it('should update value', () => {
@@ -44,15 +44,15 @@ describe('ClassList', () => {
     const newValue = ['rounded-lg', 'bg-red-600', 'p-3'];
     classList.update(newValue);
 
-    expect(classList.value().includes(newValue[0])).toBeTrue();
-    expect(classList.value().includes(newValue[1])).toBeTrue();
-    expect(classList.value().includes(newValue[2])).toBeTrue();
+    expect(classList.value.includes(newValue[0])).toBeTrue();
+    expect(classList.value.includes(newValue[1])).toBeTrue();
+    expect(classList.value.includes(newValue[2])).toBeTrue();
 
-    expect(classList.value().includes(defaultValue[0])).toBeFalse();
-    expect(classList.value().includes(defaultValue[1])).toBeFalse();
-    expect(classList.value().includes(defaultValue[2])).toBeFalse();
-    expect(classList.value().includes(defaultValue[3])).toBeFalse();
-    expect(classList.value().includes(defaultValue[4])).toBeTrue();
+    expect(classList.value.includes(defaultValue[0])).toBeFalse();
+    expect(classList.value.includes(defaultValue[1])).toBeFalse();
+    expect(classList.value.includes(defaultValue[2])).toBeFalse();
+    expect(classList.value.includes(defaultValue[3])).toBeFalse();
+    expect(classList.value.includes(defaultValue[4])).toBeTrue();
   });
 
   it('should init value from config object', () => {
@@ -72,7 +72,7 @@ describe('ClassList', () => {
     const configArray = Obj.toArray(configObj);
     classList = classlist(configObj);
 
-    expect(classList.base()).toEqual(configArray);
+    expect(classList.base).toEqual(configArray);
   });
 
   it('should set value from config object', () => {
@@ -93,7 +93,7 @@ describe('ClassList', () => {
 
     classList = classlist(configObj);
 
-    expect(classList.value()).toEqual(configArray);
+    expect(classList.value).toEqual(configArray);
   });
 
   it('should update value from config object', () => {
@@ -132,14 +132,14 @@ describe('ClassList', () => {
 
     defaultConfig.forEach(value => {
       if (value === 'shadow-none') {
-        expect(classList.value().includes(value)).toBeTrue();
+        expect(classList.value.includes(value)).toBeTrue();
       } else {
-        expect(classList.value().includes(value)).toBeFalse();
+        expect(classList.value.includes(value)).toBeFalse();
       }
     });
 
     newConfig.forEach(value => {
-      expect(classList.value().includes(value)).toBeTrue();
+      expect(classList.value.includes(value)).toBeTrue();
     });
   });
 

@@ -28,7 +28,7 @@ export abstract class DialogBase extends PopupDirective<HTMLDialogElement> imple
           this.closeAfter(this.displayDelay);
         }
         if (!this.nativeElement.ariaLabel) {
-          requestIdleCallback(() => {
+          queueMicrotask(() => {
             this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
             if (!this.nativeElement.ariaLabel) {
               this.nativeElement.ariaLabel = this.nativeElement.querySelector('h2')?.textContent?.trim() || null;

@@ -8,7 +8,7 @@ import { Button, ButtonBase, ButtonVariant, isArrowDown, isArrowDownOrRight, isA
   selector: 'tw-button, [tw-button], [twButton]',
   exportAs: 'twButton',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
     '[attr.variant]': 'variant()',
     '[tabindex]': 'disabled ? null : tabIndex',
     '[attr.aria-expanded]': 'isPopupExpanded || null',

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, model, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { AvatarBase, SizeOption, Avatar } from '@tailwind-ng/core';
 
 /**
@@ -8,7 +8,7 @@ import { AvatarBase, SizeOption, Avatar } from '@tailwind-ng/core';
   selector: 'tw-avatar, [tw-avatar], [twAvatar]',
   exportAs: 'twAvatar',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   },
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,
@@ -16,9 +16,9 @@ import { AvatarBase, SizeOption, Avatar } from '@tailwind-ng/core';
   providers: [{ provide: AvatarBase, useExisting: AvatarComponent }]
 })
 export class AvatarComponent extends AvatarBase implements Avatar {
-  size = model<SizeOption>('md');
+  @Input() size: SizeOption = 'md';
 
   protected override buildStyle(): void {
-    this.classList.set({ ...this.config.base, ...this.config[this.size()] });
+    this.classList.set({ ...this.config.base, ...this.config[this.size] })
   }
 }

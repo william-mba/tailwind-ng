@@ -1,4 +1,3 @@
-import { signal, Signal } from "@angular/core";
 import { Str, Obj, isConfigObject, isString, isArray, isUndefined, isUndefinedOrNull } from "../helpers";
 import { Config } from "../types";
 
@@ -9,11 +8,11 @@ export interface IClassList {
   /**
    * The initial (custom) class list value.
    */
-  readonly base: Signal<string[]>;
+  readonly base: string[];
   /**
    * The current class list value.
    */
-  readonly value: Signal<string[]>;
+  readonly value: string[];
   /**
    * Sets a brand new class list value.
    */
@@ -65,8 +64,8 @@ interface ResolveBehavior {
 };
 
 export class ClassList implements IClassList {
-  value = signal<string[]>([]);
-  base = signal<string[]>([]);
+  value: string[] = [];
+  base: string[] = [];
 
   /**
    * Creates a new instance of the class list.
@@ -78,8 +77,8 @@ export class ClassList implements IClassList {
   constructor(base: string | string[] | Config = []) {
     const value = arrayFrom(base);
     if (value.length > 0) {
-      this.base.set(Str.resolve([this.base(), value], { keepClassDeletor: true }));
-      this.value.set(value);
+      this.base = Str.resolve([this.base, value], { keepClassDeletor: true });
+      this.value = value;
     }
   }
 
@@ -88,7 +87,7 @@ export class ClassList implements IClassList {
   init<T extends string[]>(value: T[]): ClassList;
   init<T extends Config>(value: T): ClassList;
   init<T extends string | string[] | Config>(value: T): ClassList {
-    this.base.set(Str.resolve([this.base(), arrayFrom(value)], { keepClassDeletor: true }));
+    this.base = Str.resolve([this.base, arrayFrom(value)], { keepClassDeletor: true });
     return this;
   }
 
@@ -97,7 +96,7 @@ export class ClassList implements IClassList {
   set<T extends string[]>(value: T[]): ClassList;
   set<T extends Config>(value: T): ClassList;
   set<T extends string | string[] | Config>(value: T): ClassList {
-    this.value.set(Str.resolve([arrayFrom(value), this.base()]));
+    this.value = Str.resolve([arrayFrom(value), this.base]);
     return this;
   }
 
@@ -106,30 +105,30 @@ export class ClassList implements IClassList {
   update<T extends string[]>(value: T[]): ClassList;
   update<T extends Config>(value: T): ClassList;
   update<T extends string | string[] | Config>(value: T): ClassList {
-    this.value.set(Str.resolve([this.value(), arrayFrom(value)]));;
+    this.value = Str.resolve([this.value, arrayFrom(value)]);
     return this;
   }
 
   toString(): string {
-    return this.value().join(' ');
+    return this.value.join(' ');
   }
 
   clear(behavior: ClearBehavior = 'all'): ClassList {
     if (behavior === 'all') {
-      this.base.set([]);
+      this.base = [];
     }
-    this.value.set([]);
+    this.value = [];
     return this;
   }
 
   with(value?: string | string[] | Config | undefined | null, behavior: ResolveBehavior = {}): string {
     const { useBase } = behavior;
     value = arrayFrom(value);
-    if (!value || value.length < MIN_CLASS_NAMES) return this.value().join(' ');
+    if (!value || value.length < MIN_CLASS_NAMES) return this.value.join(' ');
     if (useBase) {
-      return Str.resolve([this.base(), arrayFrom(value)]).join(' ');
+      return Str.resolve([this.base, arrayFrom(value)]).join(' ');
     }
-    return Str.resolve([this.value(), arrayFrom(value)]).join(' ');
+    return Str.resolve([this.value, arrayFrom(value)]).join(' ');
   }
 }
 

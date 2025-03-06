@@ -1,4 +1,4 @@
-import { Directive, inject, OnInit } from "@angular/core";
+import { Directive, inject } from "@angular/core";
 import { BaseDirective, DIALOG_CONFIG, DialogBase, isEscape } from '@tailwind-ng/core';
 
 @Directive({
@@ -6,10 +6,10 @@ import { BaseDirective, DIALOG_CONFIG, DialogBase, isEscape } from '@tailwind-ng
   exportAs: 'twDialogContainer',
   host: {
     '[tabindex]': 'disabled ? null : -1',
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   }
 })
-export class DialogContainerDirective extends BaseDirective implements OnInit {
+export class DialogContainerDirective extends BaseDirective {
   private readonly _dialog = inject(DialogBase, { skipSelf: true, host: true });
   protected config = inject(DIALOG_CONFIG).container;
 

@@ -1,4 +1,4 @@
-import { Directive, inject, Input, OnInit } from "@angular/core";
+import { afterNextRender, Directive, inject, Input } from "@angular/core";
 import { IconConfig, IconName } from "../config";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "./injection-token.factory";
@@ -15,16 +15,21 @@ export function isIcon(component: unknown): component is Icon {
 
 export const ICON_CONFIG = InjectionTokenFactory.create<FullyOptional<IconConfig>>({}, 'ICON_CONFIG');
 
-@Directive({})
-export abstract class IconBase extends BaseDirective implements OnInit {
+@Directive()
+export abstract class IconBase extends BaseDirective {
   protected config = inject(ICON_CONFIG);
   @Input({ required: true }) name!: IconName;
 
-  override ngOnInit(): void {
-    super.ngOnInit();
-    if (this.config.map) {
-      this.nativeElement.innerHTML = this.config.map[this.name] || '';
-    }
+
+  constructor() {
+    super();
+    afterNextRender({
+      write: () => {
+        if (this.config.map) {
+          this.nativeElement.innerHTML = this.config.map[this.name] || '';
+        }
+      }
+    });
   }
 }
 

@@ -14,7 +14,7 @@ export function isToggle(component: unknown): component is Toggle {
 
 export const TOGGLE_CONFIG = InjectionTokenFactory.create<Partial<ToggleConfig>>({}, 'TOGGLE_CONFIG');
 
-@Directive({})
+@Directive()
 export abstract class ToggleBase extends BaseDirective {
   protected config = inject(TOGGLE_CONFIG);
 }

@@ -12,7 +12,7 @@ import { TwIcon } from "../../elements";
   template: `
   <label class="flex items-center w-fit gap-3"><!-- We define inline style here as it would never be subject to changes. -->
     <div class="relative flex size-fit text-white *:not-first:hidden *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer">
-      <input [class]="classList.value()" (change)="onChanges($event)" (keyup)="onKeyup($event)" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null" />
+      <input [class]="classList.value" (change)="onChanges($event)" (keyup)="onKeyup($event)" type="checkbox" [id]="id" [checked]="checked || null" [indeterminate]="indeterminate || null" />
       <tw-icon [name]="icon.onIndeterminate" [size]="icon.size" class="peer-indeterminate:block" />
       <tw-icon [name]="icon.onChecked" [size]="icon.size" class="peer-checked:block" />
     </div>
@@ -25,7 +25,7 @@ import { TwIcon } from "../../elements";
     // We remove host attribute to avoid coillision
     // with the inner input element attributes.
     '[attr.id]': 'null',
-    '[attr.name]': 'null',
+    '[attr.name]': 'null'
   },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -43,14 +43,6 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
   checkedChange = output<boolean>();
   indeterminateChange = output<boolean>();
   changes = output<CheckboxMutableStates>();
-
-  protected emitChanges(): void {
-    this.checkedChange.emit(this.checked);
-    if (this.indeterminate !== undefined) {
-      this.indeterminateChange.emit(this.indeterminate);
-    }
-    this.changes.emit({ checked: this.checked, indeterminate: this.indeterminate });
-  }
 
   protected override buildStyle(): void {
     if (this.parent) {
@@ -76,7 +68,7 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
     }
   }
 
-  toggle(options: CheckboxToggleOptions = {}): Promise<CheckboxMutableStates> {
+  toggle(options: CheckboxToggleOptions = {}): void {
     options.event?.stopPropagation();
     const { origin = 'self' } = options;
 
@@ -87,17 +79,15 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
         this.parent.toggle({ origin: 'child' });
       }
       if (this.children) {
-        Promise.all(this.children.map(c => c.toggle({ origin: 'parent' })));
+        this.children.map(c => c.toggle({ origin: 'parent' }));
       }
-    }
-    if (origin === 'parent' && this.parent) {
+    } else if (origin === 'parent' && this.parent) {
       this.checked = this.parent.checked;
       this.indeterminate = false;
       if (this.children) {
-        Promise.all(this.children.map(c => c.toggle({ origin: 'parent' })));
+        this.children.map(c => c.toggle({ origin: 'parent' }));
       }
-    }
-    if (origin === 'child' && this.children) {
+    } else if (origin === 'child' && this.children) {
       const checkedCount = this.children.filter(c => c.checked).length;
       this.checked = checkedCount === this.children!.length;
       this.indeterminate = checkedCount > 0 && (checkedCount < this.children.length);
@@ -106,10 +96,14 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
       }
     }
     this.emitChanges();
-    return Promise.resolve<CheckboxMutableStates>({
-      indeterminate: this.indeterminate,
-      checked: this.checked
-    });
+  }
+
+  private emitChanges(): void {
+    this.checkedChange.emit(this.checked);
+    if (this.indeterminate !== undefined) {
+      this.indeterminateChange.emit(this.indeterminate);
+    }
+    this.changes.emit({ checked: this.checked, indeterminate: this.indeterminate });
   }
 
   protected override addEventListeners(): void {
@@ -149,7 +143,6 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
 
   protected onChanges(event: Event): void {
     event.stopPropagation();
-    if (!this.isInitialized) return;
     if (isInputElement(event.target)) {
       if (event.target.checked !== this.checked) {
         this.toggle();

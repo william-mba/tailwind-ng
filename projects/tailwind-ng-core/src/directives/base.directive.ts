@@ -1,4 +1,4 @@
-import { Directive, ElementRef, inject, input, Input, OnDestroy, OnInit } from "@angular/core";
+import { Directive, ElementRef, inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { BaseProps, BaseActions, FocusOptions } from "../interfaces/base";
 import { DOCUMENT } from '@angular/common';
 import { classlist } from "../config/classlist";
@@ -17,10 +17,14 @@ import { Config } from "../types/config.type";
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseProps<T>, BaseActions, OnInit, OnDestroy {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
   protected readonly _document = inject(DOCUMENT);
-  protected isInitialized = false;
+  private _isInitialized = false;
 
-  classList = classlist();
-  class = input<string | string[] | Config | undefined | null>(null);
+  protected get isInitialized(): boolean {
+    return this._isInitialized;
+  }
+
+  @Input() classList = classlist();
+  @Input() class: string | string[] | Config | undefined | null = null;
 
   private _isDisabled = false;
 
@@ -29,7 +33,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     const newState = (value === '') || value;
     if (this._isDisabled !== newState) {
       this._isDisabled = newState;
-      if (this.isInitialized) {
+      if (this._isInitialized) {
         this.buildStyle();
       }
     }
@@ -49,22 +53,20 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   isHovered = false;
 
   ngOnInit(): void {
-    this.classList.init(this.class());
-    this.buildStyle();
+    if (this.classList.value.length === 0) {
+      this.classList.init(this.class);
+      this.buildStyle();
+    }
     this.addEventListeners();
-    this.isInitialized = true;
+    this._isInitialized = true;
   }
 
   ngOnDestroy(): void {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(this.removeEventListeners.bind(this));
-    } else {
-      queueMicrotask(this.removeEventListeners.bind(this));
-    }
+    this.removeEventListeners();
   }
 
   /**
-   * Builds the component's style.
+   * Build the component's style.
    */
   protected abstract buildStyle(): void;
 
@@ -116,7 +118,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     if (!target) return;
 
     if (behavior === 'self') {
-      target.focus({ preventScroll: preventScroll });
+      requestAnimationFrame(() => {
+        target.focus({ preventScroll: preventScroll });
+      });
       return target;
     }
 
@@ -146,7 +150,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
         }
         break;
     }
-    target?.focus({ preventScroll: preventScroll });
+    requestAnimationFrame(() => {
+      target?.focus({ preventScroll: preventScroll });
+    });
     return target;
   }
 
@@ -199,9 +205,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     }
     if (target) {
       target.setAttribute('data-visual-focused', '');
-      requestAnimationFrame(() => {
-        target.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'nearest' });
-      });
+      this.scrollIntoView({ block: 'nearest', inline: 'nearest' }, target);
     }
     this.currentVisualFocusedElement = target;
     return target;
@@ -214,10 +218,10 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
     target.removeAttribute('data-visual-focused');
   }
 
-  scrollIntoView(options: ScrollIntoViewOptions = {}): void {
+  scrollIntoView(options: ScrollIntoViewOptions = {}, element: HTMLElement = this.nativeElement): void {
     requestAnimationFrame(() => {
-      const { block = 'nearest', inline = 'nearest' } = options;
-      this.nativeElement.scrollIntoView({ block: block, inline: inline });
+      const { block = 'nearest', inline = 'nearest', behavior = 'instant' } = options;
+      element.scrollIntoView({ block: block, inline: inline, behavior: behavior });
     });
   }
 

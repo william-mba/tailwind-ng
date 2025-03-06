@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, model, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, input, model, OnInit, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
 import { ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
@@ -7,7 +7,7 @@ import { ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
   exportAs: 'twComboboxItem',
   host: {
     role: 'option',
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
     '[tabindex]': 'disabled ? null : -1',
     '[attr.aria-selected]': 'selected()',
     '[attr.data-selected]': 'selected() || null'
@@ -22,26 +22,31 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
   selected = model<boolean>(false);
   private readonly _combobox = inject(ComboboxComponent, { skipSelf: true, host: true });
   private readonly _normalizedValue = computed(() => this.value().toLocaleLowerCase());
+  private readonly _destroyRef = inject(DestroyRef);
 
   override ngOnInit(): void {
     super.ngOnInit();
     this._combobox.input().valueChange.subscribe(this.selectIfNeeded.bind(this));
     const subs: { unsubscribe(): void }[] = [];
-    subs.push(this._combobox.opened.subscribe(() => {
-      this.selectIfNeeded();
-      if (this.selected()) {
-        if (!this._combobox.selectedValues().has(this.value())) {
-          this.selected.set(false);
-        } else {
-          setTimeout(() => {
-            this.scrollIntoView();
-          })
+    subs.push(
+      this._combobox.opened.subscribe(() => {
+        this.selectIfNeeded();
+        if (this.selected()) {
+          if (!this._combobox.selectedValues().has(this.value())) {
+            this.selected.set(false);
+          } else {
+            setTimeout(() => {
+              this.scrollIntoView();
+            })
+          }
         }
-      }
-    }));
-    subs.push(this._combobox.resetted.subscribe(() => {
-      if (this.selected()) this.selected.set(false);
-    }));
+      })
+    );
+    subs.push(
+      this._combobox.resetted.subscribe(() => {
+        if (this.selected()) this.selected.set(false);
+      })
+    );
     // We use the combobox's selected values as the source of truth
     // to determine the initial selected state of the combobox item.
     if (!this.selected() && this._combobox.selectedValues().has(this.value())) {

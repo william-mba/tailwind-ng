@@ -14,8 +14,8 @@ export function isCombobox(component: unknown): component is Combobox {
 @Directive({
   host: {
     role: 'combobox',
-    '[attr.aria-expanded]': 'opened',
-    '[attr.aria-activedescendant]': 'activeElement?.textContent || null',
+    '[attr.aria-expanded]': 'isOpened()',
+    '[attr.aria-activedescendant]': 'activeElement?.textContent?.trim() || null',
   },
   providers: [
     {

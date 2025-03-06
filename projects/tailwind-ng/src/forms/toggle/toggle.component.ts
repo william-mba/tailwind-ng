@@ -6,7 +6,7 @@ import { Toggle, ToggleBase } from '@tailwind-ng/core';
   exportAs: 'twToggle',
   host: {
     role: 'switch',
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
     '[tabindex]': 'disabled ? null : tabIndex',
     '[attr.aria-checked]': 'checked() || null',
     '[attr.data-checked]': 'checked() || null',

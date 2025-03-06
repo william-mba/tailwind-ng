@@ -1,4 +1,3 @@
-import { InputSignal } from "@angular/core";
 import { ClassList } from "../config";
 import { Config } from "../types";
 
@@ -10,10 +9,10 @@ export interface BaseProps<T extends HTMLElement = HTMLElement> {
    * A property to customize the component's style.
    *
    * Get the final class list value using:
-   * - `<componentRef>.classList.value()` or
+   * - `<componentRef>.classList.value` or
    * - `<componentRef>.nativeElement.className`.
    */
-  readonly class: InputSignal<string | string[] | Config | undefined | null>;
+  readonly class: string | string[] | Config | undefined | null;
   /**
    * The component's class list instance.
    */
@@ -68,9 +67,9 @@ export interface BaseActions {
    */
   removeVisualfocus(target?: HTMLElement): void;
   /**
-   * Scrolls the element into the view. Making it visible to the user.
+   * Scrolls element into the view. Making it visible to the user.
    */
-  scrollIntoView(options: ScrollIntoViewOptions): void;
+  scrollIntoView(options?: ScrollIntoViewOptions, element?: HTMLElement): void;
 }
 
 type FocusBehavior = 'self' | 'nextSibling' | 'previousSibling' | 'firstChild' | 'lastChild';

@@ -30,27 +30,27 @@ describe('BadgeComponent', () => {
       const sm = 'sm';
       const xs = 'xs';
 
-      component.size.set(xl);
-      expect(component.size()).toBe(xl);
+      component.size = xl;
+      expect(component.size).toBe(xl);
 
-      component.size.set(lg);
-      expect(component.size()).toBe(lg);
+      component.size = lg;
+      expect(component.size).toBe(lg);
 
-      component.size.set(md);
-      expect(component.size()).toBe(md);
+      component.size = md;
+      expect(component.size).toBe(md);
 
-      component.size.set(sm);
-      expect(component.size()).toBe(sm);
+      component.size = sm;
+      expect(component.size).toBe(sm);
 
-      component.size.set(xs);
-      expect(component.size()).toBe(xs);
+      component.size = xs;
+      expect(component.size).toBe(xs);
     });
   });
 
   it('should set classList', () => {
     const classList = classlist().set({ b: config.base, s: config.md });
-    expect(component.classList.base()).toEqual(classList.base());
-    expect(component.classList.value()).toEqual(classList.value());
+    expect(component.classList.base).toEqual(classList.base);
+    expect(component.classList.value).toEqual(classList.value);
   });
 
   it('should customize using class attribute', () => {
@@ -79,12 +79,12 @@ describe('BadgeComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    expect(testApp.badge().classList.base()).toEqual(expectedClassList.base());
-    expect(testApp.badge().classList.value()).toEqual(expectedClassList.value());
+    expect(testApp.badge().classList.base).toEqual(expectedClassList.base);
+    expect(testApp.badge().classList.value).toEqual(expectedClassList.value);
 
-    expect(testApp.badge().classList.value().includes(defaultGap)).toBeFalse();
-    expect(testApp.badge().classList.value().includes(defaultFontSize)).toBeTrue();
-    expect(testApp.badge().classList.value().includes(defaultDisplay)).toBeTrue();
+    expect(testApp.badge().classList.value.includes(defaultGap)).toBeFalse();
+    expect(testApp.badge().classList.value.includes(defaultFontSize)).toBeTrue();
+    expect(testApp.badge().classList.value.includes(defaultDisplay)).toBeTrue();
   });
 
   it('should customize using DI', () => {
@@ -118,12 +118,12 @@ describe('BadgeComponent', () => {
     const testApp = fixture.componentInstance;
     fixture.detectChanges();
 
-    expect(testApp.badge().classList.base()).toEqual([]);
-    expect(testApp.badge().classList.value()).toEqual(expectedClassList.value());
+    expect(testApp.badge().classList.base).toEqual([]);
+    expect(testApp.badge().classList.value).toEqual(expectedClassList.value);
 
-    expect(testApp.badge().classList.value().includes(defaultGap)).toBeFalse();
-    expect(testApp.badge().classList.value().includes(defaultFontSize)).toBeTrue();
-    expect(testApp.badge().classList.value().includes(defaultDisplay)).toBeTrue();
+    expect(testApp.badge().classList.value.includes(defaultGap)).toBeFalse();
+    expect(testApp.badge().classList.value.includes(defaultFontSize)).toBeTrue();
+    expect(testApp.badge().classList.value.includes(defaultDisplay)).toBeTrue();
   });
 
   it('should update classList', () => {
@@ -133,10 +133,10 @@ describe('BadgeComponent', () => {
     component.classList.update(newClassList);
 
     newClassList.forEach(c => {
-      expect(component.classList.value().includes(c)).toBeTrue();
+      expect(component.classList.value.includes(c)).toBeTrue();
     });
 
-    expect(component.classList.value().includes(defaultGap)).toBeFalse();
+    expect(component.classList.value.includes(defaultGap)).toBeFalse();
   })
 
 });

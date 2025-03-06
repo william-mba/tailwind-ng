@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, model, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { SizeOption, BadgeBase, Badge } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-badge, [tw-badge], [twBadge]',
   exportAs: 'twBadge',
   host: {
-    '[class]': 'classList.value()',
+    '[class]': 'classList.value',
   },
   template: '<ng-content />',
   encapsulation: ViewEncapsulation.None,
@@ -13,9 +13,9 @@ import { SizeOption, BadgeBase, Badge } from '@tailwind-ng/core';
   providers: [{ provide: BadgeBase, useExisting: BadgeComponent }]
 })
 export class BadgeComponent extends BadgeBase implements Badge {
-  size = model<SizeOption>('md');
+  @Input() size: SizeOption = 'md';
 
   protected override buildStyle(): void {
-    this.classList.set({ ...this.config.base, ...this.config[this.size()] })
+    this.classList.set({ ...this.config.base, ...this.config[this.size] })
   }
 }

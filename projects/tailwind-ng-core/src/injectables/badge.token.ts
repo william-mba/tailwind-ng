@@ -15,7 +15,7 @@ export function isBadge(component: unknown): component is Badge {
 
 export const BADGE_CONFIG = InjectionTokenFactory.create<Partial<BadgeConfig>>({}, 'BADGE_CONFIG');
 
-@Directive({})
+@Directive()
 export abstract class BadgeBase extends BaseDirective {
   protected config = inject(BADGE_CONFIG);
 }
