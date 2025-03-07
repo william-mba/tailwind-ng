@@ -27,21 +27,16 @@ stages:
           clean: false
           persistCredentials: true
 
-        - bash: |
-            rm -rf $(Build.SourcesDirectory)/artifacts/tailwind-ng-core
-            docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
+        - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
           workingDirectory: $(Build.SourcesDirectory)
           displayName: "Run CI"
 
-        - task: PublishCodeCoverageResults@2
+        - task: PublishCodeCoverageResults@1
           displayName: "Publish code coverage"
           inputs:
-            summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/tailwind-ng-core/cobertura.xml"
-            pathToSources: "$(System.DefaultWorkingDirectory)/coverage/tailwind-ng-core"
-
-        - publish: artifacts/tailwind-ng-core
-          artifact: drop
-          displayName: "Publish artifact"
+            codeCoverageTool: "Cobertura"
+            summaryFileLocation: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core/cobertura.xml"
+            pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core"
 
         - task: PublishTestResults@2
           displayName: "Publish test results"
@@ -51,6 +46,10 @@ stages:
             searchFolder: "$(Build.SourcesDirectory)/junit"
             mergeTestResults: true
             testRunTitle: "$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result"
+
+        - publish: artifacts/tailwind-ng-core
+          artifact: drop
+          displayName: "Publish artifact"
 
         - bash: |
             npm config set //registry.npmjs.org/:_authToken=$(authToken)
