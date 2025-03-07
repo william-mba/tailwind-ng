@@ -1230,9 +1230,6 @@
   .max-w-64 {
     max-width: calc(var(--spacing) * 64);
   }
-  .max-w-6xl {
-    max-width: var(--container-6xl);
-  }
   .max-w-full {
     max-width: 100%;
   }
@@ -1244,9 +1241,6 @@
   }
   .min-w-0 {
     min-width: calc(var(--spacing) * 0);
-  }
-  .min-w-52 {
-    min-width: calc(var(--spacing) * 52);
   }
   .min-w-56 {
     min-width: calc(var(--spacing) * 56);
@@ -1747,9 +1741,6 @@
   }
   .gap-x-24 {
     column-gap: calc(var(--spacing) * 24);
-  }
-  .gap-x-36 {
-    column-gap: calc(var(--spacing) * 36);
   }
   .-space-x-1 {
     :where(& > :not(:last-child)) {
