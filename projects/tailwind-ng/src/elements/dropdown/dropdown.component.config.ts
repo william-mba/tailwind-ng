@@ -7,7 +7,7 @@ const DefaultConfig = (): DropdownConfig => {
     textAlign: 'text-start',
     paddingY: 'py-1',
     zIndex: 'z-10',
-    minWidth: 'min-w-52',
+    minWidth: 'min-w-56',
     userSelect: 'select-none',
     overflow: 'overflow-y-auto',
     overscroll: 'overscroll-contain',
