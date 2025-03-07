@@ -7,7 +7,6 @@ import {
   TwIcon,
   TwInputRadio,
   TwDialog,
-  TwToggle,
   TwInputText,
   TwCheckbox,
 } from 'tailwind-ng';
@@ -36,7 +35,6 @@ export interface Task {
     TwIcon,
     TwInputText,
     TwInputRadio,
-    TwToggle,
     TwDialog,
     ReactiveFormsModule,
     TwCheckbox,
