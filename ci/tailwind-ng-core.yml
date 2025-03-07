@@ -24,7 +24,7 @@ stages:
     - job: Build_Test_Publish
       steps:
         - checkout: self
-          clean: false
+          clean: true
           persistCredentials: true
 
         - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
@@ -35,8 +35,8 @@ stages:
           displayName: "Publish code coverage"
           inputs:
             codeCoverageTool: "Cobertura"
-            summaryFileLocation: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core/cobertura.xml"
-            pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng-core"
+            summaryFileLocation: "coverage/tailwind-ng-core/cobertura.xml"
+            pathToSources: "coverage/tailwind-ng-core"
 
         - task: PublishTestResults@2
           displayName: "Publish test results"
