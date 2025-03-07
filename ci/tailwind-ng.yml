@@ -25,7 +25,6 @@ stages:
     - job: Build_Test_Publish
       steps:
         - checkout: self
-          clean: false
           persistCredentials: true
 
         - bash: |
