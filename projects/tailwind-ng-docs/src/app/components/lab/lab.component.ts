@@ -4,7 +4,6 @@ import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validator
 import {
   TwButton,
   TwComboboxModule,
-  TwDropdown,
   TwIcon,
   TwInputRadio,
   TwDialog,
@@ -12,7 +11,7 @@ import {
   TwInputText,
   TwCheckbox,
 } from 'tailwind-ng';
-import { isCombobox, Popup, TwOption } from "@tailwind-ng/core";
+import { isCombobox, Popup } from "@tailwind-ng/core";
 
 interface User {
   image?: string;
@@ -34,14 +33,12 @@ export interface Task {
     NgIf,
     TwButton,
     TwComboboxModule,
-    TwDropdown,
     TwIcon,
     TwInputText,
     TwInputRadio,
     TwToggle,
     TwDialog,
     ReactiveFormsModule,
-    TwOption,
     TwCheckbox,
     ReactiveFormsModule,
   ],

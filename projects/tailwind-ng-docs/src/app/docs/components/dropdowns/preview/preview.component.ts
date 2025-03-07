@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { TwBadge, TwIcon } from 'tailwind-ng';
+import { TwOption } from '@tailwind-ng/core';
+import { TwIcon, TwDropdown, TwButton } from 'tailwind-ng';
 
 @Component({
   selector: 'app-dropdowns-preview',
-  imports: [TwBadge, TwIcon],
+  imports: [TwDropdown, TwOption, TwIcon, TwButton],
   templateUrl: './preview.component.html',
   styles: ``
 })
