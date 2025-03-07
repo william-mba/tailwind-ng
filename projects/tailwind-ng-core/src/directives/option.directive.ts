@@ -1,7 +1,6 @@
-import { Directive, Input } from "@angular/core";
+import { Directive } from "@angular/core";
 import { BaseDirective } from "./base.directive";
 import { isArrowDownOrRight, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isSpace } from "../guards";
-import { Popup } from "../interfaces/popup";
 import { classlist } from "../config/classlist";
 
 @Directive({
@@ -14,8 +13,6 @@ import { classlist } from "../config/classlist";
   }
 })
 export class OptionDirective extends BaseDirective {
-  @Input() popup?: Popup;
-
   protected override buildStyle(): void {
     this.classList = classlist(this.class).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
   }
@@ -36,13 +33,11 @@ export class OptionDirective extends BaseDirective {
     }
     if (isEnterOrSpace(event.key)) {
       this.nativeElement.click();
-    }
-    if (isArrowDownOrRight(event.key)) {
+    } else if (isArrowDownOrRight(event.key)) {
       if (!this.focus({ behavior: 'nextSibling' })) {
         this.focus({ behavior: 'nextSibling', target: this.nativeElement.parentElement! });
       }
-    }
-    if (isArrowUpOrLeft(event.key)) {
+    } else if (isArrowUpOrLeft(event.key)) {
       if (!this.focus({ behavior: 'previousSibling' })) {
         this.focus({ behavior: 'previousSibling', target: this.nativeElement.parentElement! });
       }

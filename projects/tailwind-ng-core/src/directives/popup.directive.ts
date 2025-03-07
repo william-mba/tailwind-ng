@@ -42,11 +42,9 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
           this.trigger = this._document.activeElement as HTMLElement;
         }
       }
-      requestAnimationFrame(() => {
-        this.isOpened.set(true);
-        this.nativeElement.style.zIndex = this.zIndex;
-        this.opened.emit(this);
-      });
+      this.isOpened.set(true);
+      this.nativeElement.style.zIndex = this.zIndex;
+      this.opened.emit(this);
     }
   }
 
@@ -55,11 +53,9 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
       if (this.restoreFocus && this.trigger) {
         (this.trigger as PopupTrigger).focus();
       }
-      requestAnimationFrame(() => {
-        this.isOpened.set(false);
-        this.nativeElement.style.zIndex = '';
-        this.closed.emit(this);
-      });
+      this.isOpened.set(false);
+      this.nativeElement.style.zIndex = '';
+      this.closed.emit(this);
     }
   }
 

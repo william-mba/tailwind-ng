@@ -6,6 +6,9 @@ import { BaseActions, BaseProps } from "./base";
  */
 export interface PopupProps<T extends HTMLElement = HTMLElement> extends BaseProps<T> {
   readonly id: string;
+  /**
+   * Restores focus to the popup's trigger when the popup closes.
+   */
   readonly restoreFocus?: boolean | PopupTrigger;
   readonly isOpened: ModelSignal<boolean>
 }
@@ -50,7 +53,7 @@ export interface Popup<T extends HTMLElement = HTMLElement> extends PopupProps<T
    */
   readonly opened: OutputEmitterRef<Popup>;
   /**
-   * Event emiited when the popup closes.
+   * Event emitted when the popup closes.
    */
   readonly closed: OutputEmitterRef<Popup>;
 }

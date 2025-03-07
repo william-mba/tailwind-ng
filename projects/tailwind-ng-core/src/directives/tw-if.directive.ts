@@ -52,9 +52,7 @@ export class TwIf {
       // to be removed at the time of the removal schedule but
       // it condition become true before the end of the removal delay.
       if (!this._shouldDisplay) {
-        requestAnimationFrame(() => {
-          this.viewContainerRef.clear();
-        });
+        this.viewContainerRef.clear();
       }
       this.timer = null;
     }, this.delay);
