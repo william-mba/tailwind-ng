@@ -39,8 +39,8 @@ stages:
         - task: PublishCodeCoverageResults@2
           displayName: "Publish code coverage"
           inputs:
-            summaryFileLocation: "$(Build.SourcesDirectory)/coverage/tailwind-ng/cobertura.xml"
-            pathToSources: "$(Build.SourcesDirectory)/coverage/tailwind-ng"
+            summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/coverage/tailwind-ng/cobertura.xml"
+            pathToSources: "$(System.DefaultWorkingDirectory)/coverage/tailwind-ng"
 
         - task: PublishTestResults@2
           displayName: "Publish test results"
