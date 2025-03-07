@@ -32,15 +32,15 @@ stages:
           workingDirectory: $(Build.SourcesDirectory)
           displayName: "Run CI"
 
-        - publish: artifacts/tailwind-ng-core
-          artifact: drop
-          displayName: "Publish artifact"
-
         - task: PublishCodeCoverageResults@2
           displayName: "Publish code coverage"
           inputs:
-            summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/coverage/tailwind-ng/cobertura.xml"
-            pathToSources: "$(System.DefaultWorkingDirectory)/coverage/tailwind-ng"
+            summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/tailwind-ng-core/cobertura.xml"
+            pathToSources: "$(System.DefaultWorkingDirectory)/coverage/tailwind-ng-core"
+
+        - publish: artifacts/tailwind-ng-core
+          artifact: drop
+          displayName: "Publish artifact"
 
         - task: PublishTestResults@2
           displayName: "Publish test results"
