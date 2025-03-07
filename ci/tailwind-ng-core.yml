@@ -24,7 +24,6 @@ stages:
     - job: Build_Test_Publish
       steps:
         - checkout: self
-          clean: true
           persistCredentials: true
 
         - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
