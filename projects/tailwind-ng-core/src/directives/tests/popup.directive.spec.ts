@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/directive-selector, @angular-eslint/directive-class-suffix */
 import { computed, Directive, ElementRef } from "@angular/core";
-import { classlist } from '../../config/classlist';
+import { classlist } from '../../utils/classlist.util';
 import { PopupDirective } from '../popup.directive';
 import { fakeAsync, TestBed, tick } from "@angular/core/testing";
 

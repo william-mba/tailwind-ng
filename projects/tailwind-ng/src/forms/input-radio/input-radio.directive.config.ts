@@ -1,60 +1,18 @@
 import { Provider } from '@angular/core';
-import { INPUT_RADIO_CONFIG, mergeConfig, InputRadioConfig } from "@tailwind-ng/core";
+import { INPUT_RADIO_CONFIG, Str } from "@tailwind-ng/core";
 
-const DefaultConfig = (): InputRadioConfig => {
-  return {
-    size: 'size-4',
-    position: 'relative',
-    radius: 'rounded-full',
-    appearance: 'appearance-none',
-    borderWidth: 'border-1',
-    borderColor: 'border-black/20',
-    dark: {
-      borderColor: 'dark:border-white/20',
-    },
-    forcedColors: {
-      appearance: 'forced-colors:appearance-auto',
-      before: {
-        display: 'forced-colors:before:hidden',
-      }
-    },
-    disabled: {
-      bgColor: 'disabled:bg-black/5',
-      dark: {
-        bgColor: 'disabled:dark:bg-white/5'
-      }
-    },
-    focus: {
-      outlineWidth: 'focus:outline-2',
-      outlineOffsetWidth: 'focus:outline-offset-2',
-      outlineColor: 'focus:outline-blue-600',
-    },
-    checked: {
-      borderColor: 'checked:border-blue-600',
-      bgColor: 'checked:bg-blue-600',
-      before: {
-        position: 'checked:before:absolute',
-        inset: 'checked:before:inset-1',
-        radius: 'checked:before:rounded-full',
-        bgColor: 'checked:before:bg-white'
-      },
-    }
-  }
+const CLASS_NAME = () => {
+  const className = 'appearance-none border-1 border-black/20 checked:before:absolute checked:before:bg-white checked:before:inset-1 checked:before:rounded-full checked:bg-blue-600 checked:border-blue-600 dark:border-white/20 disabled:bg-black/5 disabled:dark:bg-white/5 focus:outline-2 focus:outline-blue-600 focus:outline-offset-2 forced-colors:appearance-auto forced-colors:before:hidden relative rounded-full size-4';
+  return className;
 };
 
-/**
- * Gets the default input radio config.
- */
-export const GetInputRadioConfig = (customization?: Partial<InputRadioConfig>): InputRadioConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
-};
 
 /**
  * Provides the input radio config.
  */
-export function provideInputRadio(customization?: Partial<InputRadioConfig>): Provider {
+export function provideInputRadio(className = ''): Provider {
   return {
     provide: INPUT_RADIO_CONFIG,
-    useValue: GetInputRadioConfig(customization)
+    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
   };
 }

@@ -1,12 +1,9 @@
-import { LayoutConfig } from "./layout-config.type";
-
-
 export interface SizeOptions {
-  xs: Partial<LayoutConfig>;
-  sm: Partial<LayoutConfig>;
-  md: Partial<LayoutConfig>;
-  lg: Partial<LayoutConfig>;
-  xl: Partial<LayoutConfig>;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
 };
 
 export type SizeOption = keyof SizeOptions;

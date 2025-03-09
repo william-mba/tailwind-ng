@@ -44,7 +44,7 @@ class="overflow-x-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 just
 </button>
 </div>
 <!-- bottom Left Dialog -->
-<div tw-dialog #dialog02 [isModal]="false" [position]="{ bottom: 'bottom-0', left: 'left-0' }">
+<div tw-dialog #dialog02 [isModal]="false" class="inset- bottom-0 left-0">
   <!-- Dialog container -->
   <div tw-dialog-container class="sm:max-w-sm">
     <!-- Dialog content -->
@@ -64,7 +64,7 @@ class="overflow-x-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 just
 </div>
 
 <!-- bottom Right Dialog -->
-<div tw-dialog #dialog03 [isModal]="false" [autoClose]="true" [position]="{ bottom: 'bottom-0', right: 'right-0' }">
+<div tw-dialog #dialog03 [isModal]="false" [autoClose]="true" class="inset- bottom-0 right-0">
   <!-- Dialog container -->
   <div tw-dialog-container
     class="sm:max-w-sm place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0">

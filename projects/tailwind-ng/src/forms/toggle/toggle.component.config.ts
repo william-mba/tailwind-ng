@@ -1,72 +1,17 @@
 import { Provider } from "@angular/core";
-import { TOGGLE_CONFIG, mergeConfig, ToggleConfig } from "@tailwind-ng/core";
+import { TOGGLE_CONFIG, Str } from "@tailwind-ng/core";
 
-const DefaultConfig = (): ToggleConfig => {
-  return {
-    position: 'relative',
-    cursor: 'cursor-pointer',
-    userSelect: 'select-none',
-    borderWidth: 'border-2',
-    radius: 'rounded-full',
-    borderColor: 'border-transparent',
-    display: 'inline-flex',
-    alignItems: 'items-center',
-    width: 'w-12',
-    height: 'h-6',
-    bgColor: 'bg-gray-200',
-    overflow: 'overflow-hidden',
-    transition: {
-      property: 'transition-colors',
-      duration: 'duration-200',
-    },
-    dark: {
-      bgColor: 'dark:bg-gray-900',
-    },
-    outlineWidth: 'outline-0',
-    outlineColor: 'outline-blue-600',
-    focus: {
-      outlineWidth: 'focus:outline-2',
-      outlineOffsetWidth: 'focus:outline-offset-2',
-    },
-    dataChecked: {
-      bgColor: 'data-checked:bg-blue-600',
-      before: {
-        translate: 'data-checked:before:translate-x-full',
-      }
-    },
-    before: {
-      position: 'before:absolute',
-      insetY: 'before:inset-y-0',
-      height: 'before:h-full',
-      width: 'before:w-1/2',
-      pointerEvents: 'before:pointer-events-none',
-      alignItems: 'before:items-center',
-      justifyContent: 'before:justify-center',
-      bgColor: 'before:bg-white',
-      radius: 'before:rounded-full',
-      left: 'before:left-0',
-      boxShadow: 'before:shadow-sm',
-      transition: {
-        duration: 'before:duration-100',
-        timing: 'before:ease-in-out',
-      }
-    }
-  }
-};
-
-/**
- * Returns the Toggle component default config.
- */
-export const GetToggleConfig = (customization?: Partial<ToggleConfig>): ToggleConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
-};
+const CLASS_NAME = () => {
+  const className = 'before:absolute before:bg-white before:duration-100 before:ease-in-out before:h-full before:inset-y-0 before:items-center before:justify-center before:left-0 before:pointer-events-none before:rounded-full before:shadow-sm before:w-1/2 bg-gray-200 border-2 border-transparent cursor-pointer dark:bg-gray-900 data-checked:before:translate-x-full data-checked:bg-blue-600 duration-200 focus:outline-2 focus:outline-offset-2 h-6 inline-flex items-center outline-0 outline-blue-600 overflow-hidden relative rounded-full select-none transition-colors w-12';
+  return className;
+}
 
 /**
  * Provides the Toggle component config.
  */
-export function provideToggle(customization?: Partial<ToggleConfig>): Provider {
+export function provideToggle(className = ''): Provider {
   return {
     provide: TOGGLE_CONFIG,
-    useValue: GetToggleConfig(customization)
+    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
   }
 }

@@ -1,13 +1,10 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
-import { Dropdown, DropdownBase, isEscape, OverlayPosition, TwIf } from '@tailwind-ng/core';
+import { Dropdown, DropdownBase, isEscape, TwIf } from '@tailwind-ng/core';
 
 /** Dropdown component */
 @Component({
   selector: 'tw-dropdown, [tw-dropdown], [twDropdown]',
   exportAs: 'twDropdown',
-  host: {
-    '[class]': 'classList.value',
-  },
   template: `<ng-container *twIf="isOpened()"><ng-content /></ng-container>`,
   imports: [TwIf],
   encapsulation: ViewEncapsulation.None,
@@ -15,12 +12,8 @@ import { Dropdown, DropdownBase, isEscape, OverlayPosition, TwIf } from '@tailwi
   providers: [{ provide: DropdownBase, useExisting: forwardRef(() => DropdownComponent) }]
 })
 export class DropdownComponent extends DropdownBase implements Dropdown {
-  @Input() position: OverlayPosition = { top: 'top-2', right: 'right-0' };
   @Input() closeOnBlur?: boolean;
 
-  protected override buildStyle(): void {
-    this.classList.set({ ...this.config, ...this.position });
-  }
   protected override addEventListeners(): void {
     super.addEventListeners();
     if (this.closeOnBlur) {

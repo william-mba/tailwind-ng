@@ -1,20 +1,18 @@
 import { Directive, inject } from "@angular/core";
-import { BaseDirective, DIALOG_CONFIG, DialogBase, isEscape } from '@tailwind-ng/core';
+import { BaseDirective, classlist, DIALOG_CONFIG, DialogBase, isEscape } from '@tailwind-ng/core';
 
 @Directive({
   selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',
   exportAs: 'twDialogContainer',
   host: {
     '[tabindex]': 'disabled ? null : -1',
-    '[class]': 'classList.value',
   }
 })
 export class DialogContainerDirective extends BaseDirective {
   private readonly _dialog = inject(DialogBase, { skipSelf: true, host: true });
-  protected config = inject(DIALOG_CONFIG).container;
 
   protected override buildStyle(): void {
-    this.classList.set(this.config);
+    this.nativeElement.classList.add(...classlist(this.class).set(inject(DIALOG_CONFIG).container).value);
   }
 
   protected onKeyup(event: KeyboardEvent): void {

@@ -1,20 +1,19 @@
 import { Directive } from "@angular/core";
 import { BaseDirective } from "./base.directive";
 import { isArrowDownOrRight, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isSpace } from "../guards";
-import { classlist } from "../config/classlist";
+import { classlist } from "../utils/classlist.util";
 
 @Directive({
   selector: 'tw-option, [tw-option], [twOption]',
   exportAs: 'twOption',
   host: {
     role: 'option',
-    '[class]': 'classList.value',
     '[tabindex]': 'disabled ? null : 0',
   }
 })
 export class OptionDirective extends BaseDirective {
   protected override buildStyle(): void {
-    this.classList = classlist(this.class).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0');
+    this.nativeElement.classList.add(...classlist(this.class).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0').value);
   }
 
   protected override addEventListeners(): void {

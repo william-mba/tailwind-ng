@@ -1,67 +1,17 @@
 import { Provider } from '@angular/core';
-import { INPUT_TEXT_CONFIG, mergeConfig, InputTextConfig } from "@tailwind-ng/core";
+import { INPUT_TEXT_CONFIG, Str } from "@tailwind-ng/core";
 
-const DefaultConfig = (): InputTextConfig => {
-  return {
-    radius: 'rounded-md',
-    outlineStyle: 'outline-none',
-    ring: 'ring-inset',
-    ringWidth: 'ring-1',
-    ringColor: 'ring-black/15',
-    dark: {
-      ringColor: 'dark:ring-white/15'
-    },
-    fontSize: 'text-sm',
-    lineHeight: 'leading-6',
-    backdropBlur: 'backdrop-blur-xs',
-    paddingX: 'px-3',
-    paddingY: 'py-1.5',
-    width: 'w-full',
-    bgColor: 'bg-transparent',
-    focus: {
-      borderColor: 'focus:border-transparent',
-      ringColor: 'focus:ring-indigo-600',
-      ringWidth: 'focus:ring-2',
-      ring: 'focus:ring-inset'
-    },
-    disabled: {
-      bgColor: 'disabled:bg-black/5',
-      dark: {
-        bgColor: 'disabled:dark:bg-white/5',
-      }
-    },
-    placeholder: {
-      textColor: 'placeholder:text-gray-400',
-      dark: {
-        textColor: 'placeholder:dark:text-gray-600'
-      }
-    },
-    invalid: {
-      ringColor: 'invalid:ring-red-600/60',
-      focus: {
-        ringColor: 'invalid:focus:ring-red-600/60'
-      }
-    },
-    dataVisualFocused: {
-      ringColor: 'data-visual-focused:ring-indigo-600',
-      ringWidth: 'data-visual-focused:ring-2',
-    }
-  }
-};
-
-/**
- * Returns the InputText config.
- */
-export const GetInputTextConfig = (customization?: Partial<InputTextConfig>): InputTextConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
-};
+const CLASS_NAME = () => {
+  const className = 'placeholder:text-gray-400 placeholder:dark:text-gray-600 backdrop-blur-xs bg-transparent dark:ring-white/15 data-visual-focused:ring-2 data-visual-focused:ring-indigo-600 disabled:bg-black/5 disabled:dark:bg-white/5 focus:border-transparent focus:ring-2 focus:ring-indigo-600 focus:ring-inset invalid:focus:ring-red-600/60 invalid:ring-red-600/60 leading-6 outline-none px-3 py-1.5 ring-1 ring-black/15 ring-inset rounded-md text-sm w-full';
+  return className;
+}
 
 /**
  * @TailwindNG InputText config provider.
  */
-export function provideInputText(customization?: Partial<InputTextConfig>): Provider {
+export function provideInputText(className = ''): Provider {
   return {
     provide: INPUT_TEXT_CONFIG,
-    useValue: GetInputTextConfig(customization)
+    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
   };
 }

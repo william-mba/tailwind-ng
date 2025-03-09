@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Component, Directive, ElementRef } from "@angular/core";
 import { BaseDirective } from "../base.directive";
-import { classlist } from '../../config/classlist';
+import { classlist } from '../../utils/classlist.util';
 
 @Directive({
   selector: '[fakeDirective]',

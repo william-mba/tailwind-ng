@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
-import { TwButton, TwDialog, TwIcon, provideButton } from 'tailwind-ng';
+import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
 import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
 import { RouterLink } from '@angular/router';
@@ -9,16 +9,7 @@ import { RouterLink } from '@angular/router';
   imports: [TwIcon, TwDialog, TwButton, RouterLink],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './getting-started.component.html',
-  providers: [
-    provideButton({
-      secondary: {
-        dark: {
-          ringColor: 'dark:ring-gray-500/20'
-        }
-      }
-    })
-  ]
+  templateUrl: './getting-started.component.html'
 })
 export class GettingStartedComponent implements AfterViewInit {
   ngAfterViewInit(): void {

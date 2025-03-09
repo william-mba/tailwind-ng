@@ -1,89 +1,45 @@
 import { Provider } from '@angular/core';
-import { DIALOG_CONFIG, mergeConfig, ComponentConfig, DialogConfig } from '@tailwind-ng/core';
+import { DIALOG_CONFIG, DialogConfig, Str } from '@tailwind-ng/core';
 
-const BaseConfig = (): ComponentConfig => {
-  return {
-    transition: {
-      property: 'transition-all',
-      behavior: 'transition-discrete',
-      duration: 'duration-200',
-    }
-  }
+const BASE = () => {
+  const className = 'transition-all transition-discrete duration-200';
+  return className;
+};
+const BACKDROP = () => {
+  const className = 'open:backdrop-blur-xs open:bg-neutral-500/50 open:dark:bg-gray-500/50';
+  return className;
+};
+const SCRIM = () => {
+  const className = 'grid opacity-0 invisible open:visible open:opacity-100 p-4 inset-0 fixed content-end justify-center sm:content-center';
+  return className;
+};
+const CONTAINER = () => {
+  const className = 'gap-9 w-full h-fit relative rounded-lg overflow-hidden text-left shadow-lg bg-white opacity-0 place-self-center dark:bg-gray-900 starting:opacity-0 in-open:opacity-100 grid p-5 sm:max-w-md';
+  return className;
 };
 
-const DefaultConfig = (): DialogConfig => {
+const CONFIG = (): DialogConfig => {
   return {
-    backdrop: {
-      backdropBlur: 'open:backdrop-blur-xs',
-      bgColor: 'open:bg-neutral-500/50',
-      dark: {
-        bgColor: 'open:dark:bg-gray-500/50',
-      }
-    },
-    scrim: {
-      ...BaseConfig(),
-      display: 'grid',
-      opacity: 'opacity-0',
-      visibility: 'invisible',
-      open: {
-        visibility: 'open:visible',
-        opacity: 'open:opacity-100',
-      },
-      padding: 'p-4',
-      inset: 'inset-0',
-      position: 'fixed',
-      alignContent: 'content-end',
-      justifyContent: 'justify-center',
-      sm: {
-        alignContent: 'sm:content-center',
-      }
-    },
-    container: {
-      ...BaseConfig(),
-      gap: 'gap-9',
-      width: 'w-full',
-      height: 'h-fit',
-      position: 'relative',
-      radius: 'rounded-lg',
-      overflow: 'overflow-hidden',
-      textAlign: 'text-left',
-      boxShadow: 'shadow-lg',
-      bgColor: 'bg-white',
-      opacity: 'opacity-0',
-      placeSelf: 'place-self-center',
-      dark: {
-        bgColor: 'dark:bg-gray-900',
-      },
-      starting: {
-        opacity: 'starting:opacity-0'
-      },
-      inOpen: {
-        opacity: 'in-open:opacity-100',
-      },
-      display: 'grid',
-      padding: 'p-5',
-      sm: {
-        maxWidth: 'sm:max-w-md'
-      }
-    }
+    scrim: `${BASE()} ${SCRIM()}`,
+    container: `${BASE()} ${CONTAINER()}`,
+    backdrop: BACKDROP(),
   }
-}
-
-/**
- * @TailwindNG Dialog config
- * @returns  The Popover configuration
- */
-export const GetDialogConfig = (customization?: Partial<DialogConfig>): DialogConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
-}
+};
 
 /**
  * @TailwindNG Dialog config provider
  * @returns The configured provider
  */
 export function provideDialog(customization?: Partial<DialogConfig>): Provider {
+  const mergedConfig = CONFIG();
+  if (customization) {
+    for (const prop in customization) {
+      const className = Str.resolve([CONFIG()[prop as keyof DialogConfig].split(' '), (prop).split(' ')]).join(' ')
+      mergedConfig[prop as keyof DialogConfig] = className;
+    }
+  }
   return {
     provide: DIALOG_CONFIG,
-    useValue: GetDialogConfig(customization)
+    useValue: !customization ? CONFIG() : mergedConfig
   }
 };

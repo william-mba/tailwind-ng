@@ -1,53 +1,17 @@
 import { Provider } from "@angular/core";
-import { COMBOBOX_ITEM_CONFIG, ComboboxItemConfig, mergeConfig } from "@tailwind-ng/core";
+import { COMBOBOX_ITEM_CONFIG, Str } from "@tailwind-ng/core";
 
-const DefaultConfig = (): ComboboxItemConfig => {
-  return {
-    height: 'h-fit',
-    paddingX: 'px-4',
-    paddingY: 'py-2',
-    cursor: 'cursor-pointer',
-    position: 'relative',
-    display: 'flex',
-    gap: 'gap-1',
-    alignItems: 'items-center',
-    hover: {
-      textColor: 'hover:text-white',
-      bgColor: 'hover:bg-blue-600',
-      fontWeight: 'hover:font-bold'
-    },
-    focus: {
-      textColor: 'focus:text-white',
-      bgColor: 'focus:bg-blue-700',
-      fontWeight: 'focus:font-bold',
-      outlineWidth: 'focus:outline-0',
-    },
-    dataSelected: {
-      textColor: 'data-selected:text-white',
-      bgColor: 'data-selected:bg-blue-600',
-      fontWeight: 'data-selected:font-bold'
-    },
-    dataVisualFocused: {
-      textColor: 'data-visual-focused:text-white',
-      bgColor: 'data-visual-focused:bg-blue-700',
-      fontWeight: 'data-visual-focused:font-bold',
-      outlineWidth: 'data-visual-focused:outline-0',
-    }
-  }
-}
-/**
- * Returns the combobox item configuration
- */
-export const GetComboboxItemConfig = (customization?: Partial<ComboboxItemConfig>): ComboboxItemConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
-}
+const CLASS_NAME = () => {
+  const className = 'cursor-pointer data-selected:bg-blue-600 data-selected:font-bold data-selected:text-white data-visual-focused:bg-blue-700 data-visual-focused:font-bold data-visual-focused:outline-0 data-visual-focused:text-white flex focus:bg-blue-700 focus:font-bold focus:outline-0 focus:text-white gap-1 h-fit hover:bg-blue-600 hover:font-bold hover:text-white items-center px-4 py-2 relative';
+  return className;
+};
 
 /**
  * @TailwindNG Combobox Item config provider.
  */
-export function provideComboboxItem(customization?: Partial<ComboboxItemConfig>): Provider {
+export function provideComboboxItem(className = ''): Provider {
   return {
     provide: COMBOBOX_ITEM_CONFIG,
-    useValue: GetComboboxItemConfig(customization)
+    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
   }
 }

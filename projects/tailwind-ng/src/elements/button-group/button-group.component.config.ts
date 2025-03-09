@@ -1,50 +1,19 @@
 import { Provider } from "@angular/core";
-import { BUTTON_GROUP_CONFIG, ComponentConfig, mergeConfig } from "@tailwind-ng/core";
+import { BUTTON_GROUP_CONFIG, Str } from "@tailwind-ng/core";
 
-const DefaultConfig = (): ComponentConfig => {
-  return {
-    width: 'w-fit',
-    radius: 'rounded-md',
-    display: 'inline-flex',
-    boxShadow: 'shadow-sm',
-    isolation: 'isolate',
-    overflow: 'overflow-hidden',
-    backdropBlur: 'backdrop-blur-xs',
-    divideWidth: 'divide-x',
-    divideColor: 'divide-gray-300',
-    ringWidth: 'ring-1',
-    ringColor: 'ring-gray-300',
-    dark: {
-      ringColor: 'dark:ring-gray-700',
-      divideColor: 'dark:divide-gray-700',
-    },
-    child: {
-      ringWidth: '*:ring-0',
-      fontSize: '*:text-sm',
-      radius: '*:rounded-none',
-      backdropBlur: '*:backdrop-blur-none',
-      focus: {
-        outlineWidth: '*:focus:outline-0',
-      }
-    }
-  }
-}
-
-/**
- * Returns the ButtonGroup configuration. If customization is provided, it will be merged with the default configuration.
- */
-export const GetButtonGroupConfig = (customization?: Partial<ComponentConfig>): ComponentConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
-}
+const CLASS_NAME = () => {
+  const className = '*:backdrop-blur-none *:focus:outline-0 *:ring-0 *:rounded-none *:text-sm backdrop-blur-xs dark:divide-gray-700 dark:ring-gray-700 divide-gray-300 divide-x inline-flex isolate overflow-hidden ring-1 ring-gray-300 rounded-md shadow-sm w-fit';
+  return className;
+};
 
 /**
  * Button group component config provider
  * @param config The custom config
  * @returns The configured provider
  */
-export function provideButtonGroup(customization?: Partial<ComponentConfig>): Provider {
+export function provideButtonGroup(className = ''): Provider {
   return {
     provide: BUTTON_GROUP_CONFIG,
-    useValue: GetButtonGroupConfig(customization)
+    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
   }
 }

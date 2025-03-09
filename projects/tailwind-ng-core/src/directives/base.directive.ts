@@ -1,9 +1,98 @@
-import { Directive, ElementRef, inject, Input, OnDestroy, OnInit } from "@angular/core";
-import { BaseProps, BaseActions, FocusOptions } from "../interfaces/base";
+import { Directive, ElementRef, inject, Injector, Input, OnDestroy, OnInit, runInInjectionContext } from "@angular/core";
 import { DOCUMENT } from '@angular/common';
-import { classlist } from "../config/classlist";
 import { isEnterOrSpace, isNavigation } from "../guards";
-import { Config } from "../types/config.type";
+
+/**
+ * @TailwindNG Component's base props.
+ */
+export interface BaseProps<T extends HTMLElement = HTMLElement> {
+  /**
+   * A property to customize the component's style.
+   *
+   * Get the final class list value using:
+   * - `<componentRef>.classList.value` or
+   * - `<componentRef>.nativeElement.className`.
+   */
+  readonly class: string | null;
+  /**
+   * A reference to the component's native element.
+   */
+  readonly nativeElement: T;
+  /**
+   * Whether the component is disabled.
+   */
+  readonly disabled: boolean;
+  /**
+   * Whether the component is focused.
+   */
+  readonly isFocused: boolean;
+  /**
+   * Whether the component or one of its descendant has focus.
+   */
+  readonly hasFocus: boolean;
+  /**
+   * Whether the component has visual focus.
+   */
+  readonly hasVisualFocus: boolean;
+  /**
+   * Whether the component is hovered.
+   */
+  readonly isHovered: boolean;
+}
+
+/**
+ * @TailwindNG Component's base actions.
+ */
+export interface BaseActions {
+  /**
+   * Focuses an element and return it.
+   * If it cannot be focused, nothing is done and `undefined` is returned.
+   */
+  focus(options?: FocusOptions): HTMLElement | undefined;
+
+  /**
+   * Sets visual focus on an element and return it.
+   * If it cannot be visual focused, nothing is done and `undefined` is returned.
+   * Visual focus is set by adding the `data-visual-focused` attribute on that element.
+   * @NOTE The visual focus appearance should be defined in the component's style/config.
+   */
+  setVisualfocus(options: FocusOptions): HTMLElement | undefined;
+  /**
+   * Removes visual focus on target element.
+   *
+   * Default target is the component's native element.
+   */
+  removeVisualfocus(target?: HTMLElement): void;
+  /**
+   * Scrolls element into the view. Making it visible to the user.
+   */
+  scrollIntoView(options?: ScrollIntoViewOptions, element?: HTMLElement): void;
+}
+
+type FocusBehavior = 'self' | 'nextSibling' | 'previousSibling' | 'firstChild' | 'lastChild';
+/**
+ * Focus options.
+ */
+export interface FocusOptions {
+  /**
+   * The target element to focus. Default is the component's native element.
+   */
+  target?: HTMLElement;
+  /**
+   * The focus behavior.
+   *  - `self`: Focus the component's itself. (default)
+   *  - `nextSibling`: Focus the target's next sibling.
+   *  - `previousSibling`: Focus the target's previous sibling.
+   *  - `firstChild`: Focus the target's first child.
+   *  - `lastChild`: Focus the target's last child.
+   *
+   */
+  behavior?: FocusBehavior;
+  /**
+   * Whether to prevent scrolling the target element into view. Default it's true.
+   */
+  preventScroll?: boolean;
+}
 
 /**
  * @TailwindNG Base component directive.
@@ -17,14 +106,14 @@ import { Config } from "../types/config.type";
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseProps<T>, BaseActions, OnInit, OnDestroy {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
   protected readonly _document = inject(DOCUMENT);
+  protected readonly _injector = inject(Injector);
   private _isInitialized = false;
 
   protected get isInitialized(): boolean {
     return this._isInitialized;
   }
 
-  @Input() classList = classlist();
-  @Input() class: string | string[] | Config | undefined | null = null;
+  @Input() class: string | null = null;
 
   private _isDisabled = false;
 
@@ -53,10 +142,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
   isHovered = false;
 
   ngOnInit(): void {
-    if (this.classList.value.length === 0) {
-      this.classList.init(this.class);
+    runInInjectionContext(this._injector, () => {
       this.buildStyle();
-    }
+    });
     this.addEventListeners();
     this._isInitialized = true;
   }

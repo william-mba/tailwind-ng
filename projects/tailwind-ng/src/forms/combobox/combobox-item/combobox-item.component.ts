@@ -7,7 +7,6 @@ import { ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
   exportAs: 'twComboboxItem',
   host: {
     role: 'option',
-    '[class]': 'classList.value',
     '[tabindex]': 'disabled ? null : -1',
     '[attr.aria-selected]': 'selected()',
     '[attr.data-selected]': 'selected() || null'
@@ -104,10 +103,6 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
       this._combobox.input().clear();
     }
     this.selected.set(false);
-  }
-
-  protected override buildStyle(): void {
-    this.classList.set(this.config);
   }
 
   protected override addEventListeners(): void {

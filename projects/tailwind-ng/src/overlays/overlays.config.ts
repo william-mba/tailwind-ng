@@ -1,4 +1,4 @@
-import { ConfigTypeOf } from "@tailwind-ng/core";
+import { DialogConfig } from "@tailwind-ng/core";
 import { Provider } from "@angular/core";
 import { provideDialog } from "./dialog";
 
@@ -6,7 +6,7 @@ import { provideDialog } from "./dialog";
  * @TailwindNG Overlays config interface.
  */
 export interface OverlaysConfig {
-  dialog?: ConfigTypeOf<'Dialog'>;
+  dialog?: Partial<DialogConfig>;
 }
 
 /**

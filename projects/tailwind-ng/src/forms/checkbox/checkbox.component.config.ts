@@ -1,55 +1,17 @@
 import { Provider } from '@angular/core';
-import { CHECKBOX_CONFIG, mergeConfig, CheckboxConfig } from "@tailwind-ng/core";
+import { CHECKBOX_CONFIG, Str } from "@tailwind-ng/core";
 
-const DefaultConfig = (): CheckboxConfig => {
-  return {
-    is: 'peer',
-    size: 'size-4',
-    radius: 'rounded-sm',
-    appearance: 'appearance-none',
-    borderWidth: 'border-1',
-    borderColor: 'border-black/20',
-    dark: {
-      borderColor: 'dark:border-white/20',
-    },
-    forcedColors: {
-      appearance: 'forced-colors:appearance-none'
-    },
-    disabled: {
-      bgColor: 'disabled:bg-black/5',
-      dark: {
-        bgColor: 'disabled:dark:bg-white/5'
-      }
-    },
-    checked: {
-      borderColor: 'checked:border-blue-600',
-      bgColor: 'checked:bg-blue-600',
-    },
-    focus: {
-      outlineWidth: 'focus:outline-2',
-      outlineOffsetWidth: 'focus:outline-offset-2',
-      outlineColor: 'focus:outline-blue-600',
-    },
-    indeterminate: {
-      borderColor: 'indeterminate:border-blue-600',
-      bgColor: 'indeterminate:bg-blue-600',
-    }
-  }
-};
-
-/**
- * Returns the Checkbox component default config.
- */
-export const GetCheckboxConfig = (customization?: Partial<CheckboxConfig>): CheckboxConfig => {
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]);
+const CLASS_NAME = () => {
+  const className = 'appearance-none border-1 border-black/20 checked:bg-blue-600 checked:border-blue-600 dark:border-white/20 disabled:bg-black/5 disabled:dark:bg-white/5 focus:outline-2 focus:outline-blue-600 focus:outline-offset-2 forced-colors:appearance-none indeterminate:bg-blue-600 indeterminate:border-blue-600 peer rounded-sm size-4';
+  return className;
 };
 
 /**
  * Provides the Checkbox component config.
  */
-export function provideCheckbox(customization?: Partial<CheckboxConfig>): Provider {
+export function provideCheckbox(className = ''): Provider {
   return {
     provide: CHECKBOX_CONFIG,
-    useValue: GetCheckboxConfig(customization)
+    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
   };
 }

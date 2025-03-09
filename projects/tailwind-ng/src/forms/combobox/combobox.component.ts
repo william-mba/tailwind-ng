@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, contentChild, Input, model, OnInit, output, ViewEncapsulation } from '@angular/core';
 import { Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEnter, isEscape, ComboboxSelectionMode, TwIf, isArrowUpOrDown, isArrowUp } from '@tailwind-ng/core';
 
+
 @Component({
   selector: 'tw-combobox, [tw-combobox], [twCombobox]',
   exportAs: 'twCombobox',
   host: {
-    '[class]': 'classList.value',
     '[attr.aria-controls]': 'dropdown().id',
   },
   imports: [TwIf],
@@ -73,10 +73,6 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
       this.removeVisualfocus(this.activeElement);
       this.activeElement = undefined;
     }
-  }
-
-  protected override buildStyle(): void {
-    this.classList.set("relative h-max");
   }
 
   // we use keydown as it allows users to navigate up and down continuously

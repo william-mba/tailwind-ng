@@ -1,214 +1,54 @@
 import { Provider } from "@angular/core";
-import { BUTTON_CONFIG, SizeOptions, mergeConfig, ComponentConfig, ButtonConfig } from "@tailwind-ng/core";
+import { BUTTON_CONFIG, ButtonConfig, Str } from "@tailwind-ng/core";
 
-/** Button size config */
-const ButtonSizeConfig = (): SizeOptions => {
-  return {
-    xs: {
-      paddingX: 'px-2',
-      paddingY: 'py-1.5',
-      gap: 'gap-1',
-      fontSize: 'text-xs',
-      radius: 'rounded',
-      fontWeight: 'font-semibold'
-    },
-    sm: {
-      paddingX: 'px-3',
-      paddingY: 'py-2',
-      gap: 'gap-1.5',
-      fontSize: 'text-xs',
-      radius: 'rounded-md',
-      fontWeight: 'font-semibold'
-    },
-    md: {
-      paddingX: 'px-4',
-      paddingY: 'py-2.5',
-      gap: 'gap-2',
-      fontSize: 'text-sm',
-      radius: 'rounded-md',
-      fontWeight: 'font-semibold'
-    },
-    lg: {
-      paddingX: 'px-5',
-      paddingY: 'py-3',
-      gap: 'gap-2.5',
-      fontSize: 'text-sm',
-      radius: 'rounded-md',
-      fontWeight: 'font-semibold'
-    },
-    xl: {
-      paddingX: 'px-6',
-      paddingY: 'py-3.5',
-      gap: 'gap-3',
-      fontSize: 'text-base',
-      radius: 'rounded-md',
-      fontWeight: 'font-semibold'
-    }
-  }
-}
+const BASE = () => {
+  const className = 'border-0 inline-flex items-center justify-center shadow-xs text-nowrap select-none cursor-pointer w-fit leading-none transition-colors duration-100 disabled:opacity-50 disabled:cursor-not-allowed';
+  return className;
+};
+const PRIMARY = () => {
+  const className = 'text-white bg-blue-600 hover:bg-blue-600/90 outline-0 outline-blue-600 outline-offset-2 focus:outline-1 active:bg-blue-700/90';
+  return className;
+};
+const SECONDARY = () => {
+  const className = 'ring-inset ring-1 ring-gray-300 bg-inherit text-gray-800 backdrop-blur-xs dark:bg-inherit dark:text-gray-200 dark:ring-gray-700/90 hover:bg-gray-300/30 hover:dark:bg-gray-700/30 outline-0 outline-gray-500/80 focus:ring-0 focus:outline-1 active:bg-gray-300/60 active:dark:bg-gray-700/60';
+  return className;
+};
+const TONAL = () => {
+  const className = 'text-blue-500 bg-blue-600/10 hover:bg-blue-600/15 backdrop-blur-xs active:bg-blue-600/25 outline-0 outline-blue-500/80 focus:outline-1';
+  return className;
+};
+const TEXT = () => {
+  const className = 'shadow-none text-gray-700 dark:text-gray-300 hover:text-gray-900 hover:dark:text-gray-100 active:outline-0 focus:border-dotted focus:outline-1 focus:outline-gray-500/80';
+  return className;
+};
+const FAB = () => {
+  const className = 'shadow-lg';
+  return className;
+};
 
-/** Base button config */
-const ButtonBaseConfig = (): ComponentConfig => {
-  return {
-    borderWidth: 'border-0',
-    display: 'inline-flex',
-    alignItems: 'items-center',
-    justifyContent: 'justify-center',
-    boxShadow: 'shadow-xs',
-    textWrap: 'text-nowrap',
-    userSelect: 'select-none',
-    cursor: 'cursor-pointer',
-    width: 'w-fit',
-    lineHeight: 'leading-none',
-    disabled: {
-      opacity: 'disabled:opacity-50',
-      cursor: 'disabled:cursor-not-allowed'
-    },
-    transition: {
-      property: 'transition-colors',
-      duration: 'duration-100'
-    }
-  }
-}
-
-/** Primary button config */
-const PrimaryButtonConfig = (): ComponentConfig => {
-  return {
-    ...ButtonBaseConfig(),
-    textColor: 'text-white',
-    bgColor: 'bg-blue-600',
-    hover: {
-      bgColor: 'hover:bg-blue-600/90'
-    },
-    outlineWidth: 'outline-0',
-    outlineColor: 'outline-blue-600',
-    outlineOffsetWidth: 'outline-offset-2',
-    focus: {
-      outlineWidth: 'focus:outline-1',
-    },
-    active: {
-      bgColor: 'active:bg-blue-700/90'
-    }
-  }
-}
-
-/** Secondary button config */
-const SecondaryButtonConfig = (): ComponentConfig => {
-  return {
-    ...ButtonBaseConfig(),
-    ring: 'ring-inset',
-    ringWidth: 'ring-1',
-    ringColor: 'ring-gray-300',
-    bgColor: 'bg-inherit',
-    textColor: 'text-gray-800',
-    backdropBlur: 'backdrop-blur-xs',
-    dark: {
-      bgColor: 'dark:bg-inherit',
-      textColor: 'dark:text-gray-200',
-      ringColor: 'dark:ring-gray-700/90'
-    },
-    hover: {
-      bgColor: 'hover:bg-gray-300/30',
-      dark: {
-        bgColor: 'hover:dark:bg-gray-700/30'
-      }
-    },
-    outlineWidth: 'outline-0',
-    outlineColor: 'outline-gray-500/80',
-    focus: {
-      ringWidth: 'focus:ring-0',
-      outlineWidth: 'focus:outline-1',
-    },
-    active: {
-      bgColor: 'active:bg-gray-300/60',
-      dark: {
-        bgColor: 'active:dark:bg-gray-700/60'
-      }
-    }
-  }
-}
-
-/** Tonal button config */
-const TonalButtonConfig = (): ComponentConfig => {
-  return {
-    ...ButtonBaseConfig(),
-    textColor: 'text-blue-500',
-    bgColor: 'bg-blue-600/10',
-    hover: {
-      bgColor: 'hover:bg-blue-600/15'
-    },
-    backdropBlur: 'backdrop-blur-xs',
-    active: {
-      bgColor: 'active:bg-blue-600/25'
-    },
-    outlineWidth: 'outline-0',
-    outlineColor: 'outline-blue-500/80',
-    focus: {
-      outlineWidth: 'focus:outline-1',
-    }
-  }
-}
-
-/** Text button config */
-const TextButtonConfig = (): ComponentConfig => {
-  return {
-    ...ButtonBaseConfig(),
-    boxShadow: 'shadow-none',
-    textColor: 'text-gray-700',
-    dark: {
-      textColor: 'dark:text-gray-300'
-    },
-    hover: {
-      textColor: 'hover:text-gray-900',
-      dark: {
-        textColor: 'hover:dark:text-gray-100',
-      }
-    },
-    active: {
-      outlineWidth: 'active:outline-0'
-    },
-    focus: {
-      borderStyle: 'focus:border-dotted',
-      outlineWidth: 'focus:outline-1',
-      outlineColor: 'focus:outline-gray-500/80',
-    }
-  }
-}
-
-const DefaultConfig = (): ButtonConfig => {
-  return {
-    ...ButtonSizeConfig(),
-    primary: PrimaryButtonConfig(),
-    secondary: SecondaryButtonConfig(),
-    tonal: TonalButtonConfig(),
-    text: TextButtonConfig(),
-    fab: {
-      boxShadow: 'shadow-lg'
-    }
-  }
-}
-
-export const GetButtonConfig = (customization?: Partial<ButtonConfig>, options: CustomizationOptions = {}): ButtonConfig => {
-  const { strict = false } = options;
-  return !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization], { strict });
-}
+const DefaultConfig: ButtonConfig = {
+  primary: `${BASE()} ${PRIMARY()}`,
+  secondary: `${BASE()} ${SECONDARY()}`,
+  tonal: `${BASE()} ${TONAL()}`,
+  text: `${BASE()} ${TEXT()}`,
+  fab: FAB()
+};
 
 /**
  * Button config provider
- * @param config The custom config
+ * @param customization The custom config
  * @returns The configured provider
  */
-export function provideButton(customization?: Partial<ButtonConfig>, options: CustomizationOptions = {}): Provider {
+export function provideButton(customization?: Partial<ButtonConfig>): Provider {
+  const mergedConfig = DefaultConfig;
+  if (customization) {
+    for (const prop in customization) {
+      const className = Str.resolve([DefaultConfig[prop as keyof ButtonConfig].split(' '), (prop).split(' ')]).join(' ')
+      mergedConfig[prop as keyof ButtonConfig] = className;
+    }
+  }
   return {
     provide: BUTTON_CONFIG,
-    useValue: GetButtonConfig(customization, options)
+    useValue: !customization ? DefaultConfig : mergedConfig
   }
-};
-
-export interface CustomizationOptions {
-  /**
-   * Whether to strictly merge configs. By default it's false and empty objects are ignored during the merge process.
-   * If set to true, setting a value like `{}` will result in corresponding properties in the default config being overridden.
-   */
-  strict?: boolean;
 }
