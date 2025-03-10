@@ -11,7 +11,7 @@ pool: Lab
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
       - group: tailwind-ng-main
-  - ${{ else if eq(variables['Build.SourceBranchName'], 'next') }}:
+  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
       - group: tailwind-ng-next
   - ${{ else }}:
       - group: tailwind-ng-insiders
