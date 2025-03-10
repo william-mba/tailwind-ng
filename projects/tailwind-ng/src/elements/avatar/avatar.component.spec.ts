@@ -48,7 +48,7 @@ describe('AvatarComponent', () => {
     const component = fixture.componentInstance;
     fixture.detectChanges();
     TestBed.runInInjectionContext(() => {
-      const className = TestBed.inject(AVATAR_CONFIG);
+      const className = TestBed.inject(AVATAR_CONFIG).className;
       className?.split(' ').forEach(c => {
         expect(component.nativeElement.className.includes(c)).toBeTrue();
       }
@@ -85,7 +85,9 @@ describe('AvatarComponent', () => {
       selector: 'test-app',
       standalone: true,
       providers: [
-        provideAvatar(customization)
+        provideAvatar({
+          className: customization
+        })
       ],
       imports: [AvatarComponent],
       template: ` <img tw-avatar >`

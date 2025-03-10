@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, model, ViewEncapsulation } from '@angular/core';
-import { Toggle, ToggleBase } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, inject, Input, model, ViewEncapsulation } from '@angular/core';
+import { classlist, Toggle, TOGGLE_CONFIG, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -18,6 +18,10 @@ import { Toggle, ToggleBase } from '@tailwind-ng/core';
 export class ToggleComponent extends ToggleBase implements Toggle {
   @Input() tabIndex = 0;
   checked = model<boolean>(false);
+
+  protected override buildStyle(): void {
+    this.nativeElement.className = classlist(this.class).set(inject(TOGGLE_CONFIG)).value;
+  }
 
   private onKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.key === ' ') {

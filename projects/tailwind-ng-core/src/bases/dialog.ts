@@ -1,5 +1,4 @@
-import { Directive, forwardRef, inject, Input, OnInit } from "@angular/core";
-import { classlist } from "../utils";
+import { Directive, forwardRef, Input, OnInit } from "@angular/core";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
 import { PopupAdvancedActions, PopupBaseActions, PopupProps } from "../directives";
@@ -53,15 +52,6 @@ export abstract class DialogBase extends PopupDirective<HTMLDialogElement> imple
   @Input() autoClose = false;
   @Input() autoFocus = true;
   @Input() override restoreFocus = true;
-
-  protected override buildStyle(): void {
-    const config = inject(DIALOG_CONFIG);
-    let className = `${config.scrim || ''}`;
-    if (this.isModal && config.backdrop) {
-      className += ` ${config.backdrop}`;
-    };
-    this.nativeElement.className = classlist(this.class).set(className).value;
-  }
 
   override ngOnInit(): void {
     super.ngOnInit();

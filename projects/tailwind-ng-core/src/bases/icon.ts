@@ -1,5 +1,4 @@
-import { Directive, inject, Input } from "@angular/core";
-import { classlist } from "../utils";
+import { Directive, Input } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
 import { SizeOption } from "../types/size-options.type";
@@ -12,6 +11,11 @@ export interface Icon {
   size: SizeOption;
 }
 
+export interface IconConfig extends Partial<Record<SizeOption, string>> {
+  className?: string;
+  map?: IconMap;
+}
+
 /**
  * Checks if the component is an Icon.
  * If so, you can safely access the Icon members inside this block scope.
@@ -19,35 +23,12 @@ export interface Icon {
 export function isIcon(component: unknown): component is Icon {
   return component instanceof IconBase;
 }
-
-const ICON_SIZE = InjectionTokenFactory.create<Record<SizeOption, string>>(
-  {
-    xs: '*:size-3',
-    sm: '*:size-4',
-    md: '*:size-5',
-    lg: '*:size-6',
-    xl: '*:size-7'
-  },
-  'ICON_SIZE'
-);
-export const ICON_CONFIG = InjectionTokenFactory.create<string>('', 'ICON_CONFIG');
-export const ICON_MAP = InjectionTokenFactory.create<IconMap>({}, 'ICON_CONFIG');
+export const ICON_CONFIG = InjectionTokenFactory.create<Partial<IconConfig>>({}, 'ICON_CONFIG');
 
 @Directive()
 export abstract class IconBase extends BaseDirective implements Icon {
   @Input({ required: true }) name!: IconName;
   @Input() size: SizeOption = 'md';
-
-  protected override buildStyle(): void {
-    const className = `${inject(ICON_SIZE)[this.size]} ${inject(ICON_CONFIG)}`;
-    this.nativeElement.className = classlist(this.class).set(className).with(this.nativeElement.className);
-    this.nativeElement.innerHTML = inject(ICON_MAP)[this.name] || '';
-  }
-}
-
-export interface IconConfig {
-  className?: string,
-  map?: IconMap
 }
 
 export type IconMap = Partial<Record<IconName, string>>;

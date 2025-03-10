@@ -1,5 +1,4 @@
-import { Directive, inject, Input, output, OutputEmitterRef } from "@angular/core";
-import { classlist } from "../utils";
+import { Directive, Input, output, OutputEmitterRef } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
 import { BaseActions, BaseProps } from "../directives";
@@ -50,10 +49,6 @@ export function isInputText(component: unknown): component is InputText {
 
 @Directive()
 export abstract class InputTextBase extends BaseDirective<HTMLInputElement> implements InputText {
-
-  protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(INPUT_TEXT_CONFIG)).value;
-  }
 
   @Input() set value(value: string) {
     this.nativeElement.value = value;

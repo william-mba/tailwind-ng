@@ -1,4 +1,4 @@
-import { ButtonConfig, IconConfig } from "@tailwind-ng/core";
+import { AvatarConfig, BadgeConfig, ButtonConfig, IconConfig } from "@tailwind-ng/core";
 import { provideAvatar } from "./avatar";
 import { provideBadge } from "./badge";
 import { provideButton } from "./button";
@@ -11,8 +11,8 @@ import { provideButtonGroup } from "./button-group";
  * @TailwindNG UI Elements config interface.
  */
 export interface ElementsConfig {
-  avatar: string;
-  badge: string;
+  avatar: AvatarConfig;
+  badge: BadgeConfig;
   button: ButtonConfig;
   buttonGroup: string;
   dropdown: string;

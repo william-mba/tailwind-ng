@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
-import { Dropdown, DropdownBase, isEscape, TwIf } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, ViewEncapsulation } from '@angular/core';
+import { classlist, Dropdown, DROPDOWN_CONFIG, DropdownBase, isEscape, TwIf } from '@tailwind-ng/core';
 
 /** Dropdown component */
 @Component({
@@ -13,6 +13,10 @@ import { Dropdown, DropdownBase, isEscape, TwIf } from '@tailwind-ng/core';
 })
 export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() closeOnBlur?: boolean;
+
+  protected override buildStyle(): void {
+    this.nativeElement.className = classlist(this.class).set(inject(DROPDOWN_CONFIG)).value;
+  }
 
   protected override addEventListeners(): void {
     super.addEventListeners();

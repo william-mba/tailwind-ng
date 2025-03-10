@@ -1,5 +1,5 @@
 import { Provider } from "@angular/core";
-import { ICON_CONFIG, Str, IconMap, ICON_MAP, configMerge, IconConfig } from "@tailwind-ng/core";
+import { ICON_CONFIG, IconMap, configMerge, IconConfig } from "@tailwind-ng/core";
 
 const MAP = (): IconMap => {
   return {
@@ -24,27 +24,32 @@ const MAP = (): IconMap => {
   }
 };
 
-const DefaultConfig = () => {
+const DefaultConfig = (): IconConfig => {
   const className = 'inline-flex items-center justify-center';
-  return className;
+  return {
+    ...{
+      xs: '*:size-3',
+      sm: '*:size-4',
+      md: '*:size-5',
+      lg: '*:size-6',
+      xl: '*:size-7'
+    },
+    ...MAP(),
+    className
+  };
 };
-export function provideIcon(customization?: IconConfig): Provider[] {
-  return [
-    provideClassName(customization?.className),
-    provideMap(customization?.map)
-  ]
-}
 
-function provideClassName(className = ''): Provider {
+export function provideIcon(customization?: Partial<IconConfig>): Provider {
+  const config = DefaultConfig();
+  if (customization) {
+    if (!config.map) {
+      config.map = MAP();
+    }
+    config.map = configMerge([config.map, customization.map as Partial<Record<string, string>>], { strict: true });
+    delete customization.map;
+  }
   return {
     provide: ICON_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : Str.resolve([DefaultConfig(), (className)])
-  }
-}
-
-function provideMap(customization?: IconMap): Provider {
-  return {
-    provide: ICON_MAP,
-    useValue: !customization ? MAP() : configMerge([MAP(), customization])
+    useValue: !customization ? DefaultConfig() : configMerge([config, customization])
   }
 }

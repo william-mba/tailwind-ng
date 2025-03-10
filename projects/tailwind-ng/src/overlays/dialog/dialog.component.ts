@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { DialogBase, TwIf } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import { classlist, DIALOG_CONFIG, DialogBase, TwIf } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({
@@ -11,4 +11,13 @@ import { DialogBase, TwIf } from '@tailwind-ng/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: DialogBase, useExisting: DialogComponent }]
 })
-export class DialogComponent extends DialogBase { }
+export class DialogComponent extends DialogBase {
+  protected override buildStyle(): void {
+    const config = inject(DIALOG_CONFIG);
+    let className = `${config.scrim || ''}`;
+    if (this.isModal && config.backdrop) {
+      className += ` ${config.backdrop}`;
+    };
+    this.nativeElement.className = classlist(this.class).set(className).value;
+  }
+}

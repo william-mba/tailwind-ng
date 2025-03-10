@@ -1,6 +1,5 @@
-import { Directive, ElementRef, inject, OutputEmitterRef, Signal, viewChild } from "@angular/core";
+import { Directive, ElementRef, OutputEmitterRef, Signal } from "@angular/core";
 import { BaseDirective } from "../directives";
-import { classlist } from "../utils";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
 import { SizeOption } from "../types/size-options.type";
 
@@ -96,16 +95,7 @@ export const CHECKBOX_ICON = InjectionTokenFactory
 
 @Directive()
 export abstract class CheckboxBase extends BaseDirective {
-  readonly inputRef = viewChild.required<ElementRef<HTMLInputElement>>('checkboxInput');
   protected parent: CheckboxBase | null = null;
-
-  protected override buildStyle(): void {
-    if (this.parent) {
-      this.inputRef().nativeElement.className = this.parent.inputRef().nativeElement.className;
-    } else {
-      this.inputRef().nativeElement.className = classlist(this.class).set(inject(CHECKBOX_CONFIG)).value;
-    }
-  }
 }
 
 /**

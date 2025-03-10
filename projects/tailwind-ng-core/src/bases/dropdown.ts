@@ -1,5 +1,4 @@
-import { Directive, forwardRef, inject } from "@angular/core";
-import { classlist } from "../utils";
+import { Directive, forwardRef } from "@angular/core";
 import { PopupDirective } from "../directives";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
 import { Popup } from "../directives";
@@ -23,11 +22,7 @@ export const DROPDOWN_CONFIG = InjectionTokenFactory.create<string>('', 'DROPDOW
   },
   providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DropdownBase) }]
 })
-export abstract class DropdownBase extends PopupDirective {
-  protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(DROPDOWN_CONFIG)).value;
-  }
-}
+export abstract class DropdownBase extends PopupDirective { }
 
 /**
  * Checks if the component is a Dropdown.

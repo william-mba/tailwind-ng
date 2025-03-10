@@ -1,5 +1,4 @@
-import { Directive, inject } from "@angular/core";
-import { classlist } from "../utils";
+import { Directive } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
 import { InputSignal, ModelSignal } from "@angular/core";
@@ -29,8 +28,4 @@ export interface ComboboxItem extends BaseProps, BaseActions {
 export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create<string>('', 'COMBOBOX_ITEM_CONFIG');
 
 @Directive()
-export abstract class ComboboxItemBase extends BaseDirective {
-  protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(COMBOBOX_ITEM_CONFIG)).value;
-  }
-}
+export abstract class ComboboxItemBase extends BaseDirective { }

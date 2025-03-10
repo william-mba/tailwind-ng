@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, contentChild, Input, model, OnInit, output, ViewEncapsulation } from '@angular/core';
-import { Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEnter, isEscape, ComboboxSelectionMode, TwIf, isArrowUpOrDown, isArrowUp } from '@tailwind-ng/core';
+import { Combobox, ComboboxBase, ComboboxItem, DropdownBase, InputTextBase, isEnter, isEscape, ComboboxSelectionMode, TwIf, isArrowUpOrDown, isArrowUp, classlist } from '@tailwind-ng/core';
 
 
 @Component({
@@ -35,6 +35,10 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
         this.open();
       }
     });
+  }
+
+  protected override buildStyle(): void {
+    this.nativeElement.className = classlist(this.class).set('relative h-max').value;
   }
 
   override open(): void {

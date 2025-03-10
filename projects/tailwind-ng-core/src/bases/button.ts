@@ -1,11 +1,10 @@
-import { Directive, inject, Input, OnInit } from "@angular/core";
+import { Directive, Input, OnInit } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { Popup } from "../directives";
 import { isDropdown } from "./dropdown";
 import { isDialog } from "./dialog";
 import { isCombobox } from "./combobox";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
-import { classlist, Str } from "../utils";
 import { SizeOption } from "../types/size-options.type";
 import { isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isEscape, isTab } from "../guards";
 
@@ -22,8 +21,8 @@ export interface Button {
 /** Button variant */
 export type ButtonVariant = 'primary' | 'secondary' | 'tonal' | 'text';
 
-export interface ButtonConfig extends Record<ButtonVariant, string>, Record<SizeOption, string> {
-  fab: string
+export interface ButtonConfig extends Partial<Record<ButtonVariant, string> & Record<SizeOption, string>> {
+  fab?: string
 }
 
 export const BUTTON_CONFIG = InjectionTokenFactory.create<Partial<ButtonConfig>>({}, 'BUTTON_CONFIG');
@@ -54,15 +53,6 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
       } else {
         this.nativeElement.setAttribute('aria-haspopup', 'true');
       }
-    }
-  }
-
-  protected override buildStyle(): void {
-    const config = inject(BUTTON_CONFIG);
-    const className = Str.resolve([config[this.size], config[this.variant]]);
-    this.nativeElement.className = classlist(this.class).set(className).value;
-    if (this.isFab) {
-      this.nativeElement.classList.add(config.fab ?? '');
     }
   }
 

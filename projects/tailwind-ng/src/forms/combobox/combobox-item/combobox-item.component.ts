@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, input, model, OnInit, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
-import { ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
+import { classlist, COMBOBOX_ITEM_CONFIG, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -64,6 +64,9 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
       // source: https://github.com/angular/angular/tree/main/packages/core/primitives/signals
       subs.map(sub => sub.unsubscribe());
     });
+  }
+  protected override buildStyle(): void {
+    this.nativeElement.className = classlist(this.class).set(inject(COMBOBOX_ITEM_CONFIG)).value;
   }
 
   private selectIfNeeded(value = this._combobox.input().normalizedValue): void {

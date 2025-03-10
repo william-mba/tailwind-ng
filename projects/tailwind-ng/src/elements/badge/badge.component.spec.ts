@@ -93,7 +93,9 @@ describe('BadgeComponent', () => {
       selector: 'test-app',
       standalone: true,
       providers: [
-        provideBadge(customization)
+        provideBadge({
+          className: customization
+        })
       ],
       imports: [BadgeComponent],
       template: `<tw-badge>Badge</tw-badge>`

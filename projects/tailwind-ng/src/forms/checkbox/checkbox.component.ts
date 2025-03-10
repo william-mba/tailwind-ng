@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, OnInit, output, ViewEncapsulation } from "@angular/core";
-import { Checkbox, CHECKBOX_ICON, CheckboxBase, CheckboxMutableProps, CheckboxToggleOptions, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
+import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, inject, Input, OnInit, output, viewChild, ViewEncapsulation } from "@angular/core";
+import { Checkbox, CHECKBOX_CONFIG, CHECKBOX_ICON, CheckboxBase, CheckboxMutableProps, CheckboxToggleOptions, classlist, isArrowDownOrRight, isArrowUpOrLeft, isEnterOrSpace, isInputElement, isLabelElement, isNavigation } from "@tailwind-ng/core";
 import { TwIcon } from "../../elements";
 
 /**
@@ -36,6 +36,7 @@ import { TwIcon } from "../../elements";
   providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }]
 })
 export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit {
+  readonly inputRef = viewChild.required<ElementRef<HTMLInputElement>>('checkboxInput');
   protected icon = inject(CHECKBOX_ICON);
   protected override readonly parent = inject(CheckboxComponent, { optional: true, skipSelf: true, host: true });
   children?: Checkbox[];
@@ -58,6 +59,14 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
       } else if (this.checked && (!this.parent.checked && !this.parent.indeterminate)) {
         this.parent.toggle({ origin: 'child' });
       }
+    }
+  }
+
+  protected override buildStyle(): void {
+    if (this.parent) {
+      this.inputRef().nativeElement.className = this.parent.inputRef().nativeElement.className;
+    } else {
+      this.inputRef().nativeElement.className = classlist(this.class).set(inject(CHECKBOX_CONFIG)).value;
     }
   }
 

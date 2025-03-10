@@ -1,7 +1,6 @@
-import { Directive, inject } from "@angular/core";
+import { Directive } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
-import { classlist } from "../utils";
 import { ModelSignal } from "@angular/core";
 import { BaseActions, BaseProps } from "../directives";
 
@@ -28,8 +27,4 @@ export function isToggle(component: unknown): component is Toggle {
 export const TOGGLE_CONFIG = InjectionTokenFactory.create<string>('', 'TOGGLE_CONFIG');
 
 @Directive()
-export abstract class ToggleBase extends BaseDirective {
-  protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(TOGGLE_CONFIG)).value;
-  }
-}
+export abstract class ToggleBase extends BaseDirective { }

@@ -1,7 +1,6 @@
 import { Directive, forwardRef, Input } from "@angular/core";
 import { PopupDirective, PopupBaseActions, Popup, PopupProps } from "../directives";
 import { isArrowUp } from "../guards";
-import { classlist } from "../utils";
 import { ModelSignal, OutputEmitterRef, Signal } from "@angular/core";
 import { ComboboxItem } from "./combobox-item";
 import { InputText } from "./input-text";
@@ -80,11 +79,6 @@ export function isCombobox(component: unknown): component is Combobox {
 export abstract class ComboboxBase extends PopupDirective {
   activeElement?: HTMLElement;
   @Input() override id = this.randomId('combobox');
-
-  protected override buildStyle(): void {
-    const className = 'relative h-max';
-    this.nativeElement.className = classlist(this.class).set(className).value;
-  }
 
   // Override default keyboard event prevention.
   protected override onKeyboardEvent(event: Event): void {
