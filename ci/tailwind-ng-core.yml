@@ -9,8 +9,8 @@ trigger:
 pool: Lab
 
 variables:
-  - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
-      - group: tailwind-ng-master
+  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+      - group: tailwind-ng-main
   - ${{ else if eq(variables['Build.SourceBranchName'], 'next') }}:
       - group: tailwind-ng-next
   - ${{ else }}:
