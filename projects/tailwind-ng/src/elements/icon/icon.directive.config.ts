@@ -24,7 +24,7 @@ const MAP = (): IconMap => {
   }
 };
 
-const CLASS_NAME = () => {
+const DefaultConfig = () => {
   const className = 'inline-flex items-center justify-center';
   return className;
 };
@@ -38,7 +38,7 @@ export function provideIcon(customization?: IconConfig): Provider[] {
 function provideClassName(className = ''): Provider {
   return {
     provide: ICON_CONFIG,
-    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
+    useValue: className.length < 3 ? DefaultConfig() : Str.resolve([DefaultConfig(), (className)])
   }
 }
 

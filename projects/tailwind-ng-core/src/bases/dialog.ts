@@ -60,7 +60,7 @@ export abstract class DialogBase extends PopupDirective<HTMLDialogElement> imple
     if (this.isModal && config.backdrop) {
       className += ` ${config.backdrop}`;
     };
-    this.nativeElement.classList.add(...classlist(this.class).set(className).value);
+    this.nativeElement.className = classlist(this.class).set(className).value;
   }
 
   override ngOnInit(): void {

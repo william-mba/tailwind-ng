@@ -9,6 +9,6 @@ export const BUTTON_GROUP_CONFIG = InjectionTokenFactory.create<string>('', 'BUT
 export abstract class ButtonGroupBase extends BaseDirective {
 
   protected override buildStyle(): void {
-    this.nativeElement.classList.add(...classlist(this.class).set(inject(BUTTON_GROUP_CONFIG)).value);
+    this.nativeElement.className = classlist(this.class).set(inject(BUTTON_GROUP_CONFIG)).value;
   }
 }

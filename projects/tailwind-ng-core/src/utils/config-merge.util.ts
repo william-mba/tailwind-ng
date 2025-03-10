@@ -1,5 +1,6 @@
 import { Obj } from "./object.util";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Config = Record<string, any>;
 
 /**

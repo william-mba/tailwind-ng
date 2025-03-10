@@ -1,7 +1,7 @@
 import { Provider } from "@angular/core";
 import { BADGE_CONFIG, Str } from "@tailwind-ng/core";
 
-const CLASS_NAME = () => {
+const DefaultConfig = () => {
   const className = 'inline-flex gap-1 items-center justify-center text-xs font-medium';
   return className;
 };
@@ -14,6 +14,6 @@ const CLASS_NAME = () => {
 export function provideBadge(className = ''): Provider {
   return {
     provide: BADGE_CONFIG,
-    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
+    useValue: className.length < 3 ? DefaultConfig() : Str.resolve([DefaultConfig(), (className)])
   }
 }

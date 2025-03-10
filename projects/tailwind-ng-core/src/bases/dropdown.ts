@@ -25,7 +25,7 @@ export const DROPDOWN_CONFIG = InjectionTokenFactory.create<string>('', 'DROPDOW
 })
 export abstract class DropdownBase extends PopupDirective {
   protected override buildStyle(): void {
-    this.nativeElement.classList.add(...classlist(this.class).set(inject(DROPDOWN_CONFIG)).value);
+    this.nativeElement.className = classlist(this.class).set(inject(DROPDOWN_CONFIG)).value;
   }
 }
 

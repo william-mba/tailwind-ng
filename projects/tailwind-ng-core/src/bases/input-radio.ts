@@ -10,6 +10,6 @@ export abstract class InputRadioBase extends BaseDirective<HTMLInputElement> {
   protected config = inject(INPUT_RADIO_CONFIG);
 
   protected override buildStyle(): void {
-    this.nativeElement.classList.add(...classlist(this.class).set(inject(INPUT_RADIO_CONFIG)).value);
+    this.nativeElement.className = classlist(this.class).set(inject(INPUT_RADIO_CONFIG)).value;
   }
 }

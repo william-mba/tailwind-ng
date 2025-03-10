@@ -8,7 +8,7 @@ import { fakeAsync, TestBed, tick } from "@angular/core/testing";
   selector: '[fakePopup]',
 }) class FakePopup extends PopupDirective {
   protected override buildStyle(): void {
-    this.classList = classlist(this.class);
+    this.nativeElement.classList.add(...classlist(this.class).value);
   }
 }
 

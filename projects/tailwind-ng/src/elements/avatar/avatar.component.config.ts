@@ -1,7 +1,7 @@
 import { Provider } from "@angular/core";
 import { AVATAR_CONFIG, Str } from "@tailwind-ng/core";
 
-const CLASS_NAME = () => {
+const DefaultConfig = () => {
   const className = 'flex items-center justify-center relative rounded-full';
   return className;
 };
@@ -14,6 +14,6 @@ const CLASS_NAME = () => {
 export function provideAvatar(className = ''): Provider {
   return {
     provide: AVATAR_CONFIG,
-    useValue: className.length < 3 ? CLASS_NAME() : Str.resolve([CLASS_NAME().split(' '), (className).split(' ')]).join(' ')
+    useValue: className.length < 3 ? DefaultConfig() : Str.resolve([DefaultConfig(), (className)])
   }
 }

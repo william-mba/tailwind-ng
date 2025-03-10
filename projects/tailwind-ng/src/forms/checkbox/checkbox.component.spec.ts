@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { GetCheckboxConfig, provideCheckbox } from './checkbox.component.config';
+import { provideCheckbox } from './checkbox.component.config';
 import { Component, viewChild } from '@angular/core';
 import { CheckboxComponent } from './checkbox.component';
 import { provideIcon } from 'tailwind-ng';
-import { classlist } from '@tailwind-ng/core';
+import { CHECKBOX_CONFIG, Str } from '@tailwind-ng/core';
 
 describe('CheckboxComponent', () => {
   beforeEach(() => {
@@ -16,8 +16,6 @@ describe('CheckboxComponent', () => {
   });
 
   it('should set classlit', () => {
-    const classlit = classlist(GetCheckboxConfig());
-
     @Component({
       selector: 'tw-test-app',
       standalone: true,
@@ -28,9 +26,14 @@ describe('CheckboxComponent', () => {
     }
     const fixture = TestBed.createComponent(TestAppComponent);
     const testApp = fixture.componentInstance;
-    const component = testApp.component();
+    const component = testApp.component().inputRef();
     fixture.detectChanges();
 
-    expect(component.classList.value).toEqual(classlit.value);
+    TestBed.runInInjectionContext(() => {
+      const className = TestBed.inject(CHECKBOX_CONFIG);
+      Str.toArray(className).forEach((c) => {
+        expect(component.nativeElement.classList.contains(c)).toBeTrue();
+      });
+    });
   });
 });

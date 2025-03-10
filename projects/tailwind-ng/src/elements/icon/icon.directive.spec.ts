@@ -3,16 +3,11 @@ import { Str } from '@tailwind-ng/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { IconDirective } from './icon.directive';
 import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
-import { GetIconConfig, provideIcon } from './icon.directive.config';
+import { provideIcon } from './icon.directive.config';
 import { By } from '@angular/platform-browser';
 
 describe('IconDirective', () => {
   let component: IconDirective;
-  const config = GetIconConfig({
-    map: {
-      'language': 'fake svg',
-    }
-  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -27,7 +22,11 @@ describe('IconDirective', () => {
           useValue: { markForCheck: () => { } }
         },
         IconDirective,
-        provideIcon({ map: config.map })
+        provideIcon({
+          map: {
+            'language': 'fake svg',
+          }
+        })
       ]
     });
     TestBed.runInInjectionContext(() => {
@@ -53,6 +52,13 @@ describe('IconDirective', () => {
   });
 
   it('should apply style based on size', fakeAsync(() => {
+    const config = {
+      xs: '*:size-3',
+      sm: '*:size-4',
+      md: '*:size-5',
+      lg: '*:size-6',
+      xl: '*:size-7'
+    };
     @Component({
       template: `
         <tw-icon name="language" />
@@ -72,23 +78,23 @@ describe('IconDirective', () => {
 
     icon = fixture.debugElement.query(By.css('tw-icon')).nativeElement;
     fixture.detectChanges();
-    expect(icon.classList).toContain(config.md.size!);
+    expect(icon.classList).toContain(config.md);
 
     icon = fixture.debugElement.query(By.css('tw-icon[size="xs"]')).nativeElement;
     fixture.detectChanges();
-    expect(icon.classList).toContain(config.xs.size!);
+    expect(icon.classList).toContain(config.xs);
 
     icon = fixture.debugElement.query(By.css('tw-icon[size="sm"]')).nativeElement;
     fixture.detectChanges();
-    expect(icon.classList).toContain(config.sm.size!);
+    expect(icon.classList).toContain(config.sm);
 
     icon = fixture.debugElement.query(By.css('tw-icon[size="lg"]')).nativeElement;
     fixture.detectChanges();
-    expect(icon.classList).toContain(config.lg.size!);
+    expect(icon.classList).toContain(config.lg);
 
     icon = fixture.debugElement.query(By.css('tw-icon[size="xl"]')).nativeElement;
     fixture.detectChanges();
-    expect(icon.classList).toContain(config.xl.size!);
+    expect(icon.classList).toContain(config.xl);
   }, { flush: true }));
 
   it('should customize using class attribute', () => {

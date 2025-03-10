@@ -30,6 +30,6 @@ export const TOGGLE_CONFIG = InjectionTokenFactory.create<string>('', 'TOGGLE_CO
 @Directive()
 export abstract class ToggleBase extends BaseDirective {
   protected override buildStyle(): void {
-    this.nativeElement.classList.add(...classlist(this.class).set(inject(TOGGLE_CONFIG)).value);
+    this.nativeElement.className = classlist(this.class).set(inject(TOGGLE_CONFIG)).value;
   }
 }

@@ -39,6 +39,6 @@ export abstract class BadgeBase extends BaseDirective implements Badge {
 
   protected override buildStyle(): void {
     const className = `${inject(BADGE_SIZE)[this.size]} ${inject(BADGE_CONFIG)}`
-    this.nativeElement.classList.add(...classlist(this.class).set(className).value);
+    this.nativeElement.className = classlist(this.class).set(className).value;
   }
 }

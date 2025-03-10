@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, Input, model, ViewEncapsulation } from '@angular/core';
-import { classlist, Toggle, TOGGLE_CONFIG, ToggleBase } from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, Input, model, ViewEncapsulation } from '@angular/core';
+import { Toggle, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',

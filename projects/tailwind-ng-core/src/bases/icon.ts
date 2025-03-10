@@ -20,7 +20,7 @@ export function isIcon(component: unknown): component is Icon {
   return component instanceof IconBase;
 }
 
-const ICON_SIZE = InjectionTokenFactory.create<Record<string, string>>(
+const ICON_SIZE = InjectionTokenFactory.create<Record<SizeOption, string>>(
   {
     xs: '*:size-3',
     sm: '*:size-4',
@@ -39,8 +39,8 @@ export abstract class IconBase extends BaseDirective implements Icon {
   @Input() size: SizeOption = 'md';
 
   protected override buildStyle(): void {
-    const className = `${inject(ICON_SIZE)[this.size]} ${inject(ICON_CONFIG)}`
-    this.nativeElement.classList.add(...classlist(this.class).set(className).value);
+    const className = `${inject(ICON_SIZE)[this.size]} ${inject(ICON_CONFIG)}`;
+    this.nativeElement.className = classlist(this.class).set(className).with(this.nativeElement.className);
     this.nativeElement.innerHTML = inject(ICON_MAP)[this.name] || '';
   }
 }

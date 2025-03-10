@@ -5,7 +5,7 @@ import { isDropdown } from "./dropdown";
 import { isDialog } from "./dialog";
 import { isCombobox } from "./combobox";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
-import { classlist } from "../utils";
+import { classlist, Str } from "../utils";
 import { SizeOption } from "../types/size-options.type";
 import { isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isEscape, isTab } from "../guards";
 
@@ -22,24 +22,10 @@ export interface Button {
 /** Button variant */
 export type ButtonVariant = 'primary' | 'secondary' | 'tonal' | 'text';
 
-export interface ButtonConfig {
-  primary: string,
-  secondary: string,
-  tonal: string,
-  text: string,
+export interface ButtonConfig extends Record<ButtonVariant, string>, Record<SizeOption, string> {
   fab: string
 }
 
-export const BUTTON_SIZE = InjectionTokenFactory.create<Record<string, string>>(
-  {
-    xs: 'px-2 py-1.5 gap-1 text-xs rounded font-semibold',
-    sm: 'px-3 py-2 gap-1.5 text-xs rounded-md font-semibold',
-    md: 'px-4 py-2.5 gap-2 text-sm rounded-md font-semibold',
-    lg: 'px-5 py-3 gap-2.5 text-sm rounded-md font-semibold',
-    xl: 'px-6 py-3.5 gap-3 text-base rounded-md font-semibold'
-  },
-  'BUTTON_SIZE'
-);
 export const BUTTON_CONFIG = InjectionTokenFactory.create<Partial<ButtonConfig>>({}, 'BUTTON_CONFIG');
 
 @Directive({
@@ -73,8 +59,8 @@ export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implem
 
   protected override buildStyle(): void {
     const config = inject(BUTTON_CONFIG);
-    const className = `${inject(BUTTON_SIZE)[this.size]} ${config[this.variant]}`
-    this.nativeElement.classList.add(...classlist(this.class).set(className).value);
+    const className = Str.resolve([config[this.size], config[this.variant]]);
+    this.nativeElement.className = classlist(this.class).set(className).value;
     if (this.isFab) {
       this.nativeElement.classList.add(config.fab ?? '');
     }

@@ -1,11 +1,11 @@
 import { Provider } from "@angular/core";
-import { BUTTON_CONFIG, ButtonConfig, Str } from "@tailwind-ng/core";
+import { BUTTON_CONFIG, ButtonConfig, configMerge } from "@tailwind-ng/core";
 
-const BASE = () => {
+export const BASE = () => {
   const className = 'border-0 inline-flex items-center justify-center shadow-xs text-nowrap select-none cursor-pointer w-fit leading-none transition-colors duration-100 disabled:opacity-50 disabled:cursor-not-allowed';
   return className;
 };
-const PRIMARY = () => {
+export const PRIMARY = () => {
   const className = 'text-white bg-blue-600 hover:bg-blue-600/90 outline-0 outline-blue-600 outline-offset-2 focus:outline-1 active:bg-blue-700/90';
   return className;
 };
@@ -26,12 +26,19 @@ const FAB = () => {
   return className;
 };
 
-const DefaultConfig: ButtonConfig = {
-  primary: `${BASE()} ${PRIMARY()}`,
-  secondary: `${BASE()} ${SECONDARY()}`,
-  tonal: `${BASE()} ${TONAL()}`,
-  text: `${BASE()} ${TEXT()}`,
-  fab: FAB()
+const DefaultConfig = (): ButtonConfig => {
+  return {
+    primary: `${BASE()} ${PRIMARY()}`,
+    secondary: `${BASE()} ${SECONDARY()}`,
+    tonal: `${BASE()} ${TONAL()}`,
+    text: `${BASE()} ${TEXT()}`,
+    fab: FAB(),
+    xs: 'px-2 py-1.5 gap-1 text-xs rounded font-semibold',
+    sm: 'px-3 py-2 gap-1.5 text-xs rounded-md font-semibold',
+    md: 'px-4 py-2.5 gap-2 text-sm rounded-md font-semibold',
+    lg: 'px-5 py-3 gap-2.5 text-sm rounded-md font-semibold',
+    xl: 'px-6 py-3.5 gap-3 text-base rounded-md font-semibold'
+  }
 };
 
 /**
@@ -40,15 +47,8 @@ const DefaultConfig: ButtonConfig = {
  * @returns The configured provider
  */
 export function provideButton(customization?: Partial<ButtonConfig>): Provider {
-  const mergedConfig = DefaultConfig;
-  if (customization) {
-    for (const prop in customization) {
-      const className = Str.resolve([DefaultConfig[prop as keyof ButtonConfig].split(' '), (prop).split(' ')]).join(' ')
-      mergedConfig[prop as keyof ButtonConfig] = className;
-    }
-  }
   return {
     provide: BUTTON_CONFIG,
-    useValue: !customization ? DefaultConfig : mergedConfig
-  }
+    useValue: !customization ? DefaultConfig() : configMerge([DefaultConfig(), customization])
+  };
 }

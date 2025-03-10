@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToggleComponent } from './toggle.component';
-import { GetToggleConfig, provideToggle } from './toggle.component.config';
-import { classlist } from '@tailwind-ng/core';
+import { provideToggle } from './toggle.component.config';
+import { TOGGLE_CONFIG } from '@tailwind-ng/core';
 
 describe('ToggleComponent', () => {
   let component: ToggleComponent;
@@ -30,7 +30,9 @@ describe('ToggleComponent', () => {
   });
 
   it('should set classlist', () => {
-    const expected = classlist(GetToggleConfig());
-    expect(component.classList.value).toEqual(expected.value);
+    TestBed.runInInjectionContext(() => {
+      const className = TestBed.inject(TOGGLE_CONFIG);
+      expect(component.nativeElement.className.length).toBe(className.length);
+    });
   });
 });

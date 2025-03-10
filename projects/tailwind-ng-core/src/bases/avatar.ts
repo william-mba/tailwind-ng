@@ -38,6 +38,6 @@ export abstract class AvatarBase extends BaseDirective implements Avatar {
 
   protected override buildStyle(): void {
     const className = `${inject(AVATAR_SIZE)[this.size]} ${inject(AVATAR_CONFIG)}`
-    this.nativeElement.classList.add(...classlist(this.class).set(className).value);
+    this.nativeElement.className = classlist(this.class).set(className).value;
   }
 }

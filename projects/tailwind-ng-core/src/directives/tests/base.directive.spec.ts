@@ -17,7 +17,7 @@ import { classlist } from '../../utils/classlist.util';
     this.nativeElement.focus = () => this._isFocused = true;
   }
   protected override buildStyle(): void {
-    this.classList = classlist(this.class);
+    this.nativeElement.className = classlist(this.class).value;
   }
 }
 
@@ -54,12 +54,7 @@ describe('BaseDirective', () => {
       fixture.detectChanges();
 
       expect(directive.class).toBe('class1 class2 class3');
-    });
-
-    it('should set classlist', () => {
-      expect(directive.classList).toBeTruthy();
-      directive.classList.set('class1 class2 class3');
-      expect(directive.classList.value).toEqual(['class1', 'class2', 'class3']);
+      expect(directive.nativeElement.className).toBe('class1 class2 class3');
     });
 
     it('should get nativeElement', () => {

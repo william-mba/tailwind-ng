@@ -52,7 +52,7 @@ export function isInputText(component: unknown): component is InputText {
 export abstract class InputTextBase extends BaseDirective<HTMLInputElement> implements InputText {
 
   protected override buildStyle(): void {
-    this.nativeElement.classList.add(...classlist(this.class).set(inject(INPUT_TEXT_CONFIG)).value);
+    this.nativeElement.className = classlist(this.class).set(inject(INPUT_TEXT_CONFIG)).value;
   }
 
   @Input() set value(value: string) {

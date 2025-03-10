@@ -1,12 +1,11 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { classlist, Str } from '@tailwind-ng/core';
+import { BUTTON_CONFIG, Str } from '@tailwind-ng/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import { GetButtonConfig, provideButton } from './button.component.config';
+import { provideButton } from './button.component.config';
 import { Component, viewChild } from '@angular/core';
 
 describe('ButtonComponent', () => {
-  const config = GetButtonConfig();
   let component: ButtonComponent;
   let fixture: ComponentFixture<ButtonComponent>;
 
@@ -23,51 +22,57 @@ describe('ButtonComponent', () => {
 
   it('should set size', () => {
     TestBed.runInInjectionContext(() => {
-      component.size.set('xl');
-      expect(component.size()).toBe('xl');
+      const xl = 'xl';
+      const lg = 'lg';
+      const md = 'md';
+      const sm = 'sm';
+      const xs = 'xs';
 
-      component.size.set('lg');
-      expect(component.size()).toBe('lg');
+      component.size = xl;
+      expect(component.size).toBe(xl);
 
-      component.size.set('md');
-      expect(component.size()).toBe('md');
+      component.size = lg;
+      expect(component.size).toBe(lg);
 
-      component.size.set('sm');
-      expect(component.size()).toBe('sm');
+      component.size = md;
+      expect(component.size).toBe(md);
 
-      component.size.set('xs');
-      expect(component.size()).toBe('xs');
+      component.size = sm;
+      expect(component.size).toBe(sm);
+
+      component.size = xs;
+      expect(component.size).toBe(xs);
     });
   });
 
   it('should set variant', () => {
-    expect(component.variant()).toBe('primary');
+    expect(component.variant).toBe('primary');
 
-    component.variant.set('secondary');
-    expect(component.variant()).toBe('secondary');
+    component.variant = 'secondary';
+    expect(component.variant).toBe('secondary');
 
-    component.variant.set('text');
-    expect(component.variant()).toBe('text');
+    component.variant = 'tonal';
+    expect(component.variant).toBe('tonal');
 
-    component.variant.set('tonal');
-    expect(component.variant()).toBe('tonal');
+    component.variant = 'text';
+    expect(component.variant).toBe('text');
   });
 
   it('should set classList', () => {
-    const classList = classlist({
-      ...config.md,
-      ...config.primary
+    TestBed.runInInjectionContext(() => {
+      const className = TestBed.inject(BUTTON_CONFIG)[component.variant];
+      className?.split(' ').forEach(c => {
+        expect(component.nativeElement.classList.contains(c)).toBeTrue();
+      }
+      );
     });
-    component.classList = classList;
-
-    expect(component.classList.value).toEqual(classList.value);
   });
 
   it('should customize using class attribute', () => {
-    const defaultGap = GetButtonConfig().md.gap!;
-    const defaultBgColor = GetButtonConfig().primary.bgColor!;
-    const defaultRadius = GetButtonConfig().md.radius!;
     const customizations = 'rounded-full bg-red-600 gap-3';
+    const defaultGap = 'gap-2';
+    const defaultBgColor = 'bg-blue-600';
+    const defaultRadius = 'rounded-md';
 
     @Component({
       selector: 'test-app',
@@ -84,26 +89,27 @@ describe('ButtonComponent', () => {
     appFixture.detectChanges();
 
     Str.toArray(customizations).forEach(c => {
-      expect(testApp.button().classList.value.includes(c)).toBeTrue();
+      expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
     });
 
-    expect(testApp.button().classList.value.includes(defaultGap)).toBeFalse();
-    expect(testApp.button().classList.value.includes(defaultBgColor)).toBeFalse();
-    expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
+    expect(testApp.button().nativeElement.classList.contains(defaultGap)).toBeFalse();
+    expect(testApp.button().nativeElement.classList.contains(defaultBgColor)).toBeFalse();
+    expect(testApp.button().nativeElement.classList.contains(defaultRadius)).toBeFalse();
   });
 
   it('should customize using dependency injection', () => {
+    const customization = 'rounded-full bg-red-600 gap-3';
+    const defaultGap = 'gap-2';
+    const defaultBgColor = 'bg-blue-600';
+    const defaultRadius = 'rounded-md';
+
     @Component({
       selector: 'test-app',
       standalone: true,
       imports: [ButtonComponent],
       providers: [
         provideButton({
-          primary: {
-            gap: 'gap-3',
-            bgColor: 'bg-red-600',
-            radius: 'rounded-full'
-          }
+          primary: customization
         })
       ],
       template: `<button tw-button>Test button</button>`
@@ -111,42 +117,30 @@ describe('ButtonComponent', () => {
       button = viewChild.required(ButtonComponent);
     }
 
-    const customizations = 'rounded-full bg-red-600 gap-3';
-
-    const defaultGap = GetButtonConfig().md.gap!;
-    const defaultRadius = GetButtonConfig().md.radius!;
-    const defaultBgColor = GetButtonConfig().primary.bgColor!;
-
     const appFixture = TestBed.createComponent(TestApp);
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    Str.toArray(customizations).forEach(c => {
-      expect(testApp.button().classList.value.includes(c)).toBeTrue();
+    Str.toArray(customization).map(c => {
+      expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
     });
 
-    expect(testApp.button().classList.value.includes(defaultGap)).toBeFalse();
-    expect(testApp.button().classList.value.includes(defaultBgColor)).toBeFalse();
-    expect(testApp.button().classList.value.includes(defaultRadius)).toBeFalse();
-  });
-
-  it('should update classList', () => {
-    const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
-    const defaultRadius = GetButtonConfig().primary.gap!;
-
-    component.classList.update(newClassList);
-
-    newClassList.forEach(c => {
-      expect(component.classList.value.includes(c)).toBeTrue();
-    });
-
-    expect(component.classList.value.includes(defaultRadius)).toBeFalse();
+    expect(testApp.button().nativeElement.classList.contains(defaultGap)).toBeFalse();
+    expect(testApp.button().nativeElement.classList.contains(defaultBgColor)).toBeFalse();
+    expect(testApp.button().nativeElement.classList.contains(defaultRadius)).toBeFalse();
   });
 
   it('should set isFab', () => {
-    expect(component.isFab()).toBeFalse();
-    component.isFab.set(true);
-    expect(component.isFab()).toBeTrue();
+    expect(component.isFab).toBeFalse();
+    expect(component.nativeElement.classList.contains('shadow-lg')).toBeFalse();
+
+    fixture = TestBed.createComponent(ButtonComponent);
+    component = fixture.componentInstance
+    component.isFab = true;
+    fixture.detectChanges();
+
+    expect(component.isFab).toBeTrue();
+    expect(component.nativeElement.classList.contains('shadow-lg')).toBeTrue();
   });
 
 });

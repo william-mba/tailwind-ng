@@ -31,6 +31,6 @@ export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create<string>('', 'CO
 @Directive()
 export abstract class ComboboxItemBase extends BaseDirective {
   protected override buildStyle(): void {
-    this.nativeElement.classList.add(...classlist(this.class).set(inject(COMBOBOX_ITEM_CONFIG)).value);
+    this.nativeElement.className = classlist(this.class).set(inject(COMBOBOX_ITEM_CONFIG)).value;
   }
 }

@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { DIALOG_CONFIG, DialogConfig, Str } from '@tailwind-ng/core';
+import { configMerge, DIALOG_CONFIG, DialogConfig } from '@tailwind-ng/core';
 
 const BASE = () => {
   const className = 'transition-all transition-discrete duration-200';
@@ -18,7 +18,7 @@ const CONTAINER = () => {
   return className;
 };
 
-const CONFIG = (): DialogConfig => {
+const DefaultConfig = (): DialogConfig => {
   return {
     scrim: `${BASE()} ${SCRIM()}`,
     container: `${BASE()} ${CONTAINER()}`,
@@ -31,15 +31,8 @@ const CONFIG = (): DialogConfig => {
  * @returns The configured provider
  */
 export function provideDialog(customization?: Partial<DialogConfig>): Provider {
-  const mergedConfig = CONFIG();
-  if (customization) {
-    for (const prop in customization) {
-      const className = Str.resolve([CONFIG()[prop as keyof DialogConfig].split(' '), (prop).split(' ')]).join(' ')
-      mergedConfig[prop as keyof DialogConfig] = className;
-    }
-  }
   return {
     provide: DIALOG_CONFIG,
-    useValue: !customization ? CONFIG() : mergedConfig
+    useValue: !customization ? DefaultConfig() : configMerge([DefaultConfig(), customization])
   }
 };

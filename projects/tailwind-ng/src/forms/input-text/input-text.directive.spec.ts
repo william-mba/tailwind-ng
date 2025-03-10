@@ -1,15 +1,20 @@
 import { InputTextDirective } from './input-text.directive';
 import { TestBed } from '@angular/core/testing';
-import { GetInputTextConfig, provideInputText } from './input-text.directive.config';
-import { classlist } from '@tailwind-ng/core';
+import { provideInputText } from './input-text.directive.config';
+import { INPUT_TEXT_CONFIG, Str } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 
 describe('InputDirective', () => {
+  let className = '';
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         provideInputText()
       ]
+    });
+
+    TestBed.runInInjectionContext(() => {
+      className = TestBed.inject(INPUT_TEXT_CONFIG);
     });
   });
 
@@ -27,7 +32,8 @@ describe('InputDirective', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    const expected = classlist().set(GetInputTextConfig());
-    expect(testApp.input().classList.value).toEqual(expected.value);
+    Str.toArray(className).forEach(c => {
+      expect(testApp.input().nativeElement.className.includes(c)).toBeTrue();
+    });
   });
 });

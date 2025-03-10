@@ -83,7 +83,7 @@ export abstract class ComboboxBase extends PopupDirective {
 
   protected override buildStyle(): void {
     const className = 'relative h-max';
-    this.nativeElement.classList.add(...classlist(this.class).set(className).value);
+    this.nativeElement.className = classlist(this.class).set(className).value;
   }
 
   // Override default keyboard event prevention.

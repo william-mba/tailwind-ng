@@ -1,12 +1,11 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { BadgeComponent } from './badge.component';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import { GetBadgeConfig, provideBadge } from './badge.component.config';
+import { provideBadge } from './badge.component.config';
 import { Component, viewChild } from '@angular/core';
-import { classlist } from '@tailwind-ng/core';
+import { BADGE_CONFIG, Str } from '@tailwind-ng/core';
 
 describe('BadgeComponent', () => {
-  const config = GetBadgeConfig();
   let component: BadgeComponent;
   let fixture: ComponentFixture<BadgeComponent>;
 
@@ -18,7 +17,6 @@ describe('BadgeComponent', () => {
     });
     fixture = TestBed.createComponent(BadgeComponent);
     component = fixture.componentInstance;
-    component.classList = classlist().set({ b: config.base, s: config.md });
     fixture.detectChanges();
   }));
 
@@ -48,65 +46,54 @@ describe('BadgeComponent', () => {
   });
 
   it('should set classList', () => {
-    const classList = classlist().set({ b: config.base, s: config.md });
-    expect(component.classList.base).toEqual(classList.base);
-    expect(component.classList.value).toEqual(classList.value);
+    TestBed.runInInjectionContext(() => {
+      const className = TestBed.inject(BADGE_CONFIG);
+      Str.toArray(className).forEach(c => {
+        expect(component.nativeElement.classList.contains(c)).toBeTrue();
+      }
+      );
+    });
   });
 
   it('should customize using class attribute', () => {
-    const customConfig = GetBadgeConfig();
-    customConfig.base.gap = 'gap-2';
-    customConfig.base.radius = 'rounded-md';
-    customConfig.base.bgColor = 'bg-blue-500/10';
-    customConfig.base.textColor = 'text-blue-500';
-    const expectedClassList = classlist(customConfig.base)
-      .set({ b: config.base, s: config.md });
-
-    const defaultGap = GetBadgeConfig().base.gap!;
-    const defaultFontSize = GetBadgeConfig().base.fontSize!;
-    const defaultDisplay = GetBadgeConfig().base.display!;
+    const customization = 'gap-2 rounded-md bg-blue-500/10 text-blue-500';
+    const defaultGap = 'gap-1';
+    const defaultFontSize = 'text-xs';
+    const defaultDisplay = 'inline-flex';
 
     @Component({
       selector: 'test-app',
       imports: [BadgeComponent],
-      template: `<tw-badge [class]="config">Badge</tw-badge>`
+      template: `<tw-badge [class]="customization">Badge</tw-badge>`
     }) class TestApp {
       badge = viewChild.required(BadgeComponent);
-      protected config = customConfig.base;
+      protected customization = customization;
     }
 
     const appFixture = TestBed.createComponent(TestApp);
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    expect(testApp.badge().classList.base).toEqual(expectedClassList.base);
-    expect(testApp.badge().classList.value).toEqual(expectedClassList.value);
+    Str.toArray(customization).forEach(c => {
+      expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
+    });
 
-    expect(testApp.badge().classList.value.includes(defaultGap)).toBeFalse();
-    expect(testApp.badge().classList.value.includes(defaultFontSize)).toBeTrue();
-    expect(testApp.badge().classList.value.includes(defaultDisplay)).toBeTrue();
+    expect(testApp.badge().nativeElement.classList.contains(defaultGap)).toBeFalse();
+    expect(testApp.badge().nativeElement.classList.contains(defaultFontSize)).toBeTrue();
+    expect(testApp.badge().nativeElement.classList.contains(defaultDisplay)).toBeTrue();
   });
 
   it('should customize using DI', () => {
-    const customConfig = GetBadgeConfig({
-      base: {
-        gap: 'gap-2',
-        radius: 'rounded-md',
-        bgColor: 'bg-blue-500/10',
-        textColor: 'text-blue-500'
-      }
-    });
-    const expectedClassList = classlist().set({ b: customConfig.base, s: customConfig.md });
-
-    const defaultGap = GetBadgeConfig().base.gap!;
-    const defaultFontSize = GetBadgeConfig().base.fontSize!;
-    const defaultDisplay = GetBadgeConfig().base.display!;
+    const customization = 'gap-2 rounded-md bg-blue-500/10 text-blue-500';
+    const defaultGap = 'gap-1';
+    const defaultFontSize = 'text-xs';
+    const defaultDisplay = 'inline-flex';
 
     @Component({
       selector: 'test-app',
       standalone: true,
       providers: [
-        provideBadge(customConfig)
+        provideBadge(customization)
       ],
       imports: [BadgeComponent],
       template: `<tw-badge>Badge</tw-badge>`
@@ -118,26 +105,13 @@ describe('BadgeComponent', () => {
     const testApp = fixture.componentInstance;
     fixture.detectChanges();
 
-    expect(testApp.badge().classList.base).toEqual([]);
-    expect(testApp.badge().classList.value).toEqual(expectedClassList.value);
-
-    expect(testApp.badge().classList.value.includes(defaultGap)).toBeFalse();
-    expect(testApp.badge().classList.value.includes(defaultFontSize)).toBeTrue();
-    expect(testApp.badge().classList.value.includes(defaultDisplay)).toBeTrue();
-  });
-
-  it('should update classList', () => {
-    const newClassList = ['rounded-md', 'ring-2', 'ring-white', 'gap-2'];
-    const defaultGap = GetBadgeConfig().base.gap!;
-
-    component.classList.update(newClassList);
-
-    newClassList.forEach(c => {
-      expect(component.classList.value.includes(c)).toBeTrue();
+    Str.toArray(customization).forEach(c => {
+      expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
     });
 
-    expect(component.classList.value.includes(defaultGap)).toBeFalse();
-  })
-
+    expect(testApp.badge().nativeElement.classList.contains(defaultGap)).toBeFalse();
+    expect(testApp.badge().nativeElement.classList.contains(defaultFontSize)).toBeTrue();
+    expect(testApp.badge().nativeElement.classList.contains(defaultDisplay)).toBeTrue();
+  });
 });
 

@@ -1,4 +1,7 @@
+import { Str } from "./classname.util";
 import { isArray, isConfigObject, isEmptyConfigObject, isEmptyObject, isObject, isString } from "./type-assertion.util";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Config = Record<string, any>;
 /** Returns the object properties values, including properties values of it child objects in a string.*/
 function toString(obj: Config, separator = ' '): string {
@@ -50,9 +53,9 @@ function toArray(obj: Config): string[] {
     if (isString(value)) {
       res.push(value);
     } else if (isArray(value)) {
-      res.push(...value);
+      res.concat(value);
     } else if (isObject(value)) {
-      res.push(...toArray(value));
+      res.concat(toArray(value));
     }
   }
   return res;
@@ -84,7 +87,14 @@ function simpleMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
   for (const obj of source) {
     for (const k in obj) {
       if (isString(obj[k])) {
-        Object.assign(target, { [k]: obj[k] });
+        if (isString(target[k])) {
+          const s = (obj[k] as string);
+          const t = (target[k] as string);
+          const res = Str.resolve([t, s], { keepClassDeletor: true });
+          Object.assign(target, { [k]: res });
+        } else {
+          Object.assign(target, { [k]: obj[k] });
+        }
       } else if (isConfigObject(obj[k])) {
         if (!target[k]) {
           Object.assign(target, { [k]: obj[k] });

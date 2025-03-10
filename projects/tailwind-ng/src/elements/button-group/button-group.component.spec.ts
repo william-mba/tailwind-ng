@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GetButtonGroupConfig, provideButtonGroup } from './button-group.component.config';
-import { classlist } from '@tailwind-ng/core';
+import { provideButtonGroup } from './button-group.component.config';
+import { BUTTON_GROUP_CONFIG } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 
@@ -22,15 +22,18 @@ describe('ButtonGroupComponent', () => {
   });
 
   it('should set classList', () => {
-    const classList = classlist(GetButtonGroupConfig());
-
-    expect(component.classList.base).toEqual([]);
-    expect(component.classList.value).toEqual(classList.value);
+    TestBed.runInInjectionContext(() => {
+      const className = TestBed.inject(BUTTON_GROUP_CONFIG);
+      className?.split(' ').forEach(c => {
+        expect(component.nativeElement.className.includes(c)).toBeTrue();
+      }
+      );
+    });
   });
 
   it('should customize using class attribute', () => {
-    const defaultRadius = GetButtonGroupConfig().radius!;
-    const defaultBoxShadow = GetButtonGroupConfig().boxShadow!;
+    const defaultRadius = 'rounded-md';
+    const defaultBoxShadow = 'shadow-sm';
 
     @Component({
       selector: 'test-app',
@@ -51,27 +54,24 @@ describe('ButtonGroupComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    expect(testApp.buttonGroup().classList.value.includes('rounded-full')).toBeTrue();
-    expect(testApp.buttonGroup().classList.value.includes(defaultRadius)).toBeFalse();
-    expect(testApp.buttonGroup().classList.value.includes(defaultBoxShadow)).toBeTrue();
+    expect(testApp.buttonGroup().nativeElement.className.includes('rounded-full')).toBeTrue();
+    expect(testApp.buttonGroup().nativeElement.className.includes(defaultRadius)).toBeFalse();
+    expect(testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow)).toBeTrue();
   });
 
   it('should customize using DI', () => {
-    const defaultRadius = GetButtonGroupConfig().radius!;
-    const defaultBoxShadow = GetButtonGroupConfig().boxShadow!;
+    const defaultRadius = 'rounded-md';
+    const defaultBoxShadow = 'shadow-sm';
 
     @Component({
       selector: 'test-app',
       standalone: true,
       imports: [ButtonComponent, ButtonGroupComponent],
       providers: [
-        provideButtonGroup({
-          ringColor: 'ring-red-600',
-          radius: 'rounded-full'
-        })
+        provideButtonGroup('rounded-full shadow-lg')
       ],
       template: `
-        <tw-button-group class="rounded-full">
+        <tw-button-group>
           <button tw-button variant="secondary">Button A</button>
           <button tw-button variant="secondary">Button B</button>
           <button tw-button variant="secondary">Button C</button>
@@ -85,10 +85,10 @@ describe('ButtonGroupComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    expect(testApp.buttonGroup().classList.value.includes('rounded-full')).toBeTrue();
-    expect(testApp.buttonGroup().classList.value.includes('ring-red-600')).toBeTrue();
-    expect(testApp.buttonGroup().classList.value.includes(defaultRadius)).toBeFalse();
-    expect(testApp.buttonGroup().classList.value.includes(defaultBoxShadow)).toBeTrue();
+    expect(testApp.buttonGroup().nativeElement.className.includes('shadow-lg')).toBeTrue();
+    expect(testApp.buttonGroup().nativeElement.className.includes('rounded-full')).toBeTrue();
+    expect(testApp.buttonGroup().nativeElement.className.includes(defaultRadius)).toBeFalse();
+    expect(testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow)).toBeFalse();
   });
 });
 
