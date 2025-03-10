@@ -11,10 +11,8 @@ pool: Lab
 variables:
   - ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
       - group: tailwind-ng-master
-  - ${{ elseif eq(variables['Build.SourceBranchName'], 'next') }}:
-      - group: tailwind-ng-next
   - ${{ else }}:
-      - group: tailwind-ng-dev
+      - group: tailwind-ng-next
   - name: Patch
     value: $[counter(variables.MajorMinor, 0)]
 
