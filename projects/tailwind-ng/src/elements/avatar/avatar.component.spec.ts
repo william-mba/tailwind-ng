@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { AVATAR_CONFIG, Str } from '@tailwind-ng/core';
+import { AVATAR_CONFIG, ClassName } from '@tailwind-ng/core';
 import { TestBed } from '@angular/core/testing';
 import { AvatarComponent } from './avatar.component';
 import { Component, viewChild } from '@angular/core';
@@ -47,12 +47,13 @@ describe('AvatarComponent', () => {
     const fixture = TestBed.createComponent(AvatarComponent);
     const component = fixture.componentInstance;
     fixture.detectChanges();
+    let className = ''
     TestBed.runInInjectionContext(() => {
-      const className = TestBed.inject(AVATAR_CONFIG).className;
-      className?.split(' ').forEach(c => {
-        expect(component.nativeElement.className.includes(c)).toBeTrue();
-      }
-      );
+      className = TestBed.inject(AVATAR_CONFIG).className || '';
+    });
+
+    ClassName.toArray(className).forEach(c => {
+      expect(component.nativeElement.classList.contains(c)).toBeTrue();
     });
   });
 
@@ -74,7 +75,7 @@ describe('AvatarComponent', () => {
     const testApp = fixture.componentInstance;
     fixture.detectChanges();
 
-    Str.toArray(customization).forEach(c => {
+    ClassName.toArray(customization).forEach(c => {
       expect(testApp.avatar().nativeElement.className.includes(c)).toBeTrue();
     });
   });
@@ -99,7 +100,7 @@ describe('AvatarComponent', () => {
     const testApp = fixture.componentInstance;
     fixture.detectChanges();
 
-    Str.toArray(customization).forEach(c => {
+    ClassName.toArray(customization).forEach(c => {
       expect(testApp.avatar().nativeElement.className.includes(c)).toBeTrue();
     });
   });

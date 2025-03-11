@@ -2,7 +2,7 @@ import { Provider } from "@angular/core";
 import { BUTTON_CONFIG, ButtonConfig, configMerge } from "@tailwind-ng/core";
 
 export const BASE = () => {
-  const className = 'border-0 inline-flex items-center justify-center shadow-xs text-nowrap select-none cursor-pointer w-fit leading-none transition-colors duration-100 disabled:opacity-50 disabled:cursor-not-allowed';
+  const className = 'border-0 inline-flex items-center justify-center shadow-xs select-none cursor-pointer w-fit leading-none transition-colors duration-100 disabled:opacity-50 disabled:cursor-not-allowed rounded-md font-semibold';
   return className;
 };
 export const PRIMARY = () => {
@@ -25,21 +25,43 @@ const FAB = () => {
   const className = 'shadow-lg';
   return className;
 };
-
+const XS = () => {
+  const className = 'px-2 py-1.5 gap-1 text-xs text-nowrap';
+  return className;
+}
+const SM = () => {
+  const className = 'px-3 py-2 gap-1.5 text-xs text-nowrap';
+  return className;
+}
+const MD = () => {
+  const className = 'px-4 py-2.5 gap-2 text-sm text-nowrap';
+  return className;
+}
+const LG = () => {
+  const className = 'px-5 py-3 gap-2.5 text-sm text-nowrap';
+  return className;
+}
+const XL = () => {
+  const className = 'px-6 py-3.5 gap-3 text-base text-nowrap';
+  return className;
+}
 const DefaultConfig = (): ButtonConfig => {
   return {
-    primary: `${BASE()} ${PRIMARY()}`,
-    secondary: `${BASE()} ${SECONDARY()}`,
-    tonal: `${BASE()} ${TONAL()}`,
-    text: `${BASE()} ${TEXT()}`,
+    base: BASE(),
+    primary: PRIMARY(),
+    secondary: SECONDARY(),
+    tonal: TONAL(),
+    text: TEXT(),
     fab: FAB(),
-    xs: 'px-2 py-1.5 gap-1 text-xs rounded font-semibold',
-    sm: 'px-3 py-2 gap-1.5 text-xs rounded-md font-semibold',
-    md: 'px-4 py-2.5 gap-2 text-sm rounded-md font-semibold',
-    lg: 'px-5 py-3 gap-2.5 text-sm rounded-md font-semibold',
-    xl: 'px-6 py-3.5 gap-3 text-base rounded-md font-semibold'
+    xs: XS(),
+    sm: SM(),
+    md: MD(),
+    lg: LG(),
+    xl: XL()
   }
 };
+
+export const GetButtonConfig = () => DefaultConfig();
 
 /**
  * Button config provider

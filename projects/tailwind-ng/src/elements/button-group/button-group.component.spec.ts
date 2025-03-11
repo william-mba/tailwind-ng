@@ -2,7 +2,7 @@
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideButtonGroup } from './button-group.component.config';
-import { BUTTON_GROUP_CONFIG } from '@tailwind-ng/core';
+import { BUTTON_GROUP_CONFIG, ClassName } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 
@@ -22,12 +22,13 @@ describe('ButtonGroupComponent', () => {
   });
 
   it('should set classList', () => {
+    let className = ''
     TestBed.runInInjectionContext(() => {
-      const className = TestBed.inject(BUTTON_GROUP_CONFIG);
-      className?.split(' ').forEach(c => {
-        expect(component.nativeElement.className.includes(c)).toBeTrue();
-      }
-      );
+      className = TestBed.inject(BUTTON_GROUP_CONFIG) || '';
+    });
+
+    ClassName.toArray(className).forEach(c => {
+      expect(component.nativeElement.classList.contains(c)).toBeTrue();
     });
   });
 

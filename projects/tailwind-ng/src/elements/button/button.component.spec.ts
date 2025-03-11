@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { BUTTON_CONFIG, Str } from '@tailwind-ng/core';
+import { ClassName } from '@tailwind-ng/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import { provideButton } from './button.component.config';
+import { GetButtonConfig, provideButton } from './button.component.config';
 import { Component, viewChild } from '@angular/core';
 
 describe('ButtonComponent', () => {
@@ -59,12 +59,10 @@ describe('ButtonComponent', () => {
   });
 
   it('should set classList', () => {
-    TestBed.runInInjectionContext(() => {
-      const className = TestBed.inject(BUTTON_CONFIG)[component.variant];
-      className?.split(' ').forEach(c => {
-        expect(component.nativeElement.classList.contains(c)).toBeTrue();
-      }
-      );
+    const className = GetButtonConfig().base;
+
+    ClassName.toArray(className).forEach(c => {
+      expect(component.nativeElement.classList.contains(c)).toBeTrue();
     });
   });
 
@@ -88,7 +86,7 @@ describe('ButtonComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    Str.toArray(customizations).forEach(c => {
+    ClassName.toArray(customizations).forEach(c => {
       expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
     });
 
@@ -98,7 +96,6 @@ describe('ButtonComponent', () => {
   });
 
   it('should customize using dependency injection', () => {
-    const customization = 'rounded-full bg-red-600 gap-3';
     const defaultGap = 'gap-2';
     const defaultBgColor = 'bg-blue-600';
     const defaultRadius = 'rounded-md';
@@ -109,7 +106,8 @@ describe('ButtonComponent', () => {
       imports: [ButtonComponent],
       providers: [
         provideButton({
-          primary: customization
+          primary: 'bg-red-600',
+          base: 'rounded-full gap-3'
         })
       ],
       template: `<button tw-button>Test button</button>`
@@ -121,7 +119,7 @@ describe('ButtonComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    Str.toArray(customization).map(c => {
+    ClassName.toArray('bg-red-600 rounded-full gap-3').map(c => {
       expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
     });
 

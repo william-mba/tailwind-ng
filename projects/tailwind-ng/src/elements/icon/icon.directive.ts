@@ -8,9 +8,9 @@ import { classlist, ICON_CONFIG, IconBase } from '@tailwind-ng/core';
 })
 export class IconDirective extends IconBase {
   protected override buildStyle(): void {
-    const config = inject(ICON_CONFIG);
-    const className = `${config[this.size]} ${config.className}`;
-    this.nativeElement.className = classlist(this.class).set(className).with(this.nativeElement.className);
-    this.nativeElement.innerHTML = config.map![this.name] || '';
+    const { [this.size]: size, className } = inject(ICON_CONFIG);
+    this.nativeElement.className = classlist(this.class).set(`${size} ${className}`).with(this.nativeElement.className);
+    const { [this.name]: icon = '' } = inject(ICON_CONFIG).map || {};
+    this.nativeElement.innerHTML = icon;
   }
 }

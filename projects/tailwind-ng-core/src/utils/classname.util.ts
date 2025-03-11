@@ -7,10 +7,21 @@ function stringToArray(value: unknown, separator = ' '): string[] {
 }
 
 /**
- * A helper class for string operations.
+ * A utility for classname operations.
  */
-export abstract class Str {
+export abstract class ClassName {
+  /**
+   * Resolves classnames from source to target.
+   * @param arg The target and source values to resolve.
+   * @param options The options for resolving.
+   * @returns The resolved classnames.
+   */
   static readonly resolve = memoizeResolve(resolve);
+  /**
+   * Converts value to an array of strings using the specified separator. If value is not a string, an empty array is returned.
+   * @param value The value to convert.
+   * @param separator The separator to use.
+   */
   static readonly toArray = stringToArray;
 }
 

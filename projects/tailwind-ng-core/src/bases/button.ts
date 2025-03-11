@@ -22,6 +22,7 @@ export interface Button {
 export type ButtonVariant = 'primary' | 'secondary' | 'tonal' | 'text';
 
 export interface ButtonConfig extends Partial<Record<ButtonVariant, string> & Record<SizeOption, string>> {
+  base?: string
   fab?: string
 }
 

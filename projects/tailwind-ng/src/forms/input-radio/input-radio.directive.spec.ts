@@ -1,7 +1,7 @@
 import { InputRadioDirective } from './input-radio.directive';
 import { TestBed } from '@angular/core/testing';
 import { provideInputRadio } from './input-radio.directive.config';
-import { INPUT_RADIO_CONFIG, Str } from '@tailwind-ng/core';
+import { INPUT_RADIO_CONFIG, ClassName } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 
 describe('InputRadioDirective', () => {
@@ -31,7 +31,7 @@ describe('InputRadioDirective', () => {
     const appFixture = TestBed.createComponent(TestAppComponent);
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
-    Str.toArray(className).forEach(c => {
+    ClassName.toArray(className).forEach(c => {
       expect(testApp.input().nativeElement.className.includes(c)).toBeTrue();
     });
   });

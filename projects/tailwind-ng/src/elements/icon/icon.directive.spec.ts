@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector */
-import { Str } from '@tailwind-ng/core';
+import { ClassName } from '@tailwind-ng/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { IconDirective } from './icon.directive';
 import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
@@ -112,7 +112,7 @@ describe('IconDirective', () => {
     const icon = fixture.debugElement.query(By.css('tw-icon')).nativeElement as HTMLElement;
     fixture.detectChanges()
 
-    Str.toArray(customizations).forEach(c => {
+    ClassName.toArray(customizations).forEach(c => {
       expect(icon.classList).toContain(c);
     })
   });

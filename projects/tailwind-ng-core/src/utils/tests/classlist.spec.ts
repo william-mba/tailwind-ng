@@ -1,5 +1,5 @@
 import { ClassList, classlist } from '../classlist.util';
-import { Str } from '../classname.util';
+import { ClassName } from '../classname.util';
 
 describe('ClassList', () => {
   let classList: ClassList;
@@ -22,8 +22,8 @@ describe('ClassList', () => {
 
     classList = classlist(customValue).set(defaultValue);
 
-    customValue = Str.toArray(customValue);
-    defaultValue = Str.toArray(defaultValue);
+    customValue = ClassName.toArray(customValue);
+    defaultValue = ClassName.toArray(defaultValue);
 
     // Value should includes all custom classes
     expect(classList.value.includes(customValue[0])).toBeTrue();
@@ -46,11 +46,11 @@ describe('ClassList', () => {
     const newValue = 'rounded-lg bg-red-600 p-3';
     classList.update(newValue);
 
-    Str.toArray(newValue).forEach((value) => {
+    ClassName.toArray(newValue).forEach((value) => {
       expect(classList.value.includes(value)).toBeTrue();
     });
 
-    defaultValue = Str.toArray(defaultValue);
+    defaultValue = ClassName.toArray(defaultValue);
 
     expect(classList.value.includes(defaultValue[0])).toBeFalse();
     expect(classList.value.includes(defaultValue[1])).toBeFalse();

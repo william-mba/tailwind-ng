@@ -1,7 +1,7 @@
 import { InputTextDirective } from './input-text.directive';
 import { TestBed } from '@angular/core/testing';
 import { provideInputText } from './input-text.directive.config';
-import { INPUT_TEXT_CONFIG, Str } from '@tailwind-ng/core';
+import { INPUT_TEXT_CONFIG, ClassName } from '@tailwind-ng/core';
 import { Component, viewChild } from '@angular/core';
 
 describe('InputDirective', () => {
@@ -32,7 +32,7 @@ describe('InputDirective', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    Str.toArray(className).forEach(c => {
+    ClassName.toArray(className).forEach(c => {
       expect(testApp.input().nativeElement.className.includes(c)).toBeTrue();
     });
   });

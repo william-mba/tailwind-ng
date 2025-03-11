@@ -1,13 +1,13 @@
-import { Str } from '../classname.util';
+import { ClassName } from '../classname.util';
 
 describe('StringHelper', () => {
   it('should resolve values', () => {
     const source = 'bg-blue-600 text-blue-600 ring-blue-600 ring-2 translate-x-0 scale-100 p-3.5';
     const target = 'bg-red-100 text-red-600 text-sm ring-red-600 translate-0 translate-y-0 ring-inherit ring-inset rounded-md scale-y-100 px-3.5 py-2';
 
-    const expectedResult = Str.resolve([target, source]);
+    const expectedResult = ClassName.resolve([target, source]);
 
-    Str.toArray(source).forEach((value) => {
+    ClassName.toArray(source).forEach((value) => {
       expect(expectedResult.includes(value)).toBeTrue();
     });
 
@@ -27,7 +27,7 @@ describe('StringHelper', () => {
 
   it('should convert string to array', () => {
     const value = 'bg-red-600 bg-blue-600 bg-green-600';
-    const expectedResult = Str.toArray(value);
+    const expectedResult = ClassName.toArray(value);
     expect(expectedResult).toEqual(['bg-red-600', 'bg-blue-600', 'bg-green-600']);
   });
 
@@ -36,7 +36,7 @@ describe('StringHelper', () => {
     const classesDeletors = 'bg-blue- ring- translate- px-';
     const customValues = 'text-blue-600 ring-2 scale-100';
 
-    let className: string | string[] = Str.resolve([defaultValues, `${classesDeletors} ${customValues}`], { keepClassDeletor: false });
+    let className: string | string[] = ClassName.resolve([defaultValues, `${classesDeletors} ${customValues}`], { keepClassDeletor: false });
 
     // Expected classnames
     expect(className.includes('bg-red-100')).toBeTrue(); // Should be included as `bg-blue-` is less specific.
@@ -52,15 +52,15 @@ describe('StringHelper', () => {
     expect(className.includes('scale-y-100')).toBeFalse();
     expect(className.includes('py-2')).toBeTrue();
 
-    className = Str.toArray(className);
+    className = ClassName.toArray(className);
 
     // Expected custom values
-    Str.toArray(customValues).forEach((value) => {
+    ClassName.toArray(customValues).forEach((value) => {
       expect(className.includes(value)).toBeTrue();
     });
 
     // Expected classes deletors
-    Str.toArray(classesDeletors).forEach((value) => {
+    ClassName.toArray(classesDeletors).forEach((value) => {
       expect(className.includes(value)).toBeFalse();
     });
   });
@@ -68,7 +68,7 @@ describe('StringHelper', () => {
   it('should keep classes deletor in resolved values', () => {
     const defaultValues = 'bg-red-100 text-red-600 text-sm ring-red-600 translate-0 px-3.5 translate-y-0 ring-inherit ring-inset rounded-md scale-y-100 py-2';
     const customValues = 'bg-blue- text-blue-600 ring- ring-2 translate- scale-100 px-';
-    const expectedResult = Str.resolve([defaultValues, customValues], { keepClassDeletor: true });
+    const expectedResult = ClassName.resolve([defaultValues, customValues], { keepClassDeletor: true });
 
     // Default values expectations
     expect(expectedResult.includes('bg-red-100')).toBeTrue(); // Should be included as `bg-blue-` is less specific.

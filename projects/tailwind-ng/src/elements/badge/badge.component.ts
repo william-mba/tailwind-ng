@@ -13,8 +13,7 @@ export class BadgeComponent extends BadgeBase implements Badge {
   @Input() size: SizeOption = 'md';
 
   protected override buildStyle(): void {
-    const config = inject(BADGE_CONFIG);
-    const className = `${config[this.size]} ${config.className}`;
-    this.nativeElement.className = classlist(this.class).set(className).value;
+    const { [this.size]: size, className } = inject(BADGE_CONFIG);
+    this.nativeElement.className = classlist(this.class).set(`${size} ${className}`).value;
   }
 }

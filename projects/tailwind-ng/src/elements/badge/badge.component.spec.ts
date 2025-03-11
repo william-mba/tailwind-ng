@@ -3,7 +3,7 @@ import { BadgeComponent } from './badge.component';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { provideBadge } from './badge.component.config';
 import { Component, viewChild } from '@angular/core';
-import { BADGE_CONFIG, Str } from '@tailwind-ng/core';
+import { BADGE_CONFIG, ClassName } from '@tailwind-ng/core';
 
 describe('BadgeComponent', () => {
   let component: BadgeComponent;
@@ -46,12 +46,13 @@ describe('BadgeComponent', () => {
   });
 
   it('should set classList', () => {
+    let className = ''
     TestBed.runInInjectionContext(() => {
-      const className = TestBed.inject(BADGE_CONFIG);
-      Str.toArray(className).forEach(c => {
-        expect(component.nativeElement.classList.contains(c)).toBeTrue();
-      }
-      );
+      className = TestBed.inject(BADGE_CONFIG).className || '';
+    });
+
+    ClassName.toArray(className).forEach(c => {
+      expect(component.nativeElement.classList.contains(c)).toBeTrue();
     });
   });
 
@@ -74,7 +75,7 @@ describe('BadgeComponent', () => {
     const testApp = appFixture.componentInstance;
     appFixture.detectChanges();
 
-    Str.toArray(customization).forEach(c => {
+    ClassName.toArray(customization).forEach(c => {
       expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
     });
 
@@ -107,7 +108,7 @@ describe('BadgeComponent', () => {
     const testApp = fixture.componentInstance;
     fixture.detectChanges();
 
-    Str.toArray(customization).forEach(c => {
+    ClassName.toArray(customization).forEach(c => {
       expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
     });
 

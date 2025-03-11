@@ -1,4 +1,4 @@
-import { Str } from "./classname.util";
+import { ClassName } from "./classname.util";
 import { isString } from "./type-assertion.util";
 
 /**
@@ -50,11 +50,7 @@ interface ResolveBehavior {
   /**
    * Whether to resolve using the base value.
    */
-  useBase?: boolean,
-  /**
-   * Whether to resolve using the current classlit value.
-   */
-  useValue?: boolean
+  useBase?: boolean
 };
 
 export class ClassList implements IClassList {
@@ -70,13 +66,13 @@ export class ClassList implements IClassList {
   // This make future updates to the classlist value even faster.
   constructor(base?: string) {
     if (base && base.length > 0) {
-      this.base = Str.resolve([this.base, base], { keepClassDeletor: true });
+      this.base = ClassName.resolve([this.base, base], { keepClassDeletor: true });
       this.value = this.base;
     }
   }
 
   init<T extends string | null>(value?: T): ClassList {
-    this.base = Str.resolve([this.base, value], { keepClassDeletor: true });
+    this.base = ClassName.resolve([this.base, value], { keepClassDeletor: true });
     this.refresh();
     return this;
   }
@@ -86,12 +82,12 @@ export class ClassList implements IClassList {
   }
 
   set<T extends string | null>(value?: T): ClassList {
-    this.value = Str.resolve([value, this.base]);
+    this.value = ClassName.resolve([value, this.base]);
     return this;
   }
 
   update<T extends string | null>(value?: T): ClassList {
-    this.value = Str.resolve([this.value, value]);
+    this.value = ClassName.resolve([this.value, value]);
     return this;
   }
 
@@ -106,9 +102,9 @@ export class ClassList implements IClassList {
   with(value?: string | null, behavior: ResolveBehavior = {}): string {
     const { useBase } = behavior;
     if (useBase) {
-      return Str.resolve([this.base, value]);
+      return ClassName.resolve([this.base, value]);
     }
-    return Str.resolve([this.value, value]);
+    return ClassName.resolve([this.value, value]);
   }
 }
 

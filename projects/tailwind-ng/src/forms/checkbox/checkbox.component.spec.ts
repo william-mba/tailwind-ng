@@ -3,7 +3,7 @@ import { provideCheckbox } from './checkbox.component.config';
 import { Component, viewChild } from '@angular/core';
 import { CheckboxComponent } from './checkbox.component';
 import { provideIcon } from 'tailwind-ng';
-import { CHECKBOX_CONFIG, Str } from '@tailwind-ng/core';
+import { CHECKBOX_CONFIG, ClassName } from '@tailwind-ng/core';
 
 describe('CheckboxComponent', () => {
   beforeEach(() => {
@@ -29,11 +29,13 @@ describe('CheckboxComponent', () => {
     const component = testApp.component().inputRef();
     fixture.detectChanges();
 
+    let className = ''
     TestBed.runInInjectionContext(() => {
-      const className = TestBed.inject(CHECKBOX_CONFIG);
-      Str.toArray(className).forEach((c) => {
-        expect(component.nativeElement.classList.contains(c)).toBeTrue();
-      });
+      className = TestBed.inject(CHECKBOX_CONFIG) || '';
+    });
+
+    ClassName.toArray(className).forEach(c => {
+      expect(component.nativeElement.classList.contains(c)).toBeTrue();
     });
   });
 });
