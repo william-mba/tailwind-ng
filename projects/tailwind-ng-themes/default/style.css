@@ -982,6 +982,9 @@
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
+  .rounded-full\! {
+    border-radius: calc(infinity * 1px) !important;
+  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -1558,9 +1561,6 @@
   .opacity-50 {
     opacity: 50%;
   }
-  .opacity-80 {
-    opacity: 80%;
-  }
   .opacity-90 {
     opacity: 90%;
   }
@@ -1607,9 +1607,6 @@
   }
   .ring-blue-600 {
     --tw-ring-color: var(--color-blue-600);
-  }
-  .ring-gray-100 {
-    --tw-ring-color: var(--color-gray-100);
   }
   .ring-gray-300 {
     --tw-ring-color: var(--color-gray-300);
@@ -1936,6 +1933,11 @@
   .\*\:text-nowrap {
     :is(& > *) {
       text-wrap: nowrap;
+    }
+  }
+  .\*\:text-gray-600 {
+    :is(& > *) {
+      color: var(--color-gray-600);
     }
   }
   .\*\:text-gray-700 {
@@ -2401,13 +2403,6 @@
       }
     }
   }
-  .hover\:opacity-100 {
-    &:hover {
-      @media (hover: hover) {
-        opacity: 100%;
-      }
-    }
-  }
   .\*\:hover\:bg-gray-200 {
     :is(& > *) {
       &:hover {
@@ -2820,11 +2815,6 @@
   .max-sm\:min-w-full {
     @media (width < 40rem) {
       min-width: 100%;
-    }
-  }
-  .max-sm\:items-center {
-    @media (width < 40rem) {
-      align-items: center;
     }
   }
   .max-sm\:gap-0\.5 {
@@ -3541,11 +3531,6 @@
   .dark\:ring-gray-800 {
     &:where(.dark, .dark *) {
       --tw-ring-color: var(--color-gray-800);
-    }
-  }
-  .dark\:ring-gray-900 {
-    &:where(.dark, .dark *) {
-      --tw-ring-color: var(--color-gray-900);
     }
   }
   .dark\:ring-indigo-900\/60 {

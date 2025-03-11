@@ -5,8 +5,5 @@ import { TwButton, TwIcon } from 'tailwind-ng';
   selector: 'app-buttons-preview',
   imports: [TwButton, TwIcon],
   templateUrl: './preview.component.html',
-  styles: ``
 })
-export class PreviewComponent {
-
-}
+export class PreviewComponent { }

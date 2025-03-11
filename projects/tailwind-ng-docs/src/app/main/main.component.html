@@ -4,21 +4,25 @@
 <div class="-z-40 hidden dark:block fixed inset-[calc(var(--spacing)*0)] bg-[image:var(--bg-pattern)] opacity-5">
 </div>
 <section class="relative">
-  <div tw-button-group
-    class="rounded-md *:rounded-md items-center lg:p-1 ring-gray-100 dark:ring-gray-900 opacity-80 hover:opacity-100 fixed top-4 right-8 gap-2 z-50">
-    <button tw-button variant="secondary" size="xs" class="max-sm:size-8">
+  <div tw-button variant="text"
+    class="p-0 lg:p-1 fixed top-4 right-8 gap-2 z-50 *:text-gray-600 max-lg:backdrop-blur-md shadow-">
+    <button tw-button variant="text" size="xs" class="max-sm:size-8">
       <a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
         <tw-icon name="github" class="max-sm:size-4" />
       </a>
     </button>
-    <button tw-button variant="secondary" size="xs" class="max-sm:size-8">
+    <button tw-button variant="text" size="xs" class="max-sm:size-8">
       <a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
         <tw-icon name="discord" class="max-sm:size-4" />
       </a>
     </button>
-    <button (click)="switchTheme()" tw-button variant="secondary" size="xs" class="max-sm:size-8 items-start">
-      <tw-icon name="moon" *ngIf="!theme.isDark" class="max-sm:size-4" />
-      <tw-icon name="sun" *ngIf="theme.isDark" class="max-sm:size-4" />
+    <button (click)="switchTheme()" tw-button variant="text" size="xs" class="max-sm:size-8">
+      @if (theme.isDark) {
+      <tw-icon name="sun" class="max-sm:size-4" />
+      }
+      @else {
+      <tw-icon name="moon" class="max-sm:size-4" />
+      }
     </button>
   </div>
 </section>
@@ -45,10 +49,10 @@
     </div>
   </div>
   <div class="max-lg:mt-16 xl:mt-0">
-    <div
-      class="z-10 text-xl font-semibold font-heading flex items-start gap-2 max-sm:gap-0.5 max-sm:text-base max-sm:items-center max-lg:fixed p-3 py-1.5 rounded-md max-lg:backdrop-blur-md max-lg:top-4 max-sm:left-4 max-lg:left-8">
+    <button tw-button variant="text" routerLink="/"
+      class="z-10 p-0.5 px-2 max-sm:gap-0.5 max-sm:text-base max-lg:fixed max-lg:backdrop-blur-md max-lg:top-4 max-sm:left-4 max-lg:left-8 shadow-">
       <tw-icon name="tailwind-ng" size="lg" class="max-sm:size-7" /> Tailwind NG
-    </div>
+    </button>
     <h1
       class="text-black dark:text-white max-sm:text-4xl text-5xl text-center lg:text-start lg:mt-20 sm:text-7xl font-extrabold font-heading">
       Rapidly build
@@ -70,7 +74,7 @@
       that enables developers to build great applications even faster.
     </div>
   </div>
-  <div class="my-8 place-self-center lg:place-self-start *:rounded-md gap-3 grid *:mx-auto sm:flex">
+  <div class="my-8 place-self-center lg:place-self-start gap-3 grid *:mx-auto sm:flex">
     <button tw-button [isFab]="true" size="lg" routerLink="/docs/getting-started" class="bg-indigo-700">
       Get started
     </button>

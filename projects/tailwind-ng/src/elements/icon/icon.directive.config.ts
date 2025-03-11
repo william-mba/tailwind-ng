@@ -1,5 +1,5 @@
-import { Provider } from "@angular/core";
-import { ICON_CONFIG, IconMap, configMerge, IconConfig } from "@tailwind-ng/core";
+import { inject, Provider } from "@angular/core";
+import { ICON_CONFIG, IconMap, configMerge, IconConfig, ClassName } from "@tailwind-ng/core";
 
 const MAP = (): IconMap => {
   return {
@@ -39,17 +39,25 @@ const DefaultConfig = (): IconConfig => {
   };
 };
 
+type IconConfigSansMapKey = keyof Omit<IconConfig, 'map'>;
 export function provideIcon(customization?: Partial<IconConfig>): Provider {
-  const config = DefaultConfig();
-  if (customization) {
-    if (!config.map) {
-      config.map = MAP();
-    }
-    config.map = configMerge([config.map, customization.map as Partial<Record<string, string>>], { strict: true });
-    delete customization.map;
-  }
   return {
     provide: ICON_CONFIG,
-    useValue: !customization ? DefaultConfig() : configMerge([config, customization])
+    useFactory: () => {
+      const config = inject(ICON_CONFIG, { skipSelf: true, optional: true }) || DefaultConfig();
+      if (customization) {
+        Object.entries(customization).forEach(([key, value]) => {
+          if (key === 'map') {
+            if (!config.map) {
+              config.map = MAP();
+            }
+            config.map = configMerge([config.map, customization.map as IconMap], { strict: true });
+          } else {
+            config[key as IconConfigSansMapKey] = ClassName.resolve([config[key as IconConfigSansMapKey], value as string]);
+          }
+        });
+      }
+      return config;
+    }
   }
 }
