@@ -7,7 +7,8 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-main',
   imports: [TwButton, TwIcon, RouterLink, TwButtonGroup, NgIf],
-  templateUrl: './main.component.html'
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.css',
 })
 export class MainComponent {
   protected readonly theme = inject(ThemeService);
