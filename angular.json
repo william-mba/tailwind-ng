@@ -124,7 +124,7 @@
             ],
             "styles": [
               "projects/tailwind-ng-themes/default/style.css",
-              "projects/tailwind-ng-docs/public/fonts/style.css"
+              "projects/tailwind-ng-docs/src/style.css"
             ],
             "scripts": []
           },
