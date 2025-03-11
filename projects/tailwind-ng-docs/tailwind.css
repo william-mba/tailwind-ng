@@ -1,21 +1,7 @@
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
 @theme {
-  --breakpoint-xs: 30rem;
   --font-heading: "Epilogue", system-ui, sans-serif;
-  --font-sans: "Inter Tight", system-ui, sans-serif;
-  --animate-pulse-8: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-spin-180: spin 180s linear infinite;
-  --animate-bounce-2: bounce 2s infinite;
-  --animate-bounce-x: bounce-x 1s infinite;
-  @keyframes bounce-x {
-    0%, 100% {
-      transform: translateX(-25%);
-      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-    }
-    50% {
-      transform: none;
-      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    }
-  }
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }

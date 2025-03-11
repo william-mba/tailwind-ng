@@ -123,8 +123,8 @@
               }
             ],
             "styles": [
-              "projects/tailwind-ng-themes/default/style.css",
-              "projects/tailwind-ng-docs/src/style.css"
+              "projects/tailwind-ng-docs/src/style.css",
+              "projects/tailwind-ng-themes/default/style.css"
             ],
             "scripts": []
           },

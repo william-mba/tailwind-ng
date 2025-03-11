@@ -2,9 +2,8 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: "Inter Tight", system-ui, sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      "Liberation Mono", "Courier New", monospace;
+    --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-100: oklch(0.936 0.032 17.717);
     --color-red-300: oklch(0.808 0.114 19.571);
     --color-red-400: oklch(0.704 0.191 22.216);
@@ -112,8 +111,6 @@
       --font-mono--font-variation-settings
     );
     --font-heading: "Epilogue", system-ui, sans-serif;
-    --animate-pulse-8: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    --animate-spin-180: spin 180s linear infinite;
   }
 }
 @layer base {
@@ -418,9 +415,6 @@
   }
   .container {
     width: 100%;
-    @media (width >= 30rem) {
-      max-width: 30rem;
-    }
     @media (width >= 40rem) {
       max-width: 40rem;
     }
@@ -781,12 +775,6 @@
   .rotate-z-180 {
     --tw-rotate-z: rotateZ(180deg);
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
-  }
-  .animate-pulse-8 {
-    animation: var(--animate-pulse-8);
-  }
-  .animate-spin-180 {
-    animation: var(--animate-spin-180);
   }
   .cursor-pointer {
     cursor: pointer;
@@ -4073,14 +4061,4 @@
   syntax: "*";
   initial-value: "";
   inherits: false;
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.5;
-  }
 }
