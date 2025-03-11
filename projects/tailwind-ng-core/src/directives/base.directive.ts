@@ -106,7 +106,7 @@ export interface FocusOptions {
 export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseProps<T>, BaseActions, OnInit, OnDestroy {
   readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
   protected readonly _document = inject(DOCUMENT);
-  protected readonly _injector = inject(Injector);
+  private readonly _injector = inject(Injector);
   private _isInitialized = false;
 
   protected get isInitialized(): boolean {
@@ -155,6 +155,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 
   /**
    * Build the component's style.
+   * @NOTE This method automatically runs inside an injection context, only during the component's initialization. If you have injected dependencies and want to call this method manually, make sure to run it inside an injection context using `runInInjectionContext` Angular's function for instance.
    */
   protected abstract buildStyle(): void;
 
