@@ -7,7 +7,8 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
   imports: [TwIcon, TwDialog, TwButton, RouterLink],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './components-overview.component.html'
+  templateUrl: './components-overview.component.html',
+  styleUrl: './components-overview.component.css',
 })
 export class ComponentsOverviewComponent implements AfterViewInit {
   ngAfterViewInit(): void {

@@ -1,0 +1,16 @@
+@layer theme {
+  :host, :root {
+    --bg-avatars: url("/images/components/avatars.webp");
+    --bg-badges: url("/images/components/badges.webp");
+    --bg-buttons: url("/images/components/buttons.webp");
+    --bg-button-groups: url("/images/components/button-groups.webp");
+    --bg-checkboxes: url("/images/components/checkboxes.webp");
+    --bg-comboboxes: url("/images/components/comboboxes.webp");
+    --bg-dialogs: url("/images/components/dialogs.webp");
+    --bg-dropdowns: url("/images/components/dropdowns.webp");
+    --bg-icon-buttons: url("/images/components/icon-buttons.webp");
+    --bg-input-groups: url("/images/components/input-groups.webp");
+    --bg-radio-groups: url("/images/components/radio-groups.webp");
+    --bg-toggles: url("/images/components/toggles.webp");
+  }
+}
