@@ -110,6 +110,8 @@
     --default-mono-font-variation-settings: var(
       --font-mono--font-variation-settings
     );
+    --animate-pulse-8: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-spin-180: spin 180s linear infinite;
     --font-heading: "Epilogue", system-ui, sans-serif;
   }
 }
@@ -778,6 +780,12 @@
   .rotate-z-180 {
     --tw-rotate-z: rotateZ(180deg);
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
+  }
+  .animate-pulse-8 {
+    animation: var(--animate-pulse-8);
+  }
+  .animate-spin-180 {
+    animation: var(--animate-spin-180);
   }
   .cursor-pointer {
     cursor: pointer;
@@ -4064,4 +4072,14 @@
   syntax: "*";
   initial-value: "";
   inherits: false;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
 }

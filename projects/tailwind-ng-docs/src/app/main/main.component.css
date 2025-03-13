@@ -1,11 +1,6 @@
 @layer theme {
   :host, :root {
-    --animate-pulse-8: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    --animate-spin-180: spin 180s linear infinite;
     --bg-hero: url("/images/hero-bg.webp");
-    --breakpoint-xs: 30rem;
-    --animate-pulse-8: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    --animate-spin-180: spin 180s linear infinite;
     --bg-avatars: url("/images/components/avatars.webp");
     --bg-badges: url("/images/components/badges.webp");
     --bg-buttons: url("/images/components/buttons.webp");
