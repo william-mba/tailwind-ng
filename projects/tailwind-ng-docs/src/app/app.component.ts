@@ -5,8 +5,7 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  template: `<router-outlet />`,
-  styleUrl: './app.component.css',
+  template: `<router-outlet />`
 })
 export class AppComponent implements OnInit {
   protected readonly theme = inject(ThemeService);

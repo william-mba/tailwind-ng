@@ -2,8 +2,9 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
     --color-red-100: oklch(0.936 0.032 17.717);
     --color-red-300: oklch(0.808 0.114 19.571);
     --color-red-400: oklch(0.704 0.191 22.216);
@@ -27,7 +28,6 @@
     --color-blue-800: oklch(0.424 0.199 265.638);
     --color-indigo-100: oklch(0.93 0.034 272.788);
     --color-indigo-300: oklch(0.785 0.115 274.713);
-    --color-indigo-400: oklch(0.673 0.182 276.935);
     --color-indigo-500: oklch(0.585 0.233 277.117);
     --color-indigo-600: oklch(0.511 0.262 276.966);
     --color-indigo-700: oklch(0.457 0.24 277.023);
@@ -1209,8 +1209,8 @@
   .bg-\[image\:var\(--bg-toggles\)\] {
     background-image: var(--bg-toggles);
   }
-  .from-indigo-400 {
-    --tw-gradient-from: var(--color-indigo-400);
+  .from-indigo-600 {
+    --tw-gradient-from: var(--color-indigo-600);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-pink-500 {
@@ -1466,9 +1466,6 @@
   }
   .text-pretty {
     text-wrap: pretty;
-  }
-  .text-black {
-    color: var(--color-black);
   }
   .text-blue-500 {
     color: var(--color-blue-500);
@@ -3153,6 +3150,11 @@
       width: calc(9/12 * 100%);
     }
   }
+  .lg\:w-xl {
+    @media (width >= 64rem) {
+      width: var(--container-xl);
+    }
+  }
   .lg\:max-w-3\/4 {
     @media (width >= 64rem) {
       max-width: calc(3/4 * 100%);
@@ -3505,11 +3507,6 @@
   .dark\:text-slate-600 {
     &:where(.dark, .dark *) {
       color: var(--color-slate-600);
-    }
-  }
-  .dark\:text-white {
-    &:where(.dark, .dark *) {
-      color: var(--color-white);
     }
   }
   .dark\:scheme-dark {

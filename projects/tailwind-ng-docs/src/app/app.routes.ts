@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, Routes, TitleStrategy } from '@angular/router';
+import { MainComponent } from './main/main.component';
 
 export const routes: Routes = [
   {
@@ -480,7 +481,8 @@ export const routes: Routes = [
   },
   {
     path: '',
-    loadComponent: () => import('./main/main.component').then(m => m.MainComponent)
+    component: MainComponent,
+    pathMatch: 'full'
   }
 ];
 
