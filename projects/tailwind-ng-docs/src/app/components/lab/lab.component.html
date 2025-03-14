@@ -113,45 +113,6 @@
   </div>
 </div>
 
-<!-- Inputs -->
-<div class="grid gap-8 place-items-center p-8 mb-16">
-  <div>
-    <label for="price" class="block text-sm mb-2 font-medium">Price</label>
-    <div class="relative">
-      <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-        <span class="text-gray-600 dark:text-gray-400 sm:text-sm z-1">$</span>
-      </div>
-      <!-- Input -->
-      <input tw-input type="text" id="price" placeholder="0.0"
-        class="sm:w-80 pl-7 pr-16 placeholder:text-gray-400 placeholder:dark:text-gray-600" />
-      <div class="absolute inset-y-0 right-0 flex items-center">
-        <label for="currency" class="sr-only">Currency</label>
-        <select id="currency" name="currency"
-          class="text-gray-700 dark:text-gray-300 h-full outline-none rounded-md bg-transparent px-1 not-focus:mr-2 *:dark:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-          <option>USD</option>
-          <option>CAD</option>
-          <option>EUR</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div>
-    <label for="email" class="block text-sm mb-2 font-medium">
-      Email
-    </label>
-    <div class="relative">
-      <input tw-input type="email" name="email" id="email" [formControl]="email" class="sm:w-80 pr-10"
-        placeholder="you@example.com" />
-      <div class="absolute inset-y-0 right-3 flex items-center text-red-600/80">
-        <tw-icon *ngIf="isInvalid(email)" name="exclamation-circle" source="heroicons" />
-      </div>
-    </div>
-    <div *ngIf="isInvalid(email)" class="max-w-xl text-sm mt-2 text-red-600/90 dark:text-red-500/90">
-      Not a valid email address.
-    </div>
-  </div>
-</div>
-
 <!-- Inputs Radio -->
 <div class="grid gap-8 place-items-center p-8 mb-16">
   <div class="grid text-sm">

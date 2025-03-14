@@ -29,11 +29,9 @@ export interface Task {
 @Component({
   selector: 'app-lab',
   imports: [
-    NgIf,
     TwButton,
     TwComboboxModule,
     TwIcon,
-    TwInputText,
     TwInputRadio,
     TwDialog,
     ReactiveFormsModule,
@@ -43,13 +41,6 @@ export interface Task {
   templateUrl: './lab.component.html'
 })
 export class LabComponent {
-  private _formBuilder = inject(NonNullableFormBuilder);
-  search = this._formBuilder.control('');
-
-  // ngAfterViewInit(): void {
-  //   this.search.valueChanges.subscribe(value => console.log('Search:', value));
-  // }
-
   // Example with recursion but throw an expressionChangedAfterItHasBeenCheckedError
   // if there is some parent task that is updated after the view has been checked.
   // This may occurs if the task is in an inconsistent state.
@@ -100,11 +91,6 @@ export class LabComponent {
   saveTasks(): void {
     this.saveTask();
   }
-
-  isInvalid = (control: AbstractControl): boolean => control.invalid;
-  isTouchedAndInvalid = (control: AbstractControl): boolean => control.touched && control.invalid;
-
-  email = this._formBuilder.control('williammba', Validators.email);
 
   get _users(): User[] {
     return [
