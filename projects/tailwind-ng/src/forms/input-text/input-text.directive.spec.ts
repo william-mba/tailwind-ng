@@ -14,7 +14,7 @@ describe('InputDirective', () => {
     });
 
     TestBed.runInInjectionContext(() => {
-      className = TestBed.inject(INPUT_TEXT_CONFIG);
+      className = TestBed.inject(INPUT_TEXT_CONFIG).className ?? '';
     });
   });
 
