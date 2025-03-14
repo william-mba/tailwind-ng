@@ -25,7 +25,7 @@ const MAP = (): IconMap => {
 };
 
 const DefaultConfig = (): IconConfig => {
-  const className = 'inline-flex items-center justify-center';
+  const className = 'inline-flex items-center justify-center pointer-events-none';
   return {
     ...{
       xs: '*:size-3',

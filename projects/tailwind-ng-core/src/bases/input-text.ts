@@ -2,6 +2,7 @@ import { Directive, Input, output, OutputEmitterRef } from "@angular/core";
 import { BaseDirective } from "../directives";
 import { InjectionTokenFactory } from "../tokens/injection-token.factory";
 import { BaseActions, BaseProps } from "../directives";
+import { SizeOption } from "../types";
 
 /**
  * @TailwindNG Input component interface.
@@ -14,6 +15,10 @@ import { BaseActions, BaseProps } from "../directives";
  * - url
  */
 export interface InputText extends BaseProps<HTMLInputElement>, BaseActions {
+  /**
+   * The input's size.
+   */
+  readonly size: SizeOption;
   /**
    * The input's value.
    */
@@ -41,7 +46,11 @@ export interface InputText extends BaseProps<HTMLInputElement>, BaseActions {
   clear(): void;
 }
 
-export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create<string>('', 'INPUT_TEXT_CONFIG');
+export interface InputConfig extends Partial<Record<SizeOption, string>> {
+  className?: string;
+}
+
+export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create<InputConfig>({}, 'INPUT_TEXT_CONFIG');
 
 export function isInputText(component: unknown): component is InputText {
   return component instanceof InputTextBase;
@@ -49,6 +58,7 @@ export function isInputText(component: unknown): component is InputText {
 
 @Directive()
 export abstract class InputTextBase extends BaseDirective<HTMLInputElement> implements InputText {
+  @Input() size: SizeOption = 'md';
 
   @Input() set value(value: string) {
     this.nativeElement.value = value;

@@ -1,17 +1,45 @@
 import { Provider } from '@angular/core';
-import { INPUT_TEXT_CONFIG, ClassName } from "@tailwind-ng/core";
+import { INPUT_TEXT_CONFIG, InputConfig, configMerge } from "@tailwind-ng/core";
 
-const DefaultConfig = () => {
-  const className = 'placeholder:text-gray-400 placeholder:dark:text-gray-600 backdrop-blur-xs bg-transparent dark:ring-white/15 data-visual-focused:ring-2 data-visual-focused:ring-indigo-600 disabled:bg-black/5 disabled:dark:bg-white/5 focus:border-transparent focus:ring-2 focus:ring-indigo-600 focus:ring-inset invalid:focus:ring-red-600/60 invalid:ring-red-600/60 leading-6 outline-none px-3 py-1.5 ring-1 ring-black/15 ring-inset rounded-md text-sm w-full';
+const DefaultConfig = (): InputConfig => {
+  const className = 'placeholder-shown:font-light placeholder-shown:text-gray-300placeholder-shown:dark:text-gray-700 backdrop-blur-xs bg-transparent dark:ring-white/15 data-visual-focused:ring-2 data-visual-focused:ring-indigo-600 disabled:bg-gray-50 disabled:dark:bg-gray-50/5 focus:border-transparent focus:ring-2 focus:ring-indigo-600 focus:ring-inset invalid:focus:ring-red-600/60 invalid:ring-red-600/60 leading-6 outline-none ring-1 ring-gray-300 font-normal ring-inset rounded-md w-full sm:w-80';
+  return {
+    className,
+    xs: XS(),
+    sm: SM(),
+    md: MD(),
+    lg: LG(),
+    xl: XL()
+  };
+}
+
+const XS = () => {
+  const className = 'px-2 py-1 text-sm placeholder:text-xs';
+  return className;
+}
+const SM = () => {
+  const className = 'px-3 py-1.5 text-sm placeholder:text-sm';
+  return className;
+}
+const MD = () => {
+  const className = 'px-4 py-2 text-base placeholder:text-base';
+  return className;
+}
+const LG = () => {
+  const className = 'px-5 py-2.5 text-base placeholder:text-base';
+  return className;
+}
+const XL = () => {
+  const className = 'px-6 py-3 text-lg placeholder:text-lg';
   return className;
 }
 
 /**
  * @TailwindNG InputText config provider.
  */
-export function provideInputText(className = ''): Provider {
+export function provideInputText(customization?: InputConfig): Provider {
   return {
     provide: INPUT_TEXT_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : ClassName.resolve([DefaultConfig(), (className)])
+    useValue: !customization ? DefaultConfig() : configMerge([DefaultConfig(), customization])
   };
 }
