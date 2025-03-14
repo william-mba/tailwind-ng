@@ -1,10 +1,10 @@
 import { ClassName } from "./classname.util";
-import { isString } from "./type-assertion.util";
 
 /**
  * @TailwindNG Component's class list interface.
  */
 export interface IClassList {
+  [Symbol.toPrimitive](): string;
   /**
    * The initial (custom) class list value.
    */
@@ -25,10 +25,6 @@ export interface IClassList {
    * Updates the current class list value.
    */
   update<T extends string>(value: T): IClassList;
-  /**
-   * Returns the string representation of the class list value.
-   */
-  toString(): string;
   /**
    * Clears the class list.
    * @param behavior The behavior to clear the class list. Default is 'all'.
@@ -106,14 +102,15 @@ export class ClassList implements IClassList {
     }
     return ClassName.resolve([this.value, value]);
   }
+
+  [Symbol.toPrimitive](): string {
+    return this.value;
+  }
 }
 
 /**
  * Creates a class list that can be used to set, update and merge Tailwind CSS class names for a component.
  */
 export function classlist(initialValue?: string | null): ClassList {
-  if (isString(initialValue)) {
-    return new ClassList(initialValue);
-  }
-  return new ClassList();
+  return new ClassList(initialValue ?? '');
 }
