@@ -4,13 +4,12 @@ import { AVATAR_CONFIG, AvatarConfig, configMerge } from "@tailwind-ng/core";
 const DefaultConfig = (): AvatarConfig => {
   const className = 'flex items-center justify-center relative rounded-full';
   return {
-    ...{
-      xs: 'size-6',
-      sm: 'size-9',
-      md: 'size-11',
-      lg: 'size-14',
-      xl: 'size-16'
-    }, className
+    className,
+    xs: 'size-6',
+    sm: 'size-9',
+    md: 'size-11',
+    lg: 'size-14',
+    xl: 'size-16'
   };
 };
 
