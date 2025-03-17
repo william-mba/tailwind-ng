@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TwBadge, TwIcon } from 'tailwind-ng';
+import { TwInputRadio } from 'tailwind-ng';
 
 @Component({
   selector: 'app-radio-groups-preview',
-  imports: [TwBadge, TwIcon],
+  imports: [TwInputRadio],
   templateUrl: './preview.component.html',
   styles: ``
 })

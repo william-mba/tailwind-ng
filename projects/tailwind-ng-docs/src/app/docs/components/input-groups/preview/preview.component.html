@@ -14,6 +14,27 @@
       <input tw-input type="email" id="email2" placeholder="you@example.com" />
     </div>
   </div>
+  <h2 class="font-medium">With pill shape</h2>
+  <div
+    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div>
+      <label for="pill-shape" class="block text-sm mb-2 font-medium">
+        Email
+      </label>
+      <input tw-input type="email" id="pill-shape" placeholder="you@example.com" class="rounded-full" />
+    </div>
+  </div>
+  <h2 class="font-medium">With gray background and bottom border</h2>
+  <div
+    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
+    <div>
+      <label for="bg-and-bottom-border" class="block text-sm mb-2 font-medium">
+        Email
+      </label>
+      <input tw-input type="email" id="bg-and-bottom-border" placeholder="you@example.com"
+        class="border-b-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 rounded-none ring- focus:- focus:border-indigo-600" />
+    </div>
+  </div>
   <h2 class="font-medium">With inset label</h2>
   <div
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
@@ -60,7 +81,7 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
     <div class="relative">
       <label for="user-name"
-        class="absolute left-2 -top-2 px-1.5 bg-slate-50 dark:bg-slate-900 text-xs font-medium rounded-full">
+        class="absolute left-2 -top-2 px-1.5 bg-gray-50 dark:bg-gray-900 text-xs font-medium rounded-full">
         Name
       </label>
       <input tw-input type="text" id="user-name" placeholder="John Smith" class="backdrop-blur-none" />
@@ -209,8 +230,8 @@
         <tw-icon name="dollar-sign"
           class="opacity-60 absolute inset-y-0 left-0 pl-2 pointer-events-none text-gray-400" />
         <div class="absolute inset-y-0 right-0 flex items-center">
-          <label for="currency" class="sr-only">Currency</label>
-          <select id="currency" name="currency"
+          <label for="currency2" class="sr-only">Currency</label>
+          <select id="currency2" name="currency"
             class="appearance-none text-gray-700 dark:text-gray-300 outline-none h-full rounded-md bg-transparent px-3 pr-8 *:dark:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
             <option>USD</option>
             <option>CAD</option>
@@ -246,7 +267,9 @@
     <div class="sm:w-80">
       <!-- Card details -->
       <fieldset>
-        <legend class="block text-sm font-medium">Card details</legend>
+        <legend class="block text-sm font-medium">
+          Card details
+        </legend>
         <div class="mt-2 -space-y-px has-focus:-space-y-0 rounded-md shadow-sm *:backdrop-blur-none">
           <input tw-input id="card-number" name="card-number" type="text" placeholder="Card number"
             class="rounded-none rounded-t-md">
@@ -260,11 +283,11 @@
       </fieldset>
       <!-- Billing address -->
       <fieldset class="mt-6">
-        <legend class="block text-sm font-medium">Billing address</legend>
+        <legend class="block text-sm font-medium">
+          Billing address
+        </legend>
         <div class="mt-2 -space-y-px has-focus:-space-y-0 rounded-md shadow-sm">
           <div class="*:backdrop-blur-none">
-            <label for="country"
-              class="absolute size-px p-0 -m-px overflow-hidden whitespace-nowrap border-0">Country</label>
             <div class="relative">
               <select id="country" name="country" autocomplete="country-name"
                 class="appearance-none block w-full rounded-none rounded-t-md border-0 outline-0 *:dark:text-gray-800 py-2 p-3 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:z-10 focus:ring-inset focus:ring-indigo-600 sm:text-sm">

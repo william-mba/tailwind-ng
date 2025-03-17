@@ -113,28 +113,6 @@
   </div>
 </div>
 
-<!-- Inputs Radio -->
-<div class="grid gap-8 place-items-center p-8 mb-16">
-  <div class="grid text-sm">
-    <p class="font-semibold">Notifications</p>
-    <p class="mt-2">How do you prefer to receive notifications? </p>
-    <div class="grid gap-4 mt-6">
-      <div class="flex items-center gap-3">
-        <input tw-input type="radio" name="notification" id="email-notification" />
-        <label for="email-notification">Email</label>
-      </div>
-      <div class="flex items-center gap-3">
-        <input tw-input type="radio" disabled="" name="notification" id="sms" />
-        <label for="sms">Phone (SMS)</label>
-      </div>
-      <div class="flex items-center gap-3">
-        <input tw-input type="radio" name="notification" id="push-notification" />
-        <label for="push-notification">Push notification</label>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="grid gap-6 place-content-center p-8 relative w-fit grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mx-auto">
   <!-- Trigger button -->
   <button tw-button variant="secondary" (click)="centeredDialogWithBackdrop.toggle()"
