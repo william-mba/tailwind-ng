@@ -136,6 +136,15 @@ function resolve(arg: [string | undefined | null, string | undefined | null], op
           if (foundInSource >= foundInTarget && foundInSource > 1) {
             // When source is for instance 'text-blue-600' and target is 'text-sm'
             if (foundInSource > foundInTarget && foundInTarget === 1) {
+              if (value.endsWith('transparent')) {
+                // We extract another string segment
+                // searchString 'bg-red' is truncate to 'bg'
+                lastIndexOfSeperator = searchString.lastIndexOf('-');
+                if (lastIndexOfSeperator > 0) {
+                  searchString = searchString.substring(0, lastIndexOfSeperator);
+                }
+                return !value.startsWith(searchString);
+              }
               return true;
             }
 
