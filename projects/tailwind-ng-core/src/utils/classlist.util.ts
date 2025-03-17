@@ -1,116 +1,89 @@
+import { isHTMLElement } from "../guards";
 import { ClassName } from "./classname.util";
+import { isString } from "./type-assertion.util";
+
+type Value = string | null | undefined;
 
 /**
- * @TailwindNG Component's class list interface.
+ * @TailwindNG Class list interface.
  */
-export interface IClassList {
-  [Symbol.toPrimitive](): string;
+export interface ClassList {
   /**
-   * The initial (custom) class list value.
+   * Returns the current classlist's value.
    */
-  readonly base: string;
+  (): NonNullable<Value>;
   /**
-   * The current class list value.
+   * Sets the classlist's value. If multiple values is provided, they will be merged from right to left.
+   * @returns The classlist with it new value.
    */
-  readonly value: string;
+  set(...value: Value[]): ClassList;
   /**
-   * Sets a brand new class list value.
+   * Updates the classlist value.
+   * @param fn The update function that returns the new value to be setted.
+   * @param currentValue The current classlist's value passed to the update function.
    */
-  init<T extends string>(value: T): IClassList;
+  update(fn: (currentValue: NonNullable<Value>) => Value): ClassList;
   /**
-   * Sets a brand new class list value.
+   * Merges multiple classnames to the classlist.
+   * @param fn The merge function that returns an array of values to merge from right to left.
+   * @param currentValue The current classlist's value passed to the merge function.
    */
-  set<T extends string>(value: T): IClassList;
+  merge(fn: (currentValue: NonNullable<Value>) => Value[]): ClassList;
   /**
-   * Updates the current class list value.
+   * Returns an array representation of the classlist's value
    */
-  update<T extends string>(value: T): IClassList;
-  /**
-   * Clears the class list.
-   * @param behavior The behavior to clear the class list. Default is 'all'.
-   * - 'all' clears the class list value and it base.
-   * - 'value' clears the class list value only and keeps the base.
-   * @returns The class list instance.
-   */
-  clear(behavior: ClearBehavior): IClassList;
-  /**
-   * Takes a value and resolves it with the class list without altering it current value or base.
-   * @param value The value to resolve.
-   * @param behavior The behavior to resolve the class list. By default the current value is used.
-   * @returns The resolved class list value.
-   */
-  with(value: string, behavior: ResolveBehavior): string;
+  toArray(): NonNullable<Value>[];
 }
-type ClearBehavior = 'all' | 'value';
-interface ResolveBehavior {
-  /**
-   * Whether to resolve using the base value.
-   */
-  useBase?: boolean
-};
 
-export class ClassList implements IClassList {
-  value = '';
-  base = '';
-
-  /**
-   * Creates a new instance of the class list.
-   * @param base The custom class list to merge with the default class list's value.
-   */
-  // The classlist should be initiliazed only with a string or string array
-  // and not with a config object to keep the base value as short as possible.
-  // This make future updates to the classlist value even faster.
-  constructor(base?: string) {
-    if (base && base.length > 0) {
-      this.base = ClassName.resolve([this.base, base], { keepClassDeletor: true });
-      this.value = this.base;
-    }
-  }
-
-  init<T extends string | null>(value?: T): ClassList {
-    this.base = ClassName.resolve([this.base, value], { keepClassDeletor: true });
-    this.refresh();
-    return this;
-  }
-
-  private refresh(): void {
-    this.value = this.set(this.value).value;
-  }
-
-  set<T extends string | null>(value?: T): ClassList {
-    this.value = ClassName.resolve([value, this.base]);
-    return this;
-  }
-
-  update<T extends string | null>(value?: T): ClassList {
-    this.value = ClassName.resolve([this.value, value]);
-    return this;
-  }
-
-  clear(behavior: ClearBehavior = 'all'): ClassList {
-    if (behavior === 'all') {
-      this.base = '';
-    }
-    this.value = '';
-    return this;
-  }
-
-  with(value?: string | null, behavior: ResolveBehavior = {}): string {
-    const { useBase } = behavior;
-    if (useBase) {
-      return ClassName.resolve([this.base, value]);
-    }
-    return ClassName.resolve([this.value, value]);
-  }
-
-  [Symbol.toPrimitive](): string {
-    return this.value;
+function setClassName(value: Value, el?: HTMLElement) {
+  if (value && el) {
+    el.className = value
   }
 }
 
 /**
- * Creates a class list that can be used to set, update and merge Tailwind CSS class names for a component.
+ * Creates a `ClassList` that can be set, update or merge directly.
+ * @param base The base value of the class list.
+ * @param el The element on which the classlist changes apply.
  */
-export function classlist(initialValue?: string | null): ClassList {
-  return new ClassList(initialValue ?? '');
+export function classlist(base?: Value | HTMLElement, el?: HTMLElement): ClassList {
+  let _value = '';
+  if (isString(base)) {
+    _value = base;
+    if (isHTMLElement(el)) {
+      setClassName(_value, el);
+    }
+  } else if (isHTMLElement(base)) {
+    _value = base.className;
+  }
+  const classlist = (): NonNullable<Value> => {
+    return _value;
+  }
+  // classlist is setted by merging value from right to left.
+  classlist.set = (...value: Value[]) => {
+    const [first, second, ...rest] = value
+    let newValue = ClassName.resolve([first, second]);
+    newValue = rest.reduce((prev, curr) => ClassName.resolve([prev, curr]), newValue)!;
+    // A new value is setted only if it's null/undefined and different from the current value.
+    if (newValue && newValue !== _value) {
+      _value = newValue;
+      if (isHTMLElement(base)) {
+        setClassName(_value, base);
+      } else if (isHTMLElement(el)) {
+        setClassName(_value, el);
+      }
+    }
+    return classlist;
+  }
+  classlist.update = (fn: (currentValue: NonNullable<Value>) => Value) => {
+    return classlist.set(fn(_value));
+  };
+  classlist.merge = (fn: (currentValue: NonNullable<Value>) => Value[]) => {
+    const [first, second, ...rest] = fn(_value);
+    const initialValue = ClassName.resolve([first, second]);
+    return classlist.set(rest.reduce((prev, curr) => ClassName.resolve([prev, curr]), initialValue));
+  }
+  classlist.toArray = () => ClassName.toArray(_value);
+  classlist.toString = () => _value;
+  return classlist
 }

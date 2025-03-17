@@ -66,7 +66,7 @@ export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxI
     });
   }
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(COMBOBOX_ITEM_CONFIG)).value;
+    classlist(this.nativeElement).set(inject(COMBOBOX_ITEM_CONFIG), this.class);
   }
 
   private selectIfNeeded(value = this._combobox.input().normalizedValue): void {

@@ -15,7 +15,7 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
   @Input() closeOnBlur?: boolean;
 
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(DROPDOWN_CONFIG)).value;
+    classlist(this.nativeElement).set(inject(DROPDOWN_CONFIG), this.class);
   }
 
   protected override addEventListeners(): void {

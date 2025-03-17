@@ -11,6 +11,6 @@ import { BUTTON_GROUP_CONFIG, ButtonGroupBase, classlist } from '@tailwind-ng/co
 })
 export class ButtonGroupComponent extends ButtonGroupBase {
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(BUTTON_GROUP_CONFIG)).value;
+    classlist(this.nativeElement).set(inject(BUTTON_GROUP_CONFIG), this.class);
   }
 }

@@ -14,6 +14,6 @@ import { classlist, INPUT_TEXT_CONFIG, InputTextBase } from '@tailwind-ng/core';
 export class InputTextDirective extends InputTextBase {
   protected override buildStyle(): void {
     const { [this.size]: size, className } = inject(INPUT_TEXT_CONFIG);
-    this.nativeElement.className = `${classlist(this.class).set(`${size} ${className}`)}`;
+    classlist(this.nativeElement).set(`${size} ${className}`, this.class);
   }
 }

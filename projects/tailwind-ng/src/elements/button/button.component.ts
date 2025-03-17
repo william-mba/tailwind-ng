@@ -16,7 +16,7 @@ export class ButtonComponent extends ButtonBase {
 
   protected override buildStyle(): void {
     const { base, [this.size]: size, [this.variant]: variant, fab } = inject(BUTTON_CONFIG);
-    this.nativeElement.className = classlist(base).set(`${size} ${variant}`).with(this.class);
+    classlist(this.nativeElement).set(`${size} ${variant}`, base, this.class);
     if (this.isFab) {
       this.nativeElement.classList.add(fab ?? '');
     }

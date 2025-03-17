@@ -66,7 +66,7 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
     if (this.parent) {
       this.inputRef().nativeElement.className = this.parent.inputRef().nativeElement.className;
     } else {
-      this.inputRef().nativeElement.className = classlist(this.class).set(inject(CHECKBOX_CONFIG)).value;
+      classlist(this.inputRef().nativeElement).set(inject(CHECKBOX_CONFIG), this.class);
     }
   }
 

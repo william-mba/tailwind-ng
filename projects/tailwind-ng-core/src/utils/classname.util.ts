@@ -72,7 +72,7 @@ export function hashString(str: string): number {
 }
 
 function generateKey(arg: [string | undefined | null, string | undefined | null], options: ResolveOptions): string {
-  return hashString(`${arg[0]} ${arg[1]} ${options.keepClassDeletor}`).toString();
+  return `${hashString(`${arg[0] ?? ''} ${arg[1] ?? ''} ${options.keepClassDeletor}`)}`;
 }
 
 /** Returns an array of resolved values from source to target.

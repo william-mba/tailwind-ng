@@ -18,6 +18,6 @@ export class DialogComponent extends DialogBase {
     if (this.isModal && config.backdrop) {
       className += ` ${config.backdrop}`;
     };
-    this.nativeElement.className = classlist(this.class).set(className).value;
+    classlist(this.nativeElement).set(className, this.class);
   }
 }

@@ -8,6 +8,6 @@ import { classlist, INPUT_RADIO_CONFIG, InputRadioBase } from '@tailwind-ng/core
 })
 export class InputRadioDirective extends InputRadioBase {
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(INPUT_RADIO_CONFIG)).value;
+    classlist(this.nativeElement).set(inject(INPUT_RADIO_CONFIG), this.class);
   }
 }

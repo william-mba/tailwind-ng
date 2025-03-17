@@ -14,6 +14,6 @@ export class BadgeComponent extends BadgeBase implements Badge {
 
   protected override buildStyle(): void {
     const { [this.size]: size, className } = inject(BADGE_CONFIG);
-    this.nativeElement.className = classlist(this.class).set(`${size} ${className}`).value;
+    classlist(this.nativeElement).set(`${size} ${className}`, this.class);
   }
 }

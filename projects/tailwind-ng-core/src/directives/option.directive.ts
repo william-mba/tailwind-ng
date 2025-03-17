@@ -13,7 +13,7 @@ import { classlist } from "../utils/classlist.util";
 })
 export class OptionDirective extends BaseDirective {
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0').value;
+    classlist(this.nativeElement).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0', this.class);
   }
 
   protected override addEventListeners(): void {

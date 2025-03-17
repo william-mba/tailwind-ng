@@ -20,7 +20,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   checked = model<boolean>(false);
 
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(TOGGLE_CONFIG)).value;
+    classlist(this.nativeElement).set(inject(TOGGLE_CONFIG), this.class);
   }
 
   private onKeydown(event: KeyboardEvent): void {

@@ -17,7 +17,7 @@ import { classlist } from '../../utils/classlist.util';
     this.nativeElement.focus = () => this._isFocused = true;
   }
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).value;
+    classlist(this.class, this.nativeElement);
   }
 }
 

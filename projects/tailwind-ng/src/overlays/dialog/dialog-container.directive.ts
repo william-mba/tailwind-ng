@@ -12,7 +12,7 @@ export class DialogContainerDirective extends BaseDirective {
   private readonly _dialog = inject(DialogBase, { skipSelf: true, host: true });
 
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set(inject(DIALOG_CONFIG).container).value;
+    classlist(this.nativeElement).set(inject(DIALOG_CONFIG).container, this.class);
   }
 
   protected onKeyup(event: KeyboardEvent): void {

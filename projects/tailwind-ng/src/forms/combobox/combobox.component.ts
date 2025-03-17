@@ -38,7 +38,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
   }
 
   protected override buildStyle(): void {
-    this.nativeElement.className = classlist(this.class).set('relative h-max').value;
+    classlist(this.nativeElement).set('relative h-max', this.class);
   }
 
   override open(): void {

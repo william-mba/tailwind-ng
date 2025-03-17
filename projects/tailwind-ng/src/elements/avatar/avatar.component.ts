@@ -17,7 +17,7 @@ export class AvatarComponent extends AvatarBase implements Avatar {
 
   protected override buildStyle(): void {
     const { [this.size]: size, className } = inject(AVATAR_CONFIG);
-    this.nativeElement.className = classlist(this.class).set(`${size} ${className}`).value;
+    classlist(this.nativeElement).set(`${size} ${className}`, this.class);
   }
 }
 
