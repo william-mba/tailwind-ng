@@ -63,7 +63,6 @@
     --container-xs: 20rem;
     --container-sm: 24rem;
     --container-md: 28rem;
-    --container-lg: 32rem;
     --container-xl: 36rem;
     --container-2xl: 42rem;
     --container-3xl: 48rem;
@@ -392,6 +391,9 @@
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
+  .-left-6 {
+    left: calc(var(--spacing) * -6);
+  }
   .-left-8 {
     left: calc(var(--spacing) * -8);
   }
@@ -698,14 +700,17 @@
   .w-px {
     width: 1px;
   }
+  .max-w-2xl {
+    max-width: var(--container-2xl);
+  }
   .max-w-64 {
     max-width: calc(var(--spacing) * 64);
   }
   .max-w-full {
     max-width: 100%;
   }
-  .max-w-lg {
-    max-width: var(--container-lg);
+  .max-w-md {
+    max-width: var(--container-md);
   }
   .max-w-xl {
     max-width: var(--container-xl);
@@ -724,12 +729,6 @@
   }
   .min-w-full {
     min-width: 100%;
-  }
-  .min-w-sm {
-    min-width: var(--container-sm);
-  }
-  .min-w-xs {
-    min-width: var(--container-xs);
   }
   .flex-1 {
     flex: 1;
@@ -3386,6 +3385,11 @@
       align-items: flex-start;
     }
   }
+  .sm\:justify-between {
+    @media (width >= 40rem) {
+      justify-content: space-between;
+    }
+  }
   .sm\:justify-center {
     @media (width >= 40rem) {
       justify-content: center;
@@ -3440,6 +3444,11 @@
   .sm\:pl-0 {
     @media (width >= 40rem) {
       padding-left: calc(var(--spacing) * 0);
+    }
+  }
+  .sm\:text-end {
+    @media (width >= 40rem) {
+      text-align: end;
     }
   }
   .sm\:text-left {

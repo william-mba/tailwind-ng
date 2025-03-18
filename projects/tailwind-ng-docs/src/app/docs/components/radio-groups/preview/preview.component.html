@@ -65,32 +65,30 @@
       </div>
     </div>
   </div>
-  <h2 class="font-medium">List with description</h2>
+  <h2 class="max-sm:hidden font-medium">List with description</h2>
   <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
-    <div class="grid gap-6 text-sm">
-      <div class="flex items-start gap-3">
-        <input tw-input type="radio" name="size" id="small" class="mt-0.5" />
-        <span class="grid gap-1">
-          <label class="font-medium" for="small">Small</label>
-          <p class="text-gray-500">4 GB RAM / 2 CPUS / 80 GB SSD Storage</p>
-        </span>
+    class="max-sm:hidden overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
+    <fieldset class="grid gap-6 text-sm">
+      <div class="grid gap-1 relative">
+        <input tw-input type="radio" name="size" id="small" class="absolute relative- -left-6 top-0.5" />
+        <label class="font-medium" for="small">Small</label>
+        <p class="text-gray-500">4 GB RAM / 2 CPUs / 80 GB SSD Storage</p>
       </div>
-      <div class="flex items-start gap-3">
-        <input tw-input type="radio" name="size" id="medium" class="mt-0.5" />
+      <div class="grid gap-1 relative">
+        <input tw-input type="radio" name="size" id="medium" class="absolute relative- -left-6 top-0.5" />
         <span class="grid gap-1">
           <label class="font-medium" for="medium">Medium</label>
-          <p class="text-gray-500">8 GB RAM / 4 CPUS / 160 GB SSD Storage</p>
+          <p class="text-gray-500">8 GB RAM / 4 CPUs / 160 GB SSD Storage</p>
         </span>
       </div>
-      <div class="flex items-start gap-3">
-        <input tw-input type="radio" name="size" id="large" class="mt-0.5" />
+      <div class="grid gap-1 relative">
+        <input tw-input type="radio" name="size" id="large" class="absolute relative- -left-6 top-0.5" />
         <span class="grid gap-1">
           <label class="font-medium" for="large">Large</label>
-          <p class="text-gray-500">16 GB RAM / 8 CPUS / 320 GB SSD Storage</p>
+          <p class="text-gray-500">16 GB RAM / 8 CPUs / 320 GB SSD Storage</p>
         </span>
       </div>
-    </div>
+    </fieldset>
   </div>
   <h2 class="max-sm:hidden font-medium">List with inline description</h2>
   <div
@@ -100,21 +98,21 @@
         <input tw-input type="radio" name="size" id="small-inline" class="mt-0.5" />
         <span class="flex gap-1">
           <label class="font-medium" for="small-inline">Small</label>
-          <p class="text-gray-500">4 GB RAM / 2 CPUS / 80 GB SSD Storage</p>
+          <p class="text-gray-500">4 GB RAM / 2 CPUs / 80 GB SSD Storage</p>
         </span>
       </div>
       <div class="flex items-start gap-3">
         <input tw-input type="radio" name="size" id="medium-inline" class="mt-0.5" />
         <span class="flex gap-1">
           <label class="font-medium" for="medium-inline">Medium</label>
-          <p class="text-gray-500">8 GB RAM / 4 CPUS / 160 GB SSD Storage</p>
+          <p class="text-gray-500">8 GB RAM / 4 CPUs / 160 GB SSD Storage</p>
         </span>
       </div>
       <div class="flex items-start gap-3">
         <input tw-input type="radio" name="size" id="large-inline" class="mt-0.5" />
         <span class="flex gap-1">
           <label class="font-medium" for="large-inline">Large</label>
-          <p class="text-gray-500">16 GB RAM / 8 CPUS / 320 GB SSD Storage</p>
+          <p class="text-gray-500">16 GB RAM / 8 CPUs / 320 GB SSD Storage</p>
         </span>
       </div>
     </div>
@@ -122,8 +120,8 @@
   <h2 class="font-medium">List with radio on right</h2>
   <div
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
-    <div class="grid text-sm max-w-lg min-w-sm">
-      <p class="font-semibold">Transfer funds</p>
+    <fieldset class="grid text-sm w-full max-w-md">
+      <legend class="font-semibold">Transfer funds</legend>
       <p class="mt-3 text-gray-700 dark:text-gray-300">Transfer your balance to your bank account.</p>
       <div class="grid mt-5 text-sm px-0.5 *:py-5 *:even:border-y *:even:border-gray-200 dark:*:even:border-gray-800">
         <div class="flex items-start gap-3 flex-row-reverse justify-between">
@@ -148,13 +146,13 @@
           </span>
         </div>
       </div>
-    </div>
+    </fieldset>
   </div>
   <h2 class="font-medium">Simple list with radio on right</h2>
   <div
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
-    <div class="grid text-sm max-w-lg min-w-xs">
-      <p class="font-semibold">Select a side</p>
+    <fieldset class="grid text-sm w-full max-w-md">
+      <legend class="font-semibold">Select a side</legend>
       <div class="grid text-sm px-0.5 *:py-5 *:even:border-y *:even:border-gray-200 dark:*:even:border-gray-800">
         <div class="flex items-center gap-3 flex-row-reverse justify-between">
           <input tw-input type="radio" name="side" id="none" />
@@ -181,15 +179,15 @@
           <label class="font-medium" for="mashed-potatoes">Mashed potatoes</label>
         </div>
       </div>
-    </div>
+    </fieldset>
   </div>
   <h2 class="font-medium">Simple table</h2>
   <div
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
     <fieldset aria-label="Pricing plans"
-      class="grid space-y-px *:first:rounded-t-md *:last:rounded-b-md *:ring-1 *:ring-gray-200 *:dark:ring-gray-800 *:has-checked:ring-indigo-200 *:dark:has-checked:ring-indigo-800 *:has-checked:bg-indigo-50 *:dark:has-checked:bg-indigo-950 *:has-checked:z-10 text-sm w-full">
+      class="grid space-y-px *:first:rounded-t-md *:last:rounded-b-md *:ring-1 *:ring-gray-200 *:dark:ring-gray-800 *:has-checked:ring-indigo-200 *:dark:has-checked:ring-indigo-800 *:has-checked:bg-indigo-50 *:dark:has-checked:bg-indigo-950 *:has-checked:z-10 text-sm w-full max-w-2xl">
       <label aria-label="Startup" aria-description="$29 per month, $290 per year, Up to 5 active job postings"
-        class="group grid gap-1 pl-12 p-4 has-checked:text-indigo-900 dark:has-checked:text-indigo-100">
+        class="group grid sm:flex sm:justify-between gap-1 pl-12 p-4 has-checked:text-indigo-900 dark:has-checked:text-indigo-100">
         <span class="relative">
           <input tw-input name="pricing-plan" type="radio" value="Startup" checked
             class="absolute relative- -left-8 top-0.5 inset-y-0">
@@ -208,7 +206,7 @@
         </span>
       </label>
       <label aria-label="Business" aria-description="$99 per month, $990 per year, Up to 25 active job postings"
-        class="group grid gap-1 pl-12 p-4 has-checked:text-indigo-900 dark:has-checked:text-indigo-100">
+        class="group grid sm:flex sm:justify-between gap-1 pl-12 p-4 has-checked:text-indigo-900 dark:has-checked:text-indigo-100">
         <span class="relative">
           <input tw-input name="pricing-plan" type="radio" class="absolute relative- -left-8 top-0.5 inset-y-0"
             value="Business">
@@ -227,7 +225,7 @@
         </span>
       </label>
       <label aria-label="Enterprise" aria-description="$249 per month, $2490 per year, Unlimited active job postings"
-        class="group grid gap-1 pl-12 p-4 has-checked:text-indigo-900 dark:has-checked:text-indigo-100">
+        class="group grid sm:flex sm:justify-between gap-1 pl-12 p-4 has-checked:text-indigo-900 dark:has-checked:text-indigo-100">
         <span class="relative">
           <input tw-input name="pricing-plan" type="radio" value="Enterprise"
             class="absolute relative- -left-8 top-0.5 inset-y-0">
@@ -251,7 +249,7 @@
   <div
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
     <fieldset aria-label="Privacy setting"
-      class="grid space-y-px *:first:rounded-t-md *:last:rounded-b-md *:ring-1 *:ring-gray-200 *:dark:ring-gray-800 *:has-checked:ring-indigo-200 *:dark:has-checked:ring-indigo-800 *:has-checked:bg-indigo-50 *:dark:has-checked:bg-indigo-950 *:has-checked:z-10 text-sm w-full">
+      class="grid space-y-px *:first:rounded-t-md *:last:rounded-b-md *:ring-1 *:ring-gray-200 *:dark:ring-gray-800 *:has-checked:ring-indigo-200 *:dark:has-checked:ring-indigo-800 *:has-checked:bg-indigo-50 *:dark:has-checked:bg-indigo-950 *:has-checked:z-10 text-sm w-full max-w-xl">
       <label aria-label="Public access" aria-description="This project would be available to anyone who has the link"
         class="group grid gap-1 pl-12 p-4 has-checked:text-indigo-900 dark:has-checked:text-indigo-100">
         <span class="relative">
@@ -313,7 +311,7 @@
   <h2 class="font-medium">Cards</h2>
   <div
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
-    <fieldset aria-label="Mailing list" class="text-sm text-balance">
+    <fieldset aria-label="Mailing list" class="text-sm text-balance w-full max-w-2xl">
       <legend class="font-medium">Select a mailing list</legend>
       <div class="grid sm:flex gap-4 mt-4" role="radiogroup">
         <label aria-label="News letter"
@@ -392,6 +390,76 @@
           <input disabled class="opacity-0 size-0" name="ram" type="radio" value="128 GB" />
         </label>
       </div>
+    </fieldset>
+  </div>
+  <h2 class="font-medium">Stacked cards</h2>
+  <div
+    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-5 p-10 mx-auto rounded-md">
+    <fieldset role="radiogroup" aria-label="Server size" class="grid gap-4 text-sm text-balance w-full max-w-xl">
+      <label aria-label="Hobby"
+        class="p-5 grid sm:flex gap-3 justify-between rounded-md ring-1 has-checked:ring-2 ring-gray-300 dark:ring-gray-700/70 has-checked:ring-indigo-700">
+        <div>
+          <span class="font-medium">Hobby</span>
+          <div class="grid sm:flex gap-2 text-gray-500 mt-1">
+            <span>8GB / 4 CPUs</span>
+            <span class="max-sm:hidden">·</span>
+            <span>160 GB SSD disk</span>
+          </div>
+        </div>
+        <div class="sm:text-end">
+          <span class="font-medium">$40 </span>
+          <span class="text-gray-500 sm:block">/mo</span>
+        </div>
+        <input class="absolute opacity-0 size-0" name="serversize" type="radio" value="Hobby" />
+      </label>
+      <label aria-label="Startup"
+        class="p-5 grid sm:flex gap-3 justify-between rounded-md ring-1 has-checked:ring-2 ring-gray-300 dark:ring-gray-700/70 has-checked:ring-indigo-700">
+        <div>
+          <span class="font-medium">Startup</span>
+          <div class="grid sm:flex gap-2 text-gray-500 mt-1">
+            <span>12GB / 6 CPUs</span>
+            <span class="max-sm:hidden">·</span>
+            <span>256 GB SSD disk</span>
+          </div>
+        </div>
+        <div class="sm:text-end">
+          <span class="font-medium">$80 </span>
+          <span class="text-gray-500 sm:block">/mo</span>
+        </div>
+        <input class="absolute opacity-0 size-0" name="serversize" type="radio" value="Startup" />
+      </label>
+      <label aria-label="Business"
+        class="p-5 grid sm:flex gap-3 justify-between rounded-md ring-1 has-checked:ring-2 ring-gray-300 dark:ring-gray-700/70 has-checked:ring-indigo-700">
+        <div>
+          <span class="font-medium">Business</span>
+          <div class="grid sm:flex gap-2 text-gray-500 mt-1">
+            <span>16GB / 8 CPUs</span>
+            <span class="max-sm:hidden">·</span>
+            <span>512 GB SSD disk</span>
+          </div>
+        </div>
+        <div class="sm:text-end">
+          <span class="font-medium">$160 </span>
+          <span class="text-gray-500 sm:block">/mo</span>
+        </div>
+        <input class="absolute opacity-0 size-0" name="serversize" type="radio" value="Business" />
+      </label>
+      <label aria-label="Enterprise"
+        class="p-5 grid sm:flex gap-3 justify-between rounded-md ring-1 has-checked:ring-2 ring-gray-300 dark:ring-gray-700/70 has-checked:ring-indigo-700">
+        <div>
+          <span class="font-medium">Enterprise</span>
+          <div class="grid sm:flex gap-2 text-gray-500 mt-1">
+            <span>32GB / 12 CPUs</span>
+            <span class="max-sm:hidden">·</span>
+            <span>1024 GB SSD disk</span>
+          </div>
+        </div>
+        <div class="sm:text-end">
+          <span class="font-medium">$240 </span>
+          <span class="text-gray-500 sm:block">/mo</span>
+        </div>
+        <input class="absolute opacity-0 size-0" name="serversize" type="radio" value="Enterprise" />
+      </label>
     </fieldset>
   </div>
 </div>
