@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { TwInputRadio } from 'tailwind-ng';
+import { TwIcon, TwInputRadio } from 'tailwind-ng';
 
 @Component({
   selector: 'app-radio-groups-preview',
-  imports: [TwInputRadio],
-  templateUrl: './preview.component.html',
-  styles: ``
+  imports: [TwInputRadio, TwIcon],
+  templateUrl: './preview.component.html'
 })
 export class PreviewComponent {
 
