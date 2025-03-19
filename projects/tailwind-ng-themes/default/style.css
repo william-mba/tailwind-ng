@@ -921,13 +921,6 @@
   .gap-9 {
     gap: calc(var(--spacing) * 9);
   }
-  .-space-y-px {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(-1px * var(--tw-space-y-reverse));
-      margin-block-end: calc(-1px * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
   .space-y-px {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
@@ -948,13 +941,6 @@
       margin-inline-end: calc(calc(var(--spacing) * -1) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
-  .-space-x-px {
-    :where(& > :not(:last-child)) {
-      --tw-space-x-reverse: 0;
-      margin-inline-start: calc(-1px * var(--tw-space-x-reverse));
-      margin-inline-end: calc(-1px * calc(1 - var(--tw-space-x-reverse)));
-    }
-  }
   .space-x-4 {
     :where(& > :not(:last-child)) {
       --tw-space-x-reverse: 0;
@@ -967,6 +953,13 @@
       --tw-space-x-reverse: 0;
       margin-inline-start: calc(calc(var(--spacing) * 5) * var(--tw-space-x-reverse));
       margin-inline-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .space-x-px {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(1px * var(--tw-space-x-reverse));
+      margin-inline-end: calc(1px * calc(1 - var(--tw-space-x-reverse)));
     }
   }
   .gap-y-6 {
@@ -2996,15 +2989,6 @@
     :is(& > *) {
       &:has(*:checked) {
         --tw-ring-color: var(--color-indigo-200);
-      }
-    }
-  }
-  .has-focus\:-space-y-0 {
-    &:has(*:focus) {
-      :where(& > :not(:last-child)) {
-        --tw-space-y-reverse: 0;
-        margin-block-start: calc(calc(var(--spacing) * -0) * var(--tw-space-y-reverse));
-        margin-block-end: calc(calc(var(--spacing) * -0) * calc(1 - var(--tw-space-y-reverse)));
       }
     }
   }
