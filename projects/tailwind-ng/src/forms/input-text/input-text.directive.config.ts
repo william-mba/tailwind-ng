@@ -2,7 +2,7 @@ import { Provider } from '@angular/core';
 import { INPUT_TEXT_CONFIG, InputConfig, configMerge } from "@tailwind-ng/core";
 
 const DefaultConfig = (): InputConfig => {
-  const className = 'placeholder-shown:text-gray-500 backdrop-blur-xs bg-transparent data-visual-focused:ring-2 data-visual-focused:ring-indigo-600 disabled:bg-gray-50 disabled:dark:bg-gray-50/5 focus:border-transparent focus:z-10 focus:ring-2 focus:ring-indigo-600 invalid:focus:ring-red-600/60 invalid:ring-red-600/60 leading-6 outline-none focus:ring-inset ring-1 ring-gray-300 dark:ring-gray-700 rounded-md w-full sm:w-80';
+  const className = 'placeholder-shown:text-gray-500 backdrop-blur-xs bg-transparent data-visual-focused:ring-inset data-visual-focused:ring-2 data-visual-focused:ring-indigo-600 disabled:bg-gray-50 disabled:dark:bg-gray-50/5 focus:border-transparent focus:z-10 focus:ring-2 focus:ring-indigo-600 invalid:focus:ring-red-600/60 invalid:ring-red-600/60 leading-6 outline-none focus:ring-inset ring-1 ring-gray-300 dark:ring-gray-700 rounded-md w-full sm:w-80';
   return {
     className,
     xs: XS(),

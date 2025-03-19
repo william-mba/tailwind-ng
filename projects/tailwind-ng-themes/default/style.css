@@ -3094,6 +3094,11 @@
       outline-width: 0px;
     }
   }
+  .data-visual-focused\:ring-inset {
+    &[data-visual-focused] {
+      --tw-ring-inset: inset;
+    }
+  }
   .max-lg\:absolute {
     @media (width < 64rem) {
       position: absolute;
