@@ -48,7 +48,7 @@
   <h2 class="font-medium">With inset label and shared borders</h2>
   <div
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div class="-space-y-px has-focus:-space-y-0">
+    <div class="space-y-px">
       <div class="relative">
         <input tw-input size="sm" type="email" id="email7" placeholder="you@example.com"
           class="rounded-b-none pt-6 backdrop-blur-none" />
@@ -252,7 +252,7 @@
           <tw-icon name="users"
             class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 dark:text-gray-600 pointer-events-none" />
           <input tw-input type="text" id="candidate" size="sm" placeholder="Jane Doe"
-            class="sm:w-60 pl-10 rounded-r-none ring- backdrop-blur-" />
+            class="sm:w-60 pl-10 rounded-r-none backdrop-blur-" />
         </div>
         <button tw-button size="sm" variant="secondary">
           <tw-icon name="bars-arrow-up" class="text-gray-400 dark:text-gray-600" />
@@ -270,10 +270,10 @@
         <legend class="block text-sm font-medium">
           Card details
         </legend>
-        <div class="mt-2 -space-y-px has-focus:-space-y-0 rounded-md shadow-sm *:backdrop-blur-none">
+        <div class="mt-2 space-y-px rounded-md shadow-sm">
           <input tw-input id="card-number" name="card-number" type="text" placeholder="Card number"
             class="rounded-none rounded-t-md">
-          <div class="flex -space-x-px *:backdrop-blur-none">
+          <div class="flex space-x-px">
             <input tw-input id="card-expiration-date" name="card-expiration-date" type="text" placeholder="MM / YY"
               class="rounded-none rounded-bl-md focus:z-10 sm:w-full">
             <input tw-input id="card-cvc" name="card-cvc" type="text" placeholder="CVC"
@@ -286,11 +286,11 @@
         <legend class="block text-sm font-medium">
           Billing address
         </legend>
-        <div class="mt-2 -space-y-px has-focus:-space-y-0 rounded-md shadow-sm">
-          <div class="*:backdrop-blur-none">
+        <div class="mt-2 space-y-px rounded-md shadow-sm">
+          <div>
             <div class="relative">
               <select id="country" name="country" autocomplete="country-name"
-                class="appearance-none block w-full rounded-none rounded-t-md border-0 outline-0 *:dark:text-gray-800 py-2 p-3 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:z-10 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                class="appearance-none block w-full rounded-none rounded-t-md border-0 outline-0 *:dark:text-gray-800 py-2 p-3 ring-1 ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:z-10 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
                 <option>Canada</option>
                 <option>United States</option>
                 <option>Mexico</option>
