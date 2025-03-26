@@ -57,11 +57,6 @@ export const routes: Routes = [
 								loadComponent: () => import('./docs/components/avatars/api/api.component').then((m) => m.ApiComponent),
 							},
 							{
-								path: 'customization',
-								title: 'Avatars Customization',
-								loadComponent: () => import('./docs/components/avatars/customization/customization.component').then((m) => m.CustomizationComponent),
-							},
-							{
 								path: '',
 								redirectTo: 'preview',
 								pathMatch: 'full',
@@ -87,11 +82,6 @@ export const routes: Routes = [
 								path: 'api',
 								title: 'Badges API',
 								loadComponent: () => import('./docs/components/badges/api/api.component').then((m) => m.ApiComponent),
-							},
-							{
-								path: 'customization',
-								title: 'Badges Customization',
-								loadComponent: () => import('./docs/components/badges/customization/customization.component').then((m) => m.CustomizationComponent),
 							},
 							{
 								path: '',
@@ -121,11 +111,6 @@ export const routes: Routes = [
 								loadComponent: () => import('./docs/components/buttons/api/api.component').then((m) => m.ApiComponent),
 							},
 							{
-								path: 'customization',
-								title: 'Buttons Customization',
-								loadComponent: () => import('./docs/components/buttons/customization/customization.component').then((m) => m.CustomizationComponent),
-							},
-							{
 								path: '',
 								redirectTo: 'preview',
 								pathMatch: 'full',
@@ -151,11 +136,6 @@ export const routes: Routes = [
 								path: 'api',
 								title: 'Button Groups API',
 								loadComponent: () => import('./docs/components/button-groups/api/api.component').then((m) => m.ApiComponent),
-							},
-							{
-								path: 'customization',
-								title: 'Button Groups Customization',
-								loadComponent: () => import('./docs/components/button-groups/customization/customization.component').then((m) => m.CustomizationComponent),
 							},
 							{
 								path: '',
@@ -185,11 +165,6 @@ export const routes: Routes = [
 								loadComponent: () => import('./docs/components/checkboxes/api/api.component').then((m) => m.ApiComponent),
 							},
 							{
-								path: 'customization',
-								title: 'Checkboxes Customization',
-								loadComponent: () => import('./docs/components/checkboxes/customization/customization.component').then((m) => m.CustomizationComponent),
-							},
-							{
 								path: '',
 								redirectTo: 'preview',
 								pathMatch: 'full',
@@ -215,11 +190,6 @@ export const routes: Routes = [
 								path: 'api',
 								title: 'Comboboxes API',
 								loadComponent: () => import('./docs/components/comboboxes/api/api.component').then((m) => m.ApiComponent),
-							},
-							{
-								path: 'customization',
-								title: 'Comboboxes Customization',
-								loadComponent: () => import('./docs/components/comboboxes/customization/customization.component').then((m) => m.CustomizationComponent),
 							},
 							{
 								path: '',
@@ -249,11 +219,6 @@ export const routes: Routes = [
 								loadComponent: () => import('./docs/components/dialogs/api/api.component').then((m) => m.ApiComponent),
 							},
 							{
-								path: 'customization',
-								title: 'Dialogs Customization',
-								loadComponent: () => import('./docs/components/dialogs/customization/customization.component').then((m) => m.CustomizationComponent),
-							},
-							{
 								path: '',
 								redirectTo: 'preview',
 								pathMatch: 'full',
@@ -279,11 +244,6 @@ export const routes: Routes = [
 								path: 'api',
 								title: 'Dropdowns API',
 								loadComponent: () => import('./docs/components/dropdowns/api/api.component').then((m) => m.ApiComponent),
-							},
-							{
-								path: 'customization',
-								title: 'Dropdowns Customization',
-								loadComponent: () => import('./docs/components/dropdowns/customization/customization.component').then((m) => m.CustomizationComponent),
 							},
 							{
 								path: '',
@@ -313,11 +273,6 @@ export const routes: Routes = [
 								loadComponent: () => import('./docs/components/icons/api/api.component').then((m) => m.ApiComponent),
 							},
 							{
-								path: 'customization',
-								title: 'Icons Customization',
-								loadComponent: () => import('./docs/components/icons/customization/customization.component').then((m) => m.CustomizationComponent),
-							},
-							{
 								path: '',
 								redirectTo: 'preview',
 								pathMatch: 'full',
@@ -343,11 +298,6 @@ export const routes: Routes = [
 								path: 'api',
 								title: 'Input Groups API',
 								loadComponent: () => import('./docs/components/input-groups/api/api.component').then((m) => m.ApiComponent),
-							},
-							{
-								path: 'customization',
-								title: 'Input Groups Customization',
-								loadComponent: () => import('./docs/components/input-groups/customization/customization.component').then((m) => m.CustomizationComponent),
 							},
 							{
 								path: '',
@@ -377,11 +327,6 @@ export const routes: Routes = [
 								loadComponent: () => import('./docs/components/radio-groups/api/api.component').then((m) => m.ApiComponent),
 							},
 							{
-								path: 'customization',
-								title: 'Radio Groups Customization',
-								loadComponent: () => import('./docs/components/radio-groups/customization/customization.component').then((m) => m.CustomizationComponent),
-							},
-							{
 								path: '',
 								redirectTo: 'preview',
 								pathMatch: 'full',
@@ -407,11 +352,6 @@ export const routes: Routes = [
 								path: 'api',
 								title: 'Toggles API',
 								loadComponent: () => import('./docs/components/toggles/api/api.component').then((m) => m.ApiComponent),
-							},
-							{
-								path: 'customization',
-								title: 'Toggles Customization',
-								loadComponent: () => import('./docs/components/toggles/customization/customization.component').then((m) => m.CustomizationComponent),
 							},
 							{
 								path: '',
