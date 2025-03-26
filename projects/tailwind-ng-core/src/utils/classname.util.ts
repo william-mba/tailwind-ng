@@ -16,7 +16,7 @@ export abstract class ClassName {
 	 * @param options The options for resolving.
 	 * @returns The resolved classnames.
 	 */
-	static readonly resolve = memoizeResolve(resolve);
+	static readonly resolve = resolve;
 	/**
 	 * Converts value to an array of strings using the specified separator. If value is not a string, an empty array is returned.
 	 * @param value The value to convert.
@@ -33,57 +33,42 @@ interface ResolveOptions {
 	minStringLength?: number;
 }
 
-/**
- * A memoized version of the resolve function.
- * @param fn The resolve function.
- */
-function memoizeResolve(fn: (arg: [string | undefined | null, string | undefined | null], options: ResolveOptions) => string) {
-	const cache = new Map<string, string>();
-	let cleanupScheduled = false;
-
-	const scheduleCleanup = () => {
-		if (cleanupScheduled) return;
-		setTimeout(() => {
-			cache.clear();
-			cleanupScheduled = false;
-		}, 1000 * 60); // 1 minute
-		cleanupScheduled = true;
-	};
-
-	return function (arg: [string | undefined | null, string | undefined | null], options: ResolveOptions = {}): string {
-		const key = generateKey(arg, options);
-		if (cache.has(key)) return cache.get(key)!;
-		const result = fn(arg, options);
-		cache.set(key, result);
-		if (!cleanupScheduled) scheduleCleanup();
-		return result;
-	};
-}
-
-/** A variation of the DJB2 hash algorithm to generate a hash value for a given string.
- * @see http://www.cse.yorku.ca/~oz/hash.html
- */
-export function hashString(str: string): number {
-	let hash = 5381;
-	for (let i = 0; i < str.length; i++) {
-		hash = (hash * 33) ^ str.charCodeAt(i);
-	}
-	return hash << 2;
-}
-
-function assertStringValue(value: unknown): asserts value is string | string[] {
-	if (Array.isArray(value)) {
+function assertValueSetted(value: unknown): asserts value is string | string[] {
+	if (typeof value === 'string') {
+		value ??= '';
+	} else if (Array.isArray(value)) {
 		for (let i = 0; i < value.length; i++) {
 			value[i] ??= '';
 		}
-	} else {
-		value ??= '';
 	}
 }
 
-function generateKey(arg: [string | undefined | null, string | undefined | null], options: ResolveOptions): string {
-	assertStringValue(arg);
-	return `${hashString(`${arg[0] ?? ''} ${arg[1] ?? ''} ${options.keepClassDeletor}`)}`;
+function trimSpaces(...values: string[]) {
+	let res = values[0];
+	if (res.length) {
+		res = values[0].replace(/\s/g, '');
+	}
+	for (let i = 1; i < values.length; i++) {
+		res += values[i].replace(/\s/g, '');
+	}
+	return res;
+}
+
+function generateKey(...arg: (string | undefined | null)[]): string {
+	assertValueSetted(arg);
+	return trimSpaces(...arg);
+}
+
+let resolveCache: Map<string, string> | null;
+let cacheCleanupScheduled = false;
+
+function scheduleCacheCleanup() {
+	if (cacheCleanupScheduled) return;
+	setTimeout(() => {
+		resolveCache = null;
+		cacheCleanupScheduled = false;
+	}, 1000 * 60); // 1 minute
+	cacheCleanupScheduled = true;
 }
 
 /** Returns an array of resolved values from source to target.
@@ -94,7 +79,16 @@ function generateKey(arg: [string | undefined | null, string | undefined | null]
  * @param arg The target and source values to resolve.
  * @param options The options for resolving.
  * */
-function resolve(arg: [string | undefined | null, string | undefined | null], options: ResolveOptions): string {
+function resolve(
+	arg: [string | undefined | null, string | undefined | null],
+	options: ResolveOptions = {},
+): string {
+	const key = generateKey(...arg, `${options.keepClassDeletor ?? ''}`);
+	if (resolveCache && resolveCache.has(key)) {
+		return resolveCache.get(key)!;
+	} else {
+		resolveCache = new Map();
+	}
 	// eslint-disable-next-line prefer-const
 	let [t = '', s = ''] = arg;
 
@@ -121,7 +115,10 @@ function resolve(arg: [string | undefined | null, string | undefined | null], op
 			// Ex: bg-red-' remove 'bg-red-*', 'bg-' remove 'bg-*' etc.
 			if (className.charAt(className.length - 1) === '-') {
 				const lengthsEqual = className.length === minStringLength;
-				const searchString = className.substring(0, lengthsEqual ? className.length : className.length - 1);
+				const searchString = className.substring(
+					0,
+					lengthsEqual ? className.length : className.length - 1,
+				);
 				target = target.filter((value) => {
 					return !value.startsWith(searchString);
 				});
@@ -133,11 +130,14 @@ function resolve(arg: [string | undefined | null, string | undefined | null], op
 			} else {
 				// When the class name is not a class-deletor
 				let lastIndexOfSeperator = className.lastIndexOf('-');
-				let searchString = lastIndexOfSeperator > 0 ? className.substring(0, lastIndexOfSeperator) : className;
-				const foundInSource = Array.from(className.matchAll(/-/g)).length;
+				let searchString =
+					lastIndexOfSeperator > 0
+						? className.substring(0, lastIndexOfSeperator)
+						: className;
+				const foundInSource = className.match(/-/g)?.length ?? 0;
 
 				target = target.filter((value) => {
-					const foundInTarget = Array.from(value.matchAll(/-/g)).length;
+					const foundInTarget = value.match(/-/g)?.length ?? 0;
 					const matchPercentage = (value.length * 100) / className.length;
 
 					// When target is for instance 'bg-blue-*' and source 'bg-red-*'
@@ -149,7 +149,10 @@ function resolve(arg: [string | undefined | null, string | undefined | null], op
 								// searchString 'bg-red' is truncate to 'bg'
 								lastIndexOfSeperator = searchString.lastIndexOf('-');
 								if (lastIndexOfSeperator > 0) {
-									searchString = searchString.substring(0, lastIndexOfSeperator);
+									searchString = searchString.substring(
+										0,
+										lastIndexOfSeperator,
+									);
 								}
 								return !value.startsWith(searchString);
 							}
@@ -189,5 +192,7 @@ function resolve(arg: [string | undefined | null, string | undefined | null], op
 			}
 		}
 	}
-	return target.concat(temp).join(' ');
+	const result = [...target, ...temp].join(' ');
+	if (!cacheCleanupScheduled) scheduleCacheCleanup();
+	return resolveCache.set(key, result).get(key)!;
 }

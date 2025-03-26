@@ -7,7 +7,8 @@ module.exports = tseslint.config(
 	{
 		files: ['**/*.ts'],
 		rules: {
-			'@angular-eslint/no-input-rename': 'off',
+			'@angular-eslint/no-input-rename': 'warn',
+			'@typescript-eslint/no-unused-vars': 'warn',
 			'@angular-eslint/directive-selector': [
 				'error',
 				{
