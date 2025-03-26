@@ -27,6 +27,7 @@ FROM setup-node AS install-deps
 WORKDIR /_work
 
 COPY angular.json .
+COPY .prettierrc .
 COPY eslint.config.js .
 COPY package.json .
 COPY pnpm-lock.yaml .
@@ -36,7 +37,10 @@ RUN pnpm install
 FROM install-deps AS copy-project
 COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
 
-FROM copy-project AS run-lint
+FROM copy-project AS check-code-style
+RUN pnpm code-style:check
+
+FROM check-code-style AS run-lint
 RUN pnpm lint:lib-core
 
 FROM run-lint AS run-tests
