@@ -24,3 +24,7 @@ export function provideBadge(customization?: Partial<BadgeConfig>): Provider {
 		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }
+
+export function withBadge(customization?: Partial<BadgeConfig>): Provider {
+	return provideBadge(customization);
+}

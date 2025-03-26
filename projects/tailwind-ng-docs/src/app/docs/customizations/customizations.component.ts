@@ -15,7 +15,7 @@ export class CustomizationsComponent implements AfterViewInit {
 	ngAfterViewInit(): void {
 		// import('shiki').then((m) => {
 		// 	const { codeToHtml } = m;
-		// 	codeToHtml(this.cssSelectors, { lang: 'ts', theme: 'github-dark-default' }).then((res) => {
+		// 	codeToHtml('', { lang: 'ts', theme: 'github-dark-default' }).then((res) => {
 		// 		this.cssSelectors = res;
 		// 		console.log(res);
 		// 	});
@@ -30,22 +30,22 @@ export class CustomizationsComponent implements AfterViewInit {
 	}
 	private readonly sanitizer = inject(DomSanitizer);
 
-	configProviders = `<pre class="shiki github-dark-default border border-gray-950/5 dark:border-white/10 overflow-x-auto bg-black/90! dark:bg-gray-800/40! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">// my-awesome.{component|module|app.config|app.component}.ts</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { provideAvatar } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'tailwind-ng'</span><span style="color:#E6EDF3">;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#8B949E">// Shortened for brevity...</span></span>
-<span class="line"><span style="color:#FF7B72">  ...</span></span>
-<span class="line"><span style="color:#FFA657">  providers</span><span style="color:#E6EDF3">: [</span></span>
-<span class="line"><span style="color:#D2A8FF">    provideAvatar</span><span style="color:#E6EDF3">({ </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3"> }),</span></span>
+	configProviders = `<pre class="shiki github-dark-default border border-gray-950/5 dark:border-white/10 overflow-x-auto bg-black/90! dark:bg-gray-800/40! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">// Shortened for brevity...</span></span>
+<span class="line"><span style="color:#FFA657">providers</span><span style="color:#E6EDF3">: [</span></span>
+<span class="line"><span style="color:#8B949E">  // The application UI provider. Providable at any level of the app.</span></span>
+<span class="line"><span style="color:#8B949E">  // Accepts many 'feature-like' and 'standalone' providers.</span></span>
+<span class="line"><span style="color:#D2A8FF">  provideUI</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#D2A8FF">    withAvatar</span><span style="color:#E6EDF3">(),</span></span>
+<span class="line"><span style="color:#D2A8FF">    withButton</span><span style="color:#E6EDF3">(),</span></span>
+<span class="line"><span style="color:#D2A8FF">    withDialog</span><span style="color:#E6EDF3">(), </span><span style="color:#8B949E">// A 'feature-like' provider.</span></span>
+<span class="line"><span style="color:#D2A8FF">    withToggle</span><span style="color:#E6EDF3">(),</span></span>
+<span class="line"><span style="color:#D2A8FF">    withCheckbox</span><span style="color:#E6EDF3">(),</span></span>
+<span class="line"><span style="color:#D2A8FF">    withDropdown</span><span style="color:#E6EDF3">(),</span></span>
 <span class="line"><span style="color:#FF7B72">    ...</span></span>
-<span class="line"><span style="color:#8B949E">    // other provider such as</span></span>
-<span class="line"><span style="color:#8B949E">    // provideElements({ avatar: {...}}) or</span></span>
-<span class="line"><span style="color:#8B949E">    // provideUI({ elements: { avatar: {...}}}) can also be used here.</span></span>
-<span class="line"><span style="color:#E6EDF3">  ],</span></span>
-<span class="line"><span style="color:#FF7B72">  ...</span></span>
-<span class="line"></span>
-<span class="line"></span></code></pre>`;
+<span class="line"><span style="color:#E6EDF3">  ),</span></span>
+<span class="line"><span style="color:#8B949E">  // Also valid.</span></span>
+<span class="line"><span style="color:#D2A8FF">  provideDialog</span><span style="color:#E6EDF3">({</span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">}) </span><span style="color:#8B949E">// A 'standalone' provider.</span></span>
+<span class="line"><span style="color:#E6EDF3">],</span></span>`;
 	classAttribute = `<pre class="shiki github-dark-default border border-gray-950/5 dark:border-white/10 overflow-x-auto bg-black/90! dark:bg-gray-800/40! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">&lt;!-- avatar with image --&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">img</span><span style="color:#79C0FF"> tw-avatar</span><span style="color:#79C0FF"> class</span><span style="color:#E6EDF3">=</span><span class="bg-blue-400/20" style="color:#A5D6FF">"ring-2 ring-white"</span><span style="color:#79C0FF"> alt</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">""</span><span style="color:#79C0FF"> src</span><span style="color:#E6EDF3">=</span><span style="color:#A5D6FF">"..."</span><span style="color:#E6EDF3"> /&gt;</span></span>
 <span class="line"></span>

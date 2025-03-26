@@ -16,3 +16,6 @@ export function provideComboboxItem(className = ''): Provider {
 		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
 	};
 }
+export function withComboboxItem(className = ''): Provider {
+	return provideComboboxItem(className);
+}

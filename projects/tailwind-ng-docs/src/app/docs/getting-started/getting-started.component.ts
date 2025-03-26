@@ -29,19 +29,14 @@ export class GettingStartedComponent implements AfterViewInit {
 	yarnHTML = `<pre class="shiki github-dark-default border dark:border-gray-800 overflow-x-auto bg-black/90! dark:bg-gray-800/40! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FFA657">yarn</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> tailwind-ng @tailwind-ng/core </span></span></code></pre>`;
 	pnpmHTML = `<pre class="shiki github-dark-default border dark:border-gray-800 overflow-x-auto bg-black/90! dark:bg-gray-800/40! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FFA657">pnpm</span><span style="color:#A5D6FF"> add</span><span style="color:#A5D6FF"> tailwind-ng @tailwind-ng/core </span></span></code></pre>`;
 	componentsImportsHTML = `<pre class="shiki github-dark-default border dark:border-gray-800 overflow-x-auto bg-black/90! dark:bg-gray-800/40! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">// my-awesome.component.ts</span></span>
-<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { TwButton, provideUI } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'tailwind-ng'</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { TwButton, provideButton } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> 'tailwind-ng'</span><span style="color:#E6EDF3">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#E6EDF3">@</span><span style="color:#D2A8FF">Component</span><span style="color:#E6EDF3">({</span></span>
 <span class="line"><span style="color:#E6EDF3">  selector: </span><span style="color:#A5D6FF">'my-awesome-component'</span><span style="color:#E6EDF3">,</span></span>
-<span class="line"><span class="absolute inset-x-0 border-l-8 border-white/15 bg-white/10 dark:bg-white/5" style="color:#E6EDF3">  providers: [provideUI()],</span></span>
+<span class="line"><span class="absolute inset-x-0 border-l-8 border-white/15 bg-white/10 dark:bg-white/5" style="color:#E6EDF3">  providers: [provideButton()],</span></span>
 <span class="line"><span class="absolute inset-x-0 border-l-8 border-white/15 bg-white/10 dark:bg-white/5" style="color:#E6EDF3">  imports: [TwButton],</span></span>
 <span class="line"><span style="color:#FF7B72">  ...</span></span>
-<span class="line"><span style="color:#E6EDF3">}) </span><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> class</span><span style="color:#FFA657"> MyAwesomeComponent</span><span style="color:#E6EDF3"> {}</span></span>
-<span class="line"></span>
-<span class="line"></span><span style="color:#8B949E">// Here, we have used the application wide UI provider factory.</span>
-<span class="line"></span><span style="color:#8B949E">// Other provider factories like:</span>
-<span class="line"></span><span style="color:#8B949E">// - 'provideButton()' (specific to the component) or.</span>
-<span class="line"></span><span style="color:#8B949E">// - 'provideElements()' (specific to the component category) can be used too.</span></code></pre>`;
+<span class="line"><span style="color:#E6EDF3">}) </span><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> class</span><span style="color:#FFA657"> MyAwesomeComponent</span><span style="color:#E6EDF3"> {}</span></span></code></pre>`;
 	templateUpdateHTML = `<pre class="shiki github-dark-default border dark:border-gray-800 overflow-x-auto bg-black/90! dark:bg-gray-800/40! mb-6 relative p-2 rounded-md" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#8B949E">&lt;!-- my-awesome.component.html --&gt;</span></span>
 <span class="line"><span style="color:#E6EDF3">&lt;</span><span style="color:#7EE787">tw-button</span><span style="color:#E6EDF3">&gt;Click me!&lt;/</span><span style="color:#7EE787">tw-button</span><span style="color:#E6EDF3">&gt;</span></span></code></pre>`;
 

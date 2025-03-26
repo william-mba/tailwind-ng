@@ -1553,6 +1553,9 @@
 	.pl-8 {
 		padding-left: calc(var(--spacing) * 8);
 	}
+	.pl-9 {
+		padding-left: calc(var(--spacing) * 9);
+	}
 	.pl-10 {
 		padding-left: calc(var(--spacing) * 10);
 	}

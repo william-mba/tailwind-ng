@@ -18,3 +18,6 @@ export function provideButtonGroup(className = ''): Provider {
 		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
 	};
 }
+export function withButtonGroup(className = ''): Provider {
+	return provideButtonGroup(className);
+}

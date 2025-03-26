@@ -18,3 +18,7 @@ export function provideDropdown(className = ''): Provider {
 		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
 	};
 }
+
+export function withDropdown(className = ''): Provider {
+	return provideDropdown(className);
+}

@@ -77,3 +77,6 @@ export function provideButton(customization?: Partial<ButtonConfig>): Provider {
 		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }
+export function withButton(customization?: Partial<ButtonConfig>): Provider {
+	return provideButton(customization);
+}

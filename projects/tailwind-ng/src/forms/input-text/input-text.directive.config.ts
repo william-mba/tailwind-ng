@@ -44,3 +44,6 @@ export function provideInputText(customization?: InputConfig): Provider {
 		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }
+export function withInputText(customization?: InputConfig): Provider {
+	return provideInputText(customization);
+}

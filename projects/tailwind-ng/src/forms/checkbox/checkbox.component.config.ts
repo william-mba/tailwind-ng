@@ -16,3 +16,7 @@ export function provideCheckbox(className = ''): Provider {
 		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
 	};
 }
+
+export function withCheckbox(className = ''): Provider {
+	return provideCheckbox(className);
+}

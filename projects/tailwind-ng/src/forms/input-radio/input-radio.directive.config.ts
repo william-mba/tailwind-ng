@@ -16,3 +16,6 @@ export function provideInputRadio(className = ''): Provider {
 		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
 	};
 }
+export function withInputRadio(className = ''): Provider {
+	return provideInputRadio(className);
+}

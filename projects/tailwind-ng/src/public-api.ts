@@ -1,4 +1,11 @@
 export * from './elements';
 export * from './forms';
 export * from './overlays';
-export * from './ui.config';
+import { Provider } from '@angular/core';
+
+/**
+ * Provides the Tailwind NG UI config with the given customization if any.
+ */
+export function provideUI(...features: Provider[]): Provider[] {
+	return features;
+}

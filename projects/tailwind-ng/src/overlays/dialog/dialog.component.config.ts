@@ -37,3 +37,7 @@ export function provideDialog(customization?: Partial<DialogConfig>): Provider {
 		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }
+
+export function withDialog(customization?: Partial<DialogConfig>): Provider {
+	return provideDialog(customization);
+}

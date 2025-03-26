@@ -22,7 +22,7 @@
 			This guide assumes you have completed the getting started guide and already installed a theme in your project.
 		</p>
 		<h3 class="font-heading mt-10 text-lg font-semibold">01. Using class attribute</h3>
-		<p class="my-3 text-gray-700 dark:text-gray-300">Using the class attribute when you need to customize a specific component using utility classes.</p>
+		<p class="my-3 text-gray-700 dark:text-gray-300">Use the class attribute when you need to customize a specific component using utility classes.</p>
 		<p class="my-3 text-gray-700 dark:text-gray-300">
 			Tailwind NG provide a built-in and well-tested mechanism that make merging all your custom classes easier, faster and accurate, while being very tiny (1.5
 			KB) compared to
@@ -47,25 +47,32 @@
 			<tw-icon name="info" class="text-green-600 rounded-full" />
 			You can also set these css rules in a stylesheet.
 		</p>
-		<h3 class="font-heading mt-10 text-lg font-semibold">03. Using component(s) provider(s)</h3>
+		<h3 class="font-heading mt-10 text-lg font-semibold">03. Using the component provider</h3>
 		<div class="my-3 text-gray-700 dark:text-gray-300">
-			Use component(s) provider(s) when you need to achieve fine-grained customizations using dependency injection. Tailwind NG provide three types of providers
-			that can be use to inject components config at any level of your application. Bellow is the list of providers, from generic to specific:
-			<ol class="pl-3 mt-2 mb-3 list-disc list-inside">
+			Use the component provider when you need to achieve fine-grained customizations through dependency injection. Tailwind NG provide two kind of providers
+			that let you apply customizations at any level of your application.
+			<ol class="pl-3 mt-2 mb-6 list-disc list-inside">
 				<li>
-					application wide provider, exported as
+					application UI provider, exported as
 					<span class="font-medium">provideUI</span>
 					.
 				</li>
 				<li>
-					module provider, exported as provide
-					<span class="font-medium">ModuleName</span>
-					.
-				</li>
-				<li>
-					component provider, exported as provide
-					<span class="font-medium">ComponentName</span>
-					.
+					component provider, exported in two flavours as follows:
+					<ul class="pl-9 list-disc list-inside text-sm">
+						<li>
+							<span class="font-semibold">provideComponentName</span>
+							. 'Standalone' provider, ideal for customizing
+							<span class="font-semibold">outside</span>
+							the provideUI function.
+						</li>
+						<li>
+							<span class="font-semibold">withComponentName</span>
+							. 'Feature-like' provider, ideal for customizing
+							<span class="font-semibold">inside</span>
+							the provideUI function.
+						</li>
+					</ul>
 				</li>
 			</ol>
 		</div>

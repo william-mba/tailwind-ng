@@ -59,3 +59,6 @@ export function provideIcon(customization?: Partial<IconConfig>): Provider {
 		},
 	};
 }
+export function withIcon(customization?: Partial<IconConfig>): Provider {
+	return provideIcon(customization);
+}

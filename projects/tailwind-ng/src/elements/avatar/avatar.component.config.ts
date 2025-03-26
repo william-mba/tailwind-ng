@@ -24,3 +24,7 @@ export function provideAvatar(customization?: Partial<AvatarConfig>): Provider {
 		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }
+
+export function withAvatar(customization?: Partial<AvatarConfig>): Provider {
+	return provideAvatar(customization);
+}

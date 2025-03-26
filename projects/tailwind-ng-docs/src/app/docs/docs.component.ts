@@ -74,11 +74,11 @@ export const NAV_ITEMS: NavItem[] = [
 				route: 'getting-started',
 			},
 			{
-				label: 'Prebuilt Themes',
+				label: 'Choose a themes',
 				route: 'themes',
 			},
 			{
-				label: 'Customizations',
+				label: 'Customize it',
 				route: 'customizations',
 			},
 			{
