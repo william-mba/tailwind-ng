@@ -1,4 +1,4 @@
-import { ClassName } from '../classname.util';
+import { ClassName } from '../classname';
 
 describe('StringHelper', () => {
 	it('should resolve values', () => {

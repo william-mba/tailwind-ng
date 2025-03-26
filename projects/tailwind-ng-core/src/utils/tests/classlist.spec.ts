@@ -1,4 +1,4 @@
-import { ClassList, classlist } from '../classlist.util';
+import { ClassList, classlist } from '../classlist';
 
 describe('ClassList', () => {
 	let classList: ClassList;

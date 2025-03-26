@@ -1,6 +1,6 @@
 import { isHTMLElement } from '../guards';
-import { ClassName } from './classname.util';
-import { isString } from './type-assertion.util';
+import { ClassName } from './classname';
+import { isString } from './type-assertion';
 
 type Value = string | null | undefined;
 
@@ -46,10 +46,7 @@ function setClassName(value: Value, el?: HTMLElement) {
  * @param base The base value of the class list.
  * @param el The element on which the classlist changes apply.
  */
-export function classlist(
-	base?: Value | HTMLElement,
-	el?: HTMLElement,
-): ClassList {
+export function classlist(base?: Value | HTMLElement, el?: HTMLElement): ClassList {
 	let _value = '';
 	if (isString(base)) {
 		_value = base;
@@ -67,10 +64,7 @@ export function classlist(
 		const [first, second, ...rest] = value;
 		let newValue = ClassName.resolve([first, second]);
 		if (rest.length) {
-			newValue = rest.reduce(
-				(prev, curr) => ClassName.resolve([prev, curr]),
-				newValue,
-			)!;
+			newValue = rest.reduce((prev, curr) => ClassName.resolve([prev, curr]), newValue)!;
 		}
 		// Set newValue to _value only if newValue is setted and different.
 		if (newValue && newValue !== _value) {
@@ -89,12 +83,7 @@ export function classlist(
 	classlist.merge = (fn: (currentValue: NonNullable<Value>) => Value[]) => {
 		const [first, second, ...rest] = fn(_value);
 		const initialValue = ClassName.resolve([first, second]);
-		return classlist.set(
-			rest.reduce(
-				(prev, curr) => ClassName.resolve([prev, curr]),
-				initialValue,
-			),
-		);
+		return classlist.set(rest.reduce((prev, curr) => ClassName.resolve([prev, curr]), initialValue));
 	};
 	classlist.toArray = () => ClassName.toArray(_value);
 	classlist.toString = () => _value;

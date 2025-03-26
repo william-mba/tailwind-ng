@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { configMerge, DIALOG_CONFIG, DialogConfig } from '@tailwind-ng/core';
+import { mergeConfig, DIALOG_CONFIG, DialogConfig } from '@tailwind-ng/core';
 
 const BASE = () => {
 	const className = 'transition-all transition-discrete duration-200';
@@ -38,6 +38,6 @@ export function provideDialog(customization?: Partial<DialogConfig>): Provider {
 		provide: DIALOG_CONFIG,
 		useValue: !customization
 			? DefaultConfig()
-			: configMerge([DefaultConfig(), customization]),
+			: mergeConfig([DefaultConfig(), customization]),
 	};
 }

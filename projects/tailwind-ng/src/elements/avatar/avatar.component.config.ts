@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { AVATAR_CONFIG, AvatarConfig, configMerge } from '@tailwind-ng/core';
+import { AVATAR_CONFIG, AvatarConfig, mergeConfig } from '@tailwind-ng/core';
 
 const DefaultConfig = (): AvatarConfig => {
 	const className = 'flex items-center justify-center relative rounded-full';
@@ -23,6 +23,6 @@ export function provideAvatar(customization?: Partial<AvatarConfig>): Provider {
 		provide: AVATAR_CONFIG,
 		useValue: !customization
 			? DefaultConfig()
-			: configMerge([DefaultConfig(), customization]),
+			: mergeConfig([DefaultConfig(), customization]),
 	};
 }

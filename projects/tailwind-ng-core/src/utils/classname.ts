@@ -1,4 +1,4 @@
-import { isString } from './type-assertion.util';
+import { isString } from './type-assertion';
 
 /** Transfroms string value to an array then returns it.
  * Returns an empty array if value is undefined. */
@@ -79,10 +79,7 @@ function scheduleCacheCleanup() {
  * @param arg The target and source values to resolve.
  * @param options The options for resolving.
  * */
-function resolve(
-	arg: [string | undefined | null, string | undefined | null],
-	options: ResolveOptions = {},
-): string {
+function resolve(arg: [string | undefined | null, string | undefined | null], options: ResolveOptions = {}): string {
 	const key = generateKey(...arg, `${options.keepClassDeletor ?? ''}`);
 	if (resolveCache && resolveCache.has(key)) {
 		return resolveCache.get(key)!;
@@ -115,10 +112,7 @@ function resolve(
 			// Ex: bg-red-' remove 'bg-red-*', 'bg-' remove 'bg-*' etc.
 			if (className.charAt(className.length - 1) === '-') {
 				const lengthsEqual = className.length === minStringLength;
-				const searchString = className.substring(
-					0,
-					lengthsEqual ? className.length : className.length - 1,
-				);
+				const searchString = className.substring(0, lengthsEqual ? className.length : className.length - 1);
 				target = target.filter((value) => {
 					return !value.startsWith(searchString);
 				});
@@ -130,10 +124,7 @@ function resolve(
 			} else {
 				// When the class name is not a class-deletor
 				let lastIndexOfSeperator = className.lastIndexOf('-');
-				let searchString =
-					lastIndexOfSeperator > 0
-						? className.substring(0, lastIndexOfSeperator)
-						: className;
+				let searchString = lastIndexOfSeperator > 0 ? className.substring(0, lastIndexOfSeperator) : className;
 				const foundInSource = className.match(/-/g)?.length ?? 0;
 
 				target = target.filter((value) => {
@@ -149,10 +140,7 @@ function resolve(
 								// searchString 'bg-red' is truncate to 'bg'
 								lastIndexOfSeperator = searchString.lastIndexOf('-');
 								if (lastIndexOfSeperator > 0) {
-									searchString = searchString.substring(
-										0,
-										lastIndexOfSeperator,
-									);
+									searchString = searchString.substring(0, lastIndexOfSeperator);
 								}
 								return !value.startsWith(searchString);
 							}

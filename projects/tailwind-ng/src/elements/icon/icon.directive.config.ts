@@ -2,7 +2,7 @@ import { inject, Provider } from '@angular/core';
 import {
 	ICON_CONFIG,
 	IconMap,
-	configMerge,
+	mergeConfig,
 	IconConfig,
 	ClassName,
 } from '@tailwind-ng/core';
@@ -57,7 +57,7 @@ export function provideIcon(customization?: Partial<IconConfig>): Provider {
 						if (!config.map) {
 							config.map = MAP();
 						}
-						config.map = configMerge(
+						config.map = mergeConfig(
 							[config.map, customization.map as IconMap],
 							{ strict: true },
 						);

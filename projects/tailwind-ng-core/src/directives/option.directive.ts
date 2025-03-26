@@ -7,7 +7,7 @@ import {
 	isEnterOrSpace,
 	isSpace,
 } from '../guards';
-import { classlist } from '../utils/classlist.util';
+import { classlist } from '../utils/classlist';
 
 @Directive({
 	selector: 'tw-option, [tw-option], [twOption]',

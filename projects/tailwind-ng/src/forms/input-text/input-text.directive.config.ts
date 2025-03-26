@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { INPUT_TEXT_CONFIG, InputConfig, configMerge } from '@tailwind-ng/core';
+import { INPUT_TEXT_CONFIG, InputConfig, mergeConfig } from '@tailwind-ng/core';
 
 const DefaultConfig = (): InputConfig => {
 	const className =
@@ -43,6 +43,6 @@ export function provideInputText(customization?: InputConfig): Provider {
 		provide: INPUT_TEXT_CONFIG,
 		useValue: !customization
 			? DefaultConfig()
-			: configMerge([DefaultConfig(), customization]),
+			: mergeConfig([DefaultConfig(), customization]),
 	};
 }

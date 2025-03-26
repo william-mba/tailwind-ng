@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { BUTTON_CONFIG, ButtonConfig, configMerge } from '@tailwind-ng/core';
+import { BUTTON_CONFIG, ButtonConfig, mergeConfig } from '@tailwind-ng/core';
 
 export const BASE = () => {
 	const className =
@@ -78,6 +78,6 @@ export function provideButton(customization?: Partial<ButtonConfig>): Provider {
 		provide: BUTTON_CONFIG,
 		useValue: !customization
 			? DefaultConfig()
-			: configMerge([DefaultConfig(), customization]),
+			: mergeConfig([DefaultConfig(), customization]),
 	};
 }

@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { BADGE_CONFIG, BadgeConfig, configMerge } from '@tailwind-ng/core';
+import { BADGE_CONFIG, BadgeConfig, mergeConfig } from '@tailwind-ng/core';
 
 const DefaultConfig = (): BadgeConfig => {
 	const className =
@@ -24,6 +24,6 @@ export function provideBadge(customization?: Partial<BadgeConfig>): Provider {
 		provide: BADGE_CONFIG,
 		useValue: !customization
 			? DefaultConfig()
-			: configMerge([DefaultConfig(), customization]),
+			: mergeConfig([DefaultConfig(), customization]),
 	};
 }
