@@ -13,9 +13,6 @@ const DefaultConfig = () => {
 export function provideCheckbox(className = ''): Provider {
 	return {
 		provide: CHECKBOX_CONFIG,
-		useValue:
-			className.length < 3
-				? DefaultConfig()
-				: ClassName.resolve([DefaultConfig(), className]),
+		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
 	};
 }

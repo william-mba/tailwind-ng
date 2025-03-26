@@ -61,13 +61,9 @@ export function classlist(base?: Value | HTMLElement, el?: HTMLElement): ClassLi
 	};
 	// set classlist by merging value from right to left.
 	classlist.set = (...value: Value[]) => {
-		const [first, second, ...rest] = value;
-		let newValue = ClassName.resolve([first, second]);
-		if (rest.length) {
-			newValue = rest.reduce((prev, curr) => ClassName.resolve([prev, curr]), newValue)!;
-		}
-		// Set newValue to _value only if newValue is setted and different.
-		if (newValue && newValue !== _value) {
+		const newValue = ClassName.merge([...value]);
+		// Set newValue to _value only if newValue is different from current value.
+		if (newValue !== _value) {
 			_value = newValue;
 			if (isHTMLElement(base)) {
 				setClassName(_value, base);
@@ -81,9 +77,7 @@ export function classlist(base?: Value | HTMLElement, el?: HTMLElement): ClassLi
 		return classlist.set(fn(_value));
 	};
 	classlist.merge = (fn: (currentValue: NonNullable<Value>) => Value[]) => {
-		const [first, second, ...rest] = fn(_value);
-		const initialValue = ClassName.resolve([first, second]);
-		return classlist.set(rest.reduce((prev, curr) => ClassName.resolve([prev, curr]), initialValue));
+		return classlist.set(ClassName.merge([...fn(_value)]));
 	};
 	classlist.toArray = () => ClassName.toArray(_value);
 	classlist.toString = () => _value;

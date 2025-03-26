@@ -13,9 +13,6 @@ const DefaultConfig = () => {
 export function provideInputRadio(className = ''): Provider {
 	return {
 		provide: INPUT_RADIO_CONFIG,
-		useValue:
-			className.length < 3
-				? DefaultConfig()
-				: ClassName.resolve([DefaultConfig(), className]),
+		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
 	};
 }

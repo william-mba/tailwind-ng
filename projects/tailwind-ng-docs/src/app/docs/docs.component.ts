@@ -7,16 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
 	selector: 'app-docs',
-	imports: [
-		NgIf,
-		RouterLink,
-		RouterLinkActive,
-		TwIcon,
-		TwDropdown,
-		TwButton,
-		TwOption,
-		RouterOutlet,
-	],
+	imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, TwOption, RouterOutlet],
 	templateUrl: './docs.component.html',
 })
 export class DocsComponent {
@@ -85,6 +76,10 @@ export const NAV_ITEMS: NavItem[] = [
 			{
 				label: 'Prebuilt Themes',
 				route: 'themes',
+			},
+			{
+				label: 'Customizations',
+				route: 'customizations',
 			},
 			{
 				label: 'Components',
