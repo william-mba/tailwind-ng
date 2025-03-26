@@ -20,10 +20,10 @@ import { BUTTON_CONFIG, ButtonBase, classlist } from '@tailwind-ng/core';
 export class ButtonComponent extends ButtonBase {
 	protected override buildStyle(): void {
 		const {
+			fab,
 			base,
 			[this.size]: size,
 			[this.variant]: variant,
-			fab,
 		} = inject(BUTTON_CONFIG);
 		classlist(this.nativeElement).set(`${size} ${variant}`, base, this.class);
 		if (this.isFab) {
