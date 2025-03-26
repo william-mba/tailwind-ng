@@ -11,7 +11,7 @@ Beautiful, fast and accessible <br/> Tailwind CSS components for Angular.
 <br/>
 <br/>
 
-[![Build Status](https://dev.azure.com/ecologiciel/Lab/_apis/build/status%2Fci%2Ftailwind-ng?branchName=next&stageName=CI&jobName=Build_Test_Publish)](https://dev.azure.com/ecologiciel/Lab/_build/latest?definitionId=10&branchName=next)
+[![Build Status](https://dev.azure.com/artandev/Lab/_apis/build/status%2Fci%2Ftailwind-ng?branchName=next&stageName=CI&jobName=Build_Test_Publish)](https://dev.azure.com/artandev/Lab/_build/latest?definitionId=10&branchName=next)
 ![tailwind-ng](https://badgen.net/bundlephobia/minzip/tailwind-ng)
 
 </div>
