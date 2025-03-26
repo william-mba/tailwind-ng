@@ -1,97 +1,142 @@
 <div>
-  <h2>With two action buttons</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div tw-button-group>
-      <button tw-button size="sm" variant="secondary">
-        <tw-icon size="sm" name="chevron-left" class="text-gray-500" />
-      </button>
-      <button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
-        <tw-icon size="sm" name="chevron-right" class="text-gray-500" />
-      </button>
-    </div>
-  </div>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div tw-button-group class="rounded-full">
-      <button tw-button size="sm" variant="secondary">
-        <tw-icon size="sm" name="chevron-left" class="text-gray-500" />
-      </button>
-      <button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
-        <tw-icon size="sm" name="chevron-right" class="text-gray-500" />
-      </button>
-    </div>
-  </div>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div tw-button-group>
-      <button tw-button size="sm" variant="secondary">
-        <tw-icon size="sm" name="bookmark" class="text-gray-500" />
-        Bookmark
-      </button>
-      <button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
-        12k
-      </button>
-    </div>
-  </div>
-  <div
-    class="overflow-x-auto h-52 grid sm:flex gap-4 justify-end sm:justify-center sm:justify-items-center items-start border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 p-6 py-10 mx-auto rounded-md">
-    <div tw-button-group>
-      <button tw-button size="sm" variant="secondary">
-        <tw-checkbox id="select-all" />
-        <label for="select-all" class="sr-only">Select all</label>
-      </button>
-      <button tw-button size="sm" variant="text" class="border-l border-gray-300 dark:border-gray-700 p-0">
-        <select id="message"
-          class="p-2 rounded-r-md dark:bg-gray-950 ring-0 focus:ring-2 ring-inset outline-0 ring-indigo-600">
-          <option>Unread messages</option>
-          <option>Sent messages</option>
-          <option>All messages</option>
-        </select>
-        <label for="message" class="sr-only">Messages</label>
-      </button>
-    </div>
-  </div>
+	<h2>With two action buttons</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div tw-button-group>
+			<button tw-button size="sm" variant="secondary">
+				<tw-icon size="sm" name="chevron-left" class="text-gray-500" />
+			</button>
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				class="border-l border-gray-300 dark:border-gray-700"
+			>
+				<tw-icon size="sm" name="chevron-right" class="text-gray-500" />
+			</button>
+		</div>
+	</div>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div tw-button-group class="rounded-full">
+			<button tw-button size="sm" variant="secondary">
+				<tw-icon size="sm" name="chevron-left" class="text-gray-500" />
+			</button>
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				class="border-l border-gray-300 dark:border-gray-700"
+			>
+				<tw-icon size="sm" name="chevron-right" class="text-gray-500" />
+			</button>
+		</div>
+	</div>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div tw-button-group>
+			<button tw-button size="sm" variant="secondary">
+				<tw-icon size="sm" name="bookmark" class="text-gray-500" />
+				Bookmark
+			</button>
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				class="border-l border-gray-300 dark:border-gray-700"
+			>
+				12k
+			</button>
+		</div>
+	</div>
+	<div
+		class="overflow-x-auto h-52 grid sm:flex gap-4 justify-end sm:justify-center sm:justify-items-center items-start border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 p-6 py-10 mx-auto rounded-md"
+	>
+		<div tw-button-group>
+			<button tw-button size="sm" variant="secondary">
+				<tw-checkbox id="select-all" />
+				<label for="select-all" class="sr-only">Select all</label>
+			</button>
+			<button
+				tw-button
+				size="sm"
+				variant="text"
+				class="border-l border-gray-300 dark:border-gray-700 p-0"
+			>
+				<select
+					id="message"
+					class="p-2 rounded-r-md dark:bg-gray-950 ring-0 focus:ring-2 ring-inset outline-0 ring-indigo-600"
+				>
+					<option>Unread messages</option>
+					<option>Sent messages</option>
+					<option>All messages</option>
+				</select>
+				<label for="message" class="sr-only">Messages</label>
+			</button>
+		</div>
+	</div>
 
-  <h2>With dropdown</h2>
-  <div
-    class="overflow-x-auto h-64 grid sm:flex gap-4 justify-end sm:justify-center sm:justify-items-center items-start border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 p-6 py-10 mx-auto rounded-md">
-    <div class="w-fit">
-      <div tw-button-group>
-        <button tw-button size="sm" variant="secondary">
-          Save changes
-        </button>
-        <button [popup]="dropdown" tw-button (click)="dropdown.toggle()" size="sm" variant="secondary"
-          class="border-l border-gray-300 dark:border-gray-700">
-          <tw-icon size="sm" name="chevron-down" class="text-gray-500" />
-        </button>
-      </div>
-      <div class="relative">
-        <ul tw-dropdown #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2" [isOpened]="true"
-          [closeOnBlur]="true">
-          <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Save and schedule </li>
-          <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Save and publish </li>
-          <li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70"> Export PDF </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+	<h2>With dropdown</h2>
+	<div
+		class="overflow-x-auto h-64 grid sm:flex gap-4 justify-end sm:justify-center sm:justify-items-center items-start border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 p-6 py-10 mx-auto rounded-md"
+	>
+		<div class="w-fit">
+			<div tw-button-group>
+				<button tw-button size="sm" variant="secondary">Save changes</button>
+				<button
+					[popup]="dropdown"
+					tw-button
+					(click)="dropdown.toggle()"
+					size="sm"
+					variant="secondary"
+					class="border-l border-gray-300 dark:border-gray-700"
+				>
+					<tw-icon size="sm" name="chevron-down" class="text-gray-500" />
+				</button>
+			</div>
+			<div class="relative">
+				<ul
+					tw-dropdown
+					#dropdown
+					(click)="dropdown.close()"
+					class="*:px-4 *:py-2"
+					[isOpened]="true"
+					[closeOnBlur]="true"
+				>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Save and schedule
+					</li>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Save and publish
+					</li>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Export PDF
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
-  <h2>With three options</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div tw-button-group class="rounded-full *:even:border-x">
-      <button tw-button variant="secondary">Days</button>
-      <button tw-button variant="secondary">Months</button>
-      <button tw-button variant="secondary">Years</button>
-    </div>
-  </div>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div tw-button-group class="*:even:border-x">
-      <button tw-button variant="secondary">Days</button>
-      <button tw-button variant="secondary">Months</button>
-      <button tw-button variant="secondary">Years</button>
-    </div>
-  </div>
+	<h2>With three options</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div tw-button-group class="rounded-full *:even:border-x">
+			<button tw-button variant="secondary">Days</button>
+			<button tw-button variant="secondary">Months</button>
+			<button tw-button variant="secondary">Years</button>
+		</div>
+	</div>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div tw-button-group class="*:even:border-x">
+			<button tw-button variant="secondary">Days</button>
+			<button tw-button variant="secondary">Months</button>
+			<button tw-button variant="secondary">Years</button>
+		</div>
+	</div>
 </div>

@@ -1,89 +1,156 @@
 <div class="sm:px-12 p-10 xl:w-3/4">
-  <section>
-    <h1 class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200">Themes</h1>
-    <p class="text-gray-700 dark:text-gray-300"><span class="font-heading text-nowrap">Tailwind NG</span> provides a set
-      of pre-built themes available via the CDN and npm for your Angular application.
-      <br class="hidden lg:block">
-      These themes support light and dark mode by default and are pre-built with Tailwind CSS.
-    </p>
-    <h2 class="font-heading mt-10 mb-3 text-xl font-bold">Default</h2>
-    <p class="mb-3 text-gray-700 dark:text-gray-300">
-      As you may guessed, this is the theme used by all <span class="font-heading">Tailwind NG</span>
-      components by default.</p>
-    <h2 class="font-heading mt-8 mb-3 text-lg text-gray-700 dark:text-gray-300 font-semibold">Usage from the CDN</h2>
-    <p class="mb-3 text-gray-700 dark:text-gray-300">This is the easiest and fastest way to use a theme.
-      As it's served by the CDN, it will no impact your app bundle size.</p>
-    <p class="mb-1.5 text-gray-700 dark:text-gray-300">Add the highlighted line to your index.html file.
-    </p>
-    <div class="relative">
-      <div [innerHTML]="trust(themesFromCDNHTML)"></div>
-      @if (copyRec['fromCDN']) {
-      <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-      @else {
-      <tw-icon name="clipboard-document" size="lg" (click)="copy(themesFromCDNCode, 'fromCDN')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-    </div>
-    <h2 class="font-heading mt-8 mb-3 text-lg text-gray-700 dark:text-gray-300 font-semibold">Usage from npm registry
-    </h2>
-    <p class="mb-6 text-gray-700 dark:text-gray-300">Install the package using your favorite package manager. </p>
-    <p class="mb-1.5 text-gray-700 dark:text-gray-300">npm:</p>
-    <div class="relative">
-      <div [innerHTML]="trust(npmHTML)"></div>
-      @if (copyRec['npm']) {
-      <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-      @else {
-      <tw-icon name="clipboard-document" size="lg" (click)="copy(npmCode, 'npm')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-    </div>
-    <p class="mb-1.5 text-gray-700 dark:text-gray-300">yarn:</p>
-    <div class="relative">
-      <div [innerHTML]="trust(yarnHTML)"></div>
-      @if (copyRec['yarn']) {
-      <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-      @else {
-      <tw-icon name="clipboard-document" size="lg" (click)="copy(yarnCode, 'yarn')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-    </div>
-    <p class="mb-1.5 text-gray-700 dark:text-gray-300">pnpm:</p>
-    <div class="relative">
-      <div [innerHTML]="trust(pnpmHTML)"></div>
-      @if (copyRec['pnpm']) {
-      <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-      @else {
-      <tw-icon name="clipboard-document" size="lg" (click)="copy(pnpmCode, 'pnpm')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-    </div>
-    <p class="mb-1.5 text-gray-700 dark:text-gray-300">Add the follwing line to your main css file. </p>
-    <div class="relative">
-      <div [innerHTML]="trust(themesFromNPMHTML)"></div>
-      @if (copyRec['fromNPM']) {
-      <tw-icon name="clipboard-document-check" size="lg"
-        class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-      @else {
-      <tw-icon name="clipboard-document" size="lg" (click)="copy(themesFromNPMCode, 'fromNPM')"
-        class="absolute top-2 right-2 text-gray-300 hover:text-gray-100" />
-      }
-    </div>
-  </section>
-  <section class="grid grid-cols-1 sm:grid-cols-2 *:p-6 *:w-full *:rounded-md gap-1 sm:gap-8 mt-12">
-    <button tw-button variant="text" routerLink="/docs/getting-started" class="sm:justify-start pl-0!">
-      <tw-icon name="chevron-left" />Getting Started
-    </button>
-    <button tw-button variant="text" routerLink="/docs/components-overview" class="sm:justify-end pr-0!">
-      Components <tw-icon name="chevron-right" />
-    </button>
-  </section>
+	<section>
+		<h1
+			class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200"
+		>
+			Themes
+		</h1>
+		<p class="text-gray-700 dark:text-gray-300">
+			<span class="font-heading text-nowrap">Tailwind NG</span>
+			provides a set of pre-built themes available via the CDN and npm for your
+			Angular application.
+			<br class="hidden lg:block" />
+			These themes support light and dark mode by default and are pre-built with
+			Tailwind CSS.
+		</p>
+		<h2 class="font-heading mt-10 mb-3 text-xl font-bold">Default</h2>
+		<p class="mb-3 text-gray-700 dark:text-gray-300">
+			As you may guessed, this is the theme used by all
+			<span class="font-heading">Tailwind NG</span>
+			components by default.
+		</p>
+		<h2
+			class="font-heading mt-8 mb-3 text-lg text-gray-700 dark:text-gray-300 font-semibold"
+		>
+			Usage from the CDN
+		</h2>
+		<p class="mb-3 text-gray-700 dark:text-gray-300">
+			This is the easiest and fastest way to use a theme. As it's served by the
+			CDN, it will no impact your app bundle size.
+		</p>
+		<p class="mb-1.5 text-gray-700 dark:text-gray-300">
+			Add the highlighted line to your index.html file.
+		</p>
+		<div class="relative">
+			<div [innerHTML]="trust(themesFromCDNHTML)"></div>
+			@if (copyRec['fromCDN']) {
+				<tw-icon
+					name="clipboard-document-check"
+					size="lg"
+					class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			} @else {
+				<tw-icon
+					name="clipboard-document"
+					size="lg"
+					(click)="copy(themesFromCDNCode, 'fromCDN')"
+					class="absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			}
+		</div>
+		<h2
+			class="font-heading mt-8 mb-3 text-lg text-gray-700 dark:text-gray-300 font-semibold"
+		>
+			Usage from npm registry
+		</h2>
+		<p class="mb-6 text-gray-700 dark:text-gray-300">
+			Install the package using your favorite package manager.
+		</p>
+		<p class="mb-1.5 text-gray-700 dark:text-gray-300">npm:</p>
+		<div class="relative">
+			<div [innerHTML]="trust(npmHTML)"></div>
+			@if (copyRec['npm']) {
+				<tw-icon
+					name="clipboard-document-check"
+					size="lg"
+					class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			} @else {
+				<tw-icon
+					name="clipboard-document"
+					size="lg"
+					(click)="copy(npmCode, 'npm')"
+					class="absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			}
+		</div>
+		<p class="mb-1.5 text-gray-700 dark:text-gray-300">yarn:</p>
+		<div class="relative">
+			<div [innerHTML]="trust(yarnHTML)"></div>
+			@if (copyRec['yarn']) {
+				<tw-icon
+					name="clipboard-document-check"
+					size="lg"
+					class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			} @else {
+				<tw-icon
+					name="clipboard-document"
+					size="lg"
+					(click)="copy(yarnCode, 'yarn')"
+					class="absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			}
+		</div>
+		<p class="mb-1.5 text-gray-700 dark:text-gray-300">pnpm:</p>
+		<div class="relative">
+			<div [innerHTML]="trust(pnpmHTML)"></div>
+			@if (copyRec['pnpm']) {
+				<tw-icon
+					name="clipboard-document-check"
+					size="lg"
+					class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			} @else {
+				<tw-icon
+					name="clipboard-document"
+					size="lg"
+					(click)="copy(pnpmCode, 'pnpm')"
+					class="absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			}
+		</div>
+		<p class="mb-1.5 text-gray-700 dark:text-gray-300">
+			Add the follwing line to your main css file.
+		</p>
+		<div class="relative">
+			<div [innerHTML]="trust(themesFromNPMHTML)"></div>
+			@if (copyRec['fromNPM']) {
+				<tw-icon
+					name="clipboard-document-check"
+					size="lg"
+					class="starting:opacity-0 duration-200 transition-discrete absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			} @else {
+				<tw-icon
+					name="clipboard-document"
+					size="lg"
+					(click)="copy(themesFromNPMCode, 'fromNPM')"
+					class="absolute top-2 right-2 text-gray-300 hover:text-gray-100"
+				/>
+			}
+		</div>
+	</section>
+	<section
+		class="grid grid-cols-1 sm:grid-cols-2 *:p-6 *:w-full *:rounded-md gap-1 sm:gap-8 mt-12"
+	>
+		<button
+			tw-button
+			variant="text"
+			routerLink="/docs/getting-started"
+			class="sm:justify-start pl-0!"
+		>
+			<tw-icon name="chevron-left" />
+			Getting Started
+		</button>
+		<button
+			tw-button
+			variant="text"
+			routerLink="/docs/components-overview"
+			class="sm:justify-end pr-0!"
+		>
+			Components
+			<tw-icon name="chevron-right" />
+		</button>
+	</section>
 </div>

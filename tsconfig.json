@@ -1,50 +1,41 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "paths": {
-      "tailwind-ng": [
-        "./projects/tailwind-ng/src/public-api.ts"
-      ],
-      "@tailwind-ng/core": [
-        "./projects/tailwind-ng-core/src/public-api.ts"
-      ],
-    },
-    "types": [
-      "jasmine"
-    ],
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "bundler",
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
-  },
-  "angularCompilerOptions": {
-    "strictPropertyInitialization": true,
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "strictStandalone": true,
-    "trace": true,
-  }
+	"compileOnSave": false,
+	"compilerOptions": {
+		"outDir": "./dist/out-tsc",
+		"paths": {
+			"tailwind-ng": ["./projects/tailwind-ng/src/public-api.ts"],
+			"@tailwind-ng/core": ["./projects/tailwind-ng-core/src/public-api.ts"]
+		},
+		"types": ["jasmine"],
+		"strict": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"inlineSources": true,
+		"skipLibCheck": true,
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "bundler",
+		"importHelpers": true,
+		"target": "ES2022",
+		"module": "ES2022",
+		"useDefineForClassFields": false,
+		"lib": ["ES2022", "dom"]
+	},
+	"angularCompilerOptions": {
+		"strictPropertyInitialization": true,
+		"enableI18nLegacyMessageIdFormat": false,
+		"strictInjectionParameters": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": true,
+		"strictStandalone": true,
+		"trace": true
+	}
 }

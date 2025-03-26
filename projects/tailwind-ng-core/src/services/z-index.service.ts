@@ -1,5 +1,5 @@
-import { inject, Injectable } from "@angular/core";
-import { InjectionTokenFactory } from "../tokens";
+import { inject, Injectable } from '@angular/core';
+import { InjectionTokenFactory } from '../tokens';
 
 /**
  * @TailwindNG Z-Index Seed
@@ -20,12 +20,12 @@ export const Z_INDEX_SEED = InjectionTokenFactory.create(50, 'Z_INDEX_SEED');
  */
 @Injectable({ providedIn: 'root' })
 export class ZIndexer {
-  private zIndex = inject(Z_INDEX_SEED);
-  get next(): number {
-    return this.zIndex++;
-  }
+	private zIndex = inject(Z_INDEX_SEED);
+	get next(): number {
+		return this.zIndex++;
+	}
 
-  get current(): number {
-    return this.zIndex;
-  }
+	get current(): number {
+		return this.zIndex;
+	}
 }

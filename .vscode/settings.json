@@ -1,10 +1,4 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "cSpell.words": [
-    "adipisicing",
-    "amet",
-    "consectetur",
-    "Consequatur",
-    "elit"
-  ]
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"cSpell.words": ["adipisicing", "amet", "consectetur", "Consequatur", "elit"]
 }

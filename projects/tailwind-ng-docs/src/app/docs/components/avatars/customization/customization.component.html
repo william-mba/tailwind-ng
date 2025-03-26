@@ -1,48 +1,60 @@
 <section>
-  <p class="text-gray-700 dark:text-gray-300 mb-1 text-balance">
-    <span class="font-heading">Tailwind NG</span> provides a wide range of predesigned components to help you
-    get started quickly.
-    However, you may need to customize a component to match your design system or brand guidelines.
-  </p>
-  <p class="text-gray-700 dark:text-gray-300 mb-1 mt-3">
-    In this guide, you will learn the various ways you can customize the
-    <span class="font-heading">Tailwind NG Avatar</span> to create a
-    unique design
-    for your application and make it stand out.
-    These approaches are listed from specific to generic.
-    Depending on your need, choose the best approach or combine them to get
-    the best results without repeating yourself.
-  </p>
-  <p
-    class="text-sm w-fit font-light p-2 my-3 border-l-8 border-gray-950/15 dark:border-white/15 bg-gray-950/10 dark:bg-gray-800/40 rounded-md">
-    This guide assumes you have already installed <span class="font-heading">Tailwind NG</span>.
-    If not, please install it before continuing.
-  </p>
-  <h3 class="font-heading mt-10 text-lg font-semibold">01. Use <code>class</code> attribute</h3>
-  <p class="mb-2 text-gray-700 dark:text-gray-300">
-    Use the <code class="font-semibold">class</code> attribute
-    when you need to apply very specific style to the component.
-  </p>
-  <div [innerHTML]="trust(classAttribute)"></div>
-  <h3 class="font-heading mt-10 text-lg font-semibold">02. Use classList</h3>
-  <p class="mb-2 text-gray-700 dark:text-gray-300 text-pretty">
-    Use the <code class="font-semibold">(componentRef).classList.value</code> signal
-    to apply very specific style programmatically.
-  </p>
-  <h3 class="font-heading mt-10 text-lg font-semibold">03. Use a provider</h3>
-  <p
-    class="text-sm w-fit font-light p-2 mb-3 border-l-8 border-gray-950/15 dark:border-white/15 bg-gray-950/10 dark:bg-gray-800/40 rounded-md">
-    There are three types of UI providers in <span class="font-heading">Tailwind NG</span>: component
-    provider, module provider and application wide provider.
-  </p>
-  <p
-    class="text-sm w-fit font-light p-2 mb-3 border-l-8 border-yellow-600/15 dark:border-yellow-600/30 bg-yellow-600/10 dark:bg-yellow-600/10 rounded-md">
-    All providers have IntelliSense for all available properties and possible values so you won't need to remember
-    them.
-  </p>
-  <p class="mb-2 text-gray-700 dark:text-gray-300 text-pretty">
-    Use a provider when you need to apply a custom style to all instances of the component in a scope such as your
-    host component, module or application wide. This is the most generic and recommended way.
-  </p>
-  <div [innerHTML]="trust(configProviders)"></div>
+	<p class="text-gray-700 dark:text-gray-300 mb-1 text-balance">
+		<span class="font-heading">Tailwind NG</span>
+		provides a wide range of predesigned components to help you get started
+		quickly. However, you may need to customize a component to match your design
+		system or brand guidelines.
+	</p>
+	<p class="text-gray-700 dark:text-gray-300 mb-1 mt-3">
+		In this guide, you will learn the various ways you can customize the
+		<span class="font-heading">Tailwind NG Avatar</span>
+		to create a unique design for your application and make it stand out. These
+		approaches are listed from specific to generic. Depending on your need,
+		choose the best approach or combine them to get the best results without
+		repeating yourself.
+	</p>
+	<p
+		class="text-sm w-fit font-light p-2 my-3 border-l-8 border-gray-950/15 dark:border-white/15 bg-gray-950/10 dark:bg-gray-800/40 rounded-md"
+	>
+		This guide assumes you have already installed
+		<span class="font-heading">Tailwind NG</span>
+		. If not, please install it before continuing.
+	</p>
+	<h3 class="font-heading mt-10 text-lg font-semibold">
+		01. Use
+		<code>class</code>
+		attribute
+	</h3>
+	<p class="mb-2 text-gray-700 dark:text-gray-300">
+		Use the
+		<code class="font-semibold">class</code>
+		attribute when you need to apply very specific style to the component.
+	</p>
+	<div [innerHTML]="trust(classAttribute)"></div>
+	<h3 class="font-heading mt-10 text-lg font-semibold">02. Use classList</h3>
+	<p class="mb-2 text-gray-700 dark:text-gray-300 text-pretty">
+		Use the
+		<code class="font-semibold">(componentRef).classList.value</code>
+		signal to apply very specific style programmatically.
+	</p>
+	<h3 class="font-heading mt-10 text-lg font-semibold">03. Use a provider</h3>
+	<p
+		class="text-sm w-fit font-light p-2 mb-3 border-l-8 border-gray-950/15 dark:border-white/15 bg-gray-950/10 dark:bg-gray-800/40 rounded-md"
+	>
+		There are three types of UI providers in
+		<span class="font-heading">Tailwind NG</span>
+		: component provider, module provider and application wide provider.
+	</p>
+	<p
+		class="text-sm w-fit font-light p-2 mb-3 border-l-8 border-yellow-600/15 dark:border-yellow-600/30 bg-yellow-600/10 dark:bg-yellow-600/10 rounded-md"
+	>
+		All providers have IntelliSense for all available properties and possible
+		values so you won't need to remember them.
+	</p>
+	<p class="mb-2 text-gray-700 dark:text-gray-300 text-pretty">
+		Use a provider when you need to apply a custom style to all instances of the
+		component in a scope such as your host component, module or application
+		wide. This is the most generic and recommended way.
+	</p>
+	<div [innerHTML]="trust(configProviders)"></div>
 </section>

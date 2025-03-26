@@ -1,307 +1,525 @@
 <div>
-  <h2 class="font-medium">Simple</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <input tw-input type="email" placeholder="you@example.com" />
-  </div>
-  <h2 class="font-medium">With label</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="email2" class="block text-sm mb-2 font-medium">
-        Email
-      </label>
-      <input tw-input type="email" id="email2" placeholder="you@example.com" />
-    </div>
-  </div>
-  <h2 class="font-medium">With pill shape</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="pill-shape" class="block text-sm mb-2 font-medium">
-        Email
-      </label>
-      <input tw-input type="email" id="pill-shape" placeholder="you@example.com" class="rounded-full" />
-    </div>
-  </div>
-  <h2 class="font-medium">With gray background and bottom border</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="bg-and-bottom-border" class="block text-sm mb-2 font-medium">
-        Email
-      </label>
-      <input tw-input type="email" id="bg-and-bottom-border" placeholder="you@example.com"
-        class="border-b-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 rounded-none ring- focus:- focus:border-indigo-600" />
-    </div>
-  </div>
-  <h2 class="font-medium">With inset label</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div class="relative">
-      <input tw-input type="text" id="user-name1" size="sm" placeholder="Marco Polo" class="pt-6" />
-      <label for="user-name1" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
-        Name
-      </label>
-    </div>
-  </div>
-  <h2 class="font-medium">With inset label and shared borders</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div class="space-y-px">
-      <div class="relative">
-        <input tw-input size="sm" type="email" id="email7" placeholder="you@example.com"
-          class="rounded-b-none pt-6 backdrop-blur-none" />
-        <label for="email7" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
-          Email
-        </label>
-      </div>
-      <div class="relative">
-        <input tw-input size="sm" type="password" id="password" placeholder="Enter your password"
-          class="rounded-t-none pt-6 backdrop-blur-none" />
-        <label for="password" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
-          Password
-        </label>
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With corner hint</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <div class="flex justify-between text-sm mb-2">
-        <label for="cornerhint" class="font-medium">Email</label>
-        <span class="opacity-60 text-gray-500">Optional</span>
-      </div>
-      <input tw-input type="email" id="cornerhint" placeholder="you@example.com" />
-    </div>
-  </div>
-  <h2 class="font-medium">With overlapping label</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div class="relative">
-      <label for="user-name"
-        class="absolute left-2 -top-2 px-1.5 bg-gray-50 dark:bg-gray-900 text-xs font-medium rounded-full">
-        Name
-      </label>
-      <input tw-input type="text" id="user-name" placeholder="John Smith" class="backdrop-blur-none" />
-    </div>
-  </div>
-  <h2 class="font-medium">With keyboard shortcut</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
-      <div class="relative">
-        <input tw-input type="text" name="search" id="search"
-          class="sm:w-80 pr-12 placeholder:text-gray-400 placeholder:dark:text-gray-600 invalid:ring-red-600/60 focus:invalid:ring-red-600/60" />
-        <div
-          class="absolute top-1 right-1 text-gray-400 dark:text-gray-500 my-auto flex items-center gap-0.5 p-0.5 px-1 border-1 border-b-2 border-gray-300 dark:border-gray-700 rounded-sm pointer-events-none">
-          <tw-icon name="cmd-k" size="sm" />K
-        </div>
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With label and help text</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="email3" class="block text-sm mb-2 font-medium"> Email </label>
-      <input tw-input type="email" id="email3" />
-      <p class="opacity-60 text-sm mt-2 text-gray-500">We'll only use this for spam.</p>
-    </div>
-  </div>
-  <h2 class="font-medium">Disabled input</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="email4" class="block text-sm mb-2 font-medium">Email</label>
-      <input tw-input disabled type="email" id="email4" placeholder="you@example.com" />
-    </div>
-  </div>
-  <h2 class="font-medium">With validation error</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="email" class="block text-sm mb-2 font-medium">
-        Email
-      </label>
-      <div class="relative">
-        <input tw-input type="email" id="email" [formControl]="email" class="pr-10" placeholder="you@example.com" />
-        @if (isInvalid(email)) {
-        <tw-icon name="exclamation-circle" class="absolute inset-y-0 right-3 text-red-600/80" />
-        }
-      </div>
-      @if (isInvalid(email)) {
-      <div class="max-w-xl text-sm mt-2 text-red-600/90 dark:text-red-500/90">
-        Not a valid email address.
-      </div>
-      }
-    </div>
-  </div>
-  <h2 class="font-medium">With leading icon</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="leadingicon" class="block text-sm font-medium">Email</label>
-      <div class="relative mt-2">
-        <input tw-input type="email" id="leadingicon" class="pl-10" placeholder="you@example.com" />
-        <tw-icon name="envelope"
-          class="absolute inset-y-0 left-3 text-gray-400 dark:text-gray-600 pointer-events-none" />
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With trailing icon</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="trailingicon" class="block text-sm font-medium">Account number</label>
-      <div class="relative mt-2">
-        <input tw-input type="email" id="trailingicon" class="pr-10" placeholder="000-00-0000" />
-        <tw-icon name="question-mark-circle"
-          class="absolute inset-y-0 right-3 text-gray-400 dark:text-gray-600 cursor-pointer" />
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With add-on</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="add-on" class="block text-sm font-medium">Company Website</label>
-      <div tw-group class="mt-2 *:last:rounded-r-md">
-        <tw-icon name="http" class="select-none flex items-center px-3 text-gray-500 dark:text-gray-600" />
-        <input tw-input type="url" id="add-on" class="sm:w-64" placeholder="www.example.com" />
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With inline add-on</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="inline-add-on" class="block text-sm font-medium">Company Website</label>
-      <div class="mt-2 relative">
-        <input tw-input type="url" id="inline-add-on" class="pl-14.5" placeholder="www.example.com" />
-        <tw-icon name="http" class="absolute inset-y-0 left-3 text-gray-500 dark:text-gray-600" />
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With inline leading and trailing add-ons</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="inline-add-on-2" class="block text-sm font-medium">Price</label>
-      <div class="mt-2 relative">
-        <input tw-input type="text" id="inline-add-on-2" class="pl-7 pr-12" placeholder="0.0" />
-        <tw-icon name="dollar-sign" class="absolute inset-y-0 left-2 text-sm text-gray-500 dark:text-gray-600" />
-        <span class="absolute flex items-center inset-y-0 right-3 text-sm text-gray-500 dark:text-gray-600">
-          CAD
-        </span>
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With inline inline leading dropdown</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="phone-number" class="block text-sm font-medium">Phone Number</label>
-      <div class="relative mt-2">
-        <input tw-input type="tel" id="phone-number" placeholder="+1 (543) 234-5678" class="pl-16">
-        <div class="absolute inset-y-0 left-0 flex items-center">
-          <label for="currency" class="sr-only">Currency</label>
-          <select id="currency" name="currency"
-            class="appearance-none text-gray-700 dark:text-gray-300 outline-none h-full rounded-md bg-transparent px-3 pr-6 *:dark:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-            <option>USD</option>
-            <option>CAD</option>
-            <option>EUR</option>
-          </select>
-          <tw-icon name="arrow-drop-down" class="absolute inset-y-0 right-0 opacity-60 pointer-events-none" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With inline leading add-on and trailing dropdown</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="price" class="block text-sm mb-2 font-medium">Price</label>
-      <div class="relative">
-        <!-- Input -->
-        <input tw-input type="text" id="price" placeholder="0.0" class="pl-8 pr-18" />
-        <tw-icon name="dollar-sign"
-          class="opacity-60 absolute inset-y-0 left-0 pl-2 pointer-events-none text-gray-400" />
-        <div class="absolute inset-y-0 right-0 flex items-center">
-          <label for="currency2" class="sr-only">Currency</label>
-          <select id="currency2" name="currency"
-            class="appearance-none text-gray-700 dark:text-gray-300 outline-none h-full rounded-md bg-transparent px-3 pr-8 *:dark:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-            <option>USD</option>
-            <option>CAD</option>
-            <option>EUR</option>
-          </select>
-          <tw-icon name="arrow-drop-down" class="absolute inset-y-0 right-2 opacity-60 pointer-events-none" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With leading icon and trailing button</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div>
-      <label for="candidate" class="block text-sm font-medium mb-2"> Search candidates </label>
-      <div tw-group>
-        <div class="relative">
-          <tw-icon name="users"
-            class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 dark:text-gray-600 pointer-events-none" />
-          <input tw-input type="text" id="candidate" size="sm" placeholder="Jane Doe"
-            class="sm:w-60 pl-10 rounded-r-none backdrop-blur-" />
-        </div>
-        <button tw-button size="sm" variant="secondary">
-          <tw-icon name="bars-arrow-up" class="text-gray-400 dark:text-gray-600" />
-          Sort
-        </button>
-      </div>
-    </div>
-  </div>
-  <h2 class="font-medium">With shared borders</h2>
-  <div
-    class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md">
-    <div class="sm:w-80">
-      <!-- Card details -->
-      <fieldset>
-        <legend class="block text-sm font-medium">
-          Card details
-        </legend>
-        <div class="mt-2 space-y-px rounded-md shadow-sm">
-          <input tw-input id="card-number" name="card-number" type="text" placeholder="Card number"
-            class="rounded-none rounded-t-md">
-          <div class="flex space-x-px">
-            <input tw-input id="card-expiration-date" name="card-expiration-date" type="text" placeholder="MM / YY"
-              class="rounded-none rounded-bl-md focus:z-10 sm:w-full">
-            <input tw-input id="card-cvc" name="card-cvc" type="text" placeholder="CVC"
-              class="rounded-none rounded-br-md focus:z-10 sm:w-full">
-          </div>
-        </div>
-      </fieldset>
-      <!-- Billing address -->
-      <fieldset class="mt-6">
-        <legend class="block text-sm font-medium">
-          Billing address
-        </legend>
-        <div class="mt-2 space-y-px rounded-md shadow-sm">
-          <div>
-            <div class="relative">
-              <select id="country" name="country" autocomplete="country-name"
-                class="appearance-none block w-full rounded-none rounded-t-md border-0 outline-0 *:dark:text-gray-800 py-2 p-3 ring-1 ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:z-10 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                <option>Canada</option>
-                <option>United States</option>
-                <option>Mexico</option>
-              </select>
-              <tw-icon name="arrow-drop-down" class="absolute inset-y-0 right-2 opacity-60 pointer-events-none" />
-            </div>
-          </div>
-          <input tw-input id="postal-code" name="postal-code" type="text" placeholder="ZIP / Postal code"
-            autocomplete="postal-code" class="rounded-none rounded-b-md backdrop-blur-none">
-        </div>
-      </fieldset>
-    </div>
-  </div>
+	<h2 class="font-medium">Simple</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<input tw-input type="email" placeholder="you@example.com" />
+	</div>
+	<h2 class="font-medium">With label</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="email2" class="block text-sm mb-2 font-medium">Email</label>
+			<input tw-input type="email" id="email2" placeholder="you@example.com" />
+		</div>
+	</div>
+	<h2 class="font-medium">With pill shape</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="pill-shape" class="block text-sm mb-2 font-medium">
+				Email
+			</label>
+			<input
+				tw-input
+				type="email"
+				id="pill-shape"
+				placeholder="you@example.com"
+				class="rounded-full"
+			/>
+		</div>
+	</div>
+	<h2 class="font-medium">With gray background and bottom border</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="bg-and-bottom-border" class="block text-sm mb-2 font-medium">
+				Email
+			</label>
+			<input
+				tw-input
+				type="email"
+				id="bg-and-bottom-border"
+				placeholder="you@example.com"
+				class="border-b-2 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 rounded-none ring- focus:- focus:border-indigo-600"
+			/>
+		</div>
+	</div>
+	<h2 class="font-medium">With inset label</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div class="relative">
+			<input
+				tw-input
+				type="text"
+				id="user-name1"
+				size="sm"
+				placeholder="Marco Polo"
+				class="pt-6"
+			/>
+			<label
+				for="user-name1"
+				class="absolute inset-y-0 left-3 top-2 text-xs font-medium"
+			>
+				Name
+			</label>
+		</div>
+	</div>
+	<h2 class="font-medium">With inset label and shared borders</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div class="space-y-px">
+			<div class="relative">
+				<input
+					tw-input
+					size="sm"
+					type="email"
+					id="email7"
+					placeholder="you@example.com"
+					class="rounded-b-none pt-6 backdrop-blur-none"
+				/>
+				<label
+					for="email7"
+					class="absolute inset-y-0 left-3 top-2 text-xs font-medium"
+				>
+					Email
+				</label>
+			</div>
+			<div class="relative">
+				<input
+					tw-input
+					size="sm"
+					type="password"
+					id="password"
+					placeholder="Enter your password"
+					class="rounded-t-none pt-6 backdrop-blur-none"
+				/>
+				<label
+					for="password"
+					class="absolute inset-y-0 left-3 top-2 text-xs font-medium"
+				>
+					Password
+				</label>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With corner hint</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<div class="flex justify-between text-sm mb-2">
+				<label for="cornerhint" class="font-medium">Email</label>
+				<span class="opacity-60 text-gray-500">Optional</span>
+			</div>
+			<input
+				tw-input
+				type="email"
+				id="cornerhint"
+				placeholder="you@example.com"
+			/>
+		</div>
+	</div>
+	<h2 class="font-medium">With overlapping label</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div class="relative">
+			<label
+				for="user-name"
+				class="absolute left-2 -top-2 px-1.5 bg-gray-50 dark:bg-gray-900 text-xs font-medium rounded-full"
+			>
+				Name
+			</label>
+			<input
+				tw-input
+				type="text"
+				id="user-name"
+				placeholder="John Smith"
+				class="backdrop-blur-none"
+			/>
+		</div>
+	</div>
+	<h2 class="font-medium">With keyboard shortcut</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="search" class="block text-sm mb-2 font-medium">
+				Quick search
+			</label>
+			<div class="relative">
+				<input
+					tw-input
+					type="text"
+					name="search"
+					id="search"
+					class="sm:w-80 pr-12 placeholder:text-gray-400 placeholder:dark:text-gray-600 invalid:ring-red-600/60 focus:invalid:ring-red-600/60"
+				/>
+				<div
+					class="absolute top-1 right-1 text-gray-400 dark:text-gray-500 my-auto flex items-center gap-0.5 p-0.5 px-1 border-1 border-b-2 border-gray-300 dark:border-gray-700 rounded-sm pointer-events-none"
+				>
+					<tw-icon name="cmd-k" size="sm" />
+					K
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With label and help text</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="email3" class="block text-sm mb-2 font-medium">Email</label>
+			<input tw-input type="email" id="email3" />
+			<p class="opacity-60 text-sm mt-2 text-gray-500">
+				We'll only use this for spam.
+			</p>
+		</div>
+	</div>
+	<h2 class="font-medium">Disabled input</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="email4" class="block text-sm mb-2 font-medium">Email</label>
+			<input
+				tw-input
+				disabled
+				type="email"
+				id="email4"
+				placeholder="you@example.com"
+			/>
+		</div>
+	</div>
+	<h2 class="font-medium">With validation error</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="email" class="block text-sm mb-2 font-medium">Email</label>
+			<div class="relative">
+				<input
+					tw-input
+					type="email"
+					id="email"
+					[formControl]="email"
+					class="pr-10"
+					placeholder="you@example.com"
+				/>
+				@if (isInvalid(email)) {
+					<tw-icon
+						name="exclamation-circle"
+						class="absolute inset-y-0 right-3 text-red-600/80"
+					/>
+				}
+			</div>
+			@if (isInvalid(email)) {
+				<div class="max-w-xl text-sm mt-2 text-red-600/90 dark:text-red-500/90">
+					Not a valid email address.
+				</div>
+			}
+		</div>
+	</div>
+	<h2 class="font-medium">With leading icon</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="leadingicon" class="block text-sm font-medium">Email</label>
+			<div class="relative mt-2">
+				<input
+					tw-input
+					type="email"
+					id="leadingicon"
+					class="pl-10"
+					placeholder="you@example.com"
+				/>
+				<tw-icon
+					name="envelope"
+					class="absolute inset-y-0 left-3 text-gray-400 dark:text-gray-600 pointer-events-none"
+				/>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With trailing icon</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="trailingicon" class="block text-sm font-medium">
+				Account number
+			</label>
+			<div class="relative mt-2">
+				<input
+					tw-input
+					type="email"
+					id="trailingicon"
+					class="pr-10"
+					placeholder="000-00-0000"
+				/>
+				<tw-icon
+					name="question-mark-circle"
+					class="absolute inset-y-0 right-3 text-gray-400 dark:text-gray-600 cursor-pointer"
+				/>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With add-on</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="add-on" class="block text-sm font-medium">
+				Company Website
+			</label>
+			<div tw-group class="mt-2 *:last:rounded-r-md">
+				<tw-icon
+					name="http"
+					class="select-none flex items-center px-3 text-gray-500 dark:text-gray-600"
+				/>
+				<input
+					tw-input
+					type="url"
+					id="add-on"
+					class="sm:w-64"
+					placeholder="www.example.com"
+				/>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With inline add-on</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="inline-add-on" class="block text-sm font-medium">
+				Company Website
+			</label>
+			<div class="mt-2 relative">
+				<input
+					tw-input
+					type="url"
+					id="inline-add-on"
+					class="pl-14.5"
+					placeholder="www.example.com"
+				/>
+				<tw-icon
+					name="http"
+					class="absolute inset-y-0 left-3 text-gray-500 dark:text-gray-600"
+				/>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With inline leading and trailing add-ons</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="inline-add-on-2" class="block text-sm font-medium">
+				Price
+			</label>
+			<div class="mt-2 relative">
+				<input
+					tw-input
+					type="text"
+					id="inline-add-on-2"
+					class="pl-7 pr-12"
+					placeholder="0.0"
+				/>
+				<tw-icon
+					name="dollar-sign"
+					class="absolute inset-y-0 left-2 text-sm text-gray-500 dark:text-gray-600"
+				/>
+				<span
+					class="absolute flex items-center inset-y-0 right-3 text-sm text-gray-500 dark:text-gray-600"
+				>
+					CAD
+				</span>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With inline inline leading dropdown</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="phone-number" class="block text-sm font-medium">
+				Phone Number
+			</label>
+			<div class="relative mt-2">
+				<input
+					tw-input
+					type="tel"
+					id="phone-number"
+					placeholder="+1 (543) 234-5678"
+					class="pl-16"
+				/>
+				<div class="absolute inset-y-0 left-0 flex items-center">
+					<label for="currency" class="sr-only">Currency</label>
+					<select
+						id="currency"
+						name="currency"
+						class="appearance-none text-gray-700 dark:text-gray-300 outline-none h-full rounded-md bg-transparent px-3 pr-6 *:dark:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+					>
+						<option>USD</option>
+						<option>CAD</option>
+						<option>EUR</option>
+					</select>
+					<tw-icon
+						name="arrow-drop-down"
+						class="absolute inset-y-0 right-0 opacity-60 pointer-events-none"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With inline leading add-on and trailing dropdown</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="price" class="block text-sm mb-2 font-medium">Price</label>
+			<div class="relative">
+				<!-- Input -->
+				<input
+					tw-input
+					type="text"
+					id="price"
+					placeholder="0.0"
+					class="pl-8 pr-18"
+				/>
+				<tw-icon
+					name="dollar-sign"
+					class="opacity-60 absolute inset-y-0 left-0 pl-2 pointer-events-none text-gray-400"
+				/>
+				<div class="absolute inset-y-0 right-0 flex items-center">
+					<label for="currency2" class="sr-only">Currency</label>
+					<select
+						id="currency2"
+						name="currency"
+						class="appearance-none text-gray-700 dark:text-gray-300 outline-none h-full rounded-md bg-transparent px-3 pr-8 *:dark:text-gray-800 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+					>
+						<option>USD</option>
+						<option>CAD</option>
+						<option>EUR</option>
+					</select>
+					<tw-icon
+						name="arrow-drop-down"
+						class="absolute inset-y-0 right-2 opacity-60 pointer-events-none"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With leading icon and trailing button</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div>
+			<label for="candidate" class="block text-sm font-medium mb-2">
+				Search candidates
+			</label>
+			<div tw-group>
+				<div class="relative">
+					<tw-icon
+						name="users"
+						class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 dark:text-gray-600 pointer-events-none"
+					/>
+					<input
+						tw-input
+						type="text"
+						id="candidate"
+						size="sm"
+						placeholder="Jane Doe"
+						class="sm:w-60 pl-10 rounded-r-none backdrop-blur-"
+					/>
+				</div>
+				<button tw-button size="sm" variant="secondary">
+					<tw-icon
+						name="bars-arrow-up"
+						class="text-gray-400 dark:text-gray-600"
+					/>
+					Sort
+				</button>
+			</div>
+		</div>
+	</div>
+	<h2 class="font-medium">With shared borders</h2>
+	<div
+		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+	>
+		<div class="sm:w-80">
+			<!-- Card details -->
+			<fieldset>
+				<legend class="block text-sm font-medium">Card details</legend>
+				<div class="mt-2 space-y-px rounded-md shadow-sm">
+					<input
+						tw-input
+						id="card-number"
+						name="card-number"
+						type="text"
+						placeholder="Card number"
+						class="rounded-none rounded-t-md"
+					/>
+					<div class="flex space-x-px">
+						<input
+							tw-input
+							id="card-expiration-date"
+							name="card-expiration-date"
+							type="text"
+							placeholder="MM / YY"
+							class="rounded-none rounded-bl-md focus:z-10 sm:w-full"
+						/>
+						<input
+							tw-input
+							id="card-cvc"
+							name="card-cvc"
+							type="text"
+							placeholder="CVC"
+							class="rounded-none rounded-br-md focus:z-10 sm:w-full"
+						/>
+					</div>
+				</div>
+			</fieldset>
+			<!-- Billing address -->
+			<fieldset class="mt-6">
+				<legend class="block text-sm font-medium">Billing address</legend>
+				<div class="mt-2 space-y-px rounded-md shadow-sm">
+					<div>
+						<div class="relative">
+							<select
+								id="country"
+								name="country"
+								autocomplete="country-name"
+								class="appearance-none block w-full rounded-none rounded-t-md border-0 outline-0 *:dark:text-gray-800 py-2 p-3 ring-1 ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:z-10 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+							>
+								<option>Canada</option>
+								<option>United States</option>
+								<option>Mexico</option>
+							</select>
+							<tw-icon
+								name="arrow-drop-down"
+								class="absolute inset-y-0 right-2 opacity-60 pointer-events-none"
+							/>
+						</div>
+					</div>
+					<input
+						tw-input
+						id="postal-code"
+						name="postal-code"
+						type="text"
+						placeholder="ZIP / Postal code"
+						autocomplete="postal-code"
+						class="rounded-none rounded-b-md backdrop-blur-none"
+					/>
+				</div>
+			</fieldset>
+		</div>
+	</div>
 </div>

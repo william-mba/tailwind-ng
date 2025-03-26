@@ -3,13 +3,15 @@ import { ThemeService } from '@tailwind-ng/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  template: `<router-outlet />`
+	selector: 'app-root',
+	imports: [RouterOutlet],
+	template: `
+		<router-outlet />
+	`,
 })
 export class AppComponent implements OnInit {
-  protected readonly theme = inject(ThemeService);
-  ngOnInit(): void {
-    this.theme.init();
-  }
+	protected readonly theme = inject(ThemeService);
+	ngOnInit(): void {
+		this.theme.init();
+	}
 }

@@ -19,7 +19,10 @@ Beautiful, fast and accessible <br/> Tailwind CSS components for Angular.
 
 ## Motivation
 
-Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind NG** levarage the power of TypeScript, [Tailwind CSS](https://tailwindcss.com/) and [Angular](https://angular.dev) to enable you to build **great Angular applications** at any scale **without hassles**.
+Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind
+NG** levarage the power of TypeScript, [Tailwind CSS](https://tailwindcss.com/)
+and [Angular](https://angular.dev) to enable you to build **great Angular
+applications** at any scale **without hassles**.
 
 <br/>
 
@@ -28,8 +31,10 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind N
 - **Beautiful**: Expertly-crafted UI components that look great out of the box.
 - **Fast**: Optimized for large-scale and enterprise Angular applications.
 - **Reliable**: Well-tested to ensure consistent performance and reliability.
-- **Accessible**: Accessibility features compliant with [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards out of the box.
-- **Customizable**: Fully-customizable and predictable components to fit your specific needs.
+- **Accessible**: Accessibility features compliant with
+  [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards out of the box.
+- **Customizable**: Fully-customizable and predictable components to fit your
+  specific needs.
 
 <br/>
 
@@ -37,18 +42,19 @@ Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind N
 
 Tailwind NG is modular and is composed of the following packages:
 
-| Name | Description | Version (latest) | Size (min+zip)     |
-|---------|-------------|---------| -----------|
-| [tailwind-ng][tailwind-ng-npm] | Provides a set of well-designed UI components out of the box. | ![tailwind-ng-version][tailwind-ng-version] | ![tailwind-ng-size][tailwind-ng-minzip] |
-| [@tailwind-ng/core][tailwind-ng-core-npm] | Provides core utilities and abstractions. | ![tailwind-ng-core-version][tailwind-ng-core-version] | ![tailwind-ng-core-size][tailwind-ng-core-minzip] |
-| [@tailwind-ng/themes][tailwind-ng-themes-npm] | Provides a set of pre-built themes available via the CDN and npm. | ![tailwind-ng-themes-version][tailwind-ng-themes-version] | ![tailwind-ng-themes-size][tailwind-ng-themes-minzip] |
-| @tailwind-ng/icons | This package will provides a set of reusable icons from Heroicons and googles fonts. | TODO | TODO |
+| Name                                          | Description                                                                          | Version (latest)                                          | Size (min+zip)                                        |
+| --------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------- | ----------------------------------------------------- |
+| [tailwind-ng][tailwind-ng-npm]                | Provides a set of well-designed UI components out of the box.                        | ![tailwind-ng-version][tailwind-ng-version]               | ![tailwind-ng-size][tailwind-ng-minzip]               |
+| [@tailwind-ng/core][tailwind-ng-core-npm]     | Provides core utilities and abstractions.                                            | ![tailwind-ng-core-version][tailwind-ng-core-version]     | ![tailwind-ng-core-size][tailwind-ng-core-minzip]     |
+| [@tailwind-ng/themes][tailwind-ng-themes-npm] | Provides a set of pre-built themes available via the CDN and npm.                    | ![tailwind-ng-themes-version][tailwind-ng-themes-version] | ![tailwind-ng-themes-size][tailwind-ng-themes-minzip] |
+| @tailwind-ng/icons                            | This package will provides a set of reusable icons from Heroicons and googles fonts. | TODO                                                      | TODO                                                  |
 
 <br/>
 
 ## Acknowledgements
 
-Tailwind NG is made possible thanks to the inspirations from the following projects:
+Tailwind NG is made possible thanks to the inspirations from the following
+projects:
 
 - [Tailwind UI](https://tailwindui.com/)
 - [Material Design](https://m3.material.io/)
@@ -56,11 +62,11 @@ Tailwind NG is made possible thanks to the inspirations from the following proje
 [tailwind-ng-version]: https://badgen.net/npm/v/tailwind-ng
 [tailwind-ng-npm]: https://www.npmjs.com/package/tailwind-ng
 [tailwind-ng-minzip]: https://badgen.net/bundlephobia/minzip/tailwind-ng
-
 [tailwind-ng-core-npm]: https://www.npmjs.com/package/@tailwind-ng/core
 [tailwind-ng-core-version]: https://badgen.net/npm/v/@tailwind-ng/core
-[tailwind-ng-core-minzip]: https://badgen.net/bundlephobia/minzip/@tailwind-ng/core@latest
-
+[tailwind-ng-core-minzip]:
+	https://badgen.net/bundlephobia/minzip/@tailwind-ng/core@latest
 [tailwind-ng-themes-npm]: https://www.npmjs.com/package/@tailwind-ng/themes
 [tailwind-ng-themes-version]: https://badgen.net/npm/v/@tailwind-ng/themes
-[tailwind-ng-themes-minzip]: https://badgen.net/bundlephobia/minzip/@tailwind-ng/themes@latest
+[tailwind-ng-themes-minzip]:
+	https://badgen.net/bundlephobia/minzip/@tailwind-ng/themes@latest

@@ -1,156 +1,216 @@
 <section class="grid gap-8 text-gray-700 dark:text-gray-300">
-  <details open>
-    <summary>Properties</summary>
-    <div class="sm:px-4 mt-2">
-      <div class="grid text-left sm:text-balance max-sm:text-nowrap">
-        <div class="flex border border-gray-950/10 dark:border-white/10">
-          <span class="inline-block w-1/2 p-4 font-semibold">Name</span>
-          <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto font-semibold">Description</span>
-        </div>
-        <div class="flex border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 overflow-x-auto">
-          <span class="inline-block w-1/2 p-4">
-            <code>{{"size = model\<SizeOption\>('md')"}}</code>
-          </span>
-          <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">The size of the component.</span>
-        </div>
-      </div>
-      <details class="mt-8">
-        <summary class="text-gray-500 dark:text-gray-400">Inherited properties</summary>
-        <div
-          class="grid text-left sm:text-balance max-sm:text-nowrap border border-gray-950/10 dark:border-white/10 mt-2">
-          <div class="flex">
-            <span class="inline-block w-1/2 p-4 font-semibold">Name</span>
-            <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto font-semibold">Description</span>
-          </div>
-          <div
-            class="dark:bg-gray-800/40 *:flex *:odd:border-y *:odd:border-gray-950/10 *:odd:dark:border-white/10 overflow-x-auto">
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"class = input\<string | string[] | Config | undefined | null\>(null)"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                A property to customize the component's style. <br>
-                To get the final class list value, you can use:
-                <ul>
-                  <li><code>{{"\<componentRef\>.classList.value"}}</code> or</li>
-                  <li><code>{{"\<componentRef\>.nativeElement.className"}}</code></li>
-                </ul>
-              </span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{'classList: ClassList'}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">The component's classList instance.</span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"@Input({ alias: 'disabled' })"}}</code><br>
-                <code>{{"disabled: boolean (getter)"}}</code><br>
-                <code>{{"disabled(value: boolean | '') (setter)"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">Whether the component is disabled. Default
-                it's
-                <code>false</code>
-              </span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"isFocused: boolean (getter)"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">Whether the component is focused.</span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"isHovered = false"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">Whether the component is hovered.</span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"hasFocus: boolean (getter)"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                Whether the component or one of its descendant has focus.
-              </span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"hasVisualFocus: boolean (getter)"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                Whether the component has visual focus.
-                <p class="text-sm">
-                  A component can be visual focused without being focused.
-                  This property is mainly used by some accessibility features.
-                </p>
-              </span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"nativeElement: HTMLElement"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                A reference to the component's native element.
-              </span>
-            </div>
-          </div>
-        </div>
-      </details>
-    </div>
-  </details>
-  <details open>
-    <summary>Methods</summary>
-    <div class="sm:px-4">
-      <details class="mt-8">
-        <summary class="text-gray-500 dark:text-gray-400">Inherited methods</summary>
-        <div
-          class="grid text-left sm:text-balance max-sm:text-nowrap border border-gray-950/10 dark:border-white/10 mt-2">
-          <div class="flex">
-            <span class="inline-block w-1/2 p-4 font-semibold">Name</span>
-            <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto font-semibold">Description</span>
-          </div>
-          <div
-            class="dark:bg-gray-800/40 *:flex *:odd:border-y *:odd:border-gray-950/10 *:odd:dark:border-white/10 overflow-x-auto">
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"focus(options?: FocusOptions): HTMLElement | undefined"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                Focuses an element and return it.
-                If it cannot be focused, nothing is done and <code>undefined</code> is returned.
-              </span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"setVisualfocus(options: FocusOptions): HTMLElement | undefined"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                Sets visual focus on an element and return it.
-                If it cannot be visual focused, nothing is done and <code>undefined</code> is returned.
-                Visual focus is set by adding the <code>data-visual-focused</code> attribute on that element.
-              </span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"removeVisualfocus(target?: HTMLElement): void"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                Removes visual focus on the target element.
-                Default target is the component's native element.
-              </span>
-            </div>
-            <div>
-              <span class="inline-block w-1/2 p-4">
-                <code>{{"scrollIntoView(options: ScrollIntoViewOptions): void"}}</code>
-              </span>
-              <span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
-                Scrolls the element into the view if needed. Making it visible to the user.
-              </span>
-            </div>
-          </div>
-        </div>
-      </details>
-    </div>
-  </details>
+	<details open>
+		<summary>Properties</summary>
+		<div class="sm:px-4 mt-2">
+			<div class="grid text-left sm:text-balance max-sm:text-nowrap">
+				<div class="flex border border-gray-950/10 dark:border-white/10">
+					<span class="inline-block w-1/2 p-4 font-semibold">Name</span>
+					<span
+						class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto font-semibold"
+					>
+						Description
+					</span>
+				</div>
+				<div
+					class="flex border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 overflow-x-auto"
+				>
+					<span class="inline-block w-1/2 p-4">
+						<code>{{ "size = model\<SizeOption\>('md')" }}</code>
+					</span>
+					<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+						The size of the component.
+					</span>
+				</div>
+			</div>
+			<details class="mt-8">
+				<summary class="text-gray-500 dark:text-gray-400">
+					Inherited properties
+				</summary>
+				<div
+					class="grid text-left sm:text-balance max-sm:text-nowrap border border-gray-950/10 dark:border-white/10 mt-2"
+				>
+					<div class="flex">
+						<span class="inline-block w-1/2 p-4 font-semibold">Name</span>
+						<span
+							class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto font-semibold"
+						>
+							Description
+						</span>
+					</div>
+					<div
+						class="dark:bg-gray-800/40 *:flex *:odd:border-y *:odd:border-gray-950/10 *:odd:dark:border-white/10 overflow-x-auto"
+					>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>
+									{{
+										'class = input\<string | string[] | Config | undefined | null\>(null)'
+									}}
+								</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								A property to customize the component's style.
+								<br />
+								To get the final class list value, you can use:
+								<ul>
+									<li>
+										<code>{{ '\<componentRef\>.classList.value' }}</code>
+										or
+									</li>
+									<li>
+										<code>
+											{{ '\<componentRef\>.nativeElement.className' }}
+										</code>
+									</li>
+								</ul>
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>{{ 'classList: ClassList' }}</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								The component's classList instance.
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>{{ "@Input({ alias: 'disabled' })" }}</code>
+								<br />
+								<code>{{ 'disabled: boolean (getter)' }}</code>
+								<br />
+								<code>{{ "disabled(value: boolean | '') (setter)" }}</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Whether the component is disabled. Default it's
+								<code>false</code>
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>{{ 'isFocused: boolean (getter)' }}</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Whether the component is focused.
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>{{ 'isHovered = false' }}</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Whether the component is hovered.
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>{{ 'hasFocus: boolean (getter)' }}</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Whether the component or one of its descendant has focus.
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>{{ 'hasVisualFocus: boolean (getter)' }}</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Whether the component has visual focus.
+								<p class="text-sm">
+									A component can be visual focused without being focused. This
+									property is mainly used by some accessibility features.
+								</p>
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>{{ 'nativeElement: HTMLElement' }}</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								A reference to the component's native element.
+							</span>
+						</div>
+					</div>
+				</div>
+			</details>
+		</div>
+	</details>
+	<details open>
+		<summary>Methods</summary>
+		<div class="sm:px-4">
+			<details class="mt-8">
+				<summary class="text-gray-500 dark:text-gray-400">
+					Inherited methods
+				</summary>
+				<div
+					class="grid text-left sm:text-balance max-sm:text-nowrap border border-gray-950/10 dark:border-white/10 mt-2"
+				>
+					<div class="flex">
+						<span class="inline-block w-1/2 p-4 font-semibold">Name</span>
+						<span
+							class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto font-semibold"
+						>
+							Description
+						</span>
+					</div>
+					<div
+						class="dark:bg-gray-800/40 *:flex *:odd:border-y *:odd:border-gray-950/10 *:odd:dark:border-white/10 overflow-x-auto"
+					>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>
+									{{ 'focus(options?: FocusOptions): HTMLElement | undefined' }}
+								</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Focuses an element and return it. If it cannot be focused,
+								nothing is done and
+								<code>undefined</code>
+								is returned.
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>
+									{{
+										'setVisualfocus(options: FocusOptions): HTMLElement | undefined'
+									}}
+								</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Sets visual focus on an element and return it. If it cannot be
+								visual focused, nothing is done and
+								<code>undefined</code>
+								is returned. Visual focus is set by adding the
+								<code>data-visual-focused</code>
+								attribute on that element.
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>
+									{{ 'removeVisualfocus(target?: HTMLElement): void' }}
+								</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Removes visual focus on the target element. Default target is
+								the component's native element.
+							</span>
+						</div>
+						<div>
+							<span class="inline-block w-1/2 p-4">
+								<code>
+									{{ 'scrollIntoView(options: ScrollIntoViewOptions): void' }}
+								</code>
+							</span>
+							<span class="hidden sm:inline-block w-1/2 p-4 overflow-x-auto">
+								Scrolls the element into the view if needed. Making it visible
+								to the user.
+							</span>
+						</div>
+					</div>
+				</div>
+			</details>
+		</div>
+	</details>
 </section>
