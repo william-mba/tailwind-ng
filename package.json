@@ -32,8 +32,8 @@
 		"cleanup": "ng generate @angular/core:cleanup-unused-imports",
 		"install-chrome": "pnpx puppeteer browsers install chrome@131.0.6778.204",
 		"prepare": "husky",
-		"code-style:check": "pnpx prettier . --check",
-		"code-style:fix": "pnpx prettier . --write"
+		"format:check": "pnpx prettier . --check",
+		"format:fix": "pnpx prettier . --write"
 	},
 	"private": true,
 	"dependencies": {
