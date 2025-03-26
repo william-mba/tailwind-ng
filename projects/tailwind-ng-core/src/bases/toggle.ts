@@ -24,10 +24,7 @@ export function isToggle(component: unknown): component is Toggle {
 	return component instanceof ToggleBase;
 }
 
-export const TOGGLE_CONFIG = InjectionTokenFactory.create<string>(
-	'',
-	'TOGGLE_CONFIG',
-);
+export const TOGGLE_CONFIG = InjectionTokenFactory.create<string>('', 'TOGGLE_CONFIG');
 
 @Directive()
 export abstract class ToggleBase extends BaseDirective {}

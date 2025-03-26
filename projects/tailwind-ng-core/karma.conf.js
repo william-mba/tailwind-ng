@@ -30,11 +30,7 @@ module.exports = function (config) {
 		coverageReporter: {
 			dir: require('path').join(__dirname, '../../coverage/tailwind-ng-core'),
 			subdir: '.',
-			reporters: [
-				{ type: 'html' },
-				{ type: 'text-summary' },
-				{ type: 'cobertura', subdir: '.', file: 'cobertura.xml' },
-			],
+			reporters: [{ type: 'html' }, { type: 'text-summary' }, { type: 'cobertura', subdir: '.', file: 'cobertura.xml' }],
 		},
 		reporters: ['progress', 'kjhtml', 'junit'],
 		junitReporter: {
@@ -48,11 +44,7 @@ module.exports = function (config) {
 		customLaunchers: {
 			Chrome: {
 				base: 'ChromeHeadless',
-				flags: [
-					'--disable-gpu',
-					'--disable-software-rasterizer',
-					'--no-sandbox',
-				],
+				flags: ['--disable-gpu', '--disable-software-rasterizer', '--no-sandbox'],
 			},
 		},
 		singleRun: false,

@@ -38,10 +38,7 @@
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": [
-							"projects/tailwind-ng/**/*.ts",
-							"projects/tailwind-ng/**/*.html"
-						],
+						"lintFilePatterns": ["projects/tailwind-ng/**/*.ts", "projects/tailwind-ng/**/*.html"],
 						"eslintConfig": "projects/tailwind-ng/eslint.config.js"
 					}
 				}
@@ -78,10 +75,7 @@
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": [
-							"projects/tailwind-ng-core/**/*.ts",
-							"projects/tailwind-ng-core/**/*.html"
-						],
+						"lintFilePatterns": ["projects/tailwind-ng-core/**/*.ts", "projects/tailwind-ng-core/**/*.html"],
 						"eslintConfig": "projects/tailwind-ng-core/eslint.config.js"
 					}
 				}
@@ -172,10 +166,7 @@
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": [
-							"projects/tailwind-ng-docs/**/*.ts",
-							"projects/tailwind-ng-docs/**/*.html"
-						],
+						"lintFilePatterns": ["projects/tailwind-ng-docs/**/*.ts", "projects/tailwind-ng-docs/**/*.html"],
 						"eslintConfig": "projects/tailwind-ng-docs/eslint.config.js"
 					}
 				}

@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { TwOption } from '@tailwind-ng/core';
-import {
-	TwButton,
-	TwButtonGroup,
-	TwCheckbox,
-	TwDropdown,
-	TwIcon,
-} from 'tailwind-ng';
+import { TwButton, TwButtonGroup, TwCheckbox, TwDropdown, TwIcon } from 'tailwind-ng';
 
 @Component({
 	selector: 'app-button-groups-preview',

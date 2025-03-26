@@ -1,13 +1,4 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	contentChild,
-	Input,
-	model,
-	OnInit,
-	output,
-	ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, contentChild, Input, model, OnInit, output, ViewEncapsulation } from '@angular/core';
 import {
 	Combobox,
 	ComboboxBase,
@@ -34,9 +25,7 @@ import {
 		<ng-content select="label" />
 		<div class="relative">
 			<ng-content select="input[type=text], input[tw-input], input[twInput]" />
-			<ng-content
-				select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]"
-			/>
+			<ng-content select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]" />
 		</div>
 		<ng-container *twIf="isOpened()">
 			<div class="relative"><ng-content /></div>
@@ -46,10 +35,7 @@ import {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }],
 })
-export class ComboboxComponent
-	extends ComboboxBase
-	implements Combobox, OnInit
-{
+export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit {
 	readonly dropdown = contentChild.required(DropdownBase);
 	readonly input = contentChild.required(InputTextBase);
 	readonly resetted = output<void>();
@@ -171,11 +157,7 @@ export class ComboboxComponent
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener(
-			'blur',
-			this.onBlur.bind(this),
-			true,
-		);
+		this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
 	}
 
 	setActiveItem(item: ComboboxItem): void {

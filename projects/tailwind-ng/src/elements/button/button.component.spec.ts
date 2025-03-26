@@ -91,15 +91,9 @@ describe('ButtonComponent', () => {
 			expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
 		});
 
-		expect(
-			testApp.button().nativeElement.classList.contains(defaultGap),
-		).toBeFalse();
-		expect(
-			testApp.button().nativeElement.classList.contains(defaultBgColor),
-		).toBeFalse();
-		expect(
-			testApp.button().nativeElement.classList.contains(defaultRadius),
-		).toBeFalse();
+		expect(testApp.button().nativeElement.classList.contains(defaultGap)).toBeFalse();
+		expect(testApp.button().nativeElement.classList.contains(defaultBgColor)).toBeFalse();
+		expect(testApp.button().nativeElement.classList.contains(defaultRadius)).toBeFalse();
 	});
 
 	it('should customize using dependency injection', () => {
@@ -133,15 +127,9 @@ describe('ButtonComponent', () => {
 			expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
 		});
 
-		expect(
-			testApp.button().nativeElement.classList.contains(defaultGap),
-		).toBeFalse();
-		expect(
-			testApp.button().nativeElement.classList.contains(defaultBgColor),
-		).toBeFalse();
-		expect(
-			testApp.button().nativeElement.classList.contains(defaultRadius),
-		).toBeFalse();
+		expect(testApp.button().nativeElement.classList.contains(defaultGap)).toBeFalse();
+		expect(testApp.button().nativeElement.classList.contains(defaultBgColor)).toBeFalse();
+		expect(testApp.button().nativeElement.classList.contains(defaultRadius)).toBeFalse();
 	});
 
 	it('should set isFab', () => {

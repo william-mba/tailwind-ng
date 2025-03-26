@@ -80,15 +80,9 @@ describe('BadgeComponent', () => {
 			expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
 		});
 
-		expect(
-			testApp.badge().nativeElement.classList.contains(defaultGap),
-		).toBeFalse();
-		expect(
-			testApp.badge().nativeElement.classList.contains(defaultFontSize),
-		).toBeTrue();
-		expect(
-			testApp.badge().nativeElement.classList.contains(defaultDisplay),
-		).toBeTrue();
+		expect(testApp.badge().nativeElement.classList.contains(defaultGap)).toBeFalse();
+		expect(testApp.badge().nativeElement.classList.contains(defaultFontSize)).toBeTrue();
+		expect(testApp.badge().nativeElement.classList.contains(defaultDisplay)).toBeTrue();
 	});
 
 	it('should customize using DI', () => {
@@ -122,14 +116,8 @@ describe('BadgeComponent', () => {
 			expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
 		});
 
-		expect(
-			testApp.badge().nativeElement.classList.contains(defaultGap),
-		).toBeFalse();
-		expect(
-			testApp.badge().nativeElement.classList.contains(defaultFontSize),
-		).toBeTrue();
-		expect(
-			testApp.badge().nativeElement.classList.contains(defaultDisplay),
-		).toBeTrue();
+		expect(testApp.badge().nativeElement.classList.contains(defaultGap)).toBeFalse();
+		expect(testApp.badge().nativeElement.classList.contains(defaultFontSize)).toBeTrue();
+		expect(testApp.badge().nativeElement.classList.contains(defaultDisplay)).toBeTrue();
 	});
 });

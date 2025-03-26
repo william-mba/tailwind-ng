@@ -57,10 +57,7 @@ export interface CheckboxToggleOptions {
 	event?: Event;
 }
 
-export interface Checkbox
-	extends CheckboxActions,
-		CheckboxEvents,
-		CheckboxMutableProps {
+export interface Checkbox extends CheckboxActions, CheckboxEvents, CheckboxMutableProps {
 	readonly id: string;
 	readonly inputRef: Signal<ElementRef<HTMLInputElement>>;
 }
@@ -86,10 +83,7 @@ export interface CheckboxIcon {
 	size: SizeOption;
 }
 
-export const CHECKBOX_CONFIG = InjectionTokenFactory.create<string>(
-	'',
-	'CHECKBOX_CONFIG',
-);
+export const CHECKBOX_CONFIG = InjectionTokenFactory.create<string>('', 'CHECKBOX_CONFIG');
 
 export const CHECKBOX_ICON = InjectionTokenFactory.create<CheckboxIcon>(
 	{

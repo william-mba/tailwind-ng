@@ -12,18 +12,15 @@ Core infrastructure and tools for Tailwind NG.
 <br/>
 
 [![Build Status](https://dev.azure.com/artandev/Lab/_apis/build/status%2Fci%2Ftailwind-ng?branchName=next&stageName=CI&jobName=Build_Test_Publish)](https://dev.azure.com/artandev/Lab/_build/latest?definitionId=10&branchName=next)
-![tailwind-ng](https://badgen.net/bundlephobia/minzip/tailwind-ng)
-![tree-shaking](https://badgen.net/bundlephobia/tree-shaking/@tailwind-ng/core)
+![tailwind-ng](https://badgen.net/bundlephobia/minzip/tailwind-ng) ![tree-shaking](https://badgen.net/bundlephobia/tree-shaking/@tailwind-ng/core)
 
 </div>
 <br/>
 
 ## Motivation
 
-Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind
-NG** levarage the power of TypeScript, [Tailwind CSS](https://tailwindcss.com/)
-and [Angular](https://angular.dev) to enable you to build **great Angular
-applications** at any scale **without hassles**.
+Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind NG** levarage the power of TypeScript, [Tailwind CSS](https://tailwindcss.com/)
+and [Angular](https://angular.dev) to enable you to build **great Angular applications** at any scale **without hassles**.
 
 <br/>
 
@@ -32,10 +29,8 @@ applications** at any scale **without hassles**.
 - **Beautiful**: Expertly-crafted UI components that look great out of the box.
 - **Fast**: Optimized for large-scale and enterprise Angular applications.
 - **Reliable**: Well-tested to ensure consistent performance and reliability.
-- **Accessible**: Accessibility features compliant with
-  [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards out of the box.
-- **Customizable**: Fully-customizable and predictable components to fit your
-  specific needs.
+- **Accessible**: Accessibility features compliant with [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards out of the box.
+- **Customizable**: Fully-customizable and predictable components to fit your specific needs.
 
 <br/>
 
@@ -54,8 +49,7 @@ Tailwind NG is modular and is composed of the following packages:
 
 ## Acknowledgements
 
-Tailwind NG is made possible thanks to the inspirations from the following
-projects:
+Tailwind NG is made possible thanks to the inspirations from the following projects:
 
 - [Tailwind UI](https://tailwindui.com/)
 - [Material Design](https://m3.material.io/)
@@ -65,9 +59,7 @@ projects:
 [tailwind-ng-minzip]: https://badgen.net/bundlephobia/minzip/tailwind-ng
 [tailwind-ng-core-npm]: https://www.npmjs.com/package/@tailwind-ng/core
 [tailwind-ng-core-version]: https://badgen.net/npm/v/@tailwind-ng/core
-[tailwind-ng-core-minzip]:
-	https://badgen.net/bundlephobia/minzip/@tailwind-ng/core@latest
+[tailwind-ng-core-minzip]: https://badgen.net/bundlephobia/minzip/@tailwind-ng/core@latest
 [tailwind-ng-themes-npm]: https://www.npmjs.com/package/@tailwind-ng/themes
 [tailwind-ng-themes-version]: https://badgen.net/npm/v/@tailwind-ng/themes
-[tailwind-ng-themes-minzip]:
-	https://badgen.net/bundlephobia/minzip/@tailwind-ng/themes@latest
+[tailwind-ng-themes-minzip]: https://badgen.net/bundlephobia/minzip/@tailwind-ng/themes@latest

@@ -1,18 +1,8 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	inject,
-	ViewEncapsulation,
-} from '@angular/core';
-import {
-	BUTTON_GROUP_CONFIG,
-	ButtonGroupBase,
-	classlist,
-} from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import { BUTTON_GROUP_CONFIG, ButtonGroupBase, classlist } from '@tailwind-ng/core';
 
 @Component({
-	selector:
-		'tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]',
+	selector: 'tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]',
 	exportAs: 'twButtonGroup',
 	template: '<ng-content />',
 	encapsulation: ViewEncapsulation.None,

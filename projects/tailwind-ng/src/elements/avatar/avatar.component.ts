@@ -1,17 +1,5 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	inject,
-	Input,
-	ViewEncapsulation,
-} from '@angular/core';
-import {
-	Avatar,
-	AVATAR_CONFIG,
-	AvatarBase,
-	classlist,
-	SizeOption,
-} from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, inject, Input, ViewEncapsulation } from '@angular/core';
+import { Avatar, AVATAR_CONFIG, AvatarBase, classlist, SizeOption } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Avatar Component

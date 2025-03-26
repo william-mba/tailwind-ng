@@ -7,8 +7,7 @@ export const BASE = () => {
 	return className;
 };
 export const PRIMARY = () => {
-	const className =
-		'text-white bg-blue-600 hover:bg-blue-600/90 outline-0 outline-blue-600 outline-offset-2 focus:outline-1 active:bg-blue-700/90';
+	const className = 'text-white bg-blue-600 hover:bg-blue-600/90 outline-0 outline-blue-600 outline-offset-2 focus:outline-1 active:bg-blue-700/90';
 	return className;
 };
 const SECONDARY = () => {
@@ -17,8 +16,7 @@ const SECONDARY = () => {
 	return className;
 };
 const TONAL = () => {
-	const className =
-		'text-blue-500 bg-blue-600/10 hover:bg-blue-600/15 backdrop-blur-xs active:bg-blue-600/25 outline-0 outline-blue-500/80 focus:outline-1';
+	const className = 'text-blue-500 bg-blue-600/10 hover:bg-blue-600/15 backdrop-blur-xs active:bg-blue-600/25 outline-0 outline-blue-500/80 focus:outline-1';
 	return className;
 };
 const TEXT = () => {
@@ -76,8 +74,6 @@ export const GetButtonConfig = () => DefaultConfig();
 export function provideButton(customization?: Partial<ButtonConfig>): Provider {
 	return {
 		provide: BUTTON_CONFIG,
-		useValue: !customization
-			? DefaultConfig()
-			: mergeConfig([DefaultConfig(), customization]),
+		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }

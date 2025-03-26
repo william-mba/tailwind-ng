@@ -41,8 +41,6 @@ const XL = () => {
 export function provideInputText(customization?: InputConfig): Provider {
 	return {
 		provide: INPUT_TEXT_CONFIG,
-		useValue: !customization
-			? DefaultConfig()
-			: mergeConfig([DefaultConfig(), customization]),
+		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }

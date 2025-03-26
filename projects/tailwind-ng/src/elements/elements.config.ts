@@ -1,9 +1,4 @@
-import {
-	AvatarConfig,
-	BadgeConfig,
-	ButtonConfig,
-	IconConfig,
-} from '@tailwind-ng/core';
+import { AvatarConfig, BadgeConfig, ButtonConfig, IconConfig } from '@tailwind-ng/core';
 import { provideAvatar } from './avatar';
 import { provideBadge } from './badge';
 import { provideButton } from './button';
@@ -27,9 +22,7 @@ export interface ElementsConfig {
 /**
  * @TailwindNG UI Elements config provider.
  */
-export function provideElements(
-	customization?: Partial<ElementsConfig>,
-): Provider[] {
+export function provideElements(customization?: Partial<ElementsConfig>): Provider[] {
 	return [
 		provideAvatar(customization?.avatar),
 		provideBadge(customization?.badge),

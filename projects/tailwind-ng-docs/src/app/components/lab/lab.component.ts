@@ -1,12 +1,6 @@
 import { Component, InputSignal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-	TwButton,
-	TwComboboxModule,
-	TwIcon,
-	TwDialog,
-	TwCheckbox,
-} from 'tailwind-ng';
+import { TwButton, TwComboboxModule, TwIcon, TwDialog, TwCheckbox } from 'tailwind-ng';
 import { isCombobox, Popup } from '@tailwind-ng/core';
 
 interface User {
@@ -25,15 +19,7 @@ export interface Task {
 }
 @Component({
 	selector: 'app-lab',
-	imports: [
-		TwButton,
-		TwComboboxModule,
-		TwIcon,
-		TwDialog,
-		ReactiveFormsModule,
-		TwCheckbox,
-		ReactiveFormsModule,
-	],
+	imports: [TwButton, TwComboboxModule, TwIcon, TwDialog, ReactiveFormsModule, TwCheckbox, ReactiveFormsModule],
 	templateUrl: './lab.component.html',
 })
 export class LabComponent {
@@ -72,10 +58,7 @@ export class LabComponent {
 		],
 	};
 
-	updateTask(
-		{ checked: fully = false, indeterminate: partially = false },
-		task = this.task,
-	): void {
+	updateTask({ checked: fully = false, indeterminate: partially = false }, task = this.task): void {
 		console.time(`${task.name} updated in`);
 		task.done = { fully, partially };
 		console.timeEnd(`${task.name} updated in`);
@@ -83,9 +66,7 @@ export class LabComponent {
 	}
 
 	saveTask(task = this.task): void {
-		console.log(
-			`${task.name}, done: { fully: ${task.done.fully}, partially: ${!!task.done.partially} }`,
-		); // TODO: Remove
+		console.log(`${task.name}, done: { fully: ${task.done.fully}, partially: ${!!task.done.partially} }`); // TODO: Remove
 		if (task.subtasks) {
 			console.groupCollapsed(`> ${task.name} subtasks:`);
 			task.subtasks.forEach((subtask) => this.saveTask(subtask));
@@ -196,8 +177,7 @@ export class LabComponent {
 				status: 'inactive',
 			},
 			{
-				image:
-					'https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+				image: 'https://images.unsplash.com/photo-1618085219724-c59ba48e08cd?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 				name: 'Kristin Watson',
 				status: 'active',
 			},
@@ -265,9 +245,7 @@ export class LabComponent {
 					filtered.forEach((f) => usersMap.set(f.name, f));
 					this.users1 = [...usersMap.values()];
 				} else {
-					this.users1 = this._users.filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users1 = this._users.filter((x) => this.checkMatch(x.name, value));
 				}
 				break;
 			case 2:
@@ -279,9 +257,7 @@ export class LabComponent {
 					filtered.forEach((f) => usersMap.set(f.name, f));
 					this.users2 = [...usersMap.values()];
 				} else {
-					this.users2 = this._users.filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users2 = this._users.filter((x) => this.checkMatch(x.name, value));
 				}
 				break;
 			case 3:

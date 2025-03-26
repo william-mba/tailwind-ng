@@ -1,10 +1,7 @@
 <div>
-	<p
-		class="mb-8 sm:inline-flex items-center gap-2 hidden text-gray-600 dark:text-gray-400 text-sm"
-	>
+	<p class="mb-8 sm:inline-flex items-center gap-2 hidden text-gray-600 dark:text-gray-400 text-sm">
 		<tw-icon name="accessibility" class="rounded-full border p-1" />
-		Accessibility features: Press Enter/Space key to check/uncheck, Tab/Arrow
-		keys to navigate.
+		Accessibility features: Press Enter/Space key to check/uncheck, Tab/Arrow keys to navigate.
 	</p>
 	<h2>List with description</h2>
 	<div
@@ -12,28 +9,16 @@
 	>
 		<div class="grid gap-4 text-sm">
 			<tw-checkbox [checked]="true">
-				<span class="font-semibold text-gray-700 dark:text-gray-300">
-					Comments
-				</span>
-				<p class="pl-7 text-gray-500">
-					Get notified when someones posts a comment on a posting.
-				</p>
+				<span class="font-semibold text-gray-700 dark:text-gray-300">Comments</span>
+				<p class="pl-7 text-gray-500">Get notified when someones posts a comment on a posting.</p>
 			</tw-checkbox>
 			<tw-checkbox>
-				<span class="font-semibold text-gray-700 dark:text-gray-300">
-					Candidates
-				</span>
-				<p class="pl-7 text-gray-500">
-					Get notified when a candidate applies for a job.
-				</p>
+				<span class="font-semibold text-gray-700 dark:text-gray-300">Candidates</span>
+				<p class="pl-7 text-gray-500">Get notified when a candidate applies for a job.</p>
 			</tw-checkbox>
 			<tw-checkbox>
-				<span class="font-semibold text-gray-700 dark:text-gray-300">
-					Offers
-				</span>
-				<p class="pl-7 text-gray-500">
-					Get notified when a candidate accepts or rejects an offer.
-				</p>
+				<span class="font-semibold text-gray-700 dark:text-gray-300">Offers</span>
+				<p class="pl-7 text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
 			</tw-checkbox>
 		</div>
 	</div>
@@ -43,28 +28,16 @@
 	>
 		<div class="grid gap-4 text-sm">
 			<tw-checkbox class="sm:flex gap-1">
-				<span class="font-semibold text-gray-700 dark:text-gray-300">
-					New comments
-				</span>
-				<p class="text-gray-500 pl-7 sm:pl-0">
-					so you always know what's happening
-				</p>
+				<span class="font-semibold text-gray-700 dark:text-gray-300">New comments</span>
+				<p class="text-gray-500 pl-7 sm:pl-0">so you always know what's happening</p>
 			</tw-checkbox>
 			<tw-checkbox [checked]="true" class="sm:flex gap-1">
-				<span class="font-semibold text-gray-700 dark:text-gray-300">
-					New candidates
-				</span>
-				<p class="text-gray-500 pl-7 sm:pl-0">
-					who apply for any open postings.
-				</p>
+				<span class="font-semibold text-gray-700 dark:text-gray-300">New candidates</span>
+				<p class="text-gray-500 pl-7 sm:pl-0">who apply for any open postings.</p>
 			</tw-checkbox>
 			<tw-checkbox class="sm:flex gap-1">
-				<span class="font-semibold text-gray-700 dark:text-gray-300">
-					Offers
-				</span>
-				<p class="text-gray-500 pl-7 sm:pl-0">
-					when they are accepted or rejected by candidates.
-				</p>
+				<span class="font-semibold text-gray-700 dark:text-gray-300">Offers</span>
+				<p class="text-gray-500 pl-7 sm:pl-0">when they are accepted or rejected by candidates.</p>
 			</tw-checkbox>
 		</div>
 	</div>
@@ -72,57 +45,23 @@
 	<div
 		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-4 p-6 py-10 mx-auto rounded-md"
 	>
-		<div
-			class="*:odd:border-y *:py-4 *:border-gray-300 dark:*:border-gray-700 text-sm"
-		>
-			<tw-checkbox
-				class="flex flex-row-reverse justify-between items-start"
-				id="commentcb"
-			>
+		<div class="*:odd:border-y *:py-4 *:border-gray-300 dark:*:border-gray-700 text-sm">
+			<tw-checkbox class="flex flex-row-reverse justify-between items-start" id="commentcb">
 				<div>
-					<label
-						for="commentcb"
-						class="font-semibold text-gray-700 dark:text-gray-300"
-					>
-						Comments
-					</label>
-					<p class="text-gray-500">
-						Get notified when someones posts a comment on a posting.
-					</p>
+					<label for="commentcb" class="font-semibold text-gray-700 dark:text-gray-300">Comments</label>
+					<p class="text-gray-500">Get notified when someones posts a comment on a posting.</p>
 				</div>
 			</tw-checkbox>
-			<tw-checkbox
-				[checked]="true"
-				class="flex flex-row-reverse justify-between items-start"
-				id="candidatecb"
-			>
+			<tw-checkbox [checked]="true" class="flex flex-row-reverse justify-between items-start" id="candidatecb">
 				<div>
-					<label
-						for="candidatecb"
-						class="font-semibold text-gray-700 dark:text-gray-300"
-					>
-						Candidates
-					</label>
-					<p class="text-gray-500">
-						Get notified when a candidate applies for a job.
-					</p>
+					<label for="candidatecb" class="font-semibold text-gray-700 dark:text-gray-300">Candidates</label>
+					<p class="text-gray-500">Get notified when a candidate applies for a job.</p>
 				</div>
 			</tw-checkbox>
-			<tw-checkbox
-				[checked]="true"
-				class="flex flex-row-reverse justify-between items-start"
-				id="offerscb"
-			>
+			<tw-checkbox [checked]="true" class="flex flex-row-reverse justify-between items-start" id="offerscb">
 				<div>
-					<label
-						for="offerscb"
-						class="font-semibold text-gray-700 dark:text-gray-300"
-					>
-						Offers
-					</label>
-					<p class="text-gray-500">
-						Get notified when a candidate accepts or rejects an offer.
-					</p>
+					<label for="offerscb" class="font-semibold text-gray-700 dark:text-gray-300">Offers</label>
+					<p class="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
 				</div>
 			</tw-checkbox>
 		</div>
@@ -132,45 +71,16 @@
 		class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-4 p-6 py-10 mx-auto rounded-md"
 	>
 		<div class="grid text-sm min-w-56 sm:min-w-sm lg:min-w-md sm:max-w-md">
-			<p class="font-bold text-base text-gray-700 dark:text-gray-300">
-				Members
-			</p>
-			<div
-				class="mt-6 *:odd:border-y *:py-4 *:border-gray-300 dark:*:border-gray-700"
-			>
-				<tw-checkbox
-					class="flex flex-row-reverse justify-between items-center"
-					id="member1"
-				>
-					<label
-						for="member1"
-						class="font-semibold text-gray-700 dark:text-gray-300"
-					>
-						Jane Doe
-					</label>
+			<p class="font-bold text-base text-gray-700 dark:text-gray-300">Members</p>
+			<div class="mt-6 *:odd:border-y *:py-4 *:border-gray-300 dark:*:border-gray-700">
+				<tw-checkbox class="flex flex-row-reverse justify-between items-center" id="member1">
+					<label for="member1" class="font-semibold text-gray-700 dark:text-gray-300">Jane Doe</label>
 				</tw-checkbox>
-				<tw-checkbox
-					class="flex flex-row-reverse justify-between items-center"
-					id="member2"
-				>
-					<label
-						for="member2"
-						class="font-semibold text-gray-700 dark:text-gray-300"
-					>
-						Pick Floyd
-					</label>
+				<tw-checkbox class="flex flex-row-reverse justify-between items-center" id="member2">
+					<label for="member2" class="font-semibold text-gray-700 dark:text-gray-300">Pick Floyd</label>
 				</tw-checkbox>
-				<tw-checkbox
-					[checked]="true"
-					class="flex flex-row-reverse justify-between items-center"
-					id="member3"
-				>
-					<label
-						for="member3"
-						class="font-semibold text-gray-700 dark:text-gray-300"
-					>
-						Marco Polo
-					</label>
+				<tw-checkbox [checked]="true" class="flex flex-row-reverse justify-between items-center" id="member3">
+					<label for="member3" class="font-semibold text-gray-700 dark:text-gray-300">Marco Polo</label>
 				</tw-checkbox>
 			</div>
 		</div>
@@ -183,50 +93,26 @@
 		<div class="grid text-sm gap-3 max-w-xs sm:max-w-md">
 			<div class="font-semibold flex gap-x-24 justify-between items-center">
 				Tasks board
-				<button tw-button size="xs" variant="secondary" (click)="saveTasks()">
-					Save
-				</button>
+				<button tw-button size="xs" variant="secondary" (click)="saveTasks()">Save</button>
 			</div>
-			<p class="text-gray-500 pb-3">
-				Open the console to see task B's state changes.
-			</p>
+			<p class="text-gray-500 pb-3">Open the console to see task B's state changes.</p>
 			<div class="grid gap-4 text-sm">
 				<tw-checkbox [checked]="true">Task A</tw-checkbox>
-				<tw-checkbox
-					[(checked)]="task.done.fully"
-					[(indeterminate)]="task.done.partially"
-				>
+				<tw-checkbox [(checked)]="task.done.fully" [(indeterminate)]="task.done.partially">
 					{{ task.name }}
 					<div class="pl-8 grid gap-4 mt-4 w-fit">
 						@for (subtask of task.subtasks; track subtask; let i = $index) {
-							<tw-checkbox
-								[(checked)]="subtask.done.fully"
-								[(indeterminate)]="subtask.done.partially"
-							>
+							<tw-checkbox [(checked)]="subtask.done.fully" [(indeterminate)]="subtask.done.partially">
 								{{ subtask.name }}
 								@if (subtask.subtasks) {
 									<div class="pl-8 grid gap-4 mt-4 w-fit">
-										@for (
-											subsubtask of subtask.subtasks;
-											track subsubtask;
-											let j = $index
-										) {
-											<tw-checkbox
-												[(checked)]="subsubtask.done.fully"
-												[(indeterminate)]="subsubtask.done.partially"
-											>
+										@for (subsubtask of subtask.subtasks; track subsubtask; let j = $index) {
+											<tw-checkbox [(checked)]="subsubtask.done.fully" [(indeterminate)]="subsubtask.done.partially">
 												{{ subsubtask.name }}
 												@if (subsubtask.subtasks) {
 													<div class="pl-8 grid gap-4 mt-4 w-fit">
-														@for (
-															subsubsubtask of subsubtask.subtasks;
-															track subsubsubtask;
-															let k = $index
-														) {
-															<tw-checkbox
-																[(checked)]="subsubsubtask.done.fully"
-																[(indeterminate)]="subsubsubtask.done.partially"
-															>
+														@for (subsubsubtask of subsubtask.subtasks; track subsubsubtask; let k = $index) {
+															<tw-checkbox [(checked)]="subsubsubtask.done.fully" [(indeterminate)]="subsubsubtask.done.partially">
 																{{ subsubsubtask.name }}
 															</tw-checkbox>
 														}

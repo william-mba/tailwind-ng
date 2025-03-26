@@ -5,14 +5,7 @@ import { DropdownComponent } from './../../elements/dropdown/dropdown.component'
 import { InputTextDirective } from '../input-text/input-text.directive';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ComboboxComponent } from './combobox.component';
-import {
-	Component,
-	computed,
-	ElementRef,
-	signal,
-	viewChild,
-	viewChildren,
-} from '@angular/core';
+import { Component, computed, ElementRef, signal, viewChild, viewChildren } from '@angular/core';
 import { ComboboxModule } from './combobox.module';
 import { ButtonComponent } from '../../elements/button/button.component';
 import { provideIcon } from '../../elements/icon/icon.directive.config';
@@ -140,42 +133,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -204,9 +170,7 @@ describe('ComboboxComponent', () => {
 				isSingleMode = computed(() => this.selectionMode() === 'single');
 
 				protected toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -216,9 +180,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -231,14 +193,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -268,42 +223,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -332,9 +260,7 @@ describe('ComboboxComponent', () => {
 				isSingleMode = computed(() => this.selectionMode() === 'single');
 
 				protected toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -344,9 +270,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -359,14 +283,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -396,42 +313,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -460,9 +350,7 @@ describe('ComboboxComponent', () => {
 				isSingleMode = computed(() => this.selectionMode() === 'single');
 
 				protected toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -472,9 +360,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -487,14 +373,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -526,42 +405,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -590,9 +442,7 @@ describe('ComboboxComponent', () => {
 				isSingleMode = computed(() => this.selectionMode() === 'single');
 
 				protected toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -602,9 +452,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -617,14 +465,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -654,42 +495,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -716,9 +530,7 @@ describe('ComboboxComponent', () => {
 				selectionMode = signal('single');
 
 				protected toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -728,9 +540,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -777,42 +587,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -839,9 +622,7 @@ describe('ComboboxComponent', () => {
 				selectionMode = signal('multi');
 
 				toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -851,9 +632,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -866,14 +645,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -915,42 +687,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -977,9 +722,7 @@ describe('ComboboxComponent', () => {
 				selectionMode = signal('multi');
 
 				toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -989,9 +732,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -1004,14 +745,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -1050,42 +784,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -1112,9 +819,7 @@ describe('ComboboxComponent', () => {
 				selectionMode = signal('multi');
 
 				toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -1124,9 +829,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -1139,14 +842,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -1188,42 +884,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -1250,9 +919,7 @@ describe('ComboboxComponent', () => {
 				selectionMode = signal('multi');
 
 				toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -1262,9 +929,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -1277,14 +942,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -1332,42 +990,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -1394,9 +1025,7 @@ describe('ComboboxComponent', () => {
 				selectionMode = signal('multi');
 
 				toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -1406,9 +1035,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {
@@ -1421,14 +1048,7 @@ describe('ComboboxComponent', () => {
 					}
 				}
 
-				selections = new Set([
-					'Tom Cook',
-					'Kristin Watson',
-					'John Doe',
-					'Patricia Brown',
-					'Linda Jones',
-					'Floyd Miles',
-				]);
+				selections = new Set(['Tom Cook', 'Kristin Watson', 'John Doe', 'Patricia Brown', 'Linda Jones', 'Floyd Miles']);
 			}
 
 			const fixture = TestBed.createComponent(TestComponent);
@@ -1488,42 +1108,15 @@ describe('ComboboxComponent', () => {
 						},
 					}),
 				],
-				imports: [
-					ComboboxModule,
-					InputTextDirective,
-					ButtonComponent,
-					IconDirective,
-					DropdownComponent,
-				],
+				imports: [ComboboxModule, InputTextDirective, ButtonComponent, IconDirective, DropdownComponent],
 				template: `
-					<div
-						tw-combobox
-						#cbb1
-						[selectionMode]="selectionMode()"
-						class="sm:w-80"
-						[(selectedValues)]="selections"
-					>
+					<div tw-combobox #cbb1 [selectionMode]="selectionMode()" class="sm:w-80" [(selectedValues)]="selections">
 						<!-- Label -->
-						<label for="search" class="block text-sm mb-2 font-medium">
-							Quick search
-						</label>
+						<label for="search" class="block text-sm mb-2 font-medium">Quick search</label>
 						<!-- Input -->
-						<input
-							tw-input
-							(changes)="filter($event)"
-							type="text"
-							autocomplete="off"
-							id="search"
-							class="pr-14"
-						/>
+						<input tw-input (changes)="filter($event)" type="text" autocomplete="off" id="search" class="pr-14" />
 						<!-- Button -->
-						<button
-							tw-button
-							variant="text"
-							size="sm"
-							[popup]="cbb1"
-							class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-						>
+						<button tw-button variant="text" size="sm" [popup]="cbb1" class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50">
 							@if (cbb1.isOpened()) {
 								<tw-icon (click)="reset(cbb1)" size="sm" name="x-mark" />
 							}
@@ -1550,9 +1143,7 @@ describe('ComboboxComponent', () => {
 				selectionMode = signal('single');
 
 				toggleMode(): void {
-					this.selectionMode.update((mode) =>
-						mode === 'single' ? 'multi' : 'single',
-					);
+					this.selectionMode.update((mode) => (mode === 'single' ? 'multi' : 'single'));
 				}
 
 				private checkMatch = (x: string, y: string) => {
@@ -1562,9 +1153,7 @@ describe('ComboboxComponent', () => {
 				};
 
 				filter(value: string): void {
-					this.users = USERS_STUB().filter((x) =>
-						this.checkMatch(x.name, value),
-					);
+					this.users = USERS_STUB().filter((x) => this.checkMatch(x.name, value));
 				}
 
 				reset(popup?: Popup): void {

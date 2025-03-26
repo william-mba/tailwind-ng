@@ -1,10 +1,4 @@
-import {
-	Directive,
-	inject,
-	Input,
-	TemplateRef,
-	ViewContainerRef,
-} from '@angular/core';
+import { Directive, inject, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 /**
  * A structural directive that conditionally render a template in the view and defer its removal in the DOM.

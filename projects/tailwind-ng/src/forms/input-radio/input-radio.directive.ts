@@ -1,9 +1,5 @@
 import { Directive, inject } from '@angular/core';
-import {
-	classlist,
-	INPUT_RADIO_CONFIG,
-	InputRadioBase,
-} from '@tailwind-ng/core';
+import { classlist, INPUT_RADIO_CONFIG, InputRadioBase } from '@tailwind-ng/core';
 
 @Directive({
 	selector: 'input[type="radio"][tw-input], input[type="radio"][twInput]',

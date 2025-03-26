@@ -1,21 +1,6 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	computed,
-	DestroyRef,
-	inject,
-	input,
-	model,
-	OnInit,
-	ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, input, model, OnInit, ViewEncapsulation } from '@angular/core';
 import { ComboboxComponent } from '../combobox.component';
-import {
-	classlist,
-	COMBOBOX_ITEM_CONFIG,
-	ComboboxItem,
-	ComboboxItemBase,
-} from '@tailwind-ng/core';
+import { classlist, COMBOBOX_ITEM_CONFIG, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core';
 
 @Component({
 	selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -29,30 +14,21 @@ import {
 	template: '<ng-content />',
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	providers: [
-		{ provide: ComboboxItemBase, useExisting: ComboboxItemComponent },
-	],
+	providers: [{ provide: ComboboxItemBase, useExisting: ComboboxItemComponent }],
 })
-export class ComboboxItemComponent
-	extends ComboboxItemBase
-	implements ComboboxItem, OnInit
-{
+export class ComboboxItemComponent extends ComboboxItemBase implements ComboboxItem, OnInit {
 	value = input.required<string>();
 	selected = model<boolean>(false);
 	private readonly _combobox = inject(ComboboxComponent, {
 		skipSelf: true,
 		host: true,
 	});
-	private readonly _normalizedValue = computed(() =>
-		this.value().toLocaleLowerCase(),
-	);
+	private readonly _normalizedValue = computed(() => this.value().toLocaleLowerCase());
 	private readonly _destroyRef = inject(DestroyRef);
 
 	override ngOnInit(): void {
 		super.ngOnInit();
-		this._combobox
-			.input()
-			.valueChange.subscribe(this.selectIfNeeded.bind(this));
+		this._combobox.input().valueChange.subscribe(this.selectIfNeeded.bind(this));
 		const subs: { unsubscribe(): void }[] = [];
 		subs.push(
 			this._combobox.opened.subscribe(() => {
@@ -77,10 +53,7 @@ export class ComboboxItemComponent
 		// to determine the initial selected state of the combobox item.
 		if (!this.selected() && this._combobox.selectedValues().has(this.value())) {
 			this.selected.set(true);
-		} else if (
-			this.selected() &&
-			!this._combobox.selectedValues().has(this.value())
-		) {
+		} else if (this.selected() && !this._combobox.selectedValues().has(this.value())) {
 			this.selected.set(false);
 		}
 		if (this._combobox.selectionMode === 'single' && this.selected()) {
@@ -145,10 +118,6 @@ export class ComboboxItemComponent
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener(
-			'click',
-			this.select.bind(this),
-			false,
-		);
+		this.nativeElement.removeEventListener('click', this.select.bind(this), false);
 	}
 }

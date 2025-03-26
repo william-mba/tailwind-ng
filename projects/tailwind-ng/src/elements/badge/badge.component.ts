@@ -1,17 +1,5 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	inject,
-	Input,
-	ViewEncapsulation,
-} from '@angular/core';
-import {
-	Badge,
-	BADGE_CONFIG,
-	BadgeBase,
-	classlist,
-	SizeOption,
-} from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, inject, Input, ViewEncapsulation } from '@angular/core';
+import { Badge, BADGE_CONFIG, BadgeBase, classlist, SizeOption } from '@tailwind-ng/core';
 
 @Component({
 	selector: 'tw-badge, [tw-badge], [twBadge]',

@@ -11,16 +11,10 @@ export class IconDirective extends IconBase {
 		const { [this.name]: icon } = inject(ICON_CONFIG).map ?? {};
 		const { [this.size]: size, className } = inject(ICON_CONFIG);
 		if (!icon) {
-			console.error(
-				`Icon "${this.name}" is not set. Please add it to the icon config through dependency injection.`,
-			);
+			console.error(`Icon "${this.name}" is not set. Please add it to the icon config through dependency injection.`);
 		} else {
 			this.nativeElement.innerHTML = icon;
 		}
-		classlist(this.nativeElement).merge((value) => [
-			`${size} ${className}`,
-			value,
-			this.class,
-		]);
+		classlist(this.nativeElement).merge((value) => [`${size} ${className}`, value, this.class]);
 	}
 }

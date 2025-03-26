@@ -54,9 +54,7 @@ describe('BaseDirective', () => {
 			class TestComponent {}
 
 			const fixture = TestBed.createComponent(TestComponent);
-			directive = fixture.debugElement
-				.query(By.directive(FakeDirective))
-				.injector.get(FakeDirective);
+			directive = fixture.debugElement.query(By.directive(FakeDirective)).injector.get(FakeDirective);
 			fixture.detectChanges();
 
 			expect(directive.class).toBe('class1 class2 class3');

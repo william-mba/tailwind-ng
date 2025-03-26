@@ -1,17 +1,5 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	inject,
-	Input,
-	model,
-	ViewEncapsulation,
-} from '@angular/core';
-import {
-	classlist,
-	Toggle,
-	TOGGLE_CONFIG,
-	ToggleBase,
-} from '@tailwind-ng/core';
+import { ChangeDetectionStrategy, Component, inject, Input, model, ViewEncapsulation } from '@angular/core';
+import { classlist, Toggle, TOGGLE_CONFIG, ToggleBase } from '@tailwind-ng/core';
 
 @Component({
 	selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -55,24 +43,12 @@ export class ToggleComponent extends ToggleBase implements Toggle {
 			passive: true,
 			capture: true,
 		});
-		this.nativeElement.addEventListener(
-			'keyup',
-			this.onKeydown.bind(this),
-			true,
-		);
+		this.nativeElement.addEventListener('keyup', this.onKeydown.bind(this), true);
 	}
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener(
-			'click',
-			this.toggle.bind(this),
-			true,
-		);
-		this.nativeElement.removeEventListener(
-			'keyup',
-			this.onKeydown.bind(this),
-			true,
-		);
+		this.nativeElement.removeEventListener('click', this.toggle.bind(this), true);
+		this.nativeElement.removeEventListener('keyup', this.onKeydown.bind(this), true);
 	}
 }

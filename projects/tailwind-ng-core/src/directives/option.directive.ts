@@ -1,12 +1,6 @@
 import { Directive } from '@angular/core';
 import { BaseDirective } from './base.directive';
-import {
-	isArrowDownOrRight,
-	isArrowUpOrDown,
-	isArrowUpOrLeft,
-	isEnterOrSpace,
-	isSpace,
-} from '../guards';
+import { isArrowDownOrRight, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isSpace } from '../guards';
 import { classlist } from '../utils/classlist';
 
 @Directive({
@@ -19,27 +13,16 @@ import { classlist } from '../utils/classlist';
 })
 export class OptionDirective extends BaseDirective {
 	protected override buildStyle(): void {
-		classlist(this.nativeElement).set(
-			'focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0',
-			this.class,
-		);
+		classlist(this.nativeElement).set('focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0', this.class);
 	}
 
 	protected override addEventListeners(): void {
 		super.addEventListeners();
-		this.nativeElement.addEventListener(
-			'keyup',
-			this.onKeyup.bind(this),
-			false,
-		);
+		this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
 	}
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener(
-			'keyup',
-			this.onKeyup.bind(this),
-			false,
-		);
+		this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
 	}
 
 	protected onKeyup(event: KeyboardEvent): void {

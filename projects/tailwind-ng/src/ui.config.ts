@@ -16,9 +16,5 @@ export interface UIConfig {
  * Provides the Tailwind NG UI config with the given customization if any.
  */
 export function provideUI(customization?: Partial<UIConfig>): Provider[] {
-	return [
-		provideElements(customization?.elements),
-		provideForms(customization?.forms),
-		provideOverlays(customization?.overlays),
-	];
+	return [provideElements(customization?.elements), provideForms(customization?.forms), provideOverlays(customization?.overlays)];
 }

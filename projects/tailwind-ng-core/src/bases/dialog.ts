@@ -1,19 +1,12 @@
 import { Directive, forwardRef, Input, OnInit } from '@angular/core';
 import { PopupDirective } from '../directives';
 import { InjectionTokenFactory } from '../tokens/injection-token.factory';
-import {
-	PopupAdvancedActions,
-	PopupBaseActions,
-	PopupProps,
-} from '../directives';
+import { PopupAdvancedActions, PopupBaseActions, PopupProps } from '../directives';
 
 /**
  * @TailwindNG Dialog component interface.
  */
-export interface Dialog
-	extends PopupProps,
-		PopupBaseActions,
-		PopupAdvancedActions {
+export interface Dialog extends PopupProps, PopupBaseActions, PopupAdvancedActions {
 	/**
 	 * Whether the dialog should close automatically after the given `displayDuration`.
 	 * Default is `false`.
@@ -44,23 +37,16 @@ export interface DialogConfig {
 	backdrop: string;
 }
 
-export const DIALOG_CONFIG = InjectionTokenFactory.create<
-	Partial<DialogConfig>
->({}, 'DIALOG_CONFIG');
+export const DIALOG_CONFIG = InjectionTokenFactory.create<Partial<DialogConfig>>({}, 'DIALOG_CONFIG');
 
 @Directive({
 	host: {
 		role: 'dialog',
 		'[attr.aria-modal]': 'isModal',
 	},
-	providers: [
-		{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) },
-	],
+	providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DialogBase) }],
 })
-export abstract class DialogBase
-	extends PopupDirective<HTMLDialogElement>
-	implements Dialog, OnInit
-{
+export abstract class DialogBase extends PopupDirective<HTMLDialogElement> implements Dialog, OnInit {
 	@Input() isModal = true;
 	@Input() displayDelay?: number;
 	@Input() autoClose = false;
@@ -81,17 +67,12 @@ export abstract class DialogBase
 			}
 			if (!this.nativeElement.ariaLabel) {
 				queueMicrotask(() => {
-					this.nativeElement.ariaLabel =
-						this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
+					this.nativeElement.ariaLabel = this.nativeElement.querySelector('h1')?.textContent?.trim() || null;
 					if (!this.nativeElement.ariaLabel) {
-						this.nativeElement.ariaLabel =
-							this.nativeElement.querySelector('h2')?.textContent?.trim() ||
-							null;
+						this.nativeElement.ariaLabel = this.nativeElement.querySelector('h2')?.textContent?.trim() || null;
 					}
 					if (!this.nativeElement.ariaLabel) {
-						this.nativeElement.ariaLabel =
-							this.nativeElement.querySelector('h3')?.textContent?.trim() ||
-							null;
+						this.nativeElement.ariaLabel = this.nativeElement.querySelector('h3')?.textContent?.trim() || null;
 					}
 				});
 			}
@@ -106,9 +87,7 @@ export abstract class DialogBase
 		} else if (!this.primaryAction && !this.primaryActionQueried) {
 			this.primaryActionQueried = true;
 			setTimeout(() => {
-				this.primaryAction = this.nativeElement.querySelector(
-					'button[variant=primary],tw-button[variant=primary]',
-				) as HTMLElement;
+				this.primaryAction = this.nativeElement.querySelector('button[variant=primary],tw-button[variant=primary]') as HTMLElement;
 				this.primaryAction?.focus();
 			}, 100);
 		}

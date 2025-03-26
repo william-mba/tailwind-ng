@@ -1,9 +1,4 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	inject,
-	ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
 import { BUTTON_CONFIG, ButtonBase, classlist } from '@tailwind-ng/core';
 
 /**
@@ -19,12 +14,7 @@ import { BUTTON_CONFIG, ButtonBase, classlist } from '@tailwind-ng/core';
 })
 export class ButtonComponent extends ButtonBase {
 	protected override buildStyle(): void {
-		const {
-			fab,
-			base,
-			[this.size]: size,
-			[this.variant]: variant,
-		} = inject(BUTTON_CONFIG);
+		const { fab, base, [this.size]: size, [this.variant]: variant } = inject(BUTTON_CONFIG);
 		classlist(this.nativeElement).set(`${size} ${variant}`, base, this.class);
 		if (this.isFab) {
 			this.nativeElement.classList.add(fab ?? '');

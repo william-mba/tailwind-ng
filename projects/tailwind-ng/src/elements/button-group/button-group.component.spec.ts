@@ -54,15 +54,9 @@ describe('ButtonGroupComponent', () => {
 		const testApp = appFixture.componentInstance;
 		appFixture.detectChanges();
 
-		expect(
-			testApp.buttonGroup().nativeElement.className.includes('rounded-full'),
-		).toBeTrue();
-		expect(
-			testApp.buttonGroup().nativeElement.className.includes(defaultRadius),
-		).toBeFalse();
-		expect(
-			testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow),
-		).toBeTrue();
+		expect(testApp.buttonGroup().nativeElement.className.includes('rounded-full')).toBeTrue();
+		expect(testApp.buttonGroup().nativeElement.className.includes(defaultRadius)).toBeFalse();
+		expect(testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow)).toBeTrue();
 	});
 
 	it('should customize using DI', () => {
@@ -90,17 +84,9 @@ describe('ButtonGroupComponent', () => {
 		const testApp = appFixture.componentInstance;
 		appFixture.detectChanges();
 
-		expect(
-			testApp.buttonGroup().nativeElement.className.includes('shadow-lg'),
-		).toBeTrue();
-		expect(
-			testApp.buttonGroup().nativeElement.className.includes('rounded-full'),
-		).toBeTrue();
-		expect(
-			testApp.buttonGroup().nativeElement.className.includes(defaultRadius),
-		).toBeFalse();
-		expect(
-			testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow),
-		).toBeFalse();
+		expect(testApp.buttonGroup().nativeElement.className.includes('shadow-lg')).toBeTrue();
+		expect(testApp.buttonGroup().nativeElement.className.includes('rounded-full')).toBeTrue();
+		expect(testApp.buttonGroup().nativeElement.className.includes(defaultRadius)).toBeFalse();
+		expect(testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow)).toBeFalse();
 	});
 });

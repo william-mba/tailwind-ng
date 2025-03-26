@@ -6,16 +6,7 @@ import { isDialog } from './dialog';
 import { isCombobox } from './combobox';
 import { InjectionTokenFactory } from '../tokens/injection-token.factory';
 import { SizeOption } from '../types/size-options.type';
-import {
-	isArrowDown,
-	isArrowDownOrRight,
-	isArrowUp,
-	isArrowUpOrDown,
-	isArrowUpOrLeft,
-	isEnterOrSpace,
-	isEscape,
-	isTab,
-} from '../guards';
+import { isArrowDown, isArrowDownOrRight, isArrowUp, isArrowUpOrDown, isArrowUpOrLeft, isEnterOrSpace, isEscape, isTab } from '../guards';
 
 /**
  * @TailwindNG Button component interface.
@@ -30,15 +21,12 @@ export interface Button {
 /** Button variant */
 export type ButtonVariant = 'primary' | 'secondary' | 'tonal' | 'text';
 
-export interface ButtonConfig
-	extends Partial<Record<ButtonVariant, string> & Record<SizeOption, string>> {
+export interface ButtonConfig extends Partial<Record<ButtonVariant, string> & Record<SizeOption, string>> {
 	base?: string;
 	fab?: string;
 }
 
-export const BUTTON_CONFIG = InjectionTokenFactory.create<
-	Partial<ButtonConfig>
->({}, 'BUTTON_CONFIG');
+export const BUTTON_CONFIG = InjectionTokenFactory.create<Partial<ButtonConfig>>({}, 'BUTTON_CONFIG');
 
 @Directive({
 	host: {
@@ -47,10 +35,7 @@ export const BUTTON_CONFIG = InjectionTokenFactory.create<
 		'[attr.aria-expanded]': 'isPopupExpanded || null',
 	},
 })
-export abstract class ButtonBase
-	extends BaseDirective<HTMLButtonElement>
-	implements Button, OnInit
-{
+export abstract class ButtonBase extends BaseDirective<HTMLButtonElement> implements Button, OnInit {
 	@Input() tabIndex = 0;
 	@Input() popup?: Popup;
 	@Input() isFab = false;
@@ -138,33 +123,17 @@ export abstract class ButtonBase
 	protected override addEventListeners(): void {
 		super.addEventListeners();
 		if (this.popup) {
-			this.nativeElement.addEventListener(
-				'pointerup',
-				this.onPointerUp.bind(this),
-				false,
-			);
+			this.nativeElement.addEventListener('pointerup', this.onPointerUp.bind(this), false);
 		}
-		this.nativeElement.addEventListener(
-			'keyup',
-			this.onKeyup.bind(this),
-			false,
-		);
+		this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
 	}
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
 		if (this.popup) {
-			this.nativeElement.removeEventListener(
-				'pointerup',
-				this.onPointerUp.bind(this),
-				false,
-			);
+			this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false);
 		}
-		this.nativeElement.removeEventListener(
-			'keyup',
-			this.onKeyup.bind(this),
-			false,
-		);
+		this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
 	}
 }
 

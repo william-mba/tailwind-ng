@@ -21,8 +21,6 @@ const DefaultConfig = (): AvatarConfig => {
 export function provideAvatar(customization?: Partial<AvatarConfig>): Provider {
 	return {
 		provide: AVATAR_CONFIG,
-		useValue: !customization
-			? DefaultConfig()
-			: mergeConfig([DefaultConfig(), customization]),
+		useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
 	};
 }

@@ -82,27 +82,19 @@ describe('IconDirective', () => {
 			fixture.detectChanges();
 			expect(icon.classList).toContain(config.md);
 
-			icon = fixture.debugElement.query(
-				By.css('tw-icon[size="xs"]'),
-			).nativeElement;
+			icon = fixture.debugElement.query(By.css('tw-icon[size="xs"]')).nativeElement;
 			fixture.detectChanges();
 			expect(icon.classList).toContain(config.xs);
 
-			icon = fixture.debugElement.query(
-				By.css('tw-icon[size="sm"]'),
-			).nativeElement;
+			icon = fixture.debugElement.query(By.css('tw-icon[size="sm"]')).nativeElement;
 			fixture.detectChanges();
 			expect(icon.classList).toContain(config.sm);
 
-			icon = fixture.debugElement.query(
-				By.css('tw-icon[size="lg"]'),
-			).nativeElement;
+			icon = fixture.debugElement.query(By.css('tw-icon[size="lg"]')).nativeElement;
 			fixture.detectChanges();
 			expect(icon.classList).toContain(config.lg);
 
-			icon = fixture.debugElement.query(
-				By.css('tw-icon[size="xl"]'),
-			).nativeElement;
+			icon = fixture.debugElement.query(By.css('tw-icon[size="xl"]')).nativeElement;
 			fixture.detectChanges();
 			expect(icon.classList).toContain(config.xl);
 		},
@@ -122,8 +114,7 @@ describe('IconDirective', () => {
 		class TestComponent {}
 
 		const fixture = TestBed.createComponent(TestComponent);
-		const icon = fixture.debugElement.query(By.css('tw-icon'))
-			.nativeElement as HTMLElement;
+		const icon = fixture.debugElement.query(By.css('tw-icon')).nativeElement as HTMLElement;
 		fixture.detectChanges();
 
 		ClassName.toArray(customizations).forEach((c) => {
