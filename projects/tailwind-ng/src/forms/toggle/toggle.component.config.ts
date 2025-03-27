@@ -13,7 +13,7 @@ const DefaultConfig = () => {
 export function provideToggle(className = ''): Provider {
 	return {
 		provide: TOGGLE_CONFIG,
-		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
+		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
 	};
 }
 export function withToggle(className = ''): Provider {

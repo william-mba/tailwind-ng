@@ -3,10 +3,9 @@
  */
 export const ClassName = {
 	/**
-	 * Merges multiple class names from source(s) (right) to target(s) (left).
+	 * Merges multiple class names from right (source) to left (target).
 	 *
-	 * @param arg The target and source values to merge.
-	 * @param options The options for merging.
+	 * @param args - The values to merge. This function accepts a merge options as last parameter.
 	 * @returns The merged result.
 	 */
 	merge: mergeMultiple,
@@ -48,7 +47,7 @@ function trimSpaces(...values: string[]) {
 	return res;
 }
 
-function generateKey(...arg: (string | undefined | null)[]): string {
+function generateKey(...arg: ClassNameValue[]): string {
 	assertValueSetted(arg);
 	return trimSpaces(...arg);
 }
@@ -180,15 +179,26 @@ function mergeTwo(arg: [string | undefined | null, string | undefined | null], o
 	if (!cacheCleanupScheduled) scheduleCacheCleanup();
 	return mergeCache.set(key, result).get(key)!;
 }
-
-function mergeMultiple(values: (string | undefined | null)[], options: MergeOptions = {}): string {
-	assertValueSetted(values);
-	const [first, second, ...rest] = values;
-	const initialValue = mergeTwo([first, second], options);
-	if (rest.length) {
-		return rest.reduce((previous, current) => mergeTwo([previous, current], options), initialValue);
+export type ClassNameValue = string | undefined | null;
+function mergeMultiple(...args: ClassNameValue[] | [...ClassNameValue[], MergeOptions | ClassNameValue]): string {
+	assertValueSetted(args);
+	if (typeof args[args.length - 1] === 'object') {
+		const options = args.pop() as MergeOptions;
+		const [first, second, ...rest] = args as ClassNameValue[];
+		const initialValue = mergeTwo([first, second], options);
+		if (rest.length) {
+			return rest.reduce((previous, current) => mergeTwo([previous, current], options), initialValue)!;
+		} else {
+			return initialValue;
+		}
 	} else {
-		return initialValue;
+		const [first, second, ...rest] = args as ClassNameValue[];
+		const initialValue = mergeTwo([first, second]);
+		if (rest.length) {
+			return rest.reduce((previous, current) => mergeTwo([previous, current]), initialValue)!;
+		} else {
+			return initialValue;
+		}
 	}
 }
 

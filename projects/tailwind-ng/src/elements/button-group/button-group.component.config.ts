@@ -15,7 +15,7 @@ const DefaultConfig = () => {
 export function provideButtonGroup(className = ''): Provider {
 	return {
 		provide: BUTTON_GROUP_CONFIG,
-		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge([DefaultConfig(), className]),
+		useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
 	};
 }
 export function withButtonGroup(className = ''): Provider {

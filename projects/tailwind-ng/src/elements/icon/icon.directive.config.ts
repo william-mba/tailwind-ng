@@ -51,7 +51,7 @@ export function provideIcon(customization?: Partial<IconConfig>): Provider {
 						}
 						config.map = mergeConfig([config.map, customization.map as IconMap], { strict: true });
 					} else {
-						config[key as IconConfigSansMapKey] = ClassName.merge([config[key as IconConfigSansMapKey], value as string]);
+						config[key as IconConfigSansMapKey] = ClassName.merge(config[key as IconConfigSansMapKey], value as string);
 					}
 				});
 			}
