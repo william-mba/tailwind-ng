@@ -11,7 +11,7 @@ Core infrastructure and tools for Tailwind NG.
 <br/>
 <br/>
 
-[![Build Status](https://dev.azure.com/artandev/Labs/_apis/build/status%2Ftailwind-ng?branchName=next)](https://dev.azure.com/artandev/Labs/_build/latest?definitionId=2&branchName=next)
+[![Build Status](https://dev.azure.com/artandev/Labs/_apis/build/status%2Ftailwind-ng-core?branchName=next)](https://dev.azure.com/artandev/Labs/_build/latest?definitionId=2&branchName=main)
 ![tailwind-ng](https://badgen.net/bundlephobia/minzip/tailwind-ng) ![tree-shaking](https://badgen.net/bundlephobia/tree-shaking/@tailwind-ng/core)
 
 </div>
