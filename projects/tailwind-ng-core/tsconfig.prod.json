@@ -7,7 +7,7 @@
 		"declarationMap": false
 	},
 	"angularCompilerOptions": {
-		"compilationMode": "partial"
+		"compilationMode": "full"
 	},
 	"include": ["**/*.ts"],
 	"exclude": ["**/*.spec.ts"]
