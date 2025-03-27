@@ -65,6 +65,8 @@ function scheduleCacheCleanup() {
 	cacheCleanupScheduled = true;
 }
 
+const NON_COLORS = ['transparent', 'white', 'black'];
+
 /** Returns an array of merged values from source to target.
  *
  * The first argument is the target and the rest are source arrays.
@@ -129,16 +131,16 @@ function mergeTwo(arg: [string | undefined | null, string | undefined | null], o
 					if (foundInSource >= foundInTarget && foundInSource > 1) {
 						// If source is for instance 'text-blue-600' and target is 'text-sm'
 						if (foundInSource > foundInTarget && foundInTarget === 1) {
-							if (value.endsWith('transparent')) {
-								// Extract another string segment
-								// searchString 'bg-red' is truncate to 'bg'
-								lastIndexOfSeperator = searchString.lastIndexOf('-');
-								if (lastIndexOfSeperator > 0) {
-									searchString = searchString.substring(0, lastIndexOfSeperator);
-								}
-								return !value.startsWith(searchString);
+							const found = NON_COLORS.find((x) => value.endsWith(x));
+
+							// keep non color class that does not have a value in source to merge with.
+							if (found && !searchString.startsWith(value.substring(0, value.indexOf('-')))) {
+								return true;
 							}
-							return true;
+
+							// If target is a non color value and there is a source value to merge with, remove it
+							// Otherwise, keep target value
+							return !found;
 						}
 
 						// If target is for instance 'bg-blue-*' and source is 'bg-blue-*'

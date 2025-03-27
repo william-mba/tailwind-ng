@@ -24,6 +24,27 @@ describe('ClassName', () => {
 		expect(result.includes('px-3.5')).toBeFalse();
 		expect(result.includes('py-2')).toBeFalse();
 	});
+
+	it('should merge values', () => {
+		const result = ClassName.toArray(ClassName.merge(['grid w-max gap-2', 'bg-white', 'bg-gray-200 hover:bg-gray-200']));
+		expect(result.includes('grid')).toBeTrue();
+		expect(result.includes('w-max')).toBeTrue();
+		expect(result.includes('gap-2')).toBeTrue();
+		expect(result.includes('bg-white')).toBeFalse();
+		expect(result.includes('bg-gray-200')).toBeTrue();
+		expect(result.includes('hover:bg-gray-200')).toBeTrue();
+	});
+
+	it('should merge values', () => {
+		const result = ClassName.toArray(ClassName.merge(['bg-transparent border-white', 'bg-white', 'bg-gray-200 hover:bg-gray-200', 'border-red-600']));
+
+		expect(result.includes('bg-transparent')).toBeFalse();
+		expect(result.includes('border-white')).toBeFalse();
+		expect(result.includes('bg-white')).toBeFalse();
+		expect(result.includes('bg-gray-200')).toBeTrue();
+		expect(result.includes('hover:bg-gray-200')).toBeTrue();
+		expect(result.includes('border-red-600')).toBeTrue();
+	});
 	it('should merge nested values', () => {
 		const source1 = 'bg-blue-600 text-blue-600';
 		const source2 = 'ring-blue-600 scale-100';
