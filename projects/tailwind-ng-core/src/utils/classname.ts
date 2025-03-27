@@ -8,7 +8,7 @@ export const ClassName = {
 	 * @param args - The values to merge. This function accepts a merge options as last parameter.
 	 * @returns The merged result.
 	 */
-	merge: mergeMultiple,
+	merge: memoize(mergeMultiple),
 	/**
 	 * Converts value to an array of strings using the specified separator.
 	 * If value is not a string, an empty array is returned.
@@ -37,33 +37,13 @@ function assertValueSetted(value: unknown): asserts value is string | string[] {
 }
 
 function trimSpaces(...values: string[]) {
-	let res = values[0];
-	if (res.length) {
-		res = values[0].replace(/\s/g, '');
-	}
-	for (let i = 1; i < values.length; i++) {
-		res += values[i].replace(/\s/g, '');
-	}
-	return res;
+	return values.map((x) => (x as string) || '').reduce((p, c) => (p += c.replace(/\s/g, '')), values[0].replace(/\s/g, ''));
 }
 
 function generateKey(...arg: ClassNameValue[]): string {
 	assertValueSetted(arg);
 	return trimSpaces(...arg);
 }
-
-let mergeCache: Map<string, string> | null;
-let cacheCleanupScheduled = false;
-
-function scheduleCacheCleanup() {
-	if (cacheCleanupScheduled) return;
-	setTimeout(() => {
-		mergeCache = null;
-		cacheCleanupScheduled = false;
-	}, 1000 * 60); // 1 minute
-	cacheCleanupScheduled = true;
-}
-
 const NON_COLORS = ['transparent', 'white', 'black'];
 
 /** Returns an array of merged values from source to target.
@@ -75,12 +55,6 @@ const NON_COLORS = ['transparent', 'white', 'black'];
  * @param options The options for merging.
  * */
 function mergeTwo(arg: [string | undefined | null, string | undefined | null], options: MergeOptions = {}): string {
-	const key = generateKey(...arg, `${options.keepClassDeletor ?? ''}`);
-	if (mergeCache && mergeCache.has(key)) {
-		return mergeCache.get(key)!;
-	} else {
-		mergeCache = new Map();
-	}
 	const [t = '', s = ''] = arg;
 
 	if (!t || (t && t.length === 1) || !s || (s && s.length === 1)) {
@@ -175,11 +149,10 @@ function mergeTwo(arg: [string | undefined | null, string | undefined | null], o
 			}
 		}
 	}
-	const result = [...target, ...temp].join(' ');
-	if (!cacheCleanupScheduled) scheduleCacheCleanup();
-	return mergeCache.set(key, result).get(key)!;
+	return target.concat(temp).join(' ');
 }
 export type ClassNameValue = string | undefined | null;
+
 function mergeMultiple(...args: ClassNameValue[] | [...ClassNameValue[], MergeOptions | ClassNameValue]): string {
 	assertValueSetted(args);
 	if (typeof args[args.length - 1] === 'object') {
@@ -200,6 +173,32 @@ function mergeMultiple(...args: ClassNameValue[] | [...ClassNameValue[], MergeOp
 			return initialValue;
 		}
 	}
+}
+
+function memoize(fn: typeof mergeMultiple): typeof mergeMultiple {
+	const mergeCache = new Map<string, string>();
+	let cacheCleanupScheduled = false;
+
+	const scheduleCacheCleanup = () => {
+		if (cacheCleanupScheduled) return;
+		setTimeout(() => {
+			mergeCache.clear();
+			cacheCleanupScheduled = false;
+		}, 1000 * 60); // 1 minute
+		cacheCleanupScheduled = true;
+	};
+
+	return function (...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions | ClassNameValue]): ReturnType<typeof mergeMultiple> {
+		let options;
+		if (typeof arg[arg.length - 1] === 'object') {
+			options = arg.pop();
+		}
+		const key = generateKey(...(arg as ClassNameValue[]));
+
+		if (mergeCache.has(key)) return mergeCache.get(key)!;
+		if (!cacheCleanupScheduled) scheduleCacheCleanup();
+		return mergeCache.set(key, fn(...(arg as ClassNameValue[]), options)).get(key)!;
+	};
 }
 
 /** Transfroms string value to an array then returns it.
