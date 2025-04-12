@@ -11,6 +11,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 	protected readonly theme = inject(ThemeService);
+
 	ngOnInit(): void {
 		this.theme.init();
 	}

@@ -117,7 +117,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
 		}
 	}
 
-	private timer: number | null = null;
+	private timer?: number;
 
 	closeAfter(delay?: number): void {
 		if (!isAcceptableDelay(delay || 0)) {
@@ -127,8 +127,8 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
 		this.timer = setInterval(() => {
 			if (!this.isHovered) {
 				this.close();
-				clearInterval(this.timer!);
-				this.timer = null;
+				clearInterval(this.timer as number);
+				this.timer = undefined;
 			}
 		}, delay);
 	}

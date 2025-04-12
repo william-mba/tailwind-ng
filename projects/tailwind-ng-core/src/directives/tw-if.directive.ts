@@ -41,7 +41,7 @@ export class TwIf {
 	}
 
 	private delay = 300;
-	private timer: number | null = null;
+	private timer?: number;
 
 	private deferRemoval() {
 		// Nothing should be done if there is already a removal scheduled.
@@ -54,7 +54,7 @@ export class TwIf {
 			if (!this._shouldDisplay) {
 				this.viewContainerRef.clear();
 			}
-			this.timer = null;
+			this.timer = undefined;
 		}, this.delay);
 	}
 }

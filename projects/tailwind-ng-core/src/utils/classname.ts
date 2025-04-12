@@ -8,7 +8,7 @@ export const ClassName = {
 	 * @param args - The values to merge. This function accepts a merge options as last parameter.
 	 * @returns The merged result.
 	 */
-	merge: memoize(mergeMultiple),
+	merge: mergeMultiple,
 	/**
 	 * Converts value to an array of strings using the specified separator.
 	 * If value is not a string, an empty array is returned.
@@ -26,24 +26,16 @@ interface MergeOptions {
 	minStringLength?: number;
 }
 
-function assertValueSetted(value: unknown): asserts value is string | string[] {
+function assertClassName(value: unknown): asserts value is string | string[] {
 	if (typeof value === 'string') {
 		value ??= '';
 	} else if (Array.isArray(value)) {
-		for (let i = 0; i < value.length; i++) {
-			value[i] ??= '';
-		}
+		value = value.filter((x) => typeof x === 'string');
+	} else {
+		throw new TypeError('ClassName must be a string or an array of string.');
 	}
 }
 
-function trimSpaces(...values: string[]) {
-	return values.map((x) => (x as string) || '').reduce((p, c) => (p += c.replace(/\s/g, '')), values[0].replace(/\s/g, ''));
-}
-
-function generateKey(...arg: ClassNameValue[]): string {
-	assertValueSetted(arg);
-	return trimSpaces(...arg);
-}
 const NON_COLORS = ['transparent', 'white', 'black'];
 
 /** Returns an array of merged values from source to target.
@@ -54,7 +46,7 @@ const NON_COLORS = ['transparent', 'white', 'black'];
  * @param arg The target and source values to resolve.
  * @param options The options for merging.
  * */
-function mergeTwo(arg: [string | undefined | null, string | undefined | null], options: MergeOptions = {}): string {
+function mergeTwo(arg: [ClassNameValue, ClassNameValue], options: MergeOptions = {}): string {
 	const [t = '', s = ''] = arg;
 
 	if (!t || (t && t.length === 1) || !s || (s && s.length === 1)) {
@@ -154,7 +146,7 @@ function mergeTwo(arg: [string | undefined | null, string | undefined | null], o
 export type ClassNameValue = string | undefined | null;
 
 function mergeMultiple(...args: ClassNameValue[] | [...ClassNameValue[], MergeOptions | ClassNameValue]): string {
-	assertValueSetted(args);
+	assertClassName(args);
 	if (typeof args[args.length - 1] === 'object') {
 		const options = args.pop() as MergeOptions;
 		const [first, second, ...rest] = args as ClassNameValue[];
@@ -173,32 +165,6 @@ function mergeMultiple(...args: ClassNameValue[] | [...ClassNameValue[], MergeOp
 			return initialValue;
 		}
 	}
-}
-
-function memoize(fn: typeof mergeMultiple): typeof mergeMultiple {
-	const mergeCache = new Map<string, string>();
-	let cacheCleanupScheduled = false;
-
-	const scheduleCacheCleanup = () => {
-		if (cacheCleanupScheduled) return;
-		setTimeout(() => {
-			mergeCache.clear();
-			cacheCleanupScheduled = false;
-		}, 1000 * 60); // 1 minute
-		cacheCleanupScheduled = true;
-	};
-
-	return function (...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions | ClassNameValue]): ReturnType<typeof mergeMultiple> {
-		let options;
-		if (typeof arg[arg.length - 1] === 'object') {
-			options = arg.pop();
-		}
-		const key = generateKey(...(arg as ClassNameValue[]));
-
-		if (mergeCache.has(key)) return mergeCache.get(key)!;
-		if (!cacheCleanupScheduled) scheduleCacheCleanup();
-		return mergeCache.set(key, fn(...(arg as ClassNameValue[]), options)).get(key)!;
-	};
 }
 
 /** Transfroms string value to an array then returns it.

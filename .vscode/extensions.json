@@ -3,25 +3,35 @@
 	"recommendations": [
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
-		"stylelint.vscode-stylelint",
 		"angular.ng-template",
 		"systemticks.c4-dsl-extension",
 		"ms-azuretools.vscode-docker",
 		"EditorConfig.EditorConfig",
-		"christian-kohler.path-intellisense",
-		"lokalise.i18n-ally",
-		"bierner.markdown-preview-github-styles",
-		"Postman.postman-for-vscode",
+		"bierner.github-markdown-preview",
+		"bierner.emojisense",
 		"bradlc.vscode-tailwindcss",
+		"ms-vscode.powershell",
+		"ritwickdey.LiveServer",
 		// Source Control
 		"mhutchie.git-graph",
 		"donjayamanne.githistory",
+		"eamodio.gitlens",
 		// editor themes & icons
 		"PKief.material-icon-theme",
 		// life savers!
-		"lokalise.i18n-ally",
+		"steoates.autoimport",
 		"usernamehw.errorlens",
 		"formulahendry.auto-rename-tag",
-		"streetsidesoftware.code-spell-checker"
+		"streetsidesoftware.code-spell-checker",
+		"streetsidesoftware.code-spell-checker-french",
+		// Angular
+		"Angular.ng-template",
+		"cyrilletuzi.angular-schematics",
+		// C4 Modeling
+		"ciarant.vscode-structurizr",
+		// REST API
+		"humao.rest-client",
+		// Databases
+		"ms-mssql.mssql"
 	]
 }
