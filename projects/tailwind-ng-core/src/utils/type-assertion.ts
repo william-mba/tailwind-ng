@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Config = Record<string, any>;
 export function isObject(value: unknown): value is object {
-	return typeof value === 'object' && !Array.isArray(value);
+	return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
 export function isConfigObject(value: unknown): value is Config {
