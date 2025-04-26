@@ -39,7 +39,7 @@ COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
 COPY projects/tailwind-ng ./projects/tailwind-ng
 
 FROM copy-project AS check-format
-RUN pnpm format:check
+RUN pnpm format:fix
 
 FROM check-format AS run-lint
 RUN pnpm lint:lib
