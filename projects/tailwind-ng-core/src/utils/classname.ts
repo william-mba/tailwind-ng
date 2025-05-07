@@ -132,7 +132,7 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
 						}
 					}
 				}
-				return target.concat(temp).join(' ');
+				return [...target, ...temp].join(' ');
 			}, lastValue as string)) ||
 		''
 	);
