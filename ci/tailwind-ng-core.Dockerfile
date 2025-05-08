@@ -9,16 +9,6 @@ RUN curl -sL https://deb.nodesource.com/setup_22.x | bash && \
   apt install -y nodejs && \
   apt clean
 
-# Disable corepack
-RUN corepack disable
-
-# Reinstall corepack
-RUN npm install -g corepack
-
-# Enable corepack and use it to enable pnpm
-RUN corepack enable && \
-  corepack prepare pnpm@latest --activate
-
 # Install Angular CLI globally
 RUN npm add -g @angular/cli
 
@@ -30,24 +20,24 @@ COPY angular.json .
 COPY .prettierrc .
 COPY eslint.config.js .
 COPY package.json .
-COPY pnpm-lock.yaml .
+COPY package-lock.json .
 COPY tsconfig.json .
-RUN pnpm install
+RUN npm install
 
 FROM install-deps AS copy-project
 COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
 
 FROM copy-project AS check-format
-RUN pnpm format:fix
+RUN npm run format:fix
 
 FROM check-format AS run-lint
-RUN pnpm lint:lib-core
+RUN npm run lint:lib-core
 
 FROM run-lint AS run-tests
-RUN pnpm install-chrome && pnpm test:lib-core:ci
+RUN npm run install-chrome && npm run test:lib-core:ci
 
 FROM run-tests AS run-build
-RUN pnpm build:lib-core
+RUN npm run build:lib-core
 
 FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/junit/tailwind-ng-core/. /junit/tailwind-ng-core/
