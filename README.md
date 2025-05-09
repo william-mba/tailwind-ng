@@ -18,7 +18,7 @@ Beautiful, fast and accessible Tailwind CSS components for Angular.
 
 ## :rocket: Motivation
 
-Tailwind NG provides a seamless and robust integration of [Tailwind CSS](https://tailwindcss.com/) components with [Angular](https://angular.dev) to enable developers to rapidly build a great UI at any scale.
+Tailwind NG is an open source UI components library that aims to provide a seamless and robust integration of [Tailwind CSS](https://tailwindcss.com/) components with [Angular](https://angular.dev) to make building a great UI easier and joyful at any scale.
 
 ## :bulb: Why Tailwind NG ?
 
