@@ -26,8 +26,8 @@ Tailwind NG is built with state of the art design principles to provide componen
 
 - **Beautiful**: well-designed components that look great out of the box.
 - **Fast and lightweight**: for optimal responsiveness and rendering speed at any scale.
-- **Reliable**: well-tested for consistent performance and predictable behaviors.
-- **Accessible**: built-in accessibility features based on [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards.
+- **Reliable**: well-tested to ensure consistent performance and predictable behaviors.
+- **Accessible**: built-in accessibility features compliant to [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards.
 - **Customizable**: fully customizable, extensible and composable to fit your specific needs.
 
 ## :heart: Contributing
