@@ -1,42 +1,42 @@
 param (
-    [string]$packageName,         # Nom du package NPM
-    [string[]]$excludeVersions    # Liste des versions à exclure
+    [string]$packageName,         # Name of the NPM package
+    [string[]]$excludeVersions    # List of versions to exclude
 )
 
-# Vérifier si le paramètre packageName est fourni
+# Check if the packageName parameter is provided
 if (-not $packageName) {
-    Write-Host "❌ Erreur : Vous devez fournir un nom de package en paramètre." -ForegroundColor Red
-    Write-Host "🔹 Utilisation : .\unpublish-npm.ps1 nom-du-package -excludeVersions '1.0.0','1.2.3'"
+    Write-Host "❌ Error: You must provide a package name as a parameter." -ForegroundColor Red
+    Write-Host "🔹 Usage: .\unpublish-npm.ps1 package-name -excludeVersions '1.0.0','1.2.3'"
     exit 1
 }
 
-# Récupérer toutes les versions publiées du package
+# Retrieve all published versions of the package
 $versions = npm view $packageName versions --json | ConvertFrom-Json
 
 if ($versions -is [System.Array]) {
-    Write-Host "🔍 Versions trouvées pour $packageName :" -ForegroundColor Green
+    Write-Host "🔍 Versions found for $packageName:" -ForegroundColor Green
     $versions | ForEach-Object { Write-Host " - $_" }
 
-    # Filtrer les versions à supprimer en excluant celles spécifiées
+    # Filter the versions to delete by excluding the specified ones
     $versionsToDelete = $versions | Where-Object { $excludeVersions -notcontains $_ }
 
     if ($versionsToDelete.Count -eq 0) {
-        Write-Host "⚠️ Aucune version à supprimer après filtrage." -ForegroundColor Yellow
+        Write-Host "⚠️ No versions to delete after filtering." -ForegroundColor Yellow
         exit 0
     }
 
-    Write-Host "🚀 Dépublication des versions suivantes de $packageName :" -ForegroundColor Yellow
+    Write-Host "🚀 Unpublishing the following versions of $packageName:" -ForegroundColor Yellow
     $versionsToDelete | ForEach-Object { Write-Host " - $_" }
 
-    # Dépublier chaque version excluant celles protégées
+    # Unpublish each version excluding the protected ones
     $versionsToDelete | ForEach-Object {
         $version = $_
-        Write-Host "❌ Suppression de $packageName@$version ..." -ForegroundColor Cyan
+        Write-Host "❌ Deleting $packageName@$version ..." -ForegroundColor Cyan
         npm unpublish "$packageName@$version" --force
-        Start-Sleep -Seconds 2  # Pause pour éviter les limitations NPM
+        Start-Sleep -Seconds 2  # Pause to avoid NPM rate limits
     }
 
-    Write-Host "✅ Toutes les versions non exclues de $packageName ont été dépubliées." -ForegroundColor Green
+    Write-Host "✅ All non-excluded versions of $packageName have been unpublished." -ForegroundColor Green
 } else {
-    Write-Host "⚠️ Aucune version trouvée pour $packageName ou erreur lors de la récupération des versions." -ForegroundColor Red
+    Write-Host "⚠️ No versions found for $packageName or an error occurred while retrieving the versions." -ForegroundColor Red
 }
