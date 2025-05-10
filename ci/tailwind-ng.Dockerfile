@@ -27,8 +27,8 @@ COPY vitest.setup.ts .
 RUN npm ci
 
 FROM install-deps AS copy-project
-COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
-COPY projects/tailwind-ng-ui ./projects/tailwind-ng-ui
+COPY packages/core ./packages/core
+COPY packages/ui ./packages/ui
 
 FROM copy-project AS run-style-guidelines
 RUN npx run-p format:check lint:ui
@@ -42,4 +42,4 @@ RUN npm run build:ui
 FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/reports/. /reports/
 COPY --from=run-tests /_work/coverage/. /coverage/
-COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/tailwind-ng-ui/
+COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/ui/

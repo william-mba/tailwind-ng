@@ -1,10 +1,10 @@
-name: 'tailwind-ng-core'
+name: 'core'
 
 trigger:
   paths:
     include:
-      - projects/tailwind-ng-core/src/*
-      - ci/tailwind-ng-core.yml
+      - packages/core/src/*
+      - ci/core.yml
 
 pool: Lab
 
@@ -26,7 +26,7 @@ stages:
           - checkout: self
             persistCredentials: true
 
-          - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
+          - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/core.Dockerfile .
             workingDirectory: $(Build.SourcesDirectory)
             displayName: 'Run CI'
 
@@ -46,13 +46,13 @@ stages:
               mergeTestResults: true
               testRunTitle: '$(Build.DefinitionName)-v$(ReleaseVersion)-tests'
 
-          - publish: artifacts/tailwind-ng-core
+          - publish: artifacts/core
             artifact: drop
             displayName: 'Publish artifact'
 
           - bash: |
               npm config set //registry.npmjs.org/:_authToken=$(authToken)
-              cd $(Build.SourcesDirectory)/artifacts/tailwind-ng-core
+              cd $(Build.SourcesDirectory)/artifacts/core
               npm version $(ReleaseVersion)
               npm publish --tag $(ReleaseTag)
             displayName: 'Release v$(ReleaseVersion)@$(ReleaseTag)'
