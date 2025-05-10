@@ -31,13 +31,13 @@ COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
 COPY projects/tailwind-ng-ui ./projects/tailwind-ng-ui
 
 FROM copy-project AS run-style-guidelines
-RUN npm run format:check && npm run lint:lib-core
+RUN npx run-p format:check lint:ui
 
 FROM run-style-guidelines AS run-tests
-RUN npm run test:ui:ci && npm run coverage
+RUN npx run-p test:ui:ci coverage
 
 FROM run-tests AS run-build
-RUN npm run build:lib
+RUN npm run build:ui
 
 FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/reports/. /reports/

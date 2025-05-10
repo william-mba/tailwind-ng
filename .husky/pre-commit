@@ -1,4 +1,3 @@
 eval "$(fnm env)"
-npx prettier . --check
-npm run lint
+npx run-p check-circ-deps cleanup-imports format:fix lint
 npm exec lint-staged

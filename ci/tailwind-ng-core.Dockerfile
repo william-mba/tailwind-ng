@@ -30,13 +30,13 @@ FROM install-deps AS copy-project
 COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
 
 FROM copy-project AS run-style-guidelines
-RUN npm run format:check && npm run lint:lib-core
+RUN npx run-p format:check lint:core
 
 FROM run-style-guidelines AS run-tests
-RUN npm run test:core:ci && npm run coverage
+RUN npx run-p test:core:ci coverage
 
 FROM run-tests AS run-build
-RUN npm run build:lib-core
+RUN npm run build:core
 
 FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/reports/. /reports/
