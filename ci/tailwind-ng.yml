@@ -31,7 +31,7 @@ stages:
             workingDirectory: $(Build.SourcesDirectory)
             displayName: 'Run CI'
 
-          - task: PublishCodeCoverageResults@2
+          - task: PublishCodeCoverageResults@1
             displayName: 'Publish code coverage'
             inputs:
               summaryFileLocation: '**/coverage/cobertura-coverage.xml'
