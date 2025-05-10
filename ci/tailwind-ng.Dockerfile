@@ -22,6 +22,8 @@ COPY eslint.config.js .
 COPY package.json .
 COPY package-lock.json .
 COPY tsconfig.json .
+COPY vitest.config.ts .
+COPY vitest.setup.ts .
 RUN npm ci
 
 FROM install-deps AS copy-project
@@ -43,4 +45,4 @@ RUN npm run build:lib
 FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/reports/. /reports/
 COPY --from=run-tests /_work/coverage/. /coverage/
-COPY --from=run-build /_work/dist/tailwind-ng-ui/. /artifacts/tailwind-ng-ui/
+COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/tailwind-ng-ui/

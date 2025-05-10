@@ -22,6 +22,8 @@ COPY eslint.config.js .
 COPY package.json .
 COPY package-lock.json .
 COPY tsconfig.json .
+COPY vitest.config.ts .
+COPY vitest.setup.ts .
 RUN npm ci
 
 FROM install-deps AS copy-project
