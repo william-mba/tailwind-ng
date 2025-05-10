@@ -5,13 +5,7 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from '@angular/forms';
-import {
-	TwBadge,
-	TwButton,
-	TwButtonGroup,
-	TwIcon,
-	TwInputText,
-} from 'tailwind-ng';
+import { TwButton, TwButtonGroup, TwIcon, TwInputText } from 'tailwind-ng';
 
 @Component({
 	selector: 'app-input-groups-preview',

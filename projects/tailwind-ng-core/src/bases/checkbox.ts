@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OutputEmitterRef, Signal } from '@angular/core';
+import { Directive, OutputEmitterRef } from '@angular/core';
 import { BaseDirective } from '../directives';
 import { InjectionTokenFactory } from '../tokens/injection-token.factory';
 import { SizeOption } from '../types/size-options.type';
