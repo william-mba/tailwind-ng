@@ -28,7 +28,6 @@
 		"deps:check:all": "npm deps:check:core && npm deps:check:ui && npm deps:check:docs",
 		"checkup": "npm deps:check:all && npm cleanup && npm run lint:all && npm run build:all && npm run test:all:ci",
 		"cleanup": "ng generate @angular/core:cleanup-unused-imports",
-		"install-chrome": "npx puppeteer browsers install chrome@131.0.6778.204",
 		"prepare": "husky",
 		"format:check": "npx prettier . --check",
 		"format:fix": "npx prettier . --write"
