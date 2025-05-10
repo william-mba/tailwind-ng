@@ -1,2 +1,3 @@
 eval "$(fnm env)"
+npx prettier . --write
 npm exec lint-staged
