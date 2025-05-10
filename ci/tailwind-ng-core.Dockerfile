@@ -29,13 +29,10 @@ RUN npm ci
 FROM install-deps AS copy-project
 COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
 
-FROM copy-project AS check-format
-RUN npm run format:fix
+FROM copy-project AS run-style-guidelines
+RUN npm run format:check && npm run lint:lib-core
 
-FROM check-format AS run-lint
-RUN npm run lint:lib-core
-
-FROM run-lint AS run-tests
+FROM run-style-guidelines AS run-tests
 RUN npm run test:core:ci && npm run coverage
 
 FROM run-tests AS run-build
