@@ -21,7 +21,7 @@
 		"lint:ui": "ng lint --project tailwind-ng",
 		"lint:core": "ng lint --project tailwind-ng-core",
 		"lint:docs": "ng lint --project tailwind-ng-docs",
-		"lint": "ng lint",
+		"lint": "npx run-p lint:ui lint:core lint:docs",
 		"check-circ-deps:core": "npx dpdm --tree false --ext .ts projects/tailwind-ng-core/src/* --exclude ^@angular/core$",
 		"check-circ-deps:ui": "npx dpdm --tree false --ext .ts projects/tailwind-ng-ui/src/* --exclude ^@angular/core$",
 		"check-circ-deps:docs": "npx dpdm --tree false --ext .ts projects/tailwind-ng-docs/src/* --exclude ^@angular/core$",
