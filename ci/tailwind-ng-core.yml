@@ -30,21 +30,20 @@ stages:
             workingDirectory: $(Build.SourcesDirectory)
             displayName: 'Run CI'
 
-          - task: PublishCodeCoverageResults@1
+          - task: PublishCodeCoverageResults@2
             displayName: 'Publish code coverage'
             inputs:
-              codeCoverageTool: 'Cobertura'
-              summaryFileLocation: 'coverage/tailwind-ng-core/cobertura.xml'
-              pathToSources: 'coverage/tailwind-ng-core'
+              summaryFileLocation: '**/coverage/cobertura-coverage.xml'
+              pathToSources: '**/coverage'
 
           - task: PublishTestResults@2
             displayName: 'Publish test results'
             inputs:
               testResultsFormat: 'JUnit'
-              testResultsFiles: '**/TESTS-*.xml'
-              searchFolder: '$(Build.SourcesDirectory)/junit'
+              testResultsFiles: 'junit.xml'
+              searchFolder: '$(Build.SourcesDirectory)/reports'
               mergeTestResults: true
-              testRunTitle: '$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result'
+              testRunTitle: '$(Build.DefinitionName)-v$(ReleaseVersion)-tests'
 
           - publish: artifacts/tailwind-ng-core
             artifact: drop

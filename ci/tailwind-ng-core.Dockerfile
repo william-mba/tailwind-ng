@@ -1,7 +1,7 @@
 FROM ubuntu:22.04 AS base
 
 RUN apt update && \
-  apt install -y curl jq libicu70 xorg xvfb gtk2-engines-pixbuf dbus-x11 && \
+  apt install -y curl && \
   apt clean
 
 FROM base AS setup-node
@@ -22,7 +22,7 @@ COPY eslint.config.js .
 COPY package.json .
 COPY package-lock.json .
 COPY tsconfig.json .
-RUN npm install
+RUN npm ci
 
 FROM install-deps AS copy-project
 COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
@@ -34,12 +34,12 @@ FROM check-format AS run-lint
 RUN npm run lint:lib-core
 
 FROM run-lint AS run-tests
-RUN npm run install-chrome && npm run test:lib-core:ci
+RUN npm run test:core:ci && npm run coverage
 
 FROM run-tests AS run-build
 RUN npm run build:lib-core
 
 FROM scratch AS extract-artifacts
-COPY --from=run-tests /_work/junit/tailwind-ng-core/. /junit/tailwind-ng-core/
-COPY --from=run-tests /_work/coverage/tailwind-ng-core/. /coverage/tailwind-ng-core/
+COPY --from=run-tests /_work/reports/. /reports/
+COPY --from=run-tests /_work/coverage/. /coverage/
 COPY --from=run-build /_work/dist/tailwind-ng-core/. /artifacts/tailwind-ng-core/

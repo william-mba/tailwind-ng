@@ -3,7 +3,7 @@ name: 'tailwind-ng'
 trigger:
   paths:
     include:
-      - projects/tailwind-ng/src/*
+      - projects/tailwind-ng-ui/src/*
       - projects/tailwind-ng-themes/*
       - ci/tailwind-ng.yml
 
@@ -27,27 +27,26 @@ stages:
           - checkout: self
             persistCredentials: true
 
-          - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/tailwind-ng.Dockerfile .
+          - bash: docker build -t tailwind-ng-ui:ci -o "type=local,dest=./" -f ci/tailwind-ng.Dockerfile .
             workingDirectory: $(Build.SourcesDirectory)
             displayName: 'Run CI'
 
-          - task: PublishCodeCoverageResults@1
+          - task: PublishCodeCoverageResults@2
             displayName: 'Publish code coverage'
             inputs:
-              codeCoverageTool: 'Cobertura'
-              summaryFileLocation: 'coverage/tailwind-ng/cobertura.xml'
-              pathToSources: 'coverage/tailwind-ng'
+              summaryFileLocation: '**/coverage/cobertura-coverage.xml'
+              pathToSources: '**/coverage'
 
           - task: PublishTestResults@2
             displayName: 'Publish test results'
             inputs:
               testResultsFormat: 'JUnit'
-              testResultsFiles: '**/TESTS-*.xml'
-              searchFolder: '$(Build.SourcesDirectory)/junit'
+              testResultsFiles: 'junit.xml'
+              searchFolder: '$(Build.SourcesDirectory)/reports'
               mergeTestResults: true
-              testRunTitle: '$(Build.DefinitionName)-v$(ReleaseVersion)-tests-result'
+              testRunTitle: '$(Build.DefinitionName)-v$(ReleaseVersion)-tests'
 
-          - publish: artifacts/tailwind-ng
+          - publish: artifacts/tailwind-ng-ui
             artifact: drop
             displayName: 'Publish artifact'
 
@@ -56,7 +55,7 @@ stages:
               cd $(Build.SourcesDirectory)/projects/tailwind-ng-themes
               npm version $(ReleaseVersion)
               npm publish --tag $(ReleaseTag)
-              cd $(Build.SourcesDirectory)/artifacts/tailwind-ng
+              cd $(Build.SourcesDirectory)/artifacts/tailwind-ng-ui
               npm version $(ReleaseVersion)
               npm publish --tag $(ReleaseTag)
             displayName: 'Release v$(ReleaseVersion)@$(ReleaseTag)'
