@@ -2,8 +2,9 @@
 import { BadgeComponent } from './badge.component';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { provideBadge } from './badge.component.config';
-import { Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { BADGE_CONFIG, ClassName } from '@tailwind-ng/core';
+import { By } from '@angular/platform-browser';
 
 describe('BadgeComponent', () => {
 	let component: BadgeComponent;
@@ -50,7 +51,7 @@ describe('BadgeComponent', () => {
 		});
 
 		ClassName.toArray(className).forEach((c) => {
-			expect(component.nativeElement.classList.contains(c)).toBeTrue();
+			expect(component.nativeElement.classList.contains(c)).toBeTruthy();
 		});
 	});
 
@@ -68,21 +69,24 @@ describe('BadgeComponent', () => {
 			`,
 		})
 		class TestApp {
-			badge = viewChild.required(BadgeComponent);
 			protected customization = customization;
 		}
 
-		const appFixture = TestBed.createComponent(TestApp);
-		const testApp = appFixture.componentInstance;
-		appFixture.detectChanges();
+		const fixture = TestBed.createComponent(TestApp);
+		const badge = fixture.debugElement.query(
+			By.directive(BadgeComponent),
+		).componentInstance;
+		fixture.detectChanges();
 
 		ClassName.toArray(customization).forEach((c) => {
-			expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
+			expect(badge.nativeElement.classList.contains(c)).toBe(true);
 		});
 
-		expect(testApp.badge().nativeElement.classList.contains(defaultGap)).toBeFalse();
-		expect(testApp.badge().nativeElement.classList.contains(defaultFontSize)).toBeTrue();
-		expect(testApp.badge().nativeElement.classList.contains(defaultDisplay)).toBeTrue();
+		expect(badge.nativeElement.classList.contains(defaultGap)).toBeFalsy();
+		expect(
+			badge.nativeElement.classList.contains(defaultFontSize),
+		).toBeTruthy();
+		expect(badge.nativeElement.classList.contains(defaultDisplay)).toBeTruthy();
 	});
 
 	it('should customize using DI', () => {
@@ -104,20 +108,22 @@ describe('BadgeComponent', () => {
 				<tw-badge>Badge</tw-badge>
 			`,
 		})
-		class TestApp {
-			badge = viewChild.required(BadgeComponent);
-		}
+		class TestApp {}
 
 		const fixture = TestBed.createComponent(TestApp);
-		const testApp = fixture.componentInstance;
+		const badge = fixture.debugElement.query(
+			By.directive(BadgeComponent),
+		).componentInstance;
 		fixture.detectChanges();
 
 		ClassName.toArray(customization).forEach((c) => {
-			expect(testApp.badge().nativeElement.classList.contains(c)).toBeTrue();
+			expect(badge.nativeElement.classList.contains(c)).toBe(true);
 		});
 
-		expect(testApp.badge().nativeElement.classList.contains(defaultGap)).toBeFalse();
-		expect(testApp.badge().nativeElement.classList.contains(defaultFontSize)).toBeTrue();
-		expect(testApp.badge().nativeElement.classList.contains(defaultDisplay)).toBeTrue();
+		expect(badge.nativeElement.classList.contains(defaultGap)).toBeFalsy();
+		expect(
+			badge.nativeElement.classList.contains(defaultFontSize),
+		).toBeTruthy();
+		expect(badge.nativeElement.classList.contains(defaultDisplay)).toBeTruthy();
 	});
 });

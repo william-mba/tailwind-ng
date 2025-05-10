@@ -2,8 +2,9 @@
 import { AVATAR_CONFIG, ClassName } from '@tailwind-ng/core';
 import { TestBed } from '@angular/core/testing';
 import { AvatarComponent } from './avatar.component';
-import { Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { provideAvatar } from './avatar.component.config';
+import { By } from '@angular/platform-browser';
 
 describe('AvatarComponent', () => {
 	beforeEach(() => {
@@ -51,7 +52,7 @@ describe('AvatarComponent', () => {
 		});
 
 		ClassName.toArray(className).forEach((c) => {
-			expect(component.nativeElement.classList.contains(c)).toBeTrue();
+			expect(component.nativeElement.classList.contains(c)).toBeTruthy();
 		});
 	});
 
@@ -66,16 +67,16 @@ describe('AvatarComponent', () => {
 				<img tw-avatar class="ring-2 ring-white rounded-md" />
 			`,
 		})
-		class TestApp {
-			avatar = viewChild.required(AvatarComponent);
-		}
+		class TestApp {}
 
 		const fixture = TestBed.createComponent(TestApp);
-		const testApp = fixture.componentInstance;
+		const avatar = fixture.debugElement.query(
+			By.directive(AvatarComponent),
+		).componentInstance;
 		fixture.detectChanges();
 
 		ClassName.toArray(customization).forEach((c) => {
-			expect(testApp.avatar().nativeElement.className.includes(c)).toBeTrue();
+			expect(avatar.nativeElement.className.includes(c)).toBeTruthy();
 		});
 	});
 
@@ -94,16 +95,16 @@ describe('AvatarComponent', () => {
 				<img tw-avatar />
 			`,
 		})
-		class TestApp {
-			avatar = viewChild.required(AvatarComponent);
-		}
+		class TestApp {}
 
 		const fixture = TestBed.createComponent(TestApp);
-		const testApp = fixture.componentInstance;
+		const avatar = fixture.debugElement.query(
+			By.directive(AvatarComponent),
+		).componentInstance;
 		fixture.detectChanges();
 
 		ClassName.toArray(customization).forEach((c) => {
-			expect(testApp.avatar().nativeElement.className.includes(c)).toBeTrue();
+			expect(avatar.nativeElement.className.includes(c)).toBeTruthy();
 		});
 	});
 });

@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { provideCheckbox } from './checkbox.component.config';
-import { Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CheckboxComponent } from './checkbox.component';
 import { provideIcon } from 'tailwind-ng';
 import { CHECKBOX_CONFIG, ClassName } from '@tailwind-ng/core';
+import { By } from '@angular/platform-browser';
 
 describe('CheckboxComponent', () => {
 	beforeEach(() => {
@@ -21,12 +22,12 @@ describe('CheckboxComponent', () => {
 				<tw-checkbox>Option A</tw-checkbox>
 			`,
 		})
-		class TestAppComponent {
-			component = viewChild.required(CheckboxComponent);
-		}
+		class TestAppComponent {}
+
 		const fixture = TestBed.createComponent(TestAppComponent);
-		const testApp = fixture.componentInstance;
-		const component = testApp.component().inputRef();
+		const component = fixture.debugElement.query(
+			By.directive(CheckboxComponent),
+		);
 		fixture.detectChanges();
 
 		let className = '';
@@ -34,8 +35,12 @@ describe('CheckboxComponent', () => {
 			className = TestBed.inject(CHECKBOX_CONFIG) || '';
 		});
 
+		const checkboxInput = component.query(
+			By.css('input[type="checkbox"]'),
+		).nativeElement;
+
 		ClassName.toArray(className).forEach((c) => {
-			expect(component.nativeElement.classList.contains(c)).toBeTrue();
+			expect(checkboxInput.classList.contains(c)).toBe(true);
 		});
 	});
 });

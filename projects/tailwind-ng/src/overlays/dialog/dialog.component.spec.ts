@@ -1,6 +1,7 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { DialogComponent } from './dialog.component';
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('DialogComponent', () => {
 	beforeEach(() => {
@@ -19,18 +20,18 @@ describe('DialogComponent', () => {
 	it('should set whether its modal', () => {
 		const fixture = TestBed.createComponent(DialogComponent);
 		const component = fixture.componentInstance;
-		expect(component.isModal).toBeTrue();
+		expect(component.isModal).toBeTruthy();
 		component.isModal = false;
-		expect(component.isModal).toBeFalse();
+		expect(component.isModal).toBeFalsy();
 	});
 
 	it('should set autoFocus', fakeAsync(
 		() => {
 			const fixture = TestBed.createComponent(DialogComponent);
 			const component = fixture.componentInstance;
-			expect(component.autoFocus).toBeTrue();
+			expect(component.autoFocus).toBeTruthy();
 			component.autoFocus = false;
-			expect(component.autoFocus).toBeFalse();
+			expect(component.autoFocus).toBeFalsy();
 		},
 		{ flush: true },
 	));
@@ -44,29 +45,21 @@ describe('DialogComponent', () => {
 					<div tw-dialog (click)="dialog.close()"></div>
 				`,
 			})
-			class TestComponent {
-				dialog = viewChild.required(DialogComponent);
-
-				show() {
-					this.dialog().open();
-				}
-
-				hide() {
-					this.dialog().close();
-				}
-			}
+			class TestComponent {}
 
 			const testFixture = TestBed.createComponent(TestComponent);
-			const testComponent = testFixture.componentInstance;
-			testComponent.dialog().autoClose = true;
-			testComponent.dialog().displayDelay = 1000;
+			const dailog = testFixture.debugElement.query(
+				By.directive(DialogComponent),
+			).componentInstance as DialogComponent;
+			dailog.autoClose = true;
+			dailog.displayDelay = 1000;
 			testFixture.detectChanges();
 
-			testComponent.show();
+			dailog.open();
 			tick(500);
-			expect(testComponent.dialog().isOpened()).toBeTrue();
+			expect(dailog.isOpened()).toBeTruthy();
 			tick(1000);
-			expect(testComponent.dialog().isOpened()).toBeFalse();
+			expect(dailog.isOpened()).toBeFalsy();
 		},
 		{ flush: true },
 	));

@@ -3,8 +3,9 @@ import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideButtonGroup } from './button-group.component.config';
 import { BUTTON_GROUP_CONFIG, ClassName } from '@tailwind-ng/core';
-import { Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
+import { By } from '@angular/platform-browser';
 
 describe('ButtonGroupComponent', () => {
 	let component: ButtonGroupComponent;
@@ -26,7 +27,7 @@ describe('ButtonGroupComponent', () => {
 		});
 
 		ClassName.toArray(className).forEach((c) => {
-			expect(component.nativeElement.classList.contains(c)).toBeTrue();
+			expect(component.nativeElement.classList.contains(c)).toBeTruthy();
 		});
 	});
 
@@ -46,17 +47,23 @@ describe('ButtonGroupComponent', () => {
 				</tw-button-group>
 			`,
 		})
-		class TestApp {
-			buttonGroup = viewChild.required(ButtonGroupComponent);
-		}
+		class TestApp {}
 
-		const appFixture = TestBed.createComponent(TestApp);
-		const testApp = appFixture.componentInstance;
-		appFixture.detectChanges();
+		const fixture = TestBed.createComponent(TestApp);
+		const buttonGroup = fixture.debugElement.query(
+			By.directive(ButtonGroupComponent),
+		).componentInstance;
+		fixture.detectChanges();
 
-		expect(testApp.buttonGroup().nativeElement.className.includes('rounded-full')).toBeTrue();
-		expect(testApp.buttonGroup().nativeElement.className.includes(defaultRadius)).toBeFalse();
-		expect(testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow)).toBeTrue();
+		expect(
+			buttonGroup.nativeElement.className.includes('rounded-full'),
+		).toBeTruthy();
+		expect(
+			buttonGroup.nativeElement.className.includes(defaultRadius),
+		).toBeFalsy();
+		expect(
+			buttonGroup.nativeElement.className.includes(defaultBoxShadow),
+		).toBeTruthy();
 	});
 
 	it('should customize using DI', () => {
@@ -76,17 +83,25 @@ describe('ButtonGroupComponent', () => {
 				</tw-button-group>
 			`,
 		})
-		class TestApp {
-			buttonGroup = viewChild.required(ButtonGroupComponent);
-		}
+		class TestApp {}
 
-		const appFixture = TestBed.createComponent(TestApp);
-		const testApp = appFixture.componentInstance;
-		appFixture.detectChanges();
+		const fixture = TestBed.createComponent(TestApp);
+		const buttonGroup = fixture.debugElement.query(
+			By.directive(ButtonGroupComponent),
+		).componentInstance;
+		fixture.detectChanges();
 
-		expect(testApp.buttonGroup().nativeElement.className.includes('shadow-lg')).toBeTrue();
-		expect(testApp.buttonGroup().nativeElement.className.includes('rounded-full')).toBeTrue();
-		expect(testApp.buttonGroup().nativeElement.className.includes(defaultRadius)).toBeFalse();
-		expect(testApp.buttonGroup().nativeElement.className.includes(defaultBoxShadow)).toBeFalse();
+		expect(
+			buttonGroup.nativeElement.className.includes('shadow-lg'),
+		).toBeTruthy();
+		expect(
+			buttonGroup.nativeElement.className.includes('rounded-full'),
+		).toBeTruthy();
+		expect(
+			buttonGroup.nativeElement.className.includes(defaultRadius),
+		).toBeFalsy();
+		expect(
+			buttonGroup.nativeElement.className.includes(defaultBoxShadow),
+		).toBeFalsy();
 	});
 });

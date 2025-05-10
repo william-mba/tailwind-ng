@@ -18,13 +18,13 @@ describe('ToggleComponent', () => {
 
 	it('should set checked()', () => {
 		component.checked.set(true);
-		expect(component.checked()).toBeTrue();
+		expect(component.checked()).toBeTruthy();
 	});
 
 	it('should toggle', () => {
-		expect(component.checked()).toBeFalse();
+		expect(component.checked()).toBeFalsy();
 		component.toggle();
-		expect(component.checked()).toBeTrue();
+		expect(component.checked()).toBeTruthy();
 	});
 
 	it('should set classlist', () => {
@@ -34,7 +34,7 @@ describe('ToggleComponent', () => {
 		});
 
 		ClassName.toArray(className).forEach((c) => {
-			expect(component.nativeElement.classList.contains(c)).toBeTrue();
+			expect(component.nativeElement.classList.contains(c)).toBeTruthy();
 		});
 	});
 });

@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, inject, Input, OnInit, output, viewChild, ViewEncapsulation } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	forwardRef,
+	inject,
+	Input,
+	OnInit,
+	output,
+	ViewEncapsulation,
+} from '@angular/core';
 import {
 	Checkbox,
 	CHECKBOX_CONFIG,
@@ -30,7 +39,6 @@ import { TwIcon } from '../../elements';
 				class="relative flex size-fit text-white *:not-first:inset-0 *:not-first:absolute *:not-first:place-self-center *:not-first:pointer-events-none *:cursor-pointer"
 			>
 				<input
-					#checkboxInput
 					(change)="onChanges($event)"
 					(keyup)="onKeyup($event)"
 					type="checkbox"
@@ -48,7 +56,9 @@ import { TwIcon } from '../../elements';
 			<ng-content />
 			<ng-content select="span" />
 		</label>
-		<ng-content select="div,p,ul,label,tw-checkbox,[tw-checkbox],[twCheckbox]" />
+		<ng-content
+			select="div,p,ul,label,tw-checkbox,[tw-checkbox],[twCheckbox]"
+		/>
 	`,
 	host: {
 		// We remove host attribute to avoid coillision
@@ -58,10 +68,19 @@ import { TwIcon } from '../../elements';
 	},
 	encapsulation: ViewEncapsulation.None,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	providers: [{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) }],
+	providers: [
+		{ provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) },
+	],
 })
-export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit {
-	readonly inputRef = viewChild.required<ElementRef<HTMLInputElement>>('checkboxInput');
+export class CheckboxComponent
+	extends CheckboxBase
+	implements Checkbox, OnInit
+{
+	get inputRef(): HTMLInputElement {
+		return this.nativeElement.querySelector(
+			'input[type="checkbox"]',
+		) as HTMLInputElement;
+	}
 	protected icon = inject(CHECKBOX_ICON);
 	protected override readonly parent = inject(CheckboxComponent, {
 		optional: true,
@@ -85,7 +104,11 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
 			this.parent.children.push(this);
 			if (this.parent.checked && (!this.checked || this.indeterminate)) {
 				this.toggle();
-			} else if (this.checked && !this.parent.checked && !this.parent.indeterminate) {
+			} else if (
+				this.checked &&
+				!this.parent.checked &&
+				!this.parent.indeterminate
+			) {
 				this.parent.toggle({ origin: 'child' });
 			}
 		}
@@ -93,9 +116,9 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
 
 	protected override buildStyle(): void {
 		if (this.parent) {
-			this.inputRef().nativeElement.className = this.parent.inputRef().nativeElement.className;
+			this.inputRef.className = this.parent.inputRef.className;
 		} else {
-			classlist(this.inputRef().nativeElement).set(inject(CHECKBOX_CONFIG), this.class);
+			classlist(this.inputRef).set(inject(CHECKBOX_CONFIG), this.class);
 		}
 	}
 
@@ -121,7 +144,8 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
 		} else if (origin === 'child' && this.children) {
 			const checkedCount = this.children.filter((c) => c.checked).length;
 			this.checked = checkedCount === this.children!.length;
-			this.indeterminate = checkedCount > 0 && checkedCount < this.children.length;
+			this.indeterminate =
+				checkedCount > 0 && checkedCount < this.children.length;
 			if (this.parent && (this.checked || this.indeterminate)) {
 				this.parent.toggle({ origin: 'child' });
 			}
@@ -142,14 +166,30 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
 
 	protected override addEventListeners(): void {
 		super.addEventListeners();
-		this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false);
-		this.nativeElement.addEventListener('mouseup', this.onMouseup.bind(this), false);
+		this.nativeElement.addEventListener(
+			'keyup',
+			this.onKeyup.bind(this),
+			false,
+		);
+		this.nativeElement.addEventListener(
+			'mouseup',
+			this.onMouseup.bind(this),
+			false,
+		);
 	}
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false);
-		this.nativeElement.removeEventListener('mouseup', this.onMouseup.bind(this), false);
+		this.nativeElement.removeEventListener(
+			'keyup',
+			this.onKeyup.bind(this),
+			false,
+		);
+		this.nativeElement.removeEventListener(
+			'mouseup',
+			this.onMouseup.bind(this),
+			false,
+		);
 	}
 
 	protected onMouseup(event: MouseEvent): void {

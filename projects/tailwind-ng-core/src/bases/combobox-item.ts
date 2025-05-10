@@ -1,14 +1,14 @@
 import { Directive } from '@angular/core';
 import { BaseDirective } from '../directives';
 import { InjectionTokenFactory } from '../tokens/injection-token.factory';
-import { InputSignal, ModelSignal } from '@angular/core';
+import { ModelSignal } from '@angular/core';
 import { BaseActions, BaseProps } from '../directives';
 
 /**
  * @TailwindNG Combobox Item component interface.
  */
 export interface ComboboxItem extends BaseProps, BaseActions {
-	readonly value: InputSignal<string>;
+	readonly value: string;
 	/**
 	 * Selects the item.
 	 */
@@ -24,7 +24,10 @@ export interface ComboboxItem extends BaseProps, BaseActions {
 	selected: ModelSignal<boolean>;
 }
 
-export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create<string>('', 'COMBOBOX_ITEM_CONFIG');
+export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create<string>(
+	'',
+	'COMBOBOX_ITEM_CONFIG',
+);
 
 @Directive()
 export abstract class ComboboxItemBase extends BaseDirective {}

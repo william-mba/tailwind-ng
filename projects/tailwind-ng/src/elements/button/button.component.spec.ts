@@ -3,7 +3,8 @@ import { ClassName } from '@tailwind-ng/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { GetButtonConfig, provideButton } from './button.component.config';
-import { Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('ButtonComponent', () => {
 	let component: ButtonComponent;
@@ -60,7 +61,7 @@ describe('ButtonComponent', () => {
 		const className = GetButtonConfig().base;
 
 		ClassName.toArray(className).forEach((c) => {
-			expect(component.nativeElement.classList.contains(c)).toBeTrue();
+			expect(component.nativeElement.classList.contains(c)).toBeTruthy();
 		});
 	});
 
@@ -79,21 +80,21 @@ describe('ButtonComponent', () => {
 			`,
 		})
 		class TestApp {
-			button = viewChild.required(ButtonComponent);
 			customizations = customizations;
 		}
 
-		const appFixture = TestBed.createComponent(TestApp);
-		const testApp = appFixture.componentInstance;
-		appFixture.detectChanges();
+		const fixture = TestBed.createComponent(TestApp);
+		const button = fixture.debugElement.query(
+			By.directive(ButtonComponent),
+		).componentInstance;
+		fixture.detectChanges();
 
 		ClassName.toArray(customizations).forEach((c) => {
-			expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
+			expect(button.nativeElement.classList.contains(c)).toBeTruthy();
 		});
-
-		expect(testApp.button().nativeElement.classList.contains(defaultGap)).toBeFalse();
-		expect(testApp.button().nativeElement.classList.contains(defaultBgColor)).toBeFalse();
-		expect(testApp.button().nativeElement.classList.contains(defaultRadius)).toBeFalse();
+		expect(button.nativeElement.classList.contains(defaultGap)).toBeFalsy();
+		expect(button.nativeElement.classList.contains(defaultBgColor)).toBeFalsy();
+		expect(button.nativeElement.classList.contains(defaultRadius)).toBeFalsy();
 	});
 
 	it('should customize using dependency injection', () => {
@@ -115,33 +116,35 @@ describe('ButtonComponent', () => {
 				<button tw-button>Test button</button>
 			`,
 		})
-		class TestApp {
-			button = viewChild.required(ButtonComponent);
-		}
+		class TestApp {}
 
-		const appFixture = TestBed.createComponent(TestApp);
-		const testApp = appFixture.componentInstance;
-		appFixture.detectChanges();
+		const fixture = TestBed.createComponent(TestApp);
+		const button = fixture.debugElement.query(
+			By.directive(ButtonComponent),
+		).componentInstance;
+		fixture.detectChanges();
 
 		ClassName.toArray('bg-red-600 rounded-full gap-3').map((c) => {
-			expect(testApp.button().nativeElement.classList.contains(c)).toBeTrue();
+			expect(button.nativeElement.classList.contains(c)).toBeTruthy();
 		});
 
-		expect(testApp.button().nativeElement.classList.contains(defaultGap)).toBeFalse();
-		expect(testApp.button().nativeElement.classList.contains(defaultBgColor)).toBeFalse();
-		expect(testApp.button().nativeElement.classList.contains(defaultRadius)).toBeFalse();
+		expect(button.nativeElement.classList.contains(defaultGap)).toBeFalsy();
+		expect(button.nativeElement.classList.contains(defaultBgColor)).toBeFalsy();
+		expect(button.nativeElement.classList.contains(defaultRadius)).toBeFalsy();
 	});
 
 	it('should set isFab', () => {
-		expect(component.isFab).toBeFalse();
-		expect(component.nativeElement.classList.contains('shadow-lg')).toBeFalse();
+		expect(component.isFab).toBeFalsy();
+		expect(component.nativeElement.classList.contains('shadow-lg')).toBeFalsy();
 
 		fixture = TestBed.createComponent(ButtonComponent);
 		component = fixture.componentInstance;
 		component.isFab = true;
 		fixture.detectChanges();
 
-		expect(component.isFab).toBeTrue();
-		expect(component.nativeElement.classList.contains('shadow-lg')).toBeTrue();
+		expect(component.isFab).toBeTruthy();
+		expect(
+			component.nativeElement.classList.contains('shadow-lg'),
+		).toBeTruthy();
 	});
 });

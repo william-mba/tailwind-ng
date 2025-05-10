@@ -8,7 +8,8 @@ import { BaseActions, BaseProps } from './base.directive';
 /**
  * @TailwindNG Popup base props.
  */
-export interface PopupProps<T extends HTMLElement = HTMLElement> extends BaseProps<T> {
+export interface PopupProps<T extends HTMLElement = HTMLElement>
+	extends BaseProps<T> {
 	readonly id: string;
 	/**
 	 * Restores focus to the popup's trigger when the popup closes.
@@ -51,7 +52,10 @@ export interface PopupAdvancedActions {
 	closeAfter(delay: number): void;
 }
 
-export interface Popup<T extends HTMLElement = HTMLElement> extends PopupProps<T>, PopupBaseActions, PopupAdvancedActions {
+export interface Popup<T extends HTMLElement = HTMLElement>
+	extends PopupProps<T>,
+		PopupBaseActions,
+		PopupAdvancedActions {
 	/**
 	 * A signal that indicates whether the popup is opened. Emits `true` when the popup opens and `false` when it closes.
 	 */
@@ -69,7 +73,10 @@ export interface Popup<T extends HTMLElement = HTMLElement> extends PopupProps<T
 		'[attr.aria-expanded]': 'isOpened()',
 	},
 })
-export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extends BaseDirective<T> implements Popup<T> {
+export abstract class PopupDirective<T extends HTMLElement = HTMLElement>
+	extends BaseDirective<T>
+	implements Popup<T>
+{
 	private readonly _zIndex = inject(ZIndexer);
 	@Input() id = this.randomId('popup');
 	@Input() restoreFocus: boolean | PopupTrigger = false;
@@ -117,7 +124,7 @@ export abstract class PopupDirective<T extends HTMLElement = HTMLElement> extend
 		}
 	}
 
-	private timer?: number;
+	private timer: unknown;
 
 	closeAfter(delay?: number): void {
 		if (!isAcceptableDelay(delay || 0)) {

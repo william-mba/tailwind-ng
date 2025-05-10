@@ -1,4 +1,10 @@
-import { Directive, inject, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+	Directive,
+	inject,
+	Input,
+	TemplateRef,
+	ViewContainerRef,
+} from '@angular/core';
 
 /**
  * A structural directive that conditionally render a template in the view and defer its removal in the DOM.
@@ -41,7 +47,7 @@ export class TwIf {
 	}
 
 	private delay = 300;
-	private timer?: number;
+	private timer: unknown;
 
 	private deferRemoval() {
 		// Nothing should be done if there is already a removal scheduled.

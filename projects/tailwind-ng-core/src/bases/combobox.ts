@@ -1,5 +1,10 @@
 import { Directive, forwardRef, Input } from '@angular/core';
-import { PopupDirective, PopupBaseActions, Popup, PopupProps } from '../directives';
+import {
+	PopupDirective,
+	PopupBaseActions,
+	Popup,
+	PopupProps,
+} from '../directives';
 import { isArrowUp } from '../guards';
 import { ModelSignal, OutputEmitterRef, Signal } from '@angular/core';
 import { ComboboxItem } from './combobox-item';
@@ -12,11 +17,11 @@ export interface ComboboxState extends PopupProps {
 	/**
 	 * The combobox's input text.
 	 */
-	readonly input: Signal<InputText>;
+	readonly input: Signal<InputText | undefined>;
 	/**
 	 * The combobox's dropdown.
 	 */
-	readonly dropdown: Signal<Popup>;
+	readonly dropdown: Signal<Popup | undefined>;
 	/**
 	 * The combobox's selection mode. Default is 'single'.
 	 */
@@ -67,7 +72,8 @@ export function isCombobox(component: unknown): component is Combobox {
 	host: {
 		role: 'combobox',
 		'[attr.aria-expanded]': 'isOpened()',
-		'[attr.aria-activedescendant]': 'activeElement?.textContent?.trim() || null',
+		'[attr.aria-activedescendant]':
+			'activeElement?.textContent?.trim() || null',
 	},
 	providers: [
 		{
@@ -94,11 +100,19 @@ export abstract class ComboboxBase extends PopupDirective {
 
 	protected override addEventListeners(): void {
 		super.addEventListeners();
-		this.nativeElement.addEventListener('keydown', this.onKeydown.bind(this), true);
+		this.nativeElement.addEventListener(
+			'keydown',
+			this.onKeydown.bind(this),
+			true,
+		);
 	}
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener('keydown', this.onKeydown.bind(this), true);
+		this.nativeElement.removeEventListener(
+			'keydown',
+			this.onKeydown.bind(this),
+			true,
+		);
 	}
 }

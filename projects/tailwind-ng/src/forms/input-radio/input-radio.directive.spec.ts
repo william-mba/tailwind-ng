@@ -2,7 +2,8 @@ import { InputRadioDirective } from './input-radio.directive';
 import { TestBed } from '@angular/core/testing';
 import { provideInputRadio } from './input-radio.directive.config';
 import { INPUT_RADIO_CONFIG, ClassName } from '@tailwind-ng/core';
-import { Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('InputRadioDirective', () => {
 	let className = '';
@@ -22,18 +23,22 @@ describe('InputRadioDirective', () => {
 			standalone: true,
 			imports: [InputRadioDirective],
 			template: `
-				<input tw-input type="radio" name="notification" id="email-notification" />
+				<input
+					tw-input
+					type="radio"
+					name="notification"
+					id="email-notification"
+				/>
 			`,
 		})
-		class TestAppComponent {
-			input = viewChild.required(InputRadioDirective);
-		}
+		class TestAppComponent {}
 
-		const appFixture = TestBed.createComponent(TestAppComponent);
-		const testApp = appFixture.componentInstance;
-		appFixture.detectChanges();
+		const fixture = TestBed.createComponent(TestAppComponent);
+		const input = fixture.debugElement.query(By.directive(InputRadioDirective));
+		fixture.detectChanges();
+
 		ClassName.toArray(className).forEach((c) => {
-			expect(testApp.input().nativeElement.className.includes(c)).toBeTrue();
+			expect(input.nativeElement.classList.contains(c)).toBe(true);
 		});
 	});
 });

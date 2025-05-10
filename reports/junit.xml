@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="59" failures="0" errors="0" time="1.5282771">
+    <testsuite name="projects/tailwind-ng-docs/src/app/app.component.spec.ts" timestamp="2025-05-10T14:53:10.663Z" hostname="Ecologiciel" tests="1" failures="0" errors="0" skipped="0" time="0.0347392">
+        <testcase classname="projects/tailwind-ng-docs/src/app/app.component.spec.ts" name="AppComponent &gt; should create the app" time="0.0336996">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/forms/checkbox/checkbox.component.spec.ts" timestamp="2025-05-10T14:53:10.666Z" hostname="Ecologiciel" tests="1" failures="0" errors="0" skipped="0" time="0.0944698">
+        <testcase classname="projects/tailwind-ng/src/forms/checkbox/checkbox.component.spec.ts" name="CheckboxComponent &gt; should set classlit" time="0.0933648">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/forms/combobox/combobox.component.spec.ts" timestamp="2025-05-10T14:53:10.667Z" hostname="Ecologiciel" tests="3" failures="0" errors="0" skipped="0" time="0.2682933">
+        <testcase classname="projects/tailwind-ng/src/forms/combobox/combobox.component.spec.ts" name="ComboboxComponent &gt; should set selection mode" time="0.1955441">
+            <system-err>
+NG0303: Can&apos;t bind to &apos;selectedValues&apos; since it isn&apos;t a known property of &apos;div&apos; (used in the &apos;TestComponent&apos; component template).
+1. If &apos;div&apos; is an Angular component and it has the &apos;selectedValues&apos; input, then verify that it is included in the &apos;@Component.imports&apos; of this component.
+2. To allow any property add &apos;NO_ERRORS_SCHEMA&apos; to the &apos;@Component.schemas&apos; of this component.
+
+            </system-err>
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/forms/combobox/combobox.component.spec.ts" name="ComboboxComponent &gt; should select multiple items" time="0.0487237">
+            <system-err>
+NG0303: Can&apos;t bind to &apos;selectedValues&apos; since it isn&apos;t a known property of &apos;div&apos; (used in the &apos;TestComponent&apos; component template).
+1. If &apos;div&apos; is an Angular component and it has the &apos;selectedValues&apos; input, then verify that it is included in the &apos;@Component.imports&apos; of this component.
+2. To allow any property add &apos;NO_ERRORS_SCHEMA&apos; to the &apos;@Component.schemas&apos; of this component.
+
+            </system-err>
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/forms/combobox/combobox.component.spec.ts" name="ComboboxComponent &gt; should deselect selected items on multiple selection mode" time="0.0227135">
+            <system-err>
+NG0303: Can&apos;t bind to &apos;selectedValues&apos; since it isn&apos;t a known property of &apos;div&apos; (used in the &apos;TestComponent&apos; component template).
+1. If &apos;div&apos; is an Angular component and it has the &apos;selectedValues&apos; input, then verify that it is included in the &apos;@Component.imports&apos; of this component.
+2. To allow any property add &apos;NO_ERRORS_SCHEMA&apos; to the &apos;@Component.schemas&apos; of this component.
+
+            </system-err>
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/forms/input-radio/input-radio.directive.spec.ts" timestamp="2025-05-10T14:53:10.669Z" hostname="Ecologiciel" tests="1" failures="0" errors="0" skipped="0" time="0.0637918">
+        <testcase classname="projects/tailwind-ng/src/forms/input-radio/input-radio.directive.spec.ts" name="InputRadioDirective &gt; should set classlist" time="0.0623592">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/forms/toggle/toggle.component.spec.ts" timestamp="2025-05-10T14:53:10.670Z" hostname="Ecologiciel" tests="3" failures="0" errors="0" skipped="0" time="0.0655445">
+        <testcase classname="projects/tailwind-ng/src/forms/toggle/toggle.component.spec.ts" name="ToggleComponent &gt; should set checked()" time="0.0526244">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/forms/toggle/toggle.component.spec.ts" name="ToggleComponent &gt; should toggle" time="0.0064953">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/forms/toggle/toggle.component.spec.ts" name="ToggleComponent &gt; should set classlist" time="0.0052975">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/overlays/dialog/dialog.component.spec.ts" timestamp="2025-05-10T14:53:10.671Z" hostname="Ecologiciel" tests="3" failures="0" errors="0" skipped="0" time="0.1345241">
+        <testcase classname="projects/tailwind-ng/src/overlays/dialog/dialog.component.spec.ts" name="DialogComponent &gt; should set whether its modal" time="0.1004691">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/overlays/dialog/dialog.component.spec.ts" name="DialogComponent &gt; should set autoFocus" time="0.0076363">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/overlays/dialog/dialog.component.spec.ts" name="DialogComponent &gt; should autoclose" time="0.0251564">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/elements/avatar/avatar.component.spec.ts" timestamp="2025-05-10T14:53:10.672Z" hostname="Ecologiciel" tests="4" failures="0" errors="0" skipped="0" time="0.107961">
+        <testcase classname="projects/tailwind-ng/src/elements/avatar/avatar.component.spec.ts" name="AvatarComponent &gt; should set size" time="0.0695221">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/avatar/avatar.component.spec.ts" name="AvatarComponent &gt; should set classList" time="0.0066331">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/avatar/avatar.component.spec.ts" name="AvatarComponent &gt; should customize using class attribute" time="0.0177685">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/avatar/avatar.component.spec.ts" name="AvatarComponent &gt; should customize using DI" time="0.0119621">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/forms/input-text/input-text.directive.spec.ts" timestamp="2025-05-10T14:53:10.674Z" hostname="Ecologiciel" tests="1" failures="0" errors="0" skipped="0" time="0.0590995">
+        <testcase classname="projects/tailwind-ng/src/forms/input-text/input-text.directive.spec.ts" name="InputDirective &gt; should set classlist" time="0.057427">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/elements/button/button.component.spec.ts" timestamp="2025-05-10T14:53:10.675Z" hostname="Ecologiciel" tests="6" failures="0" errors="0" skipped="0" time="0.1448508">
+        <testcase classname="projects/tailwind-ng/src/elements/button/button.component.spec.ts" name="ButtonComponent &gt; should set size" time="0.0750962">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/button/button.component.spec.ts" name="ButtonComponent &gt; should set variant" time="0.008283">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/button/button.component.spec.ts" name="ButtonComponent &gt; should set classList" time="0.0083421">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/button/button.component.spec.ts" name="ButtonComponent &gt; should customize using class attribute" time="0.0268588">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/button/button.component.spec.ts" name="ButtonComponent &gt; should customize using dependency injection" time="0.0156532">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/button/button.component.spec.ts" name="ButtonComponent &gt; should set isFab" time="0.0088071">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/elements/button-group/button-group.component.spec.ts" timestamp="2025-05-10T14:53:10.676Z" hostname="Ecologiciel" tests="3" failures="0" errors="0" skipped="0" time="0.1398725">
+        <testcase classname="projects/tailwind-ng/src/elements/button-group/button-group.component.spec.ts" name="ButtonGroupComponent &gt; should set classList" time="0.0807606">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/button-group/button-group.component.spec.ts" name="ButtonGroupComponent &gt; should customize using class attribute" time="0.0407407">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/button-group/button-group.component.spec.ts" name="ButtonGroupComponent &gt; should customize using DI" time="0.0165507">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/elements/badge/badge.component.spec.ts" timestamp="2025-05-10T14:53:10.676Z" hostname="Ecologiciel" tests="4" failures="0" errors="0" skipped="0" time="0.1056421">
+        <testcase classname="projects/tailwind-ng/src/elements/badge/badge.component.spec.ts" name="BadgeComponent &gt; should set size" time="0.0625569">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/badge/badge.component.spec.ts" name="BadgeComponent &gt; should set classList" time="0.009038">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/badge/badge.component.spec.ts" name="BadgeComponent &gt; should customize using class attribute" time="0.0208104">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/badge/badge.component.spec.ts" name="BadgeComponent &gt; should customize using DI" time="0.0113564">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/elements/dropdown/dropdown.component.spec.ts" timestamp="2025-05-10T14:53:10.677Z" hostname="Ecologiciel" tests="1" failures="0" errors="0" skipped="0" time="0.0656212">
+        <testcase classname="projects/tailwind-ng/src/elements/dropdown/dropdown.component.spec.ts" name="DropdownComponent &gt; should create" time="0.0643422">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng/src/elements/icon/icon.directive.spec.ts" timestamp="2025-05-10T14:53:10.677Z" hostname="Ecologiciel" tests="3" failures="0" errors="0" skipped="0" time="0.1147874">
+        <testcase classname="projects/tailwind-ng/src/elements/icon/icon.directive.spec.ts" name="IconDirective &gt; should set size" time="0.0295731">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/icon/icon.directive.spec.ts" name="IconDirective &gt; should apply style based on size" time="0.0683118">
+        </testcase>
+        <testcase classname="projects/tailwind-ng/src/elements/icon/icon.directive.spec.ts" name="IconDirective &gt; should customize using class attribute" time="0.015085">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" timestamp="2025-05-10T14:53:10.678Z" hostname="Ecologiciel" tests="8" failures="0" errors="0" skipped="0" time="0.0768455">
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; should create" time="0.0187604">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; props &gt; should set class" time="0.0421345">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; props &gt; should get nativeElement" time="0.0018955">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; props &gt; should set disableable" time="0.0016423">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; actions &gt; should focus" time="0.0026971">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; actions &gt; should add/remove visual focus" time="0.0018696">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; actions &gt; should set whether it is hovered" time="0.00186">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/base.directive.spec.ts" name="BaseDirective &gt; actions &gt; should scroll into view" time="0.0044322">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng-core/src/directives/tests/popup.directive.spec.ts" timestamp="2025-05-10T14:53:10.679Z" hostname="Ecologiciel" tests="6" failures="0" errors="0" skipped="0" time="0.0401614">
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/popup.directive.spec.ts" name="PopupDirective &gt; should create" time="0.0236279">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/popup.directive.spec.ts" name="PopupDirective &gt; props &gt; should set id" time="0.0032702">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/popup.directive.spec.ts" name="PopupDirective &gt; actions &gt; should toggle" time="0.004207">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/popup.directive.spec.ts" name="PopupDirective &gt; actions &gt; should open" time="0.0021215">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/popup.directive.spec.ts" name="PopupDirective &gt; actions &gt; should close" time="0.0022001">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/directives/tests/popup.directive.spec.ts" name="PopupDirective &gt; advanced actions &gt; should close after a given delay" time="0.0033031">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng-core/src/utils/tests/classlist.spec.ts" timestamp="2025-05-10T14:53:10.680Z" hostname="Ecologiciel" tests="4" failures="0" errors="0" skipped="0" time="0.0050209">
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classlist.spec.ts" name="ClassList &gt; should initialize" time="0.0019858">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classlist.spec.ts" name="ClassList &gt; should set value" time="0.0006261">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classlist.spec.ts" name="ClassList &gt; should update value" time="0.0007916">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classlist.spec.ts" name="ClassList &gt; should merge value" time="0.0004167">
+        </testcase>
+    </testsuite>
+    <testsuite name="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" timestamp="2025-05-10T14:53:10.681Z" hostname="Ecologiciel" tests="7" failures="0" errors="0" skipped="0" time="0.0070521">
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" name="ClassName &gt; it should include all classes of the rightmost source value after merging" time="0.0021891">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" name="ClassName &gt; should replace target classes that partially or fully match source classes" time="0.0010043">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" name="ClassName &gt; should merge values" time="0.0003797">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" name="ClassName &gt; should merge values" time="0.0002693">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" name="ClassName &gt; should convert string to array" time="0.0006565">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" name="ClassName &gt; should merge values considering classes deletors" time="0.0006253">
+        </testcase>
+        <testcase classname="projects/tailwind-ng-core/src/utils/tests/classname.spec.ts" name="ClassName &gt; should keep classes deletor in merged values" time="0.000485">
+        </testcase>
+    </testsuite>
+</testsuites>

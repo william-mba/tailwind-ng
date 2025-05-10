@@ -2,7 +2,8 @@ import { InputTextDirective } from './input-text.directive';
 import { TestBed } from '@angular/core/testing';
 import { provideInputText } from './input-text.directive.config';
 import { INPUT_TEXT_CONFIG, ClassName } from '@tailwind-ng/core';
-import { Component, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('InputDirective', () => {
 	let className = '';
@@ -25,16 +26,14 @@ describe('InputDirective', () => {
 				<input tw-input type="email" />
 			`,
 		})
-		class TestAppComponent {
-			input = viewChild.required(InputTextDirective);
-		}
+		class TestAppComponent {}
 
-		const appFixture = TestBed.createComponent(TestAppComponent);
-		const testApp = appFixture.componentInstance;
-		appFixture.detectChanges();
+		const fixture = TestBed.createComponent(TestAppComponent);
+		const input = fixture.debugElement.query(By.directive(InputTextDirective));
+		fixture.detectChanges();
 
 		ClassName.toArray(className).forEach((c) => {
-			expect(testApp.input().nativeElement.className.includes(c)).toBeTrue();
+			expect(input.nativeElement.classList.contains(c)).toBe(true);
 		});
 	});
 });

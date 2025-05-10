@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, contentChild, Input, model, OnInit, output, ViewEncapsulation } from '@angular/core';
+import {
+	AfterContentInit,
+	ChangeDetectionStrategy,
+	Component,
+	contentChild,
+	Input,
+	model,
+	output,
+	ViewEncapsulation,
+} from '@angular/core';
 import {
 	Combobox,
 	ComboboxBase,
@@ -18,14 +27,16 @@ import {
 	selector: 'tw-combobox, [tw-combobox], [twCombobox]',
 	exportAs: 'twCombobox',
 	host: {
-		'[attr.aria-controls]': 'dropdown().id',
+		'[attr.aria-controls]': 'dropdown()?.id',
 	},
 	imports: [TwIf],
 	template: `
 		<ng-content select="label" />
 		<div class="relative">
 			<ng-content select="input[type=text], input[tw-input], input[twInput]" />
-			<ng-content select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]" />
+			<ng-content
+				select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]"
+			/>
 		</div>
 		<ng-container *twIf="isOpened()">
 			<div class="relative"><ng-content /></div>
@@ -35,16 +46,18 @@ import {
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }],
 })
-export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit {
-	readonly dropdown = contentChild.required(DropdownBase);
-	readonly input = contentChild.required(InputTextBase);
+export class ComboboxComponent
+	extends ComboboxBase
+	implements Combobox, AfterContentInit
+{
+	readonly dropdown = contentChild(DropdownBase);
+	readonly input = contentChild(InputTextBase);
 	readonly resetted = output<void>();
 	@Input() selectionMode: ComboboxSelectionMode = 'single';
 	readonly selectedValues = model(new Set<string>());
 
-	override ngOnInit(): void {
-		super.ngOnInit();
-		this.input().changes.subscribe(() => {
+	ngAfterContentInit(): void {
+		this.input()?.changes.subscribe(() => {
 			if (!this.isOpened()) {
 				this.open();
 			}
@@ -57,32 +70,35 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 
 	override open(): void {
 		super.open();
-		this.dropdown().open();
-		this.input().focus();
-		this.input().setVisualfocus();
-		this.activeElement = this.dropdown().setVisualfocus({
+		this.dropdown()?.open();
+		this.input()?.focus();
+		this.input()?.setVisualfocus();
+		this.activeElement = this.dropdown()?.setVisualfocus({
 			behavior: 'firstChild',
 		});
 	}
 
 	override close(): void {
 		super.close();
-		this.dropdown().close();
+		this.dropdown()?.close();
 		this.resetActiveElementIfAny();
 		// if the selection mode is single and there is only one selected value,
 		// we set the input value to it
 		if (this.selectionMode === 'single' && this.selectedValues().size > 0) {
-			this.input().value = [...this.selectedValues().values()][0];
+			const inputText = this.input();
+			if (inputText) {
+				inputText.value = [...this.selectedValues().values()][0];
+			}
 		}
 		if (this.hasFocus) {
-			this.input().focus();
+			this.input()?.focus();
 		}
 	}
 
 	protected onBlur(): void {
 		requestAnimationFrame(() => {
 			if (!this.hasFocus) {
-				this.input().removeVisualfocus();
+				this.input()?.removeVisualfocus();
 				if (this.isOpened()) this.close();
 			}
 		});
@@ -109,32 +125,32 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 		} else if (isArrowUpOrDown(event.key)) {
 			if (isArrowUp(event.key)) {
 				if (!this.activeElement) {
-					this.activeElement = this.dropdown().setVisualfocus({
+					this.activeElement = this.dropdown()?.setVisualfocus({
 						behavior: 'lastChild',
 					});
 				} else {
-					this.activeElement = this.dropdown().setVisualfocus({
+					this.activeElement = this.dropdown()?.setVisualfocus({
 						behavior: 'previousSibling',
 						target: this.activeElement,
 					});
 					if (!this.activeElement) {
-						this.activeElement = this.dropdown().setVisualfocus({
+						this.activeElement = this.dropdown()?.setVisualfocus({
 							behavior: 'lastChild',
 						});
 					}
 				}
 			} else {
 				if (!this.activeElement) {
-					this.activeElement = this.dropdown().setVisualfocus({
+					this.activeElement = this.dropdown()?.setVisualfocus({
 						behavior: 'firstChild',
 					});
 				} else {
-					this.activeElement = this.dropdown().setVisualfocus({
+					this.activeElement = this.dropdown()?.setVisualfocus({
 						behavior: 'nextSibling',
 						target: this.activeElement,
 					});
 					if (!this.activeElement) {
-						this.activeElement = this.dropdown().setVisualfocus({
+						this.activeElement = this.dropdown()?.setVisualfocus({
 							behavior: 'firstChild',
 						});
 					}
@@ -142,7 +158,10 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 			}
 			const activeContent = this.activeElement?.textContent?.trim();
 			if (activeContent && activeContent.length > 0) {
-				this.input().value = activeContent;
+				const inputText = this.input();
+				if (inputText) {
+					inputText.value = activeContent;
+				}
 			}
 		} // we use enter and not space as space should move the cursor in the input field
 		else if (isEnter(event.key) && this.activeElement) {
@@ -157,7 +176,11 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true);
+		this.nativeElement.removeEventListener(
+			'blur',
+			this.onBlur.bind(this),
+			true,
+		);
 	}
 
 	setActiveItem(item: ComboboxItem): void {
@@ -165,8 +188,8 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, OnInit 
 	}
 
 	reset(): void {
-		this.input().clear();
-		this.input().focus();
+		this.input()?.clear();
+		this.input()?.focus();
 		this.resetActiveElementIfAny();
 		this.selectedValues().clear();
 		this.resetted.emit();
