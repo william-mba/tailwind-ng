@@ -5,7 +5,7 @@ import { DropdownComponent } from './../../elements/dropdown/dropdown.component'
 import { InputTextDirective } from '../input-text/input-text.directive';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { ComboboxComponent } from './combobox.component';
-import { Component, ElementRef, signal } from '@angular/core';
+import { Component, ElementRef, NO_ERRORS_SCHEMA, signal } from '@angular/core';
 import { ComboboxModule } from './combobox.module';
 import { ButtonComponent } from '../../elements/button/button.component';
 import { provideIcon } from '../../elements/icon/icon.directive.config';
@@ -143,8 +143,7 @@ describe('ComboboxComponent', () => {
 					DropdownComponent,
 				],
 				template: `
-					<div
-						tw-combobox
+					<tw-combobox
 						#cbb1
 						[selectionMode]="selectionMode()"
 						class="sm:w-80"
@@ -187,8 +186,9 @@ describe('ComboboxComponent', () => {
 								</div>
 							}
 						</tw-dropdown>
-					</div>
+					</tw-combobox>
 				`,
+				schemas: [NO_ERRORS_SCHEMA],
 			})
 			class TestComponent {
 				users = USERS_STUB();
@@ -234,8 +234,7 @@ describe('ComboboxComponent', () => {
 					DropdownComponent,
 				],
 				template: `
-					<div
-						tw-combobox
+					<tw-combobox
 						#cbb1
 						[selectionMode]="selectionMode()"
 						class="sm:w-80"
@@ -278,8 +277,9 @@ describe('ComboboxComponent', () => {
 								</div>
 							}
 						</tw-dropdown>
-					</div>
+					</tw-combobox>
 				`,
+				schemas: [NO_ERRORS_SCHEMA],
 			})
 			class TestComponent {
 				users = USERS_STUB();
@@ -345,8 +345,7 @@ describe('ComboboxComponent', () => {
 					DropdownComponent,
 				],
 				template: `
-					<div
-						tw-combobox
+					<tw-combobox
 						#cbb1
 						[selectionMode]="selectionMode()"
 						class="sm:w-80"
@@ -389,8 +388,9 @@ describe('ComboboxComponent', () => {
 								</div>
 							}
 						</tw-dropdown>
-					</div>
+					</tw-combobox>
 				`,
+				schemas: [NO_ERRORS_SCHEMA],
 			})
 			class TestComponent {
 				users = USERS_STUB();
