@@ -9,7 +9,7 @@ artifacts
 
 # Test results
 coverage
-junit
+reports
 
 # Node
 **/node_modules

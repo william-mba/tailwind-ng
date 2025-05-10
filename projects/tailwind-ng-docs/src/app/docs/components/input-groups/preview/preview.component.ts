@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TwBadge, TwButton, TwButtonGroup, TwIcon, TwInputText } from 'tailwind-ng';
+import {
+	AbstractControl,
+	NonNullableFormBuilder,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
+import { TwButton, TwButtonGroup, TwIcon, TwInputText } from 'tailwind-ng';
 
 @Component({
 	selector: 'app-input-groups-preview',
@@ -13,5 +18,6 @@ export class PreviewComponent {
 	email = this._formBuilder.control('williammba', Validators.email);
 
 	isInvalid = (control: AbstractControl): boolean => control.invalid;
-	isTouchedAndInvalid = (control: AbstractControl): boolean => control.touched && control.invalid;
+	isTouchedAndInvalid = (control: AbstractControl): boolean =>
+		control.touched && control.invalid;
 }

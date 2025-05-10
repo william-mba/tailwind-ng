@@ -26,16 +26,16 @@ describe('ClassList', () => {
 		const value = classList.toArray();
 
 		// Value should includes all custom classes
-		expect(value.includes('p-4')).toBeFalse();
-		expect(value.includes('rounded-full')).toBeFalse();
-		expect(value.includes('bg-red-600')).toBeFalse();
+		expect(value.includes('p-4')).toBeFalsy();
+		expect(value.includes('rounded-full')).toBeFalsy();
+		expect(value.includes('bg-red-600')).toBeFalsy();
 
 		// Value should not includes default classes overridden by custom classes
-		expect(value.includes('rounded-md')).toBeTrue();
-		expect(value.includes('bg-blue-600')).toBeTrue();
-		expect(value.includes('px-4')).toBeTrue();
-		expect(value.includes('py-2')).toBeTrue();
-		expect(value.includes('text-white')).toBeTrue();
+		expect(value.includes('rounded-md')).toBeTruthy();
+		expect(value.includes('bg-blue-600')).toBeTruthy();
+		expect(value.includes('px-4')).toBeTruthy();
+		expect(value.includes('py-2')).toBeTruthy();
+		expect(value.includes('text-white')).toBeTruthy();
 	});
 
 	it('should merge value', () => {
@@ -45,15 +45,15 @@ describe('ClassList', () => {
 		const value = classList.toArray();
 
 		// Initial values expectations
-		expect(value.includes('rounded-md')).toBeFalse();
-		expect(value.includes('bg-blue-600')).toBeFalse();
-		expect(value.includes('px-4')).toBeFalse();
-		expect(value.includes('py-2')).toBeFalse();
-		expect(value.includes('text-white')).toBeTrue();
+		expect(value.includes('rounded-md')).toBeFalsy();
+		expect(value.includes('bg-blue-600')).toBeFalsy();
+		expect(value.includes('px-4')).toBeFalsy();
+		expect(value.includes('py-2')).toBeFalsy();
+		expect(value.includes('text-white')).toBeTruthy();
 
 		// Merged values expectations
-		expect(value.includes('rounded-lg')).toBeTrue();
-		expect(value.includes('bg-red-600')).toBeTrue();
-		expect(value.includes('p-3')).toBeTrue();
+		expect(value.includes('rounded-lg')).toBeTruthy();
+		expect(value.includes('bg-red-600')).toBeTruthy();
+		expect(value.includes('p-3')).toBeTruthy();
 	});
 });

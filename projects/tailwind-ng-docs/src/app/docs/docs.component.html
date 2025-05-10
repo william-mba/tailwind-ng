@@ -1,11 +1,17 @@
 <div>
 	<!-- Top bar -->
-	<div class="absolute inset-x-0 top-0 border-b border-gray-950/10 dark:border-white/10">
+	<div
+		class="absolute inset-x-0 top-0 border-b border-gray-950/10 dark:border-white/10"
+	>
 		<!-- Top bar on all screens -->
 		<div class="bg-white dark:bg-black">
 			<div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
 				<!-- Logo and release tag -->
-				<a class="font-heading font-medium text-xl flex gap-2 items-start" aria-label="Home" routerLink="/">
+				<a
+					class="font-heading font-medium text-xl flex gap-2 items-start"
+					aria-label="Home"
+					routerLink="/"
+				>
 					<tw-icon name="tailwind-ng" size="lg" />
 					Tailwind NG
 				</a>
@@ -13,27 +19,59 @@
 				<div class="flex items-center gap-6 max-lg:hidden">
 					<div class="flex *:rounded-md *:ring-0 items-center gap-2">
 						<button tw-button variant="secondary" size="xs">
-							<a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
-								<tw-icon name="github" class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+							<a
+								href="https://github.com/william-mba/tailwind-ng"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<tw-icon
+									name="github"
+									class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+								/>
 							</a>
 						</button>
 						<button tw-button variant="secondary" size="xs">
-							<a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
-								<tw-icon name="discord" class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+							<a
+								href="https://discord.gg/SXNP9pGh"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<tw-icon
+									name="discord"
+									class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+								/>
 							</a>
 						</button>
-						<button (click)="switchTheme()" tw-button variant="secondary" size="xs">
+						<button
+							(click)="switchTheme()"
+							tw-button
+							variant="secondary"
+							size="xs"
+						>
 							@if (theme.isDark) {
-								<tw-icon name="sun" class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+								<tw-icon
+									name="sun"
+									class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+								/>
 							} @else {
-								<tw-icon name="moon" class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+								<tw-icon
+									name="moon"
+									class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+								/>
 							}
 						</button>
 					</div>
 				</div>
 				<!-- Options menu on small screens  -->
 				<div class="relative flex items-center gap-6 lg:hidden">
-					<button tw-button variant="text" size="xs" class="rounded-md" (click)="optionMenu.toggle()" [popup]="optionMenu">
+					<button
+						tw-button
+						variant="text"
+						size="xs"
+						class="rounded-md"
+						(click)="optionMenu.toggle()"
+						[popup]="optionMenu"
+					>
 						<tw-icon name="more-ver" class="text-gray-500" />
 					</button>
 					<ul
@@ -49,7 +87,10 @@
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<tw-icon name="github" class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+							<tw-icon
+								name="github"
+								class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+							/>
 						</a>
 						<a
 							tw-option
@@ -58,7 +99,10 @@
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<tw-icon name="discord" class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" />
+							<tw-icon
+								name="discord"
+								class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+							/>
 						</a>
 						<tw-icon
 							tw-option
@@ -79,10 +123,16 @@
 			</div>
 		</div>
 		<!-- Secondary top bar / Left nav. trigger on small screens -->
-		<div class="bg-white dark:bg-black border-t lg:hidden border-gray-950/10 dark:border-white/10">
+		<div
+			class="bg-white dark:bg-black border-t lg:hidden border-gray-950/10 dark:border-white/10"
+		>
 			<div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
 				<div class="flex gap-4 items-center">
-					<tw-icon name="bars-3-center-left" class="text-gray-400" (click)="toggleNav()" />
+					<tw-icon
+						name="bars-3-center-left"
+						class="text-gray-400"
+						(click)="toggleNav()"
+					/>
 				</div>
 			</div>
 		</div>
@@ -94,12 +144,17 @@
 			[attr.data-open]="navOpened() || null"
 			class="lg:w-3/12 xl:w-2/12 z-10 max-md:z-50 max-md:absolute max-md:inset-0 -translate-x-full data-open:translate-x-0 overflow-y-auto max-h-screen transition-all duration-200 bg-white dark:bg-black"
 		>
-			<div class="min-h-screen dark:bg-black *:mb-6 border-r px-6 pr-4 py-8 border-gray-950/10 dark:border-white/10 relative duration-500">
+			<div
+				class="min-h-screen dark:bg-black *:mb-6 border-r px-6 pr-4 py-8 border-gray-950/10 dark:border-white/10 relative duration-500"
+			>
 				@for (item of navItems; track $index) {
 					@switch (item.category) {
 						@case ('overview') {
 							<div class="flex flex-col gap-2">
-								<div class="flex items-center gap-3 font-semibold" (click)="toggleNav()">
+								<div
+									class="flex items-center gap-3 font-semibold"
+									(click)="toggleNav()"
+								>
 									<tw-icon name="book-open" class="text-gray-400" />
 									<a [routerLink]="item.route">
 										{{ item.label }}
@@ -123,7 +178,11 @@
 						}
 						@case ('components') {
 							<div class="flex flex-col gap-2">
-								<div class="flex items-center gap-3 font-semibold" [routerLink]="item.route" (click)="toggleNav()">
+								<div
+									class="flex items-center gap-3 font-semibold"
+									[routerLink]="item.route"
+									(click)="toggleNav()"
+								>
 									<tw-icon name="puzzle-piece" class="text-gray-400" />
 									<a>
 										{{ item.label }}
@@ -150,7 +209,9 @@
 			</div>
 		</div>
 		<!-- Main content -->
-		<div class="lg:w-9/12 xl:w-10/12 max-lg:absolute max-lg:inset-0 overflow-y-auto max-h-screen transition-colors duration-200 bg-white dark:bg-black">
+		<div
+			class="lg:w-9/12 xl:w-10/12 max-lg:absolute max-lg:inset-0 overflow-y-auto max-h-screen transition-colors duration-200 bg-white dark:bg-black"
+		>
 			<router-outlet />
 		</div>
 	</div>

@@ -1,7 +1,7 @@
 FROM ubuntu:22.04 AS base
 
 RUN apt update && \
-  apt install -y curl jq libicu70 xorg xvfb gtk2-engines-pixbuf dbus-x11 && \
+  apt install -y curl && \
   apt clean
 
 FROM base AS setup-node
@@ -22,25 +22,24 @@ COPY eslint.config.js .
 COPY package.json .
 COPY package-lock.json .
 COPY tsconfig.json .
-RUN npm install
+COPY vitest.config.ts .
+COPY vitest.setup.ts .
+RUN npm ci
 
 FROM install-deps AS copy-project
 COPY projects/tailwind-ng-core ./projects/tailwind-ng-core
-COPY projects/tailwind-ng ./projects/tailwind-ng
+COPY projects/tailwind-ng-ui ./projects/tailwind-ng-ui
 
-FROM copy-project AS check-format
-RUN npm run format:fix
+FROM copy-project AS run-style-guidelines
+RUN npx run-p format:check lint:ui
 
-FROM check-format AS run-lint
-RUN npm run lint:lib
-
-FROM run-lint AS run-tests
-RUN npm run install-chrome && npm run test:lib:ci
+FROM run-style-guidelines AS run-tests
+RUN npx run-p test:ui:ci coverage
 
 FROM run-tests AS run-build
-RUN npm run build:lib
+RUN npm run build:ui
 
 FROM scratch AS extract-artifacts
-COPY --from=run-tests /_work/junit/tailwind-ng/. /junit/tailwind-ng/
-COPY --from=run-tests /_work/coverage/tailwind-ng/. /coverage/tailwind-ng/
-COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/tailwind-ng/
+COPY --from=run-tests /_work/reports/. /reports/
+COPY --from=run-tests /_work/coverage/. /coverage/
+COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/tailwind-ng-ui/

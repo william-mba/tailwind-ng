@@ -7,7 +7,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
 	selector: 'app-docs',
-	imports: [NgIf, RouterLink, RouterLinkActive, TwIcon, TwDropdown, TwButton, TwOption, RouterOutlet],
+	imports: [
+		NgIf,
+		RouterLink,
+		RouterLinkActive,
+		TwIcon,
+		TwDropdown,
+		TwButton,
+		TwOption,
+		RouterOutlet,
+	],
 	templateUrl: './docs.component.html',
 })
 export class DocsComponent {

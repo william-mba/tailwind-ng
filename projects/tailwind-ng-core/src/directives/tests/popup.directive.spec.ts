@@ -33,43 +33,43 @@ describe('PopupDirective', () => {
 
 	describe('props', () => {
 		it('should set id', () => {
-			expect(directive.id.startsWith('popup')).toBeTrue();
+			expect(directive.id.startsWith('popup')).toBeTruthy();
 		});
 	});
 
 	describe('actions', () => {
 		it('should toggle', fakeAsync(
 			() => {
-				expect(directive.isOpened()).toBeFalse();
+				expect(directive.isOpened()).toBeFalsy();
 				directive.toggle();
 				tick(100);
-				expect(directive.isOpened()).toBeTrue();
+				expect(directive.isOpened()).toBeTruthy();
 				directive.toggle();
 				tick(100);
-				expect(directive.isOpened()).toBeFalse();
+				expect(directive.isOpened()).toBeFalsy();
 			},
 			{ flush: true },
 		));
 
 		it('should open', fakeAsync(
 			() => {
-				expect(directive.isOpened()).toBeFalse();
+				expect(directive.isOpened()).toBeFalsy();
 				directive.open();
 				tick(100);
-				expect(directive.isOpened()).toBeTrue();
+				expect(directive.isOpened()).toBeTruthy();
 			},
 			{ flush: true },
 		));
 
 		it('should close', fakeAsync(
 			() => {
-				expect(directive.isOpened()).toBeFalse();
+				expect(directive.isOpened()).toBeFalsy();
 				directive.open();
 				tick(100);
-				expect(directive.isOpened()).toBeTrue();
+				expect(directive.isOpened()).toBeTruthy();
 				directive.close();
 				tick(100);
-				expect(directive.isOpened()).toBeFalse();
+				expect(directive.isOpened()).toBeFalsy();
 			},
 			{ flush: true },
 		));
@@ -79,13 +79,13 @@ describe('PopupDirective', () => {
 		it('should close after a given delay', fakeAsync(
 			() => {
 				const opened = computed(() => directive.isOpened());
-				expect(opened()).toBeFalse();
+				expect(opened()).toBeFalsy();
 				directive.open();
 				tick(100);
-				expect(directive.isOpened()).toBeTrue();
+				expect(directive.isOpened()).toBeTruthy();
 				directive.closeAfter(1000);
 				tick(2000);
-				expect(opened()).toBeFalse();
+				expect(opened()).toBeFalsy();
 			},
 			{ flush: true },
 		));

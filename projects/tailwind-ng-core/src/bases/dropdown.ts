@@ -13,13 +13,18 @@ export interface Dropdown extends Popup {
 	closeOnBlur?: boolean;
 }
 
-export const DROPDOWN_CONFIG = InjectionTokenFactory.create<string>('', 'DROPDOWN_CONFIG');
+export const DROPDOWN_CONFIG = InjectionTokenFactory.create<string>(
+	'',
+	'DROPDOWN_CONFIG',
+);
 
 @Directive({
 	host: {
 		'[attr.tabindex]': '-1',
 	},
-	providers: [{ provide: PopupDirective, useExisting: forwardRef(() => DropdownBase) }],
+	providers: [
+		{ provide: PopupDirective, useExisting: forwardRef(() => DropdownBase) },
+	],
 })
 export abstract class DropdownBase extends PopupDirective {}
 

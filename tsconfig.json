@@ -5,10 +5,10 @@
 	"compilerOptions": {
 		"outDir": "./dist/out-tsc",
 		"paths": {
-			"tailwind-ng": ["./projects/tailwind-ng/src/public-api.ts"],
+			"tailwind-ng": ["./projects/tailwind-ng-ui/src/public-api.ts"],
 			"@tailwind-ng/core": ["./projects/tailwind-ng-core/src/public-api.ts"]
 		},
-		"types": ["jasmine"],
+		"types": ["vitest/globals"],
 		"strict": true,
 		"noImplicitOverride": true,
 		"noPropertyAccessFromIndexSignature": true,

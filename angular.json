@@ -9,37 +9,33 @@
 	"projects": {
 		"tailwind-ng": {
 			"projectType": "library",
-			"root": "projects/tailwind-ng",
-			"sourceRoot": "projects/tailwind-ng/src",
+			"root": "projects/tailwind-ng-ui",
+			"sourceRoot": "projects/tailwind-ng-ui/src",
 			"prefix": "tw",
 			"architect": {
 				"build": {
 					"builder": "@angular-devkit/build-angular:ng-packagr",
 					"options": {
-						"project": "projects/tailwind-ng/ng-package.json"
+						"project": "projects/tailwind-ng-ui/ng-package.json"
 					},
 					"configurations": {
 						"production": {
-							"tsConfig": "projects/tailwind-ng/tsconfig.prod.json"
+							"tsConfig": "projects/tailwind-ng-ui/tsconfig.prod.json"
 						},
 						"development": {
-							"tsConfig": "projects/tailwind-ng/tsconfig.json"
+							"tsConfig": "projects/tailwind-ng-ui/tsconfig.json"
 						}
 					},
 					"defaultConfiguration": "production"
 				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"tsConfig": "projects/tailwind-ng/tsconfig.spec.json",
-						"polyfills": ["zone.js", "zone.js/testing"]
-					}
-				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": ["projects/tailwind-ng/**/*.ts", "projects/tailwind-ng/**/*.html"],
-						"eslintConfig": "projects/tailwind-ng/eslint.config.js"
+						"lintFilePatterns": [
+							"projects/tailwind-ng-ui/**/*.ts",
+							"projects/tailwind-ng-ui/**/*.html"
+						],
+						"eslintConfig": "projects/tailwind-ng-ui/eslint.config.js"
 					}
 				}
 			}
@@ -65,17 +61,13 @@
 					},
 					"defaultConfiguration": "production"
 				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"tsConfig": "projects/tailwind-ng-core/tsconfig.spec.json",
-						"polyfills": ["zone.js", "zone.js/testing"]
-					}
-				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": ["projects/tailwind-ng-core/**/*.ts", "projects/tailwind-ng-core/**/*.html"],
+						"lintFilePatterns": [
+							"projects/tailwind-ng-core/**/*.ts",
+							"projects/tailwind-ng-core/**/*.html"
+						],
 						"eslintConfig": "projects/tailwind-ng-core/eslint.config.js"
 					}
 				}
@@ -148,25 +140,13 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
 				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"polyfills": ["zone.js", "zone.js/testing"],
-						"tsConfig": "projects/tailwind-ng-docs/tsconfig.spec.json",
-						"assets": [
-							{
-								"glob": "**/*",
-								"input": "projects/tailwind-ng-docs/public"
-							}
-						],
-						"styles": ["projects/tailwind-ng-themes/default/style.css"],
-						"scripts": []
-					}
-				},
 				"lint": {
 					"builder": "@angular-eslint/builder:lint",
 					"options": {
-						"lintFilePatterns": ["projects/tailwind-ng-docs/**/*.ts", "projects/tailwind-ng-docs/**/*.html"],
+						"lintFilePatterns": [
+							"projects/tailwind-ng-docs/**/*.ts",
+							"projects/tailwind-ng-docs/**/*.html"
+						],
 						"eslintConfig": "projects/tailwind-ng-docs/eslint.config.js"
 					}
 				}

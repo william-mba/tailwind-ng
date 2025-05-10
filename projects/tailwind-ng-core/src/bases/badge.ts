@@ -22,7 +22,10 @@ export interface BadgeConfig extends Partial<Record<SizeOption, string>> {
 export function isBadge(component: unknown): component is Badge {
 	return component instanceof BadgeBase;
 }
-export const BADGE_CONFIG = InjectionTokenFactory.create<Partial<BadgeConfig>>({}, 'BADGE_CONFIG');
+export const BADGE_CONFIG = InjectionTokenFactory.create<Partial<BadgeConfig>>(
+	{},
+	'BADGE_CONFIG',
+);
 
 @Directive()
 export abstract class BadgeBase extends BaseDirective {}

@@ -8,7 +8,10 @@ type Config = Record<string, any>;
  * @param arg Configurations to merge.
  * @param options Options for merging.
  */
-export function mergeConfig<T extends Config>(arg: [...(T | Partial<T>)[]], { strict = false }: MergeOptions = {}): T {
+export function mergeConfig<T extends Config>(
+	arg: [...(T | Partial<T>)[]],
+	{ strict = false }: MergeOptions = {},
+): T {
 	if (strict) {
 		return Obj.merge.strict(...arg);
 	}

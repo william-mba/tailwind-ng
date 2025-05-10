@@ -1,5 +1,12 @@
 import { ClassName } from './classname';
-import { isArray, isConfigObject, isEmptyConfigObject, isEmptyObject, isObject, isString } from './type-assertion';
+import {
+	isArray,
+	isConfigObject,
+	isEmptyConfigObject,
+	isEmptyObject,
+	isObject,
+	isString,
+} from './type-assertion';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Config = Record<string, any>;

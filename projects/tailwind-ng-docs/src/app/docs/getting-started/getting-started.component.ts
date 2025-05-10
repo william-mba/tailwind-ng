@@ -1,4 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core';
+import {
+	AfterViewInit,
+	ChangeDetectionStrategy,
+	Component,
+	inject,
+	ViewEncapsulation,
+} from '@angular/core';
 import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
 import { DomSanitizer } from '@angular/platform-browser';
 import { timer } from 'rxjs';
