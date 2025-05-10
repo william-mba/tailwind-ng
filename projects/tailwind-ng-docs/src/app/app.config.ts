@@ -1,5 +1,9 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, TitleStrategy, withComponentInputBinding } from '@angular/router';
+import {
+	provideRouter,
+	TitleStrategy,
+	withComponentInputBinding,
+} from '@angular/router';
 import { AppTitleStrategy, routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {

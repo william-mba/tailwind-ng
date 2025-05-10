@@ -50,14 +50,20 @@ export interface InputConfig extends Partial<Record<SizeOption, string>> {
 	className?: string;
 }
 
-export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create<InputConfig>({}, 'INPUT_TEXT_CONFIG');
+export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create<InputConfig>(
+	{},
+	'INPUT_TEXT_CONFIG',
+);
 
 export function isInputText(component: unknown): component is InputText {
 	return component instanceof InputTextBase;
 }
 
 @Directive()
-export abstract class InputTextBase extends BaseDirective<HTMLInputElement> implements InputText {
+export abstract class InputTextBase
+	extends BaseDirective<HTMLInputElement>
+	implements InputText
+{
 	@Input() size: SizeOption = 'md';
 
 	@Input() set value(value: string) {
@@ -96,14 +102,30 @@ export abstract class InputTextBase extends BaseDirective<HTMLInputElement> impl
 
 	protected override addEventListeners(): void {
 		super.addEventListeners();
-		this.nativeElement.addEventListener('change', this.onChange.bind(this), false);
-		this.nativeElement.addEventListener('input', this.onInput.bind(this), false);
+		this.nativeElement.addEventListener(
+			'change',
+			this.onChange.bind(this),
+			false,
+		);
+		this.nativeElement.addEventListener(
+			'input',
+			this.onInput.bind(this),
+			false,
+		);
 	}
 
 	protected override removeEventListeners(): void {
 		super.removeEventListeners();
-		this.nativeElement.removeEventListener('change', this.onChange.bind(this), false);
-		this.nativeElement.removeEventListener('input', this.onInput.bind(this), false);
+		this.nativeElement.removeEventListener(
+			'change',
+			this.onChange.bind(this),
+			false,
+		);
+		this.nativeElement.removeEventListener(
+			'input',
+			this.onInput.bind(this),
+			false,
+		);
 	}
 
 	// Override default keyboard event preventions.

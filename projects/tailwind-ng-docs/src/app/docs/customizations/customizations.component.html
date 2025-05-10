@@ -1,32 +1,53 @@
 <div class="sm:px-12 p-10 xl:w-3/4">
 	<section>
-		<h1 class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200">Customizations Guide</h1>
+		<h1
+			class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200"
+		>
+			Customizations Guide
+		</h1>
 
 		<p class="text-gray-700 dark:text-gray-300 mb-1 text-balance">
 			<span class="font-heading">Tailwind NG</span>
-			provides a wide range of predesigned components to help you get started quickly. However, you may need to customize a component to match your design
-			system or brand guidelines.
+			provides a wide range of predesigned components to help you get started
+			quickly. However, you may need to customize a component to match your
+			design system or brand guidelines.
 		</p>
 		<p class="text-gray-700 dark:text-gray-300 mb-1 mt-3">
 			In this guide, you will learn the various ways you can customize
 			<span class="font-heading">Tailwind NG</span>
-			components to create a unique design for your application, make it stand out and fit your project's specifics needs.
+			components to create a unique design for your application, make it stand
+			out and fit your project's specifics needs.
 		</p>
 		<p class="text-gray-700 dark:text-gray-300 mb-1 mt-3">
-			These approaches are listed by order of precedence and apply to any component you may need to customize. Depending on your need, choose the best approach
-			or combine them to get the desired outcome.
+			These approaches are listed by order of precedence and apply to any
+			component you may need to customize. Depending on your need, choose the
+			best approach or combine them to get the desired outcome.
 		</p>
 		<p
 			class="text-sm w-fit font-light p-2 my-3 border-l-8 text-indigo-900 dark:text-indigo-100 border-indigo-300 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950 rounded-md"
 		>
-			This guide assumes you have completed the getting started guide and already installed a theme in your project.
+			This guide assumes you have completed the getting started guide and
+			already installed a theme in your project.
 		</p>
-		<h3 class="font-heading mt-10 text-lg font-semibold">01. Using class attribute</h3>
-		<p class="my-3 text-gray-700 dark:text-gray-300">Use the class attribute when you need to customize a specific component using utility classes.</p>
+		<h3 class="font-heading mt-10 text-lg font-semibold">
+			01. Using class attribute
+		</h3>
 		<p class="my-3 text-gray-700 dark:text-gray-300">
-			Tailwind NG provide a built-in and well-tested mechanism that make merging all your custom classes easier, faster and accurate, while being very tiny (1.5
-			KB) compared to
-			<a class="font-medium" href="https://www.npmjs.com/package/tailwind-merge" target="_blank" rel="noopener noreferrer">tailwind-merge</a>
+			Use the class attribute when you need to customize a specific component
+			using utility classes.
+		</p>
+		<p class="my-3 text-gray-700 dark:text-gray-300">
+			Tailwind NG provide a built-in and well-tested mechanism that make merging
+			all your custom classes easier, faster and accurate, while being very tiny
+			(1.5 KB) compared to
+			<a
+				class="font-medium"
+				href="https://www.npmjs.com/package/tailwind-merge"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				tailwind-merge
+			</a>
 			(820 kB).
 		</p>
 		<div [innerHTML]="trust(classAttribute)"></div>
@@ -34,11 +55,15 @@
 			class="flex items-center gap-2 text-sm w-fit font-light p-2 mb-3 border-l-8 border-yellow-600/15 dark:border-yellow-600/30 bg-yellow-600/10 dark:bg-yellow-600/10 rounded-md"
 		>
 			<tw-icon name="info" class="text-green-600 rounded-full" />
-			You can also set this property programmatically before the component initialization.
+			You can also set this property programmatically before the component
+			initialization.
 		</p>
-		<h3 class="font-heading mt-10 text-lg font-semibold">02. Using CSS selectors</h3>
+		<h3 class="font-heading mt-10 text-lg font-semibold">
+			02. Using CSS selectors
+		</h3>
 		<p class="my-3 text-gray-700 dark:text-gray-300">
-			Use any valid css selectors to set a rule that will customize multiple instances of a component at once.
+			Use any valid css selectors to set a rule that will customize multiple
+			instances of a component at once.
 		</p>
 		<div [innerHTML]="trust(cssSelectors)"></div>
 		<p
@@ -47,10 +72,14 @@
 			<tw-icon name="info" class="text-green-600 rounded-full" />
 			You can also set these css rules in a stylesheet.
 		</p>
-		<h3 class="font-heading mt-10 text-lg font-semibold">03. Using the component provider</h3>
+		<h3 class="font-heading mt-10 text-lg font-semibold">
+			03. Using the component provider
+		</h3>
 		<div class="my-3 text-gray-700 dark:text-gray-300">
-			Use the component provider when you need to achieve fine-grained customizations through dependency injection. Tailwind NG provide two kind of providers
-			that let you apply customizations at any level of your application.
+			Use the component provider when you need to achieve fine-grained
+			customizations through dependency injection. Tailwind NG provide two kind
+			of providers that let you apply customizations at any level of your
+			application.
 			<ol class="pl-3 mt-2 mb-6 list-disc list-inside">
 				<li>
 					application UI provider, exported as
@@ -78,12 +107,24 @@
 		</div>
 		<div [innerHTML]="trust(configProviders)"></div>
 	</section>
-	<section class="grid grid-cols-1 sm:grid-cols-2 *:p-6 *:mt-10 *:w-full *:rounded-md">
-		<button tw-button variant="text" routerLink="/docs/themes" class="sm:justify-start pl-0!">
+	<section
+		class="grid grid-cols-1 sm:grid-cols-2 *:p-6 *:mt-10 *:w-full *:rounded-md"
+	>
+		<button
+			tw-button
+			variant="text"
+			routerLink="/docs/themes"
+			class="sm:justify-start pl-0!"
+		>
 			<tw-icon name="chevron-left" />
 			Themes
 		</button>
-		<button tw-button variant="text" routerLink="/docs/components-overview" class="sm:justify-end pr-0!">
+		<button
+			tw-button
+			variant="text"
+			routerLink="/docs/components-overview"
+			class="sm:justify-end pr-0!"
+		>
 			Components overview
 			<tw-icon name="chevron-right" />
 		</button>

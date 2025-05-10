@@ -45,7 +45,10 @@ export class PreviewComponent {
 		],
 	};
 
-	updateTask({ checked: fully = false, indeterminate: partially = false }, task = this.task): void {
+	updateTask(
+		{ checked: fully = false, indeterminate: partially = false },
+		task = this.task,
+	): void {
 		console.time(`${task.name} updated in`);
 		task.done = { fully, partially };
 		console.timeEnd(`${task.name} updated in`);
@@ -53,7 +56,9 @@ export class PreviewComponent {
 	}
 
 	saveTask(task = this.task): void {
-		console.log(`${task.name}, done: { fully: ${task.done.fully}, partially: ${!!task.done.partially} }`); // TODO: Remove
+		console.log(
+			`${task.name}, done: { fully: ${task.done.fully}, partially: ${!!task.done.partially} }`,
+		); // TODO: Remove
 		if (task.subtasks) {
 			console.groupCollapsed(`> ${task.name} subtasks:`);
 			task.subtasks.forEach((subtask) => this.saveTask(subtask));

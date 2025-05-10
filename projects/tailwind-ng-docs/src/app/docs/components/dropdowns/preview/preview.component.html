@@ -1,12 +1,18 @@
 <div>
 	<div class="mb-8 text-sm grid gap-2">
 		<div class="flex gap-2 items-start sm:items-center">
-			<tw-icon name="accessibility" class="rounded-full border p-1 self-start" />
+			<tw-icon
+				name="accessibility"
+				class="rounded-full border p-1 self-start"
+			/>
 			Accessibility features:
 		</div>
 		<ul class="text-gray-600 dark:text-gray-400 pl-4 list-inside list-disc">
 			<li>On opened, press Espace/Esc key to close it.</li>
-			<li>On opened, press Tab or Up/Down/Left/Right arrow keys to navigate through options.</li>
+			<li>
+				On opened, press Tab or Up/Down/Left/Right arrow keys to navigate
+				through options.
+			</li>
 			<li>On opened, press Enter/Space key to click the focused item.</li>
 		</ul>
 	</div>
@@ -16,16 +22,36 @@
 		class="overflow-x-auto h-80 grid sm:flex gap-4 justify-end sm:justify-center sm:justify-items-center items-start border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 p-6 py-10 mx-auto rounded-md"
 	>
 		<div>
-			<button tw-button size="sm" variant="secondary" (click)="dropdown.toggle()" [popup]="dropdown">
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				(click)="dropdown.toggle()"
+				[popup]="dropdown"
+			>
 				Options
 				<tw-icon name="chevron-down" class="text-gray-500" />
 			</button>
 			<div class="relative">
-				<ul tw-dropdown [isOpened]="true" #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2 overflow-">
-					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">Account settings</li>
-					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">Support</li>
-					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">License</li>
-					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">Sign out</li>
+				<ul
+					tw-dropdown
+					[isOpened]="true"
+					#dropdown
+					(click)="dropdown.close()"
+					class="*:px-4 *:py-2 overflow-"
+				>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Account settings
+					</li>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Support
+					</li>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						License
+					</li>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Sign out
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -35,7 +61,13 @@
 		class="overflow-x-auto h-[450px] grid sm:flex gap-4 justify-end sm:justify-center sm:justify-items-center items-start border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 p-6 py-10 mx-auto rounded-md"
 	>
 		<div>
-			<button tw-button size="sm" variant="secondary" (click)="dropdown2.toggle()" [popup]="dropdown2">
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				(click)="dropdown2.toggle()"
+				[popup]="dropdown2"
+			>
 				Options
 				<tw-icon name="chevron-down" class="text-gray-500" />
 			</button>
@@ -48,19 +80,54 @@
 					class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50"
 				>
 					<ul tw-option class="*:px-4 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Edit</li>
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Duplicate</li>
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70"
+						>
+							Edit
+						</li>
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70"
+						>
+							Duplicate
+						</li>
 					</ul>
 					<ul tw-option class="*:px-4 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Archive</li>
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Move</li>
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70"
+						>
+							Archive
+						</li>
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70"
+						>
+							Move
+						</li>
 					</ul>
 					<ul tw-option class="*:px-4 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Share</li>
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Add to favorites</li>
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70"
+						>
+							Share
+						</li>
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70"
+						>
+							Add to favorites
+						</li>
 					</ul>
 					<ul tw-option class="*:px-4 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70">Delete</li>
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/70"
+						>
+							Delete
+						</li>
 					</ul>
 				</tw-dropdown>
 			</div>
@@ -71,44 +138,76 @@
 		class="overflow-x-auto h-[450px] grid sm:flex gap-4 justify-end sm:justify-center sm:justify-items-center items-start border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 p-6 py-10 mx-auto rounded-md"
 	>
 		<div>
-			<button tw-button size="sm" variant="secondary" (click)="dropdown3.toggle()" [popup]="dropdown3">
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				(click)="dropdown3.toggle()"
+				[popup]="dropdown3"
+			>
 				Options
 				<tw-icon name="chevron-down" class="text-gray-500" />
 			</button>
 			<div class="relative">
-				<tw-dropdown [isOpened]="true" #dropdown3 (click)="dropdown3.close()" class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50">
+				<tw-dropdown
+					[isOpened]="true"
+					#dropdown3
+					(click)="dropdown3.close()"
+					class="py-0 *:py-1 divide-y divide-gray-200/70 dark:divide-gray-700/50"
+				>
 					<ul tw-option class="*:px-3 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3"
+						>
 							<tw-icon size="sm" class="opacity-50" name="pencil-square" />
 							Edit
 						</li>
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3"
+						>
 							<tw-icon size="sm" class="opacity-50" name="document-duplicate" />
 							Duplicate
 						</li>
 					</ul>
 					<ul tw-option class="*:px-3 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3"
+						>
 							<tw-icon size="sm" class="opacity-50" name="archive-box" />
 							Archive
 						</li>
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3"
+						>
 							<tw-icon size="sm" class="opacity-50" name="arrow-right-circle" />
 							Move
 						</li>
 					</ul>
 					<ul tw-option class="*:px-3 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3"
+						>
 							<tw-icon size="sm" class="opacity-50" name="share" />
 							Share
 						</li>
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3"
+						>
 							<tw-icon size="sm" class="opacity-50" name="star" />
 							Add to favorites
 						</li>
 					</ul>
 					<ul tw-option class="*:px-3 *:py-2">
-						<li tw-option class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3">
+						<li
+							tw-option
+							class="hover:bg-gray-200/70 dark:hover:bg-gray-700/50 w-full inline-flex items-center gap-3"
+						>
 							<tw-icon size="sm" class="opacity-50" name="strash" />
 							Delete
 						</li>

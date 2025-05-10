@@ -1,4 +1,13 @@
-import { Directive, ElementRef, inject, Injector, Input, OnDestroy, OnInit, runInInjectionContext } from '@angular/core';
+import {
+	Directive,
+	ElementRef,
+	inject,
+	Injector,
+	Input,
+	OnDestroy,
+	OnInit,
+	runInInjectionContext,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { isEnterOrSpace, isNavigation } from '../guards';
 
@@ -69,7 +78,12 @@ export interface BaseActions {
 	scrollIntoView(options?: ScrollIntoViewOptions, element?: HTMLElement): void;
 }
 
-type FocusBehavior = 'self' | 'nextSibling' | 'previousSibling' | 'firstChild' | 'lastChild';
+type FocusBehavior =
+	| 'self'
+	| 'nextSibling'
+	| 'previousSibling'
+	| 'firstChild'
+	| 'lastChild';
 /**
  * Focus options.
  */
@@ -103,7 +117,9 @@ export interface FocusOptions {
 		'[attr.aria-disabled]': 'disabled || null',
 	},
 })
-export abstract class BaseDirective<T extends HTMLElement = HTMLElement> implements BaseProps<T>, BaseActions, OnInit, OnDestroy {
+export abstract class BaseDirective<T extends HTMLElement = HTMLElement>
+	implements BaseProps<T>, BaseActions, OnInit, OnDestroy
+{
 	readonly nativeElement: T = inject(ElementRef<T>).nativeElement;
 	protected readonly _document = inject(DOCUMENT);
 	private readonly _injector = inject(Injector);
@@ -167,9 +183,21 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 	 * Those listeners will be removed when the component is destroyed.
 	 */
 	protected addEventListeners() {
-		this.nativeElement.addEventListener('click', this.preventInteractionIfDisabled.bind(this), true);
-		this.nativeElement.addEventListener('pointerdown', this.preventInteractionIfDisabled.bind(this), true);
-		this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false);
+		this.nativeElement.addEventListener(
+			'click',
+			this.preventInteractionIfDisabled.bind(this),
+			true,
+		);
+		this.nativeElement.addEventListener(
+			'pointerdown',
+			this.preventInteractionIfDisabled.bind(this),
+			true,
+		);
+		this.nativeElement.addEventListener(
+			'keydown',
+			this.onKeyboardEvent.bind(this),
+			false,
+		);
 	}
 
 	/**
@@ -179,9 +207,21 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 	 * Override this method to remove additional event listeners.
 	 */
 	protected removeEventListeners() {
-		this.nativeElement.removeEventListener('click', this.preventInteractionIfDisabled.bind(this), true);
-		this.nativeElement.removeEventListener('pointerdown', this.preventInteractionIfDisabled.bind(this), true);
-		this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false);
+		this.nativeElement.removeEventListener(
+			'click',
+			this.preventInteractionIfDisabled.bind(this),
+			true,
+		);
+		this.nativeElement.removeEventListener(
+			'pointerdown',
+			this.preventInteractionIfDisabled.bind(this),
+			true,
+		);
+		this.nativeElement.removeEventListener(
+			'keydown',
+			this.onKeyboardEvent.bind(this),
+			false,
+		);
 	}
 
 	// A disabled element should not be interactive.
@@ -307,9 +347,16 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement> impleme
 		target.removeAttribute('data-visual-focused');
 	}
 
-	scrollIntoView(options: ScrollIntoViewOptions = {}, element: HTMLElement = this.nativeElement): void {
+	scrollIntoView(
+		options: ScrollIntoViewOptions = {},
+		element: HTMLElement = this.nativeElement,
+	): void {
 		requestAnimationFrame(() => {
-			const { block = 'nearest', inline = 'nearest', behavior = 'instant' } = options;
+			const {
+				block = 'nearest',
+				inline = 'nearest',
+				behavior = 'instant',
+			} = options;
 			element.scrollIntoView({
 				block: block,
 				inline: inline,

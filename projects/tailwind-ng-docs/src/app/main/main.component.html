@@ -2,22 +2,42 @@
 <div
 	class="-z-50 hidden dark:block fixed inset-[calc(var(--spacing)*0)] bg-[image:var(--bg-hero)] bg-cover bg-right-top opacity-5 backdrop-blur-xl animate-pulse-8"
 ></div>
-<div class="-z-40 hidden dark:block fixed inset-[calc(var(--spacing)*0)] bg-[image:var(--bg-pattern)] opacity-5"></div>
+<div
+	class="-z-40 hidden dark:block fixed inset-[calc(var(--spacing)*0)] bg-[image:var(--bg-pattern)] opacity-5"
+></div>
 <!-- Background end -->
 <!-- Top-right icons buttons -->
 <section class="relative">
-	<div tw-button variant="text" class="p-0 lg:p-1 fixed top-4 right-8 gap-2 z-50 *:text-gray-600 max-lg:backdrop-blur-md shadow-">
+	<div
+		tw-button
+		variant="text"
+		class="p-0 lg:p-1 fixed top-4 right-8 gap-2 z-50 *:text-gray-600 max-lg:backdrop-blur-md shadow-"
+	>
 		<button tw-button variant="text" size="xs" class="max-sm:size-8">
-			<a href="https://github.com/william-mba/tailwind-ng" target="_blank" rel="noopener noreferrer">
+			<a
+				href="https://github.com/william-mba/tailwind-ng"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
 				<tw-icon name="github" class="max-sm:size-4" />
 			</a>
 		</button>
 		<button tw-button variant="text" size="xs" class="max-sm:size-8">
-			<a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
+			<a
+				href="https://discord.gg/SXNP9pGh"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
 				<tw-icon name="discord" class="max-sm:size-4" />
 			</a>
 		</button>
-		<button (click)="switchTheme()" tw-button variant="text" size="xs" class="max-sm:size-8">
+		<button
+			(click)="switchTheme()"
+			tw-button
+			variant="text"
+			size="xs"
+			class="max-sm:size-8"
+		>
 			@if (theme.isDark) {
 				<tw-icon name="sun" class="max-sm:size-4" />
 			} @else {
@@ -27,24 +47,32 @@
 	</div>
 </section>
 <!-- Main content -->
-<section class="relative mt-24 lg:mt-12 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid">
+<section
+	class="relative mt-24 lg:mt-12 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid"
+>
 	<!-- Rotating box -->
 	<div
 		routerLink="components"
 		class="cursor-pointer max-lg:mx-auto lg:absolute lg:left-6/7 xl:left-6/8 lg:top-36 animate-spin-180 lg:my-auto size-24 dark:size-20 lg:size-32 lg:dark:size-28 xl:size-36 xl:dark:size-32 rotate-[0.75_1_0.75_45deg] transform-3d *:backface-visible *:border *:rounded-md *:border-blue-100 *:shadow-2xl *:shadow-indigo-100 dark:*:shadow-indigo-300 transition-all duration-300 *:transition-all *:duration-300"
 	>
-		<div class="absolute inset-0 translate-z-12 lg:translate-z-16 xl:translate-z-18 rotate-x-0 bg-[image:var(--bg-buttons)] bg-cover bg-center"></div>
+		<div
+			class="absolute inset-0 translate-z-12 lg:translate-z-16 xl:translate-z-18 rotate-x-0 bg-[image:var(--bg-buttons)] bg-cover bg-center"
+		></div>
 		<div
 			class="absolute inset-0 -translate-z-12 lg:-translate-z-16 xl:-translate-z-18 rotate-y-180 bg-[image:var(--bg-toggles)] bg-cover bg-center opacity-90"
 		></div>
 		<div
 			class="absolute inset-0 translate-x-12 lg:translate-x-16 xl:translate-x-18 rotate-y-90 rotate-z-180 bg-[image:var(--bg-checkboxes)] bg-cover bg-center opacity-90"
 		></div>
-		<div class="absolute inset-0 -translate-x-12 lg:-translate-x-16 xl:-translate-x-18 -rotate-y-90 bg-[image:var(--bg-dropdowns)] bg-cover bg-center"></div>
+		<div
+			class="absolute inset-0 -translate-x-12 lg:-translate-x-16 xl:-translate-x-18 -rotate-y-90 bg-[image:var(--bg-dropdowns)] bg-cover bg-center"
+		></div>
 		<div
 			class="absolute inset-0 -translate-y-12 lg:-translate-y-16 xl:-translate-y-18 rotate-x-90 rotate-z-180 bg-[image:var(--bg-radio-groups)] bg-cover bg-center opacity-90"
 		></div>
-		<div class="absolute inset-0 translate-y-12 lg:translate-y-16 xl:translate-y-18 -rotate-x-90 bg-[image:var(--bg-icon-buttons)] bg-cover bg-center"></div>
+		<div
+			class="absolute inset-0 translate-y-12 lg:translate-y-16 xl:translate-y-18 -rotate-x-90 bg-[image:var(--bg-icon-buttons)] bg-cover bg-center"
+		></div>
 	</div>
 	<!-- Content -->
 	<div class="max-lg:mt-16 xl:mt-0">
@@ -59,24 +87,42 @@
 			Tailwind NG
 		</button>
 		<!-- Headline -->
-		<h1 class="max-sm:text-4xl text-5xl text-center lg:text-start lg:mt-20 sm:text-7xl font-extrabold lg:w-xl font-heading">
+		<h1
+			class="max-sm:text-4xl text-5xl text-center lg:text-start lg:mt-20 sm:text-7xl font-extrabold lg:w-xl font-heading"
+		>
 			Rapidly build
 			<p>a great UI</p>
 			at any scale.
 		</h1>
 		<!-- Description -->
-		<div class="mt-8 text-lg lg:text-xl font-light max-lg:text-center md:max-lg:px-6">
+		<div
+			class="mt-8 text-lg lg:text-xl font-light max-lg:text-center md:max-lg:px-6"
+		>
 			A library of beautiful, fast and accessible UI components
 			<br class="hidden lg:block" />
 			built on top of
-			<span class="font-medium bg-gradient-to-tr from-indigo-600 to-pink-500 bg-clip-text text-transparent">TypeScript, Tailwind CSS and Angular,</span>
+			<span
+				class="font-medium bg-gradient-to-tr from-indigo-600 to-pink-500 bg-clip-text text-transparent"
+			>
+				TypeScript, Tailwind CSS and Angular,
+			</span>
 			<br class="hidden lg:block" />
 			that enables developers to build great applications even faster.
 		</div>
 	</div>
 	<!-- Call to action -->
-	<div class="my-8 place-self-center lg:place-self-start gap-3 grid *:mx-auto sm:flex">
-		<button tw-button [isFab]="true" size="lg" routerLink="/docs/getting-started" class="bg-indigo-700">Get started</button>
+	<div
+		class="my-8 place-self-center lg:place-self-start gap-3 grid *:mx-auto sm:flex"
+	>
+		<button
+			tw-button
+			[isFab]="true"
+			size="lg"
+			routerLink="/docs/getting-started"
+			class="bg-indigo-700"
+		>
+			Get started
+		</button>
 		<button
 			tw-button
 			variant="secondary"
@@ -89,59 +135,123 @@
 	</div>
 </section>
 <!-- Features list -->
-<section class="relative p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0 mt-8">
+<section
+	class="relative p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0 mt-8"
+>
 	<p class="mb-4 font-heading">Why Tailwind NG?</p>
-	<div class="grid grid-cols-1 gap-8 my-4 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:gap-3 *:grid *:place-content-start">
+	<div
+		class="grid grid-cols-1 gap-8 my-4 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:gap-3 *:grid *:place-content-start"
+	>
 		<div>
-			<span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
-				<tw-icon name="sparkles" size="lg" class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+			<span
+				class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
+			>
+				<tw-icon
+					name="sparkles"
+					size="lg"
+					class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5"
+				/>
 				Beautiful
 			</span>
-			<p class="text-gray-600 dark:text-gray-400">Expertly-crafted UI components that look great out of the box.</p>
+			<p class="text-gray-600 dark:text-gray-400">
+				Expertly-crafted UI components that look great out of the box.
+			</p>
 		</div>
 		<div>
-			<span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
-				<tw-icon name="bolt" size="lg" class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+			<span
+				class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
+			>
+				<tw-icon
+					name="bolt"
+					size="lg"
+					class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5"
+				/>
 				Fast
 			</span>
-			<p class="text-gray-600 dark:text-gray-400">Optimized for large-scale and enterprise Angular applications.</p>
+			<p class="text-gray-600 dark:text-gray-400">
+				Optimized for large-scale and enterprise Angular applications.
+			</p>
 		</div>
 		<div>
-			<span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
-				<tw-icon name="accessibility" size="lg" class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+			<span
+				class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
+			>
+				<tw-icon
+					name="accessibility"
+					size="lg"
+					class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5"
+				/>
 				Accessible
 			</span>
 			<p class="text-gray-600 dark:text-gray-400">
 				Accessibility features compliant with
-				<a href="https://www.w3.org/TR/wai-aria/" target="_blank" rel="noopener noreferrer">W3C WAI-ARIA</a>
+				<a
+					href="https://www.w3.org/TR/wai-aria/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					W3C WAI-ARIA
+				</a>
 				standards out of the box.
 			</p>
 		</div>
 		<div>
-			<span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
-				<tw-icon name="beaker" size="lg" class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+			<span
+				class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
+			>
+				<tw-icon
+					name="beaker"
+					size="lg"
+					class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5"
+				/>
 				Reliable
 			</span>
-			<p class="text-gray-600 dark:text-gray-400">Well-tested to ensure consistent performance and reliability.</p>
+			<p class="text-gray-600 dark:text-gray-400">
+				Well-tested to ensure consistent performance and reliability.
+			</p>
 		</div>
 		<div>
-			<span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
-				<tw-icon name="mix-vertical" size="lg" class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+			<span
+				class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
+			>
+				<tw-icon
+					name="mix-vertical"
+					size="lg"
+					class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5"
+				/>
 				Customizable
 			</span>
-			<p class="text-gray-600 dark:text-gray-400">Fully-customizable and predictable components to fit your specific needs.</p>
+			<p class="text-gray-600 dark:text-gray-400">
+				Fully-customizable and predictable components to fit your specific
+				needs.
+			</p>
 		</div>
 		<div>
-			<span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
-				<tw-icon name="star" size="lg" class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+			<span
+				class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
+			>
+				<tw-icon
+					name="star"
+					size="lg"
+					class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5"
+				/>
 				Unique DX
 			</span>
-			<p class="text-gray-600 dark:text-gray-400">Top-notch developer experience with fully-typed and extensible APIs for seamless integration.</p>
+			<p class="text-gray-600 dark:text-gray-400">
+				Top-notch developer experience with fully-typed and extensible APIs for
+				seamless integration.
+			</p>
 		</div>
 	</div>
 	<div class="rounded-md mb-8 gap-3 grid">
-		<span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
-			<tw-icon name="license" size="lg" class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5" />
+		<span
+			class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
+		>
+			<tw-icon
+				name="license"
+				size="lg"
+				class="text-gray-500 dark:text-gray-400 rounded-full bg-gray-200 dark:bg-black/50 p-1.5"
+			/>
 			MIT license
 		</span>
 		<p class="text-gray-600 dark:text-gray-400">

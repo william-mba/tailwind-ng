@@ -7,7 +7,12 @@
 			<button tw-button size="sm" variant="secondary">
 				<tw-icon size="sm" name="chevron-left" class="text-gray-500" />
 			</button>
-			<button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				class="border-l border-gray-300 dark:border-gray-700"
+			>
 				<tw-icon size="sm" name="chevron-right" class="text-gray-500" />
 			</button>
 		</div>
@@ -19,7 +24,12 @@
 			<button tw-button size="sm" variant="secondary">
 				<tw-icon size="sm" name="chevron-left" class="text-gray-500" />
 			</button>
-			<button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				class="border-l border-gray-300 dark:border-gray-700"
+			>
 				<tw-icon size="sm" name="chevron-right" class="text-gray-500" />
 			</button>
 		</div>
@@ -32,7 +42,14 @@
 				<tw-icon size="sm" name="bookmark" class="text-gray-500" />
 				Bookmark
 			</button>
-			<button tw-button size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">12k</button>
+			<button
+				tw-button
+				size="sm"
+				variant="secondary"
+				class="border-l border-gray-300 dark:border-gray-700"
+			>
+				12k
+			</button>
 		</div>
 	</div>
 	<div
@@ -43,8 +60,16 @@
 				<tw-checkbox id="select-all" />
 				<label for="select-all" class="sr-only">Select all</label>
 			</button>
-			<button tw-button size="sm" variant="text" class="border-l border-gray-300 dark:border-gray-700 p-0">
-				<select id="message" class="p-2 rounded-r-md dark:bg-gray-950 ring-0 focus:ring-2 ring-inset outline-0 ring-indigo-600">
+			<button
+				tw-button
+				size="sm"
+				variant="text"
+				class="border-l border-gray-300 dark:border-gray-700 p-0"
+			>
+				<select
+					id="message"
+					class="p-2 rounded-r-md dark:bg-gray-950 ring-0 focus:ring-2 ring-inset outline-0 ring-indigo-600"
+				>
 					<option>Unread messages</option>
 					<option>Sent messages</option>
 					<option>All messages</option>
@@ -61,15 +86,35 @@
 		<div class="w-fit">
 			<div tw-button-group>
 				<button tw-button size="sm" variant="secondary">Save changes</button>
-				<button [popup]="dropdown" tw-button (click)="dropdown.toggle()" size="sm" variant="secondary" class="border-l border-gray-300 dark:border-gray-700">
+				<button
+					[popup]="dropdown"
+					tw-button
+					(click)="dropdown.toggle()"
+					size="sm"
+					variant="secondary"
+					class="border-l border-gray-300 dark:border-gray-700"
+				>
 					<tw-icon size="sm" name="chevron-down" class="text-gray-500" />
 				</button>
 			</div>
 			<div class="relative">
-				<ul tw-dropdown #dropdown (click)="dropdown.close()" class="*:px-4 *:py-2" [isOpened]="true" [closeOnBlur]="true">
-					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">Save and schedule</li>
-					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">Save and publish</li>
-					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">Export PDF</li>
+				<ul
+					tw-dropdown
+					#dropdown
+					(click)="dropdown.close()"
+					class="*:px-4 *:py-2"
+					[isOpened]="true"
+					[closeOnBlur]="true"
+				>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Save and schedule
+					</li>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Save and publish
+					</li>
+					<li tw-option class="hover:bg-gray-200/70 hover:dark:bg-gray-700/70">
+						Export PDF
+					</li>
 				</ul>
 			</div>
 		</div>

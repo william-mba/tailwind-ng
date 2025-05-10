@@ -36,7 +36,9 @@ const NON_COLORS = ['transparent', 'white', 'black'];
  * @param values The target and source values to resolve.
  * @param options The options for merging.
  * */
-function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): string {
+function merge(
+	...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]
+): string {
 	if (!arg.length) return '';
 	const lastValue = arg[arg.length - 1];
 	const classNames = [...arg] as ClassNameValue[];
@@ -44,7 +46,8 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
 	if (lastValue && typeof lastValue === 'string') {
 		classNames.push(lastValue);
 	}
-	const { keepClassDeletor = false, minStringLength = 2 } = (lastValue as MergeOptions) || {};
+	const { keepClassDeletor = false, minStringLength = 2 } =
+		(lastValue as MergeOptions) || {};
 
 	return (
 		(classNames.length &&
@@ -63,7 +66,10 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
 						// Ex: bg-red-' remove 'bg-red-*', 'bg-' remove 'bg-*' etc.
 						if (className.charAt(className.length - 1) === '-') {
 							const lengthsEqual = className.length === minStringLength;
-							const searchString = className.substring(0, lengthsEqual ? className.length : className.length - 1);
+							const searchString = className.substring(
+								0,
+								lengthsEqual ? className.length : className.length - 1,
+							);
 							target = target.filter((value) => {
 								return !value.startsWith(searchString);
 							});
@@ -75,7 +81,10 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
 						} else {
 							// ClassName is not a class-deletor
 							let lastIndexOfSeperator = className.lastIndexOf('-');
-							let searchString = lastIndexOfSeperator > 0 ? className.substring(0, lastIndexOfSeperator) : className;
+							let searchString =
+								lastIndexOfSeperator > 0
+									? className.substring(0, lastIndexOfSeperator)
+									: className;
 							const foundInSource = className.match(/-/g)?.length ?? 0;
 
 							target = target.filter((value) => {
@@ -90,7 +99,12 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
 										const found = NON_COLORS.find((x) => value.endsWith(x));
 
 										// keep non color class that does not have a value in source to merge with.
-										if (found && !searchString.startsWith(value.substring(0, value.indexOf('-')))) {
+										if (
+											found &&
+											!searchString.startsWith(
+												value.substring(0, value.indexOf('-')),
+											)
+										) {
 											return true;
 										}
 
@@ -106,7 +120,10 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
 									// searchString 'bg-red' is truncate to 'bg'
 									lastIndexOfSeperator = searchString.lastIndexOf('-');
 									if (lastIndexOfSeperator > 0) {
-										searchString = searchString.substring(0, lastIndexOfSeperator);
+										searchString = searchString.substring(
+											0,
+											lastIndexOfSeperator,
+										);
 									}
 									return !value.startsWith(searchString);
 								} else if (foundInSource === foundInTarget) {

@@ -20,13 +20,17 @@ export interface ClassList {
 	 * @param fn The update function that returns the new value to be setted.
 	 * @param currentValue The current classlist's value passed to the update function.
 	 */
-	update(fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue): ClassList;
+	update(
+		fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue,
+	): ClassList;
 	/**
 	 * Merges multiple classnames to the classlist.
 	 * @param fn The merge function that returns an array of values to merge from right to left.
 	 * @param currentValue The current classlist's value passed to the merge function.
 	 */
-	merge(fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue[]): ClassList;
+	merge(
+		fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue[],
+	): ClassList;
 	/**
 	 * Returns an array representation of the classlist's value
 	 */
@@ -44,7 +48,10 @@ function setClassName(value: ClassNameValue, el?: HTMLElement) {
  * @param base The base value of the class list.
  * @param el The element on which the classlist changes apply.
  */
-export function classlist(base?: ClassNameValue | HTMLElement, el?: HTMLElement): ClassList {
+export function classlist(
+	base?: ClassNameValue | HTMLElement,
+	el?: HTMLElement,
+): ClassList {
 	let _value = '';
 	if (isString(base)) {
 		_value = base;
@@ -71,10 +78,14 @@ export function classlist(base?: ClassNameValue | HTMLElement, el?: HTMLElement)
 		}
 		return classlist;
 	};
-	classlist.update = (fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue) => {
+	classlist.update = (
+		fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue,
+	) => {
 		return classlist.set(fn(_value));
 	};
-	classlist.merge = (fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue[]) => {
+	classlist.merge = (
+		fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue[],
+	) => {
 		return classlist.set(ClassName.merge(...fn(_value)));
 	};
 	classlist.toArray = () => ClassName.toArray(_value);
