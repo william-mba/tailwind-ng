@@ -6,37 +6,47 @@
 </div>
 
 <div align="center">
-Beautiful, fast and accessible <br/> Tailwind CSS components for Angular.
-<br/>
+Beautiful, fast and accessible Tailwind CSS components for Angular.
 <br/>
 <br/>
 
-[![Build Status](https://dev.azure.com/artandev/Labs/_apis/build/status%2Ftailwind-ng?branchName=next)](https://dev.azure.com/artandev/Labs/_build/latest?definitionId=2&branchName=next)
 ![tailwind-ng](https://badgen.net/bundlephobia/minzip/tailwind-ng)
+[![Build Status](https://dev.azure.com/artandev/Labs/_apis/build/status%2Ftailwind-ng?branchName=next)](https://dev.azure.com/artandev/Labs/_build/latest?definitionId=2&branchName=main)
+![tree-shaking](https://badgen.net/bundlephobia/tree-shaking/tailwind-ng)
 
 </div>
-<br/>
 
-## Motivation
+## :rocket: Motivation
 
-Like [Tailwind UI](https://tailwindui.com/) does for React and Vue, **Tailwind NG** levarage the power of TypeScript, [Tailwind CSS](https://tailwindcss.com/)
-and [Angular](https://angular.dev) to enable you to build **great Angular applications** at any scale **without hassles**.
+Tailwind NG is an open source UI components library that aims to provide a seamless and robust integration of [Tailwind CSS](https://tailwindcss.com/) components with [Angular](https://angular.dev) to make building a great UI easier and joyful at any scale.
 
-<br/>
+## :bulb: Why Tailwind NG ?
 
-## Why Tailwind NG ?
+Tailwind NG is built with state of the art design principles to provide components that are:
 
-- **Beautiful**: Expertly-crafted UI components that look great out of the box.
-- **Fast**: Optimized for large-scale and enterprise Angular applications.
-- **Reliable**: Well-tested to ensure consistent performance and reliability.
-- **Accessible**: Accessibility features compliant with [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards out of the box.
-- **Customizable**: Fully-customizable and predictable components to fit your specific needs.
+- **Beautiful**: well-designed components that look great out of the box.
+- **Fast and lightweight**: for optimal responsiveness and rendering speed at any scale.
+- **Reliable**: well-tested to ensure consistent performance and predictable behaviors.
+- **Accessible**: built-in accessibility features compliant to [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards.
+- **Customizable**: fully customizable, extensible and composable to fit your specific needs.
 
-<br/>
+## :heart: Contributing
 
-## Packages reference
+We welcome contributions to Tailwind NG! If you have ideas, suggestions, or bug fixes, please check out our [contributing guide]().
 
-Tailwind NG is modular and is composed of the following packages:
+## :sparkles: Getting Started
+
+To get started with Tailwind NG, you can follow the steps below:
+
+0. Prerequisites:
+   - [Node.js](https://nodejs.org/en/) v22 or later
+   - [Angular](https://angular.io) v19 or later
+   - [Tailwind CSS](https://tailwindcss.com/docs/installation) v4 or later
+1. For more information on how to install and use Tailwind NG, please refer to the [documentation](https://tailwind-ng.com/docs/getting-started).
+
+## :package: Packages reference
+
+Tailwind NG is modular and it is composed of the following packages:
 
 | Name                                          | Description                                                                          | Version (latest)                                          | Size (min+zip)                                        |
 | --------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------- | ----------------------------------------------------- |
@@ -45,9 +55,7 @@ Tailwind NG is modular and is composed of the following packages:
 | [@tailwind-ng/themes][tailwind-ng-themes-npm] | Provides a set of pre-built themes available via the CDN and npm.                    | ![tailwind-ng-themes-version][tailwind-ng-themes-version] | ![tailwind-ng-themes-size][tailwind-ng-themes-minzip] |
 | @tailwind-ng/icons                            | This package will provides a set of reusable icons from Heroicons and googles fonts. | TODO                                                      | TODO                                                  |
 
-<br/>
-
-## Acknowledgements
+## :sparkle: Credits
 
 Tailwind NG is made possible thanks to the inspirations from the following projects:
 
