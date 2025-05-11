@@ -35,7 +35,7 @@ stages:
             inputs:
               codeCoverageTool: 'cobertura'
               summaryFileLocation: '$(Build.SourcesDirectory)/coverage/cobertura-coverage.xml'
-              pathToSources: '$(Build.SourcesDirectory)/projects'
+              pathToSources: '$(Build.SourcesDirectory)/packages'
 
           - task: PublishTestResults@2
             displayName: 'Publish test results'
