@@ -24,9 +24,7 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
     <div tw-dialog #dialog [(isOpened)]="opened">
       <div tw-dialog-container>
         <!-- Dialog content -->
-        <div
-          class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start"
-        >
+        <div class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start">
           <tw-icon
             name="exclamation-triangle"
             class="text-red-600 bg-red-400/10 rounded-full p-3 mx-auto"
@@ -36,8 +34,8 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
               Deactivate account
             </h1>
             <p>
-              Are you sure you want to deactivate your account? All of your data
-              will be permanently removed. This action cannot be undone.
+              Are you sure you want to deactivate your account? All of your data will be permanently
+              removed. This action cannot be undone.
             </p>
           </div>
         </div>
@@ -50,30 +48,18 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
           >
             Deactivate
           </button>
-          <button
-            tw-button
-            class="w-full sm:w-fit"
-            variant="secondary"
-            (click)="dialog.close()"
-          >
+          <button tw-button class="w-full sm:w-fit" variant="secondary" (click)="dialog.close()">
             Cancel
           </button>
         </div>
       </div>
     </div>
-    <div
-      tw-dialog
-      #deactivateAccount
-      [restoreFocus]="true"
-      class="open:backdrop-blur-none"
-    >
+    <div tw-dialog #deactivateAccount [restoreFocus]="true" class="open:backdrop-blur-none">
       <!-- Dialog container -->
       <div tw-dialog-container>
         <!-- Dialog content -->
         <div class="grid gap-3 text-center sm:text-left">
-          <h1
-            class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-          >
+          <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
             Confirmation
           </h1>
           <p class="text-sm text-gray-600 dark:text-gray-400">
@@ -100,24 +86,15 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
         </div>
       </div>
     </div>
-    <div
-      tw-dialog
-      #confirmation
-      [restoreFocus]="true"
-      class="open:backdrop-blur-none"
-    >
+    <div tw-dialog #confirmation [restoreFocus]="true" class="open:backdrop-blur-none">
       <!-- Dialog container -->
       <div tw-dialog-container>
         <!-- Dialog content -->
         <div class="grid gap-3 text-center sm:text-left">
-          <h1
-            class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-          >
+          <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
             Really sure?
           </h1>
-          <p class="text-sm text-gray-600 dark:text-gray-400">
-            This action cannot be undone.
-          </p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">This action cannot be undone.</p>
         </div>
         <!-- Dialog actions -->
         <div class="flex justify-items-end gap-4 flex-row-reverse">

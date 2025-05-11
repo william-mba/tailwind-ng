@@ -71,9 +71,7 @@ describe('BadgeComponent', () => {
     }
 
     const fixture = TestBed.createComponent(TestApp)
-    const badge = fixture.debugElement.query(
-      By.directive(BadgeComponent)
-    ).componentInstance
+    const badge = fixture.debugElement.query(By.directive(BadgeComponent)).componentInstance
     fixture.detectChanges()
 
     ClassName.toArray(customization).forEach((c) => {
@@ -105,9 +103,7 @@ describe('BadgeComponent', () => {
     class TestApp {}
 
     const fixture = TestBed.createComponent(TestApp)
-    const badge = fixture.debugElement.query(
-      By.directive(BadgeComponent)
-    ).componentInstance
+    const badge = fixture.debugElement.query(By.directive(BadgeComponent)).componentInstance
     fixture.detectChanges()
 
     ClassName.toArray(customization).forEach((c) => {

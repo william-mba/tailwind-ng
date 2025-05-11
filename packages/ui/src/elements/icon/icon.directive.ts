@@ -17,10 +17,6 @@ export class IconDirective extends IconBase {
     } else {
       this.nativeElement.innerHTML = icon
     }
-    classlist(this.nativeElement).merge((value) => [
-      `${size} ${className}`,
-      value,
-      this.class,
-    ])
+    classlist(this.nativeElement).merge((value) => [`${size} ${className}`, value, this.class])
   }
 }

@@ -21,7 +21,9 @@ describe('PopupDirective', () => {
         FakePopup,
         {
           provide: ElementRef,
-          useValue: { nativeElement: document.createElement('div') },
+          useValue: {
+            nativeElement: document.createElement('div'),
+          },
         },
       ],
     })

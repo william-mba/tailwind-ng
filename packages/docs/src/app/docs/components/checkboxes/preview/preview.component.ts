@@ -35,7 +35,10 @@ export class PreviewComponent {
             name: 'Step 2.3',
             done: { fully: false, partially: true },
             subtasks: [
-              { name: 'Step 2.3.1', done: { fully: false } },
+              {
+                name: 'Step 2.3.1',
+                done: { fully: false },
+              },
               { name: 'Step 2.3.2', done: { fully: true } },
             ],
           },
@@ -45,10 +48,7 @@ export class PreviewComponent {
     ],
   }
 
-  updateTask(
-    { checked: fully = false, indeterminate: partially = false },
-    task = this.task
-  ): void {
+  updateTask({ checked: fully = false, indeterminate: partially = false }, task = this.task): void {
     console.time(`${task.name} updated in`)
     task.done = { fully, partially }
     console.timeEnd(`${task.name} updated in`)

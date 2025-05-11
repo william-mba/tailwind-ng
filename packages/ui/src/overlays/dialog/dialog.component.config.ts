@@ -6,8 +6,7 @@ const BASE = () => {
   return className
 }
 const BACKDROP = () => {
-  const className =
-    'open:backdrop-blur-xs open:bg-neutral-500/50 open:dark:bg-gray-500/50'
+  const className = 'open:backdrop-blur-xs open:bg-neutral-500/50 open:dark:bg-gray-500/50'
   return className
 }
 const SCRIM = () => {
@@ -36,9 +35,7 @@ const DefaultConfig = (): DialogConfig => {
 export function provideDialog(customization?: Partial<DialogConfig>): Provider {
   return {
     provide: DIALOG_CONFIG,
-    useValue: !customization
-      ? DefaultConfig()
-      : mergeConfig([DefaultConfig(), customization]),
+    useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
   }
 }
 

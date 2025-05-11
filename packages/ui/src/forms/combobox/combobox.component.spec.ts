@@ -125,7 +125,9 @@ describe('ComboboxComponent', () => {
         providers: [
           {
             provide: ElementRef,
-            useValue: { nativeElement: document.createElement('div') },
+            useValue: {
+              nativeElement: document.createElement('div'),
+            },
           },
           provideIcon({
             map: {
@@ -150,9 +152,7 @@ describe('ComboboxComponent', () => {
             [(selectedValues)]="selections"
           >
             <!-- Label -->
-            <label for="search" class="block text-sm mb-2 font-medium">
-              Quick search
-            </label>
+            <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
             <!-- Input -->
             <input
               tw-input
@@ -197,9 +197,8 @@ describe('ComboboxComponent', () => {
       }
 
       const fixture = TestBed.createComponent(TestComponent)
-      const combobox = fixture.debugElement.query(
-        By.directive(ComboboxComponent)
-      ).componentInstance as ComboboxComponent
+      const combobox = fixture.debugElement.query(By.directive(ComboboxComponent))
+        .componentInstance as ComboboxComponent
       fixture.detectChanges()
       tick()
       expect(combobox.selectionMode).toBe('single')
@@ -216,7 +215,9 @@ describe('ComboboxComponent', () => {
         providers: [
           {
             provide: ElementRef,
-            useValue: { nativeElement: document.createElement('div') },
+            useValue: {
+              nativeElement: document.createElement('div'),
+            },
           },
           provideIcon({
             map: {
@@ -241,9 +242,7 @@ describe('ComboboxComponent', () => {
             [(selectedValues)]="selections"
           >
             <!-- Label -->
-            <label for="search" class="block text-sm mb-2 font-medium">
-              Quick search
-            </label>
+            <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
             <!-- Input -->
             <input
               tw-input
@@ -284,16 +283,12 @@ describe('ComboboxComponent', () => {
       class TestComponent {
         users = USERS_STUB()
         selectionMode = signal('multi')
-        selections = Array.from(
-          { length: SELECTION_LENGTH },
-          (_, i) => this.users[i].name
-        )
+        selections = Array.from({ length: SELECTION_LENGTH }, (_, i) => this.users[i].name)
       }
 
       const fixture = TestBed.createComponent(TestComponent)
-      const combobox = fixture.debugElement.query(
-        By.directive(ComboboxComponent)
-      ).componentInstance as ComboboxComponent
+      const combobox = fixture.debugElement.query(By.directive(ComboboxComponent))
+        .componentInstance as ComboboxComponent
       combobox.open()
       combobox.reset()
       fixture.detectChanges()
@@ -327,7 +322,9 @@ describe('ComboboxComponent', () => {
         providers: [
           {
             provide: ElementRef,
-            useValue: { nativeElement: document.createElement('div') },
+            useValue: {
+              nativeElement: document.createElement('div'),
+            },
           },
           provideIcon({
             map: {
@@ -352,9 +349,7 @@ describe('ComboboxComponent', () => {
             [(selectedValues)]="selections"
           >
             <!-- Label -->
-            <label for="search" class="block text-sm mb-2 font-medium">
-              Quick search
-            </label>
+            <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
             <!-- Input -->
             <input
               tw-input
@@ -395,16 +390,12 @@ describe('ComboboxComponent', () => {
       class TestComponent {
         users = USERS_STUB()
         selectionMode = signal('multi')
-        selections = Array.from(
-          { length: SELECTION_LENGTH },
-          (_, i) => this.users[i].name
-        )
+        selections = Array.from({ length: SELECTION_LENGTH }, (_, i) => this.users[i].name)
       }
 
       const fixture = TestBed.createComponent(TestComponent)
-      const combobox = fixture.debugElement.query(
-        By.directive(ComboboxComponent)
-      ).componentInstance as ComboboxComponent
+      const combobox = fixture.debugElement.query(By.directive(ComboboxComponent))
+        .componentInstance as ComboboxComponent
       combobox.open()
       combobox.reset()
       fixture.detectChanges()

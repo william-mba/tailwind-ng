@@ -75,18 +75,14 @@ describe('ButtonComponent', () => {
       selector: 'test-app',
       standalone: true,
       imports: [ButtonComponent],
-      template: `
-        <button tw-button [class]="customizations">Test button</button>
-      `,
+      template: ` <button tw-button [class]="customizations">Test button</button> `,
     })
     class TestApp {
       customizations = customizations
     }
 
     const fixture = TestBed.createComponent(TestApp)
-    const button = fixture.debugElement.query(
-      By.directive(ButtonComponent)
-    ).componentInstance
+    const button = fixture.debugElement.query(By.directive(ButtonComponent)).componentInstance
     fixture.detectChanges()
 
     ClassName.toArray(customizations).forEach((c) => {
@@ -117,9 +113,7 @@ describe('ButtonComponent', () => {
     class TestApp {}
 
     const fixture = TestBed.createComponent(TestApp)
-    const button = fixture.debugElement.query(
-      By.directive(ButtonComponent)
-    ).componentInstance
+    const button = fixture.debugElement.query(By.directive(ButtonComponent)).componentInstance
     fixture.detectChanges()
 
     ClassName.toArray('bg-red-600 rounded-full gap-3').map((c) => {

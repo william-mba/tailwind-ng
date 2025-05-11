@@ -46,9 +46,8 @@ describe('DialogComponent', () => {
       class TestComponent {}
 
       const testFixture = TestBed.createComponent(TestComponent)
-      const dailog = testFixture.debugElement.query(
-        By.directive(DialogComponent)
-      ).componentInstance as DialogComponent
+      const dailog = testFixture.debugElement.query(By.directive(DialogComponent))
+        .componentInstance as DialogComponent
       dailog.autoClose = true
       dailog.displayDelay = 1000
       testFixture.detectChanges()

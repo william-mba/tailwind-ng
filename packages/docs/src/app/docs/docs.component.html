@@ -1,8 +1,6 @@
 <div>
   <!-- Top bar -->
-  <div
-    class="absolute inset-x-0 top-0 border-b border-gray-950/10 dark:border-white/10"
-  >
+  <div class="absolute inset-x-0 top-0 border-b border-gray-950/10 dark:border-white/10">
     <!-- Top bar on all screens -->
     <div class="bg-white dark:bg-black">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
@@ -31,23 +29,14 @@
               </a>
             </button>
             <button tw-button variant="secondary" size="xs">
-              <a
-                href="https://discord.gg/SXNP9pGh"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
                 <tw-icon
                   name="discord"
                   class="text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                 />
               </a>
             </button>
-            <button
-              (click)="switchTheme()"
-              tw-button
-              variant="secondary"
-              size="xs"
-            >
+            <button (click)="switchTheme()" tw-button variant="secondary" size="xs">
               @if (theme.isDark) {
                 <tw-icon
                   name="sun"
@@ -123,16 +112,10 @@
       </div>
     </div>
     <!-- Secondary top bar / Left nav. trigger on small screens -->
-    <div
-      class="bg-white dark:bg-black border-t lg:hidden border-gray-950/10 dark:border-white/10"
-    >
+    <div class="bg-white dark:bg-black border-t lg:hidden border-gray-950/10 dark:border-white/10">
       <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
         <div class="flex gap-4 items-center">
-          <tw-icon
-            name="bars-3-center-left"
-            class="text-gray-400"
-            (click)="toggleNav()"
-          />
+          <tw-icon name="bars-3-center-left" class="text-gray-400" (click)="toggleNav()" />
         </div>
       </div>
     </div>
@@ -151,10 +134,7 @@
           @switch (item.category) {
             @case ('overview') {
               <div class="flex flex-col gap-2">
-                <div
-                  class="flex items-center gap-3 font-semibold"
-                  (click)="toggleNav()"
-                >
+                <div class="flex items-center gap-3 font-semibold" (click)="toggleNav()">
                   <tw-icon name="book-open" class="text-gray-400" />
                   <a [routerLink]="item.route">
                     {{ item.label }}

@@ -68,9 +68,7 @@ describe('AvatarComponent', () => {
     class TestApp {}
 
     const fixture = TestBed.createComponent(TestApp)
-    const avatar = fixture.debugElement.query(
-      By.directive(AvatarComponent)
-    ).componentInstance
+    const avatar = fixture.debugElement.query(By.directive(AvatarComponent)).componentInstance
     fixture.detectChanges()
 
     ClassName.toArray(customization).forEach((c) => {
@@ -94,9 +92,7 @@ describe('AvatarComponent', () => {
     class TestApp {}
 
     const fixture = TestBed.createComponent(TestApp)
-    const avatar = fixture.debugElement.query(
-      By.directive(AvatarComponent)
-    ).componentInstance
+    const avatar = fixture.debugElement.query(By.directive(AvatarComponent)).componentInstance
     fixture.detectChanges()
 
     ClassName.toArray(customization).forEach((c) => {

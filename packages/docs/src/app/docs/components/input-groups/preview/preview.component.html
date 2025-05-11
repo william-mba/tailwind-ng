@@ -19,9 +19,7 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="pill-shape" class="block text-sm mb-2 font-medium">
-        Email
-      </label>
+      <label for="pill-shape" class="block text-sm mb-2 font-medium"> Email </label>
       <input
         tw-input
         type="email"
@@ -36,9 +34,7 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="bg-and-bottom-border" class="block text-sm mb-2 font-medium">
-        Email
-      </label>
+      <label for="bg-and-bottom-border" class="block text-sm mb-2 font-medium"> Email </label>
       <input
         tw-input
         type="email"
@@ -53,18 +49,8 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div class="relative">
-      <input
-        tw-input
-        type="text"
-        id="user-name1"
-        size="sm"
-        placeholder="Marco Polo"
-        class="pt-6"
-      />
-      <label
-        for="user-name1"
-        class="absolute inset-y-0 left-3 top-2 text-xs font-medium"
-      >
+      <input tw-input type="text" id="user-name1" size="sm" placeholder="Marco Polo" class="pt-6" />
+      <label for="user-name1" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
         Name
       </label>
     </div>
@@ -83,10 +69,7 @@
           placeholder="you@example.com"
           class="rounded-b-none pt-6 backdrop-blur-none"
         />
-        <label
-          for="email7"
-          class="absolute inset-y-0 left-3 top-2 text-xs font-medium"
-        >
+        <label for="email7" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
           Email
         </label>
       </div>
@@ -99,10 +82,7 @@
           placeholder="Enter your password"
           class="rounded-t-none pt-6 backdrop-blur-none"
         />
-        <label
-          for="password"
-          class="absolute inset-y-0 left-3 top-2 text-xs font-medium"
-        >
+        <label for="password" class="absolute inset-y-0 left-3 top-2 text-xs font-medium">
           Password
         </label>
       </div>
@@ -117,12 +97,7 @@
         <label for="cornerhint" class="font-medium">Email</label>
         <span class="opacity-60 text-gray-500">Optional</span>
       </div>
-      <input
-        tw-input
-        type="email"
-        id="cornerhint"
-        placeholder="you@example.com"
-      />
+      <input tw-input type="email" id="cornerhint" placeholder="you@example.com" />
     </div>
   </div>
   <h2 class="font-medium">With overlapping label</h2>
@@ -150,9 +125,7 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="search" class="block text-sm mb-2 font-medium">
-        Quick search
-      </label>
+      <label for="search" class="block text-sm mb-2 font-medium"> Quick search </label>
       <div class="relative">
         <input
           tw-input
@@ -177,9 +150,7 @@
     <div>
       <label for="email3" class="block text-sm mb-2 font-medium">Email</label>
       <input tw-input type="email" id="email3" />
-      <p class="opacity-60 text-sm mt-2 text-gray-500">
-        We'll only use this for spam.
-      </p>
+      <p class="opacity-60 text-sm mt-2 text-gray-500">We'll only use this for spam.</p>
     </div>
   </div>
   <h2 class="font-medium">Disabled input</h2>
@@ -188,13 +159,7 @@
   >
     <div>
       <label for="email4" class="block text-sm mb-2 font-medium">Email</label>
-      <input
-        tw-input
-        disabled
-        type="email"
-        id="email4"
-        placeholder="you@example.com"
-      />
+      <input tw-input disabled type="email" id="email4" placeholder="you@example.com" />
     </div>
   </div>
   <h2 class="font-medium">With validation error</h2>
@@ -213,10 +178,7 @@
           placeholder="you@example.com"
         />
         @if (isInvalid(email)) {
-          <tw-icon
-            name="exclamation-circle"
-            class="absolute inset-y-0 right-3 text-red-600/80"
-          />
+          <tw-icon name="exclamation-circle" class="absolute inset-y-0 right-3 text-red-600/80" />
         }
       </div>
       @if (isInvalid(email)) {
@@ -233,13 +195,7 @@
     <div>
       <label for="leadingicon" class="block text-sm font-medium">Email</label>
       <div class="relative mt-2">
-        <input
-          tw-input
-          type="email"
-          id="leadingicon"
-          class="pl-10"
-          placeholder="you@example.com"
-        />
+        <input tw-input type="email" id="leadingicon" class="pl-10" placeholder="you@example.com" />
         <tw-icon
           name="envelope"
           class="absolute inset-y-0 left-3 text-gray-400 dark:text-gray-600 pointer-events-none"
@@ -252,17 +208,9 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="trailingicon" class="block text-sm font-medium">
-        Account number
-      </label>
+      <label for="trailingicon" class="block text-sm font-medium"> Account number </label>
       <div class="relative mt-2">
-        <input
-          tw-input
-          type="email"
-          id="trailingicon"
-          class="pr-10"
-          placeholder="000-00-0000"
-        />
+        <input tw-input type="email" id="trailingicon" class="pr-10" placeholder="000-00-0000" />
         <tw-icon
           name="question-mark-circle"
           class="absolute inset-y-0 right-3 text-gray-400 dark:text-gray-600 cursor-pointer"
@@ -275,21 +223,13 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="add-on" class="block text-sm font-medium">
-        Company Website
-      </label>
+      <label for="add-on" class="block text-sm font-medium"> Company Website </label>
       <div tw-group class="mt-2 *:last:rounded-r-md">
         <tw-icon
           name="http"
           class="select-none flex items-center px-3 text-gray-500 dark:text-gray-600"
         />
-        <input
-          tw-input
-          type="url"
-          id="add-on"
-          class="sm:w-64"
-          placeholder="www.example.com"
-        />
+        <input tw-input type="url" id="add-on" class="sm:w-64" placeholder="www.example.com" />
       </div>
     </div>
   </div>
@@ -298,9 +238,7 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="inline-add-on" class="block text-sm font-medium">
-        Company Website
-      </label>
+      <label for="inline-add-on" class="block text-sm font-medium"> Company Website </label>
       <div class="mt-2 relative">
         <input
           tw-input
@@ -309,10 +247,7 @@
           class="pl-14.5"
           placeholder="www.example.com"
         />
-        <tw-icon
-          name="http"
-          class="absolute inset-y-0 left-3 text-gray-500 dark:text-gray-600"
-        />
+        <tw-icon name="http" class="absolute inset-y-0 left-3 text-gray-500 dark:text-gray-600" />
       </div>
     </div>
   </div>
@@ -321,17 +256,9 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="inline-add-on-2" class="block text-sm font-medium">
-        Price
-      </label>
+      <label for="inline-add-on-2" class="block text-sm font-medium"> Price </label>
       <div class="mt-2 relative">
-        <input
-          tw-input
-          type="text"
-          id="inline-add-on-2"
-          class="pl-7 pr-12"
-          placeholder="0.0"
-        />
+        <input tw-input type="text" id="inline-add-on-2" class="pl-7 pr-12" placeholder="0.0" />
         <tw-icon
           name="dollar-sign"
           class="absolute inset-y-0 left-2 text-sm text-gray-500 dark:text-gray-600"
@@ -349,9 +276,7 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="phone-number" class="block text-sm font-medium">
-        Phone Number
-      </label>
+      <label for="phone-number" class="block text-sm font-medium"> Phone Number </label>
       <div class="relative mt-2">
         <input
           tw-input
@@ -387,13 +312,7 @@
       <label for="price" class="block text-sm mb-2 font-medium">Price</label>
       <div class="relative">
         <!-- Input -->
-        <input
-          tw-input
-          type="text"
-          id="price"
-          placeholder="0.0"
-          class="pl-8 pr-18"
-        />
+        <input tw-input type="text" id="price" placeholder="0.0" class="pl-8 pr-18" />
         <tw-icon
           name="dollar-sign"
           class="opacity-60 absolute inset-y-0 left-0 pl-2 pointer-events-none text-gray-400"
@@ -422,9 +341,7 @@
     class="overflow-x-auto grid sm:flex gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
   >
     <div>
-      <label for="candidate" class="block text-sm font-medium mb-2">
-        Search candidates
-      </label>
+      <label for="candidate" class="block text-sm font-medium mb-2"> Search candidates </label>
       <div tw-group>
         <div class="relative">
           <tw-icon
@@ -441,10 +358,7 @@
           />
         </div>
         <button tw-button size="sm" variant="secondary">
-          <tw-icon
-            name="bars-arrow-up"
-            class="text-gray-400 dark:text-gray-600"
-          />
+          <tw-icon name="bars-arrow-up" class="text-gray-400 dark:text-gray-600" />
           Sort
         </button>
       </div>

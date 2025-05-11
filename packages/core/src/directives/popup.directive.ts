@@ -8,8 +8,7 @@ import { BaseActions, BaseProps } from './base.directive'
 /**
  * @TailwindNG Popup base props.
  */
-export interface PopupProps<T extends HTMLElement = HTMLElement>
-  extends BaseProps<T> {
+export interface PopupProps<T extends HTMLElement = HTMLElement> extends BaseProps<T> {
   readonly id: string
   /**
    * Restores focus to the popup's trigger when the popup closes.

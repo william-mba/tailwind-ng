@@ -23,9 +23,7 @@ describe('CheckboxComponent', () => {
     class TestAppComponent {}
 
     const fixture = TestBed.createComponent(TestAppComponent)
-    const component = fixture.debugElement.query(
-      By.directive(CheckboxComponent)
-    )
+    const component = fixture.debugElement.query(By.directive(CheckboxComponent))
     fixture.detectChanges()
 
     let className = ''
@@ -33,9 +31,7 @@ describe('CheckboxComponent', () => {
       className = TestBed.inject(CHECKBOX_CONFIG) || ''
     })
 
-    const checkboxInput = component.query(
-      By.css('input[type="checkbox"]')
-    ).nativeElement
+    const checkboxInput = component.query(By.css('input[type="checkbox"]')).nativeElement
 
     ClassName.toArray(className).forEach((c) => {
       expect(checkboxInput.classList.contains(c)).toBe(true)

@@ -10,12 +10,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core'
 import { ComboboxComponent } from '../combobox.component'
-import {
-  classlist,
-  COMBOBOX_ITEM_CONFIG,
-  ComboboxItem,
-  ComboboxItemBase,
-} from '@tailwind-ng/core'
+import { classlist, COMBOBOX_ITEM_CONFIG, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core'
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -30,7 +25,10 @@ import {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ComboboxItemBase, useExisting: ComboboxItemComponent },
+    {
+      provide: ComboboxItemBase,
+      useExisting: ComboboxItemComponent,
+    },
   ],
 })
 export class ComboboxItemComponent
@@ -43,15 +41,11 @@ export class ComboboxItemComponent
     skipSelf: true,
     host: true,
   })
-  private readonly _normalizedValue = computed(() =>
-    this.value.toLocaleLowerCase()
-  )
+  private readonly _normalizedValue = computed(() => this.value.toLocaleLowerCase())
   private readonly _destroyRef = inject(DestroyRef)
 
   ngAfterContentInit(): void {
-    this._combobox
-      .input()
-      ?.valueChange.subscribe(this.selectIfNeeded.bind(this))
+    this._combobox.input()?.valueChange.subscribe(this.selectIfNeeded.bind(this))
     const subs: { unsubscribe(): void }[] = []
     subs.push(
       this._combobox.opened.subscribe(() => {
@@ -76,10 +70,7 @@ export class ComboboxItemComponent
     // to determine the initial selected state of the combobox item.
     if (!this.selected() && this._combobox.selectedValues().has(this.value)) {
       this.selected.set(true)
-    } else if (
-      this.selected() &&
-      !this._combobox.selectedValues().has(this.value)
-    ) {
+    } else if (this.selected() && !this._combobox.selectedValues().has(this.value)) {
       this.selected.set(false)
     }
     if (this._combobox.selectionMode === 'single' && this.selected()) {
@@ -101,9 +92,7 @@ export class ComboboxItemComponent
     classlist(this.nativeElement).set(inject(COMBOBOX_ITEM_CONFIG), this.class)
   }
 
-  private selectIfNeeded(
-    value = this._combobox.input()?.normalizedValue
-  ): void {
+  private selectIfNeeded(value = this._combobox.input()?.normalizedValue): void {
     if (this.selected()) return
     if (this._normalizedValue() === value) {
       this.select()
@@ -152,10 +141,6 @@ export class ComboboxItemComponent
 
   protected override removeEventListeners(): void {
     super.removeEventListeners()
-    this.nativeElement.removeEventListener(
-      'click',
-      this.select.bind(this),
-      false
-    )
+    this.nativeElement.removeEventListener('click', this.select.bind(this), false)
   }
 }

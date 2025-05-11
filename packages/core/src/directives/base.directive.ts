@@ -78,12 +78,7 @@ export interface BaseActions {
   scrollIntoView(options?: ScrollIntoViewOptions, element?: HTMLElement): void
 }
 
-type FocusBehavior =
-  | 'self'
-  | 'nextSibling'
-  | 'previousSibling'
-  | 'firstChild'
-  | 'lastChild'
+type FocusBehavior = 'self' | 'nextSibling' | 'previousSibling' | 'firstChild' | 'lastChild'
 /**
  * Focus options.
  */
@@ -183,21 +178,13 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement>
    * Those listeners will be removed when the component is destroyed.
    */
   protected addEventListeners() {
-    this.nativeElement.addEventListener(
-      'click',
-      this.preventInteractionIfDisabled.bind(this),
-      true
-    )
+    this.nativeElement.addEventListener('click', this.preventInteractionIfDisabled.bind(this), true)
     this.nativeElement.addEventListener(
       'pointerdown',
       this.preventInteractionIfDisabled.bind(this),
       true
     )
-    this.nativeElement.addEventListener(
-      'keydown',
-      this.onKeyboardEvent.bind(this),
-      false
-    )
+    this.nativeElement.addEventListener('keydown', this.onKeyboardEvent.bind(this), false)
   }
 
   /**
@@ -217,11 +204,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement>
       this.preventInteractionIfDisabled.bind(this),
       true
     )
-    this.nativeElement.removeEventListener(
-      'keydown',
-      this.onKeyboardEvent.bind(this),
-      false
-    )
+    this.nativeElement.removeEventListener('keydown', this.onKeyboardEvent.bind(this), false)
   }
 
   // A disabled element should not be interactive.
@@ -352,11 +335,7 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement>
     element: HTMLElement = this.nativeElement
   ): void {
     requestAnimationFrame(() => {
-      const {
-        block = 'nearest',
-        inline = 'nearest',
-        behavior = 'instant',
-      } = options
+      const { block = 'nearest', inline = 'nearest', behavior = 'instant' } = options
       element.scrollIntoView({
         block: block,
         inline: inline,

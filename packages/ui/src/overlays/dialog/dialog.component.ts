@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  ViewEncapsulation,
-} from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core'
 import { classlist, DIALOG_CONFIG, DialogBase, TwIf } from '@tailwind-ng/core'
 
 /** Dialog component */

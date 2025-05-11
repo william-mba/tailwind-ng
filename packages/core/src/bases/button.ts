@@ -36,9 +36,10 @@ export interface ButtonConfig
   fab?: string
 }
 
-export const BUTTON_CONFIG = InjectionTokenFactory.create<
-  Partial<ButtonConfig>
->({}, 'BUTTON_CONFIG')
+export const BUTTON_CONFIG = InjectionTokenFactory.create<Partial<ButtonConfig>>(
+  {},
+  'BUTTON_CONFIG'
+)
 
 @Directive({
   host: {
@@ -138,11 +139,7 @@ export abstract class ButtonBase
   protected override addEventListeners(): void {
     super.addEventListeners()
     if (this.popup) {
-      this.nativeElement.addEventListener(
-        'pointerup',
-        this.onPointerUp.bind(this),
-        false
-      )
+      this.nativeElement.addEventListener('pointerup', this.onPointerUp.bind(this), false)
     }
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false)
   }
@@ -150,17 +147,9 @@ export abstract class ButtonBase
   protected override removeEventListeners(): void {
     super.removeEventListeners()
     if (this.popup) {
-      this.nativeElement.removeEventListener(
-        'pointerup',
-        this.onPointerUp.bind(this),
-        false
-      )
+      this.nativeElement.removeEventListener('pointerup', this.onPointerUp.bind(this), false)
     }
-    this.nativeElement.removeEventListener(
-      'keyup',
-      this.onKeyup.bind(this),
-      false
-    )
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false)
   }
 }
 

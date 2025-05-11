@@ -53,11 +53,7 @@ translate-x-0 scale-100 p-3.5'
 
   it('should merge values', () => {
     const result = ClassName.toArray(
-      ClassName.merge(
-        'grid w-max gap-2',
-        'bg-white',
-        'bg-gray-200 hover:bg-gray-200'
-      )
+      ClassName.merge('grid w-max gap-2', 'bg-white', 'bg-gray-200 hover:bg-gray-200')
     )
 
     expect(result.includes('grid')).toBeTruthy()
@@ -132,8 +128,7 @@ translate-x-0 scale-100 p-3.5'
   it('should keep classes deletor in merged values', () => {
     const defaultValues =
       'bg-red-100 text-red-600 text-sm ring-red-600 translate-0 px-3.5 translate-y-0 ring-inherit ring-inset rounded-md scale-y-100 py-2'
-    const customValues =
-      'bg-blue- text-blue-600 ring- ring-2 translate- scale-100 px-'
+    const customValues = 'bg-blue- text-blue-600 ring- ring-2 translate- scale-100 px-'
     const expectedResult = ClassName.merge(defaultValues, customValues, {
       keepClassDeletor: true,
     })

@@ -1,9 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ViewEncapsulation,
-} from '@angular/core'
+import { AfterViewInit, ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
 import { RouterLink } from '@angular/router'
 import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
 

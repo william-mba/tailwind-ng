@@ -1,19 +1,12 @@
 import { Directive, forwardRef, Input, OnInit } from '@angular/core'
 import { PopupDirective } from '../directives'
 import { InjectionTokenFactory } from '../tokens/injection-token.factory'
-import {
-  PopupAdvancedActions,
-  PopupBaseActions,
-  PopupProps,
-} from '../directives'
+import { PopupAdvancedActions, PopupBaseActions, PopupProps } from '../directives'
 
 /**
  * @TailwindNG Dialog component interface.
  */
-export interface Dialog
-  extends PopupProps,
-    PopupBaseActions,
-    PopupAdvancedActions {
+export interface Dialog extends PopupProps, PopupBaseActions, PopupAdvancedActions {
   /**
    * Whether the dialog should close automatically after the given `displayDuration`.
    * Default is `false`.
@@ -44,9 +37,10 @@ export interface DialogConfig {
   backdrop: string
 }
 
-export const DIALOG_CONFIG = InjectionTokenFactory.create<
-  Partial<DialogConfig>
->({}, 'DIALOG_CONFIG')
+export const DIALOG_CONFIG = InjectionTokenFactory.create<Partial<DialogConfig>>(
+  {},
+  'DIALOG_CONFIG'
+)
 
 @Directive({
   host: {
@@ -54,7 +48,10 @@ export const DIALOG_CONFIG = InjectionTokenFactory.create<
     '[attr.aria-modal]': 'isModal',
   },
   providers: [
-    { provide: PopupDirective, useExisting: forwardRef(() => DialogBase) },
+    {
+      provide: PopupDirective,
+      useExisting: forwardRef(() => DialogBase),
+    },
   ],
 })
 export abstract class DialogBase
@@ -85,13 +82,11 @@ export abstract class DialogBase
             this.nativeElement.querySelector('h1')?.textContent?.trim() || null
           if (!this.nativeElement.ariaLabel) {
             this.nativeElement.ariaLabel =
-              this.nativeElement.querySelector('h2')?.textContent?.trim() ||
-              null
+              this.nativeElement.querySelector('h2')?.textContent?.trim() || null
           }
           if (!this.nativeElement.ariaLabel) {
             this.nativeElement.ariaLabel =
-              this.nativeElement.querySelector('h3')?.textContent?.trim() ||
-              null
+              this.nativeElement.querySelector('h3')?.textContent?.trim() || null
           }
         })
       }

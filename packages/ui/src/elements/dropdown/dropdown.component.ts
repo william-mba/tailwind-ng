@@ -24,7 +24,10 @@ import {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: DropdownBase, useExisting: forwardRef(() => DropdownComponent) },
+    {
+      provide: DropdownBase,
+      useExisting: forwardRef(() => DropdownComponent),
+    },
   ],
 })
 export class DropdownComponent extends DropdownBase implements Dropdown {
@@ -39,43 +42,19 @@ export class DropdownComponent extends DropdownBase implements Dropdown {
     if (this.closeOnBlur) {
       this.nativeElement.addEventListener('blur', this.onBlur.bind(this), true)
     }
-    this.nativeElement.addEventListener(
-      'pointerover',
-      this.onPointerEvent.bind(this),
-      false
-    )
-    this.nativeElement.addEventListener(
-      'pointerleave',
-      this.onPointerEvent.bind(this),
-      false
-    )
+    this.nativeElement.addEventListener('pointerover', this.onPointerEvent.bind(this), false)
+    this.nativeElement.addEventListener('pointerleave', this.onPointerEvent.bind(this), false)
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false)
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners()
     if (this.closeOnBlur) {
-      this.nativeElement.removeEventListener(
-        'blur',
-        this.onBlur.bind(this),
-        true
-      )
+      this.nativeElement.removeEventListener('blur', this.onBlur.bind(this), true)
     }
-    this.nativeElement.removeEventListener(
-      'pointerover',
-      this.onPointerEvent.bind(this),
-      false
-    )
-    this.nativeElement.removeEventListener(
-      'pointerleave',
-      this.onPointerEvent.bind(this),
-      false
-    )
-    this.nativeElement.removeEventListener(
-      'keyup',
-      this.onKeyup.bind(this),
-      false
-    )
+    this.nativeElement.removeEventListener('pointerover', this.onPointerEvent.bind(this), false)
+    this.nativeElement.removeEventListener('pointerleave', this.onPointerEvent.bind(this), false)
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false)
   }
 
   protected onPointerEvent(event: UIEvent) {

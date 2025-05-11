@@ -25,25 +25,19 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
       <div tw-dialog-container class="sm:max-w-sm">
         <!-- Dialog content -->
         <div class="grid gap-3 text-center">
-          <tw-icon
-            name="check"
-            class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3"
-          />
+          <tw-icon name="check" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
           <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
             <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
               Payment successful
             </h1>
             <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur amet labore. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit.
             </p>
           </div>
         </div>
         <!-- Dialog actions -->
-        <button tw-button class="w-full" (click)="dialog.close()">
-          Go back to dashboard
-        </button>
+        <button tw-button class="w-full" (click)="dialog.close()">Go back to dashboard</button>
       </div>
     </div>
   `,

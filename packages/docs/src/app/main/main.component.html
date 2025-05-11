@@ -23,21 +23,11 @@
       </a>
     </button>
     <button tw-button variant="text" size="xs" class="max-sm:size-8">
-      <a
-        href="https://discord.gg/SXNP9pGh"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://discord.gg/SXNP9pGh" target="_blank" rel="noopener noreferrer">
         <tw-icon name="discord" class="max-sm:size-4" />
       </a>
     </button>
-    <button
-      (click)="switchTheme()"
-      tw-button
-      variant="text"
-      size="xs"
-      class="max-sm:size-8"
-    >
+    <button (click)="switchTheme()" tw-button variant="text" size="xs" class="max-sm:size-8">
       @if (theme.isDark) {
         <tw-icon name="sun" class="max-sm:size-4" />
       } @else {
@@ -47,9 +37,7 @@
   </div>
 </section>
 <!-- Main content -->
-<section
-  class="relative mt-24 lg:mt-12 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid"
->
+<section class="relative mt-24 lg:mt-12 p-3 lg:p-0 lg:px-9 lg:w-3/4 xl:w-3/5 mx-auto grid">
   <!-- Rotating box -->
   <div
     routerLink="components"
@@ -95,9 +83,7 @@
       at any scale.
     </h1>
     <!-- Description -->
-    <div
-      class="mt-8 text-lg lg:text-xl font-light max-lg:text-center md:max-lg:px-6"
-    >
+    <div class="mt-8 text-lg lg:text-xl font-light max-lg:text-center md:max-lg:px-6">
       A library of beautiful, fast and accessible UI components
       <br class="hidden lg:block" />
       built on top of
@@ -111,9 +97,7 @@
     </div>
   </div>
   <!-- Call to action -->
-  <div
-    class="my-8 place-self-center lg:place-self-start gap-3 grid *:mx-auto sm:flex"
-  >
+  <div class="my-8 place-self-center lg:place-self-start gap-3 grid *:mx-auto sm:flex">
     <button
       tw-button
       [isFab]="true"
@@ -135,17 +119,13 @@
   </div>
 </section>
 <!-- Features list -->
-<section
-  class="relative p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0 mt-8"
->
+<section class="relative p-3 lg:px-9 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto grid px-4 lg:p-0 mt-8">
   <p class="mb-4 font-heading">Why Tailwind NG?</p>
   <div
     class="grid grid-cols-1 gap-8 my-4 sm:mb-10 sm:grid-cols-2 lg:grid-cols-3 *:gap-3 *:grid *:place-content-start"
   >
     <div>
-      <span
-        class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
-      >
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
         <tw-icon
           name="sparkles"
           size="lg"
@@ -158,9 +138,7 @@
       </p>
     </div>
     <div>
-      <span
-        class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
-      >
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
         <tw-icon
           name="bolt"
           size="lg"
@@ -173,9 +151,7 @@
       </p>
     </div>
     <div>
-      <span
-        class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
-      >
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
         <tw-icon
           name="accessibility"
           size="lg"
@@ -185,20 +161,14 @@
       </span>
       <p class="text-gray-600 dark:text-gray-400">
         Accessibility features compliant with
-        <a
-          href="https://www.w3.org/TR/wai-aria/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://www.w3.org/TR/wai-aria/" target="_blank" rel="noopener noreferrer">
           W3C WAI-ARIA
         </a>
         standards out of the box.
       </p>
     </div>
     <div>
-      <span
-        class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
-      >
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
         <tw-icon
           name="beaker"
           size="lg"
@@ -211,9 +181,7 @@
       </p>
     </div>
     <div>
-      <span
-        class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
-      >
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
         <tw-icon
           name="mix-vertical"
           size="lg"
@@ -222,14 +190,11 @@
         Customizable
       </span>
       <p class="text-gray-600 dark:text-gray-400">
-        Fully-customizable and predictable components to fit your specific
-        needs.
+        Fully-customizable and predictable components to fit your specific needs.
       </p>
     </div>
     <div>
-      <span
-        class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
-      >
+      <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
         <tw-icon
           name="star"
           size="lg"
@@ -238,15 +203,13 @@
         Unique DX
       </span>
       <p class="text-gray-600 dark:text-gray-400">
-        Top-notch developer experience with fully-typed and extensible APIs for
-        seamless integration.
+        Top-notch developer experience with fully-typed and extensible APIs for seamless
+        integration.
       </p>
     </div>
   </div>
   <div class="rounded-md mb-8 gap-3 grid">
-    <span
-      class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center"
-    >
+    <span class="font-heading font-semibold text-xl dark:text-gray-100 flex gap-2 items-center">
       <tw-icon
         name="license"
         size="lg"

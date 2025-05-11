@@ -2,8 +2,7 @@ import { Provider } from '@angular/core'
 import { BADGE_CONFIG, BadgeConfig, mergeConfig } from '@tailwind-ng/core'
 
 const DefaultConfig = (): BadgeConfig => {
-  const className =
-    'inline-flex gap-1 items-center justify-center text-xs font-medium'
+  const className = 'inline-flex gap-1 items-center justify-center text-xs font-medium'
   return {
     className,
     xs: 'px-1.5 py-0.5',
@@ -22,9 +21,7 @@ const DefaultConfig = (): BadgeConfig => {
 export function provideBadge(customization?: Partial<BadgeConfig>): Provider {
   return {
     provide: BADGE_CONFIG,
-    useValue: !customization
-      ? DefaultConfig()
-      : mergeConfig([DefaultConfig(), customization]),
+    useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
   }
 }
 

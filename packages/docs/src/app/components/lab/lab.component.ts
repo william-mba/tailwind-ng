@@ -1,12 +1,6 @@
 import { Component, InputSignal } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
-import {
-  TwButton,
-  TwComboboxModule,
-  TwIcon,
-  TwDialog,
-  TwCheckbox,
-} from 'tailwind-ng'
+import { TwButton, TwComboboxModule, TwIcon, TwDialog, TwCheckbox } from 'tailwind-ng'
 import { isCombobox, Popup } from '@tailwind-ng/core'
 
 interface User {
@@ -62,7 +56,10 @@ export class LabComponent {
             name: 'Step 2.3',
             done: { fully: false, partially: true },
             subtasks: [
-              { name: 'Step 2.3.1', done: { fully: false } },
+              {
+                name: 'Step 2.3.1',
+                done: { fully: false },
+              },
               { name: 'Step 2.3.2', done: { fully: true } },
             ],
           },
@@ -72,10 +69,7 @@ export class LabComponent {
     ],
   }
 
-  updateTask(
-    { checked: fully = false, indeterminate: partially = false },
-    task = this.task
-  ): void {
+  updateTask({ checked: fully = false, indeterminate: partially = false }, task = this.task): void {
     console.time(`${task.name} updated in`)
     task.done = { fully, partially }
     console.timeEnd(`${task.name} updated in`)
@@ -265,9 +259,7 @@ export class LabComponent {
           filtered.forEach((f) => usersMap.set(f.name, f))
           this.users1 = [...usersMap.values()]
         } else {
-          this.users1 = this._users.filter((x) =>
-            this.checkMatch(x.name, value)
-          )
+          this.users1 = this._users.filter((x) => this.checkMatch(x.name, value))
         }
         break
       case 2:
@@ -279,9 +271,7 @@ export class LabComponent {
           filtered.forEach((f) => usersMap.set(f.name, f))
           this.users2 = [...usersMap.values()]
         } else {
-          this.users2 = this._users.filter((x) =>
-            this.checkMatch(x.name, value)
-          )
+          this.users2 = this._users.filter((x) => this.checkMatch(x.name, value))
         }
         break
       case 3:

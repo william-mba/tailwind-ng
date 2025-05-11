@@ -15,10 +15,7 @@ const DefaultConfig = () => {
 export function provideDropdown(className = ''): Provider {
   return {
     provide: DROPDOWN_CONFIG,
-    useValue:
-      className.length < 3
-        ? DefaultConfig()
-        : ClassName.merge(DefaultConfig(), className),
+    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
   }
 }
 

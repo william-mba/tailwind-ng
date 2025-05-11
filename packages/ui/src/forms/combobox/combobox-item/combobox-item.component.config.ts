@@ -13,10 +13,7 @@ const DefaultConfig = () => {
 export function provideComboboxItem(className = ''): Provider {
   return {
     provide: COMBOBOX_ITEM_CONFIG,
-    useValue:
-      className.length < 3
-        ? DefaultConfig()
-        : ClassName.merge(DefaultConfig(), className),
+    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
   }
 }
 export function withComboboxItem(className = ''): Provider {

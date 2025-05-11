@@ -48,24 +48,12 @@ export class ToggleComponent extends ToggleBase implements Toggle {
       passive: true,
       capture: true,
     })
-    this.nativeElement.addEventListener(
-      'keyup',
-      this.onKeydown.bind(this),
-      true
-    )
+    this.nativeElement.addEventListener('keyup', this.onKeydown.bind(this), true)
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners()
-    this.nativeElement.removeEventListener(
-      'click',
-      this.toggle.bind(this),
-      true
-    )
-    this.nativeElement.removeEventListener(
-      'keyup',
-      this.onKeydown.bind(this),
-      true
-    )
+    this.nativeElement.removeEventListener('click', this.toggle.bind(this), true)
+    this.nativeElement.removeEventListener('keyup', this.onKeydown.bind(this), true)
   }
 }

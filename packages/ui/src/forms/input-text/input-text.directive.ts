@@ -9,7 +9,12 @@ import { classlist, INPUT_TEXT_CONFIG, InputTextBase } from '@tailwind-ng/core'
   input[tw-input][type="tel"], input[twInput][type="tel"],
   input[tw-input][type="url"], input[twInput][type="url"]`,
   exportAs: 'twInputText',
-  providers: [{ provide: InputTextBase, useExisting: InputTextDirective }],
+  providers: [
+    {
+      provide: InputTextBase,
+      useExisting: InputTextDirective,
+    },
+  ],
 })
 export class InputTextDirective extends InputTextBase {
   protected override buildStyle(): void {

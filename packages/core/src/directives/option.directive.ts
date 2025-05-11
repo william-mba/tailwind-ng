@@ -31,11 +31,7 @@ export class OptionDirective extends BaseDirective {
   }
   protected override removeEventListeners(): void {
     super.removeEventListeners()
-    this.nativeElement.removeEventListener(
-      'keyup',
-      this.onKeyup.bind(this),
-      false
-    )
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false)
   }
 
   protected onKeyup(event: KeyboardEvent): void {

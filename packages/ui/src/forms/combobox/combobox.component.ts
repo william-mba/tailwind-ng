@@ -34,9 +34,7 @@ import {
     <ng-content select="label" />
     <div class="relative">
       <ng-content select="input[type=text], input[tw-input], input[twInput]" />
-      <ng-content
-        select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]"
-      />
+      <ng-content select="tw-icon, [tw-icon], [twIcon], tw-button, [tw-button], [twButton]" />
     </div>
     <ng-container *twIf="isOpened()">
       <div class="relative"><ng-content /></div>
@@ -44,12 +42,14 @@ import {
   `,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ComboboxBase, useExisting: ComboboxComponent }],
+  providers: [
+    {
+      provide: ComboboxBase,
+      useExisting: ComboboxComponent,
+    },
+  ],
 })
-export class ComboboxComponent
-  extends ComboboxBase
-  implements Combobox, AfterContentInit
-{
+export class ComboboxComponent extends ComboboxBase implements Combobox, AfterContentInit {
   readonly dropdown = contentChild(DropdownBase)
   readonly input = contentChild(InputTextBase)
   readonly resetted = output<void>()

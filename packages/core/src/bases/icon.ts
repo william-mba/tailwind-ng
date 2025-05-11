@@ -23,10 +23,7 @@ export interface IconConfig extends Partial<Record<SizeOption, string>> {
 export function isIcon(component: unknown): component is Icon {
   return component instanceof IconBase
 }
-export const ICON_CONFIG = InjectionTokenFactory.create<Partial<IconConfig>>(
-  {},
-  'ICON_CONFIG'
-)
+export const ICON_CONFIG = InjectionTokenFactory.create<Partial<IconConfig>>({}, 'ICON_CONFIG')
 
 @Directive()
 export abstract class IconBase extends BaseDirective implements Icon {

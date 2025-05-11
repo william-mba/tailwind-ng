@@ -76,9 +76,7 @@ export const GetButtonConfig = () => DefaultConfig()
 export function provideButton(customization?: Partial<ButtonConfig>): Provider {
   return {
     provide: BUTTON_CONFIG,
-    useValue: !customization
-      ? DefaultConfig()
-      : mergeConfig([DefaultConfig(), customization]),
+    useValue: !customization ? DefaultConfig() : mergeConfig([DefaultConfig(), customization]),
   }
 }
 export function withButton(customization?: Partial<ButtonConfig>): Provider {

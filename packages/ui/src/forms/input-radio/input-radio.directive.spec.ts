@@ -22,14 +22,7 @@ describe('InputRadioDirective', () => {
       selector: 'tw-test-app',
       standalone: true,
       imports: [InputRadioDirective],
-      template: `
-        <input
-          tw-input
-          type="radio"
-          name="notification"
-          id="email-notification"
-        />
-      `,
+      template: ` <input tw-input type="radio" name="notification" id="email-notification" /> `,
     })
     class TestAppComponent {}
 

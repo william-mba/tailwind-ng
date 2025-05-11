@@ -55,15 +55,9 @@ describe('ButtonGroupComponent', () => {
     ).componentInstance
     fixture.detectChanges()
 
-    expect(
-      buttonGroup.nativeElement.className.includes('rounded-full')
-    ).toBeTruthy()
-    expect(
-      buttonGroup.nativeElement.className.includes(defaultRadius)
-    ).toBeFalsy()
-    expect(
-      buttonGroup.nativeElement.className.includes(defaultBoxShadow)
-    ).toBeTruthy()
+    expect(buttonGroup.nativeElement.className.includes('rounded-full')).toBeTruthy()
+    expect(buttonGroup.nativeElement.className.includes(defaultRadius)).toBeFalsy()
+    expect(buttonGroup.nativeElement.className.includes(defaultBoxShadow)).toBeTruthy()
   })
 
   it('should customize using DI', () => {
@@ -91,17 +85,9 @@ describe('ButtonGroupComponent', () => {
     ).componentInstance
     fixture.detectChanges()
 
-    expect(
-      buttonGroup.nativeElement.className.includes('shadow-lg')
-    ).toBeTruthy()
-    expect(
-      buttonGroup.nativeElement.className.includes('rounded-full')
-    ).toBeTruthy()
-    expect(
-      buttonGroup.nativeElement.className.includes(defaultRadius)
-    ).toBeFalsy()
-    expect(
-      buttonGroup.nativeElement.className.includes(defaultBoxShadow)
-    ).toBeFalsy()
+    expect(buttonGroup.nativeElement.className.includes('shadow-lg')).toBeTruthy()
+    expect(buttonGroup.nativeElement.className.includes('rounded-full')).toBeTruthy()
+    expect(buttonGroup.nativeElement.className.includes(defaultRadius)).toBeFalsy()
+    expect(buttonGroup.nativeElement.className.includes(defaultBoxShadow)).toBeFalsy()
   })
 })

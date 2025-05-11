@@ -56,9 +56,7 @@ import { TwIcon } from '../../elements'
       <ng-content />
       <ng-content select="span" />
     </label>
-    <ng-content
-      select="div,p,ul,label,tw-checkbox,[tw-checkbox],[twCheckbox]"
-    />
+    <ng-content select="div,p,ul,label,tw-checkbox,[tw-checkbox],[twCheckbox]" />
   `,
   host: {
     // We remove host attribute to avoid coillision
@@ -69,17 +67,15 @@ import { TwIcon } from '../../elements'
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: CheckboxBase, useExisting: forwardRef(() => CheckboxComponent) },
+    {
+      provide: CheckboxBase,
+      useExisting: forwardRef(() => CheckboxComponent),
+    },
   ],
 })
-export class CheckboxComponent
-  extends CheckboxBase
-  implements Checkbox, OnInit
-{
+export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit {
   get inputRef(): HTMLInputElement {
-    return this.nativeElement.querySelector(
-      'input[type="checkbox"]'
-    ) as HTMLInputElement
+    return this.nativeElement.querySelector('input[type="checkbox"]') as HTMLInputElement
   }
   protected icon = inject(CHECKBOX_ICON)
   protected override readonly parent = inject(CheckboxComponent, {
@@ -104,11 +100,7 @@ export class CheckboxComponent
       this.parent.children.push(this)
       if (this.parent.checked && (!this.checked || this.indeterminate)) {
         this.toggle()
-      } else if (
-        this.checked &&
-        !this.parent.checked &&
-        !this.parent.indeterminate
-      ) {
+      } else if (this.checked && !this.parent.checked && !this.parent.indeterminate) {
         this.parent.toggle({ origin: 'child' })
       }
     }
@@ -144,8 +136,7 @@ export class CheckboxComponent
     } else if (origin === 'child' && this.children) {
       const checkedCount = this.children.filter((c) => c.checked).length
       this.checked = checkedCount === this.children!.length
-      this.indeterminate =
-        checkedCount > 0 && checkedCount < this.children.length
+      this.indeterminate = checkedCount > 0 && checkedCount < this.children.length
       if (this.parent && (this.checked || this.indeterminate)) {
         this.parent.toggle({ origin: 'child' })
       }
@@ -167,25 +158,13 @@ export class CheckboxComponent
   protected override addEventListeners(): void {
     super.addEventListeners()
     this.nativeElement.addEventListener('keyup', this.onKeyup.bind(this), false)
-    this.nativeElement.addEventListener(
-      'mouseup',
-      this.onMouseup.bind(this),
-      false
-    )
+    this.nativeElement.addEventListener('mouseup', this.onMouseup.bind(this), false)
   }
 
   protected override removeEventListeners(): void {
     super.removeEventListeners()
-    this.nativeElement.removeEventListener(
-      'keyup',
-      this.onKeyup.bind(this),
-      false
-    )
-    this.nativeElement.removeEventListener(
-      'mouseup',
-      this.onMouseup.bind(this),
-      false
-    )
+    this.nativeElement.removeEventListener('keyup', this.onKeyup.bind(this), false)
+    this.nativeElement.removeEventListener('mouseup', this.onMouseup.bind(this), false)
   }
 
   protected onMouseup(event: MouseEvent): void {

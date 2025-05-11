@@ -18,6 +18,5 @@ export class PreviewComponent {
   email = this._formBuilder.control('williammba', Validators.email)
 
   isInvalid = (control: AbstractControl): boolean => control.invalid
-  isTouchedAndInvalid = (control: AbstractControl): boolean =>
-    control.touched && control.invalid
+  isTouchedAndInvalid = (control: AbstractControl): boolean => control.touched && control.invalid
 }

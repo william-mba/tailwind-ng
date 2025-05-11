@@ -23,45 +23,29 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
       <div tw-dialog-container class="sm:max-w-sm">
         <!-- Dialog content -->
         <div class="grid gap-3 text-center">
-          <tw-icon
-            name="check"
-            class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3"
-          />
+          <tw-icon name="check" class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3" />
           <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
             <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
               Payment successful
             </h1>
             <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur amet labore. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit.
             </p>
           </div>
         </div>
         <!-- Dialog actions -->
-        <button tw-button class="w-full" (click)="dialog.close()">
-          Go back to dashboard
-        </button>
+        <button tw-button class="w-full" (click)="dialog.close()">Go back to dashboard</button>
       </div>
     </div>
 
     <div
       class="overflow-x-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-center justify-items-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
     >
-      <button
-        tw-button
-        variant="secondary"
-        (click)="dialog02.toggle()"
-        [popup]="dialog02"
-      >
+      <button tw-button variant="secondary" (click)="dialog02.toggle()" [popup]="dialog02">
         View bottom-left notification dialog
       </button>
-      <button
-        tw-button
-        variant="secondary"
-        (click)="dialog03.toggle()"
-        [popup]="dialog03"
-      >
+      <button tw-button variant="secondary" (click)="dialog03.toggle()" [popup]="dialog03">
         View bottom-right notification dialog
       </button>
     </div>
@@ -71,15 +55,12 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
       <div tw-dialog-container class="sm:max-w-sm">
         <!-- Dialog content -->
         <div class="grid gap-3 text-center sm:text-left">
-          <h1
-            class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-          >
+          <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
             Payment successful
           </h1>
           <p class="text-sm text-slate-600 dark:text-slate-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-            amet labore. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
         <!-- Dialog actions -->
@@ -93,13 +74,7 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
     </div>
 
     <!-- bottom Right Dialog -->
-    <div
-      tw-dialog
-      #dialog03
-      [isModal]="false"
-      [autoClose]="true"
-      class="inset- bottom-0 right-0"
-    >
+    <div tw-dialog #dialog03 [isModal]="false" [autoClose]="true" class="inset- bottom-0 right-0">
       <!-- Dialog container -->
       <div
         tw-dialog-container
@@ -107,15 +82,12 @@ import { TwButton, TwDialog, TwIcon } from 'tailwind-ng'
       >
         <!-- Dialog content -->
         <div class="grid gap-3 text-center sm:text-left">
-          <h1
-            class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-          >
+          <h1 class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300">
             Payment successful
           </h1>
           <p class="text-sm text-slate-600 dark:text-slate-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-            amet labore. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore. Lorem
+            ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
         <!-- Dialog actions -->

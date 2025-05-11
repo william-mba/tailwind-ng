@@ -44,10 +44,7 @@ function setClassName(value: ClassNameValue, el?: HTMLElement) {
  * @param base The base value of the class list.
  * @param el The element on which the classlist changes apply.
  */
-export function classlist(
-  base?: ClassNameValue | HTMLElement,
-  el?: HTMLElement
-): ClassList {
+export function classlist(base?: ClassNameValue | HTMLElement, el?: HTMLElement): ClassList {
   let _value = ''
   if (isString(base)) {
     _value = base
@@ -74,14 +71,10 @@ export function classlist(
     }
     return classlist
   }
-  classlist.update = (
-    fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue
-  ) => {
+  classlist.update = (fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue) => {
     return classlist.set(fn(_value))
   }
-  classlist.merge = (
-    fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue[]
-  ) => {
+  classlist.merge = (fn: (currentValue: NonNullable<ClassNameValue>) => ClassNameValue[]) => {
     return classlist.set(ClassName.merge(...fn(_value)))
   }
   classlist.toArray = () => ClassName.toArray(_value)

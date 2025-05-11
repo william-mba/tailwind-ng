@@ -22,9 +22,10 @@ export interface AvatarConfig extends Partial<Record<SizeOption, string>> {
 export function isAvatar(component: unknown): component is Avatar {
   return component instanceof AvatarBase
 }
-export const AVATAR_CONFIG = InjectionTokenFactory.create<
-  Partial<AvatarConfig>
->({}, 'AVATAR_CONFIG')
+export const AVATAR_CONFIG = InjectionTokenFactory.create<Partial<AvatarConfig>>(
+  {},
+  'AVATAR_CONFIG'
+)
 
 @Directive()
 export abstract class AvatarBase extends BaseDirective {}

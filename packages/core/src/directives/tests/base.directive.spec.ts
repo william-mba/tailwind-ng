@@ -33,7 +33,9 @@ describe('BaseDirective', () => {
         FakeDirective,
         {
           provide: ElementRef,
-          useValue: { nativeElement: document.createElement('div') },
+          useValue: {
+            nativeElement: document.createElement('div'),
+          },
         },
       ],
     })

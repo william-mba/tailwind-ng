@@ -24,10 +24,7 @@ export interface ComboboxItem extends BaseProps, BaseActions {
   selected: ModelSignal<boolean>
 }
 
-export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create<string>(
-  '',
-  'COMBOBOX_ITEM_CONFIG'
-)
+export const COMBOBOX_ITEM_CONFIG = InjectionTokenFactory.create<string>('', 'COMBOBOX_ITEM_CONFIG')
 
 @Directive()
 export abstract class ComboboxItemBase extends BaseDirective {}

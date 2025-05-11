@@ -1,11 +1,5 @@
 import { inject, Provider } from '@angular/core'
-import {
-  ICON_CONFIG,
-  IconMap,
-  mergeConfig,
-  IconConfig,
-  ClassName,
-} from '@tailwind-ng/core'
+import { ICON_CONFIG, IconMap, mergeConfig, IconConfig, ClassName } from '@tailwind-ng/core'
 
 const MAP = (): IconMap => {
   return {
@@ -49,18 +43,19 @@ export function provideIcon(customization?: Partial<IconConfig>): Provider {
     provide: ICON_CONFIG,
     useFactory: () => {
       const config =
-        inject(ICON_CONFIG, { skipSelf: true, optional: true }) ??
-        DefaultConfig()
+        inject(ICON_CONFIG, {
+          skipSelf: true,
+          optional: true,
+        }) ?? DefaultConfig()
       if (customization) {
         Object.entries(customization).forEach(([key, value]) => {
           if (key === 'map') {
             if (!config.map) {
               config.map = MAP()
             }
-            config.map = mergeConfig(
-              [config.map, customization.map as IconMap],
-              { strict: true }
-            )
+            config.map = mergeConfig([config.map, customization.map as IconMap], {
+              strict: true,
+            })
           } else {
             config[key as IconConfigSansMapKey] = ClassName.merge(
               config[key as IconConfigSansMapKey],

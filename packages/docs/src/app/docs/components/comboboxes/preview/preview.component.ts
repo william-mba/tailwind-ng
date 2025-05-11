@@ -48,13 +48,10 @@ export class PreviewComponent {
     5: signal('multi'),
   }
 
-  isSingleMode = (id = 1) =>
-    computed(() => this.selectionMode[id]() === 'single')
+  isSingleMode = (id = 1) => computed(() => this.selectionMode[id]() === 'single')
 
   protected toggleMode(id = 1): void {
-    this.selectionMode[id].update((mode) =>
-      mode === 'single' ? 'multi' : 'single'
-    )
+    this.selectionMode[id].update((mode) => (mode === 'single' ? 'multi' : 'single'))
   }
 
   get _users(): User[] {
