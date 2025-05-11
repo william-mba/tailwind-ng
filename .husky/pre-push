@@ -1,2 +1,2 @@
 eval "$(fnm env)"
-npx run-p format:fix check-circ-deps cleanup-imports
+npx run-p format:fix lint check-circ-deps cleanup-imports

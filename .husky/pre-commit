@@ -1,3 +1,2 @@
 eval "$(fnm env)"
-npm run lint
 npm exec lint-staged
