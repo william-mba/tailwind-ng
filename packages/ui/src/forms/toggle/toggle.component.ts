@@ -11,7 +11,7 @@ import {
 	Toggle,
 	TOGGLE_CONFIG,
 	ToggleBase,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 @Component({
 	selector: 'tw-toggle, [tw-toggle], [twToggle]',

@@ -2,10 +2,7 @@
 import { ButtonGroupComponent } from './button-group.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideButtonGroup } from './button-group.component.config';
-import {
-	BUTTON_GROUP_CONFIG,
-	ClassName,
-} from '../../../../core/src/public-api';
+import { BUTTON_GROUP_CONFIG, ClassName } from '@tailwind-ng/core';
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { By } from '@angular/platform-browser';

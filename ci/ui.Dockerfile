@@ -42,4 +42,4 @@ RUN npm run build:ui
 FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/reports/. /reports/
 COPY --from=run-tests /_work/coverage/. /coverage/
-COPY --from=run-build /_work/dist/tailwind-ng/. /artifacts/ui/
+COPY --from=run-build /_work/dist/ui/. /artifacts/ui/

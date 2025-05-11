@@ -1,10 +1,6 @@
 import { Pipe, PipeTransform, WritableSignal } from '@angular/core';
 import { Component, computed, signal } from '@angular/core';
-import {
-	ComboboxSelectionMode,
-	isCombobox,
-	Popup,
-} from '../../../../../../../core/src/public-api';
+import { ComboboxSelectionMode, isCombobox, Popup } from '@tailwind-ng/core';
 import {
 	TwAvatar,
 	TwButton,

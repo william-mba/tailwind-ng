@@ -21,7 +21,7 @@ import {
 	isArrowUpOrDown,
 	isArrowUp,
 	classlist,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 @Component({
 	selector: 'tw-combobox, [tw-combobox], [twCombobox]',

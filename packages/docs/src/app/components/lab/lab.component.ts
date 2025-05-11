@@ -7,7 +7,7 @@ import {
 	TwDialog,
 	TwCheckbox,
 } from 'tailwind-ng';
-import { isCombobox, Popup } from '../../../../../core/src/public-api';
+import { isCombobox, Popup } from '@tailwind-ng/core';
 
 interface User {
 	image?: string;

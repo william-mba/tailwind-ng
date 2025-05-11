@@ -3,7 +3,7 @@ import { provideCheckbox } from './checkbox.component.config';
 import { Component } from '@angular/core';
 import { CheckboxComponent } from './checkbox.component';
 import { provideIcon } from 'tailwind-ng';
-import { CHECKBOX_CONFIG, ClassName } from '../../../../core/src/public-api';
+import { CHECKBOX_CONFIG, ClassName } from '@tailwind-ng/core';
 import { By } from '@angular/platform-browser';
 
 describe('CheckboxComponent', () => {

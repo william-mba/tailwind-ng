@@ -22,7 +22,7 @@ import {
 	isInputElement,
 	isLabelElement,
 	isNavigation,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 import { TwIcon } from '../../elements';
 
 /**

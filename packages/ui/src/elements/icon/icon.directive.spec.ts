@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector */
-import { ClassName } from '../../../../core/src/public-api';
+import { ClassName } from '@tailwind-ng/core';
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { IconDirective } from './icon.directive';
 import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';

@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { INPUT_RADIO_CONFIG, ClassName } from '../../../../core/src/public-api';
+import { INPUT_RADIO_CONFIG, ClassName } from '@tailwind-ng/core';
 
 const DefaultConfig = () => {
 	const className =

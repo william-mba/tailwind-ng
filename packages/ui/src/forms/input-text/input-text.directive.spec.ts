@@ -1,7 +1,7 @@
 import { InputTextDirective } from './input-text.directive';
 import { TestBed } from '@angular/core/testing';
 import { provideInputText } from './input-text.directive.config';
-import { INPUT_TEXT_CONFIG, ClassName } from '../../../../core/src/public-api';
+import { INPUT_TEXT_CONFIG, ClassName } from '@tailwind-ng/core';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 

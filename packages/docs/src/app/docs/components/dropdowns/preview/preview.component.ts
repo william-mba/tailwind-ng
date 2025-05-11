@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TwOption } from '../../../../../../../core/src/public-api';
+import { TwOption } from '@tailwind-ng/core';
 import { TwIcon, TwDropdown, TwButton } from 'tailwind-ng';
 
 @Component({

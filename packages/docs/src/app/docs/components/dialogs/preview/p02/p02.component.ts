@@ -1,8 +1,5 @@
 import { Component, effect, inject, signal, viewChild } from '@angular/core';
-import {
-	DialogBase,
-	ThemeService,
-} from '../../../../../../../../core/src/public-api';
+import { DialogBase, ThemeService } from '@tailwind-ng/core';
 import { TwButton, TwDialog, TwIcon } from 'tailwind-ng';
 
 @Component({

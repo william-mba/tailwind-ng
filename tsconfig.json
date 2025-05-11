@@ -5,8 +5,8 @@
 	"compilerOptions": {
 		"outDir": "./dist/out-tsc",
 		"paths": {
-			"tailwind-ng": ["./projects/tailwind-ng-ui/src/public-api.ts"],
-			"@tailwind-ng/core": ["./projects/tailwind-ng-core/src/public-api.ts"]
+			"tailwind-ng": ["./packages/ui/src/public-api.ts"],
+			"@tailwind-ng/core": ["./packages/core/src/public-api.ts"]
 		},
 		"types": ["vitest/globals"],
 		"strict": true,

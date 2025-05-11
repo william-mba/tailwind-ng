@@ -1,9 +1,5 @@
 import { Provider } from '@angular/core';
-import {
-	BADGE_CONFIG,
-	BadgeConfig,
-	mergeConfig,
-} from '../../../../core/src/public-api';
+import { BADGE_CONFIG, BadgeConfig, mergeConfig } from '@tailwind-ng/core';
 
 const DefaultConfig = (): BadgeConfig => {
 	const className =

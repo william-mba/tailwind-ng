@@ -5,7 +5,7 @@ import {
 	mergeConfig,
 	IconConfig,
 	ClassName,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 const MAP = (): IconMap => {
 	return {

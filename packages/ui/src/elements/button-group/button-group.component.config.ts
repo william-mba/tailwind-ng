@@ -1,8 +1,5 @@
 import { Provider } from '@angular/core';
-import {
-	BUTTON_GROUP_CONFIG,
-	ClassName,
-} from '../../../../core/src/public-api';
+import { BUTTON_GROUP_CONFIG, ClassName } from '@tailwind-ng/core';
 
 const DefaultConfig = () => {
 	const className =

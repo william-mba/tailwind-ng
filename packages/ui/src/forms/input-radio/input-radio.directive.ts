@@ -3,7 +3,7 @@ import {
 	classlist,
 	INPUT_RADIO_CONFIG,
 	InputRadioBase,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 @Directive({
 	selector: 'input[type="radio"][tw-input], input[type="radio"][twInput]',

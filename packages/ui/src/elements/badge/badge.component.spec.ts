@@ -3,7 +3,7 @@ import { BadgeComponent } from './badge.component';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { provideBadge } from './badge.component.config';
 import { Component } from '@angular/core';
-import { BADGE_CONFIG, ClassName } from '../../../../core/src/public-api';
+import { BADGE_CONFIG, ClassName } from '@tailwind-ng/core';
 import { By } from '@angular/platform-browser';
 
 describe('BadgeComponent', () => {

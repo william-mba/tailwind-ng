@@ -1,0 +1,19 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"sourceMap": false,
+		"inlineSourceMap": false,
+		"inlineSources": false,
+		"declarationMap": false,
+		"paths": {
+			"@tailwind-ng/core": ["../../dist/core"]
+		}
+	},
+	"angularCompilerOptions": {
+		"compilationMode": "partial"
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["**/*.spec.ts"]
+}

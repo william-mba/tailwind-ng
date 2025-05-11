@@ -11,7 +11,7 @@ import {
 	BadgeBase,
 	classlist,
 	SizeOption,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 @Component({
 	selector: 'tw-badge, [tw-badge], [twBadge]',

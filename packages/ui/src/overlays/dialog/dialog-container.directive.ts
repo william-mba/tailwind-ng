@@ -5,7 +5,7 @@ import {
 	DIALOG_CONFIG,
 	DialogBase,
 	isEscape,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 @Directive({
 	selector: 'tw-dialog-container, [tw-dialog-container], [twDialogContainer]',

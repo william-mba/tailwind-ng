@@ -8,7 +8,7 @@ import {
 	BUTTON_GROUP_CONFIG,
 	ButtonGroupBase,
 	classlist,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 @Component({
 	selector:

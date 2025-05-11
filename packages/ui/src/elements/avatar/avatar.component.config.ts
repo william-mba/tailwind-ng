@@ -1,9 +1,5 @@
 import { Provider } from '@angular/core';
-import {
-	AVATAR_CONFIG,
-	AvatarConfig,
-	mergeConfig,
-} from '../../../../core/src/public-api';
+import { AVATAR_CONFIG, AvatarConfig, mergeConfig } from '@tailwind-ng/core';
 
 const DefaultConfig = (): AvatarConfig => {
 	const className = 'flex items-center justify-center relative rounded-full';

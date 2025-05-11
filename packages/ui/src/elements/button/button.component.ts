@@ -4,11 +4,7 @@ import {
 	inject,
 	ViewEncapsulation,
 } from '@angular/core';
-import {
-	BUTTON_CONFIG,
-	ButtonBase,
-	classlist,
-} from '../../../../core/src/public-api';
+import { BUTTON_CONFIG, ButtonBase, classlist } from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Button component

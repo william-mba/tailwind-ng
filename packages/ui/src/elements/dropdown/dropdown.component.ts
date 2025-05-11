@@ -13,7 +13,7 @@ import {
 	DropdownBase,
 	isEscape,
 	TwIf,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 /** Dropdown component */
 @Component({

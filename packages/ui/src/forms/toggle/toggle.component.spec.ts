@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToggleComponent } from './toggle.component';
 import { provideToggle } from './toggle.component.config';
-import { ClassName, TOGGLE_CONFIG } from '../../../../core/src/public-api';
+import { ClassName, TOGGLE_CONFIG } from '@tailwind-ng/core';
 
 describe('ToggleComponent', () => {
 	let component: ToggleComponent;

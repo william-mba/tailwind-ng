@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ThemeService } from '../../../../core/src/public-api';
+import { ThemeService } from '@tailwind-ng/core';
 import { provideButton, TwButton, TwIcon } from 'tailwind-ng';
 import { RouterLink } from '@angular/router';
 

@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { DROPDOWN_CONFIG, ClassName } from '../../../../core/src/public-api';
+import { DROPDOWN_CONFIG, ClassName } from '@tailwind-ng/core';
 
 const DefaultConfig = () => {
 	const className =

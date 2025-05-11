@@ -1,9 +1,5 @@
 import { Provider } from '@angular/core';
-import {
-	mergeConfig,
-	DIALOG_CONFIG,
-	DialogConfig,
-} from '../../../../core/src/public-api';
+import { mergeConfig, DIALOG_CONFIG, DialogConfig } from '@tailwind-ng/core';
 
 const BASE = () => {
 	const className = 'transition-all transition-discrete duration-200';

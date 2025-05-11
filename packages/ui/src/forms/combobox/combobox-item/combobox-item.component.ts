@@ -15,7 +15,7 @@ import {
 	COMBOBOX_ITEM_CONFIG,
 	ComboboxItem,
 	ComboboxItemBase,
-} from '../../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 @Component({
 	selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',

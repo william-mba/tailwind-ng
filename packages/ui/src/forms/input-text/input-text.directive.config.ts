@@ -1,9 +1,5 @@
 import { Provider } from '@angular/core';
-import {
-	INPUT_TEXT_CONFIG,
-	InputConfig,
-	mergeConfig,
-} from '../../../../core/src/public-api';
+import { INPUT_TEXT_CONFIG, InputConfig, mergeConfig } from '@tailwind-ng/core';
 
 const DefaultConfig = (): InputConfig => {
 	const className =

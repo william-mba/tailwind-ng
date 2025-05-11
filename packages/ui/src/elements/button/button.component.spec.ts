@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ClassName } from '../../../../core/src/public-api';
+import { ClassName } from '@tailwind-ng/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { GetButtonConfig, provideButton } from './button.component.config';

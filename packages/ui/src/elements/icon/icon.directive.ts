@@ -1,9 +1,5 @@
 import { Directive, inject } from '@angular/core';
-import {
-	classlist,
-	ICON_CONFIG,
-	IconBase,
-} from '../../../../core/src/public-api';
+import { classlist, ICON_CONFIG, IconBase } from '@tailwind-ng/core';
 
 @Directive({
 	selector: 'tw-icon, [twIcon], [tw-icon]',

@@ -1,8 +1,5 @@
 import { Provider } from '@angular/core';
-import {
-	COMBOBOX_ITEM_CONFIG,
-	ClassName,
-} from '../../../../../core/src/public-api';
+import { COMBOBOX_ITEM_CONFIG, ClassName } from '@tailwind-ng/core';
 
 const DefaultConfig = () => {
 	const className =

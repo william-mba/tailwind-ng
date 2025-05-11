@@ -11,7 +11,7 @@ import {
 	AvatarBase,
 	classlist,
 	SizeOption,
-} from '../../../../core/src/public-api';
+} from '@tailwind-ng/core';
 
 /**
  * @TailwindNG Avatar Component

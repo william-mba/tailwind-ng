@@ -26,7 +26,7 @@ stages:
           - checkout: self
             persistCredentials: true
 
-          - bash: docker build -t tailwind-ng:ci -o "type=local,dest=./" -f ci/core.Dockerfile .
+          - bash: docker build -t core:ci -o "type=local,dest=./" -f ci/core.Dockerfile .
             workingDirectory: $(Build.SourcesDirectory)
             displayName: 'Run CI'
 

@@ -1,9 +1,5 @@
 import { Provider } from '@angular/core';
-import {
-	BUTTON_CONFIG,
-	ButtonConfig,
-	mergeConfig,
-} from '../../../../core/src/public-api';
+import { BUTTON_CONFIG, ButtonConfig, mergeConfig } from '@tailwind-ng/core';
 
 export const BASE = () => {
 	const className =

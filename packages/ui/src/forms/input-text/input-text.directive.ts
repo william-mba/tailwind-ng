@@ -1,9 +1,5 @@
 import { Directive, inject } from '@angular/core';
-import {
-	classlist,
-	INPUT_TEXT_CONFIG,
-	InputTextBase,
-} from '../../../../core/src/public-api';
+import { classlist, INPUT_TEXT_CONFIG, InputTextBase } from '@tailwind-ng/core';
 
 @Directive({
 	selector: `input[tw-input][type="text"], input[twInput][type="text"],

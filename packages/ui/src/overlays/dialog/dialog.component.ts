@@ -4,12 +4,7 @@ import {
 	inject,
 	ViewEncapsulation,
 } from '@angular/core';
-import {
-	classlist,
-	DIALOG_CONFIG,
-	DialogBase,
-	TwIf,
-} from '../../../../core/src/public-api';
+import { classlist, DIALOG_CONFIG, DialogBase, TwIf } from '@tailwind-ng/core';
 
 /** Dialog component */
 @Component({

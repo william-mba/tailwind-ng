@@ -1,7 +1,7 @@
 import { InputRadioDirective } from './input-radio.directive';
 import { TestBed } from '@angular/core/testing';
 import { provideInputRadio } from './input-radio.directive.config';
-import { INPUT_RADIO_CONFIG, ClassName } from '../../../../core/src/public-api';
+import { INPUT_RADIO_CONFIG, ClassName } from '@tailwind-ng/core';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
