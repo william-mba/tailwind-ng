@@ -1,11 +1,10 @@
-name: 'ui'
+name: 'tailwind-ng-core'
 
 trigger:
   paths:
     include:
-      - packages/ui/src/*
-      - packages/themes/*
-      - ci/ui.yml
+      - packages/core/src/*
+      - ci/tailwind-ng-core.yml
 
 pool: Lab
 
@@ -27,7 +26,7 @@ stages:
           - checkout: self
             persistCredentials: true
 
-          - bash: docker build -t ui:ci -o "type=local,dest=./" -f ci/ui.Dockerfile .
+          - bash: docker build -t core:ci -o "type=local,dest=./" -f ci/tailwind-ng-core.Dockerfile .
             workingDirectory: $(Build.SourcesDirectory)
             displayName: 'Run CI'
 
@@ -47,16 +46,13 @@ stages:
               mergeTestResults: true
               testRunTitle: '$(Build.DefinitionName)-v$(ReleaseVersion)-tests'
 
-          - publish: artifacts/ui
+          - publish: artifacts/core
             artifact: drop
             displayName: 'Publish artifact'
 
           - bash: |
               npm config set //registry.npmjs.org/:_authToken=$(authToken)
-              cd $(Build.SourcesDirectory)/packages/themes
-              npm version $(ReleaseVersion)
-              npm publish --tag $(ReleaseTag)
-              cd $(Build.SourcesDirectory)/artifacts/ui
+              cd $(Build.SourcesDirectory)/artifacts/core
               npm version $(ReleaseVersion)
               npm publish --tag $(ReleaseTag)
             displayName: 'Release v$(ReleaseVersion)@$(ReleaseTag)'
