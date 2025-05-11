@@ -1,68 +1,68 @@
 <div class="sm:px-8 max-lg:px-10 xl:px-14 max-sm:px-5 p-10 xl:w-3/4">
-	<section>
-		<h1
-			class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200"
-		>
-			Icons
-		</h1>
-		<p class="text-gray-700 dark:text-gray-300 mb-3">
-			Use icons to add visual context to your content.
-			<br />
-			<span class="text-gray-500">
-				These components are designed to be highly customizable, fast and easy
-				to use. Enjoy!
-			</span>
-		</p>
-	</section>
-	<section>
-		<nav class="border-b border-gray-950/5 dark:border-white/10">
-			<ul
-				class="grid sm:flex max-sm:*:pl-0 sm:*:first:pl-0 *:p-2 sm:*:p-4 text-gray-700 dark:text-gray-300"
-			>
-				<li
-					routerLink="preview"
-					routerLinkActive="sm:border-b! border-black! dark:border-white! font-medium dark:text-gray-100!"
-				>
-					<a class="cursor-pointer">Preview</a>
-				</li>
-				<li
-					routerLink="usage"
-					routerLinkActive="sm:border-b! border-black! dark:border-white! font-medium dark:text-gray-100!"
-				>
-					<a class="cursor-pointer">Usage</a>
-				</li>
-				<li
-					routerLink="api"
-					routerLinkActive="sm:border-b! border-black! dark:border-white! font-medium dark:text-gray-100!"
-				>
-					<a class="cursor-pointer">API</a>
-				</li>
-			</ul>
-		</nav>
-		<section class="my-8">
-			<router-outlet />
-		</section>
-	</section>
-	<section
-		class="grid grid-cols-1 sm:grid-cols-2 *:p-6 *:w-full gap-1 sm:gap-8 mt-12"
-	>
-		<button
-			tw-button
-			variant="text"
-			routerLink="../dropdowns"
-			class="sm:justify-start pl-0!"
-		>
-			<tw-icon name="chevron-left" />
-			Dropdowns
-		</button>
-		<button
-			tw-button
-			variant="text"
-			routerLink="../input-groups"
-			class="sm:justify-end pr-0!"
-		>
-			Input Groups
-			<tw-icon name="chevron-right" />
-		</button>
-	</section>
+  <section>
+    <h1
+      class="font-heading max-sm:text-2xl text-3xl mb-6 font-bold text-gray-800 dark:text-gray-200"
+    >
+      Icons
+    </h1>
+    <p class="text-gray-700 dark:text-gray-300 mb-3">
+      Use icons to add visual context to your content.
+      <br />
+      <span class="text-gray-500">
+        These components are designed to be highly customizable, fast and easy
+        to use. Enjoy!
+      </span>
+    </p>
+  </section>
+  <section>
+    <nav class="border-b border-gray-950/5 dark:border-white/10">
+      <ul
+        class="grid sm:flex max-sm:*:pl-0 sm:*:first:pl-0 *:p-2 sm:*:p-4 text-gray-700 dark:text-gray-300"
+      >
+        <li
+          routerLink="preview"
+          routerLinkActive="sm:border-b! border-black! dark:border-white! font-medium dark:text-gray-100!"
+        >
+          <a class="cursor-pointer">Preview</a>
+        </li>
+        <li
+          routerLink="usage"
+          routerLinkActive="sm:border-b! border-black! dark:border-white! font-medium dark:text-gray-100!"
+        >
+          <a class="cursor-pointer">Usage</a>
+        </li>
+        <li
+          routerLink="api"
+          routerLinkActive="sm:border-b! border-black! dark:border-white! font-medium dark:text-gray-100!"
+        >
+          <a class="cursor-pointer">API</a>
+        </li>
+      </ul>
+    </nav>
+    <section class="my-8">
+      <router-outlet />
+    </section>
+  </section>
+  <section
+    class="grid grid-cols-1 sm:grid-cols-2 *:p-6 *:w-full gap-1 sm:gap-8 mt-12"
+  >
+    <button
+      tw-button
+      variant="text"
+      routerLink="../dropdowns"
+      class="sm:justify-start pl-0!"
+    >
+      <tw-icon name="chevron-left" />
+      Dropdowns
+    </button>
+    <button
+      tw-button
+      variant="text"
+      routerLink="../input-groups"
+      class="sm:justify-end pr-0!"
+    >
+      Input Groups
+      <tw-icon name="chevron-right" />
+    </button>
+  </section>
 </div>

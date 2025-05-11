@@ -1,8 +1,8 @@
-import { Directive, Input, output, OutputEmitterRef } from '@angular/core';
-import { BaseDirective } from '../directives';
-import { InjectionTokenFactory } from '../tokens/injection-token.factory';
-import { BaseActions, BaseProps } from '../directives';
-import { SizeOption } from '../types';
+import { Directive, Input, output, OutputEmitterRef } from '@angular/core'
+import { BaseDirective } from '../directives'
+import { InjectionTokenFactory } from '../tokens/injection-token.factory'
+import { BaseActions, BaseProps } from '../directives'
+import { SizeOption } from '../types'
 
 /**
  * @TailwindNG Input component interface.
@@ -15,121 +15,117 @@ import { SizeOption } from '../types';
  * - url
  */
 export interface InputText extends BaseProps<HTMLInputElement>, BaseActions {
-	/**
-	 * The input's size.
-	 */
-	readonly size: SizeOption;
-	/**
-	 * The input's value.
-	 */
-	readonly value: string;
-	/**
-	 * The input's normalized value.
-	 */
-	readonly normalizedValue: string;
-	/**
-	 * Whether the input is valid.
-	 */
-	readonly isValid: boolean;
-	/**
-	 * Whether the input is empty.
-	 */
-	readonly isEmpty: boolean;
-	/**
-	 * Emits the input's value when it changes.
-	 */
-	readonly valueChange: OutputEmitterRef<string>;
-	/**
-	 * Emits the input's value when it changes.
-	 */
-	readonly changes: OutputEmitterRef<string>;
-	clear(): void;
+  /**
+   * The input's size.
+   */
+  readonly size: SizeOption
+  /**
+   * The input's value.
+   */
+  readonly value: string
+  /**
+   * The input's normalized value.
+   */
+  readonly normalizedValue: string
+  /**
+   * Whether the input is valid.
+   */
+  readonly isValid: boolean
+  /**
+   * Whether the input is empty.
+   */
+  readonly isEmpty: boolean
+  /**
+   * Emits the input's value when it changes.
+   */
+  readonly valueChange: OutputEmitterRef<string>
+  /**
+   * Emits the input's value when it changes.
+   */
+  readonly changes: OutputEmitterRef<string>
+  clear(): void
 }
 
 export interface InputConfig extends Partial<Record<SizeOption, string>> {
-	className?: string;
+  className?: string
 }
 
 export const INPUT_TEXT_CONFIG = InjectionTokenFactory.create<InputConfig>(
-	{},
-	'INPUT_TEXT_CONFIG',
-);
+  {},
+  'INPUT_TEXT_CONFIG'
+)
 
 export function isInputText(component: unknown): component is InputText {
-	return component instanceof InputTextBase;
+  return component instanceof InputTextBase
 }
 
 @Directive()
 export abstract class InputTextBase
-	extends BaseDirective<HTMLInputElement>
-	implements InputText
+  extends BaseDirective<HTMLInputElement>
+  implements InputText
 {
-	@Input() size: SizeOption = 'md';
+  @Input() size: SizeOption = 'md'
 
-	@Input() set value(value: string) {
-		this.nativeElement.value = value;
-	}
-	get value(): string {
-		return this.nativeElement.value;
-	}
-	get isValid(): boolean {
-		return this.nativeElement.validity.valid;
-	}
-	get isEmpty(): boolean {
-		return this.value.trim().length === 0;
-	}
-	get normalizedValue(): string {
-		return this.value.trim().toLocaleLowerCase();
-	}
+  @Input() set value(value: string) {
+    this.nativeElement.value = value
+  }
+  get value(): string {
+    return this.nativeElement.value
+  }
+  get isValid(): boolean {
+    return this.nativeElement.validity.valid
+  }
+  get isEmpty(): boolean {
+    return this.value.trim().length === 0
+  }
+  get normalizedValue(): string {
+    return this.value.trim().toLocaleLowerCase()
+  }
 
-	valueChange = output<string>();
+  valueChange = output<string>()
 
-	changes = output<string>();
+  changes = output<string>()
 
-	clear(): void {
-		this.value = '';
-	}
+  clear(): void {
+    this.value = ''
+  }
 
-	protected onChange(event: Event): void {
-		event.stopPropagation();
-		this.valueChange.emit(this.value);
-	}
+  protected onChange(event: Event): void {
+    event.stopPropagation()
+    this.valueChange.emit(this.value)
+  }
 
-	protected onInput(event: Event): void {
-		event.stopPropagation();
-		this.changes.emit(this.value);
-	}
+  protected onInput(event: Event): void {
+    event.stopPropagation()
+    this.changes.emit(this.value)
+  }
 
-	protected override addEventListeners(): void {
-		super.addEventListeners();
-		this.nativeElement.addEventListener(
-			'change',
-			this.onChange.bind(this),
-			false,
-		);
-		this.nativeElement.addEventListener(
-			'input',
-			this.onInput.bind(this),
-			false,
-		);
-	}
+  protected override addEventListeners(): void {
+    super.addEventListeners()
+    this.nativeElement.addEventListener(
+      'change',
+      this.onChange.bind(this),
+      false
+    )
+    this.nativeElement.addEventListener('input', this.onInput.bind(this), false)
+  }
 
-	protected override removeEventListeners(): void {
-		super.removeEventListeners();
-		this.nativeElement.removeEventListener(
-			'change',
-			this.onChange.bind(this),
-			false,
-		);
-		this.nativeElement.removeEventListener(
-			'input',
-			this.onInput.bind(this),
-			false,
-		);
-	}
+  protected override removeEventListeners(): void {
+    super.removeEventListeners()
+    this.nativeElement.removeEventListener(
+      'change',
+      this.onChange.bind(this),
+      false
+    )
+    this.nativeElement.removeEventListener(
+      'input',
+      this.onInput.bind(this),
+      false
+    )
+  }
 
-	// Override default keyboard event preventions.
-	protected override onKeyboardEvent(event: Event): void {
-		this.preventInteractionIfDisabled(event);
-	}
+  // Override default keyboard event preventions.
+  protected override onKeyboardEvent(event: Event): void {
+    this.preventInteractionIfDisabled(event)
+  }
 }

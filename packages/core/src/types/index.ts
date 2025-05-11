@@ -1,1 +1,1 @@
-export * from './size-options.type';
+export * from './size-options.type'

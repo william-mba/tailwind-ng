@@ -1,35 +1,35 @@
 {
-	"name": "@tailwind-ng/core",
-	"version": "0.0.0-placeholder",
-	"author": {
-		"email": "w.mba@outlook.com",
-		"name": "William Mba",
-		"url": "https://github.com/William-Mba"
-	},
-	"description": "Core infrastructure and tools for Tailwind NG.",
-	"keywords": [
-		"angular",
-		"tailwind css",
-		"web components"
-	],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/William-Mba/tailwind-ng.git"
-	},
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/William-Mba/tailwind-ng/issues"
-	},
-	"homepage": "https://tailwind-ng.com",
-	"peerDependencies": {
-		"@angular/common": "^19.0.0",
-		"@angular/core": "^19.0.0"
-	},
-	"dependencies": {
-		"tslib": "^2.8.1"
-	},
-	"sideEffects": false,
-	"publishConfig": {
-		"access": "public"
-	}
+  "name": "@tailwind-ng/core",
+  "version": "0.0.0-placeholder",
+  "author": {
+    "email": "w.mba@outlook.com",
+    "name": "William Mba",
+    "url": "https://github.com/William-Mba"
+  },
+  "description": "Core infrastructure and tools for Tailwind NG.",
+  "keywords": [
+    "angular",
+    "tailwind css",
+    "web components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/William-Mba/tailwind-ng.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/William-Mba/tailwind-ng/issues"
+  },
+  "homepage": "https://tailwind-ng.com",
+  "peerDependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
 }

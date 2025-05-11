@@ -1,4 +1,4 @@
-import { InjectionTokenFactory } from './injection-token.factory';
+import { InjectionTokenFactory } from './injection-token.factory'
 
 /**
  * Basic cryptography features available in the root EnvironmentInjector.
@@ -6,4 +6,4 @@ import { InjectionTokenFactory } from './injection-token.factory';
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Crypto)
  */
-export const CRYPTO = InjectionTokenFactory.create(crypto, 'CRYPTO');
+export const CRYPTO = InjectionTokenFactory.create(crypto, 'CRYPTO')

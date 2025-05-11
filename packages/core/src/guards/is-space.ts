@@ -1,4 +1,4 @@
-export type SpaceKey = ' ';
+export type SpaceKey = ' '
 export function isSpace(key: string): key is SpaceKey {
-	return key === ' ';
+  return key === ' '
 }

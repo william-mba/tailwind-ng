@@ -1,155 +1,155 @@
 {
-	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-	"version": 1,
-	"cli": {
-		"schematicCollections": ["angular-eslint"]
-	},
-	"newProjectRoot": "projects",
-	"projects": {
-		"ui": {
-			"projectType": "library",
-			"root": "packages/ui",
-			"sourceRoot": "packages/ui/src",
-			"prefix": "tw",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "packages/ui/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "packages/ui/tsconfig.prod.json"
-						},
-						"development": {
-							"tsConfig": "packages/ui/tsconfig.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"lint": {
-					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
-							"packages/ui/**/*.ts",
-							"packages/ui/**/*.html"
-						],
-						"eslintConfig": "packages/ui/eslint.config.js"
-					}
-				}
-			}
-		},
-		"core": {
-			"projectType": "library",
-			"root": "packages/core",
-			"sourceRoot": "packages/core/src",
-			"prefix": "tw",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:ng-packagr",
-					"options": {
-						"project": "packages/core/ng-package.json"
-					},
-					"configurations": {
-						"production": {
-							"tsConfig": "packages/core/tsconfig.prod.json"
-						},
-						"development": {
-							"tsConfig": "packages/core/tsconfig.json"
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"lint": {
-					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
-							"packages/core/**/*.ts",
-							"packages/core/**/*.html"
-						],
-						"eslintConfig": "packages/core/eslint.config.js"
-					}
-				}
-			}
-		},
-		"docs": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"inlineStyle": true
-				}
-			},
-			"root": "packages/docs",
-			"sourceRoot": "packages/docs/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:application",
-					"options": {
-						"outputPath": "dist/docs",
-						"index": "packages/docs/src/index.html",
-						"browser": "packages/docs/src/main.ts",
-						"polyfills": ["zone.js"],
-						"tsConfig": "packages/docs/tsconfig.json",
-						"assets": [
-							{
-								"glob": "**/*",
-								"input": "packages/docs/public"
-							}
-						],
-						"styles": ["packages/themes/default/style.css"],
-						"scripts": []
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "700kB",
-									"maximumError": "1MB"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "4kB",
-									"maximumError": "8kB"
-								}
-							],
-							"outputHashing": "all"
-						},
-						"development": {
-							"optimization": false,
-							"extractLicenses": false,
-							"sourceMap": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
-					"configurations": {
-						"production": {
-							"buildTarget": "docs:build:production"
-						},
-						"development": {
-							"buildTarget": "docs:build:development"
-						}
-					},
-					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n"
-				},
-				"lint": {
-					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
-							"packages/docs/**/*.ts",
-							"packages/docs/**/*.html"
-						],
-						"eslintConfig": "packages/docs/eslint.config.js"
-					}
-				}
-			}
-		}
-	}
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "schematicCollections": ["angular-eslint"]
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "ui": {
+      "projectType": "library",
+      "root": "packages/ui",
+      "sourceRoot": "packages/ui/src",
+      "prefix": "tw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "packages/ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/ui/tsconfig.prod.json"
+            },
+            "development": {
+              "tsConfig": "packages/ui/tsconfig.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/ui/**/*.ts",
+              "packages/ui/**/*.html"
+            ],
+            "eslintConfig": "packages/ui/eslint.config.js"
+          }
+        }
+      }
+    },
+    "core": {
+      "projectType": "library",
+      "root": "packages/core",
+      "sourceRoot": "packages/core/src",
+      "prefix": "tw",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "packages/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/core/tsconfig.prod.json"
+            },
+            "development": {
+              "tsConfig": "packages/core/tsconfig.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/core/**/*.ts",
+              "packages/core/**/*.html"
+            ],
+            "eslintConfig": "packages/core/eslint.config.js"
+          }
+        }
+      }
+    },
+    "docs": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true
+        }
+      },
+      "root": "packages/docs",
+      "sourceRoot": "packages/docs/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/docs",
+            "index": "packages/docs/src/index.html",
+            "browser": "packages/docs/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "packages/docs/tsconfig.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "packages/docs/public"
+              }
+            ],
+            "styles": ["packages/themes/default/style.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "700kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "docs:build:production"
+            },
+            "development": {
+              "buildTarget": "docs:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/docs/**/*.ts",
+              "packages/docs/**/*.html"
+            ],
+            "eslintConfig": "packages/docs/eslint.config.js"
+          }
+        }
+      }
+    }
+  }
 }

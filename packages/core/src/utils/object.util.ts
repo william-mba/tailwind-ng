@@ -1,18 +1,18 @@
-import { ClassName } from './classname';
+import { ClassName } from './classname'
 import {
-	isArray,
-	isConfigObject,
-	isEmptyConfigObject,
-	isEmptyObject,
-	isObject,
-	isString,
-} from './type-assertion';
+  isArray,
+  isConfigObject,
+  isEmptyConfigObject,
+  isEmptyObject,
+  isObject,
+  isString,
+} from './type-assertion'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Config = Record<string, any>;
+type Config = Record<string, any>
 /** Returns the object properties values, including properties values of it child objects in a string.*/
 function toString(obj: Config, separator = ' '): string {
-	/* Given an object with values to extract
+  /* Given an object with values to extract
 
   1. If the object is undefined, return an empty string
   2. Else, create a variable named res and initialized with an empty string
@@ -22,27 +22,27 @@ function toString(obj: Config, separator = ' '): string {
       2. Else, if it is an object, make a recursion on it and store the result in res
   4. Return res.
   */
-	let res = '';
+  let res = ''
 
-	if (!isObject(obj)) return res;
+  if (!isObject(obj)) return res
 
-	for (const value of Object.values(obj)) {
-		if (isString(value)) {
-			if (res.length === 0) {
-				res += value;
-			} else {
-				res += separator + value;
-			}
-		} else if (isObject(value)) {
-			res += separator + toString(value, separator);
-		}
-	}
-	return res;
+  for (const value of Object.values(obj)) {
+    if (isString(value)) {
+      if (res.length === 0) {
+        res += value
+      } else {
+        res += separator + value
+      }
+    } else if (isObject(value)) {
+      res += separator + toString(value, separator)
+    }
+  }
+  return res
 }
 
 /** Returns the object properties values, including properties values of it child objects in an array.*/
 function toArray(obj: Config): string[] {
-	/* Given an object with values to extract
+  /* Given an object with values to extract
 
   1. If the object is undefined, return an empty []
   2. Else, create a variable named res and initialized with an empty []
@@ -52,20 +52,20 @@ function toArray(obj: Config): string[] {
       2. Else, if it is an object, make a recursion on it and store the result in res
   4. Return res.
   */
-	const res: string[] = [];
+  const res: string[] = []
 
-	if (!isObject(obj) || isEmptyObject(obj)) return res;
+  if (!isObject(obj) || isEmptyObject(obj)) return res
 
-	for (const value of Object.values(obj)) {
-		if (isString(value)) {
-			res.push(value);
-		} else if (isArray(value)) {
-			res.concat(value);
-		} else if (isObject(value)) {
-			res.concat(toArray(value));
-		}
-	}
-	return res;
+  for (const value of Object.values(obj)) {
+    if (isString(value)) {
+      res.push(value)
+    } else if (isArray(value)) {
+      res.concat(value)
+    } else if (isObject(value)) {
+      res.concat(toArray(value))
+    }
+  }
+  return res
 }
 
 /** Simply merges objects from source to target.
@@ -75,7 +75,7 @@ function toArray(obj: Config): string[] {
  * @returns The merged object
  */
 function simpleMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
-	/* Given a list of objects to merge in a target object
+  /* Given a list of objects to merge in a target object
 
   1. Loop through each object of source objects
     1. Loop through each property in the current source object
@@ -87,31 +87,31 @@ function simpleMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
   2. Return the target object
   */
 
-	const [target, ...source] = arg;
+  const [target, ...source] = arg
 
-	if (!target) return {} as T;
+  if (!target) return {} as T
 
-	for (const obj of source) {
-		for (const k in obj) {
-			if (isString(obj[k])) {
-				if (isString(target[k])) {
-					const s = obj[k] as string;
-					const t = target[k] as string;
-					const res = ClassName.merge(t, s, { keepClassDeletor: true });
-					Object.assign(target, { [k]: res });
-				} else {
-					Object.assign(target, { [k]: obj[k] });
-				}
-			} else if (isConfigObject(obj[k])) {
-				if (!target[k]) {
-					Object.assign(target, { [k]: obj[k] });
-				} else if (isConfigObject(target[k])) {
-					simpleMerge(target[k], obj[k]);
-				}
-			}
-		}
-	}
-	return target as T;
+  for (const obj of source) {
+    for (const k in obj) {
+      if (isString(obj[k])) {
+        if (isString(target[k])) {
+          const s = obj[k] as string
+          const t = target[k] as string
+          const res = ClassName.merge(t, s, { keepClassDeletor: true })
+          Object.assign(target, { [k]: res })
+        } else {
+          Object.assign(target, { [k]: obj[k] })
+        }
+      } else if (isConfigObject(obj[k])) {
+        if (!target[k]) {
+          Object.assign(target, { [k]: obj[k] })
+        } else if (isConfigObject(target[k])) {
+          simpleMerge(target[k], obj[k])
+        }
+      }
+    }
+  }
+  return target as T
 }
 
 /** Strictly merges objects from source to target.
@@ -121,7 +121,7 @@ function simpleMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
  * @returns The merged object
  */
 function strictMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
-	/* Given a list of objects to merge in target object
+  /* Given a list of objects to merge in target object
     1. Loop through each object in source objects
       1. If source object is empty, return it.
       2. Else, loop through each property of the current source object
@@ -134,45 +134,45 @@ function strictMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
     2. Return the target object
    */
 
-	const [target, ...source] = arg;
+  const [target, ...source] = arg
 
-	if (!target) return {} as T;
+  if (!target) return {} as T
 
-	for (const obj of source) {
-		for (const k in obj) {
-			if (isString(obj[k])) {
-				Object.assign(target, { [k]: obj[k] });
-			} else if (isEmptyConfigObject(obj[k])) {
-				Object.assign(target, { [k]: obj[k] });
-			} else if (isConfigObject(obj[k]) && isConfigObject(target[k])) {
-				strictMerge(target[k], obj[k]);
-			}
-		}
-	}
-	return target as T;
+  for (const obj of source) {
+    for (const k in obj) {
+      if (isString(obj[k])) {
+        Object.assign(target, { [k]: obj[k] })
+      } else if (isEmptyConfigObject(obj[k])) {
+        Object.assign(target, { [k]: obj[k] })
+      } else if (isConfigObject(obj[k]) && isConfigObject(target[k])) {
+        strictMerge(target[k], obj[k])
+      }
+    }
+  }
+  return target as T
 }
 
 /**
  * Object helper class with static methods for object manipulation.
  */
 export abstract class Obj {
-	/** Returns the object properties values,
-	 * including properties values of it child objects in a string.
-	 * */
-	static readonly toString = toString;
+  /** Returns the object properties values,
+   * including properties values of it child objects in a string.
+   * */
+  static readonly toString = toString
 
-	/** Returns the object properties values,
-	 * including properties values of it child objects in an array.
-	 * */
-	static readonly toArray = toArray;
-	static readonly merge = {
-		/**
-		 * Merges objects from source to target ignoring empty child objects from source.
-		 */
-		simple: simpleMerge,
-		/**
-		 * Merges objects from source to target including empty child objects from source. If a property exists in both objects, the value from the source object will be used.
-		 */
-		strict: strictMerge,
-	};
+  /** Returns the object properties values,
+   * including properties values of it child objects in an array.
+   * */
+  static readonly toArray = toArray
+  static readonly merge = {
+    /**
+     * Merges objects from source to target ignoring empty child objects from source.
+     */
+    simple: simpleMerge,
+    /**
+     * Merges objects from source to target including empty child objects from source. If a property exists in both objects, the value from the source object will be used.
+     */
+    strict: strictMerge,
+  }
 }

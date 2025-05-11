@@ -1,12 +1,12 @@
-import '@analogjs/vite-plugin-angular/setup-vitest';
+import '@analogjs/vite-plugin-angular/setup-vitest'
 
 import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting,
-} from '@angular/platform-browser-dynamic/testing';
-import { TestBed } from '@angular/core/testing';
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
+} from '@angular/platform-browser-dynamic/testing'
+import { TestBed } from '@angular/core/testing'
 
 TestBed.initTestEnvironment(
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting(),
-);
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting()
+)

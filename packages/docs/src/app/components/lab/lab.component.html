@@ -1,679 +1,679 @@
 <div
-	tw-dialog
-	#tasksSavedDialog
-	[isModal]="false"
-	class="self-end justify-self-end"
+  tw-dialog
+  #tasksSavedDialog
+  [isModal]="false"
+  class="self-end justify-self-end"
 >
-	<div tw-dialog-container class="sm:max-w-md dark:bg-gray-950">
-		<div
-			class="grid gap-3 text-center sm:text-left text-sm text-gray-600 dark:text-gray-100"
-		>
-			<details>
-				<summary>
-					{{ task.name }},
-					<span
-						[attr.data-f]="task.done.fully || null"
-						class="data-f:font-bold"
-					>
-						fully: {{ task.done.fully }}
-					</span>
-					,
-					<span
-						[attr.data-p]="task.done.partially || null"
-						class="data-p:font-bold"
-					>
-						partially: {{ task.done.partially }}
-					</span>
-				</summary>
-				<ul class="pl-8 mt-4 grid gap-4">
-					@for (subtask of task.subtasks; track subtask; let i = $index) {
-						@if (subtask.subtasks) {
-							<details class="grid gap-4">
-								<summary>
-									{{ subtask.name }},
-									<span
-										[attr.data-f]="subtask.done.fully || null"
-										class="data-f:font-bold"
-									>
-										fully: {{ subtask.done.fully }}
-									</span>
-									,
-									<span
-										[attr.data-p]="subtask.done.partially || null"
-										class="data-p:font-bold"
-									>
-										partially: {{ subtask.done.partially }}
-									</span>
-								</summary>
-								<ul class="pl-4 grid gap-4">
-									@for (
-										subsubtask of subtask.subtasks;
-										track subsubtask;
-										let j = $index
-									) {
-										@if (subsubtask.subtasks) {
-											<details class="grid gap-4">
-												<summary>
-													{{ subsubtask.name }},
-													<span
-														[attr.data-f]="subsubtask.done.fully || null"
-														class="data-f:font-bold"
-													>
-														fully: {{ subsubtask.done.fully }}
-													</span>
-													,
-													<span
-														[attr.data-p]="subsubtask.done.partially || null"
-														class="data-p:font-bold"
-													>
-														partially: {{ subsubtask.done.partially }}
-													</span>
-												</summary>
-												<ul class="pl-4 grid gap-4">
-													@for (
-														subsubsubtask of subsubtask.subtasks;
-														track subsubsubtask;
-														let k = $index
-													) {
-														<li>
-															{{ subsubsubtask.name }},
-															<span
-																[attr.data-f]="subsubsubtask.done.fully || null"
-																class="data-f:font-bold"
-															>
-																fully: {{ subsubsubtask.done.fully }}
-															</span>
-															,
-															<span
-																[attr.data-p]="
-																	subsubsubtask.done.partially || null
-																"
-																class="data-p:font-bold"
-															>
-																partially: {{ subsubsubtask.done.partially }}
-															</span>
-														</li>
-													}
-												</ul>
-											</details>
-										} @else {
-											<li>
-												{{ subsubtask.name }},
-												<span
-													[attr.data-f]="subsubtask.done.fully || null"
-													class="data-f:font-bold"
-												>
-													fully: {{ subsubtask.done.fully }}
-												</span>
-												,
-												<span
-													[attr.data-p]="subsubtask.done.partially || null"
-													class="data-p:font-bold"
-												>
-													partially: {{ subsubtask.done.partially }}
-												</span>
-											</li>
-										}
-									}
-								</ul>
-							</details>
-						} @else {
-							<li>
-								{{ subtask.name }},
-								<span
-									[attr.data-f]="subtask.done.fully || null"
-									class="data-f:font-bold"
-								>
-									fully: {{ subtask.done.fully }}
-								</span>
-								,
-								<span
-									[attr.data-p]="subtask.done.partially || null"
-									class="data-p:font-bold"
-								>
-									partially: {{ subtask.done.partially }}
-								</span>
-							</li>
-						}
-					}
-				</ul>
-			</details>
-		</div>
-		<div class="flex justify-end">
-			<button tw-button class="w-full sm:w-fit" (click)="tasksDialog.open()">
-				OK
-			</button>
-		</div>
+  <div tw-dialog-container class="sm:max-w-md dark:bg-gray-950">
+    <div
+      class="grid gap-3 text-center sm:text-left text-sm text-gray-600 dark:text-gray-100"
+    >
+      <details>
+        <summary>
+          {{ task.name }},
+          <span
+            [attr.data-f]="task.done.fully || null"
+            class="data-f:font-bold"
+          >
+            fully: {{ task.done.fully }}
+          </span>
+          ,
+          <span
+            [attr.data-p]="task.done.partially || null"
+            class="data-p:font-bold"
+          >
+            partially: {{ task.done.partially }}
+          </span>
+        </summary>
+        <ul class="pl-8 mt-4 grid gap-4">
+          @for (subtask of task.subtasks; track subtask; let i = $index) {
+            @if (subtask.subtasks) {
+              <details class="grid gap-4">
+                <summary>
+                  {{ subtask.name }},
+                  <span
+                    [attr.data-f]="subtask.done.fully || null"
+                    class="data-f:font-bold"
+                  >
+                    fully: {{ subtask.done.fully }}
+                  </span>
+                  ,
+                  <span
+                    [attr.data-p]="subtask.done.partially || null"
+                    class="data-p:font-bold"
+                  >
+                    partially: {{ subtask.done.partially }}
+                  </span>
+                </summary>
+                <ul class="pl-4 grid gap-4">
+                  @for (
+                    subsubtask of subtask.subtasks;
+                    track subsubtask;
+                    let j = $index
+                  ) {
+                    @if (subsubtask.subtasks) {
+                      <details class="grid gap-4">
+                        <summary>
+                          {{ subsubtask.name }},
+                          <span
+                            [attr.data-f]="subsubtask.done.fully || null"
+                            class="data-f:font-bold"
+                          >
+                            fully: {{ subsubtask.done.fully }}
+                          </span>
+                          ,
+                          <span
+                            [attr.data-p]="subsubtask.done.partially || null"
+                            class="data-p:font-bold"
+                          >
+                            partially: {{ subsubtask.done.partially }}
+                          </span>
+                        </summary>
+                        <ul class="pl-4 grid gap-4">
+                          @for (
+                            subsubsubtask of subsubtask.subtasks;
+                            track subsubsubtask;
+                            let k = $index
+                          ) {
+                            <li>
+                              {{ subsubsubtask.name }},
+                              <span
+                                [attr.data-f]="subsubsubtask.done.fully || null"
+                                class="data-f:font-bold"
+                              >
+                                fully: {{ subsubsubtask.done.fully }}
+                              </span>
+                              ,
+                              <span
+                                [attr.data-p]="
+                                  subsubsubtask.done.partially || null
+                                "
+                                class="data-p:font-bold"
+                              >
+                                partially: {{ subsubsubtask.done.partially }}
+                              </span>
+                            </li>
+                          }
+                        </ul>
+                      </details>
+                    } @else {
+                      <li>
+                        {{ subsubtask.name }},
+                        <span
+                          [attr.data-f]="subsubtask.done.fully || null"
+                          class="data-f:font-bold"
+                        >
+                          fully: {{ subsubtask.done.fully }}
+                        </span>
+                        ,
+                        <span
+                          [attr.data-p]="subsubtask.done.partially || null"
+                          class="data-p:font-bold"
+                        >
+                          partially: {{ subsubtask.done.partially }}
+                        </span>
+                      </li>
+                    }
+                  }
+                </ul>
+              </details>
+            } @else {
+              <li>
+                {{ subtask.name }},
+                <span
+                  [attr.data-f]="subtask.done.fully || null"
+                  class="data-f:font-bold"
+                >
+                  fully: {{ subtask.done.fully }}
+                </span>
+                ,
+                <span
+                  [attr.data-p]="subtask.done.partially || null"
+                  class="data-p:font-bold"
+                >
+                  partially: {{ subtask.done.partially }}
+                </span>
+              </li>
+            }
+          }
+        </ul>
+      </details>
+    </div>
+    <div class="flex justify-end">
+      <button tw-button class="w-full sm:w-fit" (click)="tasksDialog.open()">
+        OK
+      </button>
+    </div>
 
-		<div tw-dialog #tasksDialog [isModal]="false">
-			<div tw-dialog-container>
-				<div class="grid text-sm">
-					<p class="font-semibold flex justify-between items-center text-base">
-						Tasks board
-						<button
-							tw-button
-							size="xs"
-							(click)="centeredDialogWithBackdrop.open()"
-						>
-							Save
-						</button>
-					</p>
-					<p class="mt-2">It's great to keep your tasks board updated.</p>
-					<div class="grid gap-4 mt-6">
-						<tw-checkbox
-							[(checked)]="task.done.fully"
-							[(indeterminate)]="task.done.partially"
-						>
-							{{ task.name }}
-							<div class="pl-8 grid gap-4 mt-4 w-fit">
-								@for (subtask of task.subtasks; track subtask; let i = $index) {
-									<tw-checkbox
-										[(checked)]="subtask.done.fully"
-										[(indeterminate)]="subtask.done.partially"
-									>
-										{{ subtask.name }}
-										@if (subtask.subtasks) {
-											<div class="pl-8 grid gap-4 mt-4 w-fit">
-												@for (
-													subsubtask of subtask.subtasks;
-													track subsubtask;
-													let j = $index
-												) {
-													<tw-checkbox
-														[(checked)]="subsubtask.done.fully"
-														[(indeterminate)]="subsubtask.done.partially"
-													>
-														{{ subsubtask.name }}
-														@if (subsubtask.subtasks) {
-															<div class="pl-8 grid gap-4 mt-4 w-fit">
-																@for (
-																	subsubsubtask of subsubtask.subtasks;
-																	track subsubsubtask;
-																	let k = $index
-																) {
-																	<tw-checkbox
-																		[(checked)]="subsubsubtask.done.fully"
-																		[(indeterminate)]="
-																			subsubsubtask.done.partially
-																		"
-																	>
-																		{{ subsubsubtask.name }}
-																	</tw-checkbox>
-																}
-															</div>
-														}
-													</tw-checkbox>
-												}
-											</div>
-										}
-									</tw-checkbox>
-								}
-							</div>
-						</tw-checkbox>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div tw-dialog #tasksDialog [isModal]="false">
+      <div tw-dialog-container>
+        <div class="grid text-sm">
+          <p class="font-semibold flex justify-between items-center text-base">
+            Tasks board
+            <button
+              tw-button
+              size="xs"
+              (click)="centeredDialogWithBackdrop.open()"
+            >
+              Save
+            </button>
+          </p>
+          <p class="mt-2">It's great to keep your tasks board updated.</p>
+          <div class="grid gap-4 mt-6">
+            <tw-checkbox
+              [(checked)]="task.done.fully"
+              [(indeterminate)]="task.done.partially"
+            >
+              {{ task.name }}
+              <div class="pl-8 grid gap-4 mt-4 w-fit">
+                @for (subtask of task.subtasks; track subtask; let i = $index) {
+                  <tw-checkbox
+                    [(checked)]="subtask.done.fully"
+                    [(indeterminate)]="subtask.done.partially"
+                  >
+                    {{ subtask.name }}
+                    @if (subtask.subtasks) {
+                      <div class="pl-8 grid gap-4 mt-4 w-fit">
+                        @for (
+                          subsubtask of subtask.subtasks;
+                          track subsubtask;
+                          let j = $index
+                        ) {
+                          <tw-checkbox
+                            [(checked)]="subsubtask.done.fully"
+                            [(indeterminate)]="subsubtask.done.partially"
+                          >
+                            {{ subsubtask.name }}
+                            @if (subsubtask.subtasks) {
+                              <div class="pl-8 grid gap-4 mt-4 w-fit">
+                                @for (
+                                  subsubsubtask of subsubtask.subtasks;
+                                  track subsubsubtask;
+                                  let k = $index
+                                ) {
+                                  <tw-checkbox
+                                    [(checked)]="subsubsubtask.done.fully"
+                                    [(indeterminate)]="
+                                      subsubsubtask.done.partially
+                                    "
+                                  >
+                                    {{ subsubsubtask.name }}
+                                  </tw-checkbox>
+                                }
+                              </div>
+                            }
+                          </tw-checkbox>
+                        }
+                      </div>
+                    }
+                  </tw-checkbox>
+                }
+              </div>
+            </tw-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div
-	class="grid gap-6 place-content-center p-8 relative w-fit grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mx-auto"
+  class="grid gap-6 place-content-center p-8 relative w-fit grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 mx-auto"
 >
-	<!-- Trigger button -->
-	<button
-		tw-button
-		variant="secondary"
-		(click)="centeredDialogWithBackdrop.toggle()"
-		[popup]="centeredDialogWithBackdrop"
-	>
-		View center dialog with backdrop
-	</button>
-	<button
-		tw-button
-		variant="secondary"
-		(click)="bottomLeftDialog.toggle()"
-		[popup]="bottomLeftDialog"
-	>
-		View bottom-left notification dialog
-	</button>
-	<button
-		tw-button
-		variant="secondary"
-		(click)="bottomRightDialog.toggle()"
-		[popup]="bottomRightDialog"
-	>
-		View bottom-right notification dialog
-	</button>
-	<button
-		tw-button
-		variant="secondary"
-		(click)="dialogWithIcon.toggle()"
-		[popup]="dialogWithIcon"
-	>
-		View dialog with icon
-	</button>
-	<button
-		tw-button
-		variant="secondary"
-		(click)="dialogWithSingleAction.toggle()"
-		[popup]="dialogWithSingleAction"
-	>
-		View dialog with single action
-	</button>
-	<button
-		tw-button
-		variant="secondary"
-		(click)="dialogWithWideButtons.toggle()"
-		[popup]="dialogWithWideButtons"
-	>
-		View dialog with wide buttons
-	</button>
-	<button
-		tw-button
-		variant="secondary"
-		(click)="dialogWithScrollableContent.toggle()"
-		[popup]="dialogWithScrollableContent"
-	>
-		View dialog with scrollable content
-	</button>
-	<button
-		tw-button
-		variant="secondary"
-		(click)="dialogWithLeftAlignedButtons.toggle()"
-		[popup]="dialogWithLeftAlignedButtons"
-	>
-		View dialog with left-aligned buttons
-	</button>
+  <!-- Trigger button -->
+  <button
+    tw-button
+    variant="secondary"
+    (click)="centeredDialogWithBackdrop.toggle()"
+    [popup]="centeredDialogWithBackdrop"
+  >
+    View center dialog with backdrop
+  </button>
+  <button
+    tw-button
+    variant="secondary"
+    (click)="bottomLeftDialog.toggle()"
+    [popup]="bottomLeftDialog"
+  >
+    View bottom-left notification dialog
+  </button>
+  <button
+    tw-button
+    variant="secondary"
+    (click)="bottomRightDialog.toggle()"
+    [popup]="bottomRightDialog"
+  >
+    View bottom-right notification dialog
+  </button>
+  <button
+    tw-button
+    variant="secondary"
+    (click)="dialogWithIcon.toggle()"
+    [popup]="dialogWithIcon"
+  >
+    View dialog with icon
+  </button>
+  <button
+    tw-button
+    variant="secondary"
+    (click)="dialogWithSingleAction.toggle()"
+    [popup]="dialogWithSingleAction"
+  >
+    View dialog with single action
+  </button>
+  <button
+    tw-button
+    variant="secondary"
+    (click)="dialogWithWideButtons.toggle()"
+    [popup]="dialogWithWideButtons"
+  >
+    View dialog with wide buttons
+  </button>
+  <button
+    tw-button
+    variant="secondary"
+    (click)="dialogWithScrollableContent.toggle()"
+    [popup]="dialogWithScrollableContent"
+  >
+    View dialog with scrollable content
+  </button>
+  <button
+    tw-button
+    variant="secondary"
+    (click)="dialogWithLeftAlignedButtons.toggle()"
+    [popup]="dialogWithLeftAlignedButtons"
+  >
+    View dialog with left-aligned buttons
+  </button>
 
-	<div tw-dialog #centeredDialogWithBackdrop>
-		<!-- Dialog container -->
-		<div tw-dialog-container>
-			<!-- Dialog content -->
-			<div class="grid gap-3 text-center sm:text-left">
-				<h1
-					class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-				>
-					Out of stock
-				</h1>
-				<p class="text-sm text-gray-600 dark:text-gray-400">
-					The item in your cart is no longer available.
-				</p>
-			</div>
-			<!-- Dialog actions -->
-			<div class="flex justify-end">
-				<button
-					tw-button
-					class="w-full sm:w-fit"
-					(click)="centeredDialogWithBackdrop.close()"
-				>
-					OK
-				</button>
-			</div>
-		</div>
-	</div>
-	<div tw-dialog #dialogWithLeftAlignedButtons>
-		<!-- Dialog container -->
-		<div tw-dialog-container>
-			<!-- Dialog content -->
-			<div
-				class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start"
-			>
-				<tw-icon
-					name="exclamation-triangle"
-					class="text-red-600 bg-red-100 dark:bg-opacity-50 dark:bg-red-900/50 rounded-full p-3 mx-auto"
-				/>
-				<div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
-					<h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
-						Deactivate account
-					</h1>
-					<p>
-						Are you sure you want to deactivate your account? All of your data
-						will be permanently removed from our servers forever. This action
-						cannot be undone.
-					</p>
-					<!-- Dialog actions -->
-					<div class="grid sm:flex gap-4 mt-5">
-						<button
-							tw-button
-							(click)="dialogWithLeftAlignedButtons.close()"
-							class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600"
-						>
-							Deactivate
-						</button>
-						<button tw-button class="w-full sm:w-fit" variant="secondary">
-							Cancel
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div tw-dialog #centeredDialogWithBackdrop>
+    <!-- Dialog container -->
+    <div tw-dialog-container>
+      <!-- Dialog content -->
+      <div class="grid gap-3 text-center sm:text-left">
+        <h1
+          class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
+        >
+          Out of stock
+        </h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          The item in your cart is no longer available.
+        </p>
+      </div>
+      <!-- Dialog actions -->
+      <div class="flex justify-end">
+        <button
+          tw-button
+          class="w-full sm:w-fit"
+          (click)="centeredDialogWithBackdrop.close()"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+  <div tw-dialog #dialogWithLeftAlignedButtons>
+    <!-- Dialog container -->
+    <div tw-dialog-container>
+      <!-- Dialog content -->
+      <div
+        class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start"
+      >
+        <tw-icon
+          name="exclamation-triangle"
+          class="text-red-600 bg-red-100 dark:bg-opacity-50 dark:bg-red-900/50 rounded-full p-3 mx-auto"
+        />
+        <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
+          <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
+            Deactivate account
+          </h1>
+          <p>
+            Are you sure you want to deactivate your account? All of your data
+            will be permanently removed from our servers forever. This action
+            cannot be undone.
+          </p>
+          <!-- Dialog actions -->
+          <div class="grid sm:flex gap-4 mt-5">
+            <button
+              tw-button
+              (click)="dialogWithLeftAlignedButtons.close()"
+              class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600"
+            >
+              Deactivate
+            </button>
+            <button tw-button class="w-full sm:w-fit" variant="secondary">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<div tw-dialog #dialogWithScrollableContent>
-		<!-- Dialog container -->
-		<div tw-dialog-container>
-			<!-- Dialog content -->
-			<div
-				class="grid gap-3 text-gray-700 dark:text-gray-300 text-pretty text-center sm:text-start"
-			>
-				<h1 class="font-bold text-2xl mb-3 text-gray-800 dark:text-gray-200">
-					Install Angular
-				</h1>
-				<!-- Scrollable content -->
-				<div
-					class="grid gap-2 pr-2 overflow-y-auto overscroll-contain max-h-72"
-				>
-					<h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200">
-						Develop across all platforms
-					</h2>
-					<p>
-						Learn one way to build applications with Angular and reuse your code
-						and abilities to build apps for any deployment target. For web,
-						mobile web, native mobile and native desktop.
-					</p>
-					<h2
-						class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
-					>
-						Speed & Performance
-					</h2>
-					<p>
-						Achieve the maximum speed possible on the Web Platform today, and
-						take it further, via Web Workers and server-side rendering. Angular
-						puts you in control over scalability. Meet huge data requirements by
-						building data models on RxJS, Immutable.js or another push-model.
-					</p>
-					<h2
-						class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
-					>
-						Incredible tooling
-					</h2>
-					<p>
-						Build features quickly with simple, declarative templates. Extend
-						the template language with your own components and use a wide array
-						of existing components. Get immediate Angular-specific help and
-						feedback with nearly every IDE and editor. All this comes together
-						so you can focus on building amazing apps rather than trying to make
-						the code work.
-					</p>
-					<h2
-						class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
-					>
-						Loved by millions
-					</h2>
-					<p>
-						From prototype through global deployment, Angular delivers the
-						productivity and scalable infrastructure that supports Google's
-						largest applications.
-					</p>
-					<h2
-						class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
-					>
-						What is Angular?
-					</h2>
-					<p>
-						Angular is a platform that makes it easy to build applications with
-						the web. Angular combines declarative templates, dependency
-						injection, end to end tooling, and integrated best practices to
-						solve development challenges. Angular empowers developers to build
-						applications that live on the web, mobile, or the desktop
-					</p>
-					<h2
-						class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
-					>
-						Architecture overview
-					</h2>
-					<p>
-						Angular is a platform and framework for building client applications
-						in HTML and TypeScript. Angular is itself written in TypeScript. It
-						implements core and optional functionality as a set of TypeScript
-						libraries that you import into your apps.
-					</p>
-					<p>
-						The basic building blocks of an Angular application are NgModules,
-						which provide a compilation context for components. NgModules
-						collect related code into functional sets; an Angular app is defined
-						by a set of NgModules. An app always has at least a root module that
-						enables bootstrapping, and typically has many more feature modules.
-					</p>
-					<p>
-						Components define views, which are sets of screen elements that
-						Angular can choose among and modify according to your program logic
-						and data. Every app has at least a root component.
-					</p>
-					<p>
-						Components use services, which provide specific functionality not
-						directly related to views. Service providers can be injected into
-						components as dependencies, making your code modular, reusable, and
-						efficient.
-					</p>
-					<p>
-						Both components and services are simply classes, with decorators
-						that mark their type and provide metadata that tells Angular how to
-						use them.
-					</p>
-					<p>
-						The metadata for a component class associates it with a template
-						that defines a view. A template combines ordinary HTML with Angular
-						directives and binding markup that allow Angular to modify the HTML
-						before rendering it for display.
-					</p>
-					<p>
-						The metadata for a service class provides the information Angular
-						needs to make it available to components through Dependency
-						Injection (DI).
-					</p>
-					<p>
-						An app's components typically define many views, arranged
-						hierarchically. Angular provides the Router service to help you
-						define navigation paths among views. The router provides
-						sophisticated in-browser navigational capabilities.
-					</p>
-				</div>
-			</div>
-			<!-- Dialog actions -->
-			<div class="flex flex-col gap-4 sm:flex-row-reverse">
-				<button
-					tw-button
-					class="w-full sm:w-fit"
-					(click)="dialogWithScrollableContent.close()"
-				>
-					Install
-				</button>
-				<button tw-button variant="secondary" class="w-full sm:w-fit">
-					Cancel
-				</button>
-			</div>
-		</div>
-	</div>
+  <div tw-dialog #dialogWithScrollableContent>
+    <!-- Dialog container -->
+    <div tw-dialog-container>
+      <!-- Dialog content -->
+      <div
+        class="grid gap-3 text-gray-700 dark:text-gray-300 text-pretty text-center sm:text-start"
+      >
+        <h1 class="font-bold text-2xl mb-3 text-gray-800 dark:text-gray-200">
+          Install Angular
+        </h1>
+        <!-- Scrollable content -->
+        <div
+          class="grid gap-2 pr-2 overflow-y-auto overscroll-contain max-h-72"
+        >
+          <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200">
+            Develop across all platforms
+          </h2>
+          <p>
+            Learn one way to build applications with Angular and reuse your code
+            and abilities to build apps for any deployment target. For web,
+            mobile web, native mobile and native desktop.
+          </p>
+          <h2
+            class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
+          >
+            Speed & Performance
+          </h2>
+          <p>
+            Achieve the maximum speed possible on the Web Platform today, and
+            take it further, via Web Workers and server-side rendering. Angular
+            puts you in control over scalability. Meet huge data requirements by
+            building data models on RxJS, Immutable.js or another push-model.
+          </p>
+          <h2
+            class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
+          >
+            Incredible tooling
+          </h2>
+          <p>
+            Build features quickly with simple, declarative templates. Extend
+            the template language with your own components and use a wide array
+            of existing components. Get immediate Angular-specific help and
+            feedback with nearly every IDE and editor. All this comes together
+            so you can focus on building amazing apps rather than trying to make
+            the code work.
+          </p>
+          <h2
+            class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
+          >
+            Loved by millions
+          </h2>
+          <p>
+            From prototype through global deployment, Angular delivers the
+            productivity and scalable infrastructure that supports Google's
+            largest applications.
+          </p>
+          <h2
+            class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
+          >
+            What is Angular?
+          </h2>
+          <p>
+            Angular is a platform that makes it easy to build applications with
+            the web. Angular combines declarative templates, dependency
+            injection, end to end tooling, and integrated best practices to
+            solve development challenges. Angular empowers developers to build
+            applications that live on the web, mobile, or the desktop
+          </p>
+          <h2
+            class="font-semibold mt-3 text-xl text-gray-800 dark:text-gray-200"
+          >
+            Architecture overview
+          </h2>
+          <p>
+            Angular is a platform and framework for building client applications
+            in HTML and TypeScript. Angular is itself written in TypeScript. It
+            implements core and optional functionality as a set of TypeScript
+            libraries that you import into your apps.
+          </p>
+          <p>
+            The basic building blocks of an Angular application are NgModules,
+            which provide a compilation context for components. NgModules
+            collect related code into functional sets; an Angular app is defined
+            by a set of NgModules. An app always has at least a root module that
+            enables bootstrapping, and typically has many more feature modules.
+          </p>
+          <p>
+            Components define views, which are sets of screen elements that
+            Angular can choose among and modify according to your program logic
+            and data. Every app has at least a root component.
+          </p>
+          <p>
+            Components use services, which provide specific functionality not
+            directly related to views. Service providers can be injected into
+            components as dependencies, making your code modular, reusable, and
+            efficient.
+          </p>
+          <p>
+            Both components and services are simply classes, with decorators
+            that mark their type and provide metadata that tells Angular how to
+            use them.
+          </p>
+          <p>
+            The metadata for a component class associates it with a template
+            that defines a view. A template combines ordinary HTML with Angular
+            directives and binding markup that allow Angular to modify the HTML
+            before rendering it for display.
+          </p>
+          <p>
+            The metadata for a service class provides the information Angular
+            needs to make it available to components through Dependency
+            Injection (DI).
+          </p>
+          <p>
+            An app's components typically define many views, arranged
+            hierarchically. Angular provides the Router service to help you
+            define navigation paths among views. The router provides
+            sophisticated in-browser navigational capabilities.
+          </p>
+        </div>
+      </div>
+      <!-- Dialog actions -->
+      <div class="flex flex-col gap-4 sm:flex-row-reverse">
+        <button
+          tw-button
+          class="w-full sm:w-fit"
+          (click)="dialogWithScrollableContent.close()"
+        >
+          Install
+        </button>
+        <button tw-button variant="secondary" class="w-full sm:w-fit">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
 
-	<div tw-dialog #dialogWithWideButtons>
-		<!-- Dialog container -->
-		<div tw-dialog-container class="sm:max-w-sm">
-			<!-- Dialog content -->
-			<div class="grid gap-3 text-center">
-				<tw-icon
-					name="check"
-					class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto"
-				/>
-				<div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
-					<h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
-						Payment successful
-					</h1>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-						amet labore. Lorem ipsum dolor sit amet consectetur adipisicing
-						elit.
-					</p>
-				</div>
-			</div>
-			<!-- Dialog actions -->
-			<div class="flex flex-col gap-4 sm:flex-row-reverse">
-				<button
-					tw-button
-					class="w-full"
-					(click)="dialogWithWideButtons.close()"
-				>
-					Deactivate
-				</button>
-				<button tw-button variant="secondary" class="w-full">Cancel</button>
-			</div>
-		</div>
-	</div>
+  <div tw-dialog #dialogWithWideButtons>
+    <!-- Dialog container -->
+    <div tw-dialog-container class="sm:max-w-sm">
+      <!-- Dialog content -->
+      <div class="grid gap-3 text-center">
+        <tw-icon
+          name="check"
+          class="text-green-600 bg-green-600/10 rounded-full p-3 mx-auto"
+        />
+        <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
+          <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
+            Payment successful
+          </h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+            amet labore. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit.
+          </p>
+        </div>
+      </div>
+      <!-- Dialog actions -->
+      <div class="flex flex-col gap-4 sm:flex-row-reverse">
+        <button
+          tw-button
+          class="w-full"
+          (click)="dialogWithWideButtons.close()"
+        >
+          Deactivate
+        </button>
+        <button tw-button variant="secondary" class="w-full">Cancel</button>
+      </div>
+    </div>
+  </div>
 
-	<div tw-dialog #dialogWithSingleAction>
-		<!-- Dialog container -->
-		<div tw-dialog-container class="sm:max-w-sm">
-			<!-- Dialog content -->
-			<div class="grid gap-3 text-center">
-				<tw-icon
-					name="check"
-					class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3"
-				/>
-				<div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
-					<h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
-						Payment successful
-					</h1>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-						amet labore. Lorem ipsum dolor sit amet consectetur adipisicing
-						elit.
-					</p>
-				</div>
-			</div>
-			<!-- Dialog actions -->
-			<button tw-button class="w-full" (click)="dialogWithSingleAction.close()">
-				Go back to dashboard
-			</button>
-		</div>
-	</div>
+  <div tw-dialog #dialogWithSingleAction>
+    <!-- Dialog container -->
+    <div tw-dialog-container class="sm:max-w-sm">
+      <!-- Dialog content -->
+      <div class="grid gap-3 text-center">
+        <tw-icon
+          name="check"
+          class="text-green-600 bg-green-600/10 rounded-full mx-auto p-3"
+        />
+        <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
+          <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
+            Payment successful
+          </h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+            amet labore. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit.
+          </p>
+        </div>
+      </div>
+      <!-- Dialog actions -->
+      <button tw-button class="w-full" (click)="dialogWithSingleAction.close()">
+        Go back to dashboard
+      </button>
+    </div>
+  </div>
 
-	<div tw-dialog #dialogWithIcon (click)="dialogWithIcon.close()">
-		<!-- Dialog container -->
-		<div tw-dialog-container>
-			<!-- Dialog content -->
-			<div
-				class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start"
-			>
-				<tw-icon
-					name="exclamation-triangle"
-					class="text-red-600 bg-red-400/10 rounded-full p-3 mx-auto"
-				/>
-				<div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
-					<h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
-						Deactivate account
-					</h1>
-					<p>
-						Are you sure you want to deactivate your account? All of your data
-						will be permanently removed. This action cannot be undone.
-					</p>
-				</div>
-			</div>
-			<!-- Dialog actions -->
-			<div class="flex justify-items-end flex-col gap-4 sm:flex-row-reverse">
-				<button
-					tw-button
-					class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600/90"
-				>
-					Deactivate
-				</button>
-				<button tw-button class="w-full sm:w-fit" variant="secondary">
-					Cancel
-				</button>
-			</div>
-		</div>
-	</div>
+  <div tw-dialog #dialogWithIcon (click)="dialogWithIcon.close()">
+    <!-- Dialog container -->
+    <div tw-dialog-container>
+      <!-- Dialog content -->
+      <div
+        class="grid gap-3 text-center sm:text-left sm:flex sm:flex-row sm:items-start"
+      >
+        <tw-icon
+          name="exclamation-triangle"
+          class="text-red-600 bg-red-400/10 rounded-full p-3 mx-auto"
+        />
+        <div class="text-pretty text-sm text-gray-600 dark:text-gray-400">
+          <h1 class="font-bold text-lg mb-3 text-gray-700 dark:text-gray-300">
+            Deactivate account
+          </h1>
+          <p>
+            Are you sure you want to deactivate your account? All of your data
+            will be permanently removed. This action cannot be undone.
+          </p>
+        </div>
+      </div>
+      <!-- Dialog actions -->
+      <div class="flex justify-items-end flex-col gap-4 sm:flex-row-reverse">
+        <button
+          tw-button
+          class="w-full sm:w-fit bg-red-600 hover:bg-red-600/90 active:bg-red-700/90 focus:outline-red-600/90"
+        >
+          Deactivate
+        </button>
+        <button tw-button class="w-full sm:w-fit" variant="secondary">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
 
-	<div tw-dialog #centeredDialogWithBackdrop>
-		<!-- Dialog container -->
-		<div tw-dialog-container>
-			<!-- Dialog content -->
-			<div class="grid gap-3 text-center sm:text-left">
-				<h1
-					class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-				>
-					Out of stock
-				</h1>
-				<p class="text-sm text-gray-600 dark:text-gray-400">
-					The item in your cart is no longer available.
-				</p>
-			</div>
-			<!-- Dialog actions -->
-			<div class="flex justify-end">
-				<button
-					tw-button
-					class="w-full sm:w-fit"
-					(click)="centeredDialogWithBackdrop.close()"
-				>
-					OK
-				</button>
-			</div>
-		</div>
-	</div>
+  <div tw-dialog #centeredDialogWithBackdrop>
+    <!-- Dialog container -->
+    <div tw-dialog-container>
+      <!-- Dialog content -->
+      <div class="grid gap-3 text-center sm:text-left">
+        <h1
+          class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
+        >
+          Out of stock
+        </h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">
+          The item in your cart is no longer available.
+        </p>
+      </div>
+      <!-- Dialog actions -->
+      <div class="flex justify-end">
+        <button
+          tw-button
+          class="w-full sm:w-fit"
+          (click)="centeredDialogWithBackdrop.close()"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
 
-	<div
-		tw-dialog
-		#bottomLeftDialog
-		[isModal]="false"
-		class="inset- left-0 bottom-0"
-	>
-		<!-- Dialog container -->
-		<div tw-dialog-container class="sm:max-w-sm">
-			<!-- Dialog content -->
-			<div class="grid gap-3 text-center sm:text-left">
-				<h1
-					class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-				>
-					Payment successful
-				</h1>
-				<p class="text-sm text-slate-600 dark:text-slate-400">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-					amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</p>
-			</div>
-			<!-- Dialog actions -->
-			<tw-icon
-				(click)="bottomLeftDialog.close()"
-				source="heroicons"
-				name="x-mark"
-				class="absolute top-5 right-5 cursor-pointer"
-			/>
-		</div>
-	</div>
+  <div
+    tw-dialog
+    #bottomLeftDialog
+    [isModal]="false"
+    class="inset- left-0 bottom-0"
+  >
+    <!-- Dialog container -->
+    <div tw-dialog-container class="sm:max-w-sm">
+      <!-- Dialog content -->
+      <div class="grid gap-3 text-center sm:text-left">
+        <h1
+          class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
+        >
+          Payment successful
+        </h1>
+        <p class="text-sm text-slate-600 dark:text-slate-400">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+      </div>
+      <!-- Dialog actions -->
+      <tw-icon
+        (click)="bottomLeftDialog.close()"
+        source="heroicons"
+        name="x-mark"
+        class="absolute top-5 right-5 cursor-pointer"
+      />
+    </div>
+  </div>
 
-	<div
-		tw-dialog
-		#bottomRightDialog
-		[isModal]="false"
-		[autoClose]="true"
-		class="inset- right-0 bottom-0"
-	>
-		<!-- Dialog container -->
-		<div
-			tw-dialog-container
-			class="sm:max-w-sm place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0"
-		>
-			<!-- Dialog content -->
-			<div class="grid gap-3 text-center sm:text-left">
-				<h1
-					class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
-				>
-					Payment successful
-				</h1>
-				<p class="text-sm text-slate-600 dark:text-slate-400">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-					amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-				</p>
-			</div>
-			<!-- Dialog actions -->
-			<tw-icon
-				(click)="bottomRightDialog.close()"
-				source="heroicons"
-				name="x-mark"
-				class="absolute top-5 right-5 cursor-pointer"
-			/>
-		</div>
-	</div>
+  <div
+    tw-dialog
+    #bottomRightDialog
+    [isModal]="false"
+    [autoClose]="true"
+    class="inset- right-0 bottom-0"
+  >
+    <!-- Dialog container -->
+    <div
+      tw-dialog-container
+      class="sm:max-w-sm place-self-end opacity-100 not-in-open:translate-y-200 starting:translate-y-200 in-open:translate-y-0"
+    >
+      <!-- Dialog content -->
+      <div class="grid gap-3 text-center sm:text-left">
+        <h1
+          class="font-bold text-balance text-lg my-0 text-gray-700 dark:text-gray-300"
+        >
+          Payment successful
+        </h1>
+        <p class="text-sm text-slate-600 dark:text-slate-400">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          amet labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+      </div>
+      <!-- Dialog actions -->
+      <tw-icon
+        (click)="bottomRightDialog.close()"
+        source="heroicons"
+        name="x-mark"
+        class="absolute top-5 right-5 cursor-pointer"
+      />
+    </div>
+  </div>
 </div>
 
 <!-- <div class="grid mx-auto gap-3 w-fit">
@@ -688,12 +688,12 @@
   </iframe>
 </div> -->
 <div
-	class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8"
+  class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8"
 ></div>
 <div
-	class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8"
+  class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8"
 ></div>
 <div
-	class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8"
+  class="grid place-items-center sm:flex sm:flex-wrap justify-center gap-8 p-8"
 ></div>
 <div class="mb-96"></div>

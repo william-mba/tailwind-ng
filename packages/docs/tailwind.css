@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 @variant dark (&:where(.dark, .dark *));
 @theme {
-	--breakpoint-xs: 30rem;
-	--animate-pulse-8: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-	--animate-spin-180: spin 180s linear infinite;
-	--font-heading: 'Epilogue', system-ui, sans-serif;
-	--font-sans:
-		'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --breakpoint-xs: 30rem;
+  --animate-pulse-8: pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin-180: spin 180s linear infinite;
+  --font-heading: 'Epilogue', system-ui, sans-serif;
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }

@@ -1,6 +1,6 @@
-export type ArrowLeftKey = 'ArrowLeft';
+export type ArrowLeftKey = 'ArrowLeft'
 export function isArrowLeft(
-	key: ArrowLeftKey | (string & {}),
+  key: ArrowLeftKey | (string & {})
 ): key is ArrowLeftKey {
-	return key === 'ArrowLeft';
+  return key === 'ArrowLeft'
 }

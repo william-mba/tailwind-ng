@@ -1,498 +1,498 @@
 <div>
-	<div class="mb-8 text-sm grid gap-2">
-		<div class="flex gap-2 items-start sm:items-center">
-			<tw-icon
-				name="accessibility"
-				class="rounded-full border p-1 self-start"
-			/>
-			Accessibility features: Inspired by the combobox pattern from the
-			<a
-				href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-indigo-900 dark:text-indigo-300 after:content-['_↗']"
-			>
-				ARIA Authoring Practices Guide (APG)
-			</a>
-		</div>
-		<ul class="text-gray-600 dark:text-gray-400 pl-4 list-inside list-disc">
-			<li>On opened, press Espace/Esc key to close it.</li>
-			<li>
-				On closed, press Espace/Esc key to reset selection and clear text field.
-			</li>
-			<li>On opened, press Up/Down arrow keys to navigate through the list.</li>
-			<li>On opened, press Enter/Space key to select the focused item.</li>
-		</ul>
-	</div>
+  <div class="mb-8 text-sm grid gap-2">
+    <div class="flex gap-2 items-start sm:items-center">
+      <tw-icon
+        name="accessibility"
+        class="rounded-full border p-1 self-start"
+      />
+      Accessibility features: Inspired by the combobox pattern from the
+      <a
+        href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-indigo-900 dark:text-indigo-300 after:content-['_↗']"
+      >
+        ARIA Authoring Practices Guide (APG)
+      </a>
+    </div>
+    <ul class="text-gray-600 dark:text-gray-400 pl-4 list-inside list-disc">
+      <li>On opened, press Espace/Esc key to close it.</li>
+      <li>
+        On closed, press Espace/Esc key to reset selection and clear text field.
+      </li>
+      <li>On opened, press Up/Down arrow keys to navigate through the list.</li>
+      <li>On opened, press Enter/Space key to select the focused item.</li>
+    </ul>
+  </div>
 
-	<div class="sm:flex justify-between mb-3">
-		<h2>Simple</h2>
-		<span
-			class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
-		>
-			Selection mode
-			<tw-toggle
-				class="data-checked:bg- w-30"
-				[checked]="isSingleMode()()"
-				(click)="toggleMode()"
-			>
-				<span
-					class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
-				>
-					Multi
-				</span>
-				<span
-					class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
-				>
-					Single
-				</span>
-			</tw-toggle>
-		</span>
-	</div>
-	<div
-		class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
-	>
-		<div class="grid gap-y-64 justify-items-center">
-			<!-- Combobox -->
-			<div
-				tw-combobox
-				[isOpened]="true"
-				[selectionMode]="selectionMode[1]()"
-				#cbb1
-				class="sm:w-80"
-				[(selectedValues)]="selections[1]"
-			>
-				<!-- Label -->
-				<label for="search" class="block text-sm mb-2 font-medium">
-					Quick search
-				</label>
-				<!-- Input -->
-				<input
-					tw-input
-					(changes)="filter($event)"
-					type="text"
-					autocomplete="off"
-					id="search"
-					class="pr-14"
-				/>
-				<!-- Button -->
-				<button
-					tw-button
-					variant="text"
-					size="sm"
-					[popup]="cbb1"
-					class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-				>
-					@if (cbb1.isOpened()) {
-						<tw-icon (click)="reset(1, cbb1)" size="sm" name="x-mark" />
-					}
-					<tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
-				</button>
-				<!-- Dropdown -->
-				<tw-dropdown
-					[isOpened]="true"
-					(closed)="reset()"
-					class="w-full max-h-56"
-				>
-					@for (user of users1; track user.name) {
-						<div tw-combobox-item #item [value]="user.name">
-							@if (item.selected()) {
-								<tw-icon class="my-auto absolute right-3" name="check" />
-							}
-							<span>{{ user.name }}</span>
-						</div>
-					}
-				</tw-dropdown>
-			</div>
-			<p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
-				{{ selections[1] | string }}
-			</p>
-		</div>
-	</div>
+  <div class="sm:flex justify-between mb-3">
+    <h2>Simple</h2>
+    <span
+      class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
+    >
+      Selection mode
+      <tw-toggle
+        class="data-checked:bg- w-30"
+        [checked]="isSingleMode()()"
+        (click)="toggleMode()"
+      >
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
+        >
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
+        >
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
+  <div
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+  >
+    <div class="grid gap-y-64 justify-items-center">
+      <!-- Combobox -->
+      <div
+        tw-combobox
+        [isOpened]="true"
+        [selectionMode]="selectionMode[1]()"
+        #cbb1
+        class="sm:w-80"
+        [(selectedValues)]="selections[1]"
+      >
+        <!-- Label -->
+        <label for="search" class="block text-sm mb-2 font-medium">
+          Quick search
+        </label>
+        <!-- Input -->
+        <input
+          tw-input
+          (changes)="filter($event)"
+          type="text"
+          autocomplete="off"
+          id="search"
+          class="pr-14"
+        />
+        <!-- Button -->
+        <button
+          tw-button
+          variant="text"
+          size="sm"
+          [popup]="cbb1"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
+        >
+          @if (cbb1.isOpened()) {
+            <tw-icon (click)="reset(1, cbb1)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cbb1.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown
+          [isOpened]="true"
+          (closed)="reset()"
+          class="w-full max-h-56"
+        >
+          @for (user of users1; track user.name) {
+            <div tw-combobox-item #item [value]="user.name">
+              @if (item.selected()) {
+                <tw-icon class="my-auto absolute right-3" name="check" />
+              }
+              <span>{{ user.name }}</span>
+            </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
+        {{ selections[1] | string }}
+      </p>
+    </div>
+  </div>
 
-	<div class="sm:flex justify-between mb-3" #ref2>
-		<h2>With check on left</h2>
-		<span
-			class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
-		>
-			Selection mode
-			<tw-toggle
-				class="data-checked:bg- w-30"
-				[checked]="isSingleMode(2)()"
-				(click)="toggleMode(2)"
-			>
-				<span
-					class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
-				>
-					Multi
-				</span>
-				<span
-					class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
-				>
-					Single
-				</span>
-			</tw-toggle>
-		</span>
-	</div>
-	<div
-		class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
-	>
-		<div class="grid gap-y-64 justify-items-center">
-			<!-- Combobox -->
-			<div
-				tw-combobox
-				[isOpened]="true"
-				[selectionMode]="selectionMode[2]()"
-				#cb2
-				class="sm:w-80"
-				[(selectedValues)]="selections[2]"
-			>
-				<!-- Label -->
-				<label for="search2" class="block text-sm mb-2 font-medium">
-					Quick search
-				</label>
-				<!-- Input -->
-				<input
-					tw-input
-					(changes)="filter($event, 2)"
-					type="text"
-					autocomplete="off"
-					id="search2"
-					class="pr-14"
-				/>
-				<!-- Button -->
-				<button
-					tw-button
-					variant="text"
-					size="sm"
-					[popup]="cb2"
-					class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-				>
-					@if (cb2.isOpened()) {
-						<tw-icon (click)="reset(2, cb2)" size="sm" name="x-mark" />
-					}
-					<tw-icon name="chevron-up-down" (click)="cb2.toggle()" />
-				</button>
-				<!-- Dropdown -->
-				<tw-dropdown
-					[isOpened]="true"
-					(closed)="reset()"
-					class="w-full max-h-56"
-				>
-					@for (user of users2; track user.name) {
-						<div tw-combobox-item #item [value]="user.name">
-							@if (item.selected()) {
-								<tw-icon class="my-auto absolute left-3" name="check" />
-							}
-							<span class="pl-6">{{ user.name }}</span>
-						</div>
-					}
-				</tw-dropdown>
-			</div>
-			<p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
-				{{ selections[2] | string }}
-			</p>
-		</div>
-	</div>
+  <div class="sm:flex justify-between mb-3" #ref2>
+    <h2>With check on left</h2>
+    <span
+      class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
+    >
+      Selection mode
+      <tw-toggle
+        class="data-checked:bg- w-30"
+        [checked]="isSingleMode(2)()"
+        (click)="toggleMode(2)"
+      >
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
+        >
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
+        >
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
+  <div
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+  >
+    <div class="grid gap-y-64 justify-items-center">
+      <!-- Combobox -->
+      <div
+        tw-combobox
+        [isOpened]="true"
+        [selectionMode]="selectionMode[2]()"
+        #cb2
+        class="sm:w-80"
+        [(selectedValues)]="selections[2]"
+      >
+        <!-- Label -->
+        <label for="search2" class="block text-sm mb-2 font-medium">
+          Quick search
+        </label>
+        <!-- Input -->
+        <input
+          tw-input
+          (changes)="filter($event, 2)"
+          type="text"
+          autocomplete="off"
+          id="search2"
+          class="pr-14"
+        />
+        <!-- Button -->
+        <button
+          tw-button
+          variant="text"
+          size="sm"
+          [popup]="cb2"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
+        >
+          @if (cb2.isOpened()) {
+            <tw-icon (click)="reset(2, cb2)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cb2.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown
+          [isOpened]="true"
+          (closed)="reset()"
+          class="w-full max-h-56"
+        >
+          @for (user of users2; track user.name) {
+            <div tw-combobox-item #item [value]="user.name">
+              @if (item.selected()) {
+                <tw-icon class="my-auto absolute left-3" name="check" />
+              }
+              <span class="pl-6">{{ user.name }}</span>
+            </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
+        {{ selections[2] | string }}
+      </p>
+    </div>
+  </div>
 
-	<div class="hidden lg:flex justify-between mb-3" #ref3>
-		<h2>With grid layout</h2>
-		<span
-			class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
-		>
-			Selection mode
-			<tw-toggle
-				class="data-checked:bg- w-30"
-				[checked]="isSingleMode(5)()"
-				(click)="toggleMode(5)"
-			>
-				<span
-					class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
-				>
-					Multi
-				</span>
-				<span
-					class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
-				>
-					Single
-				</span>
-			</tw-toggle>
-		</span>
-	</div>
-	<div
-		class="hidden lg:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
-	>
-		<div class="grid gap-y-8 justify-items-center">
-			<!-- Combobox -->
-			<div
-				tw-combobox
-				[isOpened]="true"
-				[selectionMode]="selectionMode[5]()"
-				#cb5
-				class="lg:w-2xl 2xl:w-3xl text-center mb-96"
-				[(selectedValues)]="selections[5]"
-			>
-				<!-- Label -->
-				<label for="search5" class="block text-sm mb-4 font-medium">
-					Quick search
-				</label>
-				<!-- Input -->
-				<input
-					tw-input
-					(changes)="filter($event, 5)"
-					type="text"
-					autocomplete="off"
-					id="search5"
-					class="pr-14 rounded-full sm:w-"
-				/>
-				<!-- Button -->
-				<button
-					tw-button
-					variant="text"
-					size="sm"
-					[popup]="cb5"
-					class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-				>
-					@if (cb5.isOpened()) {
-						<tw-icon (click)="reset(5, cb5)" size="sm" name="x-mark" />
-					}
-					<tw-icon name="search" (click)="cb5.toggle()" />
-				</button>
-				<!-- Dropdown -->
-				<tw-dropdown
-					[isOpened]="true"
-					(closed)="reset()"
-					class="max-h-fit grid-cols-3 gap-2 min-w-full rounded-4xl p-3"
-				>
-					@for (user of users5; track user.name) {
-						<div
-							tw-combobox-item
-							#item
-							[value]="user.name"
-							class="inline-flex rounded-full"
-						>
-							@switch (user.status) {
-								@case ('active') {
-									<tw-icon
-										class="my-auto absolute left-3 text-green-500"
-										name="dot"
-										size="sm"
-									/>
-								}
-								@case ('inactive') {
-									<tw-icon
-										class="my-auto absolute left-3 text-gray-300 dark:text-gray-700"
-										name="dot"
-										size="sm"
-									/>
-								}
-							}
-							@if (item.selected()) {
-								<tw-icon class="my-auto absolute right-3" name="check" />
-							}
-							<span class="pl-6 text-sm text-nowrap">{{ user.name }}</span>
-						</div>
-					}
-				</tw-dropdown>
-			</div>
-			<p class="text-sm text-balance text-center max-w-full">
-				{{ selections[5] | string }}
-			</p>
-		</div>
-	</div>
+  <div class="hidden lg:flex justify-between mb-3" #ref3>
+    <h2>With grid layout</h2>
+    <span
+      class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
+    >
+      Selection mode
+      <tw-toggle
+        class="data-checked:bg- w-30"
+        [checked]="isSingleMode(5)()"
+        (click)="toggleMode(5)"
+      >
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
+        >
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
+        >
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
+  <div
+    class="hidden lg:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+  >
+    <div class="grid gap-y-8 justify-items-center">
+      <!-- Combobox -->
+      <div
+        tw-combobox
+        [isOpened]="true"
+        [selectionMode]="selectionMode[5]()"
+        #cb5
+        class="lg:w-2xl 2xl:w-3xl text-center mb-96"
+        [(selectedValues)]="selections[5]"
+      >
+        <!-- Label -->
+        <label for="search5" class="block text-sm mb-4 font-medium">
+          Quick search
+        </label>
+        <!-- Input -->
+        <input
+          tw-input
+          (changes)="filter($event, 5)"
+          type="text"
+          autocomplete="off"
+          id="search5"
+          class="pr-14 rounded-full sm:w-"
+        />
+        <!-- Button -->
+        <button
+          tw-button
+          variant="text"
+          size="sm"
+          [popup]="cb5"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
+        >
+          @if (cb5.isOpened()) {
+            <tw-icon (click)="reset(5, cb5)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="search" (click)="cb5.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown
+          [isOpened]="true"
+          (closed)="reset()"
+          class="max-h-fit grid-cols-3 gap-2 min-w-full rounded-4xl p-3"
+        >
+          @for (user of users5; track user.name) {
+            <div
+              tw-combobox-item
+              #item
+              [value]="user.name"
+              class="inline-flex rounded-full"
+            >
+              @switch (user.status) {
+                @case ('active') {
+                  <tw-icon
+                    class="my-auto absolute left-3 text-green-500"
+                    name="dot"
+                    size="sm"
+                  />
+                }
+                @case ('inactive') {
+                  <tw-icon
+                    class="my-auto absolute left-3 text-gray-300 dark:text-gray-700"
+                    name="dot"
+                    size="sm"
+                  />
+                }
+              }
+              @if (item.selected()) {
+                <tw-icon class="my-auto absolute right-3" name="check" />
+              }
+              <span class="pl-6 text-sm text-nowrap">{{ user.name }}</span>
+            </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm text-balance text-center max-w-full">
+        {{ selections[5] | string }}
+      </p>
+    </div>
+  </div>
 
-	<div class="sm:flex justify-between mb-3" #ref4>
-		<h2>With image</h2>
-		<span
-			class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
-		>
-			Selection mode
-			<tw-toggle
-				class="data-checked:bg- w-30"
-				[checked]="isSingleMode(3)()"
-				(click)="toggleMode(3)"
-			>
-				<span
-					class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
-				>
-					Multi
-				</span>
-				<span
-					class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
-				>
-					Single
-				</span>
-			</tw-toggle>
-		</span>
-	</div>
-	<div
-		class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
-	>
-		<div class="grid gap-y-64 justify-items-center">
-			<!-- Combobox -->
-			<div
-				tw-combobox
-				[isOpened]="true"
-				[selectionMode]="selectionMode[3]()"
-				#cb3
-				class="sm:w-80"
-				[(selectedValues)]="selections[3]"
-			>
-				<!-- Label -->
-				<label for="search3" class="block text-sm mb-2 font-medium">
-					Quick search
-				</label>
-				<!-- Input -->
-				<input
-					tw-input
-					(changes)="filter($event, 3)"
-					type="text"
-					autocomplete="off"
-					id="search3"
-					class="pr-14"
-				/>
-				<!-- Button -->
-				<button
-					tw-button
-					variant="text"
-					size="sm"
-					[popup]="cb3"
-					class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-				>
-					@if (cb3.isOpened()) {
-						<tw-icon (click)="reset(3, cb3)" size="sm" name="x-mark" />
-					}
-					<tw-icon name="chevron-up-down" (click)="cb3.toggle()" />
-				</button>
-				<!-- Dropdown -->
-				<tw-dropdown
-					[isOpened]="true"
-					(closed)="reset()"
-					class="w-full max-h-56"
-				>
-					@for (user of users3; track user.name) {
-						<div tw-combobox-item #item [value]="user.name">
-							@defer (on viewport(item)) {
-								<img
-									tw-avatar
-									size="xs"
-									alt=""
-									class="my-auto absolute left-0"
-									[src]="user.image"
-								/>
-							}
-							@if (item.selected()) {
-								<tw-icon class="my-auto absolute right-3" name="check" />
-							}
-							<span class="pl-3">{{ user.name }}</span>
-						</div>
-					}
-				</tw-dropdown>
-			</div>
-			<p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
-				{{ selections[3] | string }}
-			</p>
-		</div>
-	</div>
+  <div class="sm:flex justify-between mb-3" #ref4>
+    <h2>With image</h2>
+    <span
+      class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
+    >
+      Selection mode
+      <tw-toggle
+        class="data-checked:bg- w-30"
+        [checked]="isSingleMode(3)()"
+        (click)="toggleMode(3)"
+      >
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
+        >
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
+        >
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
+  <div
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+  >
+    <div class="grid gap-y-64 justify-items-center">
+      <!-- Combobox -->
+      <div
+        tw-combobox
+        [isOpened]="true"
+        [selectionMode]="selectionMode[3]()"
+        #cb3
+        class="sm:w-80"
+        [(selectedValues)]="selections[3]"
+      >
+        <!-- Label -->
+        <label for="search3" class="block text-sm mb-2 font-medium">
+          Quick search
+        </label>
+        <!-- Input -->
+        <input
+          tw-input
+          (changes)="filter($event, 3)"
+          type="text"
+          autocomplete="off"
+          id="search3"
+          class="pr-14"
+        />
+        <!-- Button -->
+        <button
+          tw-button
+          variant="text"
+          size="sm"
+          [popup]="cb3"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
+        >
+          @if (cb3.isOpened()) {
+            <tw-icon (click)="reset(3, cb3)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cb3.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown
+          [isOpened]="true"
+          (closed)="reset()"
+          class="w-full max-h-56"
+        >
+          @for (user of users3; track user.name) {
+            <div tw-combobox-item #item [value]="user.name">
+              @defer (on viewport(item)) {
+                <img
+                  tw-avatar
+                  size="xs"
+                  alt=""
+                  class="my-auto absolute left-0"
+                  [src]="user.image"
+                />
+              }
+              @if (item.selected()) {
+                <tw-icon class="my-auto absolute right-3" name="check" />
+              }
+              <span class="pl-3">{{ user.name }}</span>
+            </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
+        {{ selections[3] | string }}
+      </p>
+    </div>
+  </div>
 
-	<div class="sm:flex justify-between mb-3" #ref5>
-		<h2>With status indicator</h2>
-		<span
-			class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
-		>
-			Selection mode
-			<tw-toggle
-				class="data-checked:bg- w-30"
-				[checked]="isSingleMode(4)()"
-				(click)="toggleMode(4)"
-			>
-				<span
-					class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
-				>
-					Multi
-				</span>
-				<span
-					class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
-				>
-					Single
-				</span>
-			</tw-toggle>
-		</span>
-	</div>
-	<div
-		class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
-	>
-		<div class="grid gap-y-64 justify-items-center">
-			<!-- Combobox -->
-			<div
-				tw-combobox
-				[isOpened]="true"
-				[selectionMode]="selectionMode[4]()"
-				#cb4
-				class="sm:w-80"
-				[(selectedValues)]="selections[4]"
-			>
-				<!-- Label -->
-				<label for="search4" class="block text-sm mb-2 font-medium">
-					Quick search
-				</label>
-				<!-- Input -->
-				<input
-					tw-input
-					(changes)="filter($event, 4)"
-					type="text"
-					autocomplete="off"
-					id="search4"
-					class="pr-14"
-				/>
-				<!-- Button -->
-				<button
-					tw-button
-					variant="text"
-					size="sm"
-					[popup]="cb4"
-					class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
-				>
-					@if (cb4.isOpened()) {
-						<tw-icon (click)="reset(4, cb4)" size="sm" name="x-mark" />
-					}
-					<tw-icon name="chevron-up-down" (click)="cb4.toggle()" />
-				</button>
-				<!-- Dropdown -->
-				<tw-dropdown
-					[isOpened]="true"
-					(closed)="reset()"
-					class="w-full max-h-56"
-				>
-					@for (user of users4; track user.name) {
-						<div tw-combobox-item #item [value]="user.name">
-							@switch (user.status) {
-								@case ('active') {
-									<tw-icon
-										class="my-auto absolute left-3 text-green-500"
-										name="dot"
-										size="sm"
-									/>
-								}
-								@case ('inactive') {
-									<tw-icon
-										class="my-auto absolute left-3 text-gray-300 dark:text-gray-700"
-										name="dot"
-										size="sm"
-									/>
-								}
-							}
-							@if (item.selected()) {
-								<tw-icon class="my-auto absolute right-3" name="check" />
-							}
-							<span class="pl-6">{{ user.name }}</span>
-						</div>
-					}
-				</tw-dropdown>
-			</div>
-			<p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
-				{{ selections[4] | string }}
-			</p>
-		</div>
-	</div>
+  <div class="sm:flex justify-between mb-3" #ref5>
+    <h2>With status indicator</h2>
+    <span
+      class="inline-flex items-center gap-4 text-sm max-sm:min-w-full justify-between sm:justify-end"
+    >
+      Selection mode
+      <tw-toggle
+        class="data-checked:bg- w-30"
+        [checked]="isSingleMode(4)()"
+        (click)="toggleMode(4)"
+      >
+        <span
+          class="absolute left-0 w-1/2 inline-flex justify-center text-xs text-gray-500 in-data-checked:text-gray-400 not-in-data-checked:font-semibold"
+        >
+          Multi
+        </span>
+        <span
+          class="absolute right-0 w-1/2 inline-flex justify-center text-xs text-gray-400 in-data-checked:text-gray-500 in-data-checked:font-semibold"
+        >
+          Single
+        </span>
+      </tw-toggle>
+    </span>
+  </div>
+  <div
+    class="grid sm:flex gap-4 justify-center items-end border border-gray-950/10 dark:border-white/10 dark:bg-gray-800/40 mb-10 mt-1 max-sm:px-2 p-6 py-10 mx-auto rounded-md"
+  >
+    <div class="grid gap-y-64 justify-items-center">
+      <!-- Combobox -->
+      <div
+        tw-combobox
+        [isOpened]="true"
+        [selectionMode]="selectionMode[4]()"
+        #cb4
+        class="sm:w-80"
+        [(selectedValues)]="selections[4]"
+      >
+        <!-- Label -->
+        <label for="search4" class="block text-sm mb-2 font-medium">
+          Quick search
+        </label>
+        <!-- Input -->
+        <input
+          tw-input
+          (changes)="filter($event, 4)"
+          type="text"
+          autocomplete="off"
+          id="search4"
+          class="pr-14"
+        />
+        <!-- Button -->
+        <button
+          tw-button
+          variant="text"
+          size="sm"
+          [popup]="cb4"
+          class="focus:- absolute inset-y-0 px-2 right-0 rounded-r-md opacity-50"
+        >
+          @if (cb4.isOpened()) {
+            <tw-icon (click)="reset(4, cb4)" size="sm" name="x-mark" />
+          }
+          <tw-icon name="chevron-up-down" (click)="cb4.toggle()" />
+        </button>
+        <!-- Dropdown -->
+        <tw-dropdown
+          [isOpened]="true"
+          (closed)="reset()"
+          class="w-full max-h-56"
+        >
+          @for (user of users4; track user.name) {
+            <div tw-combobox-item #item [value]="user.name">
+              @switch (user.status) {
+                @case ('active') {
+                  <tw-icon
+                    class="my-auto absolute left-3 text-green-500"
+                    name="dot"
+                    size="sm"
+                  />
+                }
+                @case ('inactive') {
+                  <tw-icon
+                    class="my-auto absolute left-3 text-gray-300 dark:text-gray-700"
+                    name="dot"
+                    size="sm"
+                  />
+                }
+              }
+              @if (item.selected()) {
+                <tw-icon class="my-auto absolute right-3" name="check" />
+              }
+              <span class="pl-6">{{ user.name }}</span>
+            </div>
+          }
+        </tw-dropdown>
+      </div>
+      <p class="text-sm max-w-64 sm:max-w-96 text-balance text-center">
+        {{ selections[4] | string }}
+      </p>
+    </div>
+  </div>
 </div>
