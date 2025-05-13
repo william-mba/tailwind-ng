@@ -1,10 +1,10 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/directive-selector */
 import { By } from '@angular/platform-browser'
 import { fakeAsync, TestBed, tick } from '@angular/core/testing'
-import { Component, Directive, ElementRef } from '@angular/core'
+import { Component, Directive } from '@angular/core'
 import { BaseDirective } from '../base.directive'
-import { classlist } from '../../utils/classlist'
 import { vi } from 'vitest'
+
 @Directive({
   selector: '[fakeDirective]',
 })
@@ -21,7 +21,7 @@ class FakeDirective extends BaseDirective {
     }
   }
   protected override buildStyle(): void {
-    classlist(this.class, this.nativeElement)
+    /*NOOP */
   }
 }
 
@@ -29,15 +29,7 @@ describe('BaseDirective', () => {
   let directive: FakeDirective
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        FakeDirective,
-        {
-          provide: ElementRef,
-          useValue: {
-            nativeElement: document.createElement('div'),
-          },
-        },
-      ],
+      providers: [FakeDirective],
     })
     directive = TestBed.inject(FakeDirective)
   })
@@ -90,12 +82,6 @@ describe('BaseDirective', () => {
       expect(directive.hasVisualFocus).toBeTruthy()
       directive.removeVisualfocus()
       expect(directive.hasVisualFocus).toBeFalsy()
-    })
-
-    it('should set whether it is hovered', () => {
-      expect(directive.isHovered).toBeFalsy()
-      directive.isHovered = true
-      expect(directive.isHovered).toBeTruthy()
     })
 
     it('should scroll into view', fakeAsync(

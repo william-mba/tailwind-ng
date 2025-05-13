@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, Input, ViewEncapsulation } from '@angular/core'
-import { Badge, BADGE_CONFIG, BadgeBase, classlist, SizeOption } from '@tailwind-ng/core'
+import { Badge, BADGE_CONFIG, BadgeBase, classNameMerge, SizeOption } from '@tailwind-ng/core'
 
 @Component({
   selector: 'tw-badge, [tw-badge], [twBadge]',
@@ -14,6 +14,6 @@ export class BadgeComponent extends BadgeBase implements Badge {
 
   protected override buildStyle(): void {
     const { [this.size]: size, className } = inject(BADGE_CONFIG)
-    classlist(this.nativeElement).set(`${size} ${className}`, this.class)
+    this.nativeElement.className = classNameMerge(`${size} ${className}`, this.class)
   }
 }

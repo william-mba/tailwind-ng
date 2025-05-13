@@ -1,4 +1,4 @@
-import { ClassName } from './classname'
+import { classNameMerge } from './classname'
 import {
   isArray,
   isConfigObject,
@@ -97,7 +97,7 @@ function simpleMerge<T extends Config>(...arg: (T | Partial<T>)[]): T {
         if (isString(target[k])) {
           const s = obj[k] as string
           const t = target[k] as string
-          const res = ClassName.merge(t, s, {
+          const res = classNameMerge(t, s, {
             keepClassDeletor: true,
           })
           Object.assign(target, { [k]: res })

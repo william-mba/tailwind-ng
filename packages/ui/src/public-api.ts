@@ -1,5 +1,6 @@
 export * from './elements'
 export * from './forms'
+export * from './layout'
 export * from './overlays'
 import { Provider } from '@angular/core'
 

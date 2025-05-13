@@ -1,6 +1,5 @@
 /* eslint-disable @angular-eslint/directive-selector, @angular-eslint/directive-class-suffix */
 import { computed, Directive, ElementRef } from '@angular/core'
-import { classlist } from '../../utils/classlist'
 import { PopupDirective } from '../popup.directive'
 import { fakeAsync, TestBed, tick } from '@angular/core/testing'
 
@@ -9,7 +8,7 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing'
 })
 class FakePopup extends PopupDirective {
   protected override buildStyle(): void {
-    classlist(this.class, this.nativeElement)
+    /*NOOP */
   }
 }
 

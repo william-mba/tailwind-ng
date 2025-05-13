@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, Input, ViewEncapsulation } from '@angular/core'
-import { Avatar, AVATAR_CONFIG, AvatarBase, classlist, SizeOption } from '@tailwind-ng/core'
+import { Avatar, AVATAR_CONFIG, AvatarBase, classNameMerge, SizeOption } from '@tailwind-ng/core'
 
 /**
  * @TailwindNG Avatar Component
@@ -17,6 +17,6 @@ export class AvatarComponent extends AvatarBase implements Avatar {
 
   protected override buildStyle(): void {
     const { [this.size]: size, className } = inject(AVATAR_CONFIG)
-    classlist(this.nativeElement).set(`${size} ${className}`, this.class)
+    this.nativeElement.className = classNameMerge(`${size} ${className}`, this.class)
   }
 }

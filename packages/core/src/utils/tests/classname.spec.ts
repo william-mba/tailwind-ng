@@ -1,16 +1,14 @@
-import { ClassName } from '../classname'
+import { classNameMerge, stringToArray } from '../classname'
 
 describe('ClassName', () => {
   it('it should include all classes of the rightmost source value after merging', () => {
-    const result = ClassName.toArray(
-      ClassName.merge(
-        'bg-blue-600 text-blue-600',
-        'ring-blue-600 ring-2 ring-inset',
-        'translate-x-0 scale-100 p-3.5'
-      )
+    const result = classNameMerge(
+      'bg-blue-600 text-blue-600',
+      'ring-blue-600 ring-2 ring-inset',
+      'translate-x-0 scale-100 p-3.5'
     )
 
-    ClassName.toArray('translate-x-0 scale-100 p-3.5').forEach((value) => {
+    stringToArray('translate-x-0 scale-100 p-3.5').forEach((value) => {
       expect(result.includes(value)).toBeTruthy()
     })
   })
@@ -29,14 +27,13 @@ text-blue-600 \
 ring-blue-600 ring-2 ring-inset \
 translate-x-0 scale-100 p-3.5'
 
-    const result = ClassName.toArray(ClassName.merge(target, source))
+    const result = stringToArray(classNameMerge(target, source))
 
     // expect that all classes in source are properly added in target
-    ClassName.toArray(source).forEach((value) => {
+    stringToArray(source).forEach((value) => {
       expect(result.includes(value)).toBeTruthy()
     })
 
-    //
     expect(result.includes('bg-red-100')).toBeFalsy()
     expect(result.includes('text-red-600')).toBeFalsy()
     expect(result.includes('text-sm')).toBeTruthy()
@@ -52,8 +49,8 @@ translate-x-0 scale-100 p-3.5'
   })
 
   it('should merge values', () => {
-    const result = ClassName.toArray(
-      ClassName.merge('grid w-max gap-2', 'bg-white', 'bg-gray-200 hover:bg-gray-200')
+    const result = stringToArray(
+      classNameMerge('grid w-max gap-2', 'bg-white', 'bg-gray-200 hover:bg-gray-200')
     )
 
     expect(result.includes('grid')).toBeTruthy()
@@ -65,8 +62,8 @@ translate-x-0 scale-100 p-3.5'
   })
 
   it('should merge values', () => {
-    const result = ClassName.toArray(
-      ClassName.merge(
+    const result = stringToArray(
+      classNameMerge(
         'bg-transparent border-white',
         'bg-white',
         'bg-gray-200 hover:bg-gray-200',
@@ -84,7 +81,7 @@ translate-x-0 scale-100 p-3.5'
 
   it('should convert string to array', () => {
     const value = 'bg-red-600 bg-blue-600 bg-green-600'
-    const result = ClassName.toArray(value)
+    const result = stringToArray(value)
     expect(result).toEqual(['bg-red-600', 'bg-blue-600', 'bg-green-600'])
   })
 
@@ -94,8 +91,8 @@ translate-x-0 scale-100 p-3.5'
     const classesDeletors = 'bg-blue- ring- translate- px-'
     const customValues = 'text-blue-600 ring-2 scale-100'
 
-    const result = ClassName.toArray(
-      ClassName.merge(defaultValues, `${classesDeletors} ${customValues}`, {
+    const result = stringToArray(
+      classNameMerge(defaultValues, `${classesDeletors} ${customValues}`, {
         keepClassDeletor: false,
       })
     )
@@ -115,12 +112,12 @@ translate-x-0 scale-100 p-3.5'
     expect(result.includes('py-2')).toBeTruthy()
 
     // Expected custom values
-    ClassName.toArray(customValues).forEach((value) => {
+    stringToArray(customValues).forEach((value) => {
       expect(result.includes(value)).toBeTruthy()
     })
 
     // Expected classes deletors
-    ClassName.toArray(classesDeletors).forEach((value) => {
+    stringToArray(classesDeletors).forEach((value) => {
       expect(result.includes(value)).toBeFalsy()
     })
   })
@@ -129,7 +126,7 @@ translate-x-0 scale-100 p-3.5'
     const defaultValues =
       'bg-red-100 text-red-600 text-sm ring-red-600 translate-0 px-3.5 translate-y-0 ring-inherit ring-inset rounded-md scale-y-100 py-2'
     const customValues = 'bg-blue- text-blue-600 ring- ring-2 translate- scale-100 px-'
-    const expectedResult = ClassName.merge(defaultValues, customValues, {
+    const expectedResult = classNameMerge(defaultValues, customValues, {
       keepClassDeletor: true,
     })
 

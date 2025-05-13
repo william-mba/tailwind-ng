@@ -10,7 +10,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core'
 import { ComboboxComponent } from '../combobox.component'
-import { classlist, COMBOBOX_ITEM_CONFIG, ComboboxItem, ComboboxItemBase } from '@tailwind-ng/core'
+import {
+  classNameMerge,
+  COMBOBOX_ITEM_CONFIG,
+  ComboboxItem,
+  ComboboxItemBase,
+} from '@tailwind-ng/core'
 
 @Component({
   selector: 'tw-combobox-item, [tw-combobox-item], [twComboboxItem]',
@@ -89,7 +94,7 @@ export class ComboboxItemComponent
     })
   }
   protected override buildStyle(): void {
-    classlist(this.nativeElement).set(inject(COMBOBOX_ITEM_CONFIG), this.class)
+    this.nativeElement.className = classNameMerge(inject(COMBOBOX_ITEM_CONFIG), this.class)
   }
 
   private selectIfNeeded(value = this._combobox.input()?.normalizedValue): void {

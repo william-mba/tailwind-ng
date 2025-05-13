@@ -1,8 +1,8 @@
 /* eslint-disable @angular-eslint/component-selector */
-import { ClassName } from '@tailwind-ng/core'
+import { stringToArray } from '@tailwind-ng/core'
 import { fakeAsync, TestBed, tick } from '@angular/core/testing'
 import { IconDirective } from './icon.directive'
-import { ChangeDetectorRef, Component, ElementRef } from '@angular/core'
+import { ChangeDetectorRef, Component } from '@angular/core'
 import { provideIcon } from './icon.directive.config'
 import { By } from '@angular/platform-browser'
 
@@ -12,12 +12,6 @@ describe('IconDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        {
-          provide: ElementRef,
-          useValue: {
-            nativeElement: document.createElement('tw-icon'),
-          },
-        },
         {
           provide: ChangeDetectorRef,
           // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -117,7 +111,7 @@ describe('IconDirective', () => {
     const icon = fixture.debugElement.query(By.css('tw-icon')).nativeElement as HTMLElement
     fixture.detectChanges()
 
-    ClassName.toArray(customizations).forEach((c) => {
+    stringToArray(customizations).forEach((c) => {
       expect(icon.classList).toContain(c)
     })
   })

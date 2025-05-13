@@ -3,7 +3,7 @@ import { BadgeComponent } from './badge.component'
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing'
 import { provideBadge } from './badge.component.config'
 import { Component } from '@angular/core'
-import { BADGE_CONFIG, ClassName } from '@tailwind-ng/core'
+import { BADGE_CONFIG, stringToArray } from '@tailwind-ng/core'
 import { By } from '@angular/platform-browser'
 
 describe('BadgeComponent', () => {
@@ -50,7 +50,7 @@ describe('BadgeComponent', () => {
       className = TestBed.inject(BADGE_CONFIG).className || ''
     })
 
-    ClassName.toArray(className).forEach((c) => {
+    stringToArray(className).forEach((c) => {
       expect(component.nativeElement.classList.contains(c)).toBeTruthy()
     })
   })
@@ -74,7 +74,7 @@ describe('BadgeComponent', () => {
     const badge = fixture.debugElement.query(By.directive(BadgeComponent)).componentInstance
     fixture.detectChanges()
 
-    ClassName.toArray(customization).forEach((c) => {
+    stringToArray(customization).forEach((c) => {
       expect(badge.nativeElement.classList.contains(c)).toBe(true)
     })
 
@@ -106,7 +106,7 @@ describe('BadgeComponent', () => {
     const badge = fixture.debugElement.query(By.directive(BadgeComponent)).componentInstance
     fixture.detectChanges()
 
-    ClassName.toArray(customization).forEach((c) => {
+    stringToArray(customization).forEach((c) => {
       expect(badge.nativeElement.classList.contains(c)).toBe(true)
     })
 

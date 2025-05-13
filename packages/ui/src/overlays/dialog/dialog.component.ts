@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core'
-import { classlist, DIALOG_CONFIG, DialogBase, TwIf } from '@tailwind-ng/core'
+import { classNameMerge, DIALOG_CONFIG, DialogBase, TwIf } from '@tailwind-ng/core'
 
 /** Dialog component */
 @Component({
@@ -18,6 +18,6 @@ export class DialogComponent extends DialogBase {
     if (this.isModal && config.backdrop) {
       className += ` ${config.backdrop}`
     }
-    classlist(this.nativeElement).set(className, this.class)
+    this.nativeElement.className = classNameMerge(className, this.class)
   }
 }

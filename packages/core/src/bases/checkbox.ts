@@ -71,12 +71,12 @@ export interface CheckboxIcon {
    * The name of the icon to display when the checkbox is indeterminate.
    * Default is `'minus'`. The icon must be configured. Otherwise, it will not display.
    */
-  onIndeterminate: string
+  indeterminate: string
   /**
    * The name of the icon to display when the checkbox is checked.
    * Default is `'check'`. The icon must be configured. Otherwise, it will not display.
    */
-  onChecked: string
+  checked: string
   /**
    * The size of the icon. Default is `'sm'`.
    */
@@ -87,8 +87,8 @@ export const CHECKBOX_CONFIG = InjectionTokenFactory.create<string>('', 'CHECKBO
 
 export const CHECKBOX_ICON = InjectionTokenFactory.create<CheckboxIcon>(
   {
-    onIndeterminate: 'minus',
-    onChecked: 'check',
+    indeterminate: 'minus',
+    checked: 'check',
     size: 'sm',
   },
   'CHECKBOX_ICON'

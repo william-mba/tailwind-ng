@@ -7,7 +7,7 @@ import {
   isEnterOrSpace,
   isSpace,
 } from '../guards'
-import { classlist } from '../utils/classlist'
+import { classNameMerge } from '../utils/classname'
 
 @Directive({
   selector: 'tw-option, [tw-option], [twOption]',
@@ -19,7 +19,7 @@ import { classlist } from '../utils/classlist'
 })
 export class OptionDirective extends BaseDirective {
   protected override buildStyle(): void {
-    classlist(this.nativeElement).set(
+    this.nativeElement.className = classNameMerge(
       'focus:bg-black/5 focus:dark:bg-white/5 focus:outline-0',
       this.class
     )

@@ -15,7 +15,7 @@ import {
   CheckboxBase,
   CheckboxMutableProps,
   CheckboxToggleOptions,
-  classlist,
+  classNameMerge,
   isArrowDownOrRight,
   isArrowUpOrLeft,
   isEnterOrSpace,
@@ -47,10 +47,10 @@ import { TwIcon } from '../../elements'
           [indeterminate]="indeterminate || null"
         />
         @if (indeterminate) {
-          <tw-icon [name]="icon.onIndeterminate" [size]="icon.size" />
+          <tw-icon [name]="icon.indeterminate" [size]="icon.size" />
         }
         @if (checked) {
-          <tw-icon [name]="icon.onChecked" [size]="icon.size" />
+          <tw-icon [name]="icon.checked" [size]="icon.size" />
         }
       </div>
       <ng-content />
@@ -110,7 +110,7 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
     if (this.parent) {
       this.inputRef.className = this.parent.inputRef.className
     } else {
-      classlist(this.inputRef).set(inject(CHECKBOX_CONFIG), this.class)
+      this.inputRef.className = classNameMerge(inject(CHECKBOX_CONFIG), this.class)
     }
   }
 

@@ -1,5 +1,5 @@
 import { Directive, inject } from '@angular/core'
-import { classlist, INPUT_TEXT_CONFIG, InputTextBase } from '@tailwind-ng/core'
+import { classNameMerge, INPUT_TEXT_CONFIG, InputTextBase } from '@tailwind-ng/core'
 
 @Directive({
   selector: `input[tw-input][type="text"], input[twInput][type="text"],
@@ -19,6 +19,6 @@ import { classlist, INPUT_TEXT_CONFIG, InputTextBase } from '@tailwind-ng/core'
 export class InputTextDirective extends InputTextBase {
   protected override buildStyle(): void {
     const { [this.size]: size, className } = inject(INPUT_TEXT_CONFIG)
-    classlist(this.nativeElement).set(`${size} ${className}`, this.class)
+    this.nativeElement.className = classNameMerge(`${size} ${className}`, this.class)
   }
 }
