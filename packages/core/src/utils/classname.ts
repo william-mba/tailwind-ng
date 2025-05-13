@@ -1,23 +1,3 @@
-/**
- * A utility for merging class names.
- */
-export const ClassName = {
-  /**
-   * Merges multiple class names from right (source) to left (target).
-   *
-   * @param args - The values to merge. This function accepts a merge options as last parameter.
-   * @returns The merged result.
-   */
-  merge: merge,
-  /**
-   * Converts value to an array of strings using the specified separator.
-   * If value is not a string, an empty array is returned.
-   * @param value The value to convert.
-   * @param separator The separator to use.
-   */
-  toArray: stringToArray,
-}
-
 interface MergeOptions {
   /** Whether to keep the class-deletor in the target array. */
   keepClassDeletor?: boolean
@@ -145,6 +125,9 @@ export type ClassNameValue = string | undefined | null
 
 /** Transfroms string value to an array then returns it.
  * Returns an empty array if value is undefined. */
-function stringToArray(value: unknown, separator = ' '): string[] {
+export function stringToArray(value: unknown, separator = ' '): string[] {
   return typeof value === 'string' ? (value as string).split(separator) : []
 }
+
+/** Returns a string of merged class names from right to left. */
+export const classNameMerge = merge

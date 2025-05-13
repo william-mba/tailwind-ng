@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core'
-import { COMBOBOX_ITEM_CONFIG, ClassName } from '@tailwind-ng/core'
+import { COMBOBOX_ITEM_CONFIG, classNameMerge } from '@tailwind-ng/core'
 
 const DefaultConfig = () => {
   const className =
@@ -13,7 +13,7 @@ const DefaultConfig = () => {
 export function provideComboboxItem(className = ''): Provider {
   return {
     provide: COMBOBOX_ITEM_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
+    useValue: className.length < 3 ? DefaultConfig() : classNameMerge(DefaultConfig(), className),
   }
 }
 export function withComboboxItem(className = ''): Provider {

@@ -3,7 +3,7 @@ import { provideCheckbox } from './checkbox.component.config'
 import { Component } from '@angular/core'
 import { CheckboxComponent } from './checkbox.component'
 import { provideIcon } from 'tailwind-ng'
-import { CHECKBOX_CONFIG, ClassName } from '@tailwind-ng/core'
+import { CHECKBOX_CONFIG, stringToArray } from '@tailwind-ng/core'
 import { By } from '@angular/platform-browser'
 
 describe('CheckboxComponent', () => {
@@ -33,7 +33,7 @@ describe('CheckboxComponent', () => {
 
     const checkboxInput = component.query(By.css('input[type="checkbox"]')).nativeElement
 
-    ClassName.toArray(className).forEach((c) => {
+    stringToArray(className).forEach((c) => {
       expect(checkboxInput.classList.contains(c)).toBe(true)
     })
   })

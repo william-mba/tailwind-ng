@@ -20,7 +20,7 @@ import {
   TwIf,
   isArrowUpOrDown,
   isArrowUp,
-  classlist,
+  classNameMerge,
 } from '@tailwind-ng/core'
 
 @Component({
@@ -65,7 +65,7 @@ export class ComboboxComponent extends ComboboxBase implements Combobox, AfterCo
   }
 
   protected override buildStyle(): void {
-    classlist(this.nativeElement).set('relative h-max', this.class)
+    this.nativeElement.className = classNameMerge('relative h-max', this.class)
   }
 
   override open(): void {

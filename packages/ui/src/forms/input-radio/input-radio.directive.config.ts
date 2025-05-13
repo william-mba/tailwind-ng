@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core'
-import { INPUT_RADIO_CONFIG, ClassName } from '@tailwind-ng/core'
+import { INPUT_RADIO_CONFIG, classNameMerge } from '@tailwind-ng/core'
 
 const DefaultConfig = () => {
   const className =
@@ -13,7 +13,7 @@ const DefaultConfig = () => {
 export function provideInputRadio(className = ''): Provider {
   return {
     provide: INPUT_RADIO_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
+    useValue: className.length < 3 ? DefaultConfig() : classNameMerge(DefaultConfig(), className),
   }
 }
 export function withInputRadio(className = ''): Provider {

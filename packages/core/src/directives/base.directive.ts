@@ -133,13 +133,10 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement>
     const newState = value === '' || value
     if (this._isDisabled !== newState) {
       this._isDisabled = newState
-      if (this._isInitialized) {
-        this.buildStyle()
-      }
     }
   }
   get disabled(): boolean {
-    return this._isDisabled
+    return this._isDisabled || this.nativeElement.matches(':disabled')
   }
 
   get isFocused(): boolean {
@@ -150,7 +147,9 @@ export abstract class BaseDirective<T extends HTMLElement = HTMLElement>
     return this.nativeElement.contains(this._document.activeElement)
   }
 
-  isHovered = false
+  get isHovered(): boolean {
+    return this.nativeElement.matches(':hover')
+  }
 
   ngOnInit(): void {
     runInInjectionContext(this._injector, () => {

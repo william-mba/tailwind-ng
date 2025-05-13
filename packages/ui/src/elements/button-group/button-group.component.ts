@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, ViewEncapsulation } from '@angular/core'
-import { BUTTON_GROUP_CONFIG, ButtonGroupBase, classlist } from '@tailwind-ng/core'
+import { BUTTON_GROUP_CONFIG, ButtonGroupBase, classNameMerge } from '@tailwind-ng/core'
 
 @Component({
   selector: 'tw-button-group, [tw-button-group], [twButtonGroup], tw-group, [tw-group], [twGroup]',
@@ -16,6 +16,6 @@ import { BUTTON_GROUP_CONFIG, ButtonGroupBase, classlist } from '@tailwind-ng/co
 })
 export class ButtonGroupComponent extends ButtonGroupBase {
   protected override buildStyle(): void {
-    classlist(this.nativeElement).set(inject(BUTTON_GROUP_CONFIG), this.class)
+    this.nativeElement.className = classNameMerge(inject(BUTTON_GROUP_CONFIG), this.class)
   }
 }

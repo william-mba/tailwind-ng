@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core'
-import { TOGGLE_CONFIG, ClassName } from '@tailwind-ng/core'
+import { TOGGLE_CONFIG, classNameMerge } from '@tailwind-ng/core'
 
 const DefaultConfig = () => {
   const className =
@@ -10,10 +10,10 @@ const DefaultConfig = () => {
 /**
  * Provides the Toggle component config.
  */
-export function provideToggle(className = ''): Provider {
+export function provideToggle(classname = ''): Provider {
   return {
     provide: TOGGLE_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
+    useValue: classname.length < 3 ? DefaultConfig() : classNameMerge(DefaultConfig(), classname),
   }
 }
 export function withToggle(className = ''): Provider {

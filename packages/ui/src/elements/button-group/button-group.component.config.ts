@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core'
-import { BUTTON_GROUP_CONFIG, ClassName } from '@tailwind-ng/core'
+import { BUTTON_GROUP_CONFIG, classNameMerge } from '@tailwind-ng/core'
 
 const DefaultConfig = () => {
   const className =
@@ -15,7 +15,7 @@ const DefaultConfig = () => {
 export function provideButtonGroup(className = ''): Provider {
   return {
     provide: BUTTON_GROUP_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
+    useValue: className.length < 3 ? DefaultConfig() : classNameMerge(DefaultConfig(), className),
   }
 }
 export function withButtonGroup(className = ''): Provider {

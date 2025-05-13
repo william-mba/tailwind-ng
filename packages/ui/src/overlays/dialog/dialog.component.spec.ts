@@ -1,22 +1,9 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing'
 import { DialogComponent } from './dialog.component'
-import { Component, ElementRef } from '@angular/core'
+import { Component } from '@angular/core'
 import { By } from '@angular/platform-browser'
 
 describe('DialogComponent', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        {
-          provide: ElementRef,
-          useValue: {
-            nativeElement: document.createElement('div'),
-          },
-        },
-      ],
-    })
-  })
-
   it('should set whether its modal', () => {
     const fixture = TestBed.createComponent(DialogComponent)
     const component = fixture.componentInstance

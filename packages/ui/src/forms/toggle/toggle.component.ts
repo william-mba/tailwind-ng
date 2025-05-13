@@ -6,7 +6,7 @@ import {
   model,
   ViewEncapsulation,
 } from '@angular/core'
-import { classlist, Toggle, TOGGLE_CONFIG, ToggleBase } from '@tailwind-ng/core'
+import { classNameMerge, Toggle, TOGGLE_CONFIG, ToggleBase } from '@tailwind-ng/core'
 
 @Component({
   selector: 'tw-toggle, [tw-toggle], [twToggle]',
@@ -27,7 +27,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
   checked = model<boolean>(false)
 
   protected override buildStyle(): void {
-    classlist(this.nativeElement).set(inject(TOGGLE_CONFIG), this.class)
+    this.nativeElement.className = classNameMerge(inject(TOGGLE_CONFIG), this.class)
   }
 
   private onKeydown(event: KeyboardEvent): void {

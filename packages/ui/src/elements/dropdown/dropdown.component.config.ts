@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core'
-import { DROPDOWN_CONFIG, ClassName } from '@tailwind-ng/core'
+import { DROPDOWN_CONFIG, classNameMerge } from '@tailwind-ng/core'
 
 const DefaultConfig = () => {
   const className =
@@ -15,7 +15,7 @@ const DefaultConfig = () => {
 export function provideDropdown(className = ''): Provider {
   return {
     provide: DROPDOWN_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
+    useValue: className.length < 3 ? DefaultConfig() : classNameMerge(DefaultConfig(), className),
   }
 }
 

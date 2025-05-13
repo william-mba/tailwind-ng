@@ -5,7 +5,7 @@ import { DropdownComponent } from './../../elements/dropdown/dropdown.component'
 import { InputTextDirective } from '../input-text/input-text.directive'
 import { fakeAsync, TestBed, tick } from '@angular/core/testing'
 import { ComboboxComponent } from './combobox.component'
-import { Component, ElementRef, NO_ERRORS_SCHEMA, signal } from '@angular/core'
+import { Component, NO_ERRORS_SCHEMA, signal } from '@angular/core'
 import { ComboboxModule } from './combobox.module'
 import { ButtonComponent } from '../../elements/button/button.component'
 import { provideIcon } from '../../elements/icon/icon.directive.config'
@@ -123,12 +123,6 @@ describe('ComboboxComponent', () => {
       @Component({
         selector: 'app-test',
         providers: [
-          {
-            provide: ElementRef,
-            useValue: {
-              nativeElement: document.createElement('div'),
-            },
-          },
           provideIcon({
             map: {
               check: 'fake svg',
@@ -213,12 +207,6 @@ describe('ComboboxComponent', () => {
       @Component({
         selector: 'app-test',
         providers: [
-          {
-            provide: ElementRef,
-            useValue: {
-              nativeElement: document.createElement('div'),
-            },
-          },
           provideIcon({
             map: {
               check: 'fake svg',
@@ -320,12 +308,6 @@ describe('ComboboxComponent', () => {
       @Component({
         selector: 'app-test',
         providers: [
-          {
-            provide: ElementRef,
-            useValue: {
-              nativeElement: document.createElement('div'),
-            },
-          },
           provideIcon({
             map: {
               check: 'fake svg',

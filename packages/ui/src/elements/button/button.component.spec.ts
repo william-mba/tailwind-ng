@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ClassName } from '@tailwind-ng/core'
+import { stringToArray } from '@tailwind-ng/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ButtonComponent } from './button.component'
 import { GetButtonConfig, provideButton } from './button.component.config'
@@ -60,7 +60,7 @@ describe('ButtonComponent', () => {
   it('should set classList', () => {
     const className = GetButtonConfig().base
 
-    ClassName.toArray(className).forEach((c) => {
+    stringToArray(className).forEach((c) => {
       expect(component.nativeElement.classList.contains(c)).toBeTruthy()
     })
   })
@@ -85,7 +85,7 @@ describe('ButtonComponent', () => {
     const button = fixture.debugElement.query(By.directive(ButtonComponent)).componentInstance
     fixture.detectChanges()
 
-    ClassName.toArray(customizations).forEach((c) => {
+    stringToArray(customizations).forEach((c) => {
       expect(button.nativeElement.classList.contains(c)).toBeTruthy()
     })
     expect(button.nativeElement.classList.contains(defaultGap)).toBeFalsy()
@@ -116,7 +116,7 @@ describe('ButtonComponent', () => {
     const button = fixture.debugElement.query(By.directive(ButtonComponent)).componentInstance
     fixture.detectChanges()
 
-    ClassName.toArray('bg-red-600 rounded-full gap-3').map((c) => {
+    stringToArray('bg-red-600 rounded-full gap-3').map((c) => {
       expect(button.nativeElement.classList.contains(c)).toBeTruthy()
     })
 

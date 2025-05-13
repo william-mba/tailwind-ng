@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core'
-import { CHECKBOX_CONFIG, ClassName } from '@tailwind-ng/core'
+import { CHECKBOX_CONFIG, classNameMerge } from '@tailwind-ng/core'
 
 const DefaultConfig = () => {
   const className =
@@ -13,7 +13,7 @@ const DefaultConfig = () => {
 export function provideCheckbox(className = ''): Provider {
   return {
     provide: CHECKBOX_CONFIG,
-    useValue: className.length < 3 ? DefaultConfig() : ClassName.merge(DefaultConfig(), className),
+    useValue: className.length < 3 ? DefaultConfig() : classNameMerge(DefaultConfig(), className),
   }
 }
 

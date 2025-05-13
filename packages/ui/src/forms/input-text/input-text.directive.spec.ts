@@ -1,7 +1,7 @@
 import { InputTextDirective } from './input-text.directive'
 import { TestBed } from '@angular/core/testing'
 import { provideInputText } from './input-text.directive.config'
-import { INPUT_TEXT_CONFIG, ClassName } from '@tailwind-ng/core'
+import { INPUT_TEXT_CONFIG, stringToArray } from '@tailwind-ng/core'
 import { Component } from '@angular/core'
 import { By } from '@angular/platform-browser'
 
@@ -30,7 +30,7 @@ describe('InputDirective', () => {
     const input = fixture.debugElement.query(By.directive(InputTextDirective))
     fixture.detectChanges()
 
-    ClassName.toArray(className).forEach((c) => {
+    stringToArray(className).forEach((c) => {
       expect(input.nativeElement.classList.contains(c)).toBe(true)
     })
   })
