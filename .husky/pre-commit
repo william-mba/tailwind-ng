@@ -1,2 +1,3 @@
 eval "$(fnm env)"
-npm exec lint-staged
+npx run-p format:fix lint
+git update-index --again

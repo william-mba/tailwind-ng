@@ -1,3 +1,2 @@
 eval "$(fnm env)"
-npx run-p format:fix lint check-circ-deps cleanup-imports
-git update-index --again
+npm run check-circ-deps
