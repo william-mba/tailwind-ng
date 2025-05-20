@@ -24,7 +24,7 @@ export class DocsComponent {
   private _isSmallScreen = false
   private _clientWidth = signal(window.innerWidth)
   private _document = inject(DOCUMENT)
-  private readonly _resizeObserver = new ResizeObserver((entries) => {
+  private readonly _resizeObserver = new ResizeObserver(entries => {
     for (const entry of entries) {
       if (entry.contentBoxSize[0]) {
         this._clientWidth.set(entry.contentBoxSize[0].inlineSize)
@@ -50,7 +50,7 @@ export class DocsComponent {
 
   toggleNav() {
     if (!this._isSmallScreen) return
-    this.navOpened.update((current) => !current)
+    this.navOpened.update(current => !current)
   }
 
   protected readonly theme = inject(ThemeService)

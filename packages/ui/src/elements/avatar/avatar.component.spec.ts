@@ -51,7 +51,7 @@ describe('AvatarComponent', () => {
       className = TestBed.inject(AVATAR_CONFIG).className || ''
     })
 
-    stringToArray(className).forEach((c) => {
+    stringToArray(className).forEach(c => {
       expect(component.nativeElement.classList.contains(c)).toBeTruthy()
     })
   })
@@ -71,7 +71,7 @@ describe('AvatarComponent', () => {
     const avatar = fixture.debugElement.query(By.directive(AvatarComponent)).componentInstance
     fixture.detectChanges()
 
-    stringToArray(customization).forEach((c) => {
+    stringToArray(customization).forEach(c => {
       expect(avatar.nativeElement.className.includes(c)).toBeTruthy()
     })
   })
@@ -95,7 +95,7 @@ describe('AvatarComponent', () => {
     const avatar = fixture.debugElement.query(By.directive(AvatarComponent)).componentInstance
     fixture.detectChanges()
 
-    stringToArray(customization).forEach((c) => {
+    stringToArray(customization).forEach(c => {
       expect(avatar.nativeElement.className.includes(c)).toBeTruthy()
     })
   })

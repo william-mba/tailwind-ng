@@ -61,7 +61,7 @@ export class PreviewComponent {
     ) // TODO: Remove
     if (task.subtasks) {
       console.groupCollapsed(`> ${task.name} subtasks:`)
-      task.subtasks.forEach((subtask) => this.saveTask(subtask))
+      task.subtasks.forEach(subtask => this.saveTask(subtask))
       console.groupEnd()
     }
   }

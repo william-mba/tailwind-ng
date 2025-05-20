@@ -17,7 +17,7 @@ FROM setup-node AS install-deps
 WORKDIR /_work
 
 COPY angular.json .
-COPY .prettierrc .
+COPY .prettierignore .
 COPY eslint.config.js .
 COPY package.json .
 COPY package-lock.json .

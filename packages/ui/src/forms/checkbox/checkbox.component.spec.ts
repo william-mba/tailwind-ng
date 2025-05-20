@@ -33,7 +33,7 @@ describe('CheckboxComponent', () => {
 
     const checkboxInput = component.query(By.css('input[type="checkbox"]')).nativeElement
 
-    stringToArray(className).forEach((c) => {
+    stringToArray(className).forEach(c => {
       expect(checkboxInput.classList.contains(c)).toBe(true)
     })
   })

@@ -30,7 +30,7 @@ describe('InputRadioDirective', () => {
     const input = fixture.debugElement.query(By.directive(InputRadioDirective))
     fixture.detectChanges()
 
-    stringToArray(className).forEach((c) => {
+    stringToArray(className).forEach(c => {
       expect(input.nativeElement.classList.contains(c)).toBe(true)
     })
   })

@@ -53,7 +53,7 @@ stages:
 
           - bash: |
               npm config set //registry.npmjs.org/:_authToken=$(authToken)
-              cd $(Build.SourcesDirectory)/packages/themes
+              cd $(Build.SourcesDirectory)/artifacts/themes
               npm version $(ReleaseVersion)
               npm publish --tag $(ReleaseTag)
               cd $(Build.SourcesDirectory)/artifacts/ui

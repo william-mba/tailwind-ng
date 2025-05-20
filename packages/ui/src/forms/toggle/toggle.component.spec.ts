@@ -33,7 +33,7 @@ describe('ToggleComponent', () => {
       className = TestBed.inject(TOGGLE_CONFIG) || ''
     })
 
-    stringToArray(className).forEach((c) => {
+    stringToArray(className).forEach(c => {
       expect(component.nativeElement.classList.contains(c)).toBeTruthy()
     })
   })

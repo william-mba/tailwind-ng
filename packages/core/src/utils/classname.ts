@@ -47,7 +47,7 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
                 0,
                 lengthsEqual ? className.length : className.length - 1
               )
-              target = target.filter((value) => {
+              target = target.filter(value => {
                 return !value.startsWith(searchString)
               })
               // Keep the class-deletor in the target array.
@@ -62,7 +62,7 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
                 lastIndexOfSeperator > 0 ? className.substring(0, lastIndexOfSeperator) : className
               const foundInSource = className.match(/-/g)?.length ?? 0
 
-              target = target.filter((value) => {
+              target = target.filter(value => {
                 const foundInTarget = value.match(/-/g)?.length ?? 0
                 // This is a heuristic formula that allow merging values accurately.
                 const matchPercentage = (value.length * 100) / className.length
@@ -71,7 +71,7 @@ function merge(...arg: ClassNameValue[] | [...ClassNameValue[], MergeOptions]): 
                 if (foundInSource >= foundInTarget && foundInSource > 1) {
                   // If source is for instance 'text-blue-600' and target is 'text-sm'
                   if (foundInSource > foundInTarget && foundInTarget === 1) {
-                    const found = NON_COLORS.find((x) => value.endsWith(x))
+                    const found = NON_COLORS.find(x => value.endsWith(x))
 
                     // keep non color class that does not have a value in source to merge with.
                     if (found && !searchString.startsWith(value.substring(0, value.indexOf('-')))) {

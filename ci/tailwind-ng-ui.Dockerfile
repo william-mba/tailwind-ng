@@ -17,7 +17,7 @@ FROM setup-node AS install-deps
 WORKDIR /_work
 
 COPY angular.json .
-COPY .prettierrc .
+COPY .prettierignore .
 COPY eslint.config.js .
 COPY package.json .
 COPY package-lock.json .
@@ -29,6 +29,8 @@ RUN npm ci
 FROM install-deps AS copy-project
 COPY packages/core ./packages/core
 COPY packages/ui ./packages/ui
+COPY packages/docs ./packages/docs
+COPY packages/themes ./packages/themes
 
 FROM copy-project AS run-style-guidelines
 RUN npx run-p format:check lint:ui
@@ -37,9 +39,10 @@ FROM run-style-guidelines AS run-tests
 RUN npx run-p test:ui:ci coverage
 
 FROM run-tests AS run-build
-RUN npm run build:ui
+RUN npm run build:ui && npm run build:css
 
 FROM scratch AS extract-artifacts
 COPY --from=run-tests /_work/reports/. /reports/
 COPY --from=run-tests /_work/coverage/. /coverage/
 COPY --from=run-build /_work/dist/ui/. /artifacts/ui/
+COPY --from=run-build /_work/packages/themes/. /artifacts/themes/

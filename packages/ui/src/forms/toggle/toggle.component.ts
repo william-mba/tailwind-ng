@@ -39,7 +39,7 @@ export class ToggleComponent extends ToggleBase implements Toggle {
 
   toggle(): void {
     this.focus()
-    this.checked.update((checked) => !checked)
+    this.checked.update(checked => !checked)
   }
 
   protected override addEventListeners(): void {

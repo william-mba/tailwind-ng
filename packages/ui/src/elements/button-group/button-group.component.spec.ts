@@ -26,7 +26,7 @@ describe('ButtonGroupComponent', () => {
       className = TestBed.inject(BUTTON_GROUP_CONFIG) || ''
     })
 
-    stringToArray(className).forEach((c) => {
+    stringToArray(className).forEach(c => {
       expect(component.nativeElement.classList.contains(c)).toBeTruthy()
     })
   })

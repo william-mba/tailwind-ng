@@ -283,19 +283,19 @@ describe('ComboboxComponent', () => {
 
       const items = fixture.debugElement
         .queryAll(By.directive(ComboboxItemComponent))
-        .map((x) => x.componentInstance)
+        .map(x => x.componentInstance)
         .slice(-3) as ComboboxItemComponent[]
 
-      items.forEach((item) => {
+      items.forEach(item => {
         expect(item.selected()).toBeFalsy()
         expect(combobox.selectedValues().has(item.value)).toBeFalsy()
       })
 
-      items.forEach((item) => {
+      items.forEach(item => {
         item.select()
       })
 
-      items.forEach((item) => {
+      items.forEach(item => {
         expect(item.selected()).toBeTruthy()
         expect(combobox.selectedValues().has(item.value)).toBeTruthy()
       })
@@ -384,30 +384,30 @@ describe('ComboboxComponent', () => {
 
       const items = fixture.debugElement
         .queryAll(By.directive(ComboboxItemComponent))
-        .map((x) => x.componentInstance)
+        .map(x => x.componentInstance)
         .slice(-3) as ComboboxItemComponent[]
 
-      items.forEach((item) => {
+      items.forEach(item => {
         expect(item.selected()).toBeFalsy()
         expect(combobox.selectedValues().has(item.value)).toBeFalsy()
       })
 
       // Select items
-      items.forEach((item) => {
+      items.forEach(item => {
         item.select()
       })
 
-      items.forEach((item) => {
+      items.forEach(item => {
         expect(item.selected()).toBeTruthy()
         expect(combobox.selectedValues().has(item.value)).toBeTruthy()
       })
 
       // Deselect items
-      items.forEach((item) => {
+      items.forEach(item => {
         item.select()
       })
 
-      items.forEach((item) => {
+      items.forEach(item => {
         expect(item.selected()).toBeFalsy()
         expect(combobox.selectedValues().has(item.value)).toBeFalsy()
       })

@@ -50,7 +50,7 @@ describe('BadgeComponent', () => {
       className = TestBed.inject(BADGE_CONFIG).className || ''
     })
 
-    stringToArray(className).forEach((c) => {
+    stringToArray(className).forEach(c => {
       expect(component.nativeElement.classList.contains(c)).toBeTruthy()
     })
   })
@@ -74,7 +74,7 @@ describe('BadgeComponent', () => {
     const badge = fixture.debugElement.query(By.directive(BadgeComponent)).componentInstance
     fixture.detectChanges()
 
-    stringToArray(customization).forEach((c) => {
+    stringToArray(customization).forEach(c => {
       expect(badge.nativeElement.classList.contains(c)).toBe(true)
     })
 
@@ -106,7 +106,7 @@ describe('BadgeComponent', () => {
     const badge = fixture.debugElement.query(By.directive(BadgeComponent)).componentInstance
     fixture.detectChanges()
 
-    stringToArray(customization).forEach((c) => {
+    stringToArray(customization).forEach(c => {
       expect(badge.nativeElement.classList.contains(c)).toBe(true)
     })
 

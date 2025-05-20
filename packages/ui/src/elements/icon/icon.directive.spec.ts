@@ -111,7 +111,7 @@ describe('IconDirective', () => {
     const icon = fixture.debugElement.query(By.css('tw-icon')).nativeElement as HTMLElement
     fixture.detectChanges()
 
-    stringToArray(customizations).forEach((c) => {
+    stringToArray(customizations).forEach(c => {
       expect(icon.classList).toContain(c)
     })
   })

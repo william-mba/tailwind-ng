@@ -90,7 +90,7 @@ export class ComboboxItemComponent
       // RuntimeError: NG0953: Unexpected emit for destroyed `OutputRef`. The owning directive/component is destroyed.
       // This may be explained by the Push/Pull Algorithm of Angular signals which happen in two phases.
       // source: https://github.com/angular/angular/tree/main/packages/core/primitives/signals
-      subs.map((sub) => sub.unsubscribe())
+      subs.map(sub => sub.unsubscribe())
     })
   }
   protected override buildStyle(): void {

@@ -125,16 +125,16 @@ export class CheckboxComponent extends CheckboxBase implements Checkbox, OnInit 
         this.parent.toggle({ origin: 'child' })
       }
       if (this.children) {
-        this.children.map((c) => c.toggle({ origin: 'parent' }))
+        this.children.map(c => c.toggle({ origin: 'parent' }))
       }
     } else if (origin === 'parent' && this.parent) {
       this.checked = this.parent.checked
       this.indeterminate = false
       if (this.children) {
-        this.children.map((c) => c.toggle({ origin: 'parent' }))
+        this.children.map(c => c.toggle({ origin: 'parent' }))
       }
     } else if (origin === 'child' && this.children) {
-      const checkedCount = this.children.filter((c) => c.checked).length
+      const checkedCount = this.children.filter(c => c.checked).length
       this.checked = checkedCount === this.children!.length
       this.indeterminate = checkedCount > 0 && checkedCount < this.children.length
       if (this.parent && (this.checked || this.indeterminate)) {

@@ -60,7 +60,7 @@ describe('ButtonComponent', () => {
   it('should set classList', () => {
     const className = GetButtonConfig().base
 
-    stringToArray(className).forEach((c) => {
+    stringToArray(className).forEach(c => {
       expect(component.nativeElement.classList.contains(c)).toBeTruthy()
     })
   })
@@ -85,7 +85,7 @@ describe('ButtonComponent', () => {
     const button = fixture.debugElement.query(By.directive(ButtonComponent)).componentInstance
     fixture.detectChanges()
 
-    stringToArray(customizations).forEach((c) => {
+    stringToArray(customizations).forEach(c => {
       expect(button.nativeElement.classList.contains(c)).toBeTruthy()
     })
     expect(button.nativeElement.classList.contains(defaultGap)).toBeFalsy()
@@ -116,7 +116,7 @@ describe('ButtonComponent', () => {
     const button = fixture.debugElement.query(By.directive(ButtonComponent)).componentInstance
     fixture.detectChanges()
 
-    stringToArray('bg-red-600 rounded-full gap-3').map((c) => {
+    stringToArray('bg-red-600 rounded-full gap-3').map(c => {
       expect(button.nativeElement.classList.contains(c)).toBeTruthy()
     })
 

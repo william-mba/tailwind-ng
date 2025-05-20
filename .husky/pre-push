@@ -1,3 +1,3 @@
 eval "$(fnm env)"
 npx run-p format:fix lint check-circ-deps cleanup-imports
-npm exec lint-staged
+git update-index --again

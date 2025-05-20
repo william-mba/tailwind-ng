@@ -18,7 +18,9 @@ Beautiful, fast and accessible Tailwind CSS components for Angular.
 
 ## :rocket: Motivation
 
-Tailwind NG is an open source UI components library that aims to provide a seamless and robust integration of [Tailwind CSS](https://tailwindcss.com/) components with [Angular](https://angular.dev) to make building a great UI easier and joyful at any scale.
+Tailwind NG is an open source UI components library that aims to provide a seamless and robust
+integration of [Tailwind CSS](https://tailwindcss.com/) components with
+[Angular](https://angular.dev) to make building a great UI easier and joyful at any scale.
 
 ## :bulb: Why Tailwind NG ?
 
@@ -27,12 +29,14 @@ Tailwind NG is built with state of the art design principles to provide componen
 - **Beautiful**: well-designed components that look great out of the box.
 - **Fast and lightweight**: for optimal responsiveness and rendering speed at any scale.
 - **Reliable**: well-tested to ensure consistent performance and predictable behaviors.
-- **Accessible**: built-in accessibility features compliant to [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards.
+- **Accessible**: built-in accessibility features compliant to
+  [W3C WAI-ARIA](https://www.w3.org/TR/wai-aria/) standards.
 - **Customizable**: fully customizable, extensible and composable to fit your specific needs.
 
 ## :heart: Contributing
 
-We welcome contributions to Tailwind NG! If you have ideas, suggestions, or bug fixes, please check out our [contributing guide]().
+We welcome contributions to Tailwind NG! If you have ideas, suggestions, or bug fixes, please check
+out our [contributing guide]().
 
 ## :sparkles: Getting Started
 
@@ -42,7 +46,8 @@ To get started with Tailwind NG, you can follow the steps below:
    - [Node.js](https://nodejs.org/en/) v22 or later
    - [Angular](https://angular.io) v19 or later
    - [Tailwind CSS](https://tailwindcss.com/docs/installation) v4 or later
-1. For more information on how to install and use Tailwind NG, please refer to the [documentation](https://tailwind-ng.com/docs/getting-started).
+1. For more information on how to install and use Tailwind NG, please refer to the
+   [documentation](https://tailwind-ng.com/docs/getting-started).
 
 ## :package: Packages reference
 

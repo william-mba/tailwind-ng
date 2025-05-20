@@ -8,7 +8,7 @@ describe('ClassName', () => {
       'translate-x-0 scale-100 p-3.5'
     )
 
-    stringToArray('translate-x-0 scale-100 p-3.5').forEach((value) => {
+    stringToArray('translate-x-0 scale-100 p-3.5').forEach(value => {
       expect(result.includes(value)).toBeTruthy()
     })
   })
@@ -30,7 +30,7 @@ translate-x-0 scale-100 p-3.5'
     const result = stringToArray(classNameMerge(target, source))
 
     // expect that all classes in source are properly added in target
-    stringToArray(source).forEach((value) => {
+    stringToArray(source).forEach(value => {
       expect(result.includes(value)).toBeTruthy()
     })
 
@@ -112,12 +112,12 @@ translate-x-0 scale-100 p-3.5'
     expect(result.includes('py-2')).toBeTruthy()
 
     // Expected custom values
-    stringToArray(customValues).forEach((value) => {
+    stringToArray(customValues).forEach(value => {
       expect(result.includes(value)).toBeTruthy()
     })
 
     // Expected classes deletors
-    stringToArray(classesDeletors).forEach((value) => {
+    stringToArray(classesDeletors).forEach(value => {
       expect(result.includes(value)).toBeFalsy()
     })
   })

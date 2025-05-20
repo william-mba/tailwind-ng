@@ -51,7 +51,7 @@ export class PreviewComponent {
   isSingleMode = (id = 1) => computed(() => this.selectionMode[id]() === 'single')
 
   protected toggleMode(id = 1): void {
-    this.selectionMode[id].update((mode) => (mode === 'single' ? 'multi' : 'single'))
+    this.selectionMode[id].update(mode => (mode === 'single' ? 'multi' : 'single'))
   }
 
   get _users(): User[] {
@@ -212,19 +212,19 @@ export class PreviewComponent {
   filter(value: string, id = 1): void {
     switch (id) {
       case 1:
-        this.users1 = this._users.filter((x) => this.checkMatch(x.name, value))
+        this.users1 = this._users.filter(x => this.checkMatch(x.name, value))
         break
       case 2:
-        this.users2 = this._users.filter((x) => this.checkMatch(x.name, value))
+        this.users2 = this._users.filter(x => this.checkMatch(x.name, value))
         break
       case 3:
-        this.users3 = this._users.filter((x) => this.checkMatch(x.name, value))
+        this.users3 = this._users.filter(x => this.checkMatch(x.name, value))
         break
       case 4:
-        this.users4 = this._users.filter((x) => this.checkMatch(x.name, value))
+        this.users4 = this._users.filter(x => this.checkMatch(x.name, value))
         break
       case 5:
-        this.users5 = this._users.filter((x) => this.checkMatch(x.name, value))
+        this.users5 = this._users.filter(x => this.checkMatch(x.name, value))
         break
     }
   }

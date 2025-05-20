@@ -82,7 +82,7 @@ export class LabComponent {
     ) // TODO: Remove
     if (task.subtasks) {
       console.groupCollapsed(`> ${task.name} subtasks:`)
-      task.subtasks.forEach((subtask) => this.saveTask(subtask))
+      task.subtasks.forEach(subtask => this.saveTask(subtask))
       console.groupEnd()
     }
   }
@@ -248,39 +248,39 @@ export class LabComponent {
   }
 
   filter(value: string, id = 1): void {
-    const values = value.split(',').map((x) => x.trim())
+    const values = value.split(',').map(x => x.trim())
     switch (id) {
       case 1:
         if (values.length > 1) {
           const usersMap = new Map<string, User>()
-          const filtered = this._users.filter((x) => {
-            return values.some((v) => this.checkMatch(x.name, v))
+          const filtered = this._users.filter(x => {
+            return values.some(v => this.checkMatch(x.name, v))
           })
-          filtered.forEach((f) => usersMap.set(f.name, f))
+          filtered.forEach(f => usersMap.set(f.name, f))
           this.users1 = [...usersMap.values()]
         } else {
-          this.users1 = this._users.filter((x) => this.checkMatch(x.name, value))
+          this.users1 = this._users.filter(x => this.checkMatch(x.name, value))
         }
         break
       case 2:
         if (values.length > 1) {
           const usersMap = new Map<string, User>()
-          const filtered = this._users.filter((x) => {
-            return values.some((v) => this.checkMatch(x.name, v))
+          const filtered = this._users.filter(x => {
+            return values.some(v => this.checkMatch(x.name, v))
           })
-          filtered.forEach((f) => usersMap.set(f.name, f))
+          filtered.forEach(f => usersMap.set(f.name, f))
           this.users2 = [...usersMap.values()]
         } else {
-          this.users2 = this._users.filter((x) => this.checkMatch(x.name, value))
+          this.users2 = this._users.filter(x => this.checkMatch(x.name, value))
         }
         break
       case 3:
-        this.users3 = this._users.filter((x) => {
+        this.users3 = this._users.filter(x => {
           return x.name.includes(value) || x.name.startsWith(value)
         })
         break
       case 4:
-        this.users4 = this._users.filter((x) => {
+        this.users4 = this._users.filter(x => {
           return x.name.includes(value) || x.name.startsWith(value)
         })
         break
@@ -317,7 +317,7 @@ export class LabComponent {
   logItems(items: { value: InputSignal<string> }[]): void {
     console.log(
       'items:',
-      items.map((x) => x.value())
+      items.map(x => x.value())
     )
   }
 }

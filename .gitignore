@@ -11,4 +11,4 @@ dist
 !.vscode/extensions.json
 
 .angular
-packages/themes/**/*.css
+**/packages/themes/**/*.css
