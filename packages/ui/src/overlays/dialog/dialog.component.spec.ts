@@ -28,7 +28,9 @@ describe('DialogComponent', () => {
       @Component({
         selector: 'tw-app-test',
         imports: [DialogComponent],
-        template: ` <div tw-dialog (click)="dialog.close()"></div> `,
+        template: `
+          <div tabindex="0" tw-dialog (click)="dialog.close()" (keyup)="dialog.close()"></div>
+        `,
       })
       class TestComponent {}
 

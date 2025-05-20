@@ -63,7 +63,7 @@ describe('AvatarComponent', () => {
       selector: 'test-app',
       standalone: true,
       imports: [AvatarComponent],
-      template: ` <img tw-avatar class="ring-2 ring-white rounded-md" /> `,
+      template: ` <img tw-avatar class="ring-2 ring-white rounded-md" alt="" /> `,
     })
     class TestApp {}
 
@@ -87,7 +87,7 @@ describe('AvatarComponent', () => {
         }),
       ],
       imports: [AvatarComponent],
-      template: ` <img tw-avatar /> `,
+      template: ` <img tw-avatar alt="" /> `,
     })
     class TestApp {}
 
